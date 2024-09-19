@@ -6,25 +6,26 @@ import * as React from 'react';
 import { MultiColumnComboBoxComponent, SortOrder, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-multicolumn-combobox';
 import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
-import './default.css';
+import './sorting.css';
 import * as data from './dataSource.json';
 
 const Sort = () => {
     useEffect(() => {
         updateSampleSection();
     }, []);
-    const fields: object = { text: 'OrderID', value: 'CustomerID' };
+    const fields: object = { text: 'Name', value: 'YearOfJoining' };
     return(
         <div className='control-pane'>
             <div className="control-section">
                 <div className='control-wrapper sorting-multicolumn'>
                     <div style={{ paddingTop: '60px' }}>
-                        <MultiColumnComboBoxComponent type="text" dataSource={(data as any).orderDetails} fields={fields} placeholder='Select an order ID' popupHeight={'230px'} allowSorting={true} sortOrder={SortOrder.Ascending} sortType='MultiColumn'>
-                            <ColumnsDirective>
-                                <ColumnDirective field='OrderID' header='Order ID' width={110}></ColumnDirective>
-                                <ColumnDirective field='CustomerID' header='Customer ID' width={130}></ColumnDirective>
-                                <ColumnDirective field='Freight' header='Freight' width={90}></ColumnDirective>
-                                <ColumnDirective field='ShipCountry' header='Ship Country' width={140}></ColumnDirective>
+                        <MultiColumnComboBoxComponent type="text" dataSource={(data as any).workDetails} fields={fields} placeholder='Select a name' popupHeight={'230px'} allowSorting={true} sortOrder={SortOrder.Ascending} sortType='MultiColumn'>
+                        <ColumnsDirective>
+                                <ColumnDirective field='Name' header='Name' width={100}></ColumnDirective>
+                                <ColumnDirective field='YearOfJoining' header='Year Of Joining' width={100}></ColumnDirective>                                
+                                <ColumnDirective field='Status' header='Status' width={60}></ColumnDirective>
+                                <ColumnDirective field='Location' header='Location' width={90}></ColumnDirective>
+                                <ColumnDirective field='Experience' header='Experience in Year' width={120}></ColumnDirective>
                             </ColumnsDirective>
                         </MultiColumnComboBoxComponent>
                     </div>

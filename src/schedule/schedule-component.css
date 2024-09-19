@@ -46,3 +46,7 @@ hr {
 .time-scale.e-schedule .e-timeline-view .e-content-wrap table col {
     width: 75px;
 }
+
+.schedule-holiday-calendar.e-schedule .e-appointment.e-read-only .e-appointment-details .e-subject.e-text-center {
+  text-align: left;
+}

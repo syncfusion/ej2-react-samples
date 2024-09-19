@@ -27,6 +27,11 @@ const slidercss = `
     text-align: left;
     width: 100%;
 }
+body.fluent2-highcontrast .sliderwrap .e-scale,
+body.fluent2 .sliderwrap .e-scale,
+body.fluent2-dark .sliderwrap .e-scale {
+    top: 2px;
+}
 `
 export class Format extends SampleBase<{}, {}> {
     private currencyObj: SliderComponent;

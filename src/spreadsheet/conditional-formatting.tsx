@@ -3,7 +3,7 @@ import * as React from 'react';
 import { SpreadsheetComponent, SheetsDirective, SheetDirective, ColumnsDirective } from '@syncfusion/ej2-react-spreadsheet';
 import { ColumnDirective, RowDirective, RowsDirective, CellsDirective, CellDirective } from '@syncfusion/ej2-react-spreadsheet';
 import { ConditionalFormatsDirective, ConditionalFormatDirective, RangeDirective } from '@syncfusion/ej2-react-spreadsheet';
-import { RangesDirective, getFormatFromType } from '@syncfusion/ej2-react-spreadsheet';
+import { RangesDirective } from '@syncfusion/ej2-react-spreadsheet';
 import { conditionalFormatting } from './data';
 import { SampleBase } from '../common/sample-base';
 import './spreadsheet.css';
@@ -14,14 +14,15 @@ import './spreadsheet.css';
 
 export class ConditionalFormatting extends SampleBase<{}, {}> {
     public spreadsheet: SpreadsheetComponent;
-    public currencyFormat: string = getFormatFromType('Currency');
     public onCreated(): void {
         this.spreadsheet.merge('A1:H1');
         this.spreadsheet.cellFormat({ fontWeight: 'bold', textAlign: 'center' }, 'A2:H2');
         this.spreadsheet.cellFormat({ fontWeight: 'bold', textAlign: 'center', verticalAlign: 'middle', fontSize: '13pt' }, 'A1:H1');
-        this.spreadsheet.numberFormat(this.currencyFormat, 'D3:D18');
-        this.spreadsheet.numberFormat(this.currencyFormat, 'E3:E18');
-        this.spreadsheet.numberFormat(this.currencyFormat, 'F3:F18');
+        // Apply format to the specified range in the active sheet.
+        this.spreadsheet.numberFormat('$#,##0.00', 'D3:D18');
+        this.spreadsheet.numberFormat('$#,##0.00', 'E3:E18');
+        this.spreadsheet.numberFormat('$#,##0.00', 'F3:F18');
+        this.spreadsheet.numberFormat('m/d/yyyy', 'G3:G18');
         this.spreadsheet.conditionalFormat({ type: 'BlueDataBar', range: 'D3:D18' });
         this.spreadsheet.conditionalFormat({ type: 'GreenDataBar', range: 'E3:E18' });
         this.spreadsheet.conditionalFormat({ type: 'ThreeStars', range: 'H3:H18' });
@@ -50,7 +51,7 @@ export class ConditionalFormatting extends SampleBase<{}, {}> {
                             </RangesDirective>
                             <ConditionalFormatsDirective>
                                   <ConditionalFormatDirective type='GYRColorScale' range='C3:C18'></ConditionalFormatDirective>
-                                  <ConditionalFormatDirective type='LessThan' cFColor='RedFT' value='8/30/2019' range='G3:G18'>
+                                  <ConditionalFormatDirective type='LessThan' cFColor='RedFT' value='8-8-2019' range='G3:G18'>
                                   </ConditionalFormatDirective>
                             </ConditionalFormatsDirective>
                             <ColumnsDirective>

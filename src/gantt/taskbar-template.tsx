@@ -161,15 +161,15 @@ export class Taskbar extends SampleBase<{}, {}> {
         </div>
 
         <div id="description">
-          <p>
-            The Gantt chart provides support for customizing taskbar UI using taskbar template feature. The
-            <code>taskbarTemplate</code>
-            property accepts either string or HTML element`s ID value, which will be used as the template for the taskbars.
-            The summary tasks and the milestone items can also customized using the <code>parentTaskbarTemplate</code> and
-            <code>milestoneTemplate</code> properties.
-            In this demo, we have customized the taskbar UI to display the data from custom columns and the taskbarTemplate
-            is assigned with the ID of a SCRIPT element whose content is used as the template.
-          </p>
+        <p>
+          The Gantt chart provides support for customizing taskbar UI using taskbar template feature. The
+          <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#taskbartemplate">taskbarTemplate</a>
+          property accepts either string or HTML element`s ID value, which will be used as the template for the taskbars.
+          The summary tasks and the milestone items can also customized using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#parenttaskbartemplate">parentTaskbarTemplate</a> and
+          <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#milestonetemplate">milestoneTemplate</a> properties.
+          In this demo, we have customized the taskbar UI to display the data from custom columns and the taskbarTemplate
+          is assigned with the ID of a SCRIPT element whose content is used as the template.
+        </p>
           <p>
             Gantt component features are segregated into individual feature-wise modules. To use markers, inject the
             <code>DayMarkers</code> module. To use a selection, inject the

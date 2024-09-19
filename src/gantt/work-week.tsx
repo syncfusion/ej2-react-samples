@@ -112,14 +112,14 @@ export class WorkWeek extends SampleBase<{}, {}> {
 
         <div id="description">
         <p>
-        In this example, you can see how to render a Gantt chart with the provided data source and customizable array of working days. These working days alone will be considered for taskbar rendering and duration calculations.        
-    </p>
-    <p>
-        The working days in your project can be customized using the <code>workWeek</code> property and the selected days in the dropdown list available in the property panel will be applied to Gantt chart. You can get to know the working days in the Gantt chart timeline by the highlighted weekend days. This can be enabled by using the <code>highlightWeekends</code> property
-    </p>
-          <p>
-            Gantt component features are segregated into individual feature-wise modules. To use a selection support and event markers we need to inject the
-            <code>Selection</code>, <code>DayMarkers</code> modules.
+          In this example, you can see how to render a Gantt chart with the provided data source and customizable array of working days. These working days alone will be considered for taskbar rendering and duration calculations.
+        </p>
+        <p>
+          The working days in your project can be customized using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#workweek">workWeek</a> property and the selected days in the dropdown list available in the property panel will be applied to Gantt chart. You can get to know the working days in the Gantt chart timeline by the highlighted weekend days. This can be enabled by using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#highlightweekends">highlightWeekends</a> property
+        </p>
+        <p>
+          Gantt component features are segregated into individual feature-wise modules. To use a selection support and event markers we need to inject the
+          <code>Selection</code>, <code>DayMarkers</code> modules.
         </p>
         </div>
       </div>

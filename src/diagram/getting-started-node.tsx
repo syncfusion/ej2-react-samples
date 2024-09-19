@@ -1,3 +1,4 @@
+// Importing necessary modules from React, ReactDOM, and Syncfusion Diagram library
 import * as ReactDOM from "react-dom";
 import * as React from "react";
 import {
@@ -9,12 +10,14 @@ import {
   ConnectorModel,
   PointModel,
   NodeConstraints,
+  ConnectorConstraints,
   SnapConstraints,
   GradientType,
   ShadowModel,
   GradientModel,
   LinearGradientModel,
-  RadialGradientModel
+  RadialGradientModel,
+  ISelectionChangeEventArgs
 } from "@syncfusion/ej2-react-diagrams";
 import { SampleBase } from "../common/sample-base";
 import { Point } from "@syncfusion/ej2-diagrams/src/diagram/primitives/point";
@@ -26,12 +29,13 @@ import {
 
 //Initializes the nodes for the diagram
 let sdlc: SdlcNodeModel[] = [
-  { id: "sdlc", text: "SDLC" },
-  { id: "analysis", text: "Analysis" },
-  { id: "design", text: "Design" },
-  { id: "implement", text: "Implement" },
-  { id: "deploy", text: "Deploy" },
-  { id: "support", text: "Support" }
+  { id: "sdlc", addInfo : {text: "SDLC"} },
+  { id: "analysis", addInfo :{text: "Analysis"}},
+  { id: "design",  addInfo :{text: "Design"}},
+  { id: "implement",  addInfo :{text: "Implement"}},
+  { id: "deploy",  addInfo :{text: "Deploy"}},
+  { id: "support",  addInfo :{text: "Support"}},
+  
 ];
 
 //arranges the nodes in a circular path
@@ -56,7 +60,8 @@ for (let i: number = 1; i < 6; i++) {
   connections.push({ sourceID: sdlc[i].id, targetID: sdlc[(i % 5) + 1].id });
 }
 
-const SAMPLE_CSS = `.image-pattern-style {
+// CSS styles for the sample
+const SAMPLE_CSS = `.diagramNodes-property .image-pattern-style {
         background-color: white;
         background-size: contain;
         background-repeat: no-repeat;
@@ -68,17 +73,17 @@ const SAMPLE_CSS = `.image-pattern-style {
         float: left;
     }
 
-    .image-pattern-style:hover {
+    .diagramNodes-property .image-pattern-style:hover {
         border-color: gray;
         border-width: 2px;
     }
 
-    .row {
+    .diagramNodes-property .row {
         margin-left: 0px;
         margin-right: 0px;
     }
 
-    .row-header {
+    .diagramNodes-property .row-header {
         font-size: 13px;
         font-weight: 500;
     }
@@ -92,29 +97,35 @@ const SAMPLE_CSS = `.image-pattern-style {
         font-size: 12px;
     }`;
 
+// Declaring variables for the diagram instance and UI elements
 let diagramInstance: DiagramComponent;
 let node: NodeModel;
+let connector: ConnectorModel;
+let aspectRatioInstance : CheckBoxComponent;
+let appearanceInstance : HTMLElement;
 
+// React component for the diagram sample
 export class GettingStartedNodes extends SampleBase<{}, {}> {
   rendereComplete() {
     diagramInstance.fitToPage();
 
     //Click event for Appearance of the Property Panel
-    document.getElementById("appearance").onclick = (args: MouseEvent) => {
+      appearanceInstance.onclick = (args: MouseEvent) => {
       let target: HTMLElement = args.target as HTMLElement;
-
+       // Remove existing selection style
       let selectedElement: HTMLCollection = document.getElementsByClassName(
         "e-selected-style"
       );
       if (selectedElement.length) {
         selectedElement[0].classList.remove("e-selected-style");
       }
+      // Apply styles based on clicked target
       if (target.className === "image-pattern-style") {
         for (let i: number = 0; i < diagramInstance.nodes.length; i++) {
           node = diagramInstance.nodes[i];
           switch (target.id) {
             case "preview0":
-              applyStyle(
+              applyNodeStyle(
                 node,
                 0,
                 undefined,
@@ -125,7 +136,7 @@ export class GettingStartedNodes extends SampleBase<{}, {}> {
               );
               break;
             case "preview1":
-              applyStyle(
+              applyNodeStyle(
                 node,
                 2,
                 undefined,
@@ -136,7 +147,7 @@ export class GettingStartedNodes extends SampleBase<{}, {}> {
               );
               break;
             case "preview2":
-              applyStyle(
+              applyNodeStyle(
                 node,
                 2,
                 "5 5",
@@ -147,7 +158,7 @@ export class GettingStartedNodes extends SampleBase<{}, {}> {
               );
               break;
             case "preview3":
-              applyStyle(
+              applyNodeStyle(
                 node,
                 2,
                 "5 5",
@@ -164,7 +175,7 @@ export class GettingStartedNodes extends SampleBase<{}, {}> {
                 opacity: 0.3,
                 color: "grey"
               };
-              applyStyle(
+              applyNodeStyle(
                 node,
                 2,
                 "5 5",
@@ -179,6 +190,7 @@ export class GettingStartedNodes extends SampleBase<{}, {}> {
       }
     };
   }
+  // Render method for the React component
   render() {
     return (
       <div className="control-pane">
@@ -194,13 +206,14 @@ export class GettingStartedNodes extends SampleBase<{}, {}> {
               connectors={connections}
               getNodeDefaults={(obj: NodeModel) => {
                 //Sets the default values of a node
+               
                 obj.width = 100;
                 obj.height = 100;
                 obj.shape = { type: "Basic",shape: "Ellipse" };
                 obj.style = { fill: "#37909A", strokeColor: "#024249" };
                 obj.annotations = [
                   {
-                    content: (obj as SdlcNodeModel).text,
+                    content: ((obj as SdlcNodeModel).addInfo as any).text ,
                     margin: { left: 10, right: 10 },
                     style: {
                       color: "white",
@@ -221,16 +234,27 @@ export class GettingStartedNodes extends SampleBase<{}, {}> {
                 return { style: { strokeColor: "#024249", strokeWidth: 2 } };
               }}
               snapSettings={{ constraints: SnapConstraints.None }}
+              selectionChange={(args:ISelectionChangeEventArgs) =>{
+                // Disable aspect ratio checkbox if more than one node or any connector is selected
+                if (args.state === 'Changed'){
+                if (diagramInstance.selectedItems.nodes.length > 1 || diagramInstance.selectedItems.connectors.length > 0) {
+                  aspectRatioInstance.disabled = true;
+                }
+                else {
+                  aspectRatioInstance.disabled = false;
+                }
+              }
+            }}
             >
               <Inject services={[UndoRedo]} />
             </DiagramComponent>
           </div>
         </div>
         <div
-          className="col-lg-4 property-section"
+          className="col-lg-4 property-section diagramNodes-property"
         >
           <div className="property-panel-header">Properties</div>
-          <div className="row property-panel-content" id="appearance">
+          <div className="row property-panel-content" id="appearance" ref={appearance => (appearanceInstance = appearance)}>
             <div className="row row-header" style={{ paddingTop: "8px" }}>
               Appearance
             </div>
@@ -287,7 +311,8 @@ export class GettingStartedNodes extends SampleBase<{}, {}> {
                 checked={false}
                 label="Aspect ratio"
                 id="aspectRatio"
-                change={changed}
+                ref={aspectRatio => (aspectRatioInstance = aspectRatio)}
+                change={setNodeAspectConstraints}
               />
             </div>
             <div className="row" style={{ paddingTop: "8px" }}>
@@ -296,7 +321,7 @@ export class GettingStartedNodes extends SampleBase<{}, {}> {
                 checked={false}
                 label="Lock"
                 id="lock"
-                change={changed}
+                change={setLockConstraints}
               />
             </div>
           </div>
@@ -335,11 +360,11 @@ export class GettingStartedNodes extends SampleBase<{}, {}> {
 }
 
 interface SdlcNodeModel extends NodeModel {
-  text: string;
+  addInfo : object;
 }
 
 //Set customStyle for Node.
-function applyStyle( //it is in dedicated line here.
+function applyNodeStyle( //it is in dedicated line here.
   node: NodeModel,
   width: number,
   array: string,
@@ -379,31 +404,44 @@ function applyStyle( //it is in dedicated line here.
   target.classList.add("e-selected-style");
 }
 
-//Enable or disable the Constraints for Node.
-function changed(args: CheckBoxChangeEventArgs): void {
-  let element: HTMLInputElement = document.getElementById(
-    "aspectRatio"
-  ) as HTMLInputElement;
+
+ //Enable or disable the Lock Constraints for Node and connector
+ function setLockConstraints(args: CheckBoxChangeEventArgs): void {
   for (let i: number = 0; i < diagramInstance.nodes.length; i++) {
-    node = diagramInstance.nodes[i];
-    if ((args.event.target as HTMLElement).id === "lock") {
-      if (args.checked) {
-        node.constraints &= ~(
-          NodeConstraints.Resize |
-          NodeConstraints.Rotate |
-          NodeConstraints.Drag
-        );
-        node.constraints |= NodeConstraints.ReadOnly;
-      } else {
-        node.constraints |= NodeConstraints.Default & ~NodeConstraints.ReadOnly;
-      }
+    let node: NodeModel = diagramInstance.nodes[i];
+    if (args.checked) {
+      node.constraints &= ~(NodeConstraints.Resize | NodeConstraints.Rotate | NodeConstraints.Drag | NodeConstraints.Delete);
+      node.constraints |= NodeConstraints.ReadOnly;
     } else {
-      if (element.checked) {
+      node.constraints |= NodeConstraints.Default & ~(NodeConstraints.ReadOnly);
+    }
+  }
+  diagramInstance.dataBind();
+  for (let i: number = 0; i < diagramInstance.connectors.length; i++) {
+    connector = diagramInstance.connectors[i];
+      if (args.checked) {
+        connector.constraints &= ~(ConnectorConstraints.DragSourceEnd | ConnectorConstraints.DragTargetEnd | ConnectorConstraints.Drag | ConnectorConstraints.Delete);
+        connector.constraints |= ConnectorConstraints.ReadOnly;
+      } else {
+        connector.constraints |= ConnectorConstraints.Default & ~ConnectorConstraints.ReadOnly;
+      }
+    } 
+  diagramInstance.dataBind();
+  }
+
+  //Enable or disable the Aspect Ratio Constraints for Node.
+   function setNodeAspectConstraints(args: CheckBoxChangeEventArgs): void {
+    for (let i: number = 0; i < diagramInstance.nodes.length; i++) {
+      let node: NodeModel = diagramInstance.nodes[i];
+      if ( args.checked) {
         node.constraints |= NodeConstraints.AspectRatio;
       } else {
         node.constraints &= ~NodeConstraints.AspectRatio;
       }
+      diagramInstance.dataBind();
     }
-    diagramInstance.dataBind();
   }
-}
+
+
+  
+

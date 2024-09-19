@@ -5,9 +5,17 @@ import { createElement } from '@syncfusion/ej2-base';
 import { AccordionComponent, AccordionItemDirective, AccordionItemsDirective } from '@syncfusion/ej2-react-navigations';
 import './accordion.css';
 
+interface AccordionDataItem {
+    name: string;
+    badge: string;
+}
 export class Accordion extends SampleBase<{}, {}> {
-    // Assigning badge data
-    public badgeContent: string[] = ['7 New', '27 New', '2 New', '14 New'];
+    public accordionData: AccordionDataItem[] = [
+        { name: 'Robert', badge: '7 New' },
+        { name: 'Kevin', badge: '27 New' },
+        { name: 'Eric', badge: '2 New' },
+        { name: 'Peter', badge: '14 New' }
+    ];
 
     public accordionTemplate(): JSX.Element {
         return (
@@ -26,28 +34,27 @@ export class Accordion extends SampleBase<{}, {}> {
         );
     }
 
-    public onCreated() {
-        // Appending Badge component after the accordion rendered in created event
-        let element: HTMLElement = document.getElementById('accordion');
-        let iconElement: HTMLElement[] = Array.prototype.slice.call((element as HTMLElement).querySelectorAll('.e-toggle-icon'));
-        for (let i: number = 0; i < iconElement.length; i++) {
-            // Success Badge Element
-            let badge: HTMLSpanElement = createElement('span', { className: 'e-badge e-badge-success' });
-            badge.textContent = this.badgeContent[i];
-            iconElement[i].appendChild(badge);
-        }
-    }
     render() {
         return (
             <div className='control-pane'>
                 <div className='control-section badge-samples'>
                     <div className="sample_container badge-accordion">
-                        <AccordionComponent id="accordion" created={this.onCreated.bind(this)}>
+                        <AccordionComponent id="accordion">
                             <AccordionItemsDirective>
-                                <AccordionItemDirective header='Robert' iconCss='e-people e-acrdn-icons' expanded={true} content={this.accordionTemplate} />
-                                <AccordionItemDirective header='Kevin' iconCss='e-people e-acrdn-icons' content={this.accordionTemplate} />
-                                <AccordionItemDirective header='Eric' iconCss='e-people e-acrdn-icons' content={this.accordionTemplate} />
-                                <AccordionItemDirective header='Peter' iconCss='e-people e-acrdn-icons' content={this.accordionTemplate} />
+                                    {this.accordionData.map((item, index) => (
+                                        <AccordionItemDirective
+                                            key={index}
+                                            header={() => (
+                                                <div>
+                                                    <span>{item.name}</span>
+                                                    <span className="e-badge e-badge-success">{item.badge}</span>
+                                                </div>
+                                            )}
+                                            iconCss='e-people e-acrdn-icons'
+                                            expanded={index === 0}
+                                            content={this.accordionTemplate}
+                                        />
+                                    ))}
                             </AccordionItemsDirective>
                         </AccordionComponent>
                     </div>

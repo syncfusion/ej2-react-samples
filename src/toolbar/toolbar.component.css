@@ -315,11 +315,6 @@
     display: none;
 }
 
-.template.e-toolbar .e-toolbar-item.page-count.e-template > div,
-.template.e-toolbar .e-toolbar-item.percentage.e-template > div {
-    width: 80px;
-}
-
 .template.e-toolbar .e-toolbar-item.find.e-template > div {
     width: 125px;
 }

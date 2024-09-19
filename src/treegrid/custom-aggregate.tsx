@@ -14,16 +14,15 @@ const SAMPLE_CSS = `
     padding-bottom: 1px !important;
   }
 
-  .fluent2,
-  .fluent2-dark,
-  .fluent2-highcontrast {
-    .e-treegrid .e-summarycell.e-templatecell .e-input-group {
-      width: 150px !important;
-    }
-  }
-
   .e-summarycell.e-templatecell {
     pointer-events:visible !important;
+  }
+  .e-treegrid .e-summarycell.e-templatecell .e-input-group {
+    width: 160px !important;
+  }
+  
+  .e-treegrid .e-summarycell.e-templatecell .e-input-group input.e-control.e-dropdownlist.e-lib.e-input {
+    padding-left: 6px !important;
   }`;
 {/* custom code end */}
 export class CustomAggregate extends SampleBase<{}, {}> {
@@ -85,7 +84,7 @@ export class CustomAggregate extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
       {/* custom code start */}
-        <style>
+       <style>
           {SAMPLE_CSS}
         </style>
         {/* custom code end */}

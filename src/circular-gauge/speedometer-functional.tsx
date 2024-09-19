@@ -48,7 +48,7 @@ const Speedometer = () => {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5')) as GaugeTheme;
         // custom code end
     }
 
@@ -56,10 +56,10 @@ const Speedometer = () => {
         pointerInterval = setInterval(
             (): void => {
                 if (document.getElementById('container')) {
-                    pointerValue = Math.abs(pointerValue + ((Math.random() * 20) - 10));
-                    if (gauge) {
-                        gauge.current.setPointerValue(0, 0, pointerValue);
-                        gauge.current.setAnnotationValue(0, 0, '<div style="width:90px;text-align:center;font-size:20px;font-family:inherit">' + Math.round(pointerValue).toString() + 'km/h' + '</div>');
+                    let dynamicPointerValue: number = Math.abs(pointerValue + ((Math.random() * 20) - 10));
+                    if (gauge && gauge.current) {
+                        gauge.current.setPointerValue(0, 0, dynamicPointerValue);
+                        gauge.current.setAnnotationValue(0, 0, '<div style="width:90px;text-align:center;font-size:20px;font-family:inherit">' + Math.round(dynamicPointerValue).toString() + 'km/h' + '</div>');
                     }
                 } else {
                     clearInterval(+pointerInterval);

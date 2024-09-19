@@ -6,7 +6,7 @@ import * as React from 'react';
 import { MultiColumnComboBoxComponent, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-multicolumn-combobox';
 import { SampleBase } from '../common/sample-base';
 import './remote-databinding.css';
-import { DataManager, Query, WebApiAdaptor } from '@syncfusion/ej2/data';
+import { DataManager, Query, WebApiAdaptor } from '@syncfusion/ej2-data';
 
 export class Remote extends SampleBase<{}, {}> {
     dataSource: DataManager = new DataManager({

@@ -37,11 +37,11 @@ function MultiFormatViewer() {
       return false;
     };
   }
-  allowedExtensions = '.doc, .docx, .rtf, .docm, .dotm, .dotx, .dot, .xls, .xlsx, .pptx, .pptm, .potx, .potm .jpeg, .png, .bmp, .pdf';
+  allowedExtensions = '.doc, .docx, .rtf, .docm, .dotm, .dotx, .dot, .xls, .xlsx, .pptx, .pptm, .potx, .potm .jpeg, .png, .bmp, .pdf, .jpg';
   const onSelect = (args) => {
     linear.current.value == 0;
     linear.current.refresh();
-    let extensions = ['doc', 'docx', 'rtf', 'docm', 'dotm', 'dotx', 'dot', 'xls', 'xlsx', 'pptx', 'pptm', 'potx', 'potm', 'jpeg', 'png', 'bmp', 'pdf'];
+    let extensions = ['doc', 'docx', 'rtf', 'docm', 'dotm', 'dotx', 'dot', 'xls', 'xlsx', 'pptx', 'pptm', 'potx', 'potm', 'jpeg', 'png', 'bmp', 'pdf','jpg'];
     let progressBarContainer: any = document.getElementById("progressBar") as HTMLElement;
     let progressBar: any = document.getElementById("linearProgressBar") as HTMLElement;
     let progressMessage: any = document.getElementById("uploadedMessage") as HTMLElement;
@@ -168,7 +168,6 @@ function MultiFormatViewer() {
       pdfViewerProgressValue = 0;
       linear.current.value = 0;
     }, 1000);
-    viewer.magnification.fitToPage();
   };
   const calculateTotalProgress = () => {
     const totalProgress = (uploadProgressValue + pdfViewerProgressValue) / 2;
@@ -271,6 +270,7 @@ function MultiFormatViewer() {
           }}
           documentLoad={documentLoad}
           ajaxRequestSuccess={ajaxRequestSuccess}
+          zoomMode = "FitToPage"
           style={{ 'height': '640px' }}>
           <Inject services={[Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner,PageOrganizer]} />
         </PdfViewerComponent>

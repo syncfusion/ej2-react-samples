@@ -45,13 +45,11 @@ export class Properties extends SampleBase<{}, {}> {
     public txtObj: NumericTextBoxComponent;
     private cellSpacing: number[] = [5, 5];
 
-    // custom code start
   onCreate(): void {
     if (document.querySelector('.container-fluid.custom')) {
       document.querySelector('.container-fluid').classList.remove('custom')
     }
   }
-  // custom code end
 
     public render(): JSX.Element {
         return (

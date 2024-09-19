@@ -1,0 +1,99 @@
+#filter-btn {
+    padding: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#ganttSidebar {
+    height: 453px !important;
+    border: 1px solid rgb(204, 202, 200) !important;
+}
+#ganttquerybuilder {
+    margin: 12px;
+}
+.e-bigger {
+    .e-gantt {
+        .e-sidebar {
+            width: 100% !important;
+        }
+    }
+}
+.ganttsidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+}
+.ganttsidebar-header {
+    .title {
+        font-size: 18px;
+        font-weight: 500;
+    }
+}
+.ganttsidebar-header {
+    .e-close {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+    }
+}
+.ganttsidebar-header {
+    .e-close::before {
+        font-family: 'e-icons' !important;
+        content: '\e7e7';
+        font-size: 15px;
+    }
+}
+.ganttsidebar-header {
+    .highcontrast .e-close::before {
+        content: '\e7fc';
+        font-family: 'e-icons';
+        font-size: 15px;
+    }
+}
+.ganttbtn-container {
+    padding: 10px;
+    float: right;
+}
+.ganttbtn-container #apply {
+    margin: 6px;
+}
+.fabric #ganttsidebar-parent .e-quickfilter::before,
+.fabric-dark #ganttsidebar-parent .e-quickfilter::before,
+.highcontrast #ganttsidebar-parent .e-quickfilter::before {
+    content: '\e21c';
+    font-family: 'e-icons';
+}
+.bootstrap #ganttsidebar-parent .e-quickfilter::before,
+.bootstrap-dark #ganttsidebar-parent .e-quickfilter::before {
+    content: '\e946';
+    font-family: 'e-icons';
+}
+.bootstrap4 #ganttsidebar-parent .e-quickfilter::before {
+    content: '\e714';
+    font-family: 'e-icons';
+}
+.bootstrap5 #ganttsidebar-parent .e-quickfilter::before,
+.material5 #ganttsidebar-parent .e-quickfilter::before,
+.bootstrap5-dark #ganttsidebar-parent .e-quickfilter::before,
+.bootstrap5_3 #ganttsidebar-parent .e-quickfilter::before,
+.bootstrap5_3-dark #ganttsidebar-parent .e-quickfilter::before,
+.fluent #ganttsidebar-parent .e-quickfilter::before, .fluent2 #ganttsidebar-parent .e-quickfilter::before,
+.fluent2-highcontrast #ganttsidebar-parent .e-quickfilter::before,.fluent2-dark #ganttsidebar-parent .e-quickfilter::before, 
+.fluent-dark #ganttsidebar-parent .e-quickfilter::before,.tailwind #ganttsidebar-parent  .e-quickfilter::before,
+.tailwind-dark #ganttsidebar-parent .e-quickfilter::before {
+content: '\e7f7';
+font-family: 'e-icons';
+}
+.e-quickfilter::before {
+    font-family: 'e-icons' !important;
+    content: '\e7f7';
+    font-size: 15px;
+}
+.highcontrast .e-quickfilter::before {
+    content: '\e21c';
+    font-family: 'e-icons';
+}

@@ -198,7 +198,7 @@ const DynamicWidget = () => {
             <div id='edit_target' className="control-section">
                 <div>
                     <div style={{ "width": "100%", "marginBottom": "10px", "marginTop": "10px", "height": "30px" }}>
-                        <ButtonComponent cssClass='e-outline e-flat e-primary' ref={btnobj} iconCss={icon} isToggle={true} onClick={btnClick.bind(this)} style={{ "float": "right", "width": "75px" }}>{btnContent}</ButtonComponent>
+                        <ButtonComponent id="togglebtn" cssClass='e-outline e-flat e-primary' ref={btnobj} iconCss={icon} isToggle={true} onClick={btnClick.bind(this)} style={{ "float": "right", "width": "75px" }}>{btnContent}</ButtonComponent>
                     </div>
                     <div style={{ "padding": "5px", "marginBottom": "5px", "textAlign": "end" }}>
                         <div id="dialogBtn" className="add-widget-button e-control e-btn e-lib" style={{ display: display }} onClick={dlgClick.bind(this)}>Add New Widget</div>

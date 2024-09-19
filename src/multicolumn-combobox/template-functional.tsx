@@ -23,7 +23,7 @@ const Template = () => {
                             <ColumnsDirective>
                                 <ColumnDirective field='Eimg' header='Photos' width={90} headerTemplate={'<div class="header"> <span>Photo</span> </div>'} template={'<div><img class="empImage" src="src/multicolumn-combobox/Employees/${Eimg}.png" alt="employee"/> </div>'}></ColumnDirective>
                                 <ColumnDirective field='Name' header='Employee Name' width={160} headerTemplate={'<div class="header"> <span class="e-icons e-multicolumn-userlogin"></span> <span>Employee info</span> </div>'} template={'<div class="ename"> ${Name} </div>' + '<div class="job"> ${Designation} </div>'}></ColumnDirective>
-                                <ColumnDirective field='DateofJoining' header='Date Of Joining' width={165} headerTemplate={'<div class="header"> <span class="e-icons e-multicolumn-calender"></span> <span>Date of joining</span> </div>'} template={'<div class="dateOfJoining"> ${DateofJoining} </div>'}></ColumnDirective>
+                                <ColumnDirective field='DateofJoining' header='Date Of Joining' width={130} headerTemplate={'<div class="header"> <span class="e-icons e-multicolumn-calender"></span> <span>Date of joining</span> </div>'} template={'<div class="dateOfJoining"> ${DateofJoining} </div>'}></ColumnDirective>
                                 <ColumnDirective field='Country' header='Country' width={100} headerTemplate={'<div class="header"> <span>Country</span> </div>'} template={'<div class="country"> ${Country} </div>'}></ColumnDirective>
                             </ColumnsDirective>
                         </MultiColumnComboBoxComponent>

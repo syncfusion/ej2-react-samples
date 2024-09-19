@@ -1,0 +1,4 @@
+
+#default-aggregate-grid.e-grid tr.e-altrow .e-rowcell:not(.e-selectionbackground.e-active) {
+    background-color: rgb(228 228 228 / 15%);
+}

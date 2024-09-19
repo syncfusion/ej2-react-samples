@@ -38,6 +38,7 @@ const CustomToolbar = () => {
         'custom': ['#ffffff', '#000000', '#e91e63', '#9c27b0', '#673ab7', '#2196f3', '#03a9f4', '#00bcd4',
         '#009688', '#8bc34a', '#cddc39', '#ffeb3b']
     };
+    const toolbars: any = ['filter', 'rectangle', 'ellipse', 'line', 'text', 'edittext', 'freehanddraw'];
     const editClicked = () => {
         document.getElementById('imagePreviewContainer').style.display = 'none';
         document.getElementById('image-editor-container').style.display = 'block';
@@ -61,7 +62,7 @@ const CustomToolbar = () => {
     }
     const shapeChanging = (args: ShapeChangeEventArgs): void => {
         if (args.action === 'select') {
-            isShapeSelected = isShapeSelected ? false : true;
+            isShapeSelected = true;
             updateToolbar(args, true);
         } else if (args.action === 'insert') {
             activeObjIndex = args.currentShapeSettings.id;
@@ -69,7 +70,7 @@ const CustomToolbar = () => {
         }
     };
     const shapeChange = (args: ShapeChangeEventArgs): void => {
-        if (args.action === 'apply' && !isShapeCustomizing) {
+        if (args.action === 'apply' && !isShapeCustomizing  && !isShapeSelected) {
             isTextEditing = false;
             setTimeout(function() {
                 refreshToolbar('main');
@@ -77,7 +78,7 @@ const CustomToolbar = () => {
         }
     };
     const click = (): void => {
-        if (currentToolbar === 'filter') {
+        if (toolbars.indexOf(currentToolbar) !== -1) {
             refreshToolbar('main');
         }
     }

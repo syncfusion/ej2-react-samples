@@ -13,6 +13,8 @@
 .tailwind-dark .target-element .e-dialog .e-dlg-header-content,
 .bootstrap5 .target-element .e-dialog .e-dlg-header-content,
 .bootstrap5-dark .target-element .e-dialog .e-dlg-header-content,
+.bootstrap5.3 .target-element .e-dialog .e-dlg-header-content,
+.bootstrap5.3-dark .target-element .e-dialog .e-dlg-header-content,
 .material .target-element .e-dialog .e-dlg-header-content,
 .material3 .target-element .e-dialog .e-dlg-header-content {
     background-color: #3f51b5;
@@ -140,8 +142,11 @@
 .fabric-dark .dialogContent .dialogText,
 .bootstrap-dark .dialogContent .dialogText,
 .bootstrap5-dark .dialogContent .dialogText,
+.bootstrap5.3-dark .dialogContent .dialogText,
 .tailwind-dark .dialogContent .dialogText,
-.fluent-dark .dialogContent .dialogText {
+.fluent-dark .dialogContent .dialogText,
+.fluent2-dark .dialogContent .dialogText,
+.fluent2-highcontrast .dialogContent .dialogText {
     color: #ffffff;
     background-color: rgba(255,255,255,0.20);
 }
@@ -159,10 +164,12 @@
 .bootstrap4 .target-element .e-dialog .e-footer-content {
     border-top: 1px solid #e9ecef;
 }
-.bootstrap5 .target-element .e-dialog .e-footer-content {
+.bootstrap5 .target-element .e-dialog .e-footer-content,
+.bootstrap5.3 .target-element .e-dialog .e-footer-content {
     border-top: 1px solid #dee2e6;
 }
-.bootstrap5-dark .target-element .e-dialog .e-footer-content {
+.bootstrap5-dark .target-element .e-dialog .e-footer-content,
+.bootstrap5.3-dark .target-element .e-dialog .e-footer-content {
     border-top: 1px solid #444c54;
 }
 .highcontrast .target-element .dialogContent .dialogText { 
@@ -209,7 +216,11 @@
 .bootstrap5 .target-element .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:hover,
 .bootstrap5 .target-element .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:focus,
 .bootstrap5-dark .target-element .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:hover,
-.bootstrap5-dark .target-element .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:focus {
+.bootstrap5-dark .target-element .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:focus,
+.bootstrap5.3 .target-element .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:hover,
+.bootstrap5.3 .target-element .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:focus,
+.bootstrap5.3-dark .target-element .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:hover,
+.bootstrap5.3-dark .target-element .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:focus {
     background-color : transparent;
 }
 .material .target-element .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:active .e-icon-dlg-close ,

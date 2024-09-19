@@ -228,9 +228,13 @@ const Timeline = () => {
           <PropertyPane title='Properties'>
             <table id="property" className="property-panel-table" title="Properties" style={{ width: '100%' }}>
             <tbody>
+                <colgroup>
+                  <col style={{ width: '30%' }} />
+                  <col style={{ width: '70%' }} />
+                </colgroup>
               <tr>
                 <td style={{ width: '30%' }}>
-                  <label>Unit width</label>
+                  <div>Unit width</div>
                 </td>
                 <td style={{ width: '70%' }}>
                   <div>
@@ -251,7 +255,7 @@ const Timeline = () => {
               </tr>
               <tr>
                 <td style={{ width: '30%' }}>
-                  <label>Count</label>
+                  <div>Count</div>
                 </td>
                 <td style={{ width: '70%' }}>
                   <div>
@@ -300,7 +304,7 @@ const Timeline = () => {
               </tr>
               <tr>
                 <td style={{ width: '30%' }}>
-                  <label>Count</label>
+                  <div>Count</div>
                 </td>
                 <td style={{ width: '70%' }}>
                   <div>
@@ -360,7 +364,7 @@ const Timeline = () => {
       <div id="description">
         <p>
           In this example, you can see how to change the timeline settings in Gantt chart. The top and bottom timeline
-          header texts can be customized by using the <code>timelineSettings.topTier</code> and <code>timelineSettings.bottomTier</code> properties                                                          Using these properties, you can change the format, count, and units of the timeline header texts.
+          header texts can be customized by using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/timelineSettingsModel/#toptier">timelineSettings.topTier</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/timelineSettingsModel/#bottomtier">timelineSettings.bottomTier</a> properties                                                          Using these properties, you can change the format, count, and units of the timeline header texts.
         </p>
         <p>
           Gantt chart has built-in support for many timeline modes such as minutes, hour, day, week, month and year.

@@ -50,11 +50,11 @@ const Resizing = () => {
         <p>This sample demonstrates the Gantt column resizing feature. Click and drag at the right corner of each column header to resize the column.</p>
       </div>
       <div id="description">
-        <p>The Gantt columns can be resized by clicking and dragging at the right corner of columns header. Set the <code>allowResizing</code> property to true to enable column resizing behavior in Gantt.
+        <p>The Gantt columns can be resized by clicking and dragging at the right corner of columns header. Set the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#allowresizing">allowResizing</a> property to true to enable column resizing behavior in Gantt.
           You can also prevent the resize of a particular column
-          by setting <code>columns -&gt; allowResizing</code> to false in columns definition
+          by setting <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/columnModel/#allowresizing">columns -&gt; allowResizing</a> to false in columns definition
         </p>
-        <p> In this demo, the allowResizing feature has been enabled by setting the <code>allowResizing</code> property to true.
+        <p> In this demo, the allowResizing feature has been enabled by setting the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#allowresizing">allowResizing</a> property to true.
           Task Name column can be resized between a range of <code>minWidth (120 pixels)</code> and <code>maxWidth (300 pixels)</code>.
           The column resizing has been disabled in the <b>Duration</b> column
         </p>

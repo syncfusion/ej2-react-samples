@@ -242,7 +242,7 @@ function CustomSorting () {
             <div className='col-lg-8 adaptive'>
                 <PivotViewComponent id='PivotView' ref={(pivotview) => { pivotObj = pivotview }} dataSourceSettings={dataSourceSettings}
                     showGroupingBar={true} groupingBarSettings={{ showRemoveIcon: false, showFilterIcon: false, showSortIcon: true, showValueTypeIcon: false, allowDragAndDrop: false }}
-                    width={'100%'} height={'300'} gridSettings={{ columnWidth: 140 }} dataBound={dataBound.bind(this)} actionComplete={actionComplete.bind(this)}>
+                    width={'100%'} height={'450'} gridSettings={{ columnWidth: 140 }} dataBound={dataBound.bind(this)} actionComplete={actionComplete.bind(this)}>
                     <Inject services={[GroupingBar]} />
                 </PivotViewComponent>
             </div>

@@ -27,7 +27,7 @@ export class Icons extends SampleBase<{}, {}> {
         </div>
         <div id="description">
           <p>The <code>Dropdown Tree</code> component has the built-in option to customize each item's appearance with the
-            icons and images by mapping the <code>iconCss</code> and <code>imageUrl</code> fields.</p>
+            icons and images by mapping the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/drop-down-tree/fields/#iconcss">iconCss</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/drop-down-tree/fields/#imageurl">imageUrl</a> fields.</p>
           <p>In this demo, the Dropdown Tree is showcased like a file system with custom icons and images.</p>
         </div>
       </div>

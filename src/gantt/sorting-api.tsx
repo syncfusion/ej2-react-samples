@@ -123,15 +123,15 @@ export class SortingAPI extends SampleBase<{}, {}> {
         </div>
 
         <div id="description">
-          <p>The sorting feature enables you to order data in a particular direction. It can be enabled by setting the <code>allowSorting</code> to true.</p>
-          <p>To sort a Gantt column, click the column header. The icons (ascending) and (descending) specify the sort direction of a column.</p>
-          <p>By default, the multi-sorting feature is enabled in Gantt. To sort multiple columns, hold the <strong>CTRL</strong> key, and then click the column header. To clear sort for a column, hold the <strong>SHIFT</strong> key, and then click the column header.</p>
-          <p>In this demo, select the column and direction from the properties panel, and then click the Sort button. Use the Clear button to remove sort for the sorted column.</p>
+        <p>The sorting feature enables you to order data in a particular direction. It can be enabled by setting the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#allowselection">allowSelection</a> to true.</p>
+        <p>To sort a Gantt column, click the column header. The icons (ascending) and (descending) specify the sort direction of a column.</p>
+        <p>By default, the multi-sorting feature is enabled in Gantt. To sort multiple columns, hold the <strong>CTRL</strong> key, and then click the column header. To clear sort for a column, hold the <strong>SHIFT</strong> key, and then click the column header.</p>
+        <p>In this demo, select the column and direction from the properties panel, and then click the Sort button. Use the Clear button to remove sort for the sorted column.</p>
 
-          <p>Gantt component features are segregated into individual feature-wise modules. To use a selection, inject the
-        <code>Selection</code> module using the <code>Gantt.Inject(Selection)</code> method.To use sort, inject the
-        <code>Sort</code> module using the <code>Gantt.Inject(Sort)</code> method.To use markers, inject the
-        <code>DayMarkers</code> module using the <code>Gantt.Inject(DayMarkers)</code> method.</p>
+        <p>Gantt component features are segregated into individual feature-wise modules. To use a selection, inject the
+          <code>Selection</code> module using the <code>Gantt.Inject(Selection)</code> method.To use sort, inject the
+          <code>Sort</code> module using the <code>Gantt.Inject(Sort)</code> method.To use markers, inject the
+          <code>DayMarkers</code> module using the <code>Gantt.Inject(DayMarkers)</code> method.</p>
         </div>
       </div>
     )

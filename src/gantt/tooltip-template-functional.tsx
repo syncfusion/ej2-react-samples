@@ -109,15 +109,15 @@ const TooltipTemplate = () => {
       </div>
       <div id="action-description">
         <p>This sample explains the way of rendering tooltip template for taskbar and baseline by mapping template
-          elements to the property of taskbar and baseline in <code>tooltipSettings</code>.</p>
+          elements to the property of taskbar and baseline in <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/tooltipSettings/">tooltipSettings</a>.</p>
       </div>
 
       <div id="description">
-        <p>Tooltip can be enabled or disabled using <code>tooltipSettings.showTooltip</code> property.In this demo, the
+        <p>Tooltip can be enabled or disabled using <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/tooltipSettings/#showtooltip">tooltipSettings.showTooltip</a> property.In this demo, the
           tooltip template is rendered for <code>taskbar</code> and <code>baseline</code> using the
-          <code>tooltipSettings.taskbar</code> and <code>tooltipSettings.baseline</code> properties.</p>
+          <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/tooltipSettings/#taskbar">tooltipSettings.taskbar</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/tooltipSettings/#baseline">tooltipSettings.baseline</a> properties.</p>
         <p>The baseline feature enables the user to view the deviation between the planned dates and the actual dates of the tasks in a project.
-          Baselines can be enabled in Gantt chart by enabling the <code>renderBaseline</code> property along with mapping the data source values for <code>baselineStartDate</code> and <code>baselineEndDate</code> properties.</p>
+          Baselines can be enabled in Gantt chart by enabling the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#renderbaseline">renderBaseline</a> property along with mapping the data source values for <code>baselineStartDate</code> and <code>baselineEndDate</code> properties.</p>
 
         <p>Gantt component features are segregated into individual feature-wise modules.To use a selection, inject the
           <code>Selection</code> module using the <code>Gantt.Inject(Selection)</code> method.To use markers, inject the

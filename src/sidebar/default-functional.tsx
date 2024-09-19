@@ -128,7 +128,7 @@ const Default = () => {
                 </ToolbarComponent>
             </div>
             <div className="maincontent">
-                <ListViewComponent id="listView" ref={listObj} template={listTemplate as any} cssClass="e-list-template" dataSource={data} fields={fields} select={onListSelect.bind(this)}></ListViewComponent>
+                <ListViewComponent id="listView" ref={listObj} template={listTemplate as any} cssClass="e-list-template" dataSource={data} fields={fields} select={onListSelect.bind(this)} statelessTemplates={['template']}></ListViewComponent>
             </div>
             {/* end of main content declaration */}
             {/* sidebar element declaration */}

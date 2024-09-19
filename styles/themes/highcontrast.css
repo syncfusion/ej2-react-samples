@@ -6,7 +6,8 @@
     content: '\e7fc';
 }
 
-.highcontrast .sb-left-pane .e-treeview .e-list-item.e-hover>.e-fullrow {
+.highcontrast .sb-left-pane .e-treeview .e-list-item.e-hover>.e-fullrow,
+.highcontrast .sb-left-pane .e-treeview .e-list-item.e-active>.e-fullrow {
     background-color: #ffd939;
 }
 
@@ -106,7 +107,8 @@ body.highcontrast,
 .highcontrast .sample-navigation>button:hover,
 .highcontrast .sb-switch-popup li:first-child,
 .highcontrast .sb-left-pane .e-listview .e-list-group-item,
-.highcontrast .sb-theme-popup li.active .sb-theme-select {
+.highcontrast .sb-theme-popup li.active .sb-theme-select,
+.highcontrast .sb-open-new-wrapper a:hover .sb-icon-Popout {
     color: #ffd939 !important;
 }
 
@@ -201,8 +203,8 @@ body.highcontrast,
     color: #000;
 }
 
-.highcontrast #controlList li.e-list-item {
-    line-height: 45px;
+.highcontrast.e-bigger #controlList li.e-list-item {
+    line-height: 45px !important;
 }
 
 .highcontrast .sb-setting-popup {
@@ -262,4 +264,24 @@ body.highcontrast,
 
 .highcontrast #sb-nextjs-btn.e-link:hover {
     color: #dbb828 ;
+}
+
+.highcontrast.e-bigger .e-samplestatus.new,
+.highcontrast.e-bigger .e-samplestatus.New,
+.highcontrast.e-bigger .e-samplestatus.update,
+.highcontrast.e-bigger .e-samplestatus.Update,
+.highcontrast.e-bigger .e-samplestatus.preview,
+.highcontrast.e-bigger .e-samplestatus.Preview {
+    margin-top: 11.5px;
+    margin-bottom: 0px;
+    padding: 4px 8px;
+}
+
+.highcontrast.e-bigger .e-samplestatus.new.tree,
+.highcontrast.e-bigger .e-samplestatus.New.tree,
+.highcontrast.e-bigger .e-samplestatus.update.tree,
+.highcontrast.e-bigger .e-samplestatus.Update.tree,
+.highcontrast.e-bigger .e-samplestatus.preview.tree,
+.highcontrast.e-bigger .e-samplestatus.Preview.tree {
+    margin-top: 8px !important;
 }

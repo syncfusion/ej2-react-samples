@@ -46,7 +46,7 @@ const Datalabel = () => {
         theme = theme ? theme : "Material";
         args.treemap.theme = (theme.charAt(0).toUpperCase() + theme.slice(1))
             .replace(/-dark/i, "Dark")
-            .replace(/contrast/i, "Contrast") as TreeMapTheme;
+            .replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5') as TreeMapTheme;
         // custom code end
     };
     return (

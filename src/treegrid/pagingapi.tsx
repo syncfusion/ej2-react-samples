@@ -107,7 +107,7 @@ export class PagingAPI extends SampleBase<{}, {}> {
                     </td>
                     <td style={{ width: '50%', paddingTop: '10px 10px 10px 0px' }}>
                       <div id='dropdown'>
-                        <DropDownListComponent width="90px" id="sizemode" change={this.change.bind(this)}
+                        <DropDownListComponent width="110px" id="sizemode" change={this.change.bind(this)}
                           dataSource={this.type} fields={{ text: 'type', value: 'id' }} value="All"
                           ref={dropdown => this.sizemodeObj = dropdown} />
                       </div>

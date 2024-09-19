@@ -1,6 +1,8 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { SpreadsheetComponent, SheetsDirective, SheetDirective, ColumnsDirective, RangesDirective, RangeDirective, RowsDirective, RowDirective, CellsDirective, CellDirective, CellStyleModel, ColumnDirective } from '@syncfusion/ej2-react-spreadsheet';
+import { SheetsDirective, SheetDirective, RangesDirective, RangeDirective, ColumnsDirective } from '@syncfusion/ej2-react-spreadsheet';
+import { RowsDirective, RowDirective, CellsDirective, CellDirective, ColumnDirective } from '@syncfusion/ej2-react-spreadsheet';
+import { SpreadsheetComponent, CellStyleModel } from '@syncfusion/ej2-react-spreadsheet';
 import { defaultData } from './data';
 import { SampleBase } from '../common/sample-base';
 import './spreadsheet.css';
@@ -15,8 +17,12 @@ export class Default extends SampleBase<{}, {}> {
     public bold: CellStyleModel = { fontWeight: 'bold' };
 
     public onCreated(): void {
+        // Apply styles to the specified range in the active sheet.
         this.spreadsheet.cellFormat({ fontWeight: 'bold', textAlign: 'center', verticalAlign: 'middle' }, 'A1:F1');
+        // Apply format to the specified range in the active sheet.
         this.spreadsheet.numberFormat('$#,##0.00', 'F2:F31');
+        // The default format code for the date format is 'm/d/yyyy'.
+        this.spreadsheet.numberFormat('m/d/yyyy', 'E2:E30');
     }
 
     render() {

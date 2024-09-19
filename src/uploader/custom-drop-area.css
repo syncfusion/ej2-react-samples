@@ -22,7 +22,8 @@
 .bootstrap-dark .customdropArea a,
 .bootstrap5-dark .customdropArea a,
 .tailwind-dark .customdropArea a,
-.fluent-dark .customdropArea a {
+.fluent-dark .customdropArea a,
+.fluent2-dark .customdropArea a {
     color: #fff;
 }
 .fluent-dark .e-upload .e-upload-files .e-upload-file-list,
@@ -201,7 +202,8 @@ span#dropText {
   font-size: 14px;
 }
 
-.fluent-dark .dropArea_wrap {
+.fluent-dark .dropArea_wrap,
+.fluent2-dark .dropArea_wrap {
   background-color: #212529;
 }
 

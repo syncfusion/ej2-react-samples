@@ -16,8 +16,9 @@ import { updateSampleSection } from "../common/sample-base";
 import "./font-icons.css";
 
 let diagramInstance: DiagramComponent;
-
-
+let paletteIconInstance: HTMLElement;
+let paletteSpaceInstance: HTMLElement;
+//Initialize nodes for the diagram.
 let nodes: NodeModel[] = [
   {
     id: 'Patient',
@@ -134,7 +135,7 @@ let nodes: NodeModel[] = [
   createNode('Technologist', 1015, 535, 'Technologist'),
   createNode('SurgicalTechnologist', 1015, 630, 'SurgicalTechnologist')
 ];
-
+//Initialize connector for the diagram.
 let connectors: ConnectorModel[] = [
   createConnector('connect1', 'Patient', 'Person'),
   createConnector('connect2', 'Person', 'Hospital'),
@@ -191,25 +192,26 @@ function createMethods(name: string, type: string): object {
 function UMLClassDiagram() {
   React.useEffect(() => {
     updateSampleSection();
-    rendereComplete();
+    renderComplete();
   }, [])
-  function rendereComplete() {
+  function renderComplete() {
     addEvents();
     diagramInstance.fitToPage();
   }
   let isMobile: boolean;
-
+//To enhance the functionality of a webpage for mobile devices by adding a click event listener 
   function addEvents(): void {
     isMobile = window.matchMedia('(max-width:550px)').matches;
     if (isMobile) {
-      let paletteIcon: HTMLElement = document.getElementById('palette-icon');
+      let paletteIcon: HTMLElement = paletteIconInstance;
       if (paletteIcon) {
         paletteIcon.addEventListener('click', openPalette, false);
       }
     }
   }
+  //To manage the visibility state of the palette space on a webpage for mobile devices
   function openPalette(): void {
-    let paletteSpace: HTMLElement = document.getElementById('palette-space');
+    let paletteSpace: HTMLElement = paletteSpaceInstance;
     isMobile = window.matchMedia('(max-width:550px)').matches;
     if (isMobile) {
       if (!paletteSpace.classList.contains('sb-mobile-palette-open')) {
@@ -219,20 +221,17 @@ function UMLClassDiagram() {
       }
     }
   }
+  // Initializes the palettes to be displayed in the symbol palette.
   let palettes: PaletteModel[] = [
     {
         id: 'UmlActivity', expanded: true, title: 'UML Classifier Nodes', symbols: [
         {
             id: 'class',
-            style: {
-                fill: '#26A0DA',
-            },
-            borderColor: 'white',
             shape: {
                 type: 'UmlClassifier',
                 classShape: {
                     attributes: [
-                        { name: 'accepted', type: 'Date', style: { color: "red", fontFamily: "Arial", textDecoration: 'Underline',  italic: true },isSeparator: true },
+                        { name: 'accepted', type: 'Date', isSeparator: true },
                         { name: 'sickness', type: 'History' },
                         { name: 'prescription', type: 'String[*]' },
                         { name: 'allergies', type: 'String[*]' }
@@ -245,9 +244,6 @@ function UMLClassDiagram() {
         },
         {
             id: 'Interface',
-            style: {
-                fill: '#26A0DA',
-            }, borderColor: 'white',
             shape: {
                 type: 'UmlClassifier',
                 interfaceShape: {
@@ -274,9 +270,6 @@ function UMLClassDiagram() {
         },
         {
             id: 'Enumeration',
-            style: {
-                fill: '#26A0DA',
-            }, borderColor: 'white',
             shape: {
                 type: 'UmlClassifier',
                 enumerationShape: {
@@ -540,32 +533,30 @@ function UMLClassDiagram() {
               width={"100%"}
               height={"700px"}
               nodes={nodes}
-              connectors={connectors} //Sets the default values of a node
-              getNodeDefaults={(obj: NodeModel) => {
-                obj.style = { fill: '#26A0DA', strokeColor: 'white' };
-                return obj;
-              }}
-              //Sets the default values of a connector
-              getConnectorDefaults={(connector: ConnectorModel) => {
-                    return connector;
-              }}
-              //Sets the Node style for DragEnter element.
+              connectors={connectors} 
+               //Sets the default values of a connector
+               getConnectorDefaults={(connector: ConnectorModel) => {
+                return connector;
+                }}
+                 //Sets the Node style for DragEnter element.
               dragEnter={(args: IDragEnterEventArgs): void => {
                 if(args.element instanceof Connector){
                   args.element.targetPoint.x += 100;
                   args.element.targetPoint.y += 20
                 }
               }}
-                 //set an label style for nodes
-              setNodeTemplate= {(node: NodeModel) => {
-                  if (node.annotations && node.annotations.length > 0) {
-                    for (let i: number = 0; i < node.annotations.length; i++) {
-                        let annotation: ShapeAnnotationModel = node.annotations[i];
-                        if(annotation && annotation.style) {
-                              annotation.style.color = 'white';
-                        }
+              //Sets the default values of a node
+              getNodeDefaults={(node: NodeModel) => {
+                node.style = { fill: '#26A0DA', strokeColor: 'white' };
+                if (node.annotations && node.annotations.length > 0) {
+                  for (let i: number = 0; i < node.annotations.length; i++) {
+                      let annotation: ShapeAnnotationModel = node.annotations[i];
+                      if(annotation && annotation.style) {
+                            annotation.style.color = 'white';
                       }
                     }
+                  }
+                return node;
               }}
             >
               </DiagramComponent>

@@ -59,6 +59,8 @@
     }
 
     .bootstrap5 .e-rte-custom-tbar-section .char_block.e-active,
+    .bootstrap5\.3 .e-rte-custom-tbar-section .char_block.e-active,
+    .bootstrap5\.3-dark .e-rte-custom-tbar-section .char_block.e-active,
     .bootstrap5-dark .e-rte-custom-tbar-section .char_block.e-active {
         outline: 1px solid #0D6EFD;
         border-color: #0D6EFD;

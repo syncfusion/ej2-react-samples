@@ -1,0 +1,12 @@
+    /* Fluent2 Theme */
+    .fluent2 #ResourceMultiTaskbarallow,
+    .fluent2-dark #ResourceMultiTaskbarallow,
+    .fluent2-highcontrast #ResourceMultiTaskbarallow {
+        padding: 5px;
+    }
+
+    .e-bigger  {
+        #ResourceMultiTaskbarallow {
+        margin: 5px 5px 0px 5px !important;
+    }
+}

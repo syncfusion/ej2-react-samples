@@ -35,7 +35,7 @@ const LineZone = () => {
     };
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
             replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
         if (selectedTheme === 'highcontrast') {
@@ -73,7 +73,6 @@ const LineZone = () => {
                     In this example, you can see how to render and configure the points in a particular range by using <code>MultiColoredLine</code> series.
                     Points under the range can be configured with <code>color</code> and <code>dashArray</code> properties in the ChartSegment.
                 </p>
-                <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
                     Chart component features are segregated into individual feature-wise modules. To use line series, 

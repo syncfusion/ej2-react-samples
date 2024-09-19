@@ -1,3 +1,4 @@
+// Importing necessary modules from React, ReactDOM, and Syncfusion Diagram library
 import * as ReactDOM from "react-dom";
 import * as React from "react";
 import {
@@ -25,10 +26,12 @@ import { DataManager } from "@syncfusion/ej2-data";
 import { pertChartData } from './diagram-data';
 import { Point } from "@syncfusion/ej2-diagrams/src/diagram/primitives/point";
 
+// Interface to define the structure of data bound to nodes
 export interface DataInfo {
   [key: string]: string;
 }
 
+// Function to create and configure text element for nodes
 function getTextElement(
   text: string,
   alignment: HorizontalAlignment,
@@ -50,10 +53,12 @@ function getTextElement(
   return textElement;
 }
 
+// Constants for data keys used in PERT chart nodes
 let sDate: string = "startDate";
 let eDate: string = "endDate";
 let duration: string = "duration";
 
+// Function to add rows (text elements) to stack panel within nodes
 let addRows: Function = (column: StackPanel, node: NodeModel) => {
   column.children.push(
     getTextElement((node.data as DataInfo)[sDate], "Left", 70)
@@ -67,7 +72,7 @@ let addRows: Function = (column: StackPanel, node: NodeModel) => {
 };
 
 let diagramInstance: DiagramComponent;
-
+// React component for PERT chart
 function PertChart() {
   React.useEffect(() => {
     updateSampleSection();
@@ -88,7 +93,6 @@ function PertChart() {
     stack.id = randomId();
     stack.height = 25;
     stack.orientation = "Horizontal";
-    stack.style.fill = "white";
     stack.horizontalAlignment = "Stretch";
     addRows(stack, node);
     table.children = [
@@ -134,7 +138,6 @@ function PertChart() {
               connector: ConnectorModel,
               diagram: Diagram
             ) => {
-              connector.type = "Straight";
               connector.style.strokeColor = "#979797";
               connector.targetDecorator.width = 10;
               connector.targetDecorator.height = 10;

@@ -4,13 +4,11 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { addClass, removeClass, Browser } from '@syncfusion/ej2-base';
-import { RichTextEditorComponent, Toolbar, Inject, Image, Link, HtmlEditor, Count, QuickToolbar, Table, EmojiPicker, Video, Audio, FormatPainter, PasteCleanup } from '@syncfusion/ej2-react-richtexteditor';
-import { ToolbarSettingsModel, ActionBeginEventArgs, FileManager, FileManagerSettingsModel, QuickToolbarSettingsModel } from '@syncfusion/ej2-react-richtexteditor';
+import { RichTextEditorComponent, Toolbar, Inject, Image, Link, HtmlEditor, Count, QuickToolbar, Table, EmojiPicker, Video, Audio, FormatPainter, PasteCleanup, ImportExport, SlashMenu } from '@syncfusion/ej2-react-richtexteditor';
+import { ToolbarSettingsModel, ActionBeginEventArgs, FileManager, FileManagerSettingsModel, QuickToolbarSettingsModel, SlashMenuSettingsModel, ImportWordModel, ExportWordModel, ExportPdfModel } from '@syncfusion/ej2-react-richtexteditor';
 import { createElement } from '@syncfusion/ej2-base';
 import { MentionComponent } from '@syncfusion/ej2-react-dropdowns';
-import { UploaderComponent } from '@syncfusion/ej2-react-inputs';
 import { SampleBase } from '../common/sample-base';
-import { isNullOrUndefined } from '@syncfusion/ej2-base';
 import * as CodeMirror from 'codemirror';
 import { Editor as ICodeMirror } from 'codemirror';
 import 'codemirror/mode/javascript/javascript';
@@ -19,9 +17,7 @@ import 'codemirror/mode/htmlmixed/htmlmixed.js';
 import './tools.css';
 
 export class Overview extends SampleBase<{}, {}> {
-
   private editor: RichTextEditorComponent;
-  private uploadObj: UploaderComponent;
   private mention: MentionComponent;
   private codeMirror: ICodeMirror;
 
@@ -29,29 +25,8 @@ export class Overview extends SampleBase<{}, {}> {
 
   // Rich Text Editor items list
   private items: any = [
-    'Undo', 'Redo', '|',
-    {
-      tooltipText: "Import from Word",
-      template:
-        `<button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" tabindex="-1" id="custom_tbarbtn_1" style="width:100%">
-          <span class="e-icons e-rte-import-doc e-btn-icon"></span></button>`,
-      click: this.importContentFromWord.bind(this)
-    },
-    {
-      tooltipText: "Export to Word",
-      template:
-        `<button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" tabindex="-1" id="custom_tbarbtn_2" style="width:100%">
-          <span class="e-icons e-rte-export-doc e-btn-icon"></span></button>`,
-      click: this.exportContentToWord.bind(this)
-    },
-    {
-      tooltipText: "Export to PDF",
-      template:
-        `<button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" tabindex="-1" id="custom_tbarbtn_3" style="width:100%">
-          <span class="e-icons e-rte-export-pdf e-btn-icon"></span></button>`,
-      click: this.exportContentToPDF.bind(this)
-    }, '|',
-    'Bold', 'Italic', 'Underline', 'StrikeThrough', 'SuperScript', 'SubScript', '|',
+    'Undo', 'Redo', '|', 'ImportWord', 'ExportWord', 'ExportPdf', '|',
+    'Bold', 'Italic', 'Underline', 'StrikeThrough', 'InlineCode', 'SuperScript', 'SubScript', '|',
     'FontName', 'FontSize', 'FontColor', 'BackgroundColor', '|',
     'LowerCase', 'UpperCase', '|',
     'Formats', 'Alignments', 'Blockquote', '|', 'NumberFormatList', 'BulletFormatList', '|',
@@ -93,7 +68,7 @@ export class Overview extends SampleBase<{}, {}> {
     table: ['TableHeader', 'TableRows', 'TableColumns', 'TableCell', '-', 'BackgroundColor', 'TableRemove', 'TableCellVerticalAlign', 'Styles'],
     showOnRightClick: true,
   }
-  private insertImageSettings: any  = {
+  private insertImageSettings: any = {
     saveUrl: this.hostUrl + 'api/RichTextEditor/SaveFile',
     removeUrl: this.hostUrl + 'api/RichTextEditor/DeleteFile',
     path: this.hostUrl + 'RichTextEditor/'
@@ -103,80 +78,39 @@ export class Overview extends SampleBase<{}, {}> {
   private toolbarSettings: ToolbarSettingsModel = {
     items: this.items
   };
-  
-  private uploadAsyncSettings: any = {
-    saveUrl: this.hostUrl + 'api/RichTextEditor/ImportFromWord',
-  }
 
-  private importContentFromWord(): void {
-    this.uploadObj.element.click();
-  }
-  private exportContentToWord(): void {
-    const rteHtmlData = this.editor.getHtml();
-    const html = `<html><head></head><body>${rteHtmlData}</body></html>`;
-    fetch(this.hostUrl + 'api/RichTextEditor/ExportToDocx', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ html: html }) // Wrap HTML in a JSON object
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const filename: string = 'Result.docx';
-        // Create a Blob from the response and initiate the download
-        return response.blob().then(blob => ({ blob, filename }));
-      })
-      .then(({ blob, filename }) => {
-        const url = window.URL.createObjectURL(blob);       // Create a Blob URL from the response and initiate the download    
-        const a = document.createElement('a');              // Create an anchor element
-        a.href = url;
-        a.download = filename;
-        document.body.appendChild(a);                       // Append the anchor element to the document
-        a.click();                                          // Trigger a click on the anchor element to initiate the download
-        document.body.removeChild(a);                       // Remove the anchor element from the document
-        window.URL.revokeObjectURL(url);                    // Revoke the object URL to free up resources
-      })
-      .catch(error => {
-        console.error('Fetch error:', error);
-      });
-  }
-  private exportContentToPDF(): void {
-    const rteHtmlData = this.editor.getHtml();
-    const html = `<html><head></head><body>${rteHtmlData}</body></html>`;
-    fetch(this.hostUrl + 'api/RichTextEditor/ExportToPdf', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ html: html }) // Wrap HTML in a JSON object
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.blob();
-      })
-      .then(blob => {
-        const url: string = window.URL.createObjectURL(blob);       // Create a Blob URL from the response and initiate the download
-        const a: HTMLAnchorElement = document.createElement('a');   // Create an anchor element
-        a.href = url;
-        a.download = 'Sample.pdf';
-        document.body.appendChild(a);             // Append the anchor element to the document
-        a.click();                                // Trigger a click on the anchor element to initiate the download
-        document.body.removeChild(a);             // Remove the anchor element from the document
-        window.URL.revokeObjectURL(url);          // Revoke the object URL to free up resources
-      })
-      .catch(error => {
-        console.error('Fetch error:', error);
-      });
-  }
+  private slashMenuSettings: SlashMenuSettingsModel = {
+    enable: true,
+    items: ['Paragraph', 'Heading 1', 'Heading 2', 'Heading 3', 'Heading 4', 'OrderedList', 'UnorderedList',
+      'CodeBlock', 'Blockquote', 'Link', 'Image', 'Video', 'Audio', 'Table', 'Emojipicker',
+    ]
+  };
 
-  private onUploadSuccess(args: any): void {
-    this.editor.executeCommand('insertHTML', args.e.currentTarget.response, { undo: true });
-  }
+  private importWord: ImportWordModel = {
+    serviceUrl: this.hostUrl + 'api/RichTextEditor/ImportFromWord',
+  };
+  private exportWord: ExportWordModel = {
+    serviceUrl: this.hostUrl + 'api/RichTextEditor/ExportToDocx',
+    fileName: 'RichTextEditor.docx',
+    stylesheet: `
+        .e-rte-content {
+            font-size: 1em;
+            font-weight: 400;
+            margin: 0;
+        }
+    `
+  };
+  private exportPdf: ExportPdfModel = {
+    serviceUrl: this.hostUrl + 'api/RichTextEditor/ExportToPdf',
+    fileName: 'RichTextEditor.pdf',
+    stylesheet: `
+        .e-rte-content{
+            font-size: 1em;
+            font-weight: 400;
+            margin: 0;
+        }
+    `
+  };
 
   private mirrorConversion(e?: any): void {
     const id: string = this.editor.getID() + 'mirror-view';
@@ -213,32 +147,10 @@ export class Overview extends SampleBase<{}, {}> {
     if (e.targetItem && (e.targetItem === 'SourceCode' || e.targetItem === 'Preview')) {
       this.mirrorConversion(e);
     }
-    if (e.requestType === 'SourceCode') {
-      this.editor.getToolbar().querySelector('#custom_tbarbtn_1').parentElement.classList.add('e-overlay');
-      this.editor.getToolbar().querySelector('#custom_tbarbtn_2').parentElement.classList.add('e-overlay');
-      this.editor.getToolbar().querySelector('#custom_tbarbtn_3').parentElement.classList.add('e-overlay');
-    } else if (e.requestType === 'Preview') {
-      this.editor.getToolbar().querySelector('#custom_tbarbtn_1').parentElement.classList.remove('e-overlay');
-      this.editor.getToolbar().querySelector('#custom_tbarbtn_2').parentElement.classList.remove('e-overlay');
-      this.editor.getToolbar().querySelector('#custom_tbarbtn_3').parentElement.classList.remove('e-overlay');
-    }
   }
-  private quickToolbarOpenHandler(args: any): void {
-    if (!isNullOrUndefined(args.targetElement) && args.targetElement.nodeName === 'IMG') {
-      this.editor.getToolbar().querySelector('#custom_tbarbtn_1').parentElement.classList.add('e-overlay');
-      this.editor.getToolbar().querySelector('#custom_tbarbtn_2').parentElement.classList.add('e-overlay');
-      this.editor.getToolbar().querySelector('#custom_tbarbtn_3').parentElement.classList.add('e-overlay');
-    }
-  }
-  private quickToolbarClosehandler(args: any): void {
-    if (!isNullOrUndefined(args.element) && args.element.classList.contains('e-rte-image-popup')) {
-      this.editor.getToolbar().querySelector('#custom_tbarbtn_1').parentElement.classList.remove('e-overlay');
-      this.editor.getToolbar().querySelector('#custom_tbarbtn_2').parentElement.classList.remove('e-overlay');
-      this.editor.getToolbar().querySelector('#custom_tbarbtn_3').parentElement.classList.remove('e-overlay');
-    }
-  }
+
   private actionBeginHandler(e: ActionBeginEventArgs): void {
-    if (e.requestType === 'EnterAction' && this.mention.element.classList.contains('e-popup-open')) {
+    if (e.requestType === 'EnterAction' && this.mention && this.mention.element.classList.contains('e-popup-open')) {
       e.cancel = true;
     }
     if (e.requestType === 'Maximize' || e.requestType === 'Minimize') {
@@ -303,12 +215,12 @@ export class Overview extends SampleBase<{}, {}> {
           <div className='rte-control-section'>
             <RichTextEditorComponent id="toolsRTE" ref={(richtexteditor: RichTextEditorComponent) => { this.editor = richtexteditor }}
               value={this.rteValue} showCharCount={true} actionBegin={this.actionBeginHandler.bind(this)}
-              actionComplete={this.actionCompleteHandler.bind(this)} beforeQuickToolbarOpen={this.quickToolbarOpenHandler.bind(this)} quickToolbarClose={this.quickToolbarClosehandler.bind(this)} toolbarSettings={this.toolbarSettings}
+              actionComplete={this.actionCompleteHandler.bind(this)} toolbarSettings={this.toolbarSettings}
               fileManagerSettings={this.fileManagerSettings} quickToolbarSettings={this.quickToolbarSettings} enableTabKey={true}
-              insertImageSettings={this.insertImageSettings} enableXhtml={true} placeholder='Type something or use @ to tag a user...'>
-              <Inject services={[Toolbar, Image, Link, HtmlEditor, Count, QuickToolbar, Table, FileManager, EmojiPicker, Video, Audio, FormatPainter, PasteCleanup]} />
+              insertImageSettings={this.insertImageSettings} enableXhtml={true} placeholder='Type something or use @ to tag a user...'
+              importWord={this.importWord} exportPdf={this.exportPdf} exportWord={this.exportWord} slashMenuSettings={this.slashMenuSettings}>
+              <Inject services={[Toolbar, Image, Link, HtmlEditor, Count, QuickToolbar, Table, FileManager, EmojiPicker, Video, Audio, FormatPainter, PasteCleanup, SlashMenu, ImportExport]} />
             </RichTextEditorComponent>
-            <UploaderComponent id='rteCustomWordUpload' name='UploadFiles' ref={(upload: UploaderComponent) => { this.uploadObj = upload; }} type='file' asyncSettings={this.uploadAsyncSettings} success={this.onUploadSuccess.bind(this)} allowedExtensions='.docx,.doc,.rtf'></UploaderComponent>
             <MentionComponent id='editorMention' ref={(mention: MentionComponent) => { this.mention = mention }} dataSource={this.emailData} displayTemplate={this.displayTemplate} itemTemplate={this.itemTemplate} target="#toolsRTE_rte-edit-view" fields={{ text: 'name' }} popupWidth='250px' popupHeight='200px' sortOrder='Ascending' allowSpaces={true}></MentionComponent>
           </div>
         </div>
@@ -339,9 +251,13 @@ export class Overview extends SampleBase<{}, {}> {
             <li><code>Audio</code> - Inserts and manages audios.</li>
             <li><code>Video</code> - Inserts and manages videos.</li>
             <li><code>Format Painter</code> - The Format Painter feature allows you to copy the formats and apply them to content without formatting thus saving time to reformat the content.</li>
+            <li><code>Slash Menu</code> - The Slash Menu feature lets users apply formats, open dialogs by typing "/" in the
+              editor.</li>
+            <li><code>Import / Export</code> - The Import/Export feature enables users to import content from Word documents
+              into the editor and export the editor's content into Word and PDF files.</li>
           </ul>
           <p><b>Injecting Module</b></p>
-          <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, Count, HtmlEditor, QuickToolbar, Table, EmojiPicker, Video, Audio, FormatPainter, PasteCleanup</code> modules into the services.</p>
+          <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, Count, HtmlEditor, QuickToolbar, Table, EmojiPicker, Video, Audio, FormatPainter, PasteCleanup, SlashMenu, ImportExport</code> modules into the services.</p>
         </div>
       </div>
     );

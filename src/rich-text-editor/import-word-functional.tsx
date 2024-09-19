@@ -3,36 +3,21 @@
  */
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { UploaderComponent } from '@syncfusion/ej2-react-inputs';
-import { RichTextEditorComponent, Toolbar, Image, Inject, Link, HtmlEditor, Count, QuickToolbar, Table, PasteCleanup } from '@syncfusion/ej2-react-richtexteditor';
-import { ToolbarSettingsModel } from '@syncfusion/ej2-react-richtexteditor';
+import { RichTextEditorComponent, Toolbar, Inject, Image, Link, HtmlEditor, QuickToolbar, Table, PasteCleanup, ImportExport } from '@syncfusion/ej2-react-richtexteditor';
+import { ToolbarSettingsModel, ImportWordModel } from '@syncfusion/ej2-react-richtexteditor';
 import { updateSampleSection } from '../common/sample-base';
-import { isNullOrUndefined } from '@syncfusion/ej2-base';
-import './import-word.css';
 
 function ImportWord() {
     React.useEffect(() => {
         updateSampleSection();
     }, [])
-    let editor: RichTextEditorComponent;
-    let uploadObj: UploaderComponent;
     const hostUrl: string = 'https://services.syncfusion.com/react/production/';
     const items: any = [
-        'Undo', 'Redo', '|',
-        {
-            tooltipText: "Import from Word",
-            template:
-                `<button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" tabindex="-1" id="custom_tbarbtn_1" style="width:100%">
-          <span class="e-icons e-rte-import-doc e-btn-icon"></span></button>`,
-            click: importContentFromWord.bind(this)
-        }, '|',
-        'Bold', 'Italic', 'Underline', 'StrikeThrough', 'SuperScript', 'SubScript', '|',
+        'Undo', 'Redo', '|', 'ImportWord', '|',
+        'Bold', 'Italic', 'Underline', 'StrikeThrough', '|',
         'FontName', 'FontSize', 'FontColor', 'BackgroundColor', '|',
-        'LowerCase', 'UpperCase', '|',
-        'Formats', 'Alignments', 'Blockquote', '|', 'NumberFormatList', 'BulletFormatList', '|',
-        'Outdent', 'Indent', '|', 'CreateLink', 'Image', 'FileManager', 'Video', 'Audio', 'CreateTable', '|', 'FormatPainter', 'ClearFormat',
-        '|', 'EmojiPicker', 'Print', '|',
-        'SourceCode', 'FullScreen'];
+        'Formats', 'Alignments', 'Blockquote', '|', 'NumberFormatList', 'BulletFormatList',
+        '|', 'CreateLink', 'Image', 'CreateTable', '|', 'ClearFormat', 'SourceCode']
 
     const rteValue: string = `<h2 style="text-align: center;">Invitation to Microsoft Webinar Meet-Up</h2><p>
                     Dear Guest,
@@ -72,46 +57,34 @@ function ImportWord() {
         removeUrl: hostUrl + 'api/RichTextEditor/DeleteFile',
         path: hostUrl + 'RichTextEditor/'
     }
-    const uploadAsyncSettings: any = {
-        saveUrl: hostUrl + 'api/RichTextEditor/ImportFromWord',
-    }
     const toolbarSettings: ToolbarSettingsModel = {
         items: items
     };
-    function importContentFromWord(): void {
-        uploadObj.element.click();
-    }
-    function onUploadSuccess(args: any): void {
-        editor.executeCommand('insertHTML', args.e.currentTarget.response, { undo: true });
-    }
-    function actionCompleteHandler(e: any): void {
-        if (e.requestType === 'SourceCode') {
-            editor.getToolbar().querySelector('#custom_tbarbtn_1').parentElement.classList.add('e-overlay');
-        } else if (e.requestType === 'Preview') {
-            editor.getToolbar().querySelector('#custom_tbarbtn_1').parentElement.classList.remove('e-overlay');
-        }
-    }
-    function quickToolbarOpenHandler(args: any): void {
-        if (!isNullOrUndefined(args.targetElement) && args.targetElement.nodeName === 'IMG') {
-            editor.getToolbar().querySelector('#custom_tbarbtn_1').parentElement.classList.add('e-overlay');
-        }
-
-    }
-    function quickToolbarClosehandler(args: any): void {
-        if (!isNullOrUndefined(args.element) && args.element.classList.contains('e-rte-image-popup')) {
-            editor.getToolbar().querySelector('#custom_tbarbtn_1').parentElement.classList.remove('e-overlay');
-        }
-
-    }
+    const importWord: ImportWordModel = {
+        serviceUrl: hostUrl + 'api/RichTextEditor/ImportFromWord',
+    };
 
     return (
         <div className='control-pane'>
             <div className='control-section' id="rteTools">
                 <div className='rte-control-section'>
-                    <RichTextEditorComponent id="toolsRTE" ref={(richtexteditor: RichTextEditorComponent) => { editor = richtexteditor }} toolbarSettings={toolbarSettings} actionComplete={actionCompleteHandler.bind(this)} beforeQuickToolbarOpen={quickToolbarOpenHandler.bind(this)} quickToolbarClose={quickToolbarClosehandler.bind(this)}
-                        insertImageSettings={insertImageSettings} value={rteValue} enableXhtml={true}><Inject services={[Toolbar, Image, Link, HtmlEditor, Count, QuickToolbar, Table, PasteCleanup]} /></RichTextEditorComponent>
-                    <UploaderComponent id='rteCustomWordUpload' name='UploadFiles' ref={(upload: UploaderComponent) => { uploadObj = upload; }} type='file' asyncSettings={uploadAsyncSettings} success={onUploadSuccess.bind(this)} allowedExtensions='.docx,.doc,.rtf'></UploaderComponent>
+                    <RichTextEditorComponent id="importDocument" importWord={importWord} toolbarSettings={toolbarSettings} insertImageSettings={insertImageSettings} value={rteValue} enableXhtml={true}>
+                        <Inject services={[Toolbar, Image, Link, HtmlEditor, QuickToolbar, Table, PasteCleanup, ImportExport]} />
+                    </RichTextEditorComponent>
                 </div>
+            </div>
+            <div id="action-description">
+                <p>This example illustrates how to use the import/export feature of the Rich Text Editor to convert the editor
+                    content into a PDF or Word document.</p>
+            </div>
+
+            <div id="description">
+                <p>This sample demonstrates the <code>Import/Export</code> feature of the Rich Text Editor, which allows users to
+                    import the Word document into the editor. The word document can be imported as Rich Text Editor content by clicking the
+                    import to Word icon, browsing for the document, and uploading it to the server, where it is converted to HTML
+                    and then sent to the Rich Text Editor as its value.</p>
+                <p><b>Injecting Module</b></p>
+                <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>HtmlEditor, Toolbar, Link, Image, Count, QuickToolbar, Table, PasteCleanup, ImportExport</code> modules into the services.</p>
             </div>
         </div>
     );

@@ -98,8 +98,7 @@ Tooltip is enabled in this example, to see the tooltip in action, hover a point 
                   </p>
                     <p>
                         Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-                  </p> <br>
-                    </br>
+                  </p>
                     <p><b>Injecting Module</b></p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To use Tooltip, we need to inject

@@ -1,4 +1,3 @@
-import * as ReactDOM from "react-dom";
 import * as React from "react";
 import {
   Node,
@@ -18,7 +17,6 @@ import {
 } from "@syncfusion/ej2-react-diagrams";
 import { updateSampleSection } from "../common/sample-base";
 import { DataManager } from "@syncfusion/ej2-data";
-import { Point } from "@syncfusion/ej2-diagrams/src/diagram/primitives/point";
 import { NumericTextBoxComponent } from "@syncfusion/ej2-react-inputs";
 import { CheckBoxComponent, ChangeEventArgs } from "@syncfusion/ej2-react-buttons";
 import { hierarchicalTree } from './diagram-data';
@@ -50,12 +48,12 @@ const SAMPLE_CSS = `.image-pattern-style {
       padding-bottom: 15px;
     }
 
-    .row {
+    .diagram-property-tab .row {
         margin-left: 0px;
         margin-right: 0px;
     }
 
-    .row-header {
+    .diagram-property-tab .row-header {
         font-size: 13px;
         font-weight: 500;
     }
@@ -69,24 +67,25 @@ const SAMPLE_CSS = `.image-pattern-style {
         border-width: 2px;
     }
 
-    .diagram-control-pane .col-xs-6 {
+    .diagram-property-tab .diagram-control-pane .col-xs-6 {
         padding-left: 0px;
         padding-right: 0px;
     }`;
 
 let diagramInstance: DiagramComponent;
-let hSpacing: NumericTextBoxComponent;
-let vSpacing: NumericTextBoxComponent;
-let checkBoxObj: CheckBoxComponent;
+let horizontalSpacing: NumericTextBoxComponent;
+let verticalSpacing: NumericTextBoxComponent;
+let appearanceInstance: HTMLElement;
 
 function HierarchicalModel() {
+  // React useEffect hook to run once on component mount
   React.useEffect(() => {
     updateSampleSection();
     rendereComplete();
   }, [])
   function rendereComplete() {
     //Click event for Appearance of the Property Panel.
-    document.getElementById("appearance").onclick = (args: MouseEvent) => {
+    appearanceInstance.onclick = (args: MouseEvent) => {
       let target: HTMLElement = args.target as HTMLElement;
       let selectedElement: HTMLCollection = document.getElementsByClassName(
         "e-selected-style"
@@ -113,7 +112,7 @@ function HierarchicalModel() {
     };
   }
   //sets node default value
-  function nodeDefaults(obj: Node, diagram: Diagram): Node {
+  function nodeDefaults(obj: Node): Node {
     obj.style = {
       fill: "#659be5",
       strokeColor: "none",
@@ -145,8 +144,7 @@ function HierarchicalModel() {
 
   //sets connector default value
   function connectorDefaults(
-    connector: ConnectorModel,
-    diagram: Diagram
+    connector: ConnectorModel
   ): ConnectorModel {
     connector.targetDecorator.shape = "None";
     connector.type = "Orthogonal";
@@ -166,6 +164,8 @@ function HierarchicalModel() {
     diagramInstance.doLayout();
     target.classList.add("e-selected-style");
   }
+
+  // Updates expand and collapse icons of nodes based on args.checked state
   function onChange (args : ChangeEventArgs): void {
     for (let node of diagramInstance.nodes) {
         if (args.checked) {
@@ -215,14 +215,13 @@ function HierarchicalModel() {
               horizontalSpacing: 40,
               enableAnimation: true
             }} //Defines the default node and connector properties
-            getNodeDefaults={(obj: Node, diagram: Diagram) => {
-              return nodeDefaults(obj, diagram);
+            getNodeDefaults={(obj: Node) => {
+              return nodeDefaults(obj);
             }}
             getConnectorDefaults={(
               connector: ConnectorModel,
-              diagram: Diagram
             ) => {
-              return connectorDefaults(connector, diagram);
+              return connectorDefaults(connector);
             }}
           >
             <Inject
@@ -233,10 +232,10 @@ function HierarchicalModel() {
       </div>
 
       <div
-        className="col-lg-4 property-section"
+        className="col-lg-4 property-section diagram-property-tab "
       >
         <div className="property-panel-header">Properties</div>
-        <div className="row property-panel-content" id="appearance">
+        <div className="row property-panel-content" id="appearance"  ref={appearance => (appearanceInstance = appearance)}>
           <div className="row row-header">Appearance</div>
           <div className="row" style={{ paddingTop: "8px" }}>
             <div
@@ -292,17 +291,20 @@ function HierarchicalModel() {
             </div>
             <div className="col-xs-6">
               <NumericTextBoxComponent
-                ref={hSpacingRef => (hSpacing = hSpacingRef)}
-                id="hSpacing"
+                ref={horizontalSpacingRef => (horizontalSpacing = horizontalSpacingRef)}
+                id="horizontalSpacing"
                 style={{ width: "100%" }}
+                format="###.##"
                 min={20}
                 max={60}
                 step={2}
                 value={40}
+                 //sets horizontal spacing between nodes
                 change={() => {
                   diagramInstance.layout.horizontalSpacing = Number(
-                    hSpacing.value
+                    horizontalSpacing.value
                   );
+                  diagramInstance.doLayout();
                   diagramInstance.dataBind();
                 }}
               />
@@ -319,17 +321,20 @@ function HierarchicalModel() {
             </div>
             <div className="col-xs-6">
               <NumericTextBoxComponent
-                ref={vSpacingRef => (vSpacing = vSpacingRef)}
-                id="vSpacing"
+                ref={verticalSpacingRef => (verticalSpacing = verticalSpacingRef)}
+                id="verticalSpacing"
                 style={{ width: "100%" }}
+                format="###.##"
                 min={20}
                 max={60}
                 step={2}
                 value={30}
+                 //sets vertical spacing between nodes
                 change={() => {
                   diagramInstance.layout.verticalSpacing = Number(
-                    vSpacing.value
+                    verticalSpacing.value
                   );
+                  diagramInstance.doLayout();
                   diagramInstance.dataBind();
                 }}
               />

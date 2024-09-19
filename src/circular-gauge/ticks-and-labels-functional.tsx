@@ -22,6 +22,9 @@ const SAMPLE_CSS = `
     .e-view.fluent2 #property .tickCheckbox, .e-view.fluent2-dark #property .tickCheckbox {
         padding-left: 0px;
     }
+    .e-view.fluent2-highcontrast #property .tickCheckbox {
+        margin-left: -18px !important;
+    }
     @media screen and (max-width: 420px) {
         #tickOffset, #tickHeight, #labelOffset {
             width: 72%;
@@ -116,7 +119,7 @@ const Labels = () => {
         // custom code start
         let selectedTheme: string = loc.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5')) as GaugeTheme;
         // custom code end
     }
 

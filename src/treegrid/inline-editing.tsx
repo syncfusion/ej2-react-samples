@@ -11,7 +11,7 @@ const SAMPLE_CSS = `
 .fluent2-dark,
 .fluent2-highcontrast {
     #columnddl .e-input-group {
-        width: 130px !important;
+        width: 140px !important;
     }
 }`;
 
@@ -76,7 +76,7 @@ export class Editing extends SampleBase<{}, {}> {
                     </td>
                     <td style={{ width: '70%' }}>
                       <div id='columnddl'>
-                        <DropDownListComponent width="125px" id="selmode" change={this.change.bind(this)}
+                        <DropDownListComponent width="140px" id="selmode" change={this.change.bind(this)}
                           dataSource={this.editing} fields={{ text: 'name', value: 'id' }} value="CellEditing" />
                       </div>
                     </td>

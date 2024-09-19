@@ -63,3 +63,18 @@
 .block-events.e-schedule .template-wrap .employee-image.margaret {
     background-image: url('./src/schedule/images/margaret.png');
 }
+
+
+@media (max-width: 550px) {
+    .e-schedule .e-day-view .employee-image {
+        display: none;
+    }
+  
+    .e-schedule .e-day-view .employee-name {
+        font-size: 14px;
+    }
+  
+    .e-schedule .e-day-view .employee-designation {
+        display: none;
+    }
+}

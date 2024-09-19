@@ -68,7 +68,8 @@ background-color:#e3165b;
 }
 
 
-.highcontrast #overviewgrid td.e-rowcell.e-selectionbackground.e-active {
+.highcontrast #overviewgrid td.e-rowcell.e-selectionbackground.e-active,
+.fluent2-highcontrast #overviewgrid td.e-rowcell.e-selectionbackground.e-active {
     background-color: transparent;
     color: white;
 }
@@ -218,3 +219,12 @@ td.e-rowcell .statustxt.e-inactivecolor {
       -webkit-text-fill-color: transparent;
       -webkit-text-stroke: 1px #ffa600;
    }
+
+   @-moz-document url-prefix() {     
+    #overviewgrid.e-grid.e-grid-min-height .e-rowcell {       
+        line-height: 0!important;
+  } }
+  @-moz-document url-prefix() {    
+    #overviewgrid.e-grid.e-grid-min-height .e-rowcell {         
+        line-height: 0!important;
+  } }

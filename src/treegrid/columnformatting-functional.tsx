@@ -128,7 +128,7 @@ const ColumnFormat = () => {
                   <td style={{ width: "70%", paddingRight: "10px" }}>
                     <div>
                       <DropDownListComponent
-                        width="100px"
+                        width="140px"
                         id="columns"
                         change={change.bind(this)}
                         dataSource={columnNames}
@@ -146,7 +146,7 @@ const ColumnFormat = () => {
                   <td style={{ width: "70%", paddingRight: "10px" }}>
                     <div>
                       <DropDownListComponent
-                        width="100px"
+                        width="140px"
                         id="colformat"
                         change={change2.bind(this)}
                         dataSource={priceFormat}

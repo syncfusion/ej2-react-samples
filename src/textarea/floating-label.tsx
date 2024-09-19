@@ -43,7 +43,7 @@ export class FloatingLabel extends SampleBase<{}, {}> {
                 <div id="textarea-sample" className="col-lg-8 control-section floatinglabel">
                     <div className="content-wrapper">
                         <div className="floatinglabel-row">
-                            <TextAreaComponent id="floatlabel" placeholder="Enter your comments" floatLabelType="Auto" ref={(scope) => { this.textareaObj = scope }}  rows={this.rows} cols={this.cols} ></TextAreaComponent>
+                            <TextAreaComponent id="floatlabel" placeholder="Enter your comments" floatLabelType="Auto" ref={(scope) => { this.textareaObj = scope }} rows={this.rows} cols={this.cols} ></TextAreaComponent>
                         </div>
                     </div>
                 </div>

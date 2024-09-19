@@ -33,7 +33,8 @@ export class RTLTree extends SampleBase<{}, {}> {
               id="diagram"
               width={"100%"}
               height={"600px"}
-              snapSettings={{ constraints: SnapConstraints.None }} //Configure the data source
+              snapSettings={{ constraints: SnapConstraints.None }} 
+              // Configure the data source
               dataSourceSettings={{
                 id: "Name",
                 parentId: "Category",
@@ -55,7 +56,8 @@ export class RTLTree extends SampleBase<{}, {}> {
                 verticalSpacing: 100,
                 horizontalSpacing: -10
               }} //Enables zoom pan tool
-              tool={DiagramTools.ZoomPan} //Sets the default values of a node
+              tool={DiagramTools.ZoomPan} 
+              //Sets the default values of a node
               getNodeDefaults={(obj: Node, diagram: Diagram) => {
                 obj.width = 120;
                 obj.style = { fill: "#034d6d", strokeWidth: 1 };

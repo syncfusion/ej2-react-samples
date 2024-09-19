@@ -100,7 +100,7 @@ const Template = () => {
       </div>
       <div id="description">
         <p>
-          In this example, we showcase repository activities by customizing each item using the <code>template</code> property. It allows to create unique appearances for items, including the connector, dot container, and contents.
+          In this example, we showcase repository activities by customizing each item using the <a href="https://ej2.syncfusion.com/react/documentation/api/timeline#template" target="_blank">template</a> property. It allows to create unique appearances for items, including the connector, dot container, and contents.
         </p>
       </div>
     </div >

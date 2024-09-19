@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { SpreadsheetComponent, SheetDirective, RowsDirective, CellsDirective, PrintType, CellDirective, ImageModel, ChartModel, CellStyleModel, RowDirective, SheetsDirective, ColumnsDirective, ColumnDirective, RangesDirective, RangeDirective } from '@syncfusion/ej2-react-spreadsheet';
+import { SpreadsheetComponent, SheetDirective, RowsDirective, CellsDirective, PrintType, CellDirective, ImageModel, ChartModel, CellStyleModel, RowDirective, SheetsDirective, ColumnsDirective, ColumnDirective, RangesDirective, RangeDirective, getFormatFromType } from '@syncfusion/ej2-react-spreadsheet';
 import { updateSampleSection } from '../common/sample-base';
 import { CheckBoxComponent, ChangeEventArgs, ButtonComponent } from "@syncfusion/ej2-react-buttons";
 import { PropertyPane } from '../common/property-pane';
@@ -14,7 +14,7 @@ function Print() {
     }, [])
     let spreadsheet: SpreadsheetComponent;
     const cellStyle: CellStyleModel = { fontSize: '13pt', fontWeight: 'bold', textAlign: 'center', backgroundColor: '#919aff', verticalAlign: 'middle', color: '#ffffff' };
-    const currencyFormat: string = '$#,##0.00';
+    const currencyFormat: string = getFormatFromType('Currency');
     const chart: ChartModel[] = [{ type: 'Column', range: 'C2:D58' }];
     let dropDownListInstance: DropDownListComponent;
     const printTypeDataSource: { [key: string]: Object }[] = [
@@ -41,7 +41,8 @@ function Print() {
     }
 
     function onCreated(): void {
-        spreadsheet.numberFormat('$#,##0.00', 'Car Sales!F3:F59');
+        spreadsheet.numberFormat(currencyFormat, 'Car Sales!F3:F59');
+        spreadsheet.numberFormat('m/d/yyyy', 'Car Sales!E3:E58');
     }
 
     return (

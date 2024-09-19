@@ -12,7 +12,7 @@ import { PropertyPane } from '../common/property-pane';
 import { EmitType, Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
-import {  fabricColors, bootstrapColors, materialColors, highContrastColors, fluentColors, fluentDarkColors, bubbleFabricColors, bubbleMaterialDarkColors, bubbleMaterialColors, bubbleBootstrap5DarkColors, bubbleBootstrapColors, bubbleHighContrastColors, bubbleFluentDarkColors, bubbleFluentColors, bubbleTailwindDarkColors, bubbleTailwindColors, pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, bubbleBootstrap5Colors, pointBootstrap5Colors, pointMaterial3DarkColors, pointMaterial3Colors, fluent2Colors, fluent2DarkColors  } from './theme-color';
+import {  fabricColors, bootstrapColors, materialColors, highContrastColors, fluentColors, fluentDarkColors, bubbleFabricColors, bubbleMaterialDarkColors, bubbleMaterialColors, bubbleBootstrap5DarkColors, bubbleBootstrapColors, bubbleHighContrastColors, bubbleFluentDarkColors, bubbleFluentColors, bubbleTailwindDarkColors, bubbleTailwindColors, pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, bubbleBootstrap5Colors, pointBootstrap5Colors, pointMaterial3DarkColors, pointMaterial3Colors, fluent2Colors, fluent2HighContrastColors  } from './theme-color';
 import { NumericTextBoxComponent } from "@syncfusion/ej2-react-inputs";
 export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEventArgs): void => {
     let selectedTheme: string = location.hash.split('/')[1];
@@ -24,15 +24,15 @@ export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEve
     } else if (selectedTheme === 'material') {
         args.fill = pointMaterialColors[args.point.index % 10];
     } else if (selectedTheme === 'bootstrap5-dark') {
-        args.fill = pointBootstrap5DarkColors[args.point.index % 10];
+        args.fill = pointBootstrap5DarkColors[args.point.index % pointBootstrap5DarkColors.length];
     } else if (selectedTheme === 'bootstrap5') {
-        args.fill = pointBootstrap5Colors[args.point.index % 10];
+        args.fill = pointBootstrap5Colors[args.point.index % pointBootstrap5Colors.length];
     } else if (selectedTheme === 'bootstrap') {
-        args.fill = pointBootstrapColors[args.point.index % 10];
+        args.fill = pointBootstrapColors[args.point.index % pointBootstrapColors.length];
     } else if (selectedTheme === 'bootstrap4') {
-        args.fill = pointBootstrapColors[args.point.index % 10];
+        args.fill = pointBootstrapColors[args.point.index % pointBootstrapColors.length];
     } else if (selectedTheme === 'bootstrap-dark') {
-        args.fill = pointBootstrapColors[args.point.index % 10];
+        args.fill = pointBootstrapColors[args.point.index % pointBootstrapColors.length];
     } else if (selectedTheme === 'highcontrast') {
         args.fill = pointHighContrastColors[args.point.index % 10];
     } else if (selectedTheme === 'fluent-dark') {
@@ -49,8 +49,8 @@ export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEve
         args.fill = pointMaterial3Colors[args.point.index % 10];
     } else if (selectedTheme === 'fluent2') {
         args.fill = fluent2Colors[args.point.index % 10];
-    } else if (selectedTheme === 'fluent2-dark') {
-        args.fill = fluent2DarkColors[args.point.index % 10];
+    } else if (selectedTheme === 'fluent2-highcontrast' || selectedTheme === 'fluent2-dark') {
+        args.fill = fluent2HighContrastColors[args.point.index % 10];
     }
 };
 export let data1: any[] = [{ x: 'South Korea', y: 39 }, { x: 'India', y: 61 },
@@ -243,7 +243,7 @@ function SmartAxisLabels() {
     };
     function load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
 }

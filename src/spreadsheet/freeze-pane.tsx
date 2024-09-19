@@ -7,7 +7,7 @@ import { SampleBase } from '../common/sample-base';
 import './spreadsheet.css';
 
 /**
- * Default Spreadsheet sample
+ * Freeze pane Spreadsheet sample
  */
 
 export class FreezePane extends SampleBase<{}, {}> {

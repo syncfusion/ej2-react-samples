@@ -47,7 +47,7 @@ export class Resize extends SampleBase<{}, {}> {
                 <div id="textarea-sample" className="col-lg-8 control-section resize">
                     <div className="content-wrapper">
                         <div className="resize-row">
-                            <TextAreaComponent id="resize" placeholder="Enter your comments" floatLabelType="Auto" ref={(scope) => { this.textareaObj = scope }}  rows={this.rows} cols={this.cols} ></TextAreaComponent>
+                            <TextAreaComponent id="resize" placeholder="Enter your comments" floatLabelType="Auto" ref={(scope) => { this.textareaObj = scope }} rows={this.rows} cols={this.cols} ></TextAreaComponent>
                         </div>
                     </div>
                 </div>

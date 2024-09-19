@@ -70,8 +70,8 @@
                 <p>
                     In this sample, the tooltip is integrated with toolbar component to display the respective icon’s information. Here,
                     the HTML template design is compiled and then the resultant output display is directly assigned to the
-                    <code>content</code> property of the tooltip. The template compilation process needs to be done on the 
-                    <code>beforeRender</code> event of the tooltip.
+                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/tooltip/#content">content</a> property of the tooltip. The template compilation process needs to be done on the 
+                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/tooltip/#beforerender">beforeRender</a> event of the tooltip.
                 </p>
                 <p>
                     More information about setting template content on the Tooltip can be found in the

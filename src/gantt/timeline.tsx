@@ -194,127 +194,117 @@ export class Timeline extends SampleBase<{}, {}> {
           <div className='col-lg-4 property-section'>
             <PropertyPane title='Properties'>
               <table id="property" className="property-panel-table" title="Properties" style={{ width: '100%' }}>
-              <tbody>
-                <tr>
-                  <td style={{ width: '30%' }}>
-                    <label>Unit width</label>
-                  </td>
-                  <td style={{ width: '70%' }}>
-                    <div>
-                        <NumericTextBoxComponent ref={NumericTextBox => this.timelineUnitSize = NumericTextBox} format='n' value={33} min={10} change={this.unitWidth.bind(this)}></NumericTextBoxComponent>
-                    </div>
-                  </td>
-                </tr>
-                <tr></tr>
-                <tr>
-                  <td style={{ width: '30%' }}>
-                    <div><b>Top tier</b></div>
-                  </td>
-                  <td style={{ width: '70%' }}>
-                    <div>
-                      <CheckBoxComponent ref={CheckBox => this.topTierCheckbox = CheckBox} id="topTierCheck" onClick={this.topTierCick.bind(this)} className="checkbox" checked={true} ></CheckBoxComponent>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td style={{ width: '30%' }}>
-                    <label>Count</label>
-                  </td>
-                  <td style={{ width: '70%' }}>
-                    <div>
-                      <NumericTextBoxComponent ref={NumericTextBox => this.topTierCount = NumericTextBox} id="count" format='n' min={1} max={50} value={1} className="form-control" change={this.topTierCountchange.bind(this)}></NumericTextBoxComponent>
-                    </div>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td style={{ width: '30%' }}>
-                    <div>
-                      Unit
-                </div>
-                  </td>
-                  <td style={{ width: '70%' }}>
-                    <div>
-                      <DropDownListComponent ref={DropDownList => this.topTierUnit = DropDownList} id='unit' tabIndex={1} dataSource={this.unit} fields={this.unitField}
-                        value='Week' change={this.topUnitChange.bind(this)}></DropDownListComponent>
-                    </div>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td style={{ width: '30%' }}>
-                    <div>
-                      Format
-                </div>
-                  </td>
-                  <td style={{ width: '70%' }}>
-                    <div>
-                      <DropDownListComponent ref={DropDownList => this.topTierformat = DropDownList} id='topformat' tabIndex={1} dataSource={this.weekformat}
-                        fields={this.formatField} value='MMM dd, yyyy' change={this.topFormatChange.bind(this)}></DropDownListComponent>
-                    </div>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td style={{ width: '30%' }}>
-                    <div><b>Bottom tier</b></div>
-                  </td>
-                  <td style={{ width: '70%' }}>
-                    <div>
-                      <CheckBoxComponent ref={CheckBox => this.bottomTierCheckbox = CheckBox} id="bottomTierCheck" onClick={this.bottomTierCick.bind(this)} className="checkbox" checked={true} ></CheckBoxComponent>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td style={{ width: '30%' }}>
-                    <label>Count</label>
-                  </td>
-                  <td style={{ width: '70%' }}>
-                    <div>
-                      <NumericTextBoxComponent ref={NumericTextBox => this.bottomTierCount = NumericTextBox} id="count" format='n' min={1} max={50} value={1} className="form-control" change={this.bottomTierCountchange.bind(this)}></NumericTextBoxComponent>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td style={{ width: '30%' }}>
-                    <div>
-                      Unit
-                </div>
-                  </td>
-                  <td style={{ width: '70%' }}>
-                    <div>
-                      <DropDownListComponent ref={DropDownList => this.bottomTierUnit = DropDownList} id='unit' tabIndex={1} dataSource={this.unit} fields={this.unitField}
-                        value='Day' change={this.bottomUnitChange.bind(this)}></DropDownListComponent>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td style={{ width: '30%' }}>
-                    <div>
-                      Format
-                </div>
-                  </td>
-                  <td style={{ width: '70%' }}>
-                    <div>
-                      <DropDownListComponent ref={DropDownList => this.bottomTierformat = DropDownList} id='btFormat' tabIndex={1} dataSource={this.dayformat}
-                        fields={this.formatField} value='' change={this.bottomFormatChange.bind(this)}></DropDownListComponent>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td style={{width: '30% ' }}>
-                    <div>Enable multitaskbar</div>
-                  </td>
-                  <td style={{width: '70%' }}>
-                    <div>
-                      <CheckBoxComponent ref={CheckBox => this.multitaskbarcheckbox = CheckBox} id="multitaskbarCheck" onClick={this.multitaskbarCheck.bind(this)} className="checkbox" checked={false} ></CheckBoxComponent>
-                    </div>
-                  </td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <td style={{ width: '30%', paddingBottom: '10px', display: 'flex', alignItems: 'center' }}>
+                       <div>Unit width</div>
+                    </td>
+                    <td style={{ width: '70%', paddingBottom: '10px', display: 'flex', alignItems: 'center' }}>
+                      <div>
+                        <NumericTextBoxComponent ref={NumericTextBox => this.timelineUnitSize = NumericTextBox} format='n' value={33} min={10} change={this.unitWidth.bind(this)} />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr></tr>
+                  <tr>
+                    <td style={{ width: '30%', paddingBottom: '10px', display: 'flex', alignItems: 'center' }}>
+                      <div><b>Top tier</b></div>
+                    </td>
+                    <td style={{ width: '70%', paddingBottom: '10px', display: 'flex', alignItems: 'center' }}>
+                      <div>
+                        <CheckBoxComponent ref={CheckBox => this.topTierCheckbox = CheckBox} id="topTierCheck" onClick={this.topTierCick.bind(this)} className="checkbox" checked={true} />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style={{ width: '30%', paddingBottom: '10px', display: 'flex', alignItems: 'center' }}>
+                      <div>Count</div>
+                    </td>
+                    <td style={{ width: '70%', paddingBottom: '10px', display: 'flex', alignItems: 'center' }}>
+                      <div>
+                        <NumericTextBoxComponent ref={NumericTextBox => this.topTierCount = NumericTextBox} id="count" format='n' min={1} max={50} value={1} className="form-control" change={this.topTierCountchange.bind(this)} />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style={{ width: '30%', paddingBottom: '10px', display: 'flex', alignItems: 'center' }}>
+                      <div>Unit</div>
+                    </td>
+                    <td style={{ width: '70%', paddingBottom: '10px', display: 'flex', alignItems: 'center' }}>
+                      <div>
+                        <DropDownListComponent ref={DropDownList => this.topTierUnit = DropDownList} id='unit' tabIndex={1} dataSource={this.unit} fields={this.unitField}
+                          value='Week' change={this.topUnitChange.bind(this)} />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style={{ width: '30%', paddingBottom: '10px', display: 'flex', alignItems: 'center' }}>
+                      <div>Format</div>
+                    </td>
+                    <td style={{ width: '70%', paddingBottom: '10px', display: 'flex', alignItems: 'center' }}>
+                      <div>
+                        <DropDownListComponent ref={DropDownList => this.topTierformat = DropDownList} id='topformat' tabIndex={1} dataSource={this.weekformat}
+                          fields={this.formatField} value='MMM dd, yyyy' change={this.topFormatChange.bind(this)} />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style={{ width: '30%', paddingBottom: '10px', display: 'flex', alignItems: 'center' }}>
+                      <div><b>Bottom tier</b></div>
+                    </td>
+                    <td style={{ width: '70%', paddingBottom: '10px', display: 'flex', alignItems: 'center' }}>
+                      <div>
+                        <CheckBoxComponent ref={CheckBox => this.bottomTierCheckbox = CheckBox} id="bottomTierCheck" onClick={this.bottomTierCick.bind(this)} className="checkbox" checked={true} />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style={{ width: '30%', paddingBottom: '10px', display: 'flex', alignItems: 'center' }}>
+                      <div>Count</div>
+                    </td>
+                    <td style={{ width: '70%', paddingBottom: '10px', display: 'flex', alignItems: 'center' }}>
+                      <div>
+                        <NumericTextBoxComponent ref={NumericTextBox => this.bottomTierCount = NumericTextBox} id="count" format='n' min={1} max={50} value={1} className="form-control" change={this.bottomTierCountchange.bind(this)} />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style={{ width: '30%', paddingBottom: '10px', display: 'flex', alignItems: 'center' }}>
+                      <div>Unit</div>
+                    </td>
+                    <td style={{ width: '70%', paddingBottom: '10px', display: 'flex', alignItems: 'center' }}>
+                      <div>
+                        <DropDownListComponent ref={DropDownList => this.bottomTierUnit = DropDownList} id='unit' tabIndex={1} dataSource={this.unit} fields={this.unitField}
+                          value='Day' change={this.bottomUnitChange.bind(this)} />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style={{ width: '30%', paddingBottom: '10px', display: 'flex', alignItems: 'center' }}>
+                      <div>Format</div>
+                    </td>
+                    <td style={{ width: '70%', paddingBottom: '10px', display: 'flex', alignItems: 'center' }}>
+                      <div>
+                        <DropDownListComponent ref={DropDownList => this.bottomTierformat = DropDownList} id='btFormat' tabIndex={1} dataSource={this.dayformat}
+                          fields={this.formatField} value='' change={this.bottomFormatChange.bind(this)} />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style={{ width: '30%', paddingBottom: '10px', display: 'flex', alignItems: 'center' }}>
+                      <div>Enable multitaskbar</div>
+                    </td>
+                    <td style={{ width: '70%', paddingBottom: '10px', display: 'flex', alignItems: 'center' }}>
+                      <div>
+                        <CheckBoxComponent ref={CheckBox => this.multitaskbarcheckbox = CheckBox} id="multitaskbarCheck" onClick={this.multitaskbarCheck.bind(this)} className="checkbox" checked={false} />
+                      </div>
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </PropertyPane>
           </div>
+
         </div>
         <div id="action-description">
           <p>This sample illustrates the different phases from planning to delivery, involved in a software development
@@ -327,7 +317,7 @@ export class Timeline extends SampleBase<{}, {}> {
         <div id="description">
           <p>
             In this example, you can see how to change the timeline settings in Gantt chart. The top and bottom timeline
-            header texts can be customized by using the <code>timelineSettings.topTier</code> and <code>timelineSettings.bottomTier</code> properties                                                          Using these properties, you can change the format, count, and units of the timeline header texts.
+            header texts can be customized by using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/timelineSettingsModel/#toptier">timelineSettings.topTier</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/timelineSettingsModel/#bottomtier">timelineSettings.bottomTier</a> properties                                                          Using these properties, you can change the format, count, and units of the timeline header texts.
           </p>
           <p>
             Gantt chart has built-in support for many timeline modes such as minutes, hour, day, week, month and year.

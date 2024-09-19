@@ -21,7 +21,6 @@ const ContextMenu = () => {
     updateSampleSection();
   }, [])
    
-  const [selectedDate, setSelectedDate] = useState<Date>(new Date(2021, 0, 10));
   let scheduleObj = useRef<ScheduleComponent>(null);
   let menuObj = useRef<ContextMenuComponent>(null);
   let eventObj: Record<string, any>;
@@ -54,7 +53,7 @@ const ContextMenu = () => {
     }
     switch (selectedMenuItem) {
       case 'Today':
-        setSelectedDate(new Date());
+        scheduleObj.current.selectedDate = new Date();
         break;
       case 'Add':
       case 'AddRecurrence':
@@ -124,7 +123,7 @@ const ContextMenu = () => {
     <div className='schedule-control-section'>
       <div className='control-section'>
         <div className='control-wrapper'>
-          <ScheduleComponent height='650px' ref={scheduleObj} selectedDate={selectedDate} eventSettings={{ dataSource: data }}>
+          <ScheduleComponent height='650px' ref={scheduleObj} selectedDate={new Date(2021, 0, 10)} eventSettings={{ dataSource: data }}>
             <ViewsDirective>
               <ViewDirective option='Day' />
               <ViewDirective option='Week' />

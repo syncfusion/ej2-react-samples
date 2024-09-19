@@ -19,6 +19,12 @@ const SAMPLE_CSS = `
     .e-view.fluent2 #property .e-checkbox-wrapper .e-icons, .e-view.fluent2-dark #property .e-checkbox-wrapper .e-icons {
         margin-left: 0px;
     }
+    .legendCheckBox {
+        margin-left: 0px, padding-left: 0px, margin-top: -19px;
+    }
+    .e-view.fluent2-highcontrast .legendCheckBox {
+        padding-left: 1px !important; margin-left: -8px !important;
+    }
     .legendModeCheckBox {
         padding-left: 10px;
     }`;
@@ -186,7 +192,7 @@ export class LegendMaps extends SampleBase<{}, {}> {
                                         <div className="property-text" style= {{padding: "0px"}}>Show legend for remaining data source items</div>
                                     </td>
                                     <td className="legendModeCheckBox">
-                                        <div className="col" style={{ marginLeft: '0px', paddingLeft: '0px', marginTop: '-19px' }}>
+                                        <div className="col legendCheckBox">
 											<CheckBoxComponent id="datasource" change={this.dataChange.bind(this)} style={{ paddingLeft: '0px' }}/>
 										</div>
 									</td>
@@ -196,7 +202,7 @@ export class LegendMaps extends SampleBase<{}, {}> {
                                         <div className="property-text" style= {{ padding: "0px"}}>Show population density when the legend item is toggled</div>
                                     </td>
                                     <td className="legendModeCheckBox">
-                                        <div className="col" style={{ marginLeft: '0px', paddingLeft: '0px', marginTop: '-19px' }}>
+                                        <div className="col legendCheckBox">
 											<CheckBoxComponent id="toggleLegend" change={this.toggleLegendChange.bind(this)} style={{ paddingLeft: '0px' }}/>
 										</div>
 									</td>
@@ -237,7 +243,7 @@ export class LegendMaps extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.maps.theme = ((selectedTheme.charAt(0).toUpperCase() +
-        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as MapsTheme;
+        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5')) as MapsTheme;
         // custom code end
     };
     //tslint:disable

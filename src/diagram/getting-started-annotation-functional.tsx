@@ -1,4 +1,3 @@
-import * as ReactDOM from "react-dom";
 import * as React from "react";
 import {
   DiagramComponent,
@@ -111,6 +110,7 @@ let connectors: ConnectorModel[] = [
   }
 ];
 
+//Font dropdown options
 let fontType: { [key: string]: Object }[] = [
   { type: "Arial", text: "Arial" },
   { type: "Aharoni", text: "Aharoni" },
@@ -121,6 +121,7 @@ let fontType: { [key: string]: Object }[] = [
   { type: '"Verdana") ', text: "Cubic Bezaier" }
 ];
 
+//Teamplate dropdown options
 let templateList: { [key: string]: Object }[] = [
   { value: "none", text: "None" },
   { value: "industry", text: "Industry Competitors" },
@@ -140,8 +141,10 @@ let bold: ButtonComponent;
 let italic: ButtonComponent;
 let underLine: ButtonComponent;
 let templateData: DropDownListComponent;
+let propertyPanelInstance : HTMLElement;
+let appearanceInstance : HTMLElement;
 
-const sample_css = `.image-pattern-style {
+const sample_css = `.diagram-property-tab .image-pattern-style {
   background-color: white;
   background-size: contain;
   background-repeat: no-repeat;
@@ -153,7 +156,7 @@ const sample_css = `.image-pattern-style {
   float: left;
 }
 
-.image-pattern-style:hover {
+.diagram-property-tab .image-pattern-style:hover {
   border-color: gray;
   border-width: 2px;
 }
@@ -162,7 +165,7 @@ const sample_css = `.image-pattern-style {
   pointer-events: none;
 }
 
-.column-style {
+.diagram-property-tab .column-style {
   display: table;
   height: 35px;
   padding-right: 4px;
@@ -170,28 +173,29 @@ const sample_css = `.image-pattern-style {
   width: calc((100% - 12px) / 3);
 }
 
-.row {
+.diagram-property-tab .row {
   margin-left: 0px;
   margin-right: 0px;
+  cursor: pointer;
 }
 
-.row-header {
+.diagram-property-tab .row-header {
   font-size: 15px;
   font-weight: 500;
 }
 .property-section .e-remove-selection {
   cursor: not-allowed;
 }
-.property-panel-header {
+.diagram-property-tab .property-panel-header {
   padding-top: 15px;
   padding-bottom: 15px;
 }
 
-.e-checkbox-wrapper .e-label {
+.diagram-property-tab .e-checkbox-wrapper .e-label {
   font-size: 12px;
 }
 
-.e-selected-style {
+.diagram-property-tab .e-selected-style {
   border-color: #006CE6;
   border-width: 2px;
 }
@@ -204,48 +208,45 @@ const sample_css = `.image-pattern-style {
 //Apply the appearence of the Annotation
 function changed(value: string): void {
   for (let i: number = 0; i < diagramInstance.selectedItems.nodes.length; i++) {
-    node = diagramInstance.selectedItems.nodes[i];
-    for (let j: number = 0; j < node.annotations.length; j++) {
+    var node = diagramInstance.selectedItems.nodes[i];
+    var annotationStyle = node.annotations[0].style as TextStyleModel;
       if (value === "fontsize") {
-        (node.annotations[j].style as TextStyleModel).fontSize = fontSize.value;
+        annotationStyle.fontSize = fontSize.value;
       } else if (value === "underline") {
-        (node.annotations[j].style as TextStyleModel).textDecoration  === 'Underline' ? 'None' : 'Underline';
+        annotationStyle.textDecoration = annotationStyle.textDecoration === 'Underline' ? 'None' : 'Underline';
       } else if (value === "fontfamily") {
-        (node.annotations[j]
-          .style as TextStyleModel).fontFamily = fontFamily.value.toString();
+        annotationStyle.fontFamily = fontFamily.value.toString();
       } else if (value === "bold") {
-        (node.annotations[j].style as TextStyleModel).bold = true;
+        annotationStyle.bold = !annotationStyle.bold;
       } else if (value === "italic") {
-        (node.annotations[j].style as TextStyleModel).italic = true;
+        annotationStyle.italic = !annotationStyle.italic;
       } else if (value === 'template') {
         if (templateData.value.toString() === 'none') {
-          node.annotations[j].template = '';
-          node.annotations[j].width = undefined;
-          node.annotations[j].height = undefined;
+          node.annotations[0].template = '';
+          node.annotations[0].width = undefined;
+          node.annotations[0].height = undefined;
         } else {
-          node.annotations[j].width = 25;
-          node.annotations[j].height = 25;
-          node.annotations[j].template =
+          node.annotations[0].width = 25;
+          node.annotations[0].height = 25;
+          node.annotations[0].template =
             '<img src="src/diagram/Images/annotation/' + templateData.value.toString() + '.svg" style="width:100%;height:100%" />';
         }
       } else if (value === 'interaction') {
-        let annot: ShapeAnnotationModel = node.annotations[j];
-        if (annot && annot.constraints) {
-          annot.constraints = annot.constraints ^ AnnotationConstraints.Interaction;
+        let annotation: ShapeAnnotationModel = node.annotations[0];
+        if (annotation && annotation.constraints) {
+          annotation.constraints = annotation.constraints ^ AnnotationConstraints.Interaction;
         }
       }
       diagramInstance.dataBind();
     }
   }
-}
 //Update the Annotation Position based on the selection
-function updatePosition(id: string): void {
+function updateAnnotationPosition(id: string): void {
   let target: HTMLElement = document.getElementById(id);
   for (let i: number = 0; i < diagramInstance.selectedItems.nodes.length; i++) {
     node = diagramInstance.selectedItems.nodes[i];
     //we can refactor this code using a method
-    for (let j: number = 0; j < node.annotations.length; j++) {
-      let annotation: ShapeAnnotationModel = node.annotations[j];
+      let annotation: ShapeAnnotationModel = node.annotations[0];
       switch (target.id) {
         case "left":
           setAnnotationPosition(annotation, 0, 0, "Top", "Left", target);
@@ -253,10 +254,10 @@ function updatePosition(id: string): void {
         case "right":
           setAnnotationPosition(annotation, 1, 0, "Top", "Right", target);
           break;
-        case "bottoml":
+        case "bottomLeft":
           setAnnotationPosition(annotation, 0, 1, "Bottom", "Left", target);
           break;
-        case "bottomr":
+        case "bottomRight":
           setAnnotationPosition(annotation, 1, 1, "Bottom", "Right", target);
           break;
         case "center":
@@ -269,43 +270,43 @@ function updatePosition(id: string): void {
             target
           );
           break;
-        case "bottomcenter_top":
+        case "bottomCenter":
           setAnnotationPosition(annotation, 0.5, 1, "Top", "Center", target);
           break;
       }
     }
   }
-}
 //set the Annotation Position
 function setAnnotationPosition( //it is in dedicated line here.
   annotation: ShapeAnnotationModel,
   offsetX: number,
   offsetY: number,
-  vAlignment: VerticalAlignment,
-  hAlignment: HorizontalAlignment,
+  verticalAlignment: VerticalAlignment,
+  horizontalAlignment: HorizontalAlignment,
   target: HTMLElement
 ): void {
   annotation.offset.x = offsetX;
   annotation.offset.y = offsetY;
-  annotation.verticalAlignment = vAlignment;
-  annotation.horizontalAlignment = hAlignment;
-  if (vAlignment === "Top" && hAlignment === "Left") {
+  annotation.verticalAlignment = verticalAlignment;
+  annotation.horizontalAlignment = horizontalAlignment;
+  if (verticalAlignment === "Top" && horizontalAlignment === "Left") {
     annotation.margin = { left: 3, top: 3 };
-  } else if (vAlignment === "Top" && hAlignment === "Right") {
+  } else if (verticalAlignment === "Top" && horizontalAlignment === "Right") {
     annotation.margin = { right: 3, top: 3 };
-  } else if (vAlignment === "Bottom" && hAlignment === "Left") {
+  } else if (verticalAlignment === "Bottom" && horizontalAlignment === "Left") {
     annotation.margin = { left: 3, bottom: 3 };
-  } else if (vAlignment === "Bottom" && hAlignment === "Right") {
+  } else if (verticalAlignment === "Bottom" && horizontalAlignment === "Right") {
     annotation.margin = { right: 3, bottom: 3 };
   }
   target.classList.add("e-selected-style");
 }
 //Enable or disable the property panel
-function enableOptions(arg: ISelectionChangeEventArgs): void {
-  let appearance: HTMLElement = document.getElementById("propertypanel");
+function enablePropertyPanel(arg: ISelectionChangeEventArgs): void {
+  let appearance: HTMLElement = propertyPanelInstance;
   let selectedElement: HTMLCollection = document.getElementsByClassName(
     "e-remove-selection"
   );
+  //Checks for selection of new node
   if (arg.newValue) {
     if (arg.newValue[0] instanceof Node) {
       if (selectedElement.length > 0) {
@@ -319,36 +320,46 @@ function enableOptions(arg: ISelectionChangeEventArgs): void {
   }
 }
 
+// Sample initialize
 function GettingStartedAnnotation() {
+  // React useEffect hook to run once on component mount
   React.useEffect(() => {
     updateSampleSection();
-    rendereComplete();
+    rendereComplete(); // Call rendereComplete function
   }, [])
   const fields: object = { text: 'text', value: 'value' };
 
+   // Function to complete rendering actions
   function rendereComplete() {
+    // Fit the diagram instance to the page
     diagramInstance.fitToPage();
+    // Select the first node in the diagramInstance
     diagramInstance.select([diagramInstance.nodes[0]]);
+    // Set onclick event handler for bold.element
     bold.element.onclick = () => {
       changed("bold");
     };
+    // Set onclick event handler for italic.element
     italic.element.onclick = () => {
       changed("italic");
     };
+    // Set onclick event handler for underLine.element
     underLine.element.onclick = () => {
       changed("underline");
     };
     //Click event for Appearance of the Property Panel
-    document.getElementById("appearance").onclick = (args: MouseEvent) => {
+    appearanceInstance.onclick = (args: MouseEvent) => {
       let target: HTMLElement = args.target as HTMLElement;
       let selectedElement: HTMLCollection = document.getElementsByClassName(
         "e-selected-style"
       );
+      // Remove 'e-selected-style' class from any element that has it
       if (selectedElement.length) {
         selectedElement[0].classList.remove("e-selected-style");
       }
+      // Handle click action based on target's className
       if (target.className === "image-pattern-style") {
-        updatePosition(target.id);
+        updateAnnotationPosition(target.id);
       }
     };
   }
@@ -372,47 +383,47 @@ function GettingStartedAnnotation() {
                 if (selectedElement.length) {
                   selectedElement[0].classList.remove("e-selected-style");
                 }
+                //Checks for selection of new node
                 if (arg.newValue[0]) {
                   let node: NodeModel = arg.newValue[0] as NodeModel;
-                  let annotations: AnnotationModel[] = node.annotations;
                   if (
                     node.annotations[0].offset.x === 0 &&
                     node.annotations[0].offset.y === 0
                   ) {
-                    updatePosition("left");
+                    updateAnnotationPosition("left");
                   } else if (
                     node.annotations[0].offset.x === 1 &&
                     node.annotations[0].offset.y === 0
                   ) {
-                    updatePosition("right");
+                    updateAnnotationPosition("right");
                   } else if (
                     node.annotations[0].offset.x === 1 &&
                     node.annotations[0].offset.y === 0
                   ) {
-                    updatePosition("right");
+                    updateAnnotationPosition("right");
                   } else if (
                     node.annotations[0].offset.x === 0 &&
                     node.annotations[0].offset.y === 1
                   ) {
-                    updatePosition("bottoml");
+                    updateAnnotationPosition("bottomLeft");
                   } else if (
                     node.annotations[0].offset.x === 1 &&
                     node.annotations[0].offset.y === 1
                   ) {
-                    updatePosition("bottomr");
+                    updateAnnotationPosition("bottomRight");
                   } else if (
                     node.annotations[0].offset.x === 0.5 &&
                     node.annotations[0].offset.y === 0.5
                   ) {
-                    updatePosition("center");
+                    updateAnnotationPosition("center");
                   } else if (
                     node.annotations[0].offset.x === 0.5 &&
                     node.annotations[0].offset.y === 1
                   ) {
-                    updatePosition("bottomcenter_top");
+                    updateAnnotationPosition("bottomCenter");
                   }
                 }
-                enableOptions(arg);
+                enablePropertyPanel(arg);
               }
             }}
             //Sets the default values of a node
@@ -439,11 +450,12 @@ function GettingStartedAnnotation() {
         </div>
       </div>
 
-      <div className="col-lg-4 property-section">
+      <div className="col-lg-4 property-section diagram-property-tab">
         <div className="property-panel-header">Properties</div>
-        <div id="propertypanel" className="e-remove-selection">
+        <div style={{cursor : 'not-allowed'}}>
+        <div id="propertypanel" className="e-remove-selection" ref={propertyPanelRef => (propertyPanelInstance = propertyPanelRef)}>
           <div className="property-section-content">
-            <div className="row property-panel-content" id="appearance">
+            <div className="row property-panel-content" id="appearance" ref={appearance => (appearanceInstance = appearance)}>
               <div className="row row-header">Alignment</div>
               <div className="row">
                 <div className="row" style={{ paddingTop: "8px" }}>
@@ -467,7 +479,7 @@ function GettingStartedAnnotation() {
                   />
                   <div
                     className="image-pattern-style"
-                    id="bottoml"
+                    id="bottomLeft"
                     style={{
                       backgroundImage:
                         "url('src/diagram/Images/annotation/Annotation_3.png')"
@@ -477,7 +489,7 @@ function GettingStartedAnnotation() {
                 <div className="row" style={{ paddingTop: "8px" }}>
                   <div
                     className="image-pattern-style"
-                    id="bottomr"
+                    id="bottomRight"
                     style={{
                       backgroundImage:
                         "url('src/diagram/Images/annotation/Annotation_4.png')",
@@ -495,7 +507,7 @@ function GettingStartedAnnotation() {
                   />
                   <div
                     className="image-pattern-style"
-                    id="bottomcenter_top"
+                    id="bottomCenter"
                     style={{
                       backgroundImage:
                         "url('src/diagram/Images/annotation/Annotation_6.png')"
@@ -553,15 +565,9 @@ function GettingStartedAnnotation() {
                           i++
                         ) {
                           node = diagramInstance.selectedItems.nodes[i];
-                          for (
-                            let j: number = 0;
-                            j < node.annotations.length;
-                            j++
-                          ) {
-                            (node.annotations[j]
+                            (node.annotations[0]
                               .style as TextStyleModel).color =
                               arg.currentValue.rgba;
-                          }
                         }
                       }}
                       ref={fontcolor => (fontColor = fontcolor)}
@@ -587,7 +593,7 @@ function GettingStartedAnnotation() {
                       id="fontfamily"
                       popupWidth={150}
                       width={"100%"}
-                      placeholder={"select a font type"}
+                      placeholder={"Select a font type"}
                       index={0}
                       dataSource={fontType}
                       change={() => {
@@ -607,7 +613,7 @@ function GettingStartedAnnotation() {
                       fields={fields}
                       popupWidth={200}
                       width={"100%"}
-                      placeholder={"select a template"}
+                      placeholder={"Select a template"}
                       dataSource={templateList}
                       change={() => {
                         changed("template");
@@ -623,7 +629,7 @@ function GettingStartedAnnotation() {
                   <div className="row" style={{ paddingTop: "8px" }}>
                     <CheckBoxComponent
                       id="labelConstraints"
-                      label={"labelConstraints"}
+                      label={"Label constraints"}
                       checked={false}
                       change={() => {
                         changed("interaction");
@@ -634,6 +640,7 @@ function GettingStartedAnnotation() {
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
       <div id="action-description">

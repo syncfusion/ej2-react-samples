@@ -17,9 +17,11 @@ function SortingAndFiltering() {
 
     function onCreated(): void {
         spreadsheet.cellFormat({ fontWeight: 'bold', textAlign: 'center' }, 'A1:G1');
+        spreadsheet.numberFormat('m/d/yyyy', 'E2:E51');
         spreadsheet.sort({ sortDescriptors: { field: 'B' } }, 'A2:G51').then(() => {
             spreadsheet.applyFilter([{ field: 'D', operator: 'equal', value: 'Services' }], 'A1:G51');
         });
+        spreadsheet.numberFormat('$#,##0.00', 'F2:F51');
     }
 
     return (

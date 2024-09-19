@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { useCallback } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { MultiSelectComponent, Inject, VirtualScroll, DropDownListComponent, visualMode, CheckBoxSelection } from '@syncfusion/ej2-react-dropdowns';
-import { Query, DataManager, WebApiAdaptor } from '@syncfusion/ej2-data';
+import { Query, DataManager, UrlAdaptor } from '@syncfusion/ej2-data';
 import { CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
 import { ChangeEventArgs } from '@syncfusion/ej2-buttons';
 import { PropertyPane } from '../common/property-pane';
@@ -69,8 +69,8 @@ const Default = () => {
     const [closePopupOnSelect, setClosePopupOnSelect] = useState<boolean>(true);
     // bind the DataManager instance to dataSource property
     const customerData: DataManager = new DataManager({
-        url: 'https://services.syncfusion.com/react/production/api/orders',
-        adaptor: new WebApiAdaptor ,
+        url: 'https://services.syncfusion.com/react/production/api/VirtualDropdownData',
+        adaptor: new UrlAdaptor ,
         crossDomain: true
     });
     const onChange = (args: ChangeEventArgs) => {

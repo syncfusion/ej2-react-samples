@@ -54,7 +54,7 @@ const TaskMode = () => {
         </GanttComponent>
       </div>
       <div id="action-description">
-        <p>The Gantt provides support for automatic and manual task scheduling modes. Scheduling mode of a task is used to indicate whether the start and end dates of a task will be automatically validated or not. Using the property <code>taskMode</code> we can able to change the scheduling mode of a task. The following are the enumeration values that can be set to the property <code>taskMode</code>.</p>
+        <p>The Gantt provides support for automatic and manual task scheduling modes. Scheduling mode of a task is used to indicate whether the start and end dates of a task will be automatically validated or not. Using the property <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#taskmode">taskMode</a> we can able to change the scheduling mode of a task. The following are the enumeration values that can be set to the property <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#taskmode">taskMode</a>.</p>
         <ul>
           <li>Auto</li>
           <li>Manual</li>
@@ -63,9 +63,9 @@ const TaskMode = () => {
       </div>
 
       <div id="description">
-        <p>When the <code>taskMode</code> property is set as <code>Auto</code> scheduling mode, all the tasks in the project will be rendered as automatically scheduled tasks. Thus the start and end dates of the tasks in the project will be automatically validated.</p>
-        <p>When the <code>taskMode</code> property is set as <code>Manual</code> scheduling mode, all the tasks in the project will be rendered as manually scheduled tasks. Thus the dates of the tasks will not get validated automatically by the system.</p>
-        <p>When the <code>taskMode</code> property is set as <code>Custom</code>, the scheduling mode for each tasks will be mapped form the data source field. The property <code>manual</code> is used to map the scheduling mode field from the data source.</p>
+        <p>When the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#taskmode">taskMode</a> property is set as <code>Auto</code> scheduling mode, all the tasks in the project will be rendered as automatically scheduled tasks. Thus the start and end dates of the tasks in the project will be automatically validated.</p>
+        <p>When the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#taskmode">taskMode</a> property is set as <code>Manual</code> scheduling mode, all the tasks in the project will be rendered as manually scheduled tasks. Thus the dates of the tasks will not get validated automatically by the system.</p>
+        <p>When the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#taskmode">taskMode</a> property is set as <code>Custom</code>, the scheduling mode for each tasks will be mapped form the data source field. The property <code>manual</code> is used to map the scheduling mode field from the data source.</p>
         <p>Gantt component features are segregated into individual feature-wise modules. To use editing feature, inject the <code>Edit</code> module using the <code>Gantt.Inject(Edit)</code> method. To use a selection, inject the <code>Selection</code> module using the <code>Gantt.Inject(Selection)</code> method, and to use toolbar by injecting the <code>Toolbar</code> module using the <code>Gantt.Inject(Toolbar)</code> method. </p>
       </div>
     </div>

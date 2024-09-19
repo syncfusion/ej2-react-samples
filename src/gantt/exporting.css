@@ -1,0 +1,6 @@
+/* Exporting.css */
+.fluent2 #exported,
+.fluent2-dark #exported,
+.fluent2-highcontrast #exported {
+  padding: 5px;
+}

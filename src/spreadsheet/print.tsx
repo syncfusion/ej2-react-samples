@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { SpreadsheetComponent, SheetDirective, RowsDirective, CellsDirective, PrintType, CellDirective, ImageModel, ChartModel, CellStyleModel, RowDirective, SheetsDirective, ColumnsDirective, ColumnDirective, RangesDirective, RangeDirective } from '@syncfusion/ej2-react-spreadsheet';
+import { SpreadsheetComponent, SheetDirective, RowsDirective, CellsDirective, PrintType, CellDirective, ChartModel, CellStyleModel, RowDirective, SheetsDirective, ColumnsDirective, ColumnDirective, RangesDirective, RangeDirective, getFormatFromType } from '@syncfusion/ej2-react-spreadsheet';
 import { SampleBase } from '../common/sample-base';
 import { CheckBoxComponent, ChangeEventArgs, ButtonComponent } from "@syncfusion/ej2-react-buttons";
 import { PropertyPane } from '../common/property-pane';
@@ -11,7 +11,7 @@ import './spreadsheet.css';
 export class Print extends SampleBase<{}, {}> {
     public spreadsheet: SpreadsheetComponent;
     public cellStyle: CellStyleModel = { fontSize: '13pt', fontWeight: 'bold', textAlign: 'center', backgroundColor: '#919aff', verticalAlign: 'middle', color: '#ffffff' };
-    public currencyFormat: string = '$#,##0.00';
+    public currencyFormat: string = getFormatFromType('Currency');
     public chart: ChartModel[] = [{ type: 'Column', range: 'C2:D58' }];
     private dropDownListInstance: DropDownListComponent;
     private printTypeDataSource: { [key: string]: Object }[] = [
@@ -38,7 +38,8 @@ export class Print extends SampleBase<{}, {}> {
     }
 
     public onCreated(): void {
-        this.spreadsheet.numberFormat('$#,##0.00', 'Car Sales!F3:F59');
+        this.spreadsheet.numberFormat(this.currencyFormat, 'Car Sales!F3:F59');
+        this.spreadsheet.numberFormat('m/d/yyyy', 'Car Sales!E3:E58');
     }
 
     render() {

@@ -34,7 +34,7 @@ const SAMPLE_CSS = `
          }
  
          #bootstrap5-gradient-chart stop {
-             stop-color: #262E0B;
+             stop-color: #FD7E14;
          }
  
          #material-dark-gradient-chart stop {
@@ -54,7 +54,7 @@ const SAMPLE_CSS = `
          }
  
          #bootstrap5-dark-gradient-chart stop {
-             stop-color: #5ECB9B;
+             stop-color: #FD7E14;
          }
  
          #fluent-gradient-chart stop {
@@ -82,7 +82,7 @@ const SAMPLE_CSS = `
          }
          `;
          let themes: string[] = ['bootstrap5', 'bootstrap5dark', 'tailwind', 'tailwinddark', 'material', 'materialdark', 'bootstrap4', 'bootstrap', 'bootstrapdark', 'fabric', 'fabricdark', 'highcontrast', 'fluent', 'fluentdark', 'material3', 'material3dark'];
-         let borderColor: string[] = ['#262E0B', '#5ECB9B', '#5A61F6', '#8B5CF6', '#00bdae', '#9ECB08', '#a16ee5', '#a16ee5', '#a16ee5', '#4472c4', '#4472c4', '#79ECE4', '#614570', '#8AB113', '#6355C7', '#4EAAFF'];
+         let borderColor: string[] = ['#FD7E14', '#FD7E14', '#5A61F6', '#8B5CF6', '#00bdae', '#9ECB08', '#a16ee5', '#a16ee5', '#a16ee5', '#4472c4', '#4472c4', '#79ECE4', '#614570', '#8AB113', '#6355C7', '#4EAAFF'];
 export class Performance extends SampleBase<{}, {}> {
     private chart: ChartComponent;
     private loaded: EmitType<ILoadedEventArgs>;
@@ -134,7 +134,7 @@ export class Performance extends SampleBase<{}, {}> {
         args.chart.series[0].xName = 'x';
         args.chart.series[0].yName = 'y';
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
         args.chart.series[0].border.color = borderColor[themes.indexOf(args.chart.theme.toLowerCase())];
         args.chart.series[0].fill = 'url(#' + selectedTheme.toLowerCase() + '-gradient-chart)';

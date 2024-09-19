@@ -117,7 +117,7 @@ export class Local extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section component-section'>
                     <div id='dropdown-control' style={{ marginBottom: '5px' }}>
-                        <table style={{ width: '350px' }}>
+                        <table style={{ maxWidth: '330px' }}>
                             <tbody>
                                 <tr style={{ height: '50px' }}>
                                     <td>
@@ -125,7 +125,7 @@ export class Local extends SampleBase<{}, {}> {
                                         </div>
                                     </td>
                                     <td>
-                                        <div>
+                                        <div style={{ paddingLeft: '5px' }}>
                                             <div>
                                                 <DropDownListComponent placeholder={'Content Type'} fields={this.fields} change={this.ddlOnChange.bind(this)} id="contenttype" index={0} enabled={true} dataSource={this.contentTypes} />
                                             </div>

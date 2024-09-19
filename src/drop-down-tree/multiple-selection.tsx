@@ -27,7 +27,7 @@ export class MultiSelect extends SampleBase<{}, {}> {
 
         <div id="description">
           <p>The <code>Dropdown Tree</code> component allows you to select multiple items by enabling the
-            <code>allowMultiSelection</code> property.</p>
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/drop-down-tree#allowmultiselection">allowMultiSelection</a> property.</p>
           <p>In this demo, the Dropdown Tree is enabled with multiple selection.</p>
         </div>
       </div>

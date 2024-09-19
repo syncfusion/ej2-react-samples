@@ -59,10 +59,8 @@ export let Segments: any = [[0, 5 ], [ 7, 12 ], [14, 19 ], [21, 26 ] ];
         "#b91c52"];
     let highContrastColors: string[] = ["#79ECE4", "#E98272", "#DFE6B6", "#C6E773", "#BA98FF", "#FA83C3", "#00C27A", "#43ACEF", "#D681EF",
         "#D8BC6E"];
-    let bootstrap5Colors: string[] = ["#262E0B", "#668E1F", "#AF6E10", "#862C0B", "#1F2D50", "#64680B", "#311508", "#4C4C81", "#0C7DA0",
-        "#862C0B"];
-    let bootstrap5DarkColors: string[] = ["#5ECB9B", "#A860F1", "#EBA844", "#557EF7", "#E9599B", "#BFC529", "#3BC6CF", "#7A68EC", "#74B706",
-        "#EA6266"];
+    let bootstrap5Colors: string[] = ['#FD7E14', '#6610F2', '#6F42C1', '#D63384', '#DC3545', '#FFC107', '#198754', '#0DCAF0'];
+    let bootstrap5DarkColors: string[] = ['#FD7E14', '#6610F2', '#6F42C1', '#D63384', '#DC3545', '#FFC107', '#198754', '#0DCAF0'];
     let fluentColors: string[] = ["#614570", "#4C6FB1", "#CC6952", "#3F579A", "#4EA09B", "#6E7A89", "#D4515C", "#E6AF5D", "#639751",
         "#9D4D69"];
     let fluentDarkColors: string[] = ["#8AB113", "#2A72D5", "#43B786", "#584EC6", "#E85F9C", "#6E7A89", "#EA6266", "#EBA844", "#26BC7A",
@@ -75,6 +73,10 @@ export let Segments: any = [[0, 5 ], [ 7, 12 ], [14, 19 ], [21, 26 ] ];
         "#162F88"];
     let material3DarkColors: string[] = ["#4EAAFF", "#FA4EAB", "#FFF500", "#17EA58", "#38FFE7", "#FF9E45", "#B3F32F", "#B93CE4", "#FC5664", 
         "#9B55FF"];
+    let fluent2Colors: string[] = ["#6200EE", "#09AF74", "#0076E5", "#CB3587", "#E7910F", "#0364DE", "#66CD15", "#F3A93C", "#107C10",
+    "#C19C00"];
+    let fluent2HighContrastColors: string[] = ["#9BB449", "#2A72D5", "#43B786", "#3F579A", "#584EC6", "#E85F9C", "#6E7A89", "#EA6266",
+    "#0B6A0B", "#C19C00"];
            
 
 const SAMPLE_CSS = `
@@ -302,9 +304,9 @@ export class KeyboardNavigation extends SampleBase<{}, {}> {
 
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
-        FontColor = args.chart.theme.indexOf("Dark") > -1 || args.chart.theme.indexOf("Highcontrast") > -1 ? "#F3F2F1" : "#353535";
+        FontColor = args.chart.theme.indexOf("Dark") > -1 || args.chart.theme.indexOf("HighContrast") > -1 ? "#F3F2F1" : "#353535";
         let FillColors: any;
         if (args.chart.theme === 'MaterialDark') {
             FillColors = materialDarkColors;
@@ -330,7 +332,7 @@ export class KeyboardNavigation extends SampleBase<{}, {}> {
         else if (args.chart.theme === 'Tailwind') {
             FillColors = tailwindColors;
         }
-        else if (args.chart.theme.indexOf("highcontrast") > -1) {
+        else if (args.chart.theme === "HighContrast") {
             FillColors = highContrastColors;
         }
         else if (args.chart.theme === 'FluentDark') {
@@ -342,6 +344,12 @@ export class KeyboardNavigation extends SampleBase<{}, {}> {
         }
         else if (args.chart.theme === 'Material3Dark') {
             FillColors = material3DarkColors;
+        }
+        else if (args.chart.theme === 'Fluent2') {
+            FillColors = fluent2Colors;
+        }
+        else if (args.chart.theme === 'Fluent2HighContrast' || args.chart.theme === 'Fluent2Dark') {
+            FillColors = fluent2HighContrastColors;
             FontColor = "#FFFFFF";
         }
         else {

@@ -151,6 +151,10 @@ function PivotToolbar() {
             reports = JSON.parse(localStorage.pivotviewReports);
         }
         if (args.report && args.reportName && args.reportName !== '') {
+            let report = JSON.parse(args.report);
+            report.dataSourceSettings.dataSource = [];
+            report.pivotValues = [];
+            args.report = JSON.stringify(report);
             reports.map(function (item: any): any {
                 if (args.reportName === item.reportName) {
                     item.report = args.report; isSaved = true;
@@ -182,7 +186,10 @@ function PivotToolbar() {
             }
         });
         if (args.report) {
-            pivotObj.dataSourceSettings = JSON.parse(args.report).dataSourceSettings;
+            let report = JSON.parse(args.report);
+            report.dataSourceSettings.dataSource =
+                pivotObj.dataSourceSettings.dataSource;
+            pivotObj.dataSourceSettings = report.dataSourceSettings;
         }
     }
     function removeReport(args: RemoveReportArgs): void {

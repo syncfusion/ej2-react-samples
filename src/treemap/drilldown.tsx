@@ -20,6 +20,12 @@ const SAMPLE_CSS = `
 	.drilldown-checkbox {
         padding-left: 0px !important;
     }
+	.drilldownCheckbox {
+        padding-left: 0px;
+    }
+    .e-view.fluent2-highcontrast #property .drilldownCheckbox {
+        padding-left: 0px; margin-left: -8px;
+    }
     .e-view.fluent2 #property .drilldown-checkbox, .e-view.fluent2-dark #property .drilldown-checkbox {
         padding-left: 0px; margin-left: -10px;
     }`;
@@ -73,7 +79,7 @@ export class Drilldown extends SampleBase<{}, {}> {
 		let theme: string = location.hash.split('/')[1];
 		theme = theme ? theme : 'Material';
 		args.treemap.theme = ((theme.charAt(0).toUpperCase() +
-		theme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as TreeMapTheme;
+		theme.slice(1)).replace(/-dark/i, 'Dark').replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5')) as TreeMapTheme;
 		// custom code end
 	}
 	/* tslint:disable:no-string-literal */
@@ -139,7 +145,7 @@ export class Drilldown extends SampleBase<{}, {}> {
 										<div style={{ paddingLeft: '0px' }}>Drill Down View</div>
 									</td>
 									<td>
-										<div className="drilldown-checkbox" style={{ paddingTop: '0px' }}>
+										<div className="drilldown-checkbox drilldownCheckbox" style={{ paddingTop: '0px' }}>
 											<CheckBoxComponent id='drillView' checked={false} change={this.drillViewChange.bind(this)} ref={d => this.drillviewElement = d}/>
 										</div>
 									</td>									
@@ -149,7 +155,7 @@ export class Drilldown extends SampleBase<{}, {}> {
 										<div style={{ paddingLeft: '0px' }}>Enable Bread Crumb</div>
 									</td>
 									<td>
-										<div className="drilldown-checkbox" style={{ paddingTop: '0px'}}>
+										<div className="drilldown-checkbox drilldownCheckbox" style={{ paddingTop: '0px'}}>
 										<CheckBoxComponent id='breadCrumb' checked={false} change={this.breadCrumbChange.bind(this)} ref={d => this.breadCrumbElement = d}/>
 										</div>
 									</td>

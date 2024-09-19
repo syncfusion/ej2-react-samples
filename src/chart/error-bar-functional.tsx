@@ -40,7 +40,7 @@ const  ErrorBarChart = () => {
     };
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/light/i, "Light").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
         if (selectedTheme === 'bootstrap5' || selectedTheme === 'fluent') {
             args.chart.highlightColor = '#c7e9b6';
@@ -53,7 +53,7 @@ const  ErrorBarChart = () => {
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section ' style={{ textAlign: "center" }}>
-                <ChartComponent id='charts' primaryXAxis={{ valueType: 'Category', interval: 1,  majorTickLines: {width : 0}, minorTickLines: {width: 0}, majorGridLines: { width: 0 }, labelRotation: Browser.isDevice ? -45 : 0, labelIntersectAction: Browser.isDevice ? 'None' : 'Trim' }} chartArea={{ border: { width: 0 } }} primaryYAxis={{ minimum: 0, maximum: 1250, interval: 250, lineStyle: { width: 0 }, title: 'Quantity' }} load={load.bind(this)} tooltipRender={tooltipRender.bind(this)} highlightColor= '' width={Browser.isDevice ? '100%' : '75%'} pointRender={pointRender.bind(this)} title="Quantity vs Items" loaded={onChartLoad.bind(this)} tooltip={{ enable: true,  enableMarker: false }}>
+                <ChartComponent id='charts' primaryXAxis={{ valueType: 'Category', interval: 1,  majorTickLines: {width : 0}, minorTickLines: {width: 0}, majorGridLines: { width: 0 }, labelRotation: Browser.isDevice ? -45 : 0, labelIntersectAction: Browser.isDevice ? "None" : "Rotate45"}} chartArea={{ border: { width: 0 } }} primaryYAxis={{ minimum: 0, maximum: 1250, interval: 250, lineStyle: { width: 0 }, title: 'Quantity' }} load={load.bind(this)} tooltipRender={tooltipRender.bind(this)} highlightColor= '' width={Browser.isDevice ? '100%' : '75%'} pointRender={pointRender.bind(this)} title="Quantity vs Items" loaded={onChartLoad.bind(this)} tooltip={{ enable: true,  enableMarker: false }}>
                     <Inject services={[ScatterSeries, Category, ColumnSeries, ErrorBar, Tooltip]} />
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={data1} xName='x' yName='y' type='Column' marker={{ height: 10, width: 10 }} errorBar={{ visible: true, verticalError: 'error'}} width={2} />
@@ -73,7 +73,6 @@ const  ErrorBarChart = () => {
                     <li><code>StandardError</code> - Renders a standard error type error bar.</li>
                     <li><code>Custom</code> - Renders a custom type error bar.</li>
                 </ul>
-                <br></br>
                 <p>
                     The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/tooltip/" aria-label="Navigate to the Tooltip property reference for React Chart">tooltip</a> is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.
                 </p>

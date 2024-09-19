@@ -8,7 +8,7 @@ import { ChartComponent, SeriesCollectionDirective, SeriesDirective, ChartTheme,
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { } from '@syncfusion/ej2-react-inputs';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
-import { pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, bubbleBootstrap5Colors, pointBootstrap5Colors, pointMaterial3DarkColors, pointMaterial3Colors , fluent2Colors, fluent2DarkColors} from './theme-color';
+import { pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, bubbleBootstrap5Colors, pointBootstrap5Colors, pointMaterial3DarkColors, pointMaterial3Colors , fluent2Colors, fluent2HighContrastColors, bootstrap5Colors} from './theme-color';
 import { PropertyPane } from '../common/property-pane';
 import { EmitType, Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
@@ -81,7 +81,7 @@ const ChartExport = () => {
     };
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/light/i, "Light").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     const labelRender = (args: IPointRenderEventArgs): void => {
@@ -94,15 +94,15 @@ const ChartExport = () => {
         } else if (selectedTheme === 'material') {
             args.fill = pointMaterialColors[args.point.index % 10];
         } else if (selectedTheme === 'bootstrap5-dark') {
-            args.fill = pointBootstrap5DarkColors[args.point.index % 10];
+            args.fill = pointBootstrap5DarkColors[args.point.index % pointBootstrap5DarkColors.length];
         } else if (selectedTheme === 'bootstrap5') {
-            args.fill = pointBootstrap5Colors[args.point.index % 10];
+            args.fill = pointBootstrap5Colors[args.point.index % pointBootstrap5Colors.length];
         } else if (selectedTheme === 'bootstrap') {
-            args.fill = pointBootstrapColors[args.point.index % 10];
+            args.fill = pointBootstrapColors[args.point.index % pointBootstrapColors.length];
         } else if (selectedTheme === 'bootstrap4') {
-            args.fill = pointBootstrapColors[args.point.index % 10];
+            args.fill = pointBootstrapColors[args.point.index % pointBootstrapColors.length];
         } else if (selectedTheme === 'bootstrap-dark') {
-            args.fill = pointBootstrapColors[args.point.index % 10];
+            args.fill = pointBootstrapColors[args.point.index % pointBootstrapColors.length];
         } else if (selectedTheme === 'highcontrast') {
             args.fill = pointHighContrastColors[args.point.index % 10];
         } else if (selectedTheme === 'fluent-dark') {
@@ -119,8 +119,11 @@ const ChartExport = () => {
             args.fill = pointMaterial3Colors[args.point.index % 10];
         } else if (selectedTheme === 'fluent2') {
             args.fill = fluent2Colors[args.point.index % 10];
-        } else if (selectedTheme === 'fluent2-dark') {
-            args.fill = fluent2DarkColors[args.point.index % 10];
+        } else if (selectedTheme === 'fluent2-highcontrast' || selectedTheme === 'fluent2-dark') {
+            args.fill = fluent2HighContrastColors[args.point.index % 10];
+        }
+        else if (selectedTheme === 'bootstrap5' || selectedTheme === 'bootstrap5-dark') {
+            args.fill = bootstrap5Colors[args.point.index % bootstrap5Colors.length];
         }
     }
     const onClick = (e: Event): void => {

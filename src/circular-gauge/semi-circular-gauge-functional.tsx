@@ -15,7 +15,11 @@ const SAMPLE_CSS = `
     }
     .e-view.fluent2 #property .angleCheckBox, .e-view.fluent2-dark #property .angleCheckBox {
         padding-top: 0px; padding-left: 0px; margin-left: -8px
-    }`;
+    }
+    .e-view.fluent2-highcontrast #property .angleCheckBox {
+        margin-left: -8px !important;
+    }
+    `;
 
 const SemiGauge = () => {
     useEffect(() => {
@@ -42,7 +46,7 @@ const SemiGauge = () => {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5')) as GaugeTheme;
         // custom code end
     }
 

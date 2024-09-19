@@ -27,11 +27,12 @@
         font-size: 15px;
     }
     .material-dark .custom-delete::before, .fabric-dark .custom-delete::before, .bootstrap-dark .custom-delete::before, .tailwind-dark .custom-delete::before,
-    .bootstrap5-dark .custom-delete::before, .material3-dark .custom-delete::before {
+    .bootstrap5-dark .custom-delete::before, .material3-dark .custom-delete::before, .fluent2-highcontrast .custom-delete::before, .fluent2-dark .custom-delete::before,
+    .fluent-dark .custom-delete::before, .bootstrap5\.3-dark .custom-delete::before {
         color: rgba(255, 255, 255, 0.54);
     }
-    .bootstrap5 .custom-delete,
-    .bootstrap5-dark .custom-delete {
+    .bootstrap5 .custom-delete, .bootstrap5-dark .custom-delete,
+    .bootstrap5\.3 .custom-delete, .bootstrap5\.3-dark .custom-delete {
         margin-top: 3px;
     }
     .custom-delete {
@@ -40,11 +41,6 @@
     }
     .e-rtl .custom-delete {
         float: left;
-    }
-    .fluent2 #list.e-listview .e-list-item,
-    .fluent2-dark #list.e-listview .e-list-item,
-    .fluent2-high-contrast #list.e-listview .e-list-item {
-        padding: 7px 12px;
     }
     .fabric.e-bigger #list.e-listview .e-list-item,
     .fabric-dark.e-bigger #list.e-listview .e-list-item,
@@ -60,7 +56,9 @@
     .highcontrast .custom-delete::before {
         color: #fff;
     }
-    .highcontrast .e-active.e-list-item .custom-delete::before {
+    .highcontrast .e-active.e-list-item .custom-delete::before,
+    .fluent2-highcontrast .e-active.e-list-item .custom-delete::before,
+    .fluent2-highcontrast .e-hover.e-list-item .custom-delete::before {
 	    color: #000;
     }
     .bootstrap4.e-bigger #list, .bootstrap4.e-bigger #tree1, .bootstrap4.e-bigger #tree2 {
@@ -121,3 +119,14 @@
         margin-top: 10px;
         margin-bottom: 10px;
     }
+
+  .fluent2 #list .dropped-list-view-item,
+  .fluent2-dark #list .dropped-list-view-item,
+  .fluent2-highcontrast #list .dropped-list-view-item {
+      padding: 6px;
+  }
+
+  .fluent2 .custom-delete, .fluent2-dark .custom-delete,
+  .fluent2-highcontrast .custom-delete {
+      margin-top: 1px;
+  }

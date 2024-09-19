@@ -47,7 +47,7 @@ function Clipboard() {
                         <ColumnDirective field='CustomerName' headerText='Customer Name' width='150' validationRules={customeridRule}></ColumnDirective>
                         <ColumnDirective field='OrderDate' headerText='Order Date' format='yMd' width='170' editType='datepickeredit'></ColumnDirective>
                         <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' validationRules={freightRules} editType='numericedit'></ColumnDirective>
-                        <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='130' format="yMd" textAlign="Right" editType='dropdownedit'></ColumnDirective>
+                        <ColumnDirective field='ShipCountry' headerText='Ship Country' width='130' editType='dropdownedit'></ColumnDirective>
                     </ColumnsDirective>
                     <Inject services={[Page, Selection, Toolbar, Edit, Filter]} />
                 </GridComponent>

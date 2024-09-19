@@ -42,7 +42,34 @@ const SAMPLE1_CSS = `
 .bootstrap5 .disableRow .e-rowcell{
   color: rgba(0, 0, 0, .35) !important;
 }
+.bootstrap5\.3 .disableRow .e-rowcell{
+  color: rgba(0, 0, 0, .35) !important;
+}
+.bootstrap5_3 .disableRow .e-rowcell{
+  color: rgba(0, 0, 0, .35) !important;
+}
+.fluent .disableRow .e-rowcell{
+  color: rgba(0, 0, 0, .35) !important;
+}
+.fluent2 .disableRow .e-rowcell{
+  color: rgba(0, 0, 0, .35) !important;
+}
 .bootstrap5-dark .disableRow .e-rowcell{
+  color: #757575 !important;
+}
+.bootstrap5\.3-dark .disableRow .e-rowcell{
+  color: #757575 !important;
+}
+.bootstrap5_3-dark .disableRow .e-rowcell{
+  color: #757575 !important;
+}
+.fluent-dark .disableRow .e-rowcell{
+  color: #757575 !important;
+}
+ .fluent2-dark .disableRow .e-rowcell{
+  color: #757575 !important;
+}
+.fluent2-highcontrast .disableRow .e-rowcell{
   color: #757575 !important;
 }
 .highcontrast .disableRow .e-rowcell{
@@ -57,15 +84,6 @@ const SAMPLE1_CSS = `
 .e-multiselect {
   padding-left : 0px !important;
   padding-top: 0px !important;
-}
-.fluent2 .disableRow .e-rowcell{
-  color: rgba(0, 0, 0, .38) !important;
-}
-.fluent2-dark .disableRow .e-rowcell{
-  color: #757575 !important;
-}
-.fluent2-highcontrast .disableRow .e-rowcell{
-  color: #757575 !important;
 }
 `;
 {/* custom code end */ }

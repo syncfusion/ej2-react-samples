@@ -35,7 +35,7 @@ const LineMultiLine = () => {
 
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     return (
@@ -57,7 +57,6 @@ const LineMultiLine = () => {
                     In this example, you can see how to render and configure each point in line type series.
                     Multi colored line charts are used to represent time-dependent data to show the trends at equal intervals with their individual colors by using <code>pointColorMapping</code>.
                 </p>
-                <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
                     Chart component features are segregated into individual feature-wise modules. To use multi colored line series, 

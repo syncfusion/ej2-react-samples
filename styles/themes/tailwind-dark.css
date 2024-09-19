@@ -134,7 +134,7 @@ body.tailwind-dark,
 .tailwind-dark .sb-left-pane .e-listview .e-list-item:hover,
 .tailwind-dark .sb-themeswitch-btn:hover,
 .tailwind-dark .sb-themeswitch-btn.active {
-    background-color: rgb(107, 114, 128) !important;
+    background-color: rgb(107, 114, 128);
 }
 
 .tailwind-dark .sb-left-pane .e-treeview .e-list-item.e-active>.e-fullrow {

@@ -68,7 +68,7 @@ const ProgressBarSemiCircular = () => {
         updateSampleSection();
     }, [])
 
-    const annotationColors: string[] = ['#e91e63', '#0078D6', '#317ab9', '#007bff', '#4F46E5', '#FFD939', '#9A9A9A', '#22D3EE', '#0D6EFD', '#6750A4', '#D0BCFF', '#0F6CBD', '#1AEBFF', '#0F6CBD', '#1AEBFF', '#115EA3'];
+    const annotationColors: string[] = ['#e91e63', '#0078D6', '#317ab9', '#007bff', '#4F46E5', '#FFD939', '#9A9A9A', '#22D3EE', '#0D6EFD', '#6750A4', '#D0BCFF', '#0F6CBD', '#1AEBFF', '#115EA3'];
     const content1: string = '<div id="point1" style="font-size:24px;font-weight:bold;color:#0078D6;fill:#0078D6"><span>100%</span></div>';
     const content2: string = '<div id="point1" style="font-size:24px;font-weight:bold;color:#0078D6;fill:#0078D6"><span>100%</span></div>';
     const content3: string = '<div id="point1" style="font-size:24px;font-weight:bold;color:#0078D6;fill:#0078D6"><span>100%</span></div>';
@@ -112,7 +112,7 @@ const ProgressBarSemiCircular = () => {
 
     const progressLoad: EmitType<ILoadedEventArgs> = (args: ILoadedEventArgs) => {
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
         args.progressBar.theme = (selectedTheme.charAt(0).toUpperCase() +
             selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ProgressTheme;
         switch (selectedTheme) {
@@ -153,6 +153,9 @@ const ProgressBarSemiCircular = () => {
                 break;
             case "fluent2":
                 args.progressBar.annotations[0].content = annotationElementContent(annotationColors[11], args.progressBar.element.id);
+                break;
+            case "fluent2-highcontrast":
+                args.progressBar.annotations[0].content = annotationElementContent(annotationColors[12], args.progressBar.element.id);
                 break;
             case "fluent2-dark":
                 args.progressBar.annotations[0].content = annotationElementContent(annotationColors[13], args.progressBar.element.id);

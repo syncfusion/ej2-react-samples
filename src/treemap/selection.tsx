@@ -16,7 +16,14 @@ let datasource: any = data as any;
 const SAMPLE_CSS = `
 	.e-view.fluent2 #property .e-checkbox-wrapper .e-icons, .e-view.fluent2-dark #property .e-checkbox-wrapper .e-icons {
         margin-left: 0px;
-    }`;
+    }
+	.drilldownCheckbox{
+		margin-left: 0px;
+	}
+	.e-view.fluent2-highcontrast #property .drilldownCheckbox {
+        margin-left: -8px;
+    }
+	`;
 
 export class Selection extends SampleBase<{}, {}> {
 	private treemapInstance: TreeMapComponent;
@@ -63,7 +70,7 @@ export class Selection extends SampleBase<{}, {}> {
 		let theme: string = location.hash.split('/')[1];
 		theme = theme ? theme : 'Material';
 		args.treemap.theme = ((theme.charAt(0).toUpperCase() +
-		theme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as TreeMapTheme;
+		theme.slice(1)).replace(/-dark/i, 'Dark').replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5')) as TreeMapTheme;
 		// custom code end
 	}
 	
@@ -126,7 +133,7 @@ export class Selection extends SampleBase<{}, {}> {
 										<div style={{ paddingLeft: '0px' }}> Enable</div>
 									</td>
 									<td>
-										<div style={{paddingTop: "0px", paddingLeft: '0px'}}>
+										<div className="drilldownCheckbox" style={{paddingTop: "0px", paddingLeft: '0px'}}>
 											<CheckBoxComponent id='highlightEnable' checked={true} change={this.highlightChange.bind(this)}> </CheckBoxComponent>
 										</div>
 									</td>
@@ -152,7 +159,7 @@ export class Selection extends SampleBase<{}, {}> {
 										<div style={{ paddingLeft: '0px' }}>Enable</div>
 									</td>
 									<td>
-										<div style={{paddingTop: "0px", paddingLeft: '0px'}}>
+										<div className="drilldownCheckbox" style={{paddingTop: "0px", paddingLeft: '0px'}}>
 											<CheckBoxComponent id='SelectionEnable' checked={true} change={this.selectionchange.bind(this)}> </CheckBoxComponent>
 										</div>
 									</td>

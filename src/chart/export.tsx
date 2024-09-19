@@ -10,7 +10,7 @@ import {
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { } from '@syncfusion/ej2-react-inputs';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
-import { fabricColors, bootstrapColors, materialColors, highContrastColors, fluentColors, fluentDarkColors } from './theme-color';
+import { fabricColors, bootstrapColors, materialColors, highContrastColors, fluentColors, fluentDarkColors, bootstrap5Colors} from './theme-color';
 import { PropertyPane } from '../common/property-pane';
 import { EmitType, Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
@@ -134,7 +134,7 @@ export class ChartExport extends SampleBase<{}, {}> {
         
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").
             replace(/light/i, "Light").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
@@ -152,8 +152,12 @@ export class ChartExport extends SampleBase<{}, {}> {
             args.fill = fluentColors[args.point.index % 10];
         } else if (selectedTheme === 'fluent-dark') {
             args.fill = fluentDarkColors[args.point.index % 10];
-        } else {
-            args.fill = bootstrapColors[args.point.index % 10];
+        }
+        else if (selectedTheme === 'bootstrap5' || selectedTheme === 'bootstrap5-dark') {
+            args.fill = bootstrap5Colors[args.point.index % bootstrap5Colors.length];
+        }
+        else {
+            args.fill = bootstrapColors[args.point.index % bootstrapColors.length];
         }
     }
     public onClick(e: Event): void {

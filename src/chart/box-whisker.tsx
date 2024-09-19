@@ -17,7 +17,7 @@ import { Browser } from "@syncfusion/ej2/base";
 
 export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEventArgs): void => {
     let selectedTheme: string = location.hash.split('/')[1];
-    selectedTheme = selectedTheme ? selectedTheme : 'Material';
+    selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
     if (selectedTheme && selectedTheme.indexOf('fabric') > -1) {
         args.fill = fabricColors[args.point.index % 10];
     } else if (selectedTheme === 'material') {
@@ -27,7 +27,7 @@ export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEve
     } else if (selectedTheme === 'fluent-dark') {
         args.fill = fluentDarkColors[args.point.index % 10];
     } else {
-        args.fill = bootstrapColors[args.point.index % 10];
+        args.fill = bootstrapColors[args.point.index % bootstrapColors.length];
     }
     args.border.color = getSaturationColor(args.fill, -0.6);
 };
@@ -89,7 +89,6 @@ export class BoxWhisker extends SampleBase<{}, {}> {
                 <div id="description">
                     <p>In this example, you can see how to render and configure a box and whisker chart or box plot. This chart is used to visualize a group of numerical data through their data quartiles. Box plots may also have lines extending vertically from the boxes (whiskers) indicating variability outside the upper and lower quartiles. Marker and DataLabel are used to represent individual data and its values.</p>
                     <p>Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
-                    <br></br>
                     <p><b>Injecting Module</b></p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To use BoxAndWhisker series, we need to inject
@@ -108,7 +107,7 @@ export class BoxWhisker extends SampleBase<{}, {}> {
         
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
         replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };

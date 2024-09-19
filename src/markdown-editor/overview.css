@@ -1,0 +1,99 @@
+#rtePreview .e-richtexteditor textarea.e-content#markdownPreview_editable-content {
+    float: left;
+    border-right: 1px solid rgba(0, 0, 0, 0.12);
+}
+.markdown-preview .title {
+    color: #333333;
+    letter-spacing: 1px;
+    padding-left: 10px;
+    text-align: center;
+    font-size: 12px !important;
+    margin: 10px 0;
+}
+.markdown-preview .heading {
+    float: left;
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    padding: 0px;
+    padding-left:0px;
+    padding-right:0px;
+}
+#rtePreview #markdownPreview .e-richtexteditor .e-rte-content .e-content{
+    min-height: 150px;
+}
+
+#rtePreview .e-icon-btn.e-active .e-md-preview::before {
+    content: '\e350';
+}
+
+#rtePreview .e-icon-btn .e-md-preview::before {
+    content: '\e345';
+}
+
+.bootstrap4 #rtePreview .e-icon-btn.e-active .e-md-preview::before {
+    content: '\e790';
+}
+
+.bootstrap4 #rtePreview .e-icon-btn .e-md-preview::before {
+    content: '\e787';
+}
+
+.tailwind #rtePreview .e-icon-btn.e-active .e-md-preview::before,
+.tailwind-dark #rtePreview .e-icon-btn.e-active .e-md-preview::before,
+.fluent #rtePreview .e-icon-btn.e-active .e-md-preview::before,
+.fluent-dark #rtePreview .e-icon-btn.e-active .e-md-preview::before,
+.fluent2 #rtePreview .e-icon-btn.e-active .e-md-preview::before,
+.fluent2-dark #rtePreview .e-icon-btn.e-active .e-md-preview::before,
+.bootstrap5 #rtePreview .e-icon-btn.e-active .e-md-preview::before,
+.bootstrap5\.3 #rtePreview .e-icon-btn.e-active .e-md-preview::before,
+.bootstrap5\.3-dark #rtePreview .e-icon-btn.e-active .e-md-preview::before,
+.bootstrap5-dark #rtePreview .e-icon-btn.e-active .e-md-preview::before,
+.material3 #rtePreview .e-icon-btn.e-active .e-md-preview::before,
+.material3-dark #rtePreview .e-icon-btn.e-active .e-md-preview::before {
+    content: '\e80e';
+}
+
+.tailwind #rtePreview .e-icon-btn .e-md-preview::before,
+.tailwind-dark #rtePreview .e-icon-btn .e-md-preview::before,
+.bootstrap5 #rtePreview .e-icon-btn .e-md-preview::before,
+.bootstrap5\.3 #rtePreview .e-icon-btn .e-md-preview::before,
+.bootstrap5\.3-dark #rtePreview .e-icon-btn .e-md-preview::before,
+.bootstrap5-dark #rtePreview .e-icon-btn .e-md-preview::before,
+.fluent #rtePreview .e-icon-btn .e-md-preview::before,
+.fluent-dark #rtePreview .e-icon-btn .e-md-preview::before,
+.fluent2 #rtePreview .e-icon-btn .e-md-preview::before,
+.fluent2-dark #rtePreview .e-icon-btn .e-md-preview::before,
+.material3 #rtePreview .e-icon-btn .e-md-preview::before,
+.material3-dark #rtePreview .e-icon-btn .e-md-preview::before {
+    content: '\e7de';
+}
+
+#rtePreview .e-rte-content #markdownPreviewhtml-preview.e-content {
+    float: right;
+    width: 50%;
+    overflow: auto;
+    height: inherit;
+    height: 100%;
+}
+
+#rtePreview #markdownPreview .e-rte-content .e-content.e-pre-source {
+    width: 100%;
+}
+
+.sb-header {
+    z-index: 100 !important;
+}
+
+#rtePreview .content-wrapper {
+    width: auto;
+    margin: 0;
+}
+
+.sb-content.e-view.hide-header {
+    top: 0 !important;
+}
+
+.sb-header.e-view.hide-header {
+    display: none;
+}

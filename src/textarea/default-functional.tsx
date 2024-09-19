@@ -30,7 +30,7 @@ const Default = () => {
                         <TextAreaComponent placeholder="Outlined" cssClass="e-outline" floatLabelType="Auto" rows={rows} cols={cols} />
                     </div>
                     <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6">
-                        <TextAreaComponent placeholder="Filled" cssClass="e-filled" floatLabelType="Auto"  rows={rows} cols={cols} />
+                        <TextAreaComponent placeholder="Filled" cssClass="e-filled" floatLabelType="Auto" rows={rows} cols={cols} />
                     </div>
                 </div>
                 <div className="row custom-margin">
@@ -38,7 +38,7 @@ const Default = () => {
                 </div>
                 <div className="row custom-margin">
                     <div className="col-xs-12 col-sm-12 col-lg-12 col-md-12">
-                        <TextAreaComponent placeholder="Enter your comments" floatLabelType="Auto"  rows={rows} cols={cols2} />
+                        <TextAreaComponent placeholder="Enter your comments" floatLabelType="Auto" rows={rows} cols={cols2} />
                     </div>
                 </div>
                 <div className="row custom-margin">
@@ -47,17 +47,17 @@ const Default = () => {
                 <div className="row custom-margin">
                     <div className="col-xs-4 col-sm-4 col-lg-4 col-md-4">
                         <div className="e-input-group e-success">
-                            <textarea className="e-input" onFocus={floatFocus} onBlur={floatBlur} placeholder="Success"  rows={rows} cols={cols} />
+                            <textarea className="e-input" onFocus={floatFocus} onBlur={floatBlur} placeholder="Success" rows={rows} cols={cols} />
                         </div>
                     </div>
                     <div className="col-xs-4 col-sm-4 col-lg-4 col-md-4">
                         <div className="e-input-group e-warning">
-                            <textarea className="e-input" onFocus={floatFocus} onBlur={floatBlur} placeholder="Warning"  rows={rows} cols={cols} />
+                            <textarea className="e-input" onFocus={floatFocus} onBlur={floatBlur} placeholder="Warning" rows={rows} cols={cols} />
                         </div>
                     </div>
                     <div className="col-xs-4 col-sm-4 col-lg-4 col-md-4">
                         <div className="e-input-group e-error">
-                            <textarea className="e-input" onFocus={floatFocus} onBlur={floatBlur} placeholder="Error"  rows={rows} cols={cols} />
+                            <textarea className="e-input" onFocus={floatFocus} onBlur={floatBlur} placeholder="Error" rows={rows} cols={cols} />
                         </div>
                     </div>
                 </div>
@@ -73,53 +73,55 @@ const Default = () => {
                     </p>
                 <br />
                 <table className="custom-width">
-                    <tr>
-                        <th>Types</th>
-                        <th>Description</th>
-                    </tr>
-                    <tr>
-                        <td>Outlined & Filled textarea</td>
-                        <td>You can render the following two types of text fields in the material theme by adding <b>e-outline</b> and <b>e-filled</b> class to cssClass API.
-                                    <ul>
-                                <li>Filled text fields</li>
-                                <li>Outlined text fields</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Default TextArea</td>
-                        <td>
-                            <div className="custom-padding-bottom-10"> You can render textarea by adding class as <b>e-input</b>. You can also render textarea as group by adding
-                                        parent element with <b>e-input-group</b> class added.
-                                </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>RTL TextArea</td>
-                        <td>
-                            <div className="custom-padding-bottom-10">Set <b>e-input</b> and <b>e-rtl</b> classes to render textarea in right to left direction. For rendering
-                                        group in RTL mode , class list will be like <b>e-input-group e-rtl</b>.</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Disabled TextArea</td>
-                        <td>
-                            <div className="custom-padding-bottom-10">You can set the HTML disabled attribute to the textarea. For a parent group element, you can disable it by adding the <b>e-disabled</b> class.</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Readonly TextArea</td>
-                        <td>
-                            <div className="custom-padding-bottom-10">You can set the HTML readonly attribute to the textarea.</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Validation states</td>
-                        <td>
-                            <div className="custom-padding-bottom-10">You can apply validation states success, warning, error to the textarea with the corresponding classes added
-                                    to the input element such as <b>e-success</b>, <b>e-warning</b>, <b>e-error</b>.</div>
-                        </td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <th>Types</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td>Outlined & Filled textarea</td>
+                            <td>You can render the following two types of text fields in the material theme by adding <b>e-outline</b> and <b>e-filled</b> class to cssClass API.
+                                        <ul>
+                                    <li>Filled text fields</li>
+                                    <li>Outlined text fields</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Default TextArea</td>
+                            <td>
+                                <div className="custom-padding-bottom-10"> You can render textarea by adding class as <b>e-input</b>. You can also render textarea as group by adding
+                                            parent element with <b>e-input-group</b> class added.
+                                    </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>RTL TextArea</td>
+                            <td>
+                                <div className="custom-padding-bottom-10">Set <b>e-input</b> and <b>e-rtl</b> classes to render textarea in right to left direction. For rendering
+                                            group in RTL mode , class list will be like <b>e-input-group e-rtl</b>.</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Disabled TextArea</td>
+                            <td>
+                                <div className="custom-padding-bottom-10">You can set the HTML disabled attribute to the textarea. For a parent group element, you can disable it by adding the <b>e-disabled</b> class.</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Readonly TextArea</td>
+                            <td>
+                                <div className="custom-padding-bottom-10">You can set the HTML readonly attribute to the textarea.</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Validation states</td>
+                            <td>
+                                <div className="custom-padding-bottom-10">You can apply validation states success, warning, error to the textarea with the corresponding classes added
+                                        to the input element such as <b>e-success</b>, <b>e-warning</b>, <b>e-error</b>.</div>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
                 <br />
             </div>

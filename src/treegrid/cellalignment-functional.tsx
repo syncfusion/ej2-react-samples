@@ -7,6 +7,15 @@ import { sampleData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 
+const SAMPLE_CSS = `
+.fluent2,
+.fluent2-dark,
+.fluent2-highcontrast {
+  .property-section #columns {
+    width: 100%;
+  }
+}`;
+
 const CellAlign = () => {
   useEffect(() => {
     updateSampleSection();
@@ -44,6 +53,11 @@ const CellAlign = () => {
   };
   return (
     <div className="control-pane">
+      {/* custom code start */}
+      <style>
+          {SAMPLE_CSS}
+      </style>
+      {/* custom code end */}
       <div className="control-section">
         <div className="col-md-9">
           <TreeGridComponent
@@ -107,7 +121,7 @@ const CellAlign = () => {
                   <td style={{ width: "70%", paddingRight: "10px" }}>
                     <div>
                       <DropDownListComponent
-                        width="110px"
+                        width="130px"
                         id="columns"
                         change={change.bind(this)}
                         dataSource={columnNames}
@@ -125,7 +139,7 @@ const CellAlign = () => {
                   <td style={{ width: "70%", padding: "10px 10px 10px 0px" }}>
                     <div>
                       <DropDownListComponent
-                        width="110px"
+                        width="130px"
                         id="alignment"
                         change={change2.bind(this)}
                         dataSource={alignment}

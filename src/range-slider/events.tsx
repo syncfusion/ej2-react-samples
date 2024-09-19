@@ -128,9 +128,9 @@ export class Events extends SampleBase<{}, {}> {
                      </p>
                     <p>In this demo, Slider performs following action like created, change, changed Which can be traced by event trace panel.</p>
                     <ul>
-                        <li>created - Triggers when Slider is created.</li>
-                        <li>changee - Triggers when the Slider value is changed.</li>
-                        <li>changed - Triggers when the Slider action is completed with change in Slider value.</li>
+                        <li><a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/slider/#change">created</a> - Triggers when Slider is created.</li>
+                        <li><a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/slider/#change">change</a> - Triggers when the Slider value is changed.</li>
+                        <li><a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/slider/#changed">changed</a> - Triggers when the Slider action is completed with change in Slider value.</li>
                     </ul>
                     <p>For more information, we can refer the
                      <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/slider/#events">events</a> API from the documentation.</p>

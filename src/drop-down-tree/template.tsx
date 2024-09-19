@@ -48,12 +48,21 @@ export class Templates extends SampleBase<{}, {}> {
     );
   }
 
+  //set the value to value template
+  private valueTemplate(data: any): JSX.Element {
+    return (
+      <div>
+        <div> {data.name} - {data.job} </div>
+      </div>
+    );
+  }
+
   render() {
     return (
       <div className='control-pane'>
         <div className='control-section dropdowntree-templates'>
           <div className='control_wrapper'>
-            <DropDownTreeComponent fields={this.fields} placeholder="Select an employee" itemTemplate={this.itemTemplate} footerTemplate={this.footerTemplate} headerTemplate={this.headerTemplate} popupHeight="270px" cssClass="ddt-template" width="100%" />
+            <DropDownTreeComponent fields={this.fields} placeholder="Select an employee" itemTemplate={this.itemTemplate} footerTemplate={this.footerTemplate} headerTemplate={this.headerTemplate} valueTemplate={this.valueTemplate} popupHeight="270px" cssClass="ddt-template" width="100%" />
           </div>
         </div>
         <div id="action-description">
@@ -67,9 +76,10 @@ export class Templates extends SampleBase<{}, {}> {
           </p>
           <p>This sample uses the following list of templates in the Dropdown Tree</p>
           <ul>
-            <li><code>ItemTemplate</code> - To customize the list item's content.</li>
-            <li><code>HeaderTemplate</code> - To customize the header element.</li>
-            <li><code>FooterTemplate</code> - To customize the footer element.</li>
+            <li><a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/drop-down-tree#itemtemplate">ItemTemplate</a> - To customize the list item's content.</li>
+            <li><a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/drop-down-tree#headertemplate">HeaderTemplate</a> - To customize the header element.</li>
+            <li><a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/drop-down-tree#footertemplate">FooterTemplate</a> - To customize the footer element.</li>
+            <li><code>valueTemplate</code> - To customize the selected item's element.</li>
           </ul>
         </div>
       </div>

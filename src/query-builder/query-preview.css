@@ -182,17 +182,29 @@
     }
 }
 
-.highcontrast .mongo-text-area,
-.fluent2-dark .mongo-text-area,
-.fluent2-highcontrast .mongo-text-area {
-    background-color: #1f1f1f;
+.bootstrap5-dark .e-text-area-content,
+.material-dark .e-text-area-content,
+.material3-dark .e-text-area-content,
+.fluent-dark .e-text-area-content,
+.bootstrap5\.3-dark .e-text-area-content,
+.fluent-dark .e-text-area-content,
+.tailwind-dark .e-text-area-content,
+.fluent2-highcontrast .e-text-area-content,
+.fluent2-dark .e-text-area-content,
+.highcontrast .e-text-area-content,
+.bootstrap-dark .e-text-area-content {
+    background-color: black;
 }
 
+.material3 .e-query-preview .e-icons.copycode,
+.material3-dark .e-query-preview .e-icons.copycode,
+.bootstrap5\.3-dark .e-query-preview .e-icons.copycode,
+.bootstrap5-dark .e-query-preview .e-icons.copycode,
+.bootstrap-dark .e-query-preview .e-icons.copycode,
+.highcontrast .e-query-preview .e-icons.copycode,
+.fluent-dark .e-query-preview .e-icons.copycode,
+.tailwind-dark .e-query-preview .e-icons.copycode,
 .fluent2-dark .e-query-preview .e-icons.copycode,
 .fluent2-highcontrast .e-query-preview .e-icons.copycode {
-    background-color: black;
-    padding-bottom: 3px;
     color: white;
 }
-
-

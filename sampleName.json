@@ -806,12 +806,21 @@
         "ControlName": "PDF Viewer",
         "Samples": {
             "default": "Default",
+            "read-only": "Read-Only",
+            "document-list": "Document List",
+            "multi-format-viewer": "Multi-Format Viewer",
+            "organize-pdf": "Organize Pages",
+            "redaction": "Redaction",
             "custom-toolbar": "Custom Toolbar",
+            "custom-context-menu":"Context Menu",
             "right-to-left": "Right To Left",
             "form-filling": "Form Filling",
             "form-designer": "Form Designer",
+            "esigning-form-designer": "eSigning Form Designer",
+            "esigning-pdf-forms": "eSigning PDF Forms",
             "annotations": "Annotations",
-            "hand-written": "Handwritten Signature"
+            "hand-written": "Handwritten Signature",
+            "invisible-signature": "Invisible Signature"
         }
     },
     "pivot-table": {
@@ -899,6 +908,15 @@
 	    "backstage": "Ribbon Backstage"
         }
     },
+    "ai-assistview": {
+        "ControlName": "AI AssistView",
+        "Samples": {
+            "default":"Default Functionalities",
+            "custom-views": "Custom Views",
+            "template": "Template",
+	        "dialog": "Dialog"
+        }
+    },
     "rich-text-editor": {
         "ControlName": "Rich Text Editor",
         "Samples": {
@@ -919,7 +937,12 @@
             "file-browser":"File Browser",
             "types": "Type",
             "insert-emoticons": "Insert Emoticons",
-            "insert-special-characters": "Insert Special Characters",
+            "insert-special-characters": "Insert Special Characters"
+        }
+    },
+    "markdown-editor": {
+        "ControlName": "Markdown Editor",
+        "Samples": {
             "markdown-editor": "Overview",
             "markdown-editor-preview": "Preview",
             "markdown-editor-custom-format": "Custom Format"
@@ -1068,17 +1091,22 @@
         "ControlName": "Spreadsheet",
         "Samples": {
             "default": "Default Functionalities",
-            "formula": "Formula",
-            "protect-sheet":"Protect Sheet",
-            "cell-data-binding": "Cell Data Binding",
-            "remote-data-binding": "Remote Data Binding",
-            "cell-formatting": "Cell Formatting",
-            "number-formatting": "Number Formatting",
-            "conditional-formatting":"Conditional Formatting",
-            "sorting-and-filtering":"Sorting and Filtering",
-            "chart":"Chart",
-            "image":"Image",
-            "cell-template":"Cell Template"
+	   		"formula": "Formula",
+            "protect-sheet": "Protect Sheet",
+			"freeze-panes": "Freeze Panes",
+			"data-validation": "Data Validation",
+			"hyperlink": "Hyperlink",
+			"cell-data-binding": "Cell Data Binding",
+			"remote-data-binding": "Remote Data Binding",
+			"cell-formatting": "Cell Formatting",
+			"number-formatting": "Number Formatting",
+			"conditional-formatting": "Conditional Formatting",
+			"sorting-and-filtering": "Sorting and Filtering",
+			"chart": "Chart",
+			"image": "Image",
+ 			"cell-template": "Cell Template",
+			"note": "Note",
+			"print": "Print"
         }
     },
     "stock-chart": {

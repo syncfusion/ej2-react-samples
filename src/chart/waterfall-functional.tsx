@@ -4,7 +4,7 @@
 import * as React from "react";
 import { useEffect } from 'react';
 import * as ReactDOM from "react-dom";
-import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, Legend, DateTime, Logarithmic, Tooltip, WaterfallSeries, DataLabel, Category, Crosshair, Zoom, ILoadedEventArgs, ChartTheme } from '@syncfusion/ej2-react-charts';
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, Legend, DateTime, Logarithmic, Tooltip, WaterfallSeries, DataLabel, Category, Crosshair, Zoom, ILoadedEventArgs, ChartTheme, ITextRenderEventArgs } from '@syncfusion/ej2-react-charts';
 import { updateSampleSection } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
 export let data: object[] = [
@@ -23,19 +23,19 @@ const SAMPLE_CSS = `
     }
 
     #charts_Series_0_Connector_ {
-        stroke-dasharray: 10px 10px;
+        stroke-dasharray: 1px 2px;
         stroke-linejoin: round; stroke-linecap: round;
         -webkit-animation: dash 1s linear infinite;
         animation: dash 1s linear infinite;
     }
     @-webkit-keyframes dash {
         100% {
-            stroke-dashoffset: -20px;
+            stroke-dashoffset: -3px;
         }
     }
     @keyframes dash {
         100% {
-            stroke-dashoffset: -20px;
+            stroke-dashoffset: -3px;
         }
     }`;
 const Waterfall = () => {
@@ -46,19 +46,23 @@ const Waterfall = () => {
         let chart: Element = document.getElementById('charts');
         chart.setAttribute('title', '');
     };
+    const textRender = (args:ITextRenderEventArgs): void =>{
+          args.series.marker.dataLabel.font.size = Browser.isDevice ?'8px':'12px'
+    }
+    const cornerRadius = { topLeft: 3, bottomLeft: 3, bottomRight: 3, topRight: 3 };
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     return (
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
-                <ChartComponent id='charts' load={load.bind(this)} style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', labelRotation: Browser.isDevice ? -45 : 0, labelIntersectAction : Browser.isDevice ? 'None' : 'Rotate45', majorTickLines: {width : 0}, minorTickLines: {width: 0}, majorGridLines: { width: 0 } }} primaryYAxis={{ lineStyle: {width: 0}, minimum: 0, maximum: 1250, interval: 250, majorGridLines: { width: 1 }, minorTickLines: {width: 0}, title: 'USD', labelFormat: "{value}K" }} tooltip={{ enable: true, format: '<b>${point.x}</b> <br> Product Revenue : <b>${point.y}</b>', header: " " }} width={Browser.isDevice ? '100%' : '75%'} chartArea={{ border: { width: 0 } }} legendSettings={{ visible: false }} title='Company Revenue and Profit' loaded={onChartLoad.bind(this)}>
+                <ChartComponent id='charts' load={load.bind(this)} style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', labelRotation: Browser.isDevice ? -90 : 0, labelIntersectAction : Browser.isDevice ? 'None' : 'Rotate45', majorTickLines: {width : 0}, minorTickLines: {width: 0}, majorGridLines: { width: 0 } ,interval: 1}} primaryYAxis={{ lineStyle: {width: 0}, minimum: 0, maximum: 1250, interval: 250, majorGridLines: { width: 1 }, minorTickLines: {width: 0}, title: 'USD', labelFormat: "{value}K" }} tooltip={{ enable: true, format: '<b>${point.x}</b> <br> Product Revenue : <b>${point.y}</b>', header: " " }} width={Browser.isDevice ? '100%' : '75%'} chartArea={{ border: { width: 0 } }} legendSettings={{ visible: false }} title='Company Revenue and Profit' textRender={textRender} loaded={onChartLoad.bind(this)}>
                     <Inject services={[WaterfallSeries, Category, Tooltip, DateTime, Zoom, Logarithmic, Crosshair, Legend, DataLabel]} />
                     <SeriesCollectionDirective>
-                        <SeriesDirective dataSource={data} border={{color:'black' , width: 1}} xName='x' yName='y' type='Waterfall' intermediateSumIndexes={[4]} sumIndexes={[7]} marker={{ dataLabel: { visible: true,font:{color:'#ffffff'} }, }} connector={{ color: '#5F6A6A', width: 2 }} negativeFillColor='#e56590' />
+                        <SeriesDirective dataSource={data} border={{color:'black' , width: 0.2}} xName='x' yName='y' type='Waterfall' intermediateSumIndexes={[4]} sumIndexes={[7]} marker={{ dataLabel: { visible: true,font:{color:'#ffffff'}}, }} connector={{ color: '#5F6A6A', width: 0.8 , dashArray: '1,2' }} negativeFillColor='#e56590' columnWidth={0.5} cornerRadius={cornerRadius}/>
                     </SeriesCollectionDirective>
                 </ChartComponent>
             </div>
@@ -68,7 +72,6 @@ const Waterfall = () => {
             <div id="description">
                 <p>In this example, you can see how to render and configure the waterfall chart. The waterfall chart explains the gradual change in the quantitative value of an entity that is subject to changes by increments or decrements.</p>
                 <p>Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
-                <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
                     Chart component features are segregated into individual feature-wise modules. To use Waterfall series, we need to inject <code>WaterfallSeries</code> module into <code>services</code>.

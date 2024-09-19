@@ -37,7 +37,7 @@ export class RemoteData extends SampleBase<{}, {}> {
           Dropdown Tree element, and then select an item from the hierarchical structure suggestion list.</p>
         </div>
         <div id="description">
-          <p>The <code>Dropdown Tree</code> loads the data from the remote data services through the dataSource property. It
+          <p>The <code>Dropdown Tree</code> loads the data from the remote data services through the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/drop-down-tree/fields/#datasource">dataSource</a> property. It
             supports the data type of <code>array</code> or <code>DataManager</code>.</p>
           <p>The DataManager that act as an interface between the service endpoint and Dropdown Tree, will require the below
             minimal information to interact with the service endpoint properly.

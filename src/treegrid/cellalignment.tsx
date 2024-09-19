@@ -6,6 +6,15 @@ import { sampleData } from './data';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 
+const SAMPLE_CSS = `
+.fluent2,
+.fluent2-dark,
+.fluent2-highcontrast {
+  .property-section #columns {
+    width: 100%;
+  }
+}`;
+
 export class CellAlign extends SampleBase<{}, {}> {
 
   public treegridObj: TreeGridComponent;
@@ -42,6 +51,11 @@ export class CellAlign extends SampleBase<{}, {}> {
   render() {
     return (
       <div className='control-pane'>
+      {/* custom code start */}
+      <style>
+          {SAMPLE_CSS}
+      </style>
+      {/* custom code end */}
         <div className='control-section'>
           <div className = 'col-md-9'>
             <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks' height='350' allowPaging={true} 
@@ -66,7 +80,7 @@ export class CellAlign extends SampleBase<{}, {}> {
                     </td>
                     <td style={{ width: '70%', paddingRight: '10px' }}>
                       <div>
-                        <DropDownListComponent width="110px" id="columns" change={this.change.bind(this)}
+                        <DropDownListComponent width="130px" id="columns" change={this.change.bind(this)}
                           dataSource={this.columnNames} fields={{ text: 'name', value: 'id' }} value="taskID"
                           ref={dropdown => this.dropdownObj = dropdown} />
                       </div>
@@ -78,7 +92,7 @@ export class CellAlign extends SampleBase<{}, {}> {
                     </td>
                     <td style={{ width: '70%', padding: '10px 10px 10px 0px' }}>
                       <div>
-                        <DropDownListComponent width="110px" id="alignment" change={this.change2.bind(this)}
+                        <DropDownListComponent width="130px" id="alignment" change={this.change2.bind(this)}
                           dataSource={this.alignment} fields={{ text: 'name', value: 'id' }} value="Right"
                           ref={dropdown => this.dropdownObj2 = dropdown} />
                       </div>

@@ -63,7 +63,7 @@ export class ToolbarTemplate extends SampleBase<{}, {}> {
 
         <div id="description">
           <p>Custom toolbar items can be added by defining the toolbar as a collection of ItemModels.
-        Actions for this customized toolbar items are defined in the <code>toolbarClick</code> event.</p>
+          Actions for this customized toolbar items are defined in the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#toolbarclick">toolbarClick</a> event.</p>
           <p>In this sample, the custom toolbar element <code>Quick Filter</code> and <code>Clear Filter</code> is rendered along with predefined toolbar items ExpandAll and CollapseAll.
         While clicking the <code>Quick Filter</code> toolbar item, the filtering occurs for <code>Task Name</code>column.Filtered column can be cleared using <code>Clear Filter</code> toolbar item.</p>
           <p>Gantt component features are segregated into individual feature-wise modules.To use a selection, inject the

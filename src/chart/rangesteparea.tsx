@@ -56,7 +56,6 @@ export class RangeStepArea extends SampleBase<{}, {}> {
                     <p>
                         The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/tooltip/" aria-label="Navigate to the documentation for Tooltip in React Chart component">tooltip</a> is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.
                     </p>
-                    <br></br>
                     <p><b>Injecting Module</b></p>
                     <p>
                         The Charts component’s features are segregated into individual feature modules by feature. To use range step area series, we need to inject the <code>RangeStepAreaSeries</code> module into <code>services</code>.
@@ -75,7 +74,7 @@ export class RangeStepArea extends SampleBase<{}, {}> {
  
      public load(args: ILoadedEventArgs): void {
          let selectedTheme: string = location.hash.split('/')[1];
-         selectedTheme = selectedTheme ? selectedTheme : 'Material';
+         selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
          args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
          switch (selectedTheme) {
             case 'bootstrap5':

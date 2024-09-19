@@ -8,11 +8,11 @@ import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Category, I
 import { PropertyPane } from '../common/property-pane';
 import { Browser } from '@syncfusion/ej2-base';
 import { EmitType } from '@syncfusion/ej2-base';
-import { pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, pointBootstrap5Colors, pointMaterial3DarkColors, pointMaterial3Colors, pointFluent2Colors, pointFluent2DarkColors } from './theme-color';
+import { pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, pointBootstrap5Colors, pointMaterial3DarkColors, pointMaterial3Colors, pointFluent2Colors, pointFluent2HighContrastColors } from './theme-color';
 import { updateSampleSection } from '../common/sample-base';
 export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEventArgs): void => {
     let selectedTheme: string = location.hash.split('/')[1];
-    selectedTheme = selectedTheme ? selectedTheme : 'Material';
+    selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
     if (selectedTheme && selectedTheme.indexOf('fabric') > -1) {
         args.fill = pointFabricColors[args.point.index % 10];;
     } else if (selectedTheme === 'material-dark') {
@@ -20,15 +20,15 @@ export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEve
     } else if (selectedTheme === 'material') {
         args.fill = pointMaterialColors[args.point.index % 10];
     } else if (selectedTheme === 'bootstrap5-dark') {
-        args.fill = pointBootstrap5DarkColors[args.point.index % 10];
+        args.fill = pointBootstrap5DarkColors[args.point.index % pointBootstrap5DarkColors.length];
     } else if (selectedTheme === 'bootstrap5') {
-        args.fill = pointBootstrap5Colors[args.point.index % 10];
+        args.fill = pointBootstrap5Colors[args.point.index % pointBootstrap5Colors.length];
     } else if (selectedTheme === 'bootstrap') {
-        args.fill = pointBootstrapColors[args.point.index % 10];
+        args.fill = pointBootstrapColors[args.point.index % pointBootstrapColors.length];
     } else if (selectedTheme === 'bootstrap4') {
-        args.fill = pointBootstrapColors[args.point.index % 10];
+        args.fill = pointBootstrapColors[args.point.index % pointBootstrapColors.length];
     } else if (selectedTheme === 'bootstrap-dark') {
-        args.fill = pointBootstrapColors[args.point.index % 10];
+        args.fill = pointBootstrapColors[args.point.index % pointBootstrapColors.length];
     } else if (selectedTheme === 'highcontrast') {
         args.fill = pointHighContrastColors[args.point.index % 10];
     } else if (selectedTheme === 'fluent-dark') {
@@ -45,8 +45,8 @@ export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEve
         args.fill = pointMaterial3Colors[args.point.index % 10];
     } else if (selectedTheme === 'fluent2') {
         args.fill = pointFluent2Colors[args.point.index % 10];
-    } else if (selectedTheme === 'fluent2-dark') {
-        args.fill = pointFluent2DarkColors[args.point.index % 10];
+    } else if (selectedTheme === 'fluent2-highcontrast' || selectedTheme === 'fluent2-dark') {
+        args.fill = pointFluent2HighContrastColors[args.point.index % 10];
     };
 }
 
@@ -79,7 +79,7 @@ const BoxWhisker = () => {
     };
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     return (
@@ -99,7 +99,6 @@ const BoxWhisker = () => {
             <div id="description">
                 <p>In this example, you can see how to render and configure a box and whisker chart or box plot. This chart is used to visualize a group of numerical data through their data quartiles. Box plots may also have lines extending vertically from the boxes (whiskers) indicating variability outside the upper and lower quartiles. Marker and DataLabel are used to represent individual data and its values.</p>
                 <p>Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
-                <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
                     Chart component features are segregated into individual feature-wise modules. To use BoxAndWhisker series, we need to inject <code>BoxAndWhiskerSeries</code> module into <code>services</code>.

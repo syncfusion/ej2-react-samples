@@ -80,9 +80,9 @@ const DraggableTooltip = () => {
                     to make it look fit within the sample container area.
                 </p>
                 <p>
-                    In this sample, the tooltip is opened manually by using its <code>open</code> method on drag start of the target image.
-                    On further dragging, the <code>refresh</code> method of the tooltip needs to be called to reposition it
-                    continuously and on drag stop, the tooltip will be hidden by using it’s <code>close</code> method.
+                    In this sample, the tooltip is opened manually by using its < a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/tooltip/#open">open</a> method on drag start of the target image.
+                    On further dragging, the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/tooltip/#refresh">refresh</a> method of the tooltip needs to be called to reposition it
+                    continuously and on drag stop, the tooltip will be hidden by using it’s <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/tooltip/#close">close</a> method.
                 </p>
                 <p>
                     More information on dynamic positioning of the tooltip can be found in the

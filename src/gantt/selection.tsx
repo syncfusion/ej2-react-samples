@@ -132,31 +132,26 @@ export class GanttSelection extends SampleBase<{}, {}> {
           </div>
         </div>
         <div id="action-description">
-        <p> The selection feature enables you to highlight row or cell. It can be enabled by setting
-        <code>allowSelection</code> to <code>true</code>.</p>
-        </div>
-
-        <div id="description">
         <p>
-        The Gantt component supports two types of selection that can be set by using the <code>selectionSettings.type</code> property.
-        They are:
-    </p>
-    <ul>
-            <li><code>Single</code> - Sets a single value by default and allows only selection of a single row or a cell.</li>
-            <li><code>Multiple</code> - Allows you to select multiple rows or cells. To perform the multi-selection, press and hold the CTRL key and click the desired rows or cells.</li>
-    </ul>
-    <p>
-        The Gantt component supports three types of selection modes that can be set by using the <code>selectionSettings.mode</code> property.
-        They are:
-    </p>
-    <ul>
-            <li><code>Row</code> - Allows you to select only rows, and the row value is set by default.</li>
-            <li><code>Cell</code> - Allows you to select only cells.</li>
-            <li><code>Both</code> - Allows you to select rows and cells at the same time..</li>
-    </ul>
-    <p>
-        The Gantt component supports toggle selection that can be set by using the <code>selectionSettings.enableToggle</code> property.
-    </p>
+          The Gantt component supports two types of selection that can be set by using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/selectionSettingsModel/#type">selectionSettings.type</a> property.
+          They are:
+        </p>
+        <ul>
+          <li><code>Single</code> - Sets a single value by default and allows only selection of a single row or a cell.</li>
+          <li><code>Multiple</code> - Allows you to select multiple rows or cells. To perform the multi-selection, press and hold the CTRL key and click the desired rows or cells.</li>
+        </ul>
+        <p>
+          The Gantt component supports three types of selection modes that can be set by using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/selectionSettingsModel/#mode">selectionSettings.mode</a> property.
+          They are:
+        </p>
+        <ul>
+          <li><code>Row</code> - Allows you to select only rows, and the row value is set by default.</li>
+          <li><code>Cell</code> - Allows you to select only cells.</li>
+          <li><code>Both</code> - Allows you to select rows and cells at the same time..</li>
+        </ul>
+        <p>
+          The Gantt component supports toggle selection that can be set by using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/selectionSettingsModel/#enabletoggle">selectionSettings.enableToggle</a> property.
+        </p>
         </div>
       </div>
     )

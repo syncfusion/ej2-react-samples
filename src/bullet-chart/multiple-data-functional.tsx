@@ -128,7 +128,7 @@ function BulletChartMultipleData() {
         let chart: Element = document.getElementById('multipleData');
         chart.setAttribute('title', '');
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
         args.bulletChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/light/i, 'Light').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
         let color: string[] = [];
         switch (args.bulletChart.theme) {
@@ -177,6 +177,7 @@ function BulletChartMultipleData() {
             case "Fluent2":
                 color = fluent2Colors;
                 break;
+            case "Fluent2HighContrast":
             case "Fluent2Dark":
                 color = fluent2DarkColors;
                 break;

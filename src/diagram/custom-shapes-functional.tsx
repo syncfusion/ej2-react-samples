@@ -1,3 +1,4 @@
+// Importing necessary modules from React, ReactDOM, and Syncfusion Diagram library
 import * as ReactDOM from "react-dom";
 import * as React from "react";
 import './custom.module.css';
@@ -37,6 +38,8 @@ let nodes: NodeModel[] = [
       style: { fontSize: 16, color: "#797979", bold: true }
     }]
   }];
+
+// Interface defining the structure of expense data
 interface IExpense {
   UniqueId: string;
   DateTime: Date;
@@ -59,13 +62,16 @@ let predicateEnd: Predicate;
 let predicate: Predicate;
 
 let acclegendSettings: Object = { visible: false };
+  // Initializing date range values
   let start: Date = new Date("5/31/2017");
   let end: Date = new Date("11/30/2017");
   let minDate: Date = new Date(2017, 5, 1);
   let maxDate: Date = new Date(2017, 10, 30);
+  // Setting predicates for date filtering
   predicateStart = new Predicate('DateTime', 'greaterthanorequal', start);
   predicateEnd = new Predicate('DateTime', 'lessthanorequal', end);
   predicate = predicateStart.and(predicateEnd);
+  // Date range presets
   let datePresets: Object[] = [
     { label: 'Last Month', start: new Date('10/1/2017'), end: new Date('10/31/2017') },
     { label: 'Last 3 Months', start: new Date('9/1/2017'), end: new Date('11/30/2017') },
@@ -170,7 +176,7 @@ let acclegendSettings: Object = { visible: false };
   let piedata: any;
 
  
-
+//function for HTML node
 function HtmlNode() {
     var template = diagramTemplate;
     let gtemplate: any = gridTemplate;
@@ -184,6 +190,7 @@ function HtmlNode() {
         diagramInstance.fitToPage(); 
     }
 
+    // Function defining the grid template
     function gridTemplate(props) {
         return (
           <tr style={{ height: "30px" }}>
@@ -202,7 +209,7 @@ function HtmlNode() {
           </tr>
         );
       }
-    
+      // Function to handle date range change
       function onDateRangeChange(args: RangeEventArgs) {
         start = args.startDate;
         end = args.endDate;
@@ -221,13 +228,14 @@ function HtmlNode() {
           createLegendData('pieUpdate');
         }, 1000);
       }
-    
+      // Function to update chart data based on income and expense types
       function updateChartData() {
         new DataManager(exp).executeQuery(new Query()
           .where(predicate.and('TransactionType', 'equal', 'Expense')))
           .then((e: any) => {
             colChartExpenseData = getColumnChartExpenseDS(e);
           });
+         // Query and update income chart data, and line chart data
         new DataManager(exp).executeQuery(new Query()
           .where(predicate.and('TransactionType', 'equal', 'Income')))
           .then((e: any) => {
@@ -249,7 +257,7 @@ function HtmlNode() {
           return '6px';
         }
       }
-    
+      // Function for initial rendering
       function initialRenderr(): void {
         start = new Date("5/31/2017");
         end = new Date("11/30/2017");
@@ -265,13 +273,13 @@ function HtmlNode() {
         lGrid.refresh();
         pie.refresh();
       }
-    
+      // Function to refresh pie chart
       function refreshPieChart(): void {
         getTotalExpense();
         createLegendData('pieUpdate');
         pie.series[0].dataSource = piedata;
       }
-    
+      // Function to assign object properties from result to array
       function objectAssign(e: any): object[] {
         let result: Object[] = [];
         let obj: any;
@@ -281,7 +289,7 @@ function HtmlNode() {
         }
         return result;
       }
-    
+      // Function to get column chart data for income
       function getColumnChartIncomeDS(e: any): Object[] {
         colIncomeDS = [];
         tempIncomeDS = [];
@@ -301,7 +309,7 @@ function HtmlNode() {
         }
         return colIncomeDS;
       }
-      
+      // Function to get column chart data for expense
       function getColumnChartExpenseDS(e: any): Object[] {
         colExpenseDS = [];
         tempExpenseDS = [];
@@ -321,7 +329,7 @@ function HtmlNode() {
         }
         return colExpenseDS;
       }
-      
+      // Function to get line chart data
       function getLineChartDS(): Object[] {
         lineD = [];
         lineDS = [];
@@ -349,12 +357,12 @@ function HtmlNode() {
         }
         return lineDS;
       }
-    
+      // Function called when accumulation chart loaded
       function acconChartLoaded(args: IAccLoadedEventArgs): void {
         createLegendData('pie');
         enableLegend = true;
       }
-    
+      // Function to create legend data for pie chart
       function createLegendData(initiate: string): void {
         if (pie && pieRenderingData.length > 10) {
           pie.series[0].groupTo = groupValue.toString();
@@ -376,7 +384,7 @@ function HtmlNode() {
           lGrid.dataSource = pieLegendData;
         }
       }
-    
+      // Function called when text rendered for accumulation chart
       function onTextRender(args: IAccTextRenderEventArgs): void {
         if(pie) {
             args.series.dataLabel.font.size = getFontSize(pie.initialClipRect.width);
@@ -386,7 +394,7 @@ function HtmlNode() {
           args.text = 'Others';
         }
       }
-    
+      // Function called when animation completed for accumulation chart
       function onAnimateCompleted(args: IAccAnimationCompleteEventArgs): void {
         let element: HTMLElement = document.getElementById('total-expense_datalabel_Series_0');
         if (!isNOU(element)) { element.style.visibility = 'visible'; }
@@ -397,6 +405,7 @@ function HtmlNode() {
         y: number;
         text: string;
       }
+      // Interface for expense data
       interface IExpense {
         UniqueId: string;
         DateTime: Date;
@@ -406,7 +415,7 @@ function HtmlNode() {
         Description: string;
         Amount: number;
       }
-    
+      // Function to calculate total expense
       function getTotalExpense(): void {
         tempData = dataSource as IExpense[];
         let renderingData: { x: string; y: number; text: string; }[] = [];
@@ -440,12 +449,12 @@ function HtmlNode() {
             .executeLocal((new Query().sortByDesc('y').range(0, 10)));
         }
       }
-    
+      // Function called when grid loaded
       function onGridLoad(): void {
         createLegendData('pie');
         showWaitingPopup = true;
       }
-    
+      // Function called when chart loaded
       function onChartLoaded(): void {
         if (initialRender) {
           initialRender = false;
@@ -453,11 +462,11 @@ function HtmlNode() {
           initialRender = false;
         }
       }
-    
+      // Function called when grid data bound
       function onGridDataBound(args: Object): void {
         showWaitingPopup = false;
       }
-    
+      // Function to define diagram template
       function diagramTemplate(props) {
         if (props.id === "node") {
           return (<div className="diagram_border_cus diagram_border_cal">

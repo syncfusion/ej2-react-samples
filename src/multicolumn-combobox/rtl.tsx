@@ -10,20 +10,21 @@ import * as data from './dataSource.json';
 
 export class RTL extends SampleBase<{}, {}> {
 
-    fields: object = { text: 'Name', value: 'Designation' };
+    fields: object = { text: 'Title', value: 'Author' };
     render() {
         return (
             <div className='control-pane'>
                 <div className="control-section">
                     <div className='control-wrapper rtl-multicolumn'>
                         <div style={{ paddingTop: '60px' }}>
-                            <MultiColumnComboBoxComponent type="text" dataSource={(data as any).empList} fields={this.fields} placeholder='Select an employee' popupHeight={'230px'} enableRtl={true}>
-                                <ColumnsDirective>
-                                    <ColumnDirective field='Eimg' header='Employee ID' width={120}></ColumnDirective>
-                                    <ColumnDirective field='Name' header='Employee Name' width={160}></ColumnDirective>
-                                    <ColumnDirective field='Designation' header='Designation' width={150}></ColumnDirective>
-                                    <ColumnDirective field='Country' header='Country' width={100}></ColumnDirective>
-                                </ColumnsDirective>
+                            <MultiColumnComboBoxComponent type="text" dataSource={(data as any).bookDetails} fields={this.fields} placeholder='Select an Title' popupHeight={'230px'} enableRtl={true}>
+                            <ColumnsDirective>
+                                <ColumnDirective field='Title' header='Title' width={180}></ColumnDirective>
+                                <ColumnDirective field='Author' header='Author' width={150}></ColumnDirective>
+                                <ColumnDirective field='Genre' header='Genre' width={100}></ColumnDirective>
+                                <ColumnDirective field='PublishedYear' header='Published Year' width={125}></ColumnDirective>
+                                <ColumnDirective field='Price' header='Price' width={80}></ColumnDirective>
+                            </ColumnsDirective>
                             </MultiColumnComboBoxComponent>
                         </div>
                     </div>

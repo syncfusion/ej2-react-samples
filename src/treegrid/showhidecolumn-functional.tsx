@@ -145,7 +145,7 @@ const ShowHideColumn = () => {
                   <td style={{ width: "70%", paddingRight: "10px" }}>
                     <div id="columnddl">
                       <DropDownListComponent
-                        width="96px"
+                        width="130px"
                         id="ddlelement"
                         dataSource={columnsName}
                         fields={{ text: "name", value: "id" }}

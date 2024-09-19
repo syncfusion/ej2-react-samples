@@ -91,7 +91,7 @@ const GridLines = () => {
                   <td style={{ width: "60%" }}>
                     <div>
                       <DropDownListComponent
-                        width="115px"
+                        width="130px"
                         id="selmode"
                         change={change.bind(this)}
                         dataSource={lines}

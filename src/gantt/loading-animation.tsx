@@ -69,7 +69,7 @@ export class LoadingAnimation extends SampleBase<{}, {}> {
               </td>
               <td style={{ width: '70%' }}>
               <div>
-              <DropDownListComponent width="110px" id="seltype" change={this.onChange.bind(this)}
+              <DropDownListComponent width="113px" id="seltype" change={this.onChange.bind(this)}
                 dataSource={this.filterType} value="Shimmer" />
               </div>
               </td>
@@ -95,10 +95,10 @@ export class LoadingAnimation extends SampleBase<{}, {}> {
             <li><code>Spinner</code></li>
           </ul>
           <p>
-            Use the loading indicator by setting the <code>loadingIndicator.indicatorType</code> property as Spinner or Shimmer. The default value of the indicatorType is Spinner.
+            Use the loading indicator by setting the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/loadingIndicatorModel/#indicatortype">loadingIndicator.indicatorType</a> property as Spinner or Shimmer. The default value of the indicatorType is Spinner.
           </p>
           <p>
-            By default <code>enableVirtualMaskRow</code> is set to true which renders Shimmer during virtual scrolling.
+            By default <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#enablevirtualmaskrow">enableVirtualMaskRow</a> is set to true which renders Shimmer during virtual scrolling.
           </p>
         </div>
       </div>

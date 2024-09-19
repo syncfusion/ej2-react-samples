@@ -36,7 +36,7 @@
      let selectedTheme: string = location.hash.split('/')[1];
      selectedTheme = selectedTheme ? selectedTheme : 'Material';
      args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
-       selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+       selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5')) as GaugeTheme;
      if (selectedTheme.indexOf("tailwind") != -1 && args.gauge.axes[0].annotations != null) {
        args.gauge.axes[0].annotations[0].angle = 188;
        args.gauge.axes[0].annotations[0].radius = "15%";
@@ -49,7 +49,7 @@
      let selectedTheme: string = location.hash.split('/')[1];
      selectedTheme = selectedTheme ? selectedTheme : 'Material';
      args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
-       selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+       selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5')) as GaugeTheme;
      if (selectedTheme.indexOf("tailwind") != -1 && args.gauge.axes[0].annotations != null) {
        args.gauge.axes[0].annotations[0].angle = 12;
        args.gauge.axes[0].annotations[0].radius = "18%";
@@ -66,7 +66,7 @@
      let selectedTheme: string = location.hash.split('/')[1];
      selectedTheme = selectedTheme ? selectedTheme : 'Material';
      args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
-       selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+       selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5')) as GaugeTheme;
      if (selectedTheme.indexOf("tailwind") != -1 && args.gauge.axes[0].annotations != null) {
        args.gauge.axes[0].annotations[0].angle = 194;
        args.gauge.axes[0].annotations[0].radius = "8%";
@@ -79,7 +79,7 @@
      let selectedTheme: string = location.hash.split('/')[1];
      selectedTheme = selectedTheme ? selectedTheme : 'Material';
      args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
-       selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+       selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5')) as GaugeTheme;
      if (selectedTheme.indexOf("tailwind") != -1 && args.gauge.axes[0].annotations != null) {
        args.gauge.axes[0].annotations[0].angle = 100;
        args.gauge.axes[0].annotations[0].radius = "10%";
@@ -92,7 +92,7 @@
      let selectedTheme: string = location.hash.split('/')[1];
      selectedTheme = selectedTheme ? selectedTheme : 'Material';
      args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
-       selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+       selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5')) as GaugeTheme;
      if (selectedTheme.indexOf("tailwind") != -1 && args.gauge.axes[0].annotations != null) {
        args.gauge.axes[0].annotations[0].angle = 174;
        args.gauge.axes[0].annotations[0].radius = "12%";
@@ -105,7 +105,7 @@
      let selectedTheme: string = location.hash.split('/')[1];
      selectedTheme = selectedTheme ? selectedTheme : 'Material';
      args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
-       selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+       selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5')) as GaugeTheme;
      if (selectedTheme.indexOf("tailwind") != -1 && args.gauge.axes[0].annotations != null) {
        args.gauge.axes[0].annotations[0].angle = 180;
        args.gauge.axes[0].annotations[0].radius = "6%";

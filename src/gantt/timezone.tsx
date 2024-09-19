@@ -64,7 +64,7 @@ export class Timezone extends SampleBase<{}, {}> {
               For example, in this demo, the timezone of Gantt is set to UTC, and the task named <code>Plan timeline</code> has start time as <code>08:00 am</code> but converted based on UTC and rendered at <code>2.30 am</code>
           </p>
           <p>
-              When a user sets any timezone, dates are converted based on the value set to <code>timezone</code> property of Gantt control.
+            When a user sets any timezone, dates are converted based on the value set to <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#timezone">timezone</a> property of Gantt control.
           </p>
       </div>
       </div>

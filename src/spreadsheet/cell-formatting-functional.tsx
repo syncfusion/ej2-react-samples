@@ -48,6 +48,10 @@ function CellFormatting() {
         //Applying border to a range
         spreadsheet.setBorder({ border: '1px solid #e0e0e0' }, 'A1:I16', 'Outer');
         spreadsheet.setBorder({ border: '1px solid #e0e0e0' }, 'A2:I15', 'Horizontal');
+        // Applying a short date format to a range.
+        spreadsheet.numberFormat('m/d/yyyy', 'C2:C16');
+        // Applying currency format to a range.
+        spreadsheet.numberFormat('$#,##0.00', 'I2:I16');
     }
 
     function beforeCellRender(args: CellRenderEventArgs): void {

@@ -9,6 +9,7 @@ const Editing = () => {
   useEffect(() => {
     updateSampleSection();
   }, [])
+  let startDate:any;
   const taskFields: any = {
     id: 'TaskID',
     name: 'TaskName',
@@ -32,6 +33,25 @@ const Editing = () => {
     allowTaskbarEditing: true,
     showDeleteConfirmDialog: true
   };
+  const customFn = (args) => {
+    var endDate;
+        var gantt = (document.getElementsByClassName('e-gantt')[0] as any).ej2_instances[0];
+        if (args.element && args.value) {
+            endDate = new Date(args.value);
+            if (!startDate && gantt.editModule.dialogModule['beforeOpenArgs']) {
+                startDate = gantt.editModule.dialogModule['beforeOpenArgs'].rowData['ganttProperties'].startDate;
+                endDate = (gantt.editModule.dialogModule['beforeOpenArgs'].rowData['ganttProperties'].endDate);
+            }
+            startDate.setHours(0, 0, 0, 0);
+            endDate.setHours(0, 0, 0, 0);
+        }
+    return startDate <= endDate;
+  }
+  const actionbegin = (args) => {
+    if (args.columnName === "EndDate") {
+      startDate = args.rowData.ganttProperties.startDate;
+    }
+  }
   const splitterSettings: any = {
     position: "35%"
   };
@@ -64,13 +84,14 @@ const Editing = () => {
           treeColumnIndex={1} allowSelection={true} showColumnMenu={false} highlightWeekends={true}
           allowUnscheduledTasks={true} projectStartDate={projectStartDate} projectEndDate={projectEndDate}
           taskFields={taskFields} timelineSettings={timelineSettings} labelSettings={labelSettings} splitterSettings={splitterSettings}
-          height='410px' editSettings={editSettings} gridLines={gridLines} toolbar={toolbar} resourceFields={resourceFields} resources={editingResources}>
+          height='410px' editSettings={editSettings} gridLines={gridLines} toolbar={toolbar} resourceFields={resourceFields} resources={editingResources} actionBegin={actionbegin}>
           <ColumnsDirective>
-            <ColumnDirective field='TaskID' width='80' ></ColumnDirective>
-            <ColumnDirective field='TaskName' headerText='Job Name' width='250' clipMode='EllipsisWithTooltip'></ColumnDirective>
+          <ColumnDirective field='TaskID' width='80' ></ColumnDirective>
+            <ColumnDirective field='TaskName' headerText='Job Name' width='250' clipMode='EllipsisWithTooltip' validationRules={{ required: true, minLength: [5, 'Task name should have a minimum length of 5 characters'], }}></ColumnDirective>
             <ColumnDirective field='StartDate'></ColumnDirective>
-            <ColumnDirective field='Duration'></ColumnDirective>
-            <ColumnDirective field='Progress'></ColumnDirective>
+            <ColumnDirective field='EndDate' validationRules={{ date: true, required: [customFn, 'Please enter a value greater than the start date.'] }}></ColumnDirective>
+            <ColumnDirective field='Duration' validationRules={{ required: true }}></ColumnDirective>
+            <ColumnDirective field='Progress' validationRules={{ required: true, min: 0, max: 100 }}></ColumnDirective>
             <ColumnDirective field='Predecessor'></ColumnDirective>
           </ColumnsDirective>
           <EditDialogFieldsDirective>
@@ -107,8 +128,8 @@ const Editing = () => {
       </div>
       <div id="description">
         <p>
-          This CRUD operations can be configured in Gantt chart using <code>editSettings</code> and
-          <code>allowTaskbarEditing</code>. Gantt chart
+          This CRUD operations can be configured in Gantt chart using <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#editsettings">editSettings</a> and
+          <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#allowtaskbardraganddrop">allowTaskbarEditing</a>. Gantt chart
           has two modes to manipulate the datasource
           <li><code>Auto</code></li>
           <li><code>Dialog</code></li>
@@ -118,6 +139,8 @@ const Editing = () => {
           state. On the chart side, you can edit the tasks using edit dialog by double clicking on the taskbars and you
           can edit the dependency connector lines using drag and drop action with connector line points available on the
           either side of taskbar.
+          <br></br>
+          In this sample <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/columnModel/#validationrules">column.validation</a> has been enabled for the columns.It uses the Form Validator control and the column validation property to define validation rules, displaying error messages for invalid fields.
         </p>
         <p>
           Gantt component features are segregated into individual feature-wise modules. To use editing feature, inject the

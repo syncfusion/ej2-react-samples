@@ -49,12 +49,6 @@ const slidercss = `
     border: 0;
 }
 
-.fluent2 .custom-thumb .e-control.e-slider .e-handle,
-.fluent2-dark .custom-thumb .e-control.e-slider .e-handle,
-.fluent2-highcontrast .custom-thumb .e-control.e-slider .e-handle {
-    box-shadow:none;
-}
-
 .material.e-bigger .e-slider-container.e-horizontal #image_slider.e-slider .e-handle,
 .material .e-slider-container.e-bigger.e-horizontal #image_slider.e-slider .e-handle {
     top: calc(50% - 7px);
@@ -75,7 +69,8 @@ const slidercss = `
     height: 25px;
     width: 24px;
     background-size: 24px;
-
+    box-shadow: none;
+    margin-left: -12px;
 }
 
 .material #image_slider.e-control.e-slider .e-handle {
@@ -133,7 +128,7 @@ const Thumb = () => {
         <div className='control-pane'>
             <div className='control-section'>
                 <style>{slidercss}</style>
-                <div className="slider-content-wrapper custom-thumb">
+                <div className="slider-content-wrapper">
                     <div className="slider_container">
                         <div className="labelText slider-userselect">Square</div>
                         {/* Square slider element  */}
@@ -160,7 +155,7 @@ const Thumb = () => {
                 <p>This sample demonstrates the customization of Slider's Thumb. Drag the thumb over the bar for selecting the values between min and max.</p>
             </div>
             <div id="description">
-                <p>In this demo, we have demonstrated the following customization of Thumb by changing CSS.</p>
+                <p>In this demo, we have demonstrated the following customization of Thumb by changing <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/slider/#cssclass">CSS</a>.</p>
                 <ul>
                     <li>Square - In this sample, Thumb has been customized to Square shape.</li>
                     <li>Circle - In this sample, Thumb has been customized to Circle shape.</li>

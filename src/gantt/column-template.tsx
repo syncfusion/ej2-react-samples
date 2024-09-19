@@ -77,7 +77,7 @@ public template: any = this.columnTemplate.bind(this);
         </div>
 
         <div id="description">
-        <p>The Gantt provides a way to use a custom layout for each cell using the column template feature. The <code>columns -&gt; template</code> property accepts the template for the cell.</p>
+        <p>The Gantt provides a way to use a custom layout for each cell using the column template feature. The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/columnModel/#template">columns -&gt; template</a> property accepts the template for the cell.</p>
         <p>In this demo, using column template, resource column has been presented with employee photo</p>
       </div>
       </div> 

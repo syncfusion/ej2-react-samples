@@ -1,0 +1,75 @@
+#rteCustomFormat .e-richtexteditor textarea.e-content {
+    float: left;
+}
+
+#rteCustomFormat .e-icon-btn.e-active .e-md-preview::before {
+    content: '\e350';
+}
+
+#rteCustomFormat .e-icon-btn .e-md-preview::before {
+    content: '\e345';
+}
+
+.bootstrap4 #rteCustomFormat .e-icon-btn.e-active .e-md-preview::before {
+    content: '\e790';
+}
+
+.bootstrap4 #rteCustomFormat .e-icon-btn .e-md-preview::before {
+    content: '\e787';
+}
+
+
+.tailwind #rteCustomFormat .e-icon-btn.e-active .e-md-preview::before {
+    content: '\e748';
+}
+
+.tailwind #rteCustomFormat .e-icon-btn.e-active .e-md-preview::before,
+.tailwind-dark #rteCustomFormat .e-icon-btn.e-active .e-md-preview::before,
+.fluent #rteCustomFormat .e-icon-btn.e-active .e-md-preview::before,
+.fluent-dark #rteCustomFormat .e-icon-btn.e-active .e-md-preview::before,
+.fluent2 #rteCustomFormat .e-icon-btn.e-active .e-md-preview::before,
+.fluent2-dark #rteCustomFormat .e-icon-btn.e-active .e-md-preview::before,
+.bootstrap5 #rteCustomFormat .e-icon-btn.e-active .e-md-preview::before,
+.bootstrap5\.3 #rteCustomFormat .e-icon-btn.e-active .e-md-preview::before,
+.bootstrap5\.3-dark #rteCustomFormat .e-icon-btn.e-active .e-md-preview::before,
+.bootstrap5-dark #rteCustomFormat .e-icon-btn.e-active .e-md-preview::before,
+.material3 #rteCustomFormat .e-icon-btn.e-active .e-md-preview::before,
+.material3-dark #rteCustomFormat .e-icon-btn.e-active .e-md-preview::before {
+    content: '\e80e';
+}
+
+.tailwind #rteCustomFormat .e-icon-btn .e-md-preview::before,
+.tailwind-dark #rteCustomFormat .e-icon-btn .e-md-preview::before,
+.bootstrap5 #rteCustomFormat .e-icon-btn .e-md-preview::before,
+.bootstrap5\.3 #rteCustomFormat .e-icon-btn .e-md-preview::before,
+.bootstrap5\.3-dark #rteCustomFormat .e-icon-btn .e-md-preview::before,
+.bootstrap5-dark #rteCustomFormat .e-icon-btn .e-md-preview::before,
+.fluent #rteCustomFormat .e-icon-btn .e-md-preview::before,
+.fluent-dark #rteCustomFormat .e-icon-btn .e-md-preview::before,
+.fluent2 #rteCustomFormat .e-icon-btn .e-md-preview::before,
+.fluent2-dark #rteCustomFormat .e-icon-btn .e-md-preview::before,
+.material3 #rteCustomFormat .e-icon-btn .e-md-preview::before,
+.material3-dark #rteCustomFormat .e-icon-btn .e-md-preview::before {
+    content: '\e7de';
+}
+
+#rteCustomFormat .e-rte-content .e-content {
+    float: right;
+    width: 50%;
+    overflow: auto;
+    height: inherit;
+}
+
+#rteCustomFormat .e-rte-content .e-content.e-pre-source {
+    width: 100%;
+}
+
+#rteCustomFormat .e-richtexteditor .e-rte-content .e-content {
+    float: left;
+    width: 100%;
+}
+
+#rteCustomFormat .content-wrapper {
+    width: auto;
+    margin: 0;
+}

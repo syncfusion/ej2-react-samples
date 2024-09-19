@@ -286,10 +286,10 @@ export class LiveData extends SampleBase<{}, {}> {
                             <strong>Feed Delay(ms)</strong>:
                         </div>
                         <NumericTextBoxComponent format="N0" value={5000} min={5000} step={1000} width={'150px'} style={{ marginLeft: '7px' }} placeholder={'0'} ref={(scope: NumericTextBoxComponent) => { this.feedDelayInput = scope; }} />
-                        <ButtonComponent id="update1" ref={(scope) => { this.updateButton = scope; }} onClick={this.updateClick.bind(this)} style={{ marginLeft: '10px' }}>
+                        <ButtonComponent id="update1" ref={(scope) => { this.updateButton = scope; }} onClick={this.updateClick.bind(this)} className='update-btn'>
                             Start Updating...
                         </ButtonComponent>
-                        <ButtonComponent id="clear" ref={(scope) => { this.clearButton = scope; }} onClick={this.clearClick.bind(this)} style={{ marginLeft: '10px' }}>
+                        <ButtonComponent id="clear" ref={(scope) => { this.clearButton = scope; }} onClick={this.clearClick.bind(this)} className='update-btn'>
                             Stop Updating...
                         </ButtonComponent>
                     </div>

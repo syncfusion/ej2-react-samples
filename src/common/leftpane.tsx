@@ -123,7 +123,7 @@ export class LeftPane extends React.Component<{}, {}> {
             let tempData: any = extend([], samplesList);
             let tempLists: any = [];
             for (let temp of tempData) {
-                if(temp.hideOnDevice == true)
+                if(temp.hideOnDevice == true || temp.hideOnDevice === 'true')
                 {
                     continue;
                 }

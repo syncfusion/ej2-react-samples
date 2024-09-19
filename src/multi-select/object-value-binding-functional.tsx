@@ -55,7 +55,7 @@ const Default = () => {
           </div>
         </div>
         <div className="col-lg-4 property-section">
-          <textarea id="value" title="Properties" style={{ width: '100%', marginTop: '90px', height: '60px' }} value={objectValue} readOnly />
+          <textarea id="value" className="auto-dropdowns" title="Properties" style={{ width: '100%', marginTop: '90px', height: '60px' }} value={objectValue} readOnly />
         </div>
         <div id="action-description">
           <p>This sample demonstrates the object value binding functionalities of the MultiSelect. Type a character in the

@@ -6,7 +6,7 @@ import * as React from 'react';
 import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { AutoCompleteComponent, Inject, VirtualScroll } from '@syncfusion/ej2-react-dropdowns';
-import { Query, DataManager, WebApiAdaptor  } from '@syncfusion/ej2-data';
+import { Query, DataManager, UrlAdaptor } from '@syncfusion/ej2-data';
 import './virtual-scroll.css';
 import * as data from './dataSource.json';
 
@@ -43,8 +43,8 @@ const Default = () => {
     }
     // bind the DataManager instance to dataSource property
     const customerData: DataManager = new DataManager({
-        url: 'https://services.syncfusion.com/js/production/api/orders',
-        adaptor: new WebApiAdaptor ,
+        url: 'https://services.syncfusion.com/js/production/api/VirtualDropdownData',
+        adaptor: new UrlAdaptor,
         crossDomain: true
     });
     // maps the appropriate column to fields property

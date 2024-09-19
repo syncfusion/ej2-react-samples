@@ -33,7 +33,7 @@ const Resize = () => {
             <div id="textarea-sample" className="col-lg-8 control-section resize">
                 <div className="content-wrapper">
                     <div className="resize-row">
-                        <TextAreaComponent id="resize" placeholder="Enter your comments" floatLabelType="Auto" resizeMode={resizeMode} ref={textareaObj}  rows={rows} cols={cols} ></TextAreaComponent>
+                        <TextAreaComponent id="resize" placeholder="Enter your comments" floatLabelType="Auto" resizeMode={resizeMode} ref={textareaObj} rows={rows} cols={cols} ></TextAreaComponent>
                     </div>
                 </div>
             </div>

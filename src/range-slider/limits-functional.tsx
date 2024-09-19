@@ -44,6 +44,11 @@ const slidercss = `
 .property-custom .property-panel-content {
     height: 320px;
 }
+body.fluent2-highcontrast .sliderwrap .e-tick-before.e-scale.e-h-scale .e-tick,
+body.fluent2 .sliderwrap .e-tick-before.e-scale.e-h-scale .e-tick,
+body.fluent2-dark .sliderwrap .e-tick-before.e-scale.e-h-scale .e-tick {
+    top: -5px;
+}
 `
 interface Slider {
     enabled: boolean;

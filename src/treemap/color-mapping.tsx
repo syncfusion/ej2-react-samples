@@ -13,11 +13,14 @@ import { SampleBase } from '../common/sample-base';
 import * as data from './treemap-data/color.json';
 let datasource: any = data as any;
 const SAMPLE_CSS = `
-    .colorCheckBox {
+    .colorMappingPadding {
         margin-left: -10px;margin-top: -10px;padding-left: 10px;
     }
-    .e-view.fluent2 #property .colorCheckBox, .e-view.fluent2-dark #property .colorCheckBox {
-        margin-left: -10px;margin-top: -10px;padding-left: 0px;
+    .e-view.fluent2-highcontrast #property .colorMappingPadding {
+        margin-left: -18px;
+    }
+    .e-view.fluent2 #property .colorMappingPadding, .e-view.fluent2-dark #property .colorMappingPadding {
+        margin-left: -8px;margin-top: -10px;padding-left: 0px;
     }`;
 
 export class ColorMapping extends SampleBase<{}, {}> {
@@ -206,7 +209,7 @@ export class ColorMapping extends SampleBase<{}, {}> {
 		let theme: string = location.hash.split('/')[1];
 		theme = theme ? theme : 'Material';
         args.treemap.theme = ((theme.charAt(0).toUpperCase() +
-        theme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as TreeMapTheme;
+        theme.slice(1)).replace(/-dark/i, 'Dark').replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5')) as TreeMapTheme;
         let sliderMin: HTMLInputElement = document.getElementById('hideOne') as HTMLInputElement;
         let sliderMax: HTMLInputElement = document.getElementById('hideTwo') as HTMLInputElement;
         let opacityCheck: HTMLInputElement = document.getElementById('hideThree') as HTMLInputElement;
@@ -296,7 +299,7 @@ export class ColorMapping extends SampleBase<{}, {}> {
 										<div style={{ paddingLeft: '0px' }}>Change Opacity</div>
 									</td>
 									<td>
-										<div className="colorCheckBox">
+										<div className="colorMappingPadding">
 											<CheckBoxComponent id='opacity' checked={false} change={this.opacityChange.bind(this)} ref={d => this.opacityElement = d} disabled={true} style={{ paddingLeft: '0px' }}/>
 										</div>
 									</td>

@@ -9,7 +9,6 @@ import { Browser, extend } from '@syncfusion/ej2-base';
 import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import { tz } from 'moment-timezone';
 import { SampleBase } from '../common/sample-base';
-import { PropertyPane } from '../common/property-pane';
 import * as dataSource from './datasource.json';
 
 /**
@@ -36,7 +35,7 @@ export class TimeZone extends SampleBase<{}, {}> {
   private fields: Record<string, any> = { text: 'text', value: 'value' };
 
   // Here remove the local offset from events
-  private onCreate(): void {
+  componentDidMount(): void {
     for (let fifaEvent of this.fifaEvents) {
       let event: Record<string, any> = fifaEvent as Record<string, any>;
       event.StartTime = this.timezone.removeLocalOffset(new Date(event.StartTime as string));
@@ -78,7 +77,7 @@ export class TimeZone extends SampleBase<{}, {}> {
             </table>
             <ScheduleComponent width='100%' height='650px' ref={schedule => this.scheduleObj = schedule} selectedDate={new Date(2021, 5, 20)}
               timezone='UTC' workHours={{ start: '11:00' }} eventSettings={{ dataSource: this.fifaEvents }}
-              created={this.onCreate.bind(this)} eventRendered={this.onEventRendered.bind(this)}>
+               eventRendered={this.onEventRendered.bind(this)}>
               <Inject services={[Day, Week, WorkWeek, Month, Agenda, Resize, DragAndDrop]} />
             </ScheduleComponent>
           </div>

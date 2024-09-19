@@ -118,7 +118,7 @@ const Reorders = () => {
                   <td style={{ width: "70%", paddingRight: "10px" }}>
                     <div>
                       <DropDownListComponent
-                        width="100px"
+                        width="130px"
                         id="columns"
                         change={change.bind(this)}
                         dataSource={columnNames}
@@ -136,7 +136,7 @@ const Reorders = () => {
                   <td style={{ width: "70%", paddingRight: "10px" }}>
                     <div>
                       <DropDownListComponent
-                        width="100px"
+                        width="130px"
                         id="columnindex"
                         change={change2.bind(this)}
                         dataSource={columnsIndex}

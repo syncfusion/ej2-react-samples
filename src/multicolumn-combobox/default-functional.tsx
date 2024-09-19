@@ -14,8 +14,8 @@ const Default = () => {
     useEffect(() => {
         updateSampleSection();
     }, []);
-    const [value, setValue] = useState("1001");
-    const [text, setText] = useState("France");
+    const [value, setValue] = useState("HR");
+    const [text, setText] = useState("John Smith");
 
     const valueChange = (args: ChangeEventArgs) => {
         setValue(args.itemData.value || "null");
@@ -27,12 +27,13 @@ const Default = () => {
                 <div className="col-lg-8">
                     <div className="control-wrapper multicolumn">
                         <div style={{ paddingTop: '50px'}}>
-                            <MultiColumnComboBoxComponent dataSource={(data as any).orderDetails} fields={{text: 'ShipCountry', value: 'OrderID' }} popupHeight={'230px'} placeholder='Select the country' value={value} text={text} change={valueChange} showClearButton={true}>
+                            <MultiColumnComboBoxComponent dataSource={(data as any).employeeData} fields={{text: 'Name', value: 'Department' }} popupHeight={'230px'} placeholder='Select a name' value={value} text={text} change={valueChange} showClearButton={true}>
                                 <ColumnsDirective>
-                                    <ColumnDirective field='OrderID' header='Order ID' width={110}></ColumnDirective>
-                                    <ColumnDirective field='CustomerID' header='Customer ID' width={130}></ColumnDirective>
-                                    <ColumnDirective field='Freight' header='Freight' width={90}></ColumnDirective>
-                                    <ColumnDirective field='ShipCountry' header='Ship Country' width={140}></ColumnDirective>
+                                    <ColumnDirective field='Name' header='Name' width={90}></ColumnDirective>
+                                    <ColumnDirective field='Position' header='Position' width={85}></ColumnDirective>
+                                    <ColumnDirective field='Department' header='Department' width={98}></ColumnDirective>
+                                    <ColumnDirective field='PhoneNo' header='Phone No' width={105}></ColumnDirective>
+                                    <ColumnDirective field='Location' header='Location' width={98}></ColumnDirective>
                                 </ColumnsDirective>
                             </MultiColumnComboBoxComponent>
                         </div>
@@ -61,7 +62,7 @@ const Default = () => {
             </div>
 
             <div id="description">
-                <p>The <code>MultiColumn ComboBox</code> allows the user to display detailed information about items in multiple columns. In the above sample, type any character in the MultiColumn ComboBox or click the dropdown icon to choose an item from the options available in the list. The selected item's <code>value</code> and <code>text</code> property values will be shown in the property panel.</p>
+                <p>The <code>MultiColumn ComboBox</code> allows the user to display detailed information about items in multiple columns. In the above sample, type any character in the MultiColumn ComboBox or click the dropdown icon to choose an employee from the options available in the list. The selected item's <code>value</code> and <code>text</code> property values will be shown in the property panel.</p>
             </div>
         </div>
     );

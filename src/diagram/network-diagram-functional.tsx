@@ -1,4 +1,3 @@
-import * as ReactDOM from "react-dom";
 import * as React from "react";
 import {
   SymbolPaletteComponent,
@@ -59,31 +58,35 @@ let uploadBoxInstance: UploaderComponent;
 
 let buttonInstance: ButtonComponent;
 
+let paletteIconInstance : HTMLElement;
+
+let paletteSpaceInstance : HTMLElement;
+
 //Initializes the ports for the nodes.
-let port: PointPortModel[] = [
+let port1: PointPortModel[] = [
   { id: 'port1', offset: { x: 0, y: 0.5 } },
   { id: 'port2', offset: { x: 1, y: 0.5 } },
   { id: 'port3', offset: { x: 0.5, y: 0.1 } },
   { id: 'port4', offset: { x: 0.5, y: 0.92 } }
-];
-let portrc: PointPortModel[] = [
-  { id: 'port1', offset: { x: 0.05, y: 0.5 } },
-  { id: 'port2', offset: { x: 1, y: 0.5 } },
-  { id: 'port3', offset: { x: 0.85, y: 0.1 } },
-  { id: 'port4', offset: { x: 0.6, y: 0.97 } }
-];
-let porthmi: PointPortModel[] = [
-  { id: 'port1', offset: { x: 0.34, y: 0.5 } },
-  { id: 'port2', offset: { x: 0.75, y: 0.5 } },
-  { id: 'port3', offset: { x: 0.5, y: 0.05 } },
-  { id: 'port4', offset: { x: 0.6, y: 0.9 } }
 ];
 let port2: PointPortModel[] = [
   { id: 'port1', offset: { x: 0.45, y: 0.5 } },
   { id: 'port2', offset: { x: 0.97, y: 0.5 } },
   { id: 'port3', offset: { x: 0.5, y: 0.97 } }
 ];
-let portmo: PointPortModel[] = [
+let port3: PointPortModel[] = [
+  { id: 'port1', offset: { x: 0.05, y: 0.5 } },
+  { id: 'port2', offset: { x: 1, y: 0.5 } },
+  { id: 'port3', offset: { x: 0.85, y: 0.1 } },
+  { id: 'port4', offset: { x: 0.6, y: 0.97 } }
+];
+let port4: PointPortModel[] = [
+  { id: 'port1', offset: { x: 0.34, y: 0.5 } },
+  { id: 'port2', offset: { x: 0.75, y: 0.5 } },
+  { id: 'port3', offset: { x: 0.5, y: 0.05 } },
+  { id: 'port4', offset: { x: 0.6, y: 0.9 } }
+];
+let port5: PointPortModel[] = [
   { id: 'port1', offset: { x: 0.02, y: 0.6 } },
   { id: 'port2', offset: { x: 0.98, y: 0.625 } },
   { id: 'port3', offset: { x: 0.5, y: 0.3 } },
@@ -95,7 +98,7 @@ let nodes: NodeModel[] = [
     id: 'Server1', offsetX: 80, offsetY: 75,
     shape: { type: 'Native', content: template1 },
     annotations: [{ content: 'Server', offset: { x: 0.5, y: 0 }, margin: { bottom: 10 } }],
-    ports: port
+    ports: port1
   },
   {
     id: 'WorkStation1', offsetX: 250, offsetY: 75,
@@ -112,37 +115,37 @@ let nodes: NodeModel[] = [
     id: 'modem1', offsetX: 450, offsetY: 125,
     shape: { type: 'Native', content: template3 },
     annotations: [{ content: 'Modem', margin: { right: 25 }, offset: { x: 0, y: 0.5 } }],
-    ports: portmo
+    ports: port5
   },
   {
     id: 'modem2', offsetX: 525, offsetY: 175,
     shape: { type: 'Native', content: template3 },
     annotations: [{ content: 'Modem1', margin: { bottom: 10 }, offset: { x: 0.5, y: 0 } }],
-    ports: portmo
+    ports: port5
   },
   {
     id: 'RemoteController1', offsetX: 600, offsetY: 125,
     shape: { type: 'Native', content: template4 },
     annotations: [{ content: 'Remote Controller', margin: { bottom: 10 }, offset: { x: 0.5, y: 0 } }],
-    ports: portrc
+    ports: port3
   },
   {
     id: 'modem3', offsetX: 350, offsetY: 205,
     shape: { type: 'Native', content: template3 },
     annotations: [{ content: 'Modem4', margin: { left: 35 }, offset: { x: 1, y: 0.5 } }],
-    ports: portmo
+    ports: port5
   },
   {
     id: 'modem4', offsetX: 450, offsetY: 245,
     shape: { type: 'Native', content: template3 },
     annotations: [{ content: 'Modem2', offset: { x: 0.5, y: 1.3 } }],
-    ports: portmo
+    ports: port5
   },
   {
     id: 'modem5', offsetX: 350, offsetY: 330,
     shape: { type: 'Native', content: template3 },
     annotations: [{ content: 'Modem3', margin: { right: 25 }, offset: { x: 0, y: 0.5 } }],
-    ports: portmo
+    ports: port5
   },
   {
     id: 'WorkStation3', offsetX: 600, offsetY: 250,
@@ -160,49 +163,49 @@ let nodes: NodeModel[] = [
     id: 'RemoteController2', offsetX: 80, offsetY: 400,
     shape: { type: 'Native', content: template4 },
     annotations: [{ content: 'Control Logic', margin: { top: 8 }, offset: { x: 0.5, y: 1 } }],
-    ports: portrc
+    ports: port3
   },
   {
     id: 'RemoteController3', offsetX: 500, offsetY: 400,
     shape: { type: 'Native', content: template4 },
     annotations: [{ content: 'Control Logic', margin: { top: 8 }, offset: { x: 0.5, y: 1 } }],
-    ports: portrc
+    ports: port3
   },
   {
     id: 'AnalogIO', offsetX: 160, offsetY: 500,
     shape: { type: 'Native', content: template5 },
     annotations: [{ content: 'Analog IO', margin: { top: 13 }, offset: { x: 0.5, y: 1 } }],
-    ports: porthmi
+    ports: port4
   },
   {
     id: 'sensor', offsetX: 260, offsetY: 500,
     shape: { type: 'Native', content: template6 },
     annotations: [{ content: 'Sensor', margin: { top: 10 }, offset: { x: 0.5, y: 1 } }],
-    ports: port
+    ports: port1
   },
   {
     id: 'DeviceDriver1', offsetX: 360, offsetY: 500,
     shape: { type: 'Native', content: template7 },
     annotations: [{ content: 'DriverA', offset: { x: 0.5, y: 1.3 } }],
-    ports: porthmi
+    ports: port4
   },
   {
     id: 'DeviceDriver2', offsetX: 460, offsetY: 500,
     shape: { type: 'Native', content: template7 },
     annotations: [{ content: 'DriverB', offset: { x: 0.5, y: 1.3 } }],
-    ports: porthmi
+    ports: port4
   },
   {
     id: 'DeviceDriver3', offsetX: 550, offsetY: 500,
     shape: { type: 'Native', content: template7 },
     annotations: [{ content: 'DriverC', offset: { x: 0.5, y: 1.3 } }],
-    ports: porthmi
+    ports: port4
   },
   {
     id: 'HMI', offsetX: 625, offsetY: 450,
     shape: { type: 'Native', content: template8 },
     annotations: [{ content: 'HMI', offset: { x: 0.5, y: 1.3 } }],
-    ports: port
+    ports: port1
   },
   {
     id: 'controlNet', offsetX: 218.5, offsetY: 380,
@@ -238,87 +241,87 @@ let nodes: NodeModel[] = [
 //Initialize Diagram Connectors
 let connectors: ConnectorModel[] = [
   {
-    id: 'connectora', sourceID: 'Server1', targetID: 'WorkStation1',
+    id: 'connector11', sourceID: 'Server1', targetID: 'WorkStation1',
     targetPortID: 'port1'
   },
   {
-    id: 'connectorawork', sourceID: 'WorkStation1', targetID: 'WorkStation2',
+    id: 'connector12', sourceID: 'WorkStation1', targetID: 'WorkStation2',
     sourcePortID: 'port2', targetPortID: 'port1'
   },
   {
-    id: 'connectoraworkm', sourceID: 'WorkStation2', targetID: 'modem1', type: 'Orthogonal',
+    id: 'connector13', sourceID: 'WorkStation2', targetID: 'modem1', type: 'Orthogonal',
     segments: [{ type: 'Orthogonal', length: 25 }],
     targetPortID: 'port3', sourcePortID: 'port2'
   },
   {
-    id: 'connectorm1m2', sourceID: 'modem2', targetID: 'modem1', type: 'Orthogonal',
+    id: 'connector14', sourceID: 'modem2', targetID: 'modem1', type: 'Orthogonal',
     segments: [{ type: 'Orthogonal', length: 25 }],
     sourcePortID: 'port1', targetPortID: 'port4'
   },
   {
-    id: 'connectorm2m3', sourceID: 'modem2', targetID: 'RemoteController1', type: 'Orthogonal',
+    id: 'connector15', sourceID: 'modem2', targetID: 'RemoteController1', type: 'Orthogonal',
     segments: [{ type: 'Orthogonal', length: 25 }],
     sourcePortID: 'port2', targetPortID: 'port4'
   },
   {
-    id: 'connectorws2m3', sourceID: 'WorkStation2', targetID: 'modem3',
+    id: 'connector16', sourceID: 'WorkStation2', targetID: 'modem3',
     sourcePortID: 'port3', targetPortID: 'port3'
   },
   {
-    id: 'connectorws2m4', sourceID: 'modem4', targetID: 'modem3', type: 'Orthogonal',
+    id: 'connector17', sourceID: 'modem4', targetID: 'modem3', type: 'Orthogonal',
     segments: [{ type: 'Orthogonal', length: 25 }],
     sourcePortID: 'port1', targetPortID: 'port4'
   },
   {
-    id: 'connectorm3m4', sourceID: 'modem5', targetID: 'modem3',
+    id: 'connector18', sourceID: 'modem5', targetID: 'modem3',
     sourcePortID: 'port3', targetPortID: 'port4'
   },
   {
-    id: 'connectorm4ws3', sourceID: 'modem5', targetID: 'WorkStation4',
+    id: 'connector19', sourceID: 'modem5', targetID: 'WorkStation4',
     sourcePortID: 'port2', targetPortID: 'port1'
   },
   {
-    id: 'connectorm4m5', sourceID: 'modem4', targetID: 'WorkStation3',
+    id: 'connector20', sourceID: 'modem4', targetID: 'WorkStation3',
     sourcePortID: 'port2', targetPortID: 'port1'
   },
   {
-    id: 'connectorr2r3', sourceID: 'RemoteController2', targetID: 'RemoteController3',
+    id: 'connector21', sourceID: 'RemoteController2', targetID: 'RemoteController3',
     targetPortID: 'port1'
   },
   {
-    id: 'connectorr2r3qq', sourceID: 'Server1', targetID: 'RemoteController2',
+    id: 'connector22', sourceID: 'Server1', targetID: 'RemoteController2',
     sourcePortID: 'port4'
   },
   {
-    id: 'connectorm3se1', sourceID: 'modem3', targetID: 'Server1', type: 'Orthogonal',
+    id: 'connector23', sourceID: 'modem3', targetID: 'Server1', type: 'Orthogonal',
     segments: [{ type: 'Orthogonal', length: 25 }],
     sourcePortID: 'port1', targetPortID: 'port4'
   },
   {
-    id: 'connectorws2aio1', sourceID: 'RemoteController2', targetID: 'AnalogIO',
+    id: 'connector24', sourceID: 'RemoteController2', targetID: 'AnalogIO',
     type: 'Orthogonal', sourcePortID: 'port2', targetPortID: 'port3'
   },
   {
-    id: 'connectorb', sourceID: 'RemoteController2', targetID: 'sensor', type: 'Orthogonal',
+    id: 'connector25', sourceID: 'RemoteController2', targetID: 'sensor', type: 'Orthogonal',
     segments: [{ type: 'Orthogonal', length: 25 }],
     sourcePortID: 'port2', targetPortID: 'port3'
   },
   {
-    id: 'connectord1', sourceID: 'RemoteController2', targetID: 'DeviceDriver1', type: 'Orthogonal',
+    id: 'connector26', sourceID: 'RemoteController2', targetID: 'DeviceDriver1', type: 'Orthogonal',
     segments: [{ type: 'Orthogonal', length: 25 }],
     sourcePortID: 'port2', targetPortID: 'port3'
   },
   {
-    id: 'connectord2', sourceID: 'RemoteController2', targetID: 'DeviceDriver2', type: 'Orthogonal',
+    id: 'connector27', sourceID: 'RemoteController2', targetID: 'DeviceDriver2', type: 'Orthogonal',
     segments: [{ type: 'Orthogonal', length: 25 }],
     sourcePortID: 'port2', targetPortID: 'port3'
   },
   {
-    id: 'connectordh1d3', sourceID: 'HMI', targetID: 'DeviceDriver3', type: 'Orthogonal',
+    id: 'connector28', sourceID: 'HMI', targetID: 'DeviceDriver3', type: 'Orthogonal',
     sourcePortID: 'port1', targetPortID: 'port3'
   },
   {
-    id: 'connectordh1d2', sourceID: 'HMI', type: 'Orthogonal', targetID: 'DeviceDriver2',
+    id: 'connector29', sourceID: 'HMI', type: 'Orthogonal', targetID: 'DeviceDriver2',
     sourcePortID: 'port1', targetPortID: 'port3'
   }
 ];
@@ -399,15 +402,15 @@ const SAMPLE_CSS = `
 .e-toggle-palette::before {
   content: "\e700"
 }
-.sb-mobile-palette {
+diagram-property-tab .sb-mobile-palette {
   width:215px;
   height:559px;
   float:left;
 }
-.sb-mobile-palette-bar {
+diagram-property-tab .sb-mobile-palette-bar {
   display: none;
 }
-.sb-mobile-diagram {
+diagram-property-tab .sb-mobile-diagram {
   width:calc(100% - 217px);
   height: 559px;
   float: left;
@@ -433,7 +436,7 @@ const SAMPLE_CSS = `
   /* border-top: none; */
 }
 @media (max-width: 550px) {
-  .sb-mobile-palette {
+  diagram-property-tab .sb-mobile-palette {
       z-index: 19;
       position: absolute;
       display: none;
@@ -441,13 +444,13 @@ const SAMPLE_CSS = `
       width:39%;
       height:100%;
   }
-  .sb-mobile-diagram {
+  diagram-property-tab .sb-mobile-diagram {
       width: 100%;
       height: 100%;
       float: left;
       left: 0px;
   }
-  .sb-mobile-palette-bar {
+  diagram-property-tab .sb-mobile-palette-bar {
       display: block;
       width: 100%;
       background:#fafafa;
@@ -459,7 +462,7 @@ const SAMPLE_CSS = `
       font-size: 20px; 
   }
 }
-.sb-mobile-palette-open {
+diagram-property-tab .sb-mobile-palette-open {
   position: absolute;
   display: block;
   right: 15px;
@@ -488,20 +491,25 @@ const SAMPLE_CSS = `
 `;
 
 function NetworkShapes() {
+   // React useEffect hook to run once on component mount
   React.useEffect(() => {
     updateSampleSection();
-    rendereComplete();
+    rendereComplete(); // Call rendereComplete function
   }, [])
 
+  // Function to simulate a click on a button inside an element with class 'e-file-select-wrap'
+  // Returns false to prevent default behavior
   function btnClick(): boolean {
     document.getElementsByClassName('e-file-select-wrap')[0].querySelector('button').click();
     return false;
   }
+  // Function to complete rendering actions
   function rendereComplete() {
     diagramInstance.fitToPage();
     addEvents();
   }
   let id: number = 0;
+  // Function called after upload success
   function onUploadSuccess(arg: any): void {
     let file1: any = arg.file;
     let file: any = file1.rawFile;
@@ -523,6 +531,7 @@ function NetworkShapes() {
     uploadBoxInstance.clearAll();
   }
 
+  //Sets the default values of nodes
   function getNodeDefaults(node: NodeModel): NodeModel {
     node.style.strokeColor = '#5C90DF';
     node.style.fill = 'transparent';
@@ -592,6 +601,7 @@ function NetworkShapes() {
     return node;
   }
 
+  //Sets the default values of connectors
   function getConnectorDefaults(connector: ConnectorModel): ConnectorModel {
     connector.targetDecorator = {
       shape: 'Arrow', width: 8, height: 8,
@@ -626,23 +636,27 @@ function NetworkShapes() {
     }
   }
 
+  // Function to Prevents posting raw file data when a file is removed
   function onFileRemove(args: RemovingEventArgs): void {
     args.postRawFile = false;
   }
 
   let isMobile: boolean;
 
+  // Adds event listeners based on device width to handle palette icon click on mobile
   function addEvents(): void {
     isMobile = window.matchMedia('(max-width:550px)').matches;
     if (isMobile) {
-      let paletteIcon: HTMLElement = document.getElementById('palette-icon');
+      let paletteIcon: HTMLElement = paletteIconInstance;
       if (paletteIcon) {
         paletteIcon.addEventListener('click', openPalette, false);
       }
     }
   }
+
+  // Toggles the visibility of the mobile palette space based on device width
   function openPalette(): void {
-    let paletteSpace: HTMLElement = document.getElementById('palette-space');
+    let paletteSpace: HTMLElement = paletteSpaceInstance;
     isMobile = window.matchMedia('(max-width:550px)').matches;
     if (isMobile) {
       if (!paletteSpace.classList.contains('sb-mobile-palette-open')) {
@@ -656,11 +670,11 @@ function NetworkShapes() {
     <div className="control-pane">
       <style>{SAMPLE_CSS}</style>
       <div className="control-section">
-        <div id="networkDiagram" style={{ width: "100%", height: "600px" }}>
+        <div id="networkDiagram" className="diagram-property-tab" style={{ width: "100%", height: "600px" }}>
           <div className="sb-mobile-palette-bar">
-            <div id="palette-icon" style={{ float: "right" }} className="e-ddb-icons1 e-toggle-palette"></div>
+            <div id="palette-icon" style={{ float: "right" }} className="e-ddb-icons1 e-toggle-palette" ref={paletteIconRef => (paletteIconInstance = paletteIconRef)}></div>
           </div>
-          <div id="palette-space" className="sb-mobile-palette">
+          <div id="palette-space" className="sb-mobile-palette" ref={paletteSpaceRef => (paletteSpaceInstance = paletteSpaceRef)}>
             <SymbolPaletteComponent
               id="symbolpalette"
               ref={symbolpalette => (symbolPaletteInstance = symbolpalette)}
@@ -687,6 +701,7 @@ function NetworkShapes() {
                   saveUrl: 'https://services.syncfusion.com/react/production/api/FileUploader/Save',
                   removeUrl: 'https://services.syncfusion.com/react/production/api/FileUploader/Remove'
                 }}
+                allowedExtensions=".svg"
                 success={onUploadSuccess}
                 removing={onFileRemove}
                 dropArea={dropElement}

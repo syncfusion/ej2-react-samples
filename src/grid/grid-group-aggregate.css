@@ -1,0 +1,38 @@
+
+.e-maximum{
+    color:#008000;
+    font-weight: bold;
+}
+.e-minimum{
+    color:#dc3545;
+    font-weight: bold;
+}
+
+.bootstrap5 .e-grid .e-icon.energy.e-icons::before,
+.bootstrap5-dark .e-grid .e-icon.energy.e-icons::before {
+    content: '\e8cd';
+}
+
+.highcontrast .e-grid .e-icon.energy.e-icons::before {
+    content: '\e991';
+}
+
+.tailwind .e-grid .e-icon.energy.e-icons::before,
+.tailwind-dark .e-grid .e-icon.energy.e-icons::before,
+.fluent .e-grid .e-icon.energy.e-icons::before,
+.fluent-dark .e-grid .e-icon.energy.e-icons::before,
+.fluent2 .e-grid .e-icon.energy.e-icons::before,
+.fluent2-dark .e-grid .e-icon.energy.e-icons::before,
+.fluent2-highcontrast .e-grid .e-icon.energy.e-icons::before,
+.material3 .e-grid .e-icon.energy.e-icons::before,
+.material3-dark .e-grid .e-icon.energy.e-icons::before {
+    content: '\e8cd';
+}
+
+#group-aggregate-grid.e-grid tr.e-altrow .e-rowcell:not(.e-selectionbackground.e-active) {
+    background-color: rgb(228 228 228 / 15%);
+}
+.e-grid-group-caption-temp {
+    display: flex;
+    gap: 5px;
+}

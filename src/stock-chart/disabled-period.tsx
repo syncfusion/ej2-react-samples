@@ -122,9 +122,9 @@ export class PeriodSelector extends SampleBase<{}, {}> {
         
     public load(args: IStockChartEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-         replace(/-dark/i, "Dark").replace(/contrast/i,  'Contrast') as  ChartTheme;
+        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
+        args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() +
+            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
       
 }

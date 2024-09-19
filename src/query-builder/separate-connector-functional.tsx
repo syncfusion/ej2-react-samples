@@ -237,8 +237,7 @@ const SeparateConnector = () => {
             </div>
             <div id='description'>
                 <p>
-                In this demo, the Query Builder includes a separate connector feature that displays a combinator between each neighboring pair of rules or groups within a group's rules. You can enable or disable this feature using the <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/api/query-builder/#enableseparateconnector'>
-                enableSeparateConnector</a> property. 
+                In this demo, the Query Builder includes a separate connector feature that displays a combinator between each neighboring pair of rules or groups within a group's rules. You can enable or disable this feature using the 'enableSeparateConnector' property. 
                 </p>
                 <p>
                     More information about Query Builder can be found in this

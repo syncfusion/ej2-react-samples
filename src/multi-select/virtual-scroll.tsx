@@ -4,7 +4,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { MultiSelectComponent, Inject, VirtualScroll, DropDownListComponent, visualMode, CheckBoxSelection } from '@syncfusion/ej2-react-dropdowns';
-import { Query, DataManager, WebApiAdaptor } from '@syncfusion/ej2-data';
+import { Query, DataManager, UrlAdaptor } from '@syncfusion/ej2-data';
 import { CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
 import { SampleBase } from '../common/sample-base';
 import { ChangeEventArgs } from '@syncfusion/ej2-buttons';
@@ -53,8 +53,8 @@ export class Default extends SampleBase<{}, {}> {
   }
   // bind the DataManager instance to dataSource property
   public customerData: DataManager = new DataManager({
-    url: 'https://services.syncfusion.com/react/production/api/orders',
-    adaptor: new WebApiAdaptor,
+    url: 'https://services.syncfusion.com/react/production/api/VirtualDropdownData',
+    adaptor: new UrlAdaptor,
     crossDomain: true
   });
   // maps the appropriate column to fields property

@@ -26,15 +26,12 @@ const Zooming = () => {
     position: "35%"
   };
   const toolbar: any = ['ZoomIn', 'ZoomOut', 'ZoomToFit'];
-  const projectStartDate: Date = new Date('03/24/2024');
-  const projectEndDate: Date = new Date('04/28/2024');
   return (
     <div className='control-pane'>
       <div className='control-section'>
         <GanttComponent id='Zooming' dataSource={zoomingData} toolbar={toolbar}
           treeColumnIndex={1} splitterSettings={splitterSettings}
-          taskFields={taskFields} labelSettings={labelSettings} height='410px'
-          projectStartDate={projectStartDate} projectEndDate={projectEndDate}>
+          taskFields={taskFields} labelSettings={labelSettings} height='410px'>
           <ColumnsDirective>
             <ColumnDirective field='TaskID' width='80'></ColumnDirective>
             <ColumnDirective field='TaskName' width='250'></ColumnDirective>

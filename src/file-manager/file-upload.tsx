@@ -50,7 +50,6 @@ export class FileUpload extends SampleBase<{},{hideDialog: boolean}> {
         this.filemanagerObj.refresh();
     }
     private hostUrl: string = "https://ej2-aspcore-service.azurewebsites.net/";
-    private contextmenuItems: string[] = ['Open', '|', 'Cut', 'Copy', 'Delete', 'Rename', '|', 'Details'];
     public render(): JSX.Element {
         return(
             <div>
@@ -69,21 +68,24 @@ export class FileUpload extends SampleBase<{},{hideDialog: boolean}> {
                             downloadUrl: this.hostUrl + 'api/FileManager/Download'
                             }} allowMultiSelection={false} 
                             toolbarSettings={{ items: ['NewFolder', 'Upload', 'Delete', 'Cut', 'Copy', 'Rename', 'SortBy', 'Refresh', 'Selection', 'View', 'Details'] }} 
-                            contextMenuSettings={{ file: this.contextmenuItems, folder: this.contextmenuItems }} fileOpen={this.onFileOpen.bind(this)}>
+                            contextMenuSettings={{
+                                file: [ 'Cut', 'Copy', '|', 'Delete', 'Download', 'Rename', '|', 'Details'],
+                                layout: ['SortBy', 'View', 'Refresh', '|', 'Paste', '|', 'NewFolder', '|', 'Details', '|', 'SelectAll'],
+                                visible: true
+                            }} fileOpen={this.onFileOpen.bind(this)}>
                         <Inject services={[ NavigationPane, DetailsView, Toolbar]} />
                         </FileManagerComponent>
                     </DialogComponent>
                 </div>
             </div>
             <div id="action-description">
-                <p>This sample demonstrates the real-time use case of File Manager in a web application. Dialog and Uploader components are integrated with the File Manager. Click the browse button in the Uploader element to open the File Manager inside the Dialog control. </p>
+            <p>This sample demonstrates the real-time use case of File Manager in a web application. <a href="https://ej2.syncfusion.com/react/documentation/dialog/getting-started" target="_blank"> Dialog </a> and <a href="https://ej2.syncfusion.com/react/documentation/uploader/getting-started" target="_blank"> Uploader </a> components are integrated with the File Manager. Click the browse button in the uploader element to open the File Manager inside the <code>Dialog</code> component. </p>
             </div>
             <div id="description">
-                <p>The File Manager component is used to explore a file system through a web application, similar to the windows explorer for windows.
-                It supports all the basic file operations such as create, rename, delete and so on.</p>
+                <p>The File Manager component is used to explore a file system through a web application, similar to the Windows Explorer for Windows. It supports all the basic file operations such as create, rename, delete, cut, copy, paste, upload, download, and more.</p>
 
                 <p>
-                    <b>Note: </b>File Manager's upload functionality is restricted in the online demo. If you need to test upload functionality, please install 
+                    <b>Note: </b>File Manager's upload functionality is restricted in the online demos for security reasons. If you need to test upload functionality, please install 
                     <a target="_blank" href="https://www.syncfusion.com/downloads"> Syncfusion Essential Studio </a>on your machine and run the demo.
                 </p>
             </div>

@@ -1,8 +1,6 @@
-import * as ReactDOM from "react-dom";
 import * as React from "react";
 import {
   DiagramComponent,
-  Diagram,
   NodeModel,
   ConnectorModel,
   Inject, LineRouting,
@@ -132,9 +130,11 @@ let connectors: ConnectorModel[] = [
 let diagramInstance: DiagramComponent;
 
 export class LineRoutingSample extends SampleBase<{}, {}> {
+  // Method to fit diagramInstance to page width
   rendereComplete() {
     diagramInstance.fitToPage({ mode: 'Width' });
   }
+  // Render method to render JSX
   render() {
     return (
       <div className="control-pane">
@@ -171,6 +171,7 @@ export class LineRoutingSample extends SampleBase<{}, {}> {
   }
 }
 
+// Function to define defaults for nodes in the diagram
 function getNodeDefaults(node: NodeModel): NodeModel {
   node.height = 50;
   if (node.id === 'decision') {
@@ -181,6 +182,7 @@ function getNodeDefaults(node: NodeModel): NodeModel {
   return node;
 }
 
+// Function to define defaults for connectors in the diagram
 function getConnectorDefaults(connector: ConnectorModel): ConnectorModel {
   connector.type = 'Orthogonal';
   connector.style = { strokeColor: '#707070 ', strokeWidth: 1.25 };

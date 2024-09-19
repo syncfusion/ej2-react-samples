@@ -438,3 +438,8 @@
         right: 15px;
       }
       
+      #palette-space {
+        border-style: solid;
+        border-color: #f2f2f2;
+      }
+      

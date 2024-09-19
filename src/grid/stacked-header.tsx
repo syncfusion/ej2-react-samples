@@ -15,11 +15,11 @@ export class StackedHeader extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <GridComponent dataSource={orderDetails} allowPaging={true} allowResizing={true} allowSorting={true} editSettings={this.editSettings} allowFiltering={true} filterSettings={this.filterSettings} toolbar={this.toolbar}>
+                    <GridComponent dataSource={orderDetails} allowPaging={true} allowResizing={true} allowSorting={true} allowMultiSorting={true} editSettings={this.editSettings} allowFiltering={true} filterSettings={this.filterSettings} toolbar={this.toolbar}>
                         <ColumnsDirective>
-                            <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={this.orderidRules} isPrimaryKey={true}></ColumnDirective>
-                            <ColumnDirective columns={[{ field: 'OrderDate', headerText: 'Order Date', format: 'yMd', width: 130, textAlign: 'Right', editType: 'dropdownedit' }, { field: 'Freight', headerText: 'Freight ($)', width: 120, format: 'C1', textAlign: 'Right',editType: 'numericedit', validationRules: { required: true, min: 0 } }]} headerText='Order Details' ></ColumnDirective>
-                            <ColumnDirective columns={[{ field: 'ShippedDate', headerText: 'Shipped Date', format: 'yMd', textAlign: 'Right', width: 150,  editType: 'dropdownedit' }, { field: 'ShipCountry', headerText: 'Ship Country', width: 150, editType: 'dropdownedit' }]} headerText='Ship Details' />
+                            <ColumnDirective field='OrderID' headerText='Order ID' width='120' minWidth='10' textAlign='Right' validationRules={this.orderidRules} isPrimaryKey={true}></ColumnDirective>
+                            <ColumnDirective columns={[{ field: 'CustomerID', headerText: 'Customer Name', width: 160, minWidth:30}, { field: 'OrderDate', headerText: 'Order Date', textAlign: 'Right', width: 140, minWidth:50, format: 'yMd', editType: 'datepickeredit', }]} headerText='Order Details'></ColumnDirective>
+                            <ColumnDirective columns={[{ field: 'ShippedDate', headerText: 'Shipped Date', textAlign: 'Right', width: 160, minWidth:40, format: 'yMd', editType: 'datepickeredit', }, { field: 'ShipCountry', headerText: 'Ship Country', width: 140, minWidth: 60, editType: 'dropdownedit', }, { field: 'Freight', headerText: 'Freight Charges($)', textAlign: 'Right', width: 200, format: 'C2', minWidth: 40, editType: 'numericedit', validationRules: {required: true, number: true}}]} headerText='Ship Details'/>
                         </ColumnsDirective>
                         <Inject services={[Page, Resize, Sort, Toolbar, Filter, Edit]} />
                     </GridComponent>
@@ -40,7 +40,7 @@ export class StackedHeader extends SampleBase<{}, {}> {
                         </a></code> as false in columns definition.
                     </p>
 
-                    <p>In this demo, the columns <b>OrderDate</b>, <b>Freight</b> are grouped under <b>Order Details</b>, the columns <b>ShippedDate</b>, <b>ShipCountry</b> are grouped under<b> Ship Details</b>. </p>
+                    <p>In this demo, the columns <b>CustomerName</b>, <b>OrderDate</b> are grouped under <b>Order Details</b>, the columns <b>ShippedDate</b>, <b>ShipCountry</b>, <b>Freight</b> are grouped under<b> Ship Details</b>. </p>
                     <p> More information on the Stacked Header feature configuration can be found in this
                     <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/grid/columns/#resize-stacked-column'> documentation section</a>.
                  </p>

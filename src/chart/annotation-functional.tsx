@@ -44,11 +44,11 @@ const SAMPLE_CSS = `
         font-size: 12px;
         color: 'black'
     }
-    .e-view.highcontrast .box-bottom,.e-view.material-dark .box-bottom,.e-view.tailwind-dark .box-bottom, .e-view.fluent-dark .box-bottom,.e-view.fluent2-dark .box-bottom, .e-view.bootstrap-dark .box-bottom,.e-view.bootstrap5-dark .box-bottom,.e-view.fabric-dark .box-bottom,.e-view.highcontrast .first-box-bottom,
-    .e-view.material-dark  .first-box-bottom,.e-view.tailwind-dark .first-box-bottom, .e-view.fluent-dark .first-box-bottom,.e-view.fluent2-dark .first-box-bottom,.e-view.bootstrap-dark .first-box-bottom, .e-view.bootstrap5-dark .first-box-bottom ,.e-view.fabric-dark .first-box-bottom, .e-view.highcontrast .second-box-bottom,
-    .e-view.material-dark  .second-box-bottom, .e-view.fluent-dark .second-box-bottom,.e-view.fluent2-dark .second-box-bottom,.e-view.bootstrap-dark .second-box-bottom, .e-view.bootstrap5-dark .second-box-bottom, .e-view.fabric-dark .second-box-bottom, .e-view.highcontrast .third-box-bottom,
-    .e-view.material-dark  .third-box-bottom, .e-view.fluent-dark .third-box-bottom,.e-view.fluent2-dark .third-box-bottom,.e-view.fluent2-dark .third-box-bottom,.e-view.bootstrap-dark .third-box-bottom,.e-view.bootstrap5-dark .third-box-bottom,.e-view.fabric-dark .third-box-bottom,.e-view.highcontrast .box-left,
-    .e-view.material-dark .box-left, .e-view.fluent-dark .box-left,.e-view.fluent2-dark .box-left,.e-view.bootstrap-dark .box-left, .e-view.bootstrap5-dark .box-left, .e-view.fabric-dark .box-left,.e-view.material3-dark .box-bottom, .e-view.material3-dark .first-box-bottom , .e-view.material3-dark .second-box-bottom,.e-view.material3-dark .third-box-bottom, .e-view.material3-dark .box-left{
+    .e-view.highcontrast .box-bottom,.e-view.material-dark .box-bottom,.e-view.tailwind-dark .box-bottom, .e-view.fluent-dark .box-bottom,.e-view.fluent2-dark .box-bottom, .e-view.fluent2-highcontrast .box-bottom, .e-view.bootstrap-dark .box-bottom,.e-view.bootstrap5-dark .box-bottom,.e-view.fabric-dark .box-bottom,.e-view.highcontrast .first-box-bottom,
+    .e-view.material-dark  .first-box-bottom,.e-view.tailwind-dark .first-box-bottom, .e-view.fluent-dark .first-box-bottom,.e-view.fluent2-dark .first-box-bottom,.e-view.fluent2-highcontrast .first-box-bottom,.e-view.bootstrap-dark .first-box-bottom, .e-view.bootstrap5-dark .first-box-bottom ,.e-view.fabric-dark .first-box-bottom, .e-view.highcontrast .second-box-bottom,
+    .e-view.material-dark  .second-box-bottom, .e-view.fluent-dark .second-box-bottom,.e-view.fluent2-dark .second-box-bottom,.e-view.fluent2-highcontrast .second-box-bottom,.e-view.bootstrap-dark .second-box-bottom, .e-view.bootstrap5-dark .second-box-bottom, .e-view.fabric-dark .second-box-bottom, .e-view.highcontrast .third-box-bottom,
+    .e-view.material-dark  .third-box-bottom, .e-view.fluent-dark .third-box-bottom,.e-view.fluent2-dark .third-box-bottom,.e-view.fluent2-highcontrast .third-box-bottom,.e-view.bootstrap-dark .third-box-bottom,.e-view.bootstrap5-dark .third-box-bottom,.e-view.fabric-dark .third-box-bottom,.e-view.highcontrast .box-left,
+    .e-view.material-dark .box-left, .e-view.fluent-dark .box-left,.e-view.fluent2-dark .box-left,.e-view.fluent2-highcontrast .box-left,.e-view.bootstrap-dark .box-left, .e-view.bootstrap5-dark .box-left, .e-view.fabric-dark .box-left,.e-view.material3-dark .box-bottom, .e-view.material3-dark .first-box-bottom , .e-view.material3-dark .second-box-bottom,.e-view.material3-dark .third-box-bottom, .e-view.material3-dark .box-left{
         position: relative;
         background: black;
         border: 1.5px solid black;
@@ -72,7 +72,7 @@ const SAMPLE_CSS = `
         margin-bottom: -1px;
         border-bottom-color: #fdf7e7;
     }
-    .e-view.highcontrast .box-bottom:after,.e-view.tailwind-dark .box-bottom:after,.e-view.fluent-dark .box-bottom:after, .e-view.fluent2-dark .box-bottom:after,.e-view.material-dark .box-bottom:after,.e-view.bootstrap-dark .box-bottom:after,.e-view.bootstrap5-dark .box-bottom:after, .e-view.bootstrap4-dark .box-bottom:after, .e-view.fabric-dark .box-bottom:after, .e-view.material3-dark .box-bottom:after {
+    .e-view.highcontrast .box-bottom:after,.e-view.tailwind-dark .box-bottom:after,.e-view.fluent-dark .box-bottom:after, .e-view.fluent2-dark .box-bottom:after,.e-view.fluent2-highcontrast .box-bottom:after,.e-view.material-dark .box-bottom:after,.e-view.bootstrap-dark .box-bottom:after,.e-view.bootstrap5-dark .box-bottom:after, .e-view.bootstrap4-dark .box-bottom:after, .e-view.fabric-dark .box-bottom:after, .e-view.material3-dark .box-bottom:after {
         border-color: transparent;
         border-width: 6.2px;
         left: 50%;
@@ -96,7 +96,7 @@ const SAMPLE_CSS = `
         margin-bottom: -1px;
         border-bottom-color: #fdf7e7;
     }
-    .e-view.highcontrast .first-box-bottom:after,.e-view.tailwind-dark .first-box-bottom:after,.e-view.fluent-dark .first-box-bottom:after, .e-view.fluent2-dark .first-box-bottom:after,.e-view.material-dark .first-box-bottom:after,.e-view.bootstrap-dark .first-box-bottom:after,.e-view.bootstrap5-dark .first-box-bottom:after,.e-view.bootstrap4-dark .first-box-bottom:after, .e-view.fabric-dark .first-box-bottom:after, .e-view.material3-dark .first-box-bottom:after {
+    .e-view.highcontrast .first-box-bottom:after,.e-view.tailwind-dark .first-box-bottom:after,.e-view.fluent-dark .first-box-bottom:after, .e-view.fluent2-dark .first-box-bottom:after, .e-view.fluent2-highcontrast .first-box-bottom:after,.e-view.material-dark .first-box-bottom:after,.e-view.bootstrap-dark .first-box-bottom:after,.e-view.bootstrap5-dark .first-box-bottom:after,.e-view.bootstrap4-dark .first-box-bottom:after, .e-view.fabric-dark .first-box-bottom:after, .e-view.material3-dark .first-box-bottom:after {
         border-color: transparent;
         border-width: 6.2px;
         left: 50%;
@@ -120,7 +120,7 @@ const SAMPLE_CSS = `
         margin-bottom: -1px;
         border-bottom-color: #fdf7e7;
     }
-    .e-view.highcontrast .second-box-bottom:after,.e-view.tailwind-dark .second-box-bottom:after,.e-view.fluent-dark .second-box-bottom:after, .e-view.fluent2-dark .second-box-bottom:after,.e-view.material-dark .second-box-bottom:after, .e-view.bootstrap-dark .second-box-bottom:after, .e-view.bootstrap5-dark .second-box-bottom:after,.e-view.bootstrap4-dark .second-box-bottom:after, .e-view.fabric-dark .second-box-bottom:after, .e-view.material3-dark .second-box-bottom:after {
+    .e-view.highcontrast .second-box-bottom:after,.e-view.tailwind-dark .second-box-bottom:after,.e-view.fluent-dark .second-box-bottom:after, .e-view.fluent2-dark .second-box-bottom:after, .e-view.fluent2-highcontrast .second-box-bottom:after,.e-view.material-dark .second-box-bottom:after, .e-view.bootstrap-dark .second-box-bottom:after, .e-view.bootstrap5-dark .second-box-bottom:after,.e-view.bootstrap4-dark .second-box-bottom:after, .e-view.fabric-dark .second-box-bottom:after, .e-view.material3-dark .second-box-bottom:after {
         border-color: transparent;
         border-width: 6.2px;
         left: 50%;
@@ -144,7 +144,7 @@ const SAMPLE_CSS = `
         margin-bottom: -1px;
         border-bottom-color: #fdf7e7;
     }
-    .e-view.highcontrast .third-box-bottom:after ,.e-view.tailwind-dark .third-box-bottom:after ,.e-view.fluent-dark .third-box-bottom:after, .e-view.fluent2-dark .third-box-bottom:after ,.e-view.material-dark .third-box-bottom:after ,.e-view.bootstrap-dark .third-box-bottom:after ,.e-view.bootstrap5-dark .third-box-bottom:after , .e-view.bootstrap4-dark .third-box-bottom:after , .e-view.fabric-dark .third-box-bottom:after, .e-view.material3-dark .third-box-bottom:after {
+    .e-view.highcontrast .third-box-bottom:after ,.e-view.tailwind-dark .third-box-bottom:after ,.e-view.fluent-dark .third-box-bottom:after, .e-view.fluent2-dark .third-box-bottom:after , .e-view.fluent2-highcontrast .third-box-bottom:after , .e-view.material-dark .third-box-bottom:after ,.e-view.bootstrap-dark .third-box-bottom:after ,.e-view.bootstrap5-dark .third-box-bottom:after , .e-view.bootstrap4-dark .third-box-bottom:after , .e-view.fabric-dark .third-box-bottom:after, .e-view.material3-dark .third-box-bottom:after {
         border-color: transparent;
         border-width: 6px;
         left: 50%;
@@ -173,7 +173,7 @@ const SAMPLE_CSS = `
         margin-right: -1px;
         border-right-color: #fdf7e7;
     }
-    .e-view.highcontrast .box-left:after,.e-view.tailwind-dark .box-left:after,.e-view.fluent-dark .box-left:after, .e-view.fluent2-dark .box-left:after,.e-view.material-dark .box-left:after,.e-view.bootstrap-dark .box-left:after,.e-view.bootstrap5-dark .box-left:after, .e-view.bootstrap4-dark .box-left:after, .e-view.fabric-dark .box-left:after, .e-view.material3-dark .box-left:after {
+    .e-view.highcontrast .box-left:after,.e-view.tailwind-dark .box-left:after,.e-view.fluent-dark .box-left:after, .e-view.fluent2-dark .box-left:after, .e-view.fluent2-highcontrast .box-left:after, .e-view.material-dark .box-left:after,.e-view.bootstrap-dark .box-left:after,.e-view.bootstrap5-dark .box-left:after, .e-view.bootstrap4-dark .box-left:after, .e-view.fabric-dark .box-left:after, .e-view.material3-dark .box-left:after {
         border-color: transparent;
         border-width: 6.5px;
         margin-right: -1px;
@@ -196,8 +196,8 @@ const SAMPLE_CSS = `
         font-size: 12px;
         color:  white;
     }
-    .e-view.highcontrast .box-top,.e-view.tailwind-dark .box-top,.e-view.fluent-dark .box-top, .e-view.fluent2-dark .box-top,.e-view.material-dark .box-top,.e-view.bootstrap-dark .box-top,.e-view.bootstrap5-dark .box-top ,.e-view.bootstrap4-dark .box-top , .e-view.fabric-dark .box-top,
-    .e-view.highcontrast .box-top-left,.e-view.tailwind-dark .box-top,.e-view.fluent-dark .box-top-left, .e-view.fluent2-dark .box-top-left,.e-view.material-dark .box-top-left,.e-view.bootstrap-dark .box-top-left,.e-view.bootstrap5-dark .box-top-left, .e-view.bootstrap4-dark .box-top-left, .e-view.fabric-dark .box-top-left, .e-view.material3-dark .box-top, .e-view.material3-dark .box-top-left {
+    .e-view.highcontrast .box-top,.e-view.tailwind-dark .box-top,.e-view.fluent-dark .box-top, .e-view.fluent2-dark .box-top, .e-view.fluent2-highcontrast .box-top, .e-view.material-dark .box-top,.e-view.bootstrap-dark .box-top,.e-view.bootstrap5-dark .box-top ,.e-view.bootstrap4-dark .box-top , .e-view.fabric-dark .box-top,
+    .e-view.highcontrast .box-top-left,.e-view.tailwind-dark .box-top,.e-view.fluent-dark .box-top-left, .e-view.fluent2-dark .box-top-left, .e-view.fluent2-highcontrast .box-top-left, .e-view.material-dark .box-top-left,.e-view.bootstrap-dark .box-top-left,.e-view.bootstrap5-dark .box-top-left, .e-view.bootstrap4-dark .box-top-left, .e-view.fabric-dark .box-top-left, .e-view.material3-dark .box-top, .e-view.material3-dark .box-top-left {
         position: relative;
         color: white;
         background: #fdf7e7;
@@ -221,7 +221,7 @@ const SAMPLE_CSS = `
         margin-right: -7.5px;
         margin-top: -1.5px;
     }
-    .e-view.highcontrast .box-top:after,.e-view.tailwind-dark .box-top:after,.e-view.fluent-dark .box-top:after, .e-view.fluent2-dark .box-top:after,.e-view.material-dark .box-top:after, .e-view.bootstrap-dark .box-top:after, .e-view.bootstrap5-dark .box-top:after, .e-view.bootstrap4-dark .box-top:after, .e-view.fabric-dark .box-top:after,.e-view.material3-dark .box-top:after {
+    .e-view.highcontrast .box-top:after,.e-view.tailwind-dark .box-top:after,.e-view.fluent-dark .box-top:after, .e-view.fluent2-dark .box-top:after, .e-view.fluent2-highcontrast .box-top:after, .e-view.material-dark .box-top:after, .e-view.bootstrap-dark .box-top:after, .e-view.bootstrap5-dark .box-top:after, .e-view.bootstrap4-dark .box-top:after, .e-view.fabric-dark .box-top:after,.e-view.material3-dark .box-top:after {
         border-color: transparent;
         border-width: 7.5px;
         border-top-color: #fdf7e7;
@@ -236,7 +236,7 @@ const SAMPLE_CSS = `
         right: 50%;
         margin-right: -8px;
     }
-    .e-view.highcontrast .box-top:before,.e-view.tailwind-dark .box-top:before,.e-view.fluent-dark .box-top:before, .e-view.fluent2-dark .box-top:before,.e-view.material-dark .box-top:before,.e-view.bootstrap-dark .box-top:before,.e-view.bootstrap5-dark .box-top:before,.e-view.bootstrap4-dark .box-top:before , .e-view.fabric-dark .box-top:before ,.e-view.material3-dark .box-top:before{
+    .e-view.highcontrast .box-top:before,.e-view.tailwind-dark .box-top:before,.e-view.fluent-dark .box-top:before, .e-view.fluent2-dark .box-top:before, .e-view.fluent2-highcontrast .box-top:before, .e-view.material-dark .box-top:before,.e-view.bootstrap-dark .box-top:before,.e-view.bootstrap5-dark .box-top:before,.e-view.bootstrap4-dark .box-top:before , .e-view.fabric-dark .box-top:before ,.e-view.material3-dark .box-top:before{
         border-color: transparent;
         border-top-color:#fdf7e7;
         border-width: 8px;
@@ -251,7 +251,7 @@ const SAMPLE_CSS = `
         margin-right: -7.5px;
         margin-bottom: -1.5px;
     }
-    .e-view.highcontrast .box-top-left:after,.e-view.tailwind-dark .box-top-left:after,.e-view.fluent-dark .box-top-left:after, .e-view.fluent2-dark .box-top-left:after,.e-view.material-dark .box-top-left:after,.e-view.bootstrap-dark .box-top-left:after,.e-view.bootstrap5-dark .box-top-left:after,.e-view.bootstrap4-dark .box-top-left:after, .e-view.fabric-dark  .box-top-left:after,.e-view.material3-dark .box-top-left:after{
+    .e-view.highcontrast .box-top-left:after,.e-view.tailwind-dark .box-top-left:after,.e-view.fluent-dark .box-top-left:after, .e-view.fluent2-dark .box-top-left:after, .e-view.fluent2-highcontrast .box-top-left:after, .e-view.material-dark .box-top-left:after,.e-view.bootstrap-dark .box-top-left:after,.e-view.bootstrap5-dark .box-top-left:after,.e-view.bootstrap4-dark .box-top-left:after, .e-view.fabric-dark  .box-top-left:after,.e-view.material3-dark .box-top-left:after{
         border-color: transparent;
         border-width: 7.5px;
         border-top-color: #fdf7e7;
@@ -266,7 +266,7 @@ const SAMPLE_CSS = `
         right: 20%;
         margin-right: -8px;
     }
-    .e-view.highcontrast .box-top-left:before,.e-view.tailwind-dark .box-top-left:before,.e-view.fluent-dark .box-top-left:before, .e-view.fluent2-dark .box-top-left:before,.e-view.material-dark .box-top-left:before,.e-view.bootstrap-dark .box-top-left:before,.e-view.bootstrap5-dark .box-top-left:before, .e-view.bootstrap4-dark .box-top-left:before , .e-view.fabric-dark  .box-top-left:before,.e-view.material3-dark  .box-top-left:before {
+    .e-view.highcontrast .box-top-left:before,.e-view.tailwind-dark .box-top-left:before,.e-view.fluent-dark .box-top-left:before, .e-view.fluent2-dark .box-top-left:before, .e-view.fluent2-highcontrast .box-top-left:before, .e-view.material-dark .box-top-left:before,.e-view.bootstrap-dark .box-top-left:before,.e-view.bootstrap5-dark .box-top-left:before, .e-view.bootstrap4-dark .box-top-left:before , .e-view.fabric-dark  .box-top-left:before,.e-view.material3-dark  .box-top-left:before {
         border-color: transparent;
         border-top-color: #fdf7e7;
         border-width: 8px;
@@ -289,7 +289,7 @@ const Annotation = () => {
     };
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
         if ( args.chart.theme.includes('Dark') || args.chart.theme.includes('highcontrast')) {   
             args.chart.series[0].fill = "url(#dark-gradient-chart)";
@@ -355,7 +355,6 @@ const Annotation = () => {
                     In this example, you can see how to render and configure annotation feature in chart. We have used a pie chart to depict the sales for each year using annotation support,
                     while selecting a particular year from the StackedColumn series, the respective data's are showed in pie. An annotation can hold any html element as its content, here we have added the Pie chart as its content.
                 </p>
-                <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
                     Chart component features are segregated into individual feature-wise modules. To use annotation feature in chart, we need to inject <code>ChartAnnotation</code> module into <code>services</code>.

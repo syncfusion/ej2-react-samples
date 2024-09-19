@@ -23,6 +23,7 @@ declare let window: MyWindow;
 let samLength: number;
 // Regex for hidden code removal
 let reg: RegExp = /.*custom code start([\S\s]*?)custom code end.*/g;
+let aiControlRegex: RegExp = /ai-(?!assistview\b)[a-z-]+/;
 let hash: string[];
 let catRegex: RegExp = /(-| )/g;
 let propRegex: RegExp = /-3/;
@@ -103,7 +104,7 @@ function changeTab(args: any): void {
             let elementList = demoSection.getElementsByClassName('e-control e-lib');
             for (let i = 0; i < elementList.length; i++) {
                 let instance = (elementList[i] as any).ej2_instances;
-                if (instance && instance[0] && typeof instance[0].refresh === 'function') {
+                if (instance && instance[0] && typeof instance[0].refresh === 'function' && controlName !== 'Rich Text Editor') {
                     instance[0].refresh();
                 }
                 if (instance && instance[0] && instance[0].getModuleName() !== 'DashboardLayout')
@@ -292,25 +293,34 @@ function sourceFileList(node: any): void {
 
 function generatepath(path:any): void{
     let splitPath: string = path.split('/')[1];
+    if ((aiControlRegex).test(path)) {
+        path = path.split('/')[0] + '/' + 'ai-' + splitPath;
+    }
     let tsx:any = [{path:`src/${path}.tsx`,displayName:`${splitPath}.tsx`},{path:`src/${path}.jsx`,displayName:`${splitPath}.jsx`}]
     return tsx;
 }
 
 function updatePlunker(): void {
     let path: string = hash.slice(2).join('/');
-    let fileName: string = isFunctional ? 'src/' + path + '-functional-stack.json' : 'src/' + path + '-stack.json';
-    let plunk: Ajax = new Ajax(fileName, 'GET', false);
-    let promise: Promise<Ajax> = plunk.send();
-    promise.then((result: Object) => {
-        if (select('#open-plnkr') as any) {
-            (select('#open-plnkr') as any).disabled = false;
-        }
-        plunker(result as string);
-    });
+    if (!(aiControlRegex).test(path)) {
+        let fileName: string = isFunctional ? 'src/' + path + '-functional-stack.json' : 'src/' + path + '-stack.json';
+        let plunk: Ajax = new Ajax(fileName, 'GET', false);
+        let promise: Promise<Ajax> = plunk.send();
+        promise.then((result: Object) => {
+            if (select('#open-plnkr') as any) {
+                (select('#open-plnkr') as any).disabled = false;
+            }
+            plunker(result as string);
+        });
+    }
 }
 
 function renderSourceTabContent(): void {
     let path: string = hash.slice(2).join('/');
+    const desktopSettings = select('.sb-desktop-setting') as HTMLElement;
+    if (!Browser.isDevice && desktopSettings) {
+        desktopSettings.style.display = aiControlRegex.test(path) ? 'none' : '';
+    }
     let fnSourcePromise: Array<Promise<Ajax>> = [];
     let sourcePromise: Array<Promise<Ajax>> = [];
     let fnObj: any = [];
@@ -581,7 +591,7 @@ export function checkApiTableDataSource(): void {
     }
     let hash: string[] = location.hash.split('/');
     let data: Object[] = window.apiList[hash[2] + '/' + hash[3].replace('.html', '')] || [];
-    if (!data.length) {
+    if (!data.length || isMobile) {
         (select('#content-tab') as any).ej2_instances[0].hideTab(2);
         apiGrid.dataSource = [];
 
@@ -606,11 +616,11 @@ export class Content extends React.Component<{}, {}>{
             let path: string;
             for (let sample of sampleOrder) {
                 if (sample.indexOf(hash[1] + '/') !== -1) {
-                    path = hash[0] + '/' + sample;
+                    path = '/' + hash[0] + '/' + sample;
                     break;
                 }
             }
-            location.hash = path ? path : '#/material/grid/overview';
+            location.hash = path ? path : '#/fluent2/grid/overview';
         }
         let radios: NodeListOf<Element> = document.querySelectorAll('input[name="hooks"]');
         radios.forEach(radio => radio.addEventListener('change', onHooksChange));

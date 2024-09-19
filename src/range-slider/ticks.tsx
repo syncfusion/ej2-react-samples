@@ -36,6 +36,11 @@ const slidercss = `
     user-select: none;
     /* Standard syntax */
 }
+body.fluent2-highcontrast .sliderwrap .e-tick-before.e-scale.e-h-scale .e-tick,
+body.fluent2 .sliderwrap .e-tick-before.e-scale.e-h-scale .e-tick,
+body.fluent2-dark .sliderwrap .e-tick-before.e-scale.e-h-scale .e-tick {
+    top: -5px;
+}
 `
 export class Ticks extends SampleBase<{}, {}> {
     // Instance of the control
@@ -137,7 +142,7 @@ export class Ticks extends SampleBase<{}, {}> {
                             <li>
                                 <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/slider/#max">max </a> – to specify maximum value of the slider</li>
                         </ul>
-                        <p>For more information, we can refer the
+                        <p>For more information, we can refer the 
                     <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/range-slider/ticks">ticks</a> section from the documentation.</p>
                     </div>
                 </div>

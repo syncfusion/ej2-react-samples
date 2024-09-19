@@ -27,6 +27,7 @@ import "./font-icons.css";
 
 let diagramInstance: DiagramComponent;
 
+//Collection of working data
 let workingData:object[] = [
     { Name: 'Plant Manager', Id: '1', hasChild: true, expanded: true },
     {
@@ -84,13 +85,13 @@ let workingData:object[] = [
   ];
   let items: DataManager = new DataManager(workingData as JSON[], new Query().take(7));
 
-function TreeviewSample() {
+function TreeViewSample() {
   React.useEffect(() => {
     updateSampleSection();
   }, [])
   let index = 1;
-  let btnobj:ButtonComponent;
-  let addobj:ButtonComponent;
+  let deleteButton:ButtonComponent;
+  let addButton:ButtonComponent;
   let treeObj:TreeViewComponent;
   let targetNodeId:any;
   let elementNodeId:any;
@@ -102,6 +103,7 @@ function TreeviewSample() {
     hasChildren: 'hasChild',
   };
   
+//add function
 function add():any {
     let nodeId:any;
     if (diagramInstance.selectedItems.nodes.length > 0) {
@@ -113,6 +115,7 @@ function add():any {
     }
   }
 
+  //remove function
   function remove():any{
     let nodeId:any;
     if (diagramInstance.selectedItems.nodes.length > 0) {
@@ -133,6 +136,7 @@ function add():any {
     diagramInstance.doLayout();
   }
 
+  //remove sub child function
   function removeSubChild(node:any, canDelete:any) {
     let childNode:any;
     let connector:any;
@@ -181,10 +185,12 @@ function add():any {
     }
   }
 
+  //filter Node Data Function
   function filterNodeData(a:any) {
     return a.data.Id === targetNodeId;
   }
 
+  //add Node Function
   function addNode(nodeId:any) {
     targetNodeId = nodeId ? nodeId : treeObj.selectedNodes[0];
     let tempData:any = workingData.filter(checkData);
@@ -216,11 +222,13 @@ function add():any {
     workingData.push(item);
   }
 
+  //node selected event
   function nodeSelected(args:any) {
-    btnobj.disabled = false;
-    addobj.disabled = false;
+    deleteButton.disabled = false;
+    addButton.disabled = false;
   }
 
+  //node click event
   function nodeClicked(args:any) {
     let node:any = diagramInstance.getObject(treeObj.selectedNodes[0]);
     diagramInstance.select([node]);
@@ -233,24 +241,29 @@ function add():any {
     }
   }
 
+  //node edited event
   function nodeEdited(args:any) {
     let node:any = diagramInstance.getObject(args.nodeData.id);
     node.annotations[0].content = args.newText;
     treeObj.selectedNodes = [args.nodeData.id];
   }
 
+  //check data function
   function checkData(a:any) {
     return a.Id === targetNodeId;
   }
 
+  //check element data function
   function checkElementData(a:any) {
     return a.Id === elementNodeId;
   }
-  function created1() {
-    addobj.disabled = true;
+  //Initially disable add node button
+  function initialAddButton() {
+    addButton.disabled = true;
   }
-  function created2() {
-    btnobj.disabled = true;
+  //Initially disable delete node button
+  function initialDeleteButton() {
+    deleteButton.disabled = true;
   }
   return (
     <div className="control-pane">
@@ -259,19 +272,19 @@ function add():any {
         <div className="group-button" style={{ width: '70%', float: 'left' }}>
           <ButtonComponent
             ref={(scope) => {
-              addobj = scope;
+              addButton = scope;
             }}
             isPrimary={true}
-            created={created1}
+            created={initialAddButton}
             onClick={add}
           >
             Add Node
           </ButtonComponent>
           <ButtonComponent
             ref={(scope) => {
-              btnobj = scope;
+              deleteButton = scope;
             }}
-            created={created2}
+            created={initialDeleteButton}
             isPrimary={true}
             onClick={remove}
           >
@@ -343,8 +356,7 @@ function add():any {
               type: 'HierarchicalTree',
               verticalSpacing: 50,
               horizontalSpacing: 40,
-              enableAnimation: true,
-            }}
+            }} //Sets the default values of a node
             getNodeDefaults={(node:Node) => {
               node.width = 100;
               node.height = 40;
@@ -369,23 +381,28 @@ function add():any {
                 width: 10,
                 style: { fill: 'CornflowerBlue', strokeColor: 'white' },
               };
-            }}
+            }} //enable or disable the add and delete button
             selectionChange={(args:ISelectionChangeEventArgs) => {
               if (args.state === 'Changed') {
                 if (args.type === 'Addition') {
-                  btnobj.disabled = false;
-                  addobj.disabled = false;
+                  deleteButton.disabled = false;
+                  addButton.disabled = false;
                 } else {
-                  btnobj.disabled = true;
-                  addobj.disabled = true;
+                  deleteButton.disabled = true;
+                  addButton.disabled = true;
+                }
+                let selectedItems = diagramInstance.selectedItems.nodes.concat((diagramInstance.selectedItems as any).connectors);
+                if(selectedItems.length==0)
+                {
+                  treeObj.selectedNodes=[];
                 }
               }
-            }}
+            }} //click event handler
             click={(args:IClickEventArgs) => {
               if (args.element instanceof Node) {
                 treeObj.selectedNodes = [(args.element as any).data.Id];
               }
-            }}
+            }} //text edit event
             textEdit={(args:ITextEditEventArgs) => {
               setTimeout(function () {
                 if (args.annotation) {
@@ -395,7 +412,7 @@ function add():any {
                   treeObj.updateNode(tempData[0].Id, args.annotation.content);
                 }
               }, 0);
-            }}
+            }} //drop event
             drop={(args:IDropEventArgs) => {
               let connector:any;
               let tempData:any;
@@ -441,16 +458,16 @@ function add():any {
                   treeObj.refresh();
                 }
               }, 0);
-            }}
+            }} //drag enter event
             dragEnter={(args:IDragEnterEventArgs) => {
-              let lable:any = '';
+              let label:any = '';
               if (args.dragData) {
-                lable = (args.dragData as any).text;
+                label = (args.dragData as any).text;
               }
               let node = {
                 id: 'node' + index,
-                data: { Name: lable, Id: 'node' + index },
-                annotations: [{ content: lable }],
+                data: { Name: label, Id: 'node' + index },
+                annotations: [{ content: label }],
               };
               args.dragItem = node;
             }}
@@ -474,4 +491,4 @@ function add():any {
     </div>
   );
 }
-export default TreeviewSample;
+export default TreeViewSample;

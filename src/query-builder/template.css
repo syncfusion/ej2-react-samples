@@ -32,14 +32,19 @@
            display: block !important;
         }
     }
+    .material3 .e-query-preview .e-icons.copycode,
+    .material3-dark .e-query-preview .e-icons.copycode,
+    .bootstrap5\.3-dark .e-query-preview .e-icons.copycode,
+    .bootstrap5-dark .e-query-preview .e-icons.copycode,
+    .bootstrap-dark .e-query-preview .e-icons.copycode,
+    .highcontrast .e-query-preview .e-icons.copycode,
+    .fluent-dark .e-query-preview .e-icons.copycode,
+    .tailwind-dark .e-query-preview .e-icons.copycode,
+    .fluent2-dark .e-query-preview .e-icons.copycode,
+    .fluent2-highcontrast .e-query-preview .e-icons.copycode {
+        color: white;
+    }
 /* custom code end */
 	.highcontrast textarea#ruleContent {
 	  background-color: #000;
 	}
-
-    .fluent2-dark .e-query-preview .e-icons.copycode,
-    .fluent2-highcontrast .e-query-preview .e-icons.copycode {
-        background-color: black;
-        padding-bottom: 3px;
-        color: white;
-    }

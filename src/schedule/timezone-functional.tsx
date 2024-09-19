@@ -21,9 +21,6 @@ if (Browser.isIE) {
 }
 
 const TimeZone = () => {
-  useEffect(() => {
-    updateSampleSection();
-  }, [])
   const scheduleObj = useRef<ScheduleComponent>(null);
   const fifaEvents: Record<string, any>[] = extend([], ((dataSource as Record<string, any>).fifaEventsData), null, true) as Record<string, any>[];
   const timezone: Timezone = new Timezone();
@@ -37,13 +34,15 @@ const TimeZone = () => {
   const fields: Record<string, any> = { text: 'text', value: 'value' };
   const [schedulerTimezone, setSchedulerTimezone] = useState<string>('UTC');
   // Here remove the local offset from events
-  const onCreate = (): void => {
-    for (let fifaEvent of fifaEvents) {
-      let event: Record<string, any> = fifaEvent as Record<string, any>;
+
+  useEffect(() => {
+    for (let event of fifaEvents) {
       event.StartTime = timezone.removeLocalOffset(new Date(event.StartTime as string));
       event.EndTime = timezone.removeLocalOffset(new Date(event.EndTime as string));
     }
-  }
+  }, [timezone]);
+
+
 
   const onEventRendered = (args: EventRenderedArgs): void => {
     applyCategoryColor(args, scheduleObj.current?.currentView as View);
@@ -73,7 +72,7 @@ const TimeZone = () => {
               </tr>
             </tbody>
           </table>
-          <ScheduleComponent width='100%' height='650px' ref={scheduleObj} selectedDate={new Date(2021, 5, 20)} timezone={schedulerTimezone} workHours={{ start: '11:00' }} eventSettings={{ dataSource: fifaEvents }} created={onCreate} eventRendered={onEventRendered}>
+          <ScheduleComponent width='100%' height='650px' ref={scheduleObj} selectedDate={new Date(2021, 5, 20)} timezone={schedulerTimezone} workHours={{ start: '11:00' }} eventSettings={{ dataSource: fifaEvents }}  eventRendered={onEventRendered}>
             <Inject services={[Day, Week, WorkWeek, Month, Agenda, Resize, DragAndDrop]} />
           </ScheduleComponent>
         </div>

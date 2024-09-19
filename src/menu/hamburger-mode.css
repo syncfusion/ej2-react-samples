@@ -91,12 +91,22 @@
     overflow: hidden;
 }
 
-.fluent2-dark .layout #container,
-.fluent2-highcontrast .layout #container {
-    background-color: black;
-}
-
 #hamburgerMenu #header {
     width: 100%;
     background-color: #7b8cfb;
+}
+
+.highcontrast #hamburgerMenu .layout #container,
+.tailwind-dark #hamburgerMenu .layout #container,
+.fluent-dark #hamburgerMenu .layout #container,
+.fabric-dark #hamburgerMenu .layout #container,
+.bootstrap5\.3-dark #hamburgerMenu .layout #container,
+.bootstrap-dark #hamburgerMenu .layout #container,
+.fluent2-dark #hamburgerMenu .layout #container,
+.highcontrast-dark #hamburgerMenu .layout #container,
+.material3-dark #hamburgerMenu .layout #container,
+.material-dark  #hamburgerMenu .layout #container,
+.fluent2-dark #hamburgerMenu .layout #container,
+.fluent2-highcontrast #hamburgerMenu .layout #container {
+    background-color: black;
 }

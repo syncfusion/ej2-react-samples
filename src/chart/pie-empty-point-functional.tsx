@@ -29,6 +29,7 @@ const PieEmptyPoint = () => {
     let modeElement = useRef<DropDownListComponent>(null);
     const mode = (): void => {
         pie.current.series[0].emptyPointSettings.mode = modeElement.current.value as EmptyPointMode;
+        pie.current.series[0].animation.enable = false;
         pie.current.refresh();
     };
     let droplist: { [key: string]: Object }[] = [
@@ -43,7 +44,7 @@ const PieEmptyPoint = () => {
     };
     const load = (args: IAccLoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
         args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as AccumulationTheme;
     };
     const textRender = (args: { text: string; point: { x: string; y: string; }; }) => {

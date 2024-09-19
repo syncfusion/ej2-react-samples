@@ -100,7 +100,7 @@ export class ApiTooltip extends SampleBase<{}, {}> {
                                         <td style={{ width: "50%", paddingRight: "10px" }}>
                                             <div>
                                                 <input
-                                                    id="value"
+                                                    id="tooltipContentValue"
                                                     ref={t => (this.text = t)}
                                                     onKeyUp={this.handleKeyPress.bind(this)}
                                                     type="text"

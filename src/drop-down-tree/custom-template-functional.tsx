@@ -28,7 +28,7 @@ const CustomTemplate = () => {
             </div>
             <div id="description">
                 <p>The <code>Dropdown Tree</code> component allows the user to select more than one value while enabling the checkbox or multi selection support.</p>
-                <p>The user can visualize the custom template instead of the selected item texts in the Dropdown Tree by enabling the <code>mode</code> type as <code>Custom</code>. User can also customize the given template by using the <code>customTemplate</code> property.
+                <p>The user can visualize the custom template instead of the selected item texts in the Dropdown Tree by enabling the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/drop-down-tree/#mode">mode</a> type as <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/drop-down-tree/#customTemplate">Custom</a>. User can also customize the given template by using the <code>customTemplate</code> property.
                 </p>
                 <p>In this demo, the Dropdown Tree is populated with the checkbox and custom template feature.</p>
             </div>

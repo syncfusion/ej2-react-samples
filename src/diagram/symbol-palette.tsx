@@ -19,28 +19,13 @@ import {
 } from "@syncfusion/ej2-react-buttons";
 import "./font-icons.css";
 
-const SAMPLE_CSS = `.property-panel-header {
+const SAMPLE_CSS = `.diagram-symbolpalette .property-panel-header {
 padding-top: 15px;
 padding-bottom: 15px;
-}
-
-.row {
-  margin-left: 0px;
-  margin-right: 0px;
-}
-
-.row-header {
-  font-size: 13px;
-  font-weight: 500;
-}
-
-.diagram-control-pane .col-xs-6 {
-  padding-left: 0px;
-  padding-right: 0px;
 }`;
 
-//Initialize the flowshapes for the symbol palatte
-let flowshapes: NodeModel[] = [
+//Initialize the flowShapes for the symbol palatte
+let flowShapes: NodeModel[] = [
   { id: "Terminator", shape: { type: "Flow", shape: "Terminator" } },
   { id: "Process", shape: { type: "Flow", shape: "Process" } },
   { id: "Sort", shape: { type: "Flow", shape: "Sort" } },
@@ -53,6 +38,7 @@ let flowshapes: NodeModel[] = [
   { id: "DirectData", shape: { type: "Flow", shape: "DirectData" } },
   { id: "SequentialData", shape: { type: "Flow", shape: "SequentialData" } }
 ];
+// Initialize the basicshapes for the symbol palatte
 let basicShapes: NodeModel[] = [
   { id: "Rectangle", shape: { type: "Basic", shape: "Rectangle" } },
   { id: "Ellipse", shape: { type: "Basic", shape: "Ellipse" } },
@@ -106,6 +92,7 @@ let connectorSymbols: ConnectorModel[] = [
     targetDecorator: { shape: "None" }
   }
 ];
+//Collection of expand mode
 let expandMode: { [key: string]: Object }[] = [
   { type: "Single", text: "Single" },
   { type: "Multiple", text: "Multiple" }
@@ -118,7 +105,7 @@ let expand: DropDownListComponent;
 export class SymbolPalette extends SampleBase<{}, {}> {
   render() {
     return (
-      <div className="control-pane">
+      <div className="control-pane diagram-symbolpalette">
         <style>{SAMPLE_CSS}</style>
         <div
           className="col-lg-8 control-section"
@@ -134,7 +121,7 @@ export class SymbolPalette extends SampleBase<{}, {}> {
                 {
                   id: "flow",
                   expanded: true,
-                  symbols: flowshapes,
+                  symbols: flowShapes,
                   title: "Flow Shapes",
                   iconCss: "e-diagram-icons1 e-diagram-flow"
                 },
@@ -197,7 +184,7 @@ export class SymbolPalette extends SampleBase<{}, {}> {
                 <NumericTextBoxComponent
                   id="size"
                   value={80}
-                  min={40}
+                  min={60}
                   max={100}
                   width={120}
                   step={5}
@@ -267,6 +254,7 @@ export class SymbolPalette extends SampleBase<{}, {}> {
     );
   }
 
+  //set Node default value
   public nodeDefaults(symbol: NodeModel): NodeModel {
     if (symbol.id === "Terminator" || symbol.id === "Process") {
       symbol.width = 80;
@@ -290,6 +278,7 @@ export class SymbolPalette extends SampleBase<{}, {}> {
   }
 }
 
+//Enable or disable the animation for symbol palette
 function onAnimationChange(args: ChangeEventArgs): void {
   palette.enableAnimation = args.checked;
 }
@@ -310,6 +299,7 @@ function onItemTextChange(args: ChangeEventArgs): void {
   }
   palette.dataBind();
 }
+//Enable or disable the headerIcon for symbol palette headers
 function onHeaderIconChange(args: ChangeEventArgs): void {
   for (let i: number = 0; i < palette.palettes.length; i++) {
     if (args.checked) {

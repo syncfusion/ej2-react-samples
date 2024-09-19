@@ -52,7 +52,7 @@ const GanttColumnMenu = () => {
         <div id="description">
         <p>
         Gantt has an option to show column menu while clicking multiple icon of each column. The column menu has an integrated option to interact with the features such as sorting, filtering, column chooser, and autoFit.  
-        This feature can be enabled by setting <code>showColumnMenu</code> to true.
+        This feature can be enabled by setting <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#showcolumnmenu">showColumnMenu</a> to true.
         The default items are,
        </p>
        <ul>
@@ -64,7 +64,7 @@ const GanttColumnMenu = () => {
             <li><code>Filter</code> - Filters the current column.</li>
             </ul>
         <p>
-        In this demo, the column menu feature is enabled by setting <code>showColumnMenu</code> to true with sorting, filtering, column chooser, and autoFit options.
+        In this demo, the column menu feature is enabled by setting <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#showcolumnmenu">showColumnMenu</a> to true with sorting, filtering, column chooser, and autoFit options.
     </p>
     <b>Injecting Module:</b>
     <p>Gantt features are segregated into individual feature-wise modules. To use column menu feature, we need to inject <code>ColumnMenu</code> module into the <code>services</code>.</p>

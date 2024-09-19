@@ -2,7 +2,7 @@
  * Sample for Line Series
  */
 import * as React from 'react';
-import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ILoadedEventArgs, ChartTheme, LineSeries, Legend, DateTime, Tooltip,Highlight } from '@syncfusion/ej2-react-charts';
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ILoadedEventArgs, ChartTheme, LineSeries, Legend, DateTime, Tooltip, ChartAnnotation, AnnotationsDirective, AnnotationDirective, ISeriesRenderEventArgs, Highlight } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 export let data1 = [
@@ -55,11 +55,12 @@ export class Line extends SampleBase<{}, {}>{
                         }}
                         chartArea={{ border: { width: 0 } }}
                         tooltip={{ enable: true }}
-                        legendSettings={{enableHighlight: true}}
+                        legendSettings={{ enableHighlight: true }}
                         width={Browser.isDevice ? '100%' : '75%'}
                         title="Crude Steel Production Annual Growth"
-                        loaded={this.onChartLoad.bind(this)}>
-                        <Inject services={[LineSeries, DateTime, Legend, Tooltip,Highlight]} />
+                        loaded={this.onChartLoad.bind(this)}
+                    >
+                        <Inject services={[LineSeries, DateTime, Legend, Tooltip, Highlight]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective
                                 dataSource={data2} xName="x" yName="y" name="Vietnam" width={2}
@@ -90,41 +91,41 @@ export class Line extends SampleBase<{}, {}>{
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                <p>
-                This React Line Chart example represents the crude steel production annual growth data with default line series in the chart. 
-                Data points are enhanced with marker and tooltip.
-            </p>
+                    <p>
+                        This React Line Chart example represents the crude steel production annual growth data with default line series in the chart.
+                        Data points are enhanced with marker and tooltip.
+                    </p>
                 </div>
                 <div id="description">
                     <p>
-                    In this example, you can see how to render and configure the line type charts. Line type charts are used to represent time-dependent data, showing trends in data at equal intervals.
-                     You can use <code>dashArray</code>, <code>width</code>, <code>fill</code> properties to customize the line. <code>marker</code> and <code>dataLabel</code> are used to represent individual data and its value.
-                  </p>
+                        In this example, you can see how to render and configure the line type charts. Line type charts are used to represent time-dependent data, showing trends in data at equal intervals.
+                        You can use <code>dashArray</code>, <code>width</code>, <code>fill</code> properties to customize the line. <code>marker</code> and <code>dataLabel</code> are used to represent individual data and its value.
+                    </p>
                     <p>
-                    Tooltips are enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-                  </p> <br>
-                    </br>
+                        Tooltips are enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+                    </p>
                     <p><b>Injecting Module</b></p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To use line series, we need to inject
-                         <code>LineSeries</code> module into <code>services</code>.
-                   </p>
+                        <code>LineSeries</code> module into <code>services</code>.
+                    </p>
                     <p>
                         More information on the line series can be found in this &nbsp;
                         <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/line" aria-label="Navigate to the documentation for Line Chart in React Chart component">documentation section</a>.
-                   </p>
+                    </p>
                 </div>
             </div>
         )
     }
     public onChartLoad(args: ILoadedEventArgs): void {
-        let  chart:  Element  =  document.getElementById('charts');
-        chart.setAttribute('title',  '');
+        let chart: Element = document.getElementById('charts');
+        chart.setAttribute('title', '');
     };
+
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
-    };    
+            replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+    };
 }

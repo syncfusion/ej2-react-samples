@@ -71,12 +71,12 @@ let tailwindWomen: string = '<div style="background-color:#65A30D;border-radius:
     '<div style="color:white; font-family:Roboto; font-style: medium; font-size:14px; float: right;'
     + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
     '${point.y} </span></div></div>';
-let bootstrap5Man: string = '<div style="background-color:#6355C7;border-radius: 3px;">' +
+let bootstrap5Man: string = '<div style="background-color:#FD7E14;border-radius: 3px;">' +
     '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" alt="Male Icon"/>' +
     '<div style="color:white; font-family:Roboto; font-style: medium; font-size:14px; float: right;'
     + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
     '${point.y} </span></div></div>';
-let bootstrap5Women: string = '<div style="background-color:#FFB400;border-radius: 3px;">' +
+let bootstrap5Women: string = '<div style="background-color:#6610F2;border-radius: 3px;">' +
     '<img src="src/chart/images/female.png" style="width: 24px; height: 24px; padding: 2px" alt="Female Icon"/>' +
     '<div style="color:white; font-family:Roboto; font-style: medium; font-size:14px; float: right;'
     + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
@@ -111,12 +111,12 @@ let tailwindDarkWomen: string = '<div style="background-color:#22D3EE;border-rad
     '<div style="color:white; font-family:Roboto; font-style: medium; font-size:14px; float: right;'
     + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
     '${point.y} </span></div></div>';
-let bootstrap5DarkMan: string = '<div style="background-color:#8F80F4;border-radius: 3px;">' +
+let bootstrap5DarkMan: string = '<div style="background-color:#FD7E14;border-radius: 3px;">' +
     '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" alt="Male Icon"/>' +
     '<div style="color:white; font-family:Roboto; font-style: medium; font-size:14px; float: right;'
     + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
     '${point.y} </span></div></div>';
-let bootstrap5DarkWomen: string = '<div style="background-color:#FFD46D;border-radius: 3px;">' +
+let bootstrap5DarkWomen: string = '<div style="background-color:#6610F2;border-radius: 3px;">' +
     '<img src="src/chart/images/female.png" style="width: 24px; height: 24px; padding: 2px" alt="Female Icon"/>' +
     '<div style="color:white; font-family:Roboto; font-style: medium; font-size:14px; float: right;'
     + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
@@ -219,7 +219,7 @@ export class DataLabelTemplate extends SampleBase<{}, {}> {
         
     public loadPre(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
             replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
         theme = args.chart.theme;

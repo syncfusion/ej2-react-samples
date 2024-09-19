@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Inject, Page, Group, LazyLoadGroup } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Inject, Page, Group, LazyLoadGroup, Sort } from '@syncfusion/ej2-react-grids';
 import { updateSampleSection } from '../common/sample-base';
 import { createLazyLoadData } from './data';
 
@@ -14,7 +14,7 @@ function LazyLoadGrouping() {
     return (
         <div className='control-pane'>
             <div className='control-section'>
-                <GridComponent dataSource={lazyLoadData} allowPaging={true} height={400} allowGrouping={true} groupSettings={groupOptions}>
+                <GridComponent dataSource={lazyLoadData} allowSorting={true} allowPaging={true} allowGrouping={true} groupSettings={groupOptions} height={400}>
                     <ColumnsDirective>
                         <ColumnDirective field='OrderID' headerText='Order ID' textAlign="Right" width='120' ></ColumnDirective>
                         <ColumnDirective field='ProductName' headerText='Product Name' width='160' ></ColumnDirective>
@@ -22,7 +22,7 @@ function LazyLoadGrouping() {
                         <ColumnDirective field='CustomerID' headerText='Customer ID' width='120' ></ColumnDirective>
                         <ColumnDirective field='CustomerName' headerText='Customer Name' width='160' ></ColumnDirective>
                     </ColumnsDirective>
-                    <Inject services={[Page, Group, LazyLoadGroup]} />
+                    <Inject services={[Page, Group, LazyLoadGroup, Sort]} />
                 </GridComponent>
             </div>
             <div id="action-description">

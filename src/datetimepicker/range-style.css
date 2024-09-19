@@ -1,5 +1,6 @@
-.datetimepicker-control-section {
-    max-width: 246px;
-    margin: 30px auto;
-    padding-top: 50px;
+#datetime-restriction,
+#time-restriction {
+    margin: 0 auto;
+    width: 250px;
+    padding-top: 15px;
 }

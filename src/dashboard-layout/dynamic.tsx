@@ -191,7 +191,7 @@ export class DynamicWidget extends SampleBase<{}, {hideDialog: boolean;}> {
                 <div id='edit_target' className="control-section">
                 <div>
                     <div style={{"width":"100%" ,"marginBottom": "10px", "marginTop": "10px", "height": "30px"}}>
-                        <ButtonComponent  cssClass='e-outline e-flat e-primary' ref={(scope) => { this.btnobj = scope; }} iconCss='edit' 
+                        <ButtonComponent id="togglebtn" cssClass='e-outline e-flat e-primary' ref={(scope) => { this.btnobj = scope; }} iconCss='edit' 
                             isToggle={true} onClick={ this.btnClick.bind(this) } style={{"float":"right", "width": "75px"}}>
                             Edit
                         </ButtonComponent>

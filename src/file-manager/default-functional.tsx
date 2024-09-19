@@ -24,16 +24,16 @@ const Default = () => {
     const [isAllowMultiselect, setIsAllowmultiselect] = useState<boolean>(true);
     const [isShowFileExtension, setIsShowFileExtension] = useState<boolean>(true);
     const [isShowThumbnail, setShowThumbnail] = useState<boolean>(true);
+    const [isEnableRangeSelection, setEnableRangeSelection] = useState<boolean>(true);
     let hostUrl: string = "https://ej2-aspcore-service.azurewebsites.net/";
     let fmObj = useRef<FileManagerComponent>(null);
+    let disableDropDownList = useRef<DropDownListComponent>(null);
+    let enableDropDownList = useRef<DropDownListComponent>(null);
     let items = ['NewFolder', 'Cut', 'Copy', 'Paste', 'Download', 'Delete', 'Refresh', 'Selection', 'View', 'Details'];
 
     const toolCheck = (args: ChangeEventArgs, id: string): void => {
             if (id == "toolbar") {
                 setIsVisible(args.checked);
-            }
-            if (id == "multiSelect") {
-                setIsAllowmultiselect(args.checked);
             }
             if (id == "fileExtension") {
                 setIsShowFileExtension(args.checked);
@@ -41,20 +41,34 @@ const Default = () => {
             if (id == "thumbnail") {
                 setShowThumbnail(args.checked);
             }
+            if (id == "rangeSelection") {
+                setEnableRangeSelection(args.checked);
+            }
     }
 
-    const itemChange = (args: any): void => {
-        if (args.element.id == 'enable') {
-            fmObj.current.enableToolbarItems([args.itemData.value]);
-        } else {
+    const onDisableItemChange = (args) => {
+        if (args.itemData != null){
             fmObj.current.disableToolbarItems([args.itemData.value]);
+            if(args.value === enableDropDownList.current.value){
+                enableDropDownList.current.value = null;
+            }
         }
     }
+    
+    const onEnableItemChange = (args) => {
+        if (args.itemData != null){
+            fmObj.current.enableToolbarItems([args.itemData.value]);
+            if(args.value === disableDropDownList.current.value){
+                disableDropDownList.current.value = null;
+            }
+        }
+    }
+    
     return(
         <div>
             <style>{defaultcss}</style>
             <div className="col-lg-8 control-section">
-                <FileManagerComponent id="api_filemanager" ref={fmObj} ajaxSettings = {{ url: hostUrl + "api/FileManager/FileOperations", getImageUrl: hostUrl + "api/FileManager/GetImage", uploadUrl: hostUrl + 'api/FileManager/Upload', downloadUrl: hostUrl + 'api/FileManager/Download' }} toolbarSettings={{items: ['NewFolder', 'SortBy', 'Cut', 'Copy', 'Paste', 'Delete', 'Refresh', 'Download', 'Rename', 'Selection', 'View', 'Details'], visible: isVisible}} contextMenuSettings={{layout: ['SortBy', 'View', 'Refresh', '|', 'Paste', '|', 'NewFolder', '|', 'Details', '|', 'SelectAll']}} view={"LargeIcons"} navigationPaneSettings={{visible: false}} allowMultiSelection={isAllowMultiselect} showFileExtension={isShowFileExtension} showThumbnail={isShowThumbnail}>
+                <FileManagerComponent id="api_filemanager" ref={fmObj} ajaxSettings = {{ url: hostUrl + "api/FileManager/FileOperations", getImageUrl: hostUrl + "api/FileManager/GetImage", uploadUrl: hostUrl + 'api/FileManager/Upload', downloadUrl: hostUrl + 'api/FileManager/Download' }} toolbarSettings={{items: ['NewFolder', 'SortBy', 'Cut', 'Copy', 'Paste', 'Delete', 'Refresh', 'Download', 'Rename', 'Selection', 'View', 'Details'], visible: isVisible}} contextMenuSettings={{file: [ 'Cut', 'Copy', '|', 'Delete', 'Download', 'Rename', '|', 'Details'], layout: ['SortBy', 'View', 'Refresh', '|', 'Paste', '|', 'NewFolder', '|', 'Details', '|', 'SelectAll'], visible: true }} view={"LargeIcons"} navigationPaneSettings={{visible: false}} allowMultiSelection={isAllowMultiselect} showFileExtension={isShowFileExtension} showThumbnail={isShowThumbnail} enableRangeSelection={isEnableRangeSelection}>
                     <Inject services={[ NavigationPane, Toolbar]} />
                 </FileManagerComponent>
             </div>
@@ -64,7 +78,17 @@ const Default = () => {
                         <tbody>
                             <tr>
                                 <td style={{ width: '50%' }}>
-                                    <div style={{ fontSize : '14px' }}>Toolbar</div>
+                                    <div style={{ fontSize : '14px', paddingLeft: '0px' }}>Enable Range Selection</div>
+                                </td>
+                                <td style={{ width: '50%', paddingRight: '10px' }}>
+                                    <div>
+                                        <CheckBoxComponent id="rangeSelection" checked={true} change={(args) => toolCheck(args, "rangeSelection")}></CheckBoxComponent>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style={{ width: '50%' }}>
+                                    <div style={{ fontSize : '14px', paddingLeft: '0px' }}>Toolbar</div>
                                 </td>
                                 <td style={{ width: '50%', paddingRight: '10px' }}>
                                     <div>
@@ -74,17 +98,7 @@ const Default = () => {
                             </tr>
                             <tr>
                                 <td style={{ width: '50%' }}>
-                                    <div style={{ fontSize : '14px' }}>allowMultiSelection</div>
-                                </td>
-                                <td style={{ width: '50%', paddingRight: '10px' }}>
-                                    <div>
-                                        <CheckBoxComponent id="multiSelect" checked={true} change={(args) => toolCheck(args, "multiSelect")}></CheckBoxComponent>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style={{ width: '50%' }}>
-                                    <div style={{ fontSize : '14px' }}>showFileExtension</div>
+                                    <div style={{ fontSize : '14px', paddingLeft: '0px' }}>Show File Extension</div>
                                 </td>
                                 <td style={{ width: '50%', paddingRight: '10px' }}>
                                     <div>
@@ -94,7 +108,7 @@ const Default = () => {
                             </tr>
                             <tr>
                                 <td style={{ width: '50%' }}>
-                                    <div style={{ fontSize : '14px' }}>showThumbnail</div>
+                                    <div style={{ fontSize : '14px', paddingLeft: '0px' }}>Show Thumbnail</div>
                                 </td>
                                 <td style={{ width: '50%', paddingRight: '10px' }}>
                                     <div>
@@ -104,21 +118,21 @@ const Default = () => {
                             </tr>
                             <tr>
                                 <td style={{ width: '50%' }}>
-                                    <div style={{ fontSize : '14px' }}>Disable</div>
+                                    <div style={{ fontSize : '14px', paddingLeft: '0px' }}>Disable Toolbar Item</div>
                                 </td>
-                                <td style={{ width: '50%', paddingRight: '10px' }}>
+                                <td style={{ width: '50%', paddingLeft: '10px' }}>
                                     <div>
-                                        <DropDownListComponent id="disable" dataSource={items} change={itemChange.bind(this)}></DropDownListComponent>
+                                        <DropDownListComponent ref={disableDropDownList} id="disable" dataSource={items} change={onDisableItemChange.bind(this)}></DropDownListComponent>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td style={{ width: '50%' }}>
-                                    <div style={{ fontSize : '14px' }}>Enable</div>
+                                    <div style={{ fontSize : '14px', paddingLeft: '0px' }}>Enable Toolbar Item</div>
                                 </td>
-                                <td style={{ width: '50%', paddingRight: '10px' }}>
+                                <td style={{ width: '50%', paddingLeft: '10px' }}>
                                     <div>
-                                        <DropDownListComponent id="enable" dataSource={items} change={itemChange.bind(this)}></DropDownListComponent>
+                                        <DropDownListComponent ref={enableDropDownList} id="enable" dataSource={items} change={onEnableItemChange.bind(this)}></DropDownListComponent>
                                     </div>
                                 </td>
                             </tr>
@@ -128,21 +142,21 @@ const Default = () => {
             </div>
             <div id="action-description">
                 <p>
-                    The File Manager component in the property pane displays its features in this sample. The visibility of the toolbar, multi-selection, file extensions,
-                    and image thumbnails can all be easily controlled by checking or unchecking the respective checkboxes. Additionally, specific toolbar items can be
-                    enabled or disabled by selecting values in the Dropdown List.
+                The property pane in this sample displays the features available in the File Manager component. The visibility of the toolbar, file extensions, range selection,
+                and image thumbnails can be easily controlled by checking or unchecking the respective checkboxes. Additionally, specific toolbar items can be
+                enabled or disabled by selecting values in the Dropdown List.
                 </p>                
             </div>
             <div id="description">
                 <p>In this demo, the above mentioned requirements are achieved by using the following API properties and method of the File Manager component. </p>
-                <p><code>toolbarSettings</code> defines the group of items in the toolbar that are aligned horizontally.</p>
-                <p><a target='_blank' href='https://ej2.syncfusion.com/react/documentation/api/file-manager/#allowmultiselection'>allowMultiSelection</a> property enables or disables the File Manager's multiple folder or file selection.  </p>
+                <p><a target='_blank' href='https://ej2.syncfusion.com/react/documentation/api/file-manager/#toolbarsettings'>toolbarSettings</a> defines the group of items in the toolbar that are aligned horizontally.</p>
                 <p><a target='_blank' href='https://ej2.syncfusion.com/react/documentation/api/file-manager/#showfileextension'>showFileExtension</a> property shows or hides the file extension in the File Manager.</p>
-                <p><a target='_blank' href='https://ej2.syncfusion.com/react/documentation/api/file-manager/#showthumbnail'>showThumbnail</a> property shows or hides thumbnail images in the large icons view. . </p>
-                <p><code>enableToolbarItems</code> specifies which items should be enabled in the toolbarr.</p>
+                <p><a target='_blank' href='https://ej2.syncfusion.com/react/documentation/api/file-manager/#showthumbnail'>showThumbnail</a> property shows or hides thumbnail images in the large icons view.</p>
+                <p><a target='_blank' href='https://ej2.syncfusion.com/react/documentation/api/file-manager/#enableRangeSelection'>enableRangeSelection</a> property allows multiple items selection with mouse dragging. </p>
+                <p><code>enableToolbarItems</code> specifies which items should be enabled in the toolbar.</p>
                 <p><code>disableToolbarItems</code> specifies which items should be disabled in the toolbar.</p>
                 <p>
-                    <b>Note: </b>File Manager's upload functionality is restricted in the online demo. If you need to test upload functionality, please install 
+                    <b>Note: </b>File Manager's upload functionality is restricted in the online demos for security reasons. If you need to test upload functionality, please install 
                     <a target="_blank" href="https://www.syncfusion.com/downloads"> Syncfusion Essential Studio </a>on your machine and run the demo.
                 </p>
             </div>

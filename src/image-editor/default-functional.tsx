@@ -116,6 +116,9 @@ const Default = () => {
                     <li>
                         <b>Z-Order</b> : Adjust the positioning of annotations to manage the layering of elements, essential for creating polished designs.
                     </li>
+                    <li>
+                        <b>Redact</b> : Redacting sensitive information in images involves covering or obscuring specific areas to make the information unreadable or unidentifiable.
+                    </li>
                 </ul>
                 <p>
                     More information about Image Editor can be found in this

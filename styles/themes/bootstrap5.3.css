@@ -1,0 +1,50 @@
+.bootstrap5_3 .sb-reset-icon:before {
+    content: '\e7e7';
+}
+
+.bootstrap5_3 .copycode::before {
+    content: '\e77c';
+    font-size: 25px;
+}
+
+.bootstrap5_3 .sb-left-pane .e-treeview .e-list-item.e-hover>.e-fullrow {
+    background-color: #d2ebff;
+}
+
+.bootstrap5_3 .e-tab .sb-content-tab-header.e-tab-header::before {
+    border-width: 0;
+}
+
+.bootstrap5_3 .sb-plnr-section {
+    line-height: 25px;
+    height: 30px;
+}
+
+.bootstrap5_3 .sample-navigation,
+.bootstrap5_3 .sb-open-new-wrapper {
+    line-height: 33px;
+}
+
+.bootstrap5_3 .e-samplestatus.new,
+.bootstrap5_3 .e-samplestatus.update,
+.bootstrap5_3 .e-samplestatus.preview {
+    margin: 4px 0;
+    height: 22px;
+    padding: 1px 4px;
+}
+
+.bootstrap5_3.e-bigger .e-samplestatus.new,
+.bootstrap5_3.e-bigger .e-samplestatus.update,
+.bootstrap5_3.e-bigger .e-samplestatus.preview {
+    margin-top: 2px;
+}
+
+.bootstrap5_3 .e-samplestatus.new.tree,
+.bootstrap5_3 .e-samplestatus.update.tree,
+.bootstrap5_3 .e-samplestatus.preview.tree {
+    margin-top: 6px;
+}
+
+.bootstrap5_3 .sb-badge {
+    padding: 6px 8px;
+}

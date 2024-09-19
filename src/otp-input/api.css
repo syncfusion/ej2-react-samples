@@ -1,14 +1,19 @@
-#otp-container {
-    width: 240px;
-    height: 250px;
-    margin: 60px auto;
+.col-lg-8.otp-wrapper {
     display: flex;
+    align-items: center;
     justify-content: center;
+    min-height: 350px;
+}
+
+#otp-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
 }
 
 .form-container {
     height: 220px;
-    min-width: 300px;
     padding: 1rem 3rem;
     box-shadow: 0 1px 3px #d4d4d5, 0 0 0 1px #d4d4d5;
     border-radius: 4px;

@@ -84,7 +84,7 @@ render() {
                     <p className="displayText">ListView</p>
                     <div className="content">
                         <div>
-                        <ListViewComponent id="list" className="e-droppable" dataSource={ [] }ref={(list) => { this.listObj = list }} actionComplete={this.actionBegin.bind(this)} cssClass={'custom-list'} template="<div><span>${text}</span><span id=${iconId} class=${class}></span></div>" /> 
+                        <ListViewComponent id="list" className="e-droppable" dataSource={ [] }ref={(list) => { this.listObj = list }} actionComplete={this.actionBegin.bind(this)} cssClass={'custom-list'} template="<div class='dropped-list-view-item'><span>${text}</span><span id=${iconId} class=${class}></span></div>" /> 
                         </div>
                     </div>
                 </div>
@@ -96,10 +96,10 @@ render() {
                 <p>This <a href="https://www.syncfusion.com/react-ui-components/react-treeview" target="_blank">React TreeView example</a> demonstrates the drag and drop functionality of TreeView. A drag and drop image is present at the top of the sample which hides on clicking the sample. To drag and drop node, select and drag the desired node and drop it on the target node or external container.</p>
             </div>
             <div id="description">
-                <p>The <code>TreeView</code> component allows users to drag any node and drop it on any other node in the same or different tree using <code>allowDragAndDrop</code> property. Additionally, it supports dropping a tree node to an external container using <code>nodeDragStop</code> event of the TreeView</p>
+                <p>The <code>TreeView</code> component allows users to drag any node and drop it on any other node in the same or different tree using <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/treeview#allowdraganddrop">allowDragAndDrop</a> property. Additionally, it supports dropping a tree node to an external container using <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/treeview#nodedragstop">nodeDragStop</a> event of the TreeView</p>
                 <p>For more information, you can refer to the <a href="https://ej2.syncfusion.com/react/documentation/treeview/drag-and-drop/" target="_blank">Drag and Drop</a> section from the documentation.</p>
             </div>
         </div>
     )
-  }
+}
 }

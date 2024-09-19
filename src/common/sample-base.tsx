@@ -11,7 +11,7 @@ export class SampleBase<P, S> extends React.PureComponent<P, S>{
     public rendereComplete(): void {
     }
 
-    componentWillReceiveProps() {
+    componentDidUpdate() {
     }
 
     componentDidMount(): void {
@@ -45,6 +45,17 @@ export function updateSampleSection(): void {
         return;
     }
     showHooks(true);
+    finalizeContent();
+    setTimeout(() => {
+        finalizeTab();
+    });
+}
+
+export function updateAISampleSection(): void {
+    if (isRendered) {
+        return;
+    }
+    showHooks(false);
     finalizeContent();
     setTimeout(() => {
         finalizeTab();

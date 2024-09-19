@@ -139,7 +139,6 @@ export class RangeSelection extends SampleBase<{}, {}> {
                         <li><code>DragY</code> - Rectangular selection with respect to vertical axis.</li>
                         <li><code>Lasso</code> - Select free form of selection area points.</li>
                     </ul>
-                    <br />
                     <p style={{ "fontWeight": 500 }}>Injecting Module</p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To use selection feature, we need to inject
@@ -155,7 +154,7 @@ export class RangeSelection extends SampleBase<{}, {}> {
         
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
         

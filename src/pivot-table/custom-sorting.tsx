@@ -239,7 +239,7 @@ export class CustomSorting extends SampleBase<{}, {}> {
                 <div className='col-lg-8 adaptive'>
                     <PivotViewComponent id='PivotView' ref={(pivotview) => { this.pivotObj = pivotview }} dataSourceSettings={dataSourceSettings}
                         showGroupingBar={true} groupingBarSettings={{ showRemoveIcon: false, showFilterIcon: false, showSortIcon: true, showValueTypeIcon: false, allowDragAndDrop: false }}
-                        width={'100%'} height={'300'} gridSettings={{ columnWidth: 140 }} dataBound={this.dataBound.bind(this)} actionComplete={this.actionComplete.bind(this)}>
+                        width={'100%'} height={'450'} gridSettings={{ columnWidth: 140 }} dataBound={this.dataBound.bind(this)} actionComplete={this.actionComplete.bind(this)}>
                         <Inject services={[GroupingBar]} />
                     </PivotViewComponent>
                 </div>

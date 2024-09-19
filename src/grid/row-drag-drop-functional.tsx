@@ -8,6 +8,8 @@ function Source() {
     React.useEffect(() => {
         updateSampleSection();
     }, [])
+    let grid: GridComponent | null;
+    let destGrid: GridComponent | null;
     const filterSettings: FilterSettingsModel = {type: 'Excel'};
     const toolbar: ToolbarItems[] = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
     const editSettings: EditSettingsModel = { allowEditing: true, allowAdding: true, allowDeleting: true };
@@ -15,17 +17,27 @@ function Source() {
     const orderidRules: Object = { required: true, number: true };
     const freightRules: Object = { required: true, min: 0 };
     const data: Object[] = orderDetails;
+    const destData: Object[] = [];
     const rowDropSettings: Object = { targetID: 'DestGrid' };
     const srcSelectionSettings: Object = { type: 'Multiple' };
     const destSelectionSettings: Object = { type: 'Multiple' };
     const rowDropSettings2: Object = { targetID: 'Grid' };
+    const rowDragStart = () => {
+        if (destGrid.isEdit) {
+            if (destGrid.editModule.formObj.validate()) {
+                destGrid.endEdit();
+            } else {
+                destGrid.closeEdit();
+            }
+        }
+    }
     return (
         <div className='control-pane'>
             <div className='control-section'>
                 <p>Drag and Drop Rows between two Grids</p>
                 <div style={{ display: 'inline-block' }}>
                     <div style={{ float: 'left', width: '49%' }}>
-                        <GridComponent id="Grid" dataSource={data} allowPaging={true} pageSettings={{ pageCount: 1 }} allowSorting={true} editSettings={editSettings} allowFiltering={true} filterSettings={filterSettings} toolbar={toolbar} allowRowDragAndDrop={true} rowDropSettings={rowDropSettings} selectionSettings={srcSelectionSettings}>
+                        <GridComponent ref={(g) => {grid = g;}} id="Grid" dataSource={data} allowPaging={true} pageSettings={{ pageCount: 1 }} allowSorting={true} editSettings={editSettings} allowFiltering={true} filterSettings={filterSettings} toolbar={toolbar} allowRowDragAndDrop={true} rowDropSettings={rowDropSettings} selectionSettings={srcSelectionSettings} rowDragStart={rowDragStart}>
                             <ColumnsDirective>
                                 <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={orderidRules} isPrimaryKey={true}></ColumnDirective>
                                 <ColumnDirective field='CustomerName' headerText='Customer Name' width='130' validationRules={customeridRule} ></ColumnDirective>
@@ -35,7 +47,7 @@ function Source() {
                         </GridComponent>
                     </div>
                     <div style={{ float: 'right', width: '49%' }}>
-                        <GridComponent id="DestGrid" allowPaging={true} pageSettings={{ pageCount: 2 }} allowSorting={true} editSettings={editSettings} allowFiltering={true} filterSettings={filterSettings} toolbar={toolbar} allowRowDragAndDrop={true} rowDropSettings={rowDropSettings2} selectionSettings={destSelectionSettings}>
+                        <GridComponent ref={(g) => {destGrid = g;}} dataSource={destData} id="DestGrid" allowPaging={true} pageSettings={{ pageCount: 2 }} allowSorting={true} editSettings={editSettings} allowFiltering={true} filterSettings={filterSettings} toolbar={toolbar} allowRowDragAndDrop={true} rowDropSettings={rowDropSettings2} selectionSettings={destSelectionSettings}>
                             <ColumnsDirective>
                                 <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={orderidRules} isPrimaryKey={true}></ColumnDirective>
                                 <ColumnDirective field='CustomerName' headerText='Customer Name' width='130' validationRules={customeridRule} ></ColumnDirective>

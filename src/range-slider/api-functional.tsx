@@ -20,16 +20,16 @@ const slidercss = `
     margin-top: 30px;
 }
 
-.sb-mobile-prop-pane #all-option-table #desktop-checkbox-row-1,
-.sb-mobile-prop-pane #all-option-table #desktop-checkbox-row-2 {
+.sb-mobile-prop-pane #property #desktop-checkbox-row-1,
+.sb-mobile-prop-pane #property #desktop-checkbox-row-2 {
     display: none;
 
 }
 
-.sb-mobile-prop-pane #all-option-table #mobile-checkbox-row-1,
-.sb-mobile-prop-pane #all-option-table #mobile-checkbox-row-2,
-.sb-mobile-prop-pane #all-option-table #mobile-checkbox-row-3,
-.sb-mobile-prop-pane #all-option-table #mobile-checkbox-row-4 {
+.sb-mobile-prop-pane #property #mobile-checkbox-row-1,
+.sb-mobile-prop-pane #property #mobile-checkbox-row-2,
+.sb-mobile-prop-pane #property #mobile-checkbox-row-3,
+.sb-mobile-prop-pane #property #mobile-checkbox-row-4 {
     display: table-row;
 
 }
@@ -293,10 +293,10 @@ const APIs = () => {
                 <p>In this demo, we have rendered default slider with minimal configuration.</p>
                 <p>we can further customize this sample with the combination of Slider properties from the property pane. For example,</p>
                 <ul>
-                    <li>Min, Max, Value and Steps can be changed from the property pane.</li>
-                    <li>Ticks can be enabled by selecting the Ticks placement from the property pane.</li>
+                    <li><a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/slider/#min">Min</a>, <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/slider/#max">Max</a>, <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/slider/#value">Value</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/slider/#step">Steps</a> can be changed from the property pane.</li>
+                    <li><a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/slider/#ticks">Ticks</a> can be enabled by selecting the Ticks placement from the property pane.</li>
                     <li>Tooltip can be enabled by checking Show Tooltip checkbox from property pane.</li>
-                    <li>Vertical orientation can be enabled by checking Vertical orientation from property pane and so on.</li>
+                    <li>Vertical <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/slider/#orientation">orientation</a> can be enabled by checking Vertical orientation from property pane and so on.</li>
                 </ul>
             </div>
         </div>

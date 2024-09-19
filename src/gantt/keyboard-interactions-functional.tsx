@@ -69,6 +69,22 @@ const KeyboardInteraction = () => {
               </tr>
               <tr style={{ height: '50px' }}>
                 <td style={{ width: '50%' }}>
+                    <b>Alt + J</b>
+                </td>
+                <td style={{ width: '50%' }}>
+                    Focus Gantt Component
+                </td>
+            </tr>
+            <tr style={{ height: '50px' }}>
+                <td style={{ width: '50%' }}>
+                    <b>Tab / Shift + Tab</b>
+                </td>
+                <td style={{ width: '50%' }}>
+                    Focus the next or previous element
+                </td>
+            </tr>
+              <tr style={{ height: '50px' }}>
+                <td style={{ width: '50%' }}>
                   <b>Home</b>
                 </td>
                 <td style={{ width: '50%' }}>
@@ -99,6 +115,22 @@ const KeyboardInteraction = () => {
                   Move Row Selection Up
                 </td>
               </tr>
+              <tr style={{ height: '50px' }}>
+                <td style={{ width: '50%' }}>
+                    <b>LeftArrow</b>
+                </td>
+                <td style={{ width: '50%' }}>
+                    Move Cell Selection Left
+                </td>
+            </tr>
+            <tr style={{ height: '50px' }}>
+                <td style={{ width: '50%' }}>
+                    <b>RightArrow</b>
+                </td>
+                <td style={{ width: '50%' }}>
+                    Move Cell Selection Right
+                </td>
+            </tr>
               <tr style={{ height: '50px' }}>
                 <td style={{ width: '50%' }}>
                   <b>Ctrl + UpArrow</b>
@@ -195,6 +227,54 @@ const KeyboardInteraction = () => {
                   Focus Task
                 </td>
               </tr>
+              <tr style={{ height: '50px' }}>
+                <td style={{ width: '50%' }}>
+                    <b>Shift + DownArrow</b>
+                </td>
+                <td style={{ width: '50%' }}>
+                    Move Cell Selection Down
+                </td>
+            </tr>
+            <tr style={{ height: '50px' }}>
+                <td style={{ width: '50%' }}>
+                    <b>Shift + UpArrow</b>
+                </td>
+                <td style={{ width: '50%' }}>
+                    Move Cell Selection Up
+                </td>
+            </tr>
+            <tr style={{ height: '50px' }}>
+                <td style={{ width: '50%' }}>
+                    <b>Shift + LeftArrow</b>
+                </td>
+                <td style={{ width: '50%' }}>
+                    Move Cell Selection Left
+                </td>
+            </tr>
+            <tr style={{ height: '50px' }}>
+                <td style={{ width: '50%' }}>
+                    <b>Shift + RightArrow</b>
+                </td>
+                <td style={{ width: '50%' }}>
+                    Move Cell Selection Right
+                </td>
+            </tr>
+            <tr style={{ height: '50px' }}>
+                <td style={{ width: '50%' }}>
+                    <b>Ctrl + Z</b>
+                </td>
+                <td style={{ width: '50%' }}>
+                    Undo Last Action
+                </td>
+            </tr>
+            <tr style={{ height: '50px' }}>
+                <td style={{ width: '50%' }}>
+                    <b>Ctrl + Y</b>
+                </td>
+                <td style={{ width: '50%' }}>
+                    Redo Last Action
+                </td>
+            </tr>
               </tbody>
             </table>
           </PropertyPane>
@@ -204,7 +284,7 @@ const KeyboardInteraction = () => {
         <p>This demo showcases the keyboard shortcuts applicable on Gantt and also lists out in below descriptions, and this demo also explains how those applicable shortcuts interacts with Gantt actions.</p>
       </div>
       <div id="description">
-        <p>All the Gantt actions can be controlled via keyboard keys and are availed using the <code>allowKeyboard</code> property, which is set to true by default. The applicable key combinations and their relative functionalities are listed below.</p>
+        <p>All the Gantt actions can be controlled via keyboard keys and are availed using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#allowkeyboard">allowKeyboard</a> property, which is set to true by default. The applicable key combinations and their relative functionalities are listed below.</p>
         <p>Gantt component features are segregated into individual feature-wise modules. To use a selection, inject the
           <code>Selection</code> module using the <code>Gantt.Inject(Selection)</code> method.To use a toolbar, inject
           the <code>Toolbar</code> module using the <code>Gantt.Inject(Toolbar)</code> method.To use a edit, inject the
@@ -215,6 +295,14 @@ const KeyboardInteraction = () => {
             <tr>
               <td><b>Keys</b></td>
               <td><b>Description</b></td>
+            </tr>
+            <tr>
+              <td><code>Alt + J</code></td>
+              <td>Focus Gantt Component</td>
+            </tr>
+            <tr>
+                <td><code>Tab / Shift + Tab</code></td>
+                <td>Focus the next or previous element</td>
             </tr>
             <tr>
               <td><code>Home</code></td>
@@ -231,6 +319,14 @@ const KeyboardInteraction = () => {
             <tr>
               <td><code>UpArrow</code></td>
               <td>Move Row Selection Up</td>
+            </tr>
+            <tr>
+              <td><code>LeftArrow</code></td>
+              <td>Move Cell Selection Left</td>
+            </tr>
+            <tr>
+                <td><code>RightArrow</code></td>
+                <td>Move Cell Selection Right</td>
             </tr>
             <tr>
               <td><code>Ctrl + UpArrow</code></td>
@@ -279,6 +375,30 @@ const KeyboardInteraction = () => {
             <tr>
               <td><code>Shift + F5</code></td>
               <td>Focus Task</td>
+            </tr>
+            <tr>
+              <td><code>Shift + DownArrow</code></td>
+              <td>Move Cell Selection Down</td>
+            </tr>
+            <tr>
+                <td><code>Shift + UpArrow</code></td>
+                <td>Move Cell Selection Up</td>
+            </tr>
+            <tr>
+                <td><code>Shift + LeftArrow</code></td>
+                <td>Move Cell Selection Left</td>
+            </tr>
+            <tr>
+                <td><code>Shift + RightArrow</code></td>
+                <td>Move Cell Selection Right</td>
+            </tr>
+            <tr>
+                <td><code>Ctrl + Z</code></td>
+                <td>Undo Last Action</td>
+            </tr>
+            <tr>
+              <td><code>Ctrl + Y</code></td>
+              <td>Redo Last Action</td>
             </tr>
           </table>
         </p>

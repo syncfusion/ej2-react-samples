@@ -74,7 +74,7 @@ function Remote () {
         <div className='control-pane'>
             <div className='control-section component-section'>
                 <div id='dropdown-control' style={{ marginBottom: '5px' }}>
-                    <table style={{ width: '350px' }}>
+                    <table style={{ maxWidth: '330px' }}>
                         <tbody>
                             <tr style={{ height: '50px' }}>
                                 <td>

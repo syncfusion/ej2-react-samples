@@ -63,9 +63,8 @@ export class Default extends SampleBase<{}, {}> {
         <div id="description">
           <p>The <code>Dropdown Tree</code> component contains a hierarchical structure list of pre-defined values from that
             the user can choose a single value.</p>
-          <p>The default sample explains you about the use of Dropdown Tree that allows the end-users to select an item from
-            the hierarchical structure <code>options</code> list. The selected item's <code>value</code> and
-            <code>text</code> property values will be displayed in the property panel.
+          <p>The default sample explains you about the use of Dropdown Tree that allows the end-users to select an item from the hierarchical structure <code>options</code> list. The selected item's <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/drop-down-tree/#value">value</a> and
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/drop-down-tree/#text">text</a> property values will be displayed in the property panel.
           </p>
         </div>
       </div>

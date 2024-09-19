@@ -51,7 +51,7 @@ export class LoadingAnimation extends SampleBase<{}, {}> {
                                         </td>
                                         <td style={{ width: '70%' }}>
                                             <div id='columnddl'>
-                                                <DropDownListComponent width="110px" dataSource={this.indicatortypes} value="Shimmer" change={this.indicatorChange.bind(this)} fields={this.fields} ref={(indicateDropDown) => { this.indicatorDropDown = indicateDropDown; }} />
+                                                <DropDownListComponent dataSource={this.indicatortypes} value="Shimmer" change={this.indicatorChange.bind(this)} fields={this.fields} ref={(indicateDropDown) => { this.indicatorDropDown = indicateDropDown; }} />
                                             </div>
                                         </td>
                                     </tr>

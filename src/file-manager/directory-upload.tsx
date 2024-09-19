@@ -41,7 +41,11 @@ export class DirectoryUpload extends SampleBase<{},{}> {
                         url: this.hostUrl + "api/FileManager/FileOperations",
                         getImageUrl: this.hostUrl + "api/FileManager/GetImage",
                         uploadUrl: this.hostUrl + 'api/FileManager/Upload',
-                        downloadUrl: this.hostUrl + 'api/FileManager/Download'}}>
+                        downloadUrl: this.hostUrl + 'api/FileManager/Download'}}
+                        contextMenuSettings={{
+                            file: [ 'Cut', 'Copy', '|', 'Delete', 'Download', 'Rename', '|', 'Details'],
+                            visible: true
+                        }}>
                         <ToolbarItemsDirective>
                             <ToolbarItemDirective name='NewFolder'/>
                             <ToolbarItemDirective template={this.uploadTemplate.bind(this)} name="Upload" />
@@ -62,23 +66,20 @@ export class DirectoryUpload extends SampleBase<{},{}> {
 
                 </div>
                 <div id="action-description">
-                <p>This sample demonstrates the folder (directory) upload feature of FileManager component. Select 'Folder' from toolbar item to select and upload a folder.</p>
+                    <p>This sample demonstrates the folder (directory) upload feature. Select <code>Folder</code> from the <code>Upload</code> toolbar item to select and upload a folder in the File Manager component.</p>
                 </div>
                 <div id="description">
-                <p>In this demo, a folder upload enabled by setting <code>directoryUpload</code> as true.
-                   It allows to select or drop a folder to upload all its contents including hierarchy folders and files.</p>
-                <p>The folder (directory) upload is supported for the following file system providers, </p>
-                    <ul>
-                        <li> Physical provider</li> 
-                        <li> NodeJS provider</li>
-                        <li> Azure provider</li>
-                        <li> Amazon S3 provider</li>
-                    </ul>
-                    <p>The File Manager component is used to explore a file system through a web application, similar to the windows explorer for windows.
-                        It supports all the basic file operations such as create, rename, delete and so on.</p>
+                    <p>In this demo, a folder upload is enabled by setting <a href="https://ej2.syncfusion.com/react/documentation/api/file-manager/uploadSettingsModel/#directoryupload" target="_blank"> directoryUpload </a> to <code>true</code>. It allows users to select or drag and drop a folder to upload its contents including hierarchy folders and files in the File Manager component.</p>
+                    <p>The folder (directory) upload is supported for the following file system providers, </p>
+                        <ul>
+                            <li> Physical provider</li> 
+                            <li> NodeJS provider</li>
+                            <li> Azure provider</li>
+                            <li> Amazon S3 provider</li>
+                        </ul>
 
                     <p>
-                        <b>Note: </b>File Manager's upload functionality is restricted in the online demo. If you need to test upload functionality, please install 
+                        <b>Note: </b>File Manager's upload functionality is restricted in the online demos for security reasons. If you need to test upload functionality, please install 
                         <a target="_blank" href="https://www.syncfusion.com/downloads"> Syncfusion Essential Studio </a>on your machine and run the demo.
                      </p>
                 </div>

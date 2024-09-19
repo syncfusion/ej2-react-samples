@@ -26,7 +26,6 @@ const TreeGridColumnMenu = () => {
           allowFiltering={true}
           showColumnMenu={true}
           filterSettings={{ type: "Menu" }}
-          allowResizing={true}
         >
           <ColumnsDirective>
             <ColumnDirective

@@ -50,12 +50,12 @@ const SAMPLE_CSS = `.image-pattern-style {
       padding-bottom: 15px;
     }
 
-    .row {
+    .diagram-property-tab .row {
         margin-left: 0px;
         margin-right: 0px;
     }
 
-    .row-header {
+    .diagram-property-tab .row-header {
         font-size: 13px;
         font-weight: 500;
     }
@@ -69,20 +69,20 @@ const SAMPLE_CSS = `.image-pattern-style {
         border-width: 2px;
     }
 
-    .diagram-control-pane .col-xs-6 {
+    .diagram-property-tab .diagram-control-pane .col-xs-6 {
         padding-left: 0px;
         padding-right: 0px;
     }`;
 
 let diagramInstance: DiagramComponent;
-let hSpacing: NumericTextBoxComponent;
-let vSpacing: NumericTextBoxComponent;
-let checkBoxObj: CheckBoxComponent;
+let horizontalSpacing: NumericTextBoxComponent;
+let verticalSpacing: NumericTextBoxComponent;
+let appearanceInstance: HTMLElement;
 
 export class HierarchicalModel extends SampleBase<{}, {}> {
   rendereComplete() {
     //Click event for Appearance of the Property Panel.
-    document.getElementById("appearance").onclick = (args: MouseEvent) => {
+    appearanceInstance.onclick = (args: MouseEvent) => {
       let target: HTMLElement = args.target as HTMLElement;
       let selectedElement: HTMLCollection = document.getElementsByClassName(
         "e-selected-style"
@@ -149,10 +149,9 @@ export class HierarchicalModel extends SampleBase<{}, {}> {
                 return nodeDefaults(obj, diagram);
               }}
               getConnectorDefaults={(
-                connector: ConnectorModel,
-                diagram: Diagram
+                connector: ConnectorModel
               ) => {
-                return connectorDefaults(connector, diagram);
+                return connectorDefaults(connector);
               }}
             >
               <Inject
@@ -163,10 +162,10 @@ export class HierarchicalModel extends SampleBase<{}, {}> {
         </div>
 
         <div
-          className="col-lg-4 property-section"
+          className="col-lg-4 property-section diagram-property-tab "
         >
           <div className="property-panel-header">Properties</div>
-          <div className="row property-panel-content" id="appearance">
+          <div className="row property-panel-content" id="appearance"  ref={appearance => (appearanceInstance = appearance)}>
             <div className="row row-header">Appearance</div>
             <div className="row" style={{ paddingTop: "8px" }}>
               <div
@@ -222,17 +221,20 @@ export class HierarchicalModel extends SampleBase<{}, {}> {
               </div>
               <div className="col-xs-6">
                 <NumericTextBoxComponent
-                  ref={hSpacingRef => (hSpacing = hSpacingRef)}
+                  ref={horizontalSpacingRef => (horizontalSpacing = horizontalSpacingRef)}
                   id="hSpacing"
                   style={{ width: "100%" }}
+                  format="###.##"
                   min={20}
                   max={60}
                   step={2}
                   value={40}
+                   //sets horizontal spacing between nodes
                   change={() => {
                     diagramInstance.layout.horizontalSpacing = Number(
-                      hSpacing.value
+                      horizontalSpacing.value
                     );
+                    diagramInstance.doLayout();
                     diagramInstance.dataBind();
                   }}
                 />
@@ -249,17 +251,20 @@ export class HierarchicalModel extends SampleBase<{}, {}> {
               </div>
               <div className="col-xs-6">
                 <NumericTextBoxComponent
-                  ref={vSpacingRef => (vSpacing = vSpacingRef)}
+                  ref={verticalSpacingRef => (verticalSpacing = verticalSpacingRef)}
                   id="vSpacing"
                   style={{ width: "100%" }}
+                  format="###.##"
                   min={20}
                   max={60}
                   step={2}
                   value={30}
+                   //sets vertical spacing between nodes
                   change={() => {
                     diagramInstance.layout.verticalSpacing = Number(
-                      vSpacing.value
+                      verticalSpacing.value
                     );
+                    diagramInstance.doLayout();
                     diagramInstance.dataBind();
                   }}
                 />
@@ -347,8 +352,7 @@ function nodeDefaults(obj: Node, diagram: Diagram): Node {
 
 //sets connector default value
 function connectorDefaults(
-  connector: ConnectorModel,
-  diagram: Diagram
+  connector: ConnectorModel
 ): ConnectorModel {
   connector.targetDecorator.shape = "None";
   connector.type = "Orthogonal";
@@ -368,6 +372,7 @@ function updateLayout(
   diagramInstance.doLayout();
   target.classList.add("e-selected-style");
 }
+// Updates expand and collapse icons of nodes based on args.checked state
 function onChange (args : ChangeEventArgs): void {
   for (let node of diagramInstance.nodes) {
       if (args.checked) {

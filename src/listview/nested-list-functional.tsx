@@ -46,12 +46,14 @@ const Nested = () => {
        iconCss: 'icon', tooltip: 'text'
    };
 
+   let animation: Object = { duration:0 };
+
    return (
        <div className='control-pane'>
            <div className='control-section'>
                <style>{FolderCss}</style>
                {/* ListView element */}
-               <ListViewComponent id='listview' dataSource={nestedListData} fields={fields} headerTitle='Folders' showIcon={true} showHeader={true} ></ListViewComponent>
+               <ListViewComponent id='listview' dataSource={nestedListData} fields={fields} headerTitle='Folders' showIcon={true} showHeader={true} animation={animation} ></ListViewComponent>
            </div>
            <div id="action-description">
                <p>This sample demonstrates the nested list functionalities, which allows you to navigate to the sub list items by clicking any item and navigating back to the list item using the back icon at the top left.</p>

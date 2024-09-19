@@ -70,7 +70,7 @@ export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEve
     } else if (selectedTheme === 'material3') {
         if (args.series.yName == "Rate")
             args.fill = "grey";
-    } else if (selectedTheme === 'fluent2-dark') {
+    } else if (selectedTheme === 'fluent2-highcontrast' || selectedTheme === 'fluent2-dark') {
         if (args.series.yName == "Rate")
             args.fill = "#f9fafb";
     } else if (selectedTheme === 'fluent2') {
@@ -88,7 +88,7 @@ const RoundedColumn = () => {
 
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     const loaded = (args: ILoadedEventArgs): void => {

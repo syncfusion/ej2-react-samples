@@ -5,7 +5,8 @@ import { GanttComponent, DayMarkers, Inject, Selection, Toolbar, Edit, Resize, C
 import { multiTaskbarData, resources } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import { CheckBoxComponent, CheckBox, SwitchComponent } from '@syncfusion/ej2-react-buttons';
-import './resource.css';
+import './resource-multi-taskbar.css';
+
 const ResourceMultiTaskbar = () => {
     useEffect(() => {
         updateSampleSection();
@@ -56,7 +57,7 @@ const ResourceMultiTaskbar = () => {
     const splitterSettings: any = {
         columnIndex: 2
     };
-    const projectStartDate: Date = new Date('03/24/2024');
+    const projectStartDate: Date = new Date('03/28/2024');
     const projectEndDate: Date = new Date('05/18/2024');
     const labelSettings: any = {
         taskLabel: 'TaskName'
@@ -67,15 +68,15 @@ const ResourceMultiTaskbar = () => {
             <div className='col-lg-12'>
             <div style={{ display: 'flex' }}>
               <div style={{ display: 'flex' }}>
-                <label id ="drag" htmlFor="checked" style={{ fontSize: '15px', margin: '0px 5px 0px 0px' ,marginTop:"2.5px"}}> Allow Taskbar Drag And Drop </label>
+                <label htmlFor="checked" id="ResourceMultiTaskbarallow" style={{ fontSize: '15px', margin: '0px 5px 0px 0px' }}> Allow Taskbar Drag And Drop </label>
                 <div>
-                <SwitchComponent id="checked"   style={{top:'-6px'}} change={dragDropChange.bind(this)}></SwitchComponent>
+                <SwitchComponent id="checked" change={dragDropChange.bind(this)}></SwitchComponent>
               </div>
               </div>
               <div style={{ display: 'flex' }}>
-                <label id ="drag" htmlFor="unchecked" style={{ fontSize: '15px', margin: '0px 5px 0px 5px',marginTop:"2.5px" }}> Allow Taskbar Overlap </label>
+                <label htmlFor="unchecked" id="ResourceMultiTaskbarallow" style={{ fontSize: '15px', margin: '0px 5px 0px 5px' }}> Allow Taskbar Overlap </label>
                 <div>
-                <SwitchComponent id="unchecked"  checked={true} change={overlapChange.bind(this)}></SwitchComponent>
+                <SwitchComponent id="unchecked" checked={true} change={overlapChange.bind(this)}></SwitchComponent>
               </div>
               </div>
             </div>
@@ -101,18 +102,18 @@ const ResourceMultiTaskbar = () => {
         </div>
             <div id="action-description">
                 <p>This sample explains you about, how to visualize the list of tasks assigned for a resource in a parent row of collapsed state.  It is also possible to change the tasks scheduling in the collapsed state.
-                    This feature can be enabled by setting the <code>enableMultiTaskbar</code> property as "true".
+                    This feature can be enabled by setting the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#enablemultitaskbar">enableMultiTaskbar</a> property as "true".
                 </p>
             </div>
             <div id="description">
                 <p>
-                    In this example, you can enable taskbar drag and drop from one resource to another resource vertically by enabling <code>allowTaskbarDragAndDrop</code> property. Also, you can prevent the taskbar overlap  in resource task by disabling the <code>allowTaskbarOverlap</code> property.
+                    In this example, you can enable taskbar drag and drop from one resource to another resource vertically by enabling <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#allowtaskbardraganddrop">allowTaskbarDragAndDrop</a> property. Also, you can prevent the taskbar overlap  in resource task by disabling the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#allowtaskbaroverlap">allowTaskbarOverlap</a> property.
                 </p>
                 <p>
                     In this example, you can see that, the resource breaks down from a bulk of tasks can be done by mapping the pre-defined resource ID-s to each task and the resource information can be shown by using the labelSetting property.
                     Using the toolbar action, you can perform the CRUD operation for the resource allocation based on their availability and task complexity.
                 </p>
-                <p>The resources and tasks assigned to those resources can be grouped into categories. Resources can be mapped using the <code>resourceFields:-</code>.</p>
+                <p>The resources and tasks assigned to those resources can be grouped into categories. Resources can be mapped using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#resourcefields">resourceFields:</a>.</p>
                 <p><code>ID</code>: To map resource ID.</p>
                 <p><code>Name</code>: To map resource name.</p>
                 <p><code>Unit</code>: To map resource unit.</p>

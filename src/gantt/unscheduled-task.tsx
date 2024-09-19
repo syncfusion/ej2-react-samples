@@ -62,10 +62,10 @@ export class UnscheduledTask extends SampleBase<{}, {}> {
 
         <div id="description">
           <p>
-              Unscheduled tasks are tasks in a project that are not scheduled with proper dates or duration at the commencement of the project.
+            Unscheduled tasks are tasks in a project that are not scheduled with proper dates or duration at the commencement of the project.
             These tasks can be scheduled properly at any time during project implementation based on factors such as resource availability, dependent tasks, and more.
-            This example shows how to display the unscheduled tasks in Gantt by enabling the <code>allowUnscheuldedTasks</code> property.
-            This also shows how to add an empty row in Gantt by using a custom toolbar button click action. By using the <code>toolbarClick</code> event and <code>addRecord</code> method,
+            This example shows how to display the unscheduled tasks in Gantt by enabling the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#allowunscheduledtasks">allowUnscheuldedTasks</a> property.
+            This also shows how to add an empty row in Gantt by using a custom toolbar button click action. By using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#toolbarclick">toolbarClick</a> event and <code>addRecord</code> method,
             an empty row can be added at the top of the rows with undefined task details.
           </p>
           <p>

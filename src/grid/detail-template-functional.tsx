@@ -1,110 +1,181 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { Internationalization } from '@syncfusion/ej2-base';
-import { GridComponent, ColumnsDirective, ColumnDirective, DetailRow, Inject, Sort, FilterSettingsModel, Filter } from '@syncfusion/ej2-react-grids';
-import { employeeData } from './data';
+import { GridComponent, ColumnsDirective, ColumnDirective, DetailRow, Inject, Sort, Filter } from '@syncfusion/ej2-react-grids';
 import { updateSampleSection } from '../common/sample-base';
 import "./sample.css";
-
-let instance: Internationalization = new Internationalization();
-
-interface DateFormat extends Window {
-    format?: Function;
-}
+import { TabComponent, TabItemDirective, TabItemsDirective } from '@syncfusion/ej2-react-navigations';
+import {
+    Category, ChartComponent, Legend, LineSeries, SeriesCollectionDirective,
+    SeriesDirective, Tooltip
+  } from '@syncfusion/ej2-react-charts';
+import { employeeDetail, taskDetail } from './data';
+import { KanbanComponent, ColumnsDirective as KanbanColumns, ColumnDirective as KanbanColumn } from '@syncfusion/ej2-react-kanban';
 
 function DetailTemplate() {
     React.useEffect(() => {
         updateSampleSection();
     }, [])
-    const filterSettings: FilterSettingsModel = {type: 'Excel'};
-    const format = (value: Date) => {
-        return instance.formatDate(value, { skeleton: 'yMd', type: 'date' });
+    let taskData:any;
+    let salesData:any;
+    const emailTemplate = (props: any) => {
+      var src = 'mailto:${MailID}' + props.MailID;
+        return (
+            <div>
+                <a href={src}>{props.MailID}</a>
+            </div>
+        )
     }
+    const generateSalesData = (taskData:any) => {
+      const statusCategories = ['Open', 'InProgress', 'Testing', 'Close'];
+      const statusData = statusCategories.map((status) => {
+        const filteredTasks = taskData.filter((task: any) => task.Status === status);
+        const estimatedHours = filteredTasks.reduce((sum: any, task: any) => sum + task.Estimate, 0);
+        // Assuming tasks have an EstimatedHours field
+        const spentHours = filteredTasks.reduce((sum: any, task: any) => sum + task.Spent, 0);
+        let taskid = '';
+        if (filteredTasks.length) {
+          taskid = filteredTasks[0].Id;
+        }
+        return { spentHours, estimatedHours, status, taskid };
+      });
+      return statusData;
+    }
+    const detailDataBound =(args:any) =>{
+        var rowData = args.data;
+        taskData = taskDetail.filter((task: any) => task.Assignee === rowData.Name);
+        salesData = generateSalesData(taskData);
+    };
 
-    function gridTemplate(props): any {
-        var src = 'src/grid/images/' + props.EmployeeID + '.png';
-        return (<table className="detailtable" style={{ width: "100%" }} >
-            <colgroup>
-                <col style={{ width: "35%" }} />
-                <col style={{ width: "35%" }} />
-                <col style={{ width: "30%" }} />
-            </colgroup>
+    const cardTemplate = (props) => {
+      return (
+        <div className="card-template">
+          <table className="card-template-wrap" style={{ width: '100%' }}>
             <tbody>
-                <tr>
-                    <td rowSpan={4} className='images'>
-                        <img className='photo' src={src} alt={props.EmployeeID} />
-                    </td>
-                    <td>
-                        <span style={{ fontWeight: 500 }}>First Name: </span> {props.FirstName}
-                    </td>
-                    <td>
-                        <span style={{ fontWeight: 500 }}>Postal Code: </span> {props.PostalCode}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span style={{ fontWeight: 500 }}>Last Name: </span> {props.LastName}
-                    </td>
-                    <td>
-                        <span style={{ fontWeight: 500 }}>City: </span> {props.City}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span style={{ fontWeight: 500 }}>Title: </span> {props.Title}
-                    </td>
-                    <td>
-                        <span style={{ fontWeight: 500 }}>Phone: </span> {props.HomePhone}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span style={{ fontWeight: 500 }}>Address: </span> {props.Address}
-                    </td>
-                    <td>
-                        <span style={{ fontWeight: 500 }}>HireDate: </span> {format(props.HireDate)}
-                    </td>
-                </tr>
+              <tr>
+                <td className="e-title">
+                  <div className="e-card-header">
+                    <div className="e-card-header-caption">
+                      <div className="e-card-header-title e-tooltip-text">
+                        {props.Id}
+                      </div>
+                    </div>
+                  </div>
+                  <table
+                    className="card-template-wrap">
+                    <tbody>
+                      <tr className='e-tooltip-text'>
+                        <td>
+                          <div className="e-card-content">
+                            {props.Summary}
+                          </div>
+                          <span className="e-card-content"><b>Estimated hour:</b> {props.Estimate}</span>
+                        </td>
+
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
             </tbody>
-        </table>
+          </table >
+        </div >
+      );
+    };
+    
+    const taskTemplate = () => {
+      return (
+        <div style={{ paddingTop: '20px', paddingBottom: '20px' }}>
+            <KanbanComponent id="kanban" cssClass="kanban-swimlane-template" keyField="Status" dataSource={taskData} cardSettings={{ template: cardTemplate.bind(this), headerField: 'Id' }}>
+                <KanbanColumns>
+                    <KanbanColumn headerText="Open" keyField="Open" />
+                    <KanbanColumn headerText="In Progress" keyField="InProgress" />
+                    <KanbanColumn headerText="Testing" keyField="Testing" />
+                    <KanbanColumn headerText="Done" keyField="Close" />
+                </KanbanColumns>
+            </KanbanComponent>
+        </div>
+      );
+    };
+
+    const chartTemplate = () => {
+        return (
+        <div style={{ paddingTop: '20px', paddingBottom: '20px' }}>
+            <ChartComponent height="302px" tooltip={{ enable: true }} primaryXAxis={{ valueType: 'Category', title: 'Status' }} title="Burndown Chart">
+                <Inject services={[Tooltip, LineSeries, Category, Legend]} />
+                <SeriesCollectionDirective>
+                    <SeriesDirective dataSource={salesData} xName="taskid" yName="estimatedHours" name="Estimated Hours"marker={{ visible: true, width: 10, height: 10 }}/>
+                    <SeriesDirective dataSource={salesData} xName="taskid" yName="spentHours" name="Spent Hours" marker={{ visible: true, width: 10, height: 10 }}/>
+                </SeriesCollectionDirective>
+            </ChartComponent>
+        </div>
+        );
+    };
+    const detailTemplate = () =>{
+        const headertext = [{ text: "Taskboard" }, { text: "Burndown Chart" }];
+        return (<div>
+            <p style={{ textAlign: "center", paddingTop: "3px", fontSize: "17px" }}><b>Sprint</b></p>
+            <TabComponent animation={{
+            previous: { effect: 'None', duration: 0, easing: '' },
+            next: { effect: 'None', duration: 0, easing: '' }
+            }}>
+            <TabItemsDirective>
+                <TabItemDirective header={headertext[0]} content={taskTemplate} />
+                <TabItemDirective header={headertext[1]} content={chartTemplate} />
+            </TabItemsDirective>
+            </TabComponent></div>
         );
     }
-
-    const template: any = gridTemplate;
-
-    return (
-        <div className='control-pane'>
-            <div className='control-section'>
-                <GridComponent dataSource={employeeData} detailTemplate={template.bind(this)} width='auto' allowSorting={true} allowFiltering={true} filterSettings={filterSettings}>
-                    <ColumnsDirective>
-                        <ColumnDirective field='FirstName' headerText='First Name' width='110' />
-                        <ColumnDirective field='LastName' headerText='Last Name' width='110' />
-                        <ColumnDirective field='Title' headerText='Name' width='150' />
-                        <ColumnDirective field='Country' headerText='Country' width='110' />
-                    </ColumnsDirective>
-                    <Inject services={[DetailRow, Sort, Filter]} />
-                </GridComponent>
-            </div>
+    const employeeTemplate = (props: any) => {
+        var src = 'src/grid/images/' + props.EmployeeID.replace('Emp100', '') + '.png';
+        return (<div className='image'>
+            <img src={src} alt={props.EmployeeID} />
+        </div>);
+    }
+        return (
+            <div className='control-pane'>
+                <div className='control-section'>
+                    <GridComponent dataSource={employeeDetail} height='600' detailDataBound={detailDataBound} detailTemplate={detailTemplate} width='auto' allowSorting={true} allowFiltering={true} filterSettings={{type: 'CheckBox'}}>
+                      <ColumnsDirective>
+                          <ColumnDirective headerText='Image' width='180' template={employeeTemplate} textAlign='Center' />
+                          <ColumnDirective field="EmployeeID" headerText='ID' isPrimaryKey={true} width={70}/>
+                          <ColumnDirective field="Name" headerText='Name' width={70} />
+                          <ColumnDirective field="MailID" headerText='Email' width={120} template={emailTemplate}/>
+                          <ColumnDirective field="SoftwareTeam" headerText='Team(s)' width={70} />
+                          <ColumnDirective field="ReportTo" headerText='Reporter' width={70} />
+                        </ColumnsDirective>
+                        <Inject services={[DetailRow, Sort, Filter]} />
+                    </GridComponent>
+                </div>
             <div id="action-description">
-                <p>This sample demonstrates the Grid component with the detail template feature. Click the expand button
-                    in each Grid row to show the detailed information about a row.
+                <p>This sample demonstrates the Grid component's with the detail template feature. It lets users click the expand button
+                in each grid row to display detailed information about that row.
                 </p>
 
             </div>
             <div id='description'>
-                <p>
-                    The detail row template provides an additional information about a data row which can show or hide by clicking
-                    on expand or collapse button. The <code><a target="_blank" className="code"
-                        href="https://ej2.syncfusion.com/react/documentation/api/grid#detailtemplate">
-                        detailTemplate</a></code> property accepts the template for the detail row.
-                </p>
-                <p>
-                    In this demo, we have presented Employee Information with image in the detail row.
-                </p>
+            <p>
+              This additional information can be shown or hidden by clicking on the expand or collapse button. The 
+              <code><a target="_blank"className="code" href="https://ej2.syncfusion.com/react/documentation/api/grid#detailtemplate">
+              detailTemplate</a></code> property accepts either a string or HTML element`s ID value, which will be used as the template for the detail row.
+          </p>
+              <p>
+              In this demonstration, the parent row provides information about employees name, ID, team and reporter names. In each employee row with 
+              a details view, when expanding the details, you can see the sprint report of that employee. In the details row with two tabs, the first tab contains 
+              <code><a target="_blank"className="code" href="https://ej2.syncfusion.com/react/demos/#/fluent2/kanban/overview">
+              Syncfusion Kanban component</a></code> used to list assigned tasks and their current statuses, and the second tab contains <code><a target="_blank"className="code" 
+              href="https://ej2.syncfusion.com/react/demos/#/fluent2/chart/overview.html"> Syncfusion Chart Component</a></code> used to 
+              display the burndown chart of employee task estimated time vs actual spend time.
+          </p>
                 <br />
                 <p style={{ fontWeight: 500 }}>Injecting Module:</p>
+                    <p>
+                    Features of the Grid component are segregated into individual feature-wise modules. To use the Detail row feature, inject the <code>DetailRow</code> module into the <code>services</code>
+                </p>
                 <p>
-                    Grid component features are segregated into individual feature-wise modules. To use Detail row feature, we need to inject <code>DetailRow</code> module into the <code>services</code>
+                  More information on the detail template can be found in this
+                  <a target="_blank" 
+                  href="https://ej2.syncfusion.com/react/documentation/grid/row/detail-template">
+                  documentation section</a>.
                 </p>
 
             </div>

@@ -18,6 +18,7 @@ export class CustomToolbar extends SampleBase<{}, {}> {
   public searchText: string = '';
   public prevMatchCase = false;
   public isInkEnabled = false;
+  public searchActive: boolean = false;
 
   componentDidMount(): void {
     viewer = (document.getElementById('container') as any).ej2_instances[0];
@@ -316,7 +317,7 @@ export class CustomToolbar extends SampleBase<{}, {}> {
   render() {
     function template() {
       return (
-        <div ><span className='e-pv-total-page-number' id='totalPage'>of 0</span></div>
+        <div style={{margin: '0px 6px'}}><span className='e-pv-total-page-number' id='totalPage'>of 0</span></div>
       );
     }
     function inputTemplate() {
@@ -704,6 +705,11 @@ export class CustomToolbar extends SampleBase<{}, {}> {
       let currentPage: HTMLInputElement = document.getElementById('currentPage') as HTMLInputElement;
       currentPage.select();
     }
+    const checkSearchActive = function (args: any) {
+      if(!this.searchActive) {
+        viewer.textSearchModule.clearAllOccurrences();
+      }
+    }
     const onPageChange = function (args: any) {
       this.currentPageNumber = viewer.currentPageNumber.toString();
       let inputElement: HTMLInputElement = document.getElementById('currentPage') as HTMLInputElement;
@@ -730,6 +736,7 @@ export class CustomToolbar extends SampleBase<{}, {}> {
       }
     }
     const documentLoaded = function (args: any) {
+      document.addEventListener('click', checkSearchActive.bind(this));
       viewer = (document.getElementById('container') as any).ej2_instances[0];
       var pageCount = document.getElementById('totalPage');
       pageCount.textContent = 'of ' + viewer.pageCount;
@@ -835,7 +842,8 @@ export class CustomToolbar extends SampleBase<{}, {}> {
                     id="container_search_input"
                     type="text"
                     placeholder="Find in document"
-                    onKeyPress={this.searchInputKeypressed}/>
+                    onKeyPress={this.searchInputKeypressed}
+                    onChange={this.inputChange}/>
                   <span
                     className="e-input-group-icon e-input-search-group-icon e-icons e-search"
                     id="container_search_box-icon"
@@ -998,6 +1006,7 @@ export class CustomToolbar extends SampleBase<{}, {}> {
         viewer.textSearchModule.cancelTextSearch();
         this.searchText = (document.getElementById('container_search_input') as HTMLInputElement).value;
         viewer.textSearchModule.searchText(this.searchText, this.matchCase);
+        this.searchActive = true;
         this.prevMatchCase = this.matchCase;
       }
       else {
@@ -1014,11 +1023,24 @@ export class CustomToolbar extends SampleBase<{}, {}> {
     const searchTextElement = document.getElementById('container_search_input') as HTMLInputElement;
     searchTextElement.value = '';
   }
+
+  public inputChange(): void {
+    viewer.textSearchModule.clearAllOccurrences();
+    this.searchActive = false;
+    if((document.getElementById('container_search_input') as HTMLInputElement).value == '') {
+      const textsearchcloseElement = document.getElementById('container_close_search_box-icon') as HTMLElement;
+      const textsearchElement = document.getElementById('container_search_box-icon') as HTMLElement;
+      textsearchcloseElement.style.display = 'none';
+      textsearchElement.style.display = 'block';
+    }
+  }
   public nextTextSearch() {
     viewer.textSearchModule.searchNext();
+    this.searchActive = true;
   }
   public previousTextSearch() {
     viewer.textSearchModule.searchPrevious();
+    this.searchActive = true;
   }
   public checkBoxChanged(event) {
     const target = event.target as HTMLInputElement;

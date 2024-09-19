@@ -72,7 +72,7 @@ export class OtpAPI extends SampleBase<{}, OTPState> {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <div className="col-lg-8">
+                    <div className="col-lg-8 otp-wrapper">
                     <div id="otp-container">
                         <div className="form-container">
                             <span className="otp-header"> Enter verification code </span>
@@ -93,7 +93,7 @@ export class OtpAPI extends SampleBase<{}, OTPState> {
                         </div>
                     </div>
                     </div>
-                    <div className="col-lg-4 property-section">
+                    <div className="col-lg-4 property-section otp-property-panel">
                         <PropertyPane title='Properties'>
                             <table id="property" title="Properties">
                                 <tbody>

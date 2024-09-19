@@ -38,6 +38,7 @@ export class CustomToolbar extends SampleBase<{}, {}> {
         'custom': ['#ffffff', '#000000', '#e91e63', '#9c27b0', '#673ab7', '#2196f3', '#03a9f4', '#00bcd4',
         '#009688', '#8bc34a', '#cddc39', '#ffeb3b']
     };
+    public toolbars: any = ['filter', 'rectangle', 'ellipse', 'line', 'text', 'edittext', 'freehanddraw'];
 
     editClicked(): void {
         document.getElementById('imagePreviewContainer').style.display = 'none';
@@ -63,7 +64,7 @@ export class CustomToolbar extends SampleBase<{}, {}> {
     };
     shapeChanging(args: ShapeChangeEventArgs): void {
         if (args.action === 'select') {
-            this.isShapeSelected = this.isShapeSelected ? false : true;
+            this.isShapeSelected = true;
             this.updateToolbar(args, true);
         } else if (args.action === 'insert') {
             this.activeObjIndex = args.currentShapeSettings.id;
@@ -71,7 +72,7 @@ export class CustomToolbar extends SampleBase<{}, {}> {
         }
     };
     shapeChange(args: ShapeChangeEventArgs): void {
-        if (args.action === 'apply' && !this.isShapeCustomizing) {
+        if (args.action === 'apply' && !this.isShapeCustomizing  && !this.isShapeSelected) {
             this.isTextEditing = false;
             setTimeout(function() {
                 this.refreshToolbar('main');
@@ -79,7 +80,7 @@ export class CustomToolbar extends SampleBase<{}, {}> {
         }
     };
     click(): void {
-        if (this.currentToolbar === 'filter') {
+        if (this.toolbars.indexOf(this.currentToolbar) !== -1) {
             this.refreshToolbar('main');
         }
     }

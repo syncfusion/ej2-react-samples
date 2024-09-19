@@ -4,7 +4,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
-    ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ChartTheme, ILoadedEventArgs, ColumnSeries, DataLabel, Category, Series, IPointRenderEventArgs, IAxisRangeCalculatedEventArgs
+    ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ChartTheme, ILoadedEventArgs, ColumnSeries, DataLabel, Category, Series, IPointRenderEventArgs, IAxisRangeCalculatedEventArgs, MarkerSettingsModel
 } from '@syncfusion/ej2-react-charts';
 import { PropertyPane } from '../common/property-pane';
 import { EmitType } from '@syncfusion/ej2-base';
@@ -54,7 +54,7 @@ export class UpdateDataSource extends SampleBase<{}, {}> {
                         chartArea={{ border: { width: 0 } }} load={this.load.bind(this)} width={Browser.isDevice ? '100%' : '75%'} title='Sales by product' pointRender = {pointRender} axisRangeCalculated= {this.axisRangeCalculated.bind(this)} >
                         <Inject services={[ColumnSeries, DataLabel, Category]} />
                         <SeriesCollectionDirective >
-                            <SeriesDirective dataSource={data} xName='x' yName='y' type='Column' cornerRadius={{ topLeft: Browser.isDevice ? 10 : 15, topRight: Browser.isDevice ? 10 : 15 }} columnWidth= {0.5}>
+                            <SeriesDirective dataSource={data} xName='x' yName='y' type='Column' cornerRadius={{ topLeft: Browser.isDevice ? 10 : 15, topRight: Browser.isDevice ? 10 : 15 }} columnWidth= {0.5}  marker={this.marker}>
                             </SeriesDirective>
                         </SeriesCollectionDirective>
                     </ChartComponent>
@@ -81,13 +81,14 @@ export class UpdateDataSource extends SampleBase<{}, {}> {
             </div>
         )
     }
+    public marker: MarkerSettingsModel =  {visible: false, dataLabel: {visible: true, position: 'Top', format: '{value}%', font: { color: '#ffffff' }}};
     public onChartLoad(args: ILoadedEventArgs): void {
         let chart: Element = document.getElementById('charts');
         chart.setAttribute('title', '');
     };
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
         setInterval(function () {
             const newData = data.map((item: { x: string, y: number }) => {

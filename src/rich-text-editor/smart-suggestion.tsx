@@ -1,46 +1,16 @@
 /**
  * Rich Text Editor Smart Suggestion sample
  */
-import { DialogType, HtmlEditor, Image, Audio, Video, Inject, Link, NodeSelection, QuickToolbar, RichTextEditorComponent, Toolbar, ToolbarSettingsModel, Table, EmojiPicker, PasteCleanup, FormatPainter } from '@syncfusion/ej2-react-richtexteditor';
-import { MentionComponent, SelectEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import * as React from 'react';
+import { HtmlEditor, Image, Audio, Video, Table, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar, ToolbarSettingsModel, EmojiPicker, PasteCleanup, FormatPainter, SlashMenu, SlashMenuSettingsModel, SlashMenuItemSelectArgs } from '@syncfusion/ej2-react-richtexteditor';
 import { SampleBase } from '../common/sample-base';
-import './smart-suggestion.css';
-import { ButtonPropsModel, DialogComponent } from '@syncfusion/ej2-react-popups';
 
-export class MentionFormatIntegration extends SampleBase<{}, {}> {
+export class SmartSuggestion extends SampleBase<{}, {}> {
 
-  private mentionFormatIntegrationRef: React.Ref<HTMLDivElement>;
-  public saveSelection: NodeSelection;
-  public selection: NodeSelection = new NodeSelection();
   private formatRTE: RichTextEditorComponent;
-  public mentionObj: MentionComponent;
-  private rteSectionEle: HTMLDivElement = null;
+  private meetingNotes: string = '<p><strong>Meeting Notes</strong></p><table class="e-rte-table" style="width: 100%; min-width: 0px; height: 150px;"> <tbody> <tr style="height: 20%;"> <td style="width: 50%;"><strong>Attendees</strong></td> <td style="width: 50%;" class=""><br></td> </tr> <tr style="height: 20%;"> <td style="width: 50%;"><strong>Date &amp; Time</strong></td> <td style="width: 50%;"><br></td> </tr> <tr style="height: 20%;"> <td style="width: 50%;"><strong>Agenda</strong></td> <td style="width: 50%;"><br></td> </tr> <tr style="height: 20%;"> <td style="width: 50%;"><strong>Discussed Items</strong></td> <td style="width: 50%;"><br></td> </tr> <tr style="height: 20%;"> <td style="width: 50%;"><strong>Action Items</strong></td> <td style="width: 50%;"><br></td> </tr> </tbody> </table>';
 
-  constructor(props) {
-    super(props);
-    this.mentionFormatIntegrationRef = element => {
-      this.rteSectionEle = element;
-    };
-  }
-
-  private data: { [key: string]: Object }[] = [
-    { formatName: "Text", command: "P", formatType: "Basic blocks", icon: "e-btn-icon e-text e-icons", description: "Writing with paragraphs" },
-    { formatName: "Quotation", command: "BlockQuote", formatType: "Basic blocks", icon: "e-icons block-view", description: "Insert a quote or citation" },
-    { formatName: "Heading 1", command: "H1", formatType: "Basic blocks", icon: "e-icons h1-view", description: "Use this for a top level heading" },
-    { formatName: "Heading 2", command: "H2", formatType: "Basic blocks", icon: "e-icons h2-view", description: "Use this for key sections" },
-    { formatName: "Heading 3", command: "H3", formatType: "Basic blocks", icon: "e-icons h3-view", description: "Use this for sub sections and group headings" },
-    { formatName: "Heading 4", command: "H4", formatType: "Basic blocks", icon: "e-icons h4-view", description: "Use this for deep headings" },
-    { formatName: "Numbered list", command: "OL", formatType: "Basic blocks", icon: "e-icons e-list-ordered icon", description: "Create an ordered list" },
-    { formatName: "Bulleted list", command: "UL", formatType: "Basic blocks", icon: "e-icons e-list-unordered icon", description: "Create an unordered list" },
-    { formatName: "Table", command: "CreateTable", formatType: "Basic blocks", icon: "e-icons e-table icon", description: "Insert a table" },
-    { formatName: "Emoji picker", command: "EmojiPicker", formatType: "Inline", icon: "e-icons e-emoji icon", description: "Use emojis to express ideas and emoticons" },
-    { formatName: "Image", command: "Image", formatType: "Media", icon: "e-icons e-image icon", description: "Add image to your page" },
-    { formatName: "Audio", command: "Audio", formatType: "Media", icon: "e-icons e-audio icon", description: "Add audio to your page" },
-    { formatName: "Video", command: "Video", formatType: "Media", icon: "e-icons e-video icon", description: "Add video to your page" }
-  ];
-
-  private fieldsData: { [key: string]: string } = { text: 'formatName', groupBy: 'formatType' };
+  private signature: string = '<p><br></p><p>Warm regards,</p><p>John Doe<br>Event Coordinator<br>ABC Company</p>';
 
   private toolbarSettings: ToolbarSettingsModel = {
     items: ['Bold', 'Italic', 'Underline', 'StrikeThrough', 'SuperScript', 'SubScript', '|',
@@ -51,129 +21,82 @@ export class MentionFormatIntegration extends SampleBase<{}, {}> {
       '|', 'EmojiPicker', '|',
       'SourceCode', '|', 'Undo', 'Redo']
   };
+  private slashMenuSettings: SlashMenuSettingsModel = {
+    enable: true,
+    items: ['Paragraph', 'Heading 1', 'Heading 2', 'Heading 3', 'Heading 4', 'OrderedList', 'UnorderedList',
+      'CodeBlock', 'Blockquote', 'Link', 'Image', 'Video', 'Audio', 'Table', 'Emojipicker',
+      {
+        text: 'Meeting notes',
+        description: 'Insert a meeting note template.',
+        iconCss: 'e-icons e-description',
+        type: 'Custom',
+        command: 'MeetingNotes'
+      },
+      {
+        text: 'Signature',
+        description: 'Insert a signature template.',
+        iconCss: 'e-icons e-signature',
+        type: 'Custom',
+        command: 'Signature'
+      }]
+  };
 
-  public actionBegineHandler(args: any): void {
-    if (args.requestType === 'EnterAction') {
-      if (this.mentionObj.element.classList.contains('e-popup-open')) {
-        args.cancel = true;
-      }
+  private slashMenuItemSelect(args: SlashMenuItemSelectArgs): void {
+    if (args.itemData.command === 'MeetingNotes') {
+      this.formatRTE.executeCommand('insertHTML', this.meetingNotes, { undo: true });
     }
-  }
-
-  public beforeApplyFormat(): void {
-    let currentRange: Range = this.formatRTE.getRange();
-    let node: Node = this.formatRTE.formatter.editorManager.nodeSelection.getNodeCollection(currentRange)[0];
-    let startPoint = currentRange.startOffset;
-    while (this.formatRTE.formatter.editorManager.nodeSelection.getRange(document).toString().indexOf("/") == -1) {
-      this.formatRTE.formatter.editorManager.nodeSelection.setSelectionText(document, node, node, startPoint, currentRange.endOffset);
-      startPoint--;
-    }
-    let slashRange: Range = this.formatRTE.getRange();
-    let slashNode: Node = this.formatRTE.formatter.editorManager.nodeCutter.GetSpliceNode(slashRange, node as HTMLElement);
-    let previouNode: Node = slashNode.previousSibling;
-    if (slashNode.parentElement && slashNode.parentElement.innerHTML.length === 1) {
-      slashNode.parentElement.appendChild(document.createElement('br'));
-    }
-    slashNode.parentNode.removeChild(slashNode);
-    if (previouNode) {
-      this.selection.setCursorPoint(document, previouNode as Element, previouNode.textContent.length);
-    }
-  }
-
-
-  // Ends the process of inserting emoticons.
-
-  private itemTemplate(data: any): JSX.Element {
-    return (
-      <table className="format-table">
-        <tr>
-          <td >
-            <span id='icons' className={data.icon}></span>
-          </td>
-          <td>
-            <span className="font">{data.formatName}</span>
-            <span className="description">{data.description}</span>
-          </td>
-        </tr>
-      </table>
-    );
-  }
-
-
-  public beforeOpen(): void {
-    this.saveSelection = this.selection.save(this.selection.getRange(document), document);
-  }
-
-  public filtering(): void {
-    this.saveSelection = this.selection.save(this.selection.getRange(document), document);
-  }
-
-  public appyCommand(args: SelectEventArgs): void {
-    args.cancel = true;
-    this.formatRTE.focusIn();
-    this.saveSelection.restore();
-    const itemData = args.itemData as { [key: string]: Object };
-    const { command, formatType } = itemData;
-    if (formatType !== 'Inline') {
-      this.beforeApplyFormat();
-    }
-
-    switch (command) {
-      case 'OL':
-        this.formatRTE.executeCommand('insertOrderedList');
-        break;
-      case 'UL':
-        this.formatRTE.executeCommand('insertUnorderedList');
-        break;
-        case 'CreateTable':
-          case 'Image':
-          case 'Audio':
-          case 'Video':
-              this.mentionObj.hidePopup();
-              setTimeout(() => {
-                this.formatRTE.showDialog(command === 'Video' ? DialogType.InsertVideo : command === 'Audio'
-                  ? DialogType.InsertAudio : command === 'Image' ? DialogType.InsertImage : DialogType.InsertTable);
-              }, 150);
-              break;
-      case 'EmojiPicker':
-        this.beforeApplyFormat();
-        this.mentionObj.hidePopup();
-        setTimeout(() => { this.formatRTE.showEmojiPicker(); }, 150);
-        break;
-      default:
-        this.formatRTE.executeCommand('formatBlock', command);
-        break;
+    if (args.itemData.command === 'Signature') {
+      this.formatRTE.executeCommand('insertHTML', this.signature, { undo: true });
     }
   }
 
   render() {
     return (
       <div className='control-pane'>
-        <div className='control-section mention-inline-format-section' id="mentionFormat">
-          <div className='rte-control-section' ref={this.mentionFormatIntegrationRef} id='mentionFormatIntegration'>
-            <RichTextEditorComponent id="MentionInlineFormat" ref={(scope) => { this.formatRTE = scope }} toolbarSettings={this.toolbarSettings} placeholder="TType '/' and choose format" actionBegin={this.actionBegineHandler.bind(this)} >
-              <Inject services={[HtmlEditor, Toolbar, Image, Audio, Table, Video, Link, QuickToolbar, EmojiPicker, PasteCleanup, FormatPainter]} />
-            </RichTextEditorComponent>
-
-            <MentionComponent ref={(scope) => { this.mentionObj = scope }} id="mentionEditor" target="#MentionInlineFormat_rte-edit-view" mentionChar={'/'} allowSpaces={true} dataSource={this.data} fields={this.fieldsData}
-              popupWidth="320px" popupHeight="290px" itemTemplate={this.itemTemplate} beforeOpen={this.beforeOpen.bind(this)} filtering={this.filtering.bind(this)} select={this.appyCommand.bind(this)}></MentionComponent>
-          </div>
+        <div className='control-section' id="mentionFormat">
+          <RichTextEditorComponent id="MentionInlineFormat" ref={(scope) => { this.formatRTE = scope }} toolbarSettings={this.toolbarSettings} placeholder="Type '/' and choose format" slashMenuSettings={this.slashMenuSettings} slashMenuItemSelect={this.slashMenuItemSelect.bind(this)}>
+            <Inject services={[HtmlEditor, Toolbar, Image, Audio, Table, Video, Link, QuickToolbar, EmojiPicker, PasteCleanup, FormatPainter, SlashMenu]} />
+          </RichTextEditorComponent>
         </div>
         <div id="action-description">
-          <p>This example demonstrates how to easily apply formatting or insert media and tables in the Rich Text Editor content using the Mention component. To use it, simply type the slash (/) key in the editor and select the desired format from the suggestion list that appears.</p>
+          <p>This example demonstrates how to use the slash menu feature of the Rich Text Editor to apply formats, open dialogs easily.</p>
         </div>
         <div id="description">
-          <p>The @mention component is integrated into the Rich Text Editor and shows the suggestion list when the slash (/) key is pressed in an editor and applies suggested formats. To achieve this, the sample is customized for the Mention and Rich Text Editor .</p>
+          <p>This sample demonstrates the <code>SlashMenu</code> feature of the Rich Text Editor, which allows users to apply
+            formatting such as headings, lists, quotes, open insert dialogs, and execute custom commands within the editor.
+            The slash menu can be triggered by typing the "/" character in the editor.</p>
+          <p>In this example, the slash menu is enabled by setting the <code>enable</code> property within the
+            <code>slashMenuSettings</code> to <code>true</code>.
+          </p>
+          <p>This example includes two <b>Custom Slash menu items</b> that allow you to easily insert meeting notes and a
+            signature into the content.</p>
+          <p>The slash menu is configured with the following properties:</p>
           <ul>
-            <li>Prevent the @mention default selection action by setting the <a target='_blank' href='https://helpej2.syncfusion.com/react/documentation/api/mention/selectEventArgs/#cancel'>args.cancel</a> as <code>true</code> at the <a target='_blank' href='https://helpej2.syncfusion.com/react/documentation/api/mention/#select'>select</a> event.</li>
-            <li>Get the command name from the Mention component, select an event, and pass it to the public method <a target='_blank' href="https://helpej2.syncfusion.com/react/documentation/api/rich-text-editor#executecommand">executeCommand</a> to perform the specified formats on the selected text in an editor.</li>
+            <li>
+              <p><code>enable</code>: Enables or disables the slash menu in the editor. The default value is
+                <code>false</code>.
+              </p>
+            </li>
+            <li>
+              <p><code>items</code>: Defines the items displayed in the slash menu popup. Custom items can also be added,
+                and their actions can be handled using the <code>slashMenuItemSelect</code> event.</p>
+            </li>
           </ul>
-          <p> The following formats are shown in the mention suggestion list; apply them in an editor.</p>
+          <p><b>Adding Custom Slash Menu Items</b></p>
+          <p>The custom items can be added to the slash menu by defining the <code>items</code> child property within
+            <code>slashMenuSettings</code>. The <code>items</code> property accepts a string of items and also an array of
+            objects, where each object represents a custom slash menu item. These objects can include the following
+            properties:
+          </p>
           <ul>
-            <li><code>Basic blocks</code> - The Rich Text Editor supports basic text formatting blocks, including <code>paragraph</code>, <code>headings</code>, <code>code</code>,<code>quotation</code>, <code>lists</code>, and <code>table</code> making it easier for users to structure their content. When a user selects a basic block format, it will be applied to the next line or paragraph.</li>
-            <li><code>Inline formats</code> - The Rich Text Editor supports inline formatting, allowing you to add <code>emojis</code> to the specific text within the content.</li>
-            <li><code>Media formats</code> -  The Rich Text Editor also supports media formats, including <code>image</code>, <code>video</code>, and <code>audio</code> making it an efficient tool for the content creation.</li>
+            <li><code>text</code> - Sets the text displayed for the slash menu item.</li>
+            <li><code>command</code> - Specifies the action to be executed when the slash menu item is clicked.</li>
+            <li><code>type</code> - Groups related items within the slash menu.</li>
+            <li><code>iconCss</code> - Sets the CSS class for the icon associated with the item.</li>
+            <li><code>description</code> - Provides a description for the slash menu item.</li>
           </ul>
+          <p><b>Injecting Module</b></p>
+          <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>HtmlEditor, Toolbar, Image, Audio, Table, Video, Link, QuickToolbar, EmojiPicker, PasteCleanup, FormatPainter, SlashMenu </code> modules into the services.</p>
         </div>
       </div>
     );

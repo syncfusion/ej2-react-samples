@@ -47,7 +47,7 @@ export class Speedometer extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5')) as GaugeTheme;
         // custom code end
     }
 
@@ -55,10 +55,10 @@ export class Speedometer extends SampleBase<{}, {}> {
         this.pointerInterval = setInterval(
             (): void => {
                 if (document.getElementById('container')) {
-                    this.pointerValue = Math.abs(this.pointerValue + ((Math.random() * 20) - 10));
+                    let dynamicPointerValue: number = Math.abs(this.pointerValue + ((Math.random() * 20) - 10));
                     if (this.gauge) {
-                        this.gauge.setPointerValue(0, 0, this.pointerValue);
-                        this.gauge.setAnnotationValue(0, 0, '<div style="width:90px;text-align:center;font-size:20px;font-family:inherit">' + Math.round(this.pointerValue).toString() + 'km/h' + '</div>');
+                        this.gauge.setPointerValue(0, 0, dynamicPointerValue);
+                        this.gauge.setAnnotationValue(0, 0, '<div style="width:90px;text-align:center;font-size:20px;font-family:inherit">' + Math.round(dynamicPointerValue).toString() + 'km/h' + '</div>');
                     }
                 } else {
                     clearInterval(+this.pointerInterval);

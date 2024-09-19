@@ -107,7 +107,7 @@
 }
 
 .e-listview .e-icon-wrapper .e-list-text {
-    width: calc(100% - 65px);
+    width: calc(100% - 70px);
 }
 
 
@@ -553,7 +553,11 @@ div#sample-header {
 }
 
 .sb-theme-popup li.active .sb-theme-select {
-    color: rgb(255, 109, 63) !important;
+    color: rgb(255, 109, 63);
+}
+
+.material3-dark .sb-theme-popup li.active .sb-theme-select {
+    color: rgb(208, 188, 255);
 }
 
 .sb-theme-popup li:hover.active .sb-theme-select {
@@ -596,7 +600,7 @@ div#sample-header {
 }
 
 .sb-search-result .e-list-group-item {
-    background-color: #f7f7f7 !important;
+    background-color: #f7f7f7;
     font-size: 15px;
     vertical-align: middle;
     line-height: 36px;
@@ -604,6 +608,10 @@ div#sample-header {
     border-right: none;
     text-transform: uppercase;
     font-weight: 500;
+}
+
+.material3-dark .sb-search-result .e-list-group-item{
+    background: #2B2831;
 }
 
 #search:hover {
@@ -816,6 +824,9 @@ div#sample-header {
     padding-left: 16px;
 }
 
+.fluent2-dark .sb-home-text {
+    color: #ADADAD;
+}
 
 /*left-pane*/
 #left-sidebar {
@@ -940,6 +951,10 @@ div#sample-header {
     font-family: "Roboto", "Segoe UI", "GeezaPro", "DejaVu Serif", "sans-serif";
     font-weight: 700;
     background: transparent;
+}
+
+.tailwind-dark .sb-left-pane .e-listview .e-list-item.e-active {
+    background-color: rgb(34, 211, 238) !important;
 }
 
 .sb-left-pane .e-listview .e-list-item.e-active {
@@ -1741,6 +1756,7 @@ propertye pane
         font-size: 15px;
         display: inline-block;
         z-index: 20;
+        position: fixed;
     }
 
     .sb-mobilefooter>button:focus {
@@ -2139,7 +2155,7 @@ RTE toolbar not visible in fullscreen
         margin: 17px auto 0px;
         float: none;
         width: 242px;
-        padding: 11px 61px;
+        padding: 11px 57px;
     }
 
     .content-area {
@@ -2488,7 +2504,7 @@ RTE toolbar not visible in fullscreen
         margin: 17px auto 0px;
         float: none;
         width: 242px;
-        padding: 11px 61px;
+        padding: 11px 51px;
     }
 
     .content-area {
@@ -2666,4 +2682,8 @@ RTE toolbar not visible in fullscreen
 .sb-nextjs-icon {
     margin-top: 4px;
     fill: #333333;
+}
+
+.fluent2-dark .e-tab .e-tab-header .e-toolbar-items .e-toolbar-item.e-active::before {
+    background: #479EF5;
 }

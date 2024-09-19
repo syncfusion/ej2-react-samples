@@ -365,7 +365,6 @@ export class Annotation extends SampleBase<{}, {}> {
                         In this example, you can see how to render and configure annotation feature in chart. We have used a pie chart to depict the sales for each year using annotation support,
                         while selecting a particular year from the StackedColumn series, the respective data's are showed in pie. An annotation can hold any html element as its content, here we have added the Pie chart as its content.
                    </p>
-                    <br></br>
                     <p><b>Injecting Module</b></p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To use annotation feature in chart, we need to inject
@@ -386,7 +385,7 @@ export class Annotation extends SampleBase<{}, {}> {
     
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
         if ( args.chart.theme.includes('Dark') || args.chart.theme.includes('highcontrast')) {   
             args.chart.series[0].fill = "url(#dark-gradient-chart)";

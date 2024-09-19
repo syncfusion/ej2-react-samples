@@ -1,6 +1,6 @@
 .control-wrapper.keyboard-multicolumn {
     margin: 0 auto;
-    width: 500px;
+    width: 650px;
 }
 
 @media screen and (max-width: 480px) {

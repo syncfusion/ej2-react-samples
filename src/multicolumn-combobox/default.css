@@ -1,6 +1,6 @@
 .control-wrapper.multicolumn {
     margin: 0 auto;
-    width: 500px;
+    width: 520px;
 }
 
 @media screen and (max-width: 480px) {

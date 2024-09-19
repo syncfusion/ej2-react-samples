@@ -32,7 +32,7 @@ const LoadOnDemand = () => {
     <div className='control-pane'>
       <div className='control-section'>
         <GanttComponent id='LoadOnDemand' dataSource={dataSource} treeColumnIndex={1}
-          taskFields={taskFields} enableVirtualization={true} loadChildOnDemand={false} height='460px'
+          taskFields={taskFields} enableVirtualization={true} loadChildOnDemand={true} height='460px'
           projectStartDate={projectStartDate} projectEndDate={projectEndDate}>
           <ColumnsDirective>
             <ColumnDirective field='taskId' width='80' ></ColumnDirective>
@@ -56,7 +56,7 @@ const LoadOnDemand = () => {
         </p>
         <p>
           With the virtualization feature enabled in remote data binding, only the root level records are fetched from the remote server at the initial load time.
-          So, need to set the <code>hasChildMapping</code> property of <code>taskFields</code> that denotes whichever records have child records and set <code>loadChildOnDemand</code> property as false.
+          So, need to set the <code>hasChildMapping</code> property of <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#taskfields">taskFields</a> that denotes whichever records have child records and set <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#loadchildondemand">loadChildOnDemand</a> property as false.
         </p>
         <p>
           When expanding the root parent node or scrolling vertically, the corresponding tasks are dynamically fetched from the remote server and then updated in the DOM based on the current viewport position.

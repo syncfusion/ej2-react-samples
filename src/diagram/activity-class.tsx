@@ -17,7 +17,9 @@ import { SampleBase } from "../common/sample-base";
 import "./font-icons.css";
 
   let diagramInstance: DiagramComponent;
- 
+  let paletteIconInstance: HTMLElement;
+  let paletteSpaceInstance: HTMLElement;
+  //Initialize nodes for the diagram.
   let nodes: NodeModel[] = [
     {
       id: 'Patient',
@@ -134,7 +136,7 @@ import "./font-icons.css";
     createNode('Technologist', 1015, 535, 'Technologist'),
     createNode('SurgicalTechnologist', 1015, 630, 'SurgicalTechnologist')
   ];
-
+//Initialize connector for the diagram.
 let connectors: ConnectorModel[] = [
     createConnector('connect1', 'Patient', 'Person'),
     createConnector('connect2', 'Person', 'Hospital'),
@@ -153,20 +155,17 @@ let connectors: ConnectorModel[] = [
     createConnector('connect15', 'AdministrativeStaff', 'Staff'),
     createConnector('connect16', 'TechnicalStaff', 'Staff')
   ];
+  // Initializes the palettes to be displayed in the symbol palette.
   let palettes: PaletteModel[] = [
     {
         id: 'UmlActivity', expanded: true, title: 'UML Classifier Nodes', symbols: [
         {
             id: 'class',
-            style: {
-                fill: '#26A0DA',
-            },
-            borderColor: 'white',
             shape: {
                 type: 'UmlClassifier',
                 classShape: {
                     attributes: [
-                        { name: 'accepted', type: 'Date', style: { color: "red", fontFamily: "Arial", textDecoration: 'Underline',  italic: true },isSeparator: true },
+                        { name: 'accepted', type: 'Date',isSeparator: true },
                         { name: 'sickness', type: 'History' },
                         { name: 'prescription', type: 'String[*]' },
                         { name: 'allergies', type: 'String[*]' }
@@ -179,9 +178,6 @@ let connectors: ConnectorModel[] = [
         },
         {
             id: 'Interface',
-            style: {
-                fill: '#26A0DA',
-            }, borderColor: 'white',
             shape: {
                 type: 'UmlClassifier',
                 interfaceShape: {
@@ -208,9 +204,6 @@ let connectors: ConnectorModel[] = [
         },
         {
             id: 'Enumeration',
-            style: {
-                fill: '#26A0DA',
-            }, borderColor: 'white',
             shape: {
                 type: 'UmlClassifier',
                 enumerationShape: {
@@ -436,20 +429,20 @@ let connectors: ConnectorModel[] = [
     }
 ];
   export class UMLClassDiagram extends SampleBase<{}, {}> {
-    rendereComplete() {
+    renderComplete() {
       addEvents();
       diagramInstance.fitToPage();
     }
     render() {
       return (
-        <div className="control-pane">
+        <div className="control-pane diagram-umlclass">
           <div className="control-section">
             <div style={{ width: "100%" }}>
               <div className="sb-mobile-palette-bar">
-                <div id="palette-icon" style={{ float: "right" }} className="e-ddb-icons1 e-toggle-palette"></div>
+                <div id="palette-icon" ref={(paletteIcon) => (paletteIconInstance = paletteIcon)} style={{ float: "right" }} className="e-ddb-icons1 e-toggle-palette"></div>
               </div>
               <div
-                id="palette-space" className="sb-mobile-palette"
+                id="palette-space" ref={(paletteSpace) => (paletteSpaceInstance = paletteSpace)} className="sb-mobile-palette" 
               >
                 <SymbolPaletteComponent
                   id="symbolpalette"
@@ -480,31 +473,28 @@ let connectors: ConnectorModel[] = [
                   height={"700px"}
                   nodes={nodes}
                   connectors={connectors} //Sets the default values of a node
-                  getNodeDefaults={(obj: NodeModel) => {
-                    obj.style = { fill: '#26A0DA', strokeColor: 'white' };
-                    return obj;
-                  }}
-                  //Sets the default values of a connector
+                   //Sets the default values of a connector
                   getConnectorDefaults={(connector: ConnectorModel) => {
-                        return connector;
+                  return connector;
                   }}
-                  //Sets the Node style for DragEnter element.
-                  dragEnter={(args: IDragEnterEventArgs): void => {
-                    if(args.element instanceof Connector){
-                      args.element.targetPoint.x += 100;
-                      args.element.targetPoint.y += 20
-                    }
-                  }}
-                     //set an label style for nodes
-                  setNodeTemplate= {(node: NodeModel) => {
-                      if (node.annotations && node.annotations.length > 0) {
-                        for (let i: number = 0; i < node.annotations.length; i++) {
-                            let annotation: ShapeAnnotationModel = node.annotations[i];
-                            if(annotation && annotation.style) {
-                                  annotation.style.color = 'white';
-                            }
+                   //Sets the Node style for DragEnter element.
+                    dragEnter={(args: IDragEnterEventArgs): void => {
+                      if(args.element instanceof Connector){
+                        args.element.targetPoint.x += 100;
+                        args.element.targetPoint.y += 20
+                      }
+                    }}
+                  getNodeDefaults={(node: NodeModel) => {
+                    node.style = { fill: '#26A0DA', strokeColor: 'white' };
+                    if (node.annotations && node.annotations.length > 0) {
+                      for (let i: number = 0; i < node.annotations.length; i++) {
+                          let annotation: ShapeAnnotationModel = node.annotations[i];
+                          if(annotation && annotation.style) {
+                                annotation.style.color = 'white';
                           }
                         }
+                      }
+                    return node;
                   }}
                 >
                   </DiagramComponent>
@@ -530,11 +520,11 @@ let connectors: ConnectorModel[] = [
 
  
 let isMobile: boolean;
-
+//To enhance the functionality of a webpage for mobile devices by adding a click event listener 
 function addEvents(): void {
   isMobile = window.matchMedia('(max-width:550px)').matches;
   if (isMobile) {
-    let paletteIcon: HTMLElement = document.getElementById('palette-icon');
+    let paletteIcon: HTMLElement = paletteIconInstance;
     if (paletteIcon) {
       paletteIcon.addEventListener('click', openPalette, false);
     }
@@ -550,7 +540,7 @@ function createConnector( id: string, sourceID: string, targetID: string ): Conn
   return connector;
 }
 
-//Create class Diagram shapes.
+//Create a class Diagram shapes.
 function createNode( id: string, offsetX: number, offsetY: number, className: string ): NodeModel {
   let node: NodeModel = {};
   node.id = id;
@@ -575,8 +565,9 @@ function createProperty(name: string, type: string): object {
 function createMethods(name: string, type: string): object {
   return { name: name, type: type };
 }
+//To manage the visibility state of the palette space on a webpage for mobile devices
 function openPalette(): void {
-  let paletteSpace: HTMLElement = document.getElementById('palette-space');
+  let paletteSpace: HTMLElement = paletteSpaceInstance;
   isMobile = window.matchMedia('(max-width:550px)').matches;
   if (isMobile) {
     if (!paletteSpace.classList.contains('sb-mobile-palette-open')) {

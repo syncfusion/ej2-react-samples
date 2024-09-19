@@ -1,0 +1,91 @@
+.e-pizza-info-container {
+    display: flex;
+    padding: 10px 100px 10px 30px;
+}
+
+.e-flex-grow {
+    flex-grow: 1;
+}
+
+.e-pizza-image-layout {
+    margin-right: 30px;
+}
+
+.e-pizza-image {
+    width: 100px;
+    height: 100px;
+}
+
+.e-pizza-info-layout {
+    text-wrap: pretty;
+}
+
+.e-info-text-separator {
+    margin-bottom: 10px;
+}
+
+.e-pizza-title {
+    font-weight: 700;
+}
+
+.e-pizza-size {
+    font-weight: 300;
+    margin-left: 10px;
+}
+
+.e-pizza-price-layout {
+    text-align: center;
+    margin-left: 30px;
+}
+
+.e-pizza-price-text {
+    font-weight: 300;
+}
+
+.e-pizza-price {
+    font-weight: 500;
+    font-size: 25px;
+}
+
+.e-pizza-original-price {
+    text-decoration: line-through;
+}
+
+.e-chip-list {
+    padding-left: 0px;
+}
+
+.e-chip.e-outline {
+    margin-left: 0px;
+}
+
+.e-pizza-price-min-layout {
+    display: none;
+    margin-top: 20px;
+}
+
+.e-grid .e-headercell.e-pizza-cell .e-headertext {
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.details {
+    border-color: #e0e0e0;
+    border-style: solid;
+    border-width: 1px 0px 0px 0px;
+    padding-left: 18px;
+}
+
+@media only screen and (max-width: 1050px) {
+    .e-pizza-info-container {
+        padding: 10px 15%;
+    }
+
+    .e-pizza-price-layout {
+        display: none;
+    }
+
+    .e-pizza-price-min-layout {
+        display: block;
+    }
+}

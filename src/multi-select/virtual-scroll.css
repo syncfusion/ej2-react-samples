@@ -28,7 +28,9 @@
     margin: 0 0 10px;
 }
 
-.fluent-dark #Template_popup .header {
+.fluent-dark #Template_popup .header,
+.fluent2-dark #Template_popup .header,
+.fluent2-highcontrast #Template_popup .header {
     background: #252423;
     color: #2899F5;
 }

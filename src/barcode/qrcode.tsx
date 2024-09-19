@@ -44,7 +44,7 @@ export class QrCode extends SampleBase<{}, {}> {
   rendereComplete() {
     let div: HTMLElement = (document.getElementsByClassName('sb-property-border')[0] as HTMLElement);
     this.formObject = new FormValidator('#form1', options);
-    div.style.left = '63%';
+    if (div) div.style.left = '63%';
 
   }
   render() {
@@ -59,7 +59,7 @@ export class QrCode extends SampleBase<{}, {}> {
                   id="barcode"
                   ref={barcode => (barcodeInstance = barcode)}
                   width={"200px"}
-                  displayText={{ visibility: false }}
+                  displayText={{ visibility: true }}
                   invalid={(arg: any) => {
                     canShowError = true;
                     this.formObject.validate();
@@ -68,14 +68,17 @@ export class QrCode extends SampleBase<{}, {}> {
                   mode='SVG'
                   type='QRCode'
                   value='Syncfusion'
+                  logo={{
+                    imageSource: 'https://www.syncfusion.com/web-stories/wp-content/uploads/sites/2/2022/02/cropped-Syncfusion-logo.png'
+                  }}
                 ></QRCodeGeneratorComponent>
               </div>
             </div>
           </div>
         </div>
-        <div className="col-lg-4 property-section" style={{ paddingRight: "0px", paddingLeft: "18px" }} >
+        <div className="col-lg-4 property-section" style={{ paddingRight: "0px", minWidth:"36%" }} >
           <div className="property-panel-header">Appearance</div>
-          <div id="propertypanel" className="e-remove-selection">
+          <div id="propertypanel" >
             <div className="property-section-content">
               <div className="row sb-child-row">
                 <div className="col-xs-2 top left">
@@ -86,7 +89,7 @@ export class QrCode extends SampleBase<{}, {}> {
                   <div id='barcodevaluediv'>
                   <TextBoxComponent
                         ref={value => (barcodeValueInstance = value)}
-                        value='123456789'
+                        value='Syncfusion'
                         id='textbox_0'
                         change={valueOnChange}
                       />
@@ -131,29 +134,43 @@ export class QrCode extends SampleBase<{}, {}> {
                 </div>
               </div>
             </div>
+
             <div className="row sb-child-row" style={{ marginTop: "20px"}}>
               <div className="col-xs-6 left">
-                <div className="col-xs-2 left">
+                <div className="col-xs-12 left">
                   <CheckBoxComponent
                     id="textVisibility"
                     checked={true}
                     change={textVisibility}
                   />
+                  <div style={{display:"inline-block", verticalAlign:"middle", paddingLeft:"4px"}}>Text Visibility</div>
                 </div>
-                <div className="col-xs-10 left">Text Visibility</div>
               </div>
               <div className="col-xs-6 left">
-                <div className="col-xs-2 left">
+                <div className="col-xs-12 left">
+                  <CheckBoxComponent
+                    id="logo"
+                    checked={true}
+                    change={logo}
+                  />
+                  <div style={{display:"inline-block", verticalAlign:"middle", paddingLeft:"4px"}}>Show Logo</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="row sb-child-row" style={{ marginTop: "20px"}}>
+              <div className="col-xs-6 left">
+                <div className="col-xs-12 left">
                   <CheckBoxComponent
                     id="svgMode"
                     checked={true}
                     change={modeChange}
                   />
+                  <div style={{display:"inline-block", verticalAlign:"middle", paddingLeft:"4px"}}>SVG</div>
                 </div>
-                <div className="col-xs-10 left">SVG Mode</div>
               </div>
-
             </div>
+
             <div className="row sb-child-row">
               <div style={{ marginTop: "10px" }}>
                 <div className="col-xs-3 top left" style={{ marginTop: "5px"}}>BG Color</div>
@@ -508,6 +525,12 @@ function barcodeheightChange(args: NumericChangeEventArgs) {
 
 function textVisibility(args: CheckBoxChangeEventArgs) {
   barcodeInstance.displayText.visibility = args.checked;
+}
+
+function logo(args: CheckBoxChangeEventArgs) {
+  if (barcodeInstance.logo) {
+    barcodeInstance.logo.imageSource = args.checked ? 'https://www.syncfusion.com/web-stories/wp-content/uploads/sites/2/2022/02/cropped-Syncfusion-logo.png' : '';
+  }
 }
 
 function modeChange(args: CheckBoxChangeEventArgs) {

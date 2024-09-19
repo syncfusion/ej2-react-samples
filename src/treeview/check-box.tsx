@@ -43,7 +43,7 @@ export class Checkbox extends SampleBase<{}, {}> {
                     <p>This <a href="https://www.syncfusion.com/react-ui-components/react-treeview" target="_blank">React TreeView example</a> demonstrates the CheckBox functionalities of the TreeView. Click on any parent node's CheckBox to check/uncheck the node and its child nodes. The parent node's checked state will be determined by its child nodes checked state.</p>
                 </div>
                 <div id="description">
-                    <p>The <code>TreeView</code> component can be rendered with checkbox on the left side of each tree node. This allows the user to check more than one nodes, and this can be enabled by the <code>showCheckBox</code> property.</p>
+                    <p>The <code>TreeView</code> component can be rendered with checkbox on the left side of each tree node. This allows the user to check more than one nodes, and this can be enabled by the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/treeview#showcheckbox">showCheckBox</a> property.</p>
                     <p>In this demo, the TreeView is populated with checkbox enabled.</p>
                     <p>For more information, you can refer to the <a href="https://ej2.syncfusion.com/react/documentation/treeview/check-box/" target="_blank">Checkboxes</a> section from the documentation.</p>
                 </div>

@@ -50,13 +50,17 @@ let isTablet: boolean = window.matchMedia('(min-width:600px) and (max-width: 850
 let isPc: boolean = window.matchMedia('(min-width:850px)').matches;
 
 let resizeManualTrigger: boolean = false;
+/**
+ * Themes to be redirect
+ */
+const themesToRedirect: string[] = ['material', 'material-dark', 'bootstrap4', 'bootstrap', 'bootstrap-dark', 'fabric', 'fabric-dark'];
 
 /**
  * default theme on sample loaded
  */
 export let selectedTheme: string = location.hash.split('/')[1] || localStorage.getItem('ej2-theme') || 'fluent2';
 localStorage.removeItem('ej2-theme');
-const themeCollection: string[] = ['material3', 'bootstrap5', 'fluent2', 'tailwind', 'highcontrast', 'fluent'];
+const themeCollection: string[] = ['material3', 'bootstrap5', 'fluent2', 'tailwind', 'fluent2-highcontrast', 'highcontrast', 'fluent'];
 let themeList: HTMLElement = document.getElementById('themelist');
 
 /**
@@ -200,6 +204,9 @@ export function setSbLink(): void {
     }
     else if (sb === 'blazor') {
         ele.href = 'https://blazor.syncfusion.com/demos/';
+    }
+    else if (sb === 'vue' && location.href.includes('grid/overview')) {
+      ele.href = ((link) ? ('http://' + link[1] + '/' + (link[3] ? (link[3] + '/') : '')) : ('https://ej2.syncfusion.com/')) + 'vue/demos/#/' + selectedTheme + '/grid/grid-overview.html';
     } else {
       ele.href = ((link) ? ('http://' + link[1] + '/' + (link[3] ? (link[3] + '/') : '')) :
         ('https://ej2.syncfusion.com/')) + (sbObj[sb] ? (sb + '/') : '') +
@@ -353,6 +360,7 @@ function changeTheme(e: MouseEvent): void {
 }
 
 function switchTheme(str: string): void {
+  str = str.includes('_') ? str.replace('_', '.') : str;
   let hash: string[] = location.hash.split('/');
   if (hash[1] !== str) {
     hash[1] = str;
@@ -582,7 +590,7 @@ function onsearchInputChange(e: KeyboardEvent): void {
   let value: any = [];
   if (Browser.isDevice) {
       for (let file of val) {
-          if (file.doc.hideOnDevice !== true) {
+          if (file.doc.hideOnDevice !== true || file.doc.hideOnDevice !== 'true') {
               value = value.concat(file);
           }
       }
@@ -843,16 +851,17 @@ function processResize(e: any): void {
  * Theme Loading
  */
 function loadTheme(theme: string): void {
+  theme = themesToRedirect.indexOf(theme) !== -1 ? 'fluent2': theme;
   let body: HTMLElement = document.body;
   if (body.classList.length > 0) {
     for (let themeItem of themeCollection) {
       body.classList.remove(themeItem);
     }
   }
-  body.classList.add(theme);
-  const activeTheme = theme.replace('-dark', '');
+  body.classList.add(theme.includes('bootstrap5') ? theme.replace('bootstrap5', 'bootstrap5_3') : theme);
+  const activeTheme: string = theme.replace('-dark', '');
   themeList.querySelector('#' + activeTheme).classList.add('active');
-  let ajax: Ajax = new Ajax('./styles/' + theme + '.css', 'GET', true);
+  let ajax: Ajax = new Ajax('./styles/' + (theme.includes('bootstrap5') ? theme.replace('bootstrap5', 'bootstrap5.3') : theme) + '.css', 'GET', true);
   ajax.send().then((result: any) => {
     let doc: HTMLFormElement = document.getElementById('themelink') as HTMLFormElement;
     doc.innerHTML = result;

@@ -160,7 +160,7 @@ export class Orientation extends SampleBase<{}, {}> {
                 </div>
 
                 <div id="description">
-                    <p>The Slider component can be rendered in either horizontal or vertical orientation and this can be set through the orientation
+                    <p>The Slider component can be rendered in either horizontal or vertical orientation and this can be set through the <a target="_blank" href="">orientation</a>
                     property</p>
                     <p>The Slider component allows the user to select a value or range of values in-between a min and max range, by dragging
                     the thumb over the slider bar in Vertical orientation. There are three types of sliders available in Vertical Orientation:</p>

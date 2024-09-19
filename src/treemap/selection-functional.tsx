@@ -24,7 +24,14 @@ let datasource: any = data as any;
 const SAMPLE_CSS = `
 	.e-view.fluent2 #property .e-checkbox-wrapper .e-icons, .e-view.fluent2-dark #property .e-checkbox-wrapper .e-icons {
         margin-left: 0px;
-    }`;
+    }
+	.drilldownCheckbox{
+		margin-left: 0px;
+	}
+	.e-view.fluent2-highcontrast #property .drilldownCheckbox {
+        margin-left: -8px;
+    }
+	`;
 const Selection = () => {
 	useEffect(() => {
 		updateSampleSection();
@@ -71,7 +78,7 @@ const Selection = () => {
 		theme = theme ? theme : "Material";
 		args.treemap.theme = (theme.charAt(0).toUpperCase() + theme.slice(1))
 			.replace(/-dark/i, "Dark")
-			.replace(/contrast/i, "Contrast") as TreeMapTheme;
+			.replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5') as TreeMapTheme;
 		// custom code end
 	};
 	return (
@@ -161,7 +168,7 @@ const Selection = () => {
 									<div style={{ paddingLeft: "0px" }}> Enable</div>
 								</td>
 								<td>
-									<div style={{ paddingTop: "0px", paddingLeft: "0px" }}>
+									<div className="drilldownCheckbox" style={{ paddingTop: "0px", paddingLeft: "0px" }}>
 										<CheckBoxComponent
 											id="highlightEnable"
 											checked={true}
@@ -201,7 +208,7 @@ const Selection = () => {
 									<div style={{ paddingLeft: "0px" }}>Enable</div>
 								</td>
 								<td>
-									<div style={{ paddingTop: "0px", paddingLeft: "0px" }}>
+									<div className="drilldownCheckbox" style={{ paddingTop: "0px", paddingLeft: "0px" }}>
 										<CheckBoxComponent
 											id="SelectionEnable"
 											checked={true}

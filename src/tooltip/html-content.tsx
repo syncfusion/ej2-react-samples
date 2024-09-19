@@ -68,7 +68,7 @@ export class HtmlContentTooltip extends SampleBase<{}, {}> {
                 </div>
 
                 <div id="description">
-                    <p> Tooltip content has been customized using HTML tags and CSS, i.e. the content can be loaded with HTML tags such as &lt;img&gt;,
+                    <p> Tooltip <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/tooltip/#content">content</a> has been customized using HTML tags and CSS, i.e. the content can be loaded with HTML tags such as &lt;img&gt;,
         &lt;a&gt;,&lt;b&gt;, etc. Title can also be added to the content. Overall, the tooltip content can be customized to appear like a web page.</p>
                 </div>
             </div>

@@ -137,31 +137,37 @@ function ConditionalFormattingClass () {
                         <td style={{ verticalAlign: 'top', padding: '4px 0' }}>
                             <code>measure :</code>
                         </td>
-                        <td>Specifies the value field name for which style will be applied.</td>
+                        <td style={{ verticalAlign: 'top', padding: '4px 0' }}>Specifies the value field name for which style will be applied.</td>
                     </tr>
                     <tr>
                         <td style={{ verticalAlign: 'top', padding: '4px 0' }}>
                             <code>condition :</code>
                         </td>
-                        <td>Specifies the operator type like equals, greater than, less than, etc.</td>
+                        <td style={{ verticalAlign: 'top', padding: '4px 0' }}>Specifies the operator type like equals, greater than, less than, etc.</td>
                     </tr>
                     <tr>
                         <td style={{ verticalAlign: 'top', padding: '4px 0' }}>
                             <code>value1 :</code>
                         </td>
-                        <td>Specifies the start value.</td>
+                        <td style={{ verticalAlign: 'top', padding: '4px 0' }}>Specifies the start value.</td>
                     </tr>
                     <tr>
                         <td style={{ verticalAlign: 'top', padding: '4px 0' }}>
                             <code>value2 :</code>
                         </td>
-                        <td>Specifies the end value.</td>
+                        <td style={{ verticalAlign: 'top', padding: '4px 0' }}>Specifies the end value.</td>
                     </tr>
                     <tr>
                         <td style={{ verticalAlign: 'top', padding: '4px 0' }}>
                             <code>style :</code>
                         </td>
-                        <td>Specifies the style for the cell.</td>
+                        <td style={{ verticalAlign: 'top', padding: '4px 0' }}>Specifies the style for the cell.</td>
+                    </tr>
+                    <tr>
+                        <td style={{ verticalAlign: 'top', padding: '4px 0' }}>
+                            <code>applyGrandTotals :</code>
+                        </td>
+                        <td style={{ verticalAlign: 'top', padding: '4px 0' }}>Enabled by default. Allows conditional formatting to be applied to row and column grand totals.</td>
                     </tr>
                 </table>
                 <br />

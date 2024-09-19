@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { SpreadsheetComponent, SheetDirective, RowsDirective, CellsDirective, CellDirective, CellStyleModel, RowDirective, SheetsDirective, ColumnsDirective, ColumnDirective, getFormatFromType } from '@syncfusion/ej2-react-spreadsheet';
+import { SpreadsheetComponent, SheetDirective, RowsDirective, CellsDirective, CellDirective, CellStyleModel, RowDirective, SheetsDirective, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-spreadsheet';
 import { updateSampleSection } from '../common/sample-base';
 import './spreadsheet.css';
 
@@ -15,7 +15,7 @@ function CellDataBinding() {
     const boldCenter: CellStyleModel = { fontWeight: 'bold', textAlign: 'center' };
     const boldRight: CellStyleModel = { fontWeight: 'bold', textAlign: 'right' };
     const bold: CellStyleModel = { fontWeight: 'bold' };
-    const currencyFormat: string = getFormatFromType('Currency');
+    const currencyFormat: string = '$#,##0.00';
     return (
         <div className='control-pane'>
             <div className='control-section spreadsheet-control'>

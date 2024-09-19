@@ -14,6 +14,9 @@ const SAMPLE_CSS = `
     .colorMappingPadding {
         margin-left: -10px;margin-top: -10px;padding-left: 10px;
     }
+    .e-view.fluent2-highcontrast #property .colorMappingPadding {
+        margin-left: -18px;
+    }
     .e-view.fluent2 #property .colorMappingPadding, .e-view.fluent2-dark #property .colorMappingPadding {
         margin-left: -8px;margin-top: -10px;padding-left: 0px;
     }`;
@@ -266,7 +269,7 @@ const ColorMapping = () => {
         theme = theme ? theme : "Material";
         args.treemap.theme = (theme.charAt(0).toUpperCase() + theme.slice(1))
             .replace(/-dark/i, "Dark")
-            .replace(/contrast/i, "Contrast") as TreeMapTheme;
+            .replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5') as TreeMapTheme;
         let sliderMin: HTMLInputElement = document.getElementById(
             "hideOne"
         ) as HTMLInputElement;

@@ -85,7 +85,7 @@ export class Default extends SampleBase<{}, {}> {
                     </ToolbarComponent>
                 </div>
                 <div className="maincontent">
-                    <ListViewComponent id="listView" ref={ListView => this.listObj = ListView} template={this.listTemplate as any} cssClass="e-list-template" dataSource={this.inboxData} fields={fields} select={this.onListSelect.bind(this)}>
+                    <ListViewComponent id="listView" ref={ListView => this.listObj = ListView} template={this.listTemplate as any} cssClass="e-list-template" dataSource={this.inboxData} fields={fields} select={this.onListSelect.bind(this)} statelessTemplates={['template']}>
                     </ListViewComponent>
                 </div>
                 {/* end of main content declaration */}

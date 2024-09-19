@@ -52,7 +52,9 @@
     padding: 0 0 0 24px;
 }
 
-.fluent-dark #multiTemplate_popup .header {
+.fluent-dark #multiTemplate_popup .header,
+.fluent2-dark #multiTemplate_popup .header,
+.fluent2-highcontrast #multiTemplate_popup .header {
     background: #252423;
     color: #2899F5;
 }

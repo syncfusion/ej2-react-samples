@@ -30,7 +30,7 @@ const AreaEmpty = () => {
     };
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     return (
@@ -50,7 +50,6 @@ const AreaEmpty = () => {
             </div>
             <div id="description">
                 <p>In this example, you can see how to render an area series with empty points. Also, a legend is enabled in the shape of the series.</p>
-                <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
                     Chart component features are segregated into individual feature-wise modules. To use area series, we need to inject <code>AreaSeries</code> module into <code>services</code>.

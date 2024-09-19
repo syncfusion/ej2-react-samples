@@ -279,10 +279,10 @@ function LiveData() {
                      <strong>Feed Delay(ms)</strong>:
                     </div>
                     <NumericTextBoxComponent format="N0" value={5000} min={5000} step={1000} width={'150px'} style={{ marginLeft: '7px' }} placeholder={'0'} ref={(scope: NumericTextBoxComponent) => { feedDelayInput = scope; }} />
-                    <ButtonComponent id="update1" ref={(scope) => { updateButton = scope; }} onClick={updateClick} style={{ marginLeft: '10px' }}>
+                    <ButtonComponent id="update1" ref={(scope) => { updateButton = scope; }} onClick={updateClick} className='update-btn'>
                         Start Updating...
                     </ButtonComponent>
-                    <ButtonComponent id="clear" ref={(scope) => { clearButton = scope; }} onClick={clearClick} style={{ marginLeft: '10px' }}>
+                    <ButtonComponent id="clear" ref={(scope) => { clearButton = scope; }} onClick={clearClick} className='update-btn'>
                         Stop Updating...
                     </ButtonComponent>
                 </div>

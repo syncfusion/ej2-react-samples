@@ -346,7 +346,7 @@ export class Resize extends SampleBase<{}, {}> {
                             </RibbonComponent>
                             <div id="ribbonPlaceHolder">
                                 <div style={{ width: '100%', height: '40px' }}>
-                                    <p className='displayText'>Resize Ribbon</p>
+                                    <p className='ribbonResizeDisplayText'>Resize Ribbon</p>
                                     <div id='ribbonSlider' style={{ width: '200px', margin: '0 15px' }}>
                                         <SliderComponent id='slider' ref={slider => { this.sliderRef = slider }} min={350} change={this.onChange.bind(this)} created={this.onCreated.bind(this)} />
                                     </div>

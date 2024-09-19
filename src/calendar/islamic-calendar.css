@@ -14,7 +14,10 @@
 }
 
 body.fluent-dark #date_label,
+body.fluent2-dark #date_label,
+body.fluent2-highcontrast #date_label,
 body.bootstrap5-dark #date_label,
+body.bootstrap5.3-dark #date_label,
 body.tailwind-dark #date_label,
 body.material-dark #date_label,
 body.material3-dark #date_label,
@@ -60,8 +63,11 @@ body.highcontrast #date_label {
 .fabric-dark .sf-icon-cup:before,
 .bootstrap-dark .sf-icon-cup:before,
 .bootstrap5-dark .sf-icon-cup:before,
+.bootstrap5.3-dark .sf-icon-cup:before,
 .tailwind-dark .sf-icon-cup:before,
-.fluent-dark .sf-icon-cup:before {
+.fluent-dark .sf-icon-cup:before,
+.fluent2-dark .sf-icon-cup:before,
+.fluent2-highcontrast .sf-icon-cup:before {
     color: #ff7500;
 }
 
@@ -71,8 +77,11 @@ body.highcontrast #date_label {
 .fabric-dark .sf-icon-start:before,
 .bootstrap-dark .sf-icon-start:before,
 .bootstrap5-dark .sf-icon-start:before,
+.bootstrap5.3-dark .sf-icon-start:before,
 .tailwind-dark .sf-icon-start:before,
-.fluent-dark .sf-icon-start:before {
+.fluent-dark .sf-icon-start:before,
+.fluent2-dark .sf-icon-start:before,
+.fluent2-highcontrast .sf-icon-start:before {
     color: #ff7500;
 }
 
@@ -82,8 +91,11 @@ body.highcontrast #date_label {
 .fabric-dark .sf-icon-bell:before,
 .bootstrap-dark .sf-icon-bell:before,
 .bootstrap5-dark .sf-icon-bell:before,
+.bootstrap5.3-dark .sf-icon-bell:before,
 .tailwind-dark .sf-icon-bell:before,
-.fluent-dark .sf-icon-bell:before {
+.fluent-dark .sf-icon-bell:before,
+.fluent2-dark .sf-icon-bell:before,
+.fluent2-highcontrast .sf-icon-bell:before {
     color: #ff7500;
 }
 

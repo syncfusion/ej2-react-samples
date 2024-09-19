@@ -96,6 +96,12 @@ const slidercss = `
     color: #ffd939;
 }
 
+body.fluent2-highcontrast .sliderwrap .e-scale,
+body.fluent2 .sliderwrap .e-scale,
+body.fluent2-dark .sliderwrap .e-scale {
+    top: 2px;
+}
+
 `
 export class TooltipCustomization extends SampleBase<{}, {}> {
     // Set slider minimum and maximum values
@@ -200,7 +206,7 @@ export class TooltipCustomization extends SampleBase<{}, {}> {
                 </div>
 
                 <div id="description">
-                    <p>In this demo, we have demonstrated the following customization of Tooltip using CSS.</p>
+                    <p>In this demo, we have demonstrated the following customization of Tooltip using <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/slider/#cssclass">CSS</a>.</p>
                     <ul>
                         <li>Background color - In this sample, Tooltip has been customized to custom color.</li>
                         <li>Color and text - In this sample, Tooltip and its content has been customized to custom color.</li>

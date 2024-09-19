@@ -100,6 +100,18 @@ const KeyboardInteraction = () => {
             </tr>
             <tr>
               <td style={{ padding: '4px 0' }}>
+              <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>N</kbd> key
+              </td>
+              <td>To open a new editor window.</td>
+            </tr>
+            <tr>
+              <td style={{ padding: '4px 0' }}>
+              <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>Y</kbd> key
+              </td>
+              <td>To navigate today date.</td>
+            </tr>
+            <tr>
+              <td style={{ padding: '4px 0' }}>
                 <kbd>Delete</kbd> key
               </td>
               <td>Deletes one or more selected events.</td>

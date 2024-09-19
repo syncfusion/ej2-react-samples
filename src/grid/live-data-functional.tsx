@@ -88,7 +88,7 @@ function LiveStream() {
         isDataBound = true;
     }
     const customizeRatingCell = (span1: Element, span2: Element, span1_class: string[], span2_class: string, span2_text: string): void => {
-        span1_class.forEach((item: string) => span1.classList.add(item));        
+        span1_class.forEach((item: string) => span1.classList.add(item));
         span2.classList.add(span2_class);
         (span2 as HTMLElement).innerText = span2_text;
     }
@@ -167,7 +167,7 @@ function LiveStream() {
     }
     return (
         <div className='control-pane'>
-            <div className='control-section row'>
+            <div className='control-section'>
                 <div style={{ marginBottom: '10px' }}>
                     <label style={{ display: 'inline-block', fontSize: '14px', paddingLeft:'5px' }}>
                         Feed Delay(ms):

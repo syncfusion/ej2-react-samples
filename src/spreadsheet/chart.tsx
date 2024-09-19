@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { SpreadsheetComponent, SheetsDirective, SheetDirective, ColumnsDirective, getFormatFromType, CellStyleModel, ChartModel } from '@syncfusion/ej2-react-spreadsheet';
+import { SpreadsheetComponent, SheetsDirective, SheetDirective, ColumnsDirective, CellStyleModel, ChartModel } from '@syncfusion/ej2-react-spreadsheet';
 import { ColumnDirective, RowDirective, RowsDirective, CellsDirective, CellDirective } from '@syncfusion/ej2-react-spreadsheet';
 import { RangeDirective } from '@syncfusion/ej2-react-spreadsheet';
 import { RangesDirective } from '@syncfusion/ej2-react-spreadsheet';
@@ -21,7 +21,7 @@ export class Chart extends SampleBase<{}, {}> {
         // Formatting cells dynamically using cellFormat method
         this.spreadsheet.cellFormat({ backgroundColor: '#e56590', color: '#fff', fontWeight: 'bold', textAlign: 'center' }, 'A3:E3');
         // Applying currency format to the specified range.
-        this.spreadsheet.numberFormat(getFormatFromType('Currency'), 'B4:E10');
+        this.spreadsheet.numberFormat('$#,##0.00', 'B4:E10');
         // Merging the cells from A1 to E1
         this.spreadsheet.merge('A1:E1');
     }

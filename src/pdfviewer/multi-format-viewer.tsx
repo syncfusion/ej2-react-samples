@@ -34,7 +34,7 @@ export class MultiFormatViewer extends SampleBase<{}, {}>{
     this.dropAreaRef = React.createRef();
     this.uploadObj = React.createRef();
     this.linear = React.createRef();
-    this.allowedExtensions = '.doc, .docx, .rtf, .docm, .dotm, .dotx, .dot, .xls, .xlsx, .pptx, .pptm, .potx, .potm .jpeg, .png, .bmp, .pdf';
+    this.allowedExtensions = '.doc, .docx, .rtf, .docm, .dotm, .dotx, .dot, .xls, .xlsx, .pptx, .pptm, .potx, .potm .jpeg, .png, .bmp, .pdf, .jpg';
   }
   rendereComplete = () => {
     this.uploadObj.current.dropArea = this.dropAreaRef.current;
@@ -47,7 +47,7 @@ export class MultiFormatViewer extends SampleBase<{}, {}>{
   onSelect = (args: any) => {
     this.linear.current.value == 0;
     this.linear.current.refresh();
-    let extensions = ['doc', 'docx', 'rtf', 'docm', 'dotm', 'dotx', 'dot', 'xls', 'xlsx', 'pptx', 'pptm', 'potx', 'potm', 'jpeg', 'png', 'bmp', 'pdf'];
+    let extensions = ['doc', 'docx', 'rtf', 'docm', 'dotm', 'dotx', 'dot', 'xls', 'xlsx', 'pptx', 'pptm', 'potx', 'potm', 'jpeg', 'png', 'bmp', 'pdf', 'jpg'];
     let progressBarContainer: any = document.getElementById("progressBar") as HTMLElement;
     let progressBar: any = document.getElementById("linearProgressBar") as HTMLElement;
     let progressMessage: any = document.getElementById("uploadedMessage") as HTMLElement;
@@ -180,7 +180,6 @@ export class MultiFormatViewer extends SampleBase<{}, {}>{
       this.pdfViewerProgressValue = 0;
       this.linear.current.value = 0;
     }, 1000);
-    this.viewer.magnification.fitToPage();
   };
 
   ajaxRequestSuccess = (args) => {
@@ -292,6 +291,7 @@ export class MultiFormatViewer extends SampleBase<{}, {}>{
               resourceUrl="https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib"
               style={{ 'height': '640px' }}
               documentLoad={this.documentLoad}
+              zoomMode = "FitToPage"
               ajaxRequestSuccess={this.ajaxRequestSuccess}>
               <Inject services={[Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner,PageOrganizer]} />
             </PdfViewerComponent>

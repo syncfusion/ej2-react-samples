@@ -79,7 +79,7 @@ const DashedLine = () => {
         args.chart.annotations[0].content = '<div style="color:black; font-weight:bold;">Actual</div>';
         args.chart.annotations[1].content = '<div style="color:black; font-weight:bold;">Forecast</div>';
         let selectedTheme = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'material';
+        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
         if (selectedTheme === 'highcontrast' || selectedTheme.indexOf('dark') > -1) {
             args.chart.annotations[0].content = '<div style="color:white; font-weight:bold;">Actual</div>';
@@ -117,19 +117,19 @@ const DashedLine = () => {
             annotationColor = 'light'
         } else if (selectedTheme === 'fluent2') {
             annotationColor = 'light';
-        } else if (selectedTheme === 'fluent2-dark') {
+        } else if (selectedTheme === 'fluent2-highcontrast' || selectedTheme === 'fluent2-dark') {
             annotationColor = 'dark';
         } else {
             annotationColor = 'light'
         }
 
         if (annotationColor == 'light') {
-            setContent('<div style="color:black; font-weight:bold;">Actual</div>');
-            setContent1('<div style="color:black; font-weight:bold;">Forecast</div>');
+            args.chart.annotations[0].content = '<div style="color:black; font-weight:bold;">Actual</div>';
+            args.chart.annotations[1].content = '<div style="color:black; font-weight:bold;">Forecast</div>';
         }
         else {
-            setContent('<div style="color:whitesmoke; font-weight:bold;">Actual</div>');
-            setContent1('<div style="color:whitesmoke; font-weight:bold;">Forecast</div>');
+            args.chart.annotations[0].content = '<div style="color:whitesmoke; font-weight:bold;">Actual</div>';
+            args.chart.annotations[1].content = '<div style="color:whitesmoke; font-weight:bold;">Forecast</div>';
         }
     };
 
@@ -160,7 +160,7 @@ const DashedLine = () => {
                 <p>
                     <code>Tooltips</code> are enabled in this example.To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
                 </p>
-                <br></br>
+
                 <p><b>Injecting Module</b></p>
                 <p>
                     Chart component features are segregated into individual feature-wise modules. To use line series, we need to inject <code>LineSeries</code> module into <code>services</code>.

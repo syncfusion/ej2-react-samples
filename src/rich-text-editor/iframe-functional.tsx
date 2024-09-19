@@ -18,7 +18,7 @@ function IFrame() {
         enable: true
     };
     // Rich Text Editor items list
-    const items: string[] = ['Bold', 'Italic', 'Underline', 'StrikeThrough', 'SuperScript', 'SubScript', '|',
+    const items: string[] = ['Bold', 'Italic', 'Underline', 'StrikeThrough', 'InlineCode', 'SuperScript', 'SubScript', '|',
         'FontName', 'FontSize', 'FontColor', 'BackgroundColor', '|',
         'LowerCase', 'UpperCase', '|',
         'Formats', 'Alignments', 'Blockquote', '|', 'NumberFormatList', 'BulletFormatList', '|',

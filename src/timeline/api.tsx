@@ -96,11 +96,11 @@ export class API extends SampleBase<{}, {}> {
                 <div id="description">
                     <p>This sample can be customized further with the combination of Timeline properties from the property pane. For example,</p>
                     <ul>
-                        <li>The layout can be changed by selecting the orientation dropdownlist from property pane.</li>
-                        <li>Items alignment can be changed by selecting the alignment dropdownlist from property pane.</li>
-                        <li>Show or hide the information opposite to the content by toggling the opposite content switcher button.</li>
+                        <li>The layout can be changed by selecting the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/timeline#orientation">orientation</a> dropdownlist from property pane.</li>
+                        <li>Items alignment can be changed by selecting the alignment dropdownlist from property pane. This can be achieved by the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/timeline#align"></a> property.</li>
+                        <li>Show or hide the information opposite to the content by toggling the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/timeline/timelineItemModel/#oppositecontent">opposite content</a> switcher button.</li>
                         <li>Show or hide the item icons by toggling the show icon switcher button.</li>
-                        <li>Reverse the timeline items by toggling the reverse switcher button.</li>
+                        <li><a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/timeline#reverse">Reverse</a> the timeline items by toggling the reverse switcher button.</li>
                     </ul>
                 </div>
             </div>

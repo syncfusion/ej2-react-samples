@@ -2,7 +2,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SpreadsheetComponent, SheetsDirective, SheetDirective, ColumnsDirective } from '@syncfusion/ej2-react-spreadsheet';
 import { ColumnDirective, RowDirective, RowsDirective, CellsDirective, CellDirective } from '@syncfusion/ej2-react-spreadsheet';
-import { ConditionalFormatsDirective, ConditionalFormatDirective, RangeDirective, getFormatFromType } from '@syncfusion/ej2-react-spreadsheet';
+import { ConditionalFormatsDirective, ConditionalFormatDirective, RangeDirective } from '@syncfusion/ej2-react-spreadsheet';
 import { RangesDirective } from '@syncfusion/ej2-react-spreadsheet';
 import { conditionalFormatting } from './data';
 import { updateSampleSection } from '../common/sample-base';
@@ -17,14 +17,15 @@ function ConditionalFormatting() {
         updateSampleSection();
     }, [])
     let spreadsheet: SpreadsheetComponent;
-    const currencyFormat: string = getFormatFromType('Currency');
     function onCreated(): void {
         spreadsheet.merge('A1:H1');
         spreadsheet.cellFormat({ fontWeight: 'bold', textAlign: 'center' }, 'A2:H2');
         spreadsheet.cellFormat({ fontWeight: 'bold', textAlign: 'center', verticalAlign: 'middle', fontSize: '13pt' }, 'A1:H1');
-        spreadsheet.numberFormat(currencyFormat, 'D3:D18');
-        spreadsheet.numberFormat(currencyFormat, 'E3:E18');
-        spreadsheet.numberFormat(currencyFormat, 'F3:F18');
+        // Apply format to the specified range in the active sheet.
+        spreadsheet.numberFormat('$#,##0.00', 'D3:D18');
+        spreadsheet.numberFormat('$#,##0.00', 'E3:E18');
+        spreadsheet.numberFormat('$#,##0.00', 'F3:F18');
+        spreadsheet.numberFormat('m/d/yyyy', 'G3:G18');
         spreadsheet.conditionalFormat({ type: 'BlueDataBar', range: 'D3:D18' });
         spreadsheet.conditionalFormat({ type: 'GreenDataBar', range: 'E3:E18' });
         spreadsheet.conditionalFormat({ type: 'ThreeStars', range: 'H3:H18' });
@@ -52,7 +53,7 @@ function ConditionalFormatting() {
                             </RangesDirective>
                             <ConditionalFormatsDirective>
                                 <ConditionalFormatDirective type='GYRColorScale' range='C3:C18'></ConditionalFormatDirective>
-                                <ConditionalFormatDirective type='LessThan' cFColor='RedFT' value='8/30/2019' range='G3:G18'>
+                                <ConditionalFormatDirective type='LessThan' cFColor='RedFT' value='8-8-2019' range='G3:G18'>
                                 </ConditionalFormatDirective>
                             </ConditionalFormatsDirective>
                             <ColumnsDirective>

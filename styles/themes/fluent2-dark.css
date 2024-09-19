@@ -252,13 +252,12 @@ color:white;
 .fluent2-dark.e-bigger .sb-content-toolbar {
     padding: unset;
 }
-.fluent2-dark .sb-setting-popup .sb-setting-header,
-.fluent2-dark .property-panel-header {
+.fluent2-dark .sb-setting-popup .sb-setting-header {
     border-bottom: 1px solid #525252;
 }
 @media (min-width: 1200px) {
     .fluent2-dark .sb-property-border {
-        border: 0.5px solid #525252;
+        border: none;
     }
 }
 
@@ -277,4 +276,9 @@ color:white;
 
 .fluent2-dark #sb-nextjs-btn.e-link:hover {
     color: #0f6cbd;
+}
+
+.fluent2-dark.e-bigger .e-listview .e-icon-wrapper .e-list-text,
+.fluent2-dark.e-bigger .sb-control-navigation .e-treeview .tree-text {
+    width: calc(100% - 70px);
 }

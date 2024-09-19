@@ -4,7 +4,6 @@ import {
   DiagramComponent,
   NodeModel,
   BasicShapes,
-  Segments,
   SnapSettingsModel,
   SnapConstraints,
   TextModel,
@@ -14,9 +13,7 @@ import {
   UndoRedo,
   GridlinesModel,
   Snapping,
-  FlowShapes,
   ConnectorModel,
-  Connector,
   PointPortModel,
   PortConstraints,
   PortVisibility,
@@ -26,7 +23,6 @@ import {
   ConnectorEditing
 } from "@syncfusion/ej2-react-diagrams";
 import { SampleBase } from "../common/sample-base";
-import { DataManager } from "@syncfusion/ej2-data";
 import {
   CheckBoxComponent,
   ChangeEventArgs
@@ -35,8 +31,9 @@ import {
 
 let node: NodeModel;
 let diagramInstance: DiagramComponent;
-let interval: number[];
-interval = [
+let appearanceInstance: HTMLElement;
+let checkedInstance: CheckBoxComponent;
+let interval: number[]=[
   1,
   9,
   0.25,
@@ -73,7 +70,7 @@ let snapSettings: SnapSettingsModel = {
 };
 const SAMPLE_CSS = `
 /* For changing drawing shapes in property panel */
-.image-pattern-style {
+.diagram-drawingTool .image-pattern-style {
         background-color: white;
         background-size: contain;
         background-repeat: no-repeat;
@@ -85,57 +82,51 @@ const SAMPLE_CSS = `
         float: left;
     }
 
-    .image-pattern-style:hover {
+    .diagram-drawingTool .image-pattern-style:hover {
         border-color: gray;
         border-width: 2px;
     }
 
-    .row {
+    .diagram-drawingTool .row {
         margin-left: 0px;
         margin-right: 0px;
     }
 
-    .row-header {
+    .diagram-drawingTool .row-header {
         font-size: 12px;
         font-weight: 500;
     }
 
-    .e-checkbox-wrapper .e-label {
+    .diagram-drawingTool .e-checkbox-wrapper .e-label {
         font-size: 12px;
     }
 
-    .property-panel-header {
+    .diagram-drawingTool .property-panel-header {
         padding-top: 15px;
         padding-bottom: 5px
     }
 
-    .e-selected-style {
+    .diagram-drawingTool .e-selected-style {
         border-color: #006CE6;
         border-width: 2px;
     }
 
-    .control-section {
+    .diagram-drawingTool .control-section {
         padding-top: 0px;
         padding-bottom: 0px;
         padding-right: 0px;
     }
 
-    .container-fluid {
-        padding-left: 0px;
-    }
-
-    .diagram-control-pane .col-xs-6 {
-        padding-left: 0px;
-        padding-right: 0px;
-    }`;
+`;
 
 export class DrawingTools extends SampleBase<{}, {}> {
   rendereComplete() {
+     // Default shape on load
     SetShape("Rectangle");
     diagramInstance.tool = DiagramTools.ContinuousDraw;
     diagramInstance.dataBind();
     //Click Event used to decide the drawing object.
-    document.getElementById("appearance").onclick = (args: MouseEvent) => {
+    appearanceInstance.onclick = (args: MouseEvent) => {
       let target: HTMLElement = args.target as HTMLElement;
       let selectedElement: HTMLCollection = document.getElementsByClassName(
         "e-selected-style"
@@ -206,6 +197,7 @@ export class DrawingTools extends SampleBase<{}, {}> {
   }
   render() {
     return (
+      <div className="diagram-drawingTool">
       <div className="control-pane diagram-control-pane">
         <style>{SAMPLE_CSS}</style>
         <div className="col-lg-8 control-section">
@@ -241,7 +233,7 @@ export class DrawingTools extends SampleBase<{}, {}> {
 
         <div className="col-lg-4  property-section">
           <div className="property-panel-header">Properties</div>
-          <div className="row property-panel-content" id="appearance">
+          <div className="row property-panel-content"  id="appearance" ref={appearance=>(appearanceInstance=appearance)}>
             <div className="row row-header" style={{ paddingTop: "10px" }}>
               Shapes
             </div>
@@ -382,7 +374,7 @@ export class DrawingTools extends SampleBase<{}, {}> {
           </div>
             <div className="row property-panel-content" style={{ paddingTop: "10px" }}>
               <CheckBoxComponent
-                id="checked"
+                 id="checked" ref={checked=>(checkedInstance=checked)} 
                 label="Continuous Draw"
                 checked={true}
                 change={onChange}
@@ -428,6 +420,7 @@ export class DrawingTools extends SampleBase<{}, {}> {
           <br />
         </div>
       </div>
+      </div>
     );
   }
 }
@@ -440,8 +433,7 @@ function onChange(args: ChangeEventArgs): void {
 
 //Enable drawing object.
 function setdrawobject(node: NodeModel, connector: ConnectorModel): void {
-  let continuousDraw: any = document.getElementById("checked");
-  if (!continuousDraw.checked) {
+  if (!checkedInstance.checked) {
     diagramInstance.tool = DiagramTools.DrawOnce;
   }
   if (connector == null) {
@@ -453,8 +445,7 @@ function setdrawobject(node: NodeModel, connector: ConnectorModel): void {
 }
 //Enable drawing Tool.
 function enableTool(): void {
-  let continuousDraw: any = document.getElementById("checked");
-  if (!continuousDraw.checked) {
+  if (!checkedInstance.checked) {
     diagramInstance.tool = DiagramTools.DrawOnce;
   }
   diagramInstance.dataBind();

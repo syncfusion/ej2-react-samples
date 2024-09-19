@@ -37,8 +37,8 @@ export class Filtering extends SampleBase<{}, {}> {
     dependency: 'Predecessor',
     child: 'subtasks'
   };
-  public projectStartDate = new Date('07/16/1969 01:00:00 AM');
-  public projectEndDate = new Date('07/25/1969');
+  public projectStartDate = new Date('07/16/2024 01:00:00 AM');
+  public projectEndDate = new Date('07/25/2024');
   public timelineSettings: any = {
     timelineUnitSize: 60,
     topTier: {
@@ -60,8 +60,8 @@ export class Filtering extends SampleBase<{}, {}> {
   public actionCompleteEvent(args): any {
     if (args.requestType == "filterafteropen" && (args.columnName === "StartDate" || args.columnName === "EndDate") 
     && this.ganttInstance.filterSettings.type === "Menu") {
-      args.filterModel.dlgDiv.querySelector('.e-datetimepicker').ej2_instances[0].min = new Date(1969, 5, 1);
-      args.filterModel.dlgDiv.querySelector('.e-datetimepicker').ej2_instances[0].max = new Date(1969, 8, 30);
+      args.filterModel.dlgDiv.querySelector('.e-datetimepicker').ej2_instances[0].min = new Date(2024, 5, 1);
+      args.filterModel.dlgDiv.querySelector('.e-datetimepicker').ej2_instances[0].max = new Date(2024, 8, 30);
       args.filterModel.dlgDiv.querySelector('.e-datetimepicker').ej2_instances[0].showTodayButton = false;
       args.filterModel.dlgDiv.querySelector('.e-datetimepicker').ej2_instances[0].dataBind();
     }
@@ -129,7 +129,7 @@ export class Filtering extends SampleBase<{}, {}> {
         <div id="description">
           <p>
             The filtering feature enables the user to view reduced amount of records based on filter criteria. The column
-            menu filtering can be enabled by setting <code>allowFiltering</code> property as <code>true</code> and toolbar
+            menu filtering can be enabled by setting <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#allowfiltering">allowFiltering</a> property as <code>true</code> and toolbar
             search box can be enabled by including the search item in the <code>toolbar</code> property.
             <p>Gantt supports the following filter types. They are </p>
             <ul>

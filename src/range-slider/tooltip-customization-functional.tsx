@@ -92,6 +92,12 @@ const slidercss = `
 .bootstrap .e-tooltip-cutomization.e-slider-tooltip.e-tooltip-wrap.e-popup .e-arrow-tip-inner {
     color: #ffd939;
 }
+
+body.fluent2-highcontrast .sliderwrap .e-scale,
+body.fluent2 .sliderwrap .e-scale,
+body.fluent2-dark .sliderwrap .e-scale {
+    top: 2px;
+}
 `
 const TooltipCustomization = () => {
     React.useEffect(() => {
@@ -194,7 +200,7 @@ const TooltipCustomization = () => {
                 <p>This sample demonstrates the customization of Slider's Tooltip. Drag the thumb over the bar for selecting the values between min and max.</p>
             </div>
             <div id="description">
-                <p>In this demo, we have demonstrated the following customization of Tooltip using CSS.</p>
+                <p>In this demo, we have demonstrated the following customization of Tooltip using <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/slider/#cssclass">CSS</a>.</p>
                 <ul>
                     <li>Background color - In this sample, Tooltip has been customized to custom color.</li>
                     <li>Color and text - In this sample, Tooltip and its content has been customized to custom color.</li>

@@ -1,8 +1,6 @@
-import * as ReactDOM from "react-dom";
 import * as React from "react";
 import {
   DiagramComponent,
-  Diagram,
   NodeModel,
   ConnectorModel,
   Inject, LineRouting,
@@ -132,29 +130,34 @@ let connectors: ConnectorModel[] = [
 let diagramInstance: DiagramComponent;
 
 function LineRoutingSample() {
+  // React useEffect hook to run once on component mount
   React.useEffect(() => {
     updateSampleSection();
-    rendereComplete();
+    rendereComplete(); // Call rendereComplete function
   }, [])
+  // Function to complete rendering actions
   function rendereComplete() {
     diagramInstance.fitToPage({ mode: 'Width' });
   }
+  // Function to define defaults for nodes in the diagram
   function getNodeDefaults(node: NodeModel): NodeModel {
-    node.height = 50;
+    node.height = 50; // Default height for nodes
     if (node.id === 'decision') {
-      node.height = 70;
+      node.height = 70; // Adjust height for specific node with id 'decision'
     }
-    node.width = 120;
-    node.style = { strokeColor: 'transparent' };
+    node.width = 120; // Default width for nodes
+    node.style = { strokeColor: 'transparent' };// Styling for nodes
     return node;
   }
   
+   // Function to define defaults for connectors in the diagram
   function getConnectorDefaults(connector: ConnectorModel): ConnectorModel {
-    connector.type = 'Orthogonal';
-    connector.style = { strokeColor: '#707070 ', strokeWidth: 1.25 };
-    connector.targetDecorator = { style: { fill: '#707070 ', strokeColor: '#707070 ' } };
+    connector.type = 'Orthogonal';// Connector type (Orthogonal)
+    connector.style = { strokeColor: '#707070 ', strokeWidth: 1.25 }; // Connector styling (color and width)
+    connector.targetDecorator = { style: { fill: '#707070 ', strokeColor: '#707070 ' } }; // Decorator styling for connectors
     return connector;
   }
+  // Return JSX for rendering the component
     return (
       <div className="control-pane">
         <div className="control-section">

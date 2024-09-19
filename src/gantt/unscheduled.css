@@ -11,6 +11,10 @@
 .fluent #Unscheduled .e-add-icon:before,.fluent2 #Unscheduled .e-add-icon:before,
 .fluent2-dark #Unscheduled .e-add-icon:before,.fluent2-highcontrast #Unscheduled .e-add-icon:before,
 .fluent-dark #Unscheduled .e-add-icon:before,.material3-dark #Unscheduled .e-add-icon:before ,
-.material3 #Unscheduled .e-add-icon:before {
+.material3 #Unscheduled .e-add-icon:before,
+.bootstrap5_3 #Unscheduled .e-add-icon:before,
+.bootstrap5_3-dark-lite #Unscheduled .e-add-icon:before,
+.bootstrap5_3-dark #Unscheduled .e-add-icon:before, 
+.bootstrap5_3-lite #Unscheduled .e-add-icon:before {
    content: "\e836"
 }

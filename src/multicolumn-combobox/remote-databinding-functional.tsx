@@ -7,7 +7,7 @@ import { MultiColumnComboBoxComponent, ColumnsDirective, ColumnDirective } from 
 import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import './remote-databinding.css';
-import { DataManager, Query, WebApiAdaptor } from '@syncfusion/ej2/data';
+import { DataManager, Query, WebApiAdaptor } from '@syncfusion/ej2-data';
 
 const Remote = () => {
     useEffect(() => {

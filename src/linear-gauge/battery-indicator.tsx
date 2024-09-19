@@ -17,7 +17,7 @@ export class BatteryIndicator extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as LinearGaugeTheme;
+            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5')) as LinearGaugeTheme;
         // custom code end           
         this.borderColor = args.gauge.theme.indexOf('Dark') > -1 ? 'white' : '#bfbfbf';
         if (args.gauge.theme == 'Bootstrap5Dark' || args.gauge.theme == 'TailwindDark') {
@@ -29,7 +29,7 @@ export class BatteryIndicator extends SampleBase<{}, {}> {
         if (args.gauge.theme == 'Fluent' || args.gauge.theme == 'Fluent2') {
             this.borderColor = "#EDEBE9";
         }
-        if (args.gauge.theme == 'FluentDark' || args.gauge.theme == 'Fluent2Dark') {
+        if (args.gauge.theme == 'FluentDark' || args.gauge.theme == 'Fluent2Dark' || args.gauge.theme == 'Fluent2HighContrast') {
             this.borderColor = "#292827";
         }
         if (args.gauge.theme == 'Bootstrap5' || args.gauge.theme == 'Tailwind') {

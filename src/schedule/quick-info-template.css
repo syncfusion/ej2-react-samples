@@ -165,6 +165,7 @@
 
 .bootstrap-dark .quick-info-template .quick-info-header,
 .bootstrap5-dark .quick-info-template .quick-info-header,
+.bootstrap5\.3-dark .quick-info-template .quick-info-header,
 .fluent-dark .quick-info-template .quick-info-header,
 .fabric-dark .quick-info-template .quick-info-header,
 .material3-dark .quick-info-template .quick-info-header,
@@ -183,6 +184,8 @@
 
 .tailwind-dark .quick-info-template .quick-info-header-content,
 .bootstrap-dark .quick-info-template .quick-info-header-content,
+.bootstrap5-dark .quick-info-template .quick-info-header-content,
+.bootstrap5\.3-dark .quick-info-template .quick-info-header-content,
 .fabric-dark .quick-info-template .quick-info-header-content,
 .material-dark .quick-info-template .quick-info-header-content,
 .highcontrast .quick-info-template .quick-info-header-content,
@@ -199,6 +202,8 @@
 .bootstrap-dark .quick-info-content .event-content div span,
 .bootstrap5-dark .quick-info-content .event-content div label,
 .bootstrap5-dark .quick-info-content .event-content div span,
+.bootstrap5\.3-dark .quick-info-content .event-content div label,
+.bootstrap5\.3-dark .quick-info-content .event-content div span,
 .fluent-dark .quick-info-content .event-content div label,
 .fluent-dark .quick-info-content .event-content div span,
 .fabric-dark .quick-info-content .event-content div label,

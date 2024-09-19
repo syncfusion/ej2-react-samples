@@ -78,13 +78,15 @@ export class Dock extends SampleBase<{}, {}> {
                         Dock state of the Sidebar reserves some space on the page that always remains in a visible state when the Sidebar is collapsed. It is used to show the short term of a content like icons alone instead of lengthy text.
                     </p>
                     <p>
-                        In this demo, the list item has an icon with text representation. On dock state, only the icon listed out to interact. It can be achieved by using the <code>EnableDock</code> property.
+                        In this demo, the list item has an icon with text representation. On dock state, only the icon
+                        listed out to interact. It can be achieved by using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/sidebar/#enabledock">EnableDock</a> property.
                     </p>
                 </div>
             </div>
         );
-        
+
     }
+
     toolbarCliked(args: ClickEventArgs) {
         if(args.item.tooltipText == "Menu") {
             this.dockBar.toggle();

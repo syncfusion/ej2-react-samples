@@ -6,7 +6,8 @@ import { editingData, editingResources } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import { ClickEventArgs } from '@syncfusion/ej2-navigations';
 import { SwitchComponent } from '@syncfusion/ej2-react-buttons';
-import './resource.css';
+import './exporting.css'
+
 const Exporting = () => {
   useEffect(() => {
     updateSampleSection();
@@ -106,7 +107,7 @@ const Exporting = () => {
       <div className='control-section'>
       <div style={{ display: 'flex' }}>
             <div style={{ display: 'flex' }}>
-                <label htmlFor="unchecked" id ="drag" style={{ fontSize: '15px', margin: '0px 5px 0px 5px'}}> AutoFit in Pdf Export </label>
+                <label htmlFor="unchecked" id="exported" style={{ fontSize: '15px', margin: '0px 5px 0px 5px' }}> AutoFit in Pdf Export </label>
               <div>
                 <SwitchComponent id="unchecked" checked={false} change={autofit.bind(this)}></SwitchComponent>
               </div>
@@ -129,14 +130,14 @@ const Exporting = () => {
       </div>
       <div id="description">
       <p>Gantt supports client-side exporting, which allows you to export its data to the Excel, PDF and CSV formats. </p>
-          <p>In this demo, we have defined actions in the <code><a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#toolbarclick">toolbarClick</a></code> event to export the Gantt data using the
-            <code><a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#excelexport">excelExport</a></code>,
-            <code><a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#pdfexport">pdfExport</a></code>
+          <p>In this demo, we have defined actions in the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#toolbarclick">toolbarClick</a> event to export the Gantt data using the
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#excelexport">excelExport</a>,
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#pdfexport">pdfExport</a>
             and
-            <code><a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#csvexport">csvExport</a></code> methods.</p>
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#csvexport">csvExport</a> methods.</p>
           <p>In addition we have provided support to export the Gantt component where each rows are auto-fit to the PDF document page width using
-            <code><a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/pdf-export/pdf-export">fitToWidthSettings</a></code>
-            in <code>PdfExportProperties</code> and also it includes the functionality allowing the PDF export of <code>holidays</code> and <code>eventMarkers</code></p>
+          <a target="_blank" href="hhttps://ej2.syncfusion.com/react/documentation/api/gantt/pdfExportProperties/#fittowidthsettings">fitToWidthSettings</a>
+            in <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/pdfExportProperties">PdfExportProperties</a> and also it includes the functionality allowing the PDF export of <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#holidays">holidays</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#eventmarkers">eventMarkers</a></p>
           <p>Injecting Module:</p>
           <p>To use Excel and CSV export features, we need to inject
               <code><a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#excelexport">

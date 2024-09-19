@@ -19,7 +19,7 @@ export let chartAnnotation: ChartAnnotationSettingsModel[] = [];
 chartAnnotation.push({ content: '<div id="exchangeRate"></div>', coordinateUnits: 'Pixel', region: 'Chart', x: '85%', y: '15%' });
 
 export let selectedTheme: string = location.hash.split('/')[1];
-selectedTheme = selectedTheme ? selectedTheme : 'Material';
+selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
 export let theme: ChartTheme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
 export let backgroundColor: string = 'white';
 getAnnotation(aus, getSeriesColor(theme)[0]);

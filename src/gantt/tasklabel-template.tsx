@@ -77,7 +77,7 @@ export class TasklabelTemplate extends SampleBase<{}, {}> {
         </div>
 
         <div id="description">
-          <p>In this demo, the label template is rendered using the <code>leftLabel</code>, <code>rightLabel</code> and <code>taskLabel</code> properties in <code>labelSettings</code>.</p>
+        <p>In this demo, the label template is rendered using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/labelSettingsModel/#leftlabel">leftLabel</a>, <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/labelSettingsModel/#rightlabel">rightLabel</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/labelSettingsModel/#tasklabel">taskLabel</a> properties in <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#labelsettings">labelSettings</a>.</p>
 
           <p>Gantt component features are segregated into individual feature-wise modules.To use a selection, inject the
         <code>Selection</code> module using the <code>Gantt.Inject(Selection)</code> method.To use markers, inject the

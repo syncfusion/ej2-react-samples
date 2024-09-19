@@ -115,7 +115,7 @@ timelineUnitSize: 200,
         </div>
         <div id="description">
           <p>
-            In this demo, the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#timelineTemplate">timelineTemplate</a> property enables the customization of timeline cells with any HTML content, allowing for enhanced visual appeal and personalized functionality.
+            In this demo, the timelineTemplate property enables the customization of timeline cells with any HTML content, allowing for enhanced visual appeal and personalized functionality.
             <p>The template contains these context properties to design the timeline cells.</p>
             <li><code>date</code>: Defines the date of timeline date.</li>
             <li><code>value</code>: Defines the date value to display in the timeline.</li>

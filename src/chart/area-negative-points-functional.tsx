@@ -39,7 +39,7 @@ const AreaNegative = () => {
     };
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     return (
@@ -62,7 +62,6 @@ const AreaNegative = () => {
                 <p>
                     In this example, you can see how to render an area series with negative values. Similar to line type series, but the area gets closed and filled with series color. You can use <a target="_blank" href=" https://ej2.syncfusion.com/react/documentation/api/chart/series/#border" aria-label="Navigate to the border property reference for React Chart component">border</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/series/#fill" aria-label="Navigate to the fill property reference for React Chart component">fill </a> properties to customize the area. Also, the legend is enabled with the shape of the series type.
                 </p>
-                <br></br>
                 <p>
                     More information on the area series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/working-with-data#empty-points" aria-label="Navigate to the documentation for Empty points in React Chart component">documentation section</a>.
                 </p>

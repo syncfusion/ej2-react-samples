@@ -15,7 +15,7 @@ export class Hyperlink extends SampleBase<{}, {}> {
     public currencyFormat: string = '$#,##0.00';
     public onCreated(): void {
         this.spreadsheet.merge('Cart!A1:F2');
-        this.spreadsheet.numberFormat('$#,##0.00', 'Cart!E4:F12');
+        this.spreadsheet.numberFormat(this.currencyFormat, 'Cart!E4:F12');
         this.spreadsheet.setBorder({ border: '1px solid #A6A6A6' }, 'Cart!A1:F12');
         this.spreadsheet.cellFormat({ textAlign: 'center', verticalAlign: 'middle' }, 'A1:F12');
         this.spreadsheet.cellFormat({

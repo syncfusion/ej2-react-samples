@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
+import { HttpTransportType, HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 import { ScheduleComponent, Day, Week, WorkWeek, Month, Agenda, Inject, Resize, DragAndDrop, ActionEventArgs, NavigatingEventArgs, View, EventSettingsModel } from '@syncfusion/ej2-react-schedule';
 import { updateSampleSection } from '../common/sample-base';
 import { extend } from '@syncfusion/ej2-base';
@@ -21,8 +21,8 @@ const RealTimeBinding = () => {
     const [eventSettings, setEventSettings] = useState<EventSettingsModel>({ dataSource: data });
     const [currentView, setCurrentView] = useState<View>("Week");
     const onCreated = () => {
-        const url: string = 'https://ej2.syncfusion.com/aspnetcore/scheduleHub/';
-        connection = new HubConnectionBuilder().withUrl(url, { withCredentials: false }).withAutomaticReconnect().build();
+        const url: string = 'https://ej2.syncfusion.com/aspnetcore/schedulehub/';
+        connection = new HubConnectionBuilder().withUrl(url, { withCredentials: false, skipNegotiation: true, transport: HttpTransportType.WebSockets }).withAutomaticReconnect().build();
         connection.on('ReceiveData', (action: string, data: View | Record<string, any>[]) => {
             if (action == 'view') {
                 setCurrentView(data as View)

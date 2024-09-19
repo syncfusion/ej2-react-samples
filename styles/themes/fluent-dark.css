@@ -66,12 +66,10 @@ body.fluent-dark,
 .fluent-dark .sb-component-name,
 .fluent-dark .sb-icon-Home,
 .fluent-dark .description-header,
-.fluent-dark .sample-navigation>button:hover,
 .fluent-dark .sb-switch-popup li:first-child,
 .fluent-dark .sb-left-pane .e-listview .e-list-group-item,
 .fluent-dark .sb-icon-Hamburger:active,
-.fluent-dark .sb-content-tab>.e-tab.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item>.e-tab-wrap>.e-text-wrap>.e-tab-text,
-.fluent-dark .sb-theme-popup li.active .sb-theme-select {
+.fluent-dark .sb-content-tab>.e-tab.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item>.e-tab-wrap>.e-text-wrap>.e-tab-text {
     color: #F3F2F1 !important;
 }
 
@@ -117,8 +115,11 @@ body.fluent-dark,
     margin: auto 0px;
 }
 
-.fluent-dark .sb-theme-popup li:hover.active .sb-theme-select {
-    color: #0d6efd;
+.fluent-dark.e-bigger .e-samplestatus.new,
+.fluent-dark.e-bigger .e-samplestatus.update,
+.fluent-dark.e-bigger .e-samplestatus.preview {
+    margin-top: 4px;
+    margin-bottom: 0px;
 }
 
 .fluent-dark code,
@@ -173,7 +174,7 @@ body.fluent-dark,
 .fluent-dark .sb-left-pane .e-listview .e-list-item:hover,
 .fluent-dark .sb-themeswitch-btn:hover,
 .fluent-dark .sb-themeswitch-btn.active {
-    background-color: #252423;
+    background-color: #323130;
 
 }
 

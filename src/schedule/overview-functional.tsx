@@ -266,44 +266,52 @@ const Overview = () => {
 
   const timelineTemplate = useCallback(() => {
     return (
-      <div className = 'template'>
-        <div className='icon-child'>
-          <CheckBoxComponent id='timeline_views' checked={isTimelineView} change={onChange}/>
-        </div>
-        <div className='text-child'>Timeline Views</div>
+      <div className='template'>
+        <label>
+          <div className='icon-child'>
+            <CheckBoxComponent id='timeline_views' checked={isTimelineView} change={onChange} />
+          </div>
+          <div className='text-child'>Timeline Views</div>
+        </label>
       </div >
     );
   },[])
 
   const groupTemplate = useCallback(() => {
     return (
-      <div className = 'template'>
-        <div className='icon-child'>
-          <CheckBoxComponent id='grouping' checked={true} change={(args: SwitchEventArgs) => { scheduleObj.current.group.resources = args.checked ? ['Calendars'] : []; }} />
-        </div>
-        <div className='text-child'>Grouping</div>
+      <div className='template'>
+        <label>
+          <div className='icon-child'>
+            <CheckBoxComponent id='grouping' checked={true} change={(args: SwitchEventArgs) => { scheduleObj.current.group.resources = args.checked ? ['Calendars'] : []; }} />
+          </div>
+          <div className='text-child'>Grouping</div>
+        </label>
       </div>
     );
   },[])
 
   const gridlineTemplate = useCallback(() => {
     return (
-      <div className = 'template'>
-        <div className='icon-child'>
-          <CheckBoxComponent id='timeSlots' checked={true} change={(args: SwitchEventArgs) => { scheduleObj.current.timeScale.enable = args.checked as boolean; }} />
-        </div>
-        <div className='text-child'>Gridlines</div>
+      <div className='template'>
+        <label>
+          <div className='icon-child'>
+            <CheckBoxComponent id='timeSlots' checked={true} change={(args: SwitchEventArgs) => { scheduleObj.current.timeScale.enable = args.checked as boolean; }} />
+          </div>
+          <div className='text-child'>Gridlines</div>
+        </label>
       </div>
     );
   },[])
 
   const autoHeightTemplate = useCallback(() => {
     return (
-      <div className = 'template'>
-        <div className='icon-child'>
-          <CheckBoxComponent id='row_auto_height' checked={false} change={(args: SwitchEventArgs) => { scheduleObj.current.rowAutoHeight = args.checked as boolean; }} />
-        </div>
-        <div className='text-child'>Row Auto Height</div>
+      <div className='template'>
+        <label>
+          <div className='icon-child'>
+            <CheckBoxComponent id='row_auto_height' checked={false} change={(args: SwitchEventArgs) => { scheduleObj.current.rowAutoHeight = args.checked as boolean; }} />
+          </div>
+          <div className='text-child'>Row Auto Height</div>
+        </label>
       </div>
     );
   },[])

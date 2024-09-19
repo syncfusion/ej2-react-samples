@@ -22,12 +22,7 @@ const frameworkTemplate = (props) => {
     const frameworkChange = (event) => {
         let qryBldrObj: any = getComponent(document.getElementById('querybuilder'), 'query-builder');
         let elem = document.getElementById(args.ruleID).querySelector('.e-rule-value');
-        let rule = qryBldrObj.getRule(event.element);
-        if (rule.operator == "in" || rule.operator == "notin") {
-            qryBldrObj.notifyChange([event.value], elem, 'value');
-        } else {
-            qryBldrObj.notifyChange(event.value, elem, 'value');
-        }
+        qryBldrObj.notifyChange(event.value, elem, 'value');
     }
     return (<div><DropDownListComponent dataSource={ds} value={args.rule.value} change={frameworkChange} /></div>);
 };

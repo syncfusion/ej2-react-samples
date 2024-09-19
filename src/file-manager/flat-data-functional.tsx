@@ -273,17 +273,17 @@ const FlatData = () => {
                 <FileManagerComponent id="flatdata" fileSystemData={resultData}
                     toolbarSettings={{ items: ['NewFolder', 'Cut', 'Copy', 'Paste', 'Delete', 'Rename', 'SortBy', 'Refresh', 'Selection', 'View', 'Details'] }}
                     contextMenuSettings={{
-                        file: ["Open", "|", "Cut", "Copy", "Paste", "Delete", "Rename", "|", "Details"], folder: ["Open", "|", "Cut", "Copy", "Paste", "|", "Delete", "Rename", "|", "Details"], layout: ["SortBy", "View", "Refresh", "|", "Paste", "|", "NewFolder", "|", "Details", "|", "SelectAll"], visible: true
+                        file: ["Cut", "Copy", "|", "Delete", "Rename", "|", "Details"], folder: ["Open", "|", "Cut", "Copy", "Paste", "|", "Delete", "Rename", "|", "Details"], layout: ["SortBy", "View", "Refresh", "|", "Paste", "|", "NewFolder", "|", "Details", "|", "SelectAll"], visible: true
                     }}>
                     <Inject services={[NavigationPane, DetailsView, Toolbar]} />
                 </FileManagerComponent>
             </div>
             <div id="action-description">
-                <p>This sample demonstrates the flat data rendering of the File Manager component. The File Manager uses a flat data object as an array of JSON objects for rendering, eliminating the need to define <a href="https://ej2.syncfusion.com/react/documentation/api/file-manager/#ajaxsettings" target="_blank">ajaxSettings</a> url.</p>
+                <p>This sample demonstrates flat data rendering of the File Manager component. The File Manager uses a flat data object as an array of JSON objects for rendering, eliminating the need to define the <a href="https://ej2.syncfusion.com/react/documentation/api/file-manager/#ajaxsettings" target="_blank">ajaxSettings</a> url.</p>
             </div>
 
             <div id="description">
-                <p>The File Manager component is used to manage the files and folders in a file system . It supports all the basic file operations such as create, rename, delete, cut, copy, paste, upload, download, and  more.</p>
+                <p>The File Manager component is used to manage the files and folders in a file system. It supports all the basic file operations such as create, rename, delete, cut, copy, paste, upload, download, and more.</p>
 
                 <p>To load a folder data as an array of JSON objects, use the File Manager component <code><a href="https://ej2.syncfusion.com/react/documentation/api/file-manager/#fileSystemData" target="_blank">fileSystemData</a></code> property.</p>
             </div>

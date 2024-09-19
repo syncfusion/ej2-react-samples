@@ -67,7 +67,7 @@
        <div id="description">
          <p>
             This sample illustrates a tooltip, that gets opened on hovering the target labelled <b>Show Tooltip</b>. The tooltip can be shown
-            on 12 possible positions, by selecting the appropriate position values provided in the dropdown. The applicable tooltip
+            on 12 possible positions, by selecting the appropriate <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/tooltip/#position">position</a> values provided in the dropdown. The applicable tooltip
             positions are as follows:
          </p>
          <ul>

@@ -228,10 +228,6 @@
         overflow: hidden;
     }
 
-    .responsive-mode .e-content {
-        height: inherit !important;
-    }
-
     .responsive-mode .e-item.e-active {
         overflow: scroll;
     }

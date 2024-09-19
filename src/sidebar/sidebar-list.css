@@ -35,12 +35,14 @@
 /* Specifies the border bottom styles for toolbar in light theme*/
 .material #sblist-wrapper .e-toolbar,
 .tailwind #sblist-wrapper .e-toolbar,
-.bootstrap5 #sblist-wrapper .e-toolbar {
+.bootstrap5 #sblist-wrapper .e-toolbar,
+.bootstrap5\.3 #sblist-wrapper .e-toolbar {
     border-bottom: 1px solid #eaeaeae0;
 }
 
 /* Specifies the border bottom styles for toolbar in dark theme*/
 .bootstrap5-dark #sblist-wrapper .e-toolbar,
+.bootstrap5\.3-dark #sblist-wrapper .e-toolbar,
 .tailwind-dark #sblist-wrapper .e-toolbar,
 .material-dark #sblist-wrapper .e-toolbar {
     border-bottom: 1px solid #eaeaea63;
@@ -62,12 +64,16 @@
 .bootstrap #sblist-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
 .bootstrap-dark #sblist-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
 .bootstrap5.e-bigger #sblist-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
-.bootstrap5-dark.e-bigger #sblist-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
+.bootstrap5-dark.e-bigger #sblist-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+.bootstrap5\.3.e-bigger #sblist-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+.bootstrap5\.3-dark.e-bigger #sblist-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
     margin-left: 8px;
 }
 
 .bootstrap5 #sblist-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
-.bootstrap5-dark #sblist-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
+.bootstrap5-dark #sblist-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+.bootstrap5\.3 #sblist-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+.bootstrap5\.3-dark #sblist-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
     margin-left: 5px;
 }
 
@@ -87,7 +93,9 @@
 }
 
 .bootstrap5 .e-folder-name,
-.bootstrap5-dark .e-folder-name {
+.bootstrap5-dark .e-folder-name,
+.bootstrap5\.3 .e-folder-name,
+.bootstrap5\.3-dark .e-folder-name {
     margin-top: -2px;
 }
 
@@ -109,6 +117,8 @@
 /*Specifies sample level style for ListView*/
 .bootstrap5 .e-template-list,
 .bootstrap5-dark .e-template-list,
+.bootstrap5\.3 .e-template-list,
+.bootstrap5\.3-dark .e-template-list,
 .tailwind .e-template-list,
 .tailwind-dark .e-template-list,
 .material3 .e-template-list,
@@ -204,7 +214,9 @@
 }
 
 .bootstrap5 #sidebarList .e-avatar,
-.bootstrap5-dark #sidebarList .e-avatar {
+.bootstrap5-dark #sidebarList .e-avatar,
+.bootstrap5\.3 #sidebarList .e-avatar,
+.bootstrap5\.3-dark #sidebarList .e-avatar {
     margin-top: -3px;
 }
 
@@ -214,12 +226,16 @@
 }
 
 .bootstrap5.e-bigger #sidebarList .e-avatar,
-.bootstrap5-dark.e-bigger #sidebarList .e-avatar {
+.bootstrap5-dark.e-bigger #sidebarList .e-avatar,
+.bootstrap5\.3.e-bigger #sidebarList .e-avatar,
+.bootstrap5\.3-dark.e-bigger #sidebarList .e-avatar {
     margin-top: 0px;
 }
 
 .e-bigger.bootstrap5 .sidebar-list .e-listview:not(.e-list-template) .e-list-item,
-.e-bigger.bootstrap5-dark .sidebar-list .e-listview:not(.e-list-template) .e-list-item {
+.e-bigger.bootstrap5-dark .sidebar-list .e-listview:not(.e-list-template) .e-list-item,
+.e-bigger.bootstrap5\.3 .sidebar-list .e-listview:not(.e-list-template) .e-list-item,
+.e-bigger.bootstrap5\.3-dark .sidebar-list .e-listview:not(.e-list-template) .e-list-item {
     height: 43px;
 }
 
@@ -257,7 +273,8 @@
 .fabric .sidebar-list,
 .tailwind .sidebar-list,
 .highcontrast .sidebar-list,
-.bootstrap5 .sidebar-list {
+.bootstrap5 .sidebar-list,
+.bootstrap5\.3 .sidebar-list {
     border-right: 1px solid #eaeaeae0;
 }
 
@@ -265,6 +282,7 @@
 .material-dark .sidebar-list,
 .fabric-dark .sidebar-list,
 .tailwind-dark .sidebar-list,
-.bootstrap5-dark .sidebar-list {
+.bootstrap5-dark .sidebar-list,
+.bootstrap5\.3-dark .sidebar-list {
     border-right: 1px solid #eaeaea63;
 }

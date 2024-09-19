@@ -10,8 +10,8 @@ import './default.css';
 import * as data from './dataSource.json';
 
 export class Default extends SampleBase<{}, {}> {
-    value: string = '1001';
-    text: string = 'France';
+    value: string = 'HR';
+    text: string = 'John Smith';
     valueChange = (args: ChangeEventArgs) => {
         this.value = args.itemData.value || "";
         this.text = args.itemData.text || "";
@@ -23,13 +23,14 @@ export class Default extends SampleBase<{}, {}> {
                     <div className="col-lg-8">
                         <div className="control-wrapper multicolumn">
                             <div style={{ paddingTop: '50px'}}>
-                                <MultiColumnComboBoxComponent dataSource={(data as any).orderDetails} fields={{text: 'ShipCountry', value: 'OrderID' }} popupHeight={'230px'} placeholder='Select the country' value={this.value} text={this.text} change={ this.valueChange.bind(this) } showClearButton={true}>
-                                    <ColumnsDirective>
-                                        <ColumnDirective field='OrderID' header='Order ID' width={110}></ColumnDirective>
-                                        <ColumnDirective field='CustomerID' header='Customer ID' width={130}></ColumnDirective>
-                                        <ColumnDirective field='Freight' header='Freight' width={90}></ColumnDirective>
-                                        <ColumnDirective field='ShipCountry' header='Ship Country' width={140}></ColumnDirective>
-                                    </ColumnsDirective>
+                                <MultiColumnComboBoxComponent dataSource={(data as any).employeeData} fields={{text: 'name', value: 'Department' }} popupHeight={'230px'} placeholder='Select a name' value={this.value} text={this.text} change={ this.valueChange.bind(this) } showClearButton={true}>
+                                <ColumnsDirective>
+                                    <ColumnDirective field='Name' header='Name' width={90}></ColumnDirective>
+                                    <ColumnDirective field='Position' header='Position' width={85}></ColumnDirective>
+                                    <ColumnDirective field='Department' header='Department' width={98}></ColumnDirective>
+                                    <ColumnDirective field='PhoneNo' header='Phone No' width={105}></ColumnDirective>
+                                    <ColumnDirective field='Location' header='Location' width={98}></ColumnDirective>
+                                </ColumnsDirective>
                                 </MultiColumnComboBoxComponent>
                             </div>
                         </div>
@@ -57,7 +58,7 @@ export class Default extends SampleBase<{}, {}> {
                 </div>
 
                 <div id="description">
-                    <p>The <code>MultiColumn ComboBox</code> allows the user to display detailed information about items in multiple columns. In the above sample, type any character in the MultiColumn ComboBox or click the dropdown icon to choose an item from the options available in the list. The selected item's <code>value</code> and <code>text</code> property values will be shown in the property panel.</p>
+                    <p>The <code>MultiColumn ComboBox</code> allows the user to display detailed information about items in multiple columns. In the above sample, type any character in the MultiColumn ComboBox or click the dropdown icon to choose an employee from the options available in the list. The selected item's <code>value</code> and <code>text</code> property values will be shown in the property panel.</p>
                 </div>
             </div>
         )

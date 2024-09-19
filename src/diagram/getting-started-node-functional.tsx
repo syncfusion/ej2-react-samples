@@ -1,3 +1,4 @@
+// Importing necessary modules from React, ReactDOM, and Syncfusion Diagram library
 import * as ReactDOM from "react-dom";
 import * as React from "react";
 import {
@@ -9,12 +10,14 @@ import {
   ConnectorModel,
   PointModel,
   NodeConstraints,
+  ConnectorConstraints,
   SnapConstraints,
   GradientType,
   ShadowModel,
   GradientModel,
   LinearGradientModel,
-  RadialGradientModel
+  RadialGradientModel,
+  ISelectionChangeEventArgs
 } from "@syncfusion/ej2-react-diagrams";
 import { updateSampleSection } from "../common/sample-base";
 import { Point } from "@syncfusion/ej2-diagrams/src/diagram/primitives/point";
@@ -26,12 +29,12 @@ import {
 
 //Initializes the nodes for the diagram
 let sdlc: SdlcNodeModel[] = [
-  { id: "sdlc", text: "SDLC" },
-  { id: "analysis", text: "Analysis" },
-  { id: "design", text: "Design" },
-  { id: "implement", text: "Implement" },
-  { id: "deploy", text: "Deploy" },
-  { id: "support", text: "Support" }
+  { id: "sdlc", addInfo : {text: "SDLC"}},
+  { id: "analysis", addInfo :{text: "Analysis"}},
+  { id: "design", addInfo :{text: "Design"}},
+  { id: "implement", addInfo :{text: "Implement"}},
+  { id: "deploy",  addInfo :{text: "Deploy"}},
+  { id: "support", addInfo :{text: "Support"}},
 ];
 
 //arranges the nodes in a circular path
@@ -56,6 +59,7 @@ for (let i: number = 1; i < 6; i++) {
   connections.push({ sourceID: sdlc[i].id, targetID: sdlc[(i % 5) + 1].id });
 }
 
+// CSS styles for the sample
 const SAMPLE_CSS = `.image-pattern-style {
         background-color: white;
         background-size: contain;
@@ -92,21 +96,28 @@ const SAMPLE_CSS = `.image-pattern-style {
         font-size: 12px;
     }`;
 
+// Variables for diagram instance, nodes, and components
 let diagramInstance: DiagramComponent;
 let node: NodeModel;
+let aspectRatioInstance : CheckBoxComponent;
+let appearanceInstance : HTMLElement;
+// Interface for additional node properties
 interface SdlcNodeModel extends NodeModel {
-  text: string;
+  addInfo : object;
 }
+// Functional component for rendering the diagram and properties panel
 function GettingStartedNodes() {
+  // useEffect hook to call updateSampleSection and rendereComplete functions on component mount
   React.useEffect(() => {
     updateSampleSection();
     rendereComplete();
-  }, [])
+  }, []);
+  // Function to handle completion of rendering
   function rendereComplete() {
     diagramInstance.fitToPage();
 
     //Click event for Appearance of the Property Panel
-    document.getElementById("appearance").onclick = (args: MouseEvent) => {
+    appearanceInstance.onclick = (args: MouseEvent) => {
       let target: HTMLElement = args.target as HTMLElement;
 
       let selectedElement: HTMLCollection = document.getElementsByClassName(
@@ -185,7 +196,7 @@ function GettingStartedNodes() {
       }
     };
   }
-  //Set customStyle for Node.
+  //Function to apply  customStyle for Node.
   function applyStyle( //it is in dedicated line here.
     node: NodeModel,
     width: number,
@@ -239,19 +250,30 @@ function GettingStartedNodes() {
     }
   }
   //Enable or disable the Lock Constraints for Node.
-  function setNodeLockConstraints(args: CheckBoxChangeEventArgs): void {
+  function setLockConstraints(args: CheckBoxChangeEventArgs): void {
     for (let i: number = 0; i < diagramInstance.nodes.length; i++) {
       let node: NodeModel = diagramInstance.nodes[i];
       if (args.checked) {
-        node.constraints &= ~(NodeConstraints.Resize | NodeConstraints.Rotate | NodeConstraints.Drag);
+        node.constraints &= ~(NodeConstraints.Resize | NodeConstraints.Rotate | NodeConstraints.Drag | NodeConstraints.Delete);
         node.constraints |= NodeConstraints.ReadOnly;
       } else {
         node.constraints |= NodeConstraints.Default & ~(NodeConstraints.ReadOnly);
       }
     }
     diagramInstance.dataBind();
-  }
-
+    for (let i: number = 0; i < diagramInstance.connectors.length; i++) {
+      let connector = diagramInstance.connectors[i];
+        if (args.checked) {
+          connector.constraints &= ~(ConnectorConstraints.DragSourceEnd | ConnectorConstraints.DragTargetEnd | ConnectorConstraints.Drag | ConnectorConstraints.Delete);
+          connector.constraints |= ConnectorConstraints.ReadOnly;
+        } else {
+          connector.constraints |= ConnectorConstraints.Default & ~ConnectorConstraints.ReadOnly;
+        }
+      } 
+    diagramInstance.dataBind();
+    
+}
+   // Return the JSX structure for the component
   return (
     <div className="control-pane">
       <style>{SAMPLE_CSS}</style>
@@ -266,13 +288,14 @@ function GettingStartedNodes() {
             connectors={connections}
             getNodeDefaults={(obj: NodeModel) => {
               //Sets the default values of a node
+              
               obj.width = 100;
               obj.height = 100;
               obj.shape = { type: "Basic", shape: "Ellipse" };
               obj.style = { fill: "#37909A", strokeColor: "#024249" };
               obj.annotations = [
                 {
-                  content: (obj as SdlcNodeModel).text,
+                  content: ((obj as SdlcNodeModel).addInfo as any).text,
                   margin: { left: 10, right: 10 },
                   style: {
                     color: "white",
@@ -283,6 +306,7 @@ function GettingStartedNodes() {
                 }
               ];
               return obj;
+            
             }}
             getConnectorDefaults={(obj: ConnectorModel) => {
               //Sets the default values of a Connector
@@ -293,6 +317,16 @@ function GettingStartedNodes() {
               return { style: { strokeColor: "#024249", strokeWidth: 2 } };
             }}
             snapSettings={{ constraints: SnapConstraints.None }}
+            selectionChange={(args:ISelectionChangeEventArgs) =>{
+              if (args.state === 'Changed'){
+              if (diagramInstance.selectedItems.nodes.length > 1 || diagramInstance.selectedItems.connectors.length > 0) {
+                aspectRatioInstance.disabled = true;
+              }
+              else {
+                aspectRatioInstance.disabled = false;
+              }
+            }
+          }}
           >
             <Inject services={[UndoRedo]} />
           </DiagramComponent>
@@ -302,7 +336,7 @@ function GettingStartedNodes() {
         className="col-lg-4 property-section"
       >
         <div className="property-panel-header">Properties</div>
-        <div className="row property-panel-content" id="appearance">
+        <div className="row property-panel-content" id="appearance" ref={appearance => (appearanceInstance = appearance)}>
           <div className="row row-header" style={{ paddingTop: "8px" }}>
             Appearance
           </div>
@@ -359,6 +393,7 @@ function GettingStartedNodes() {
               checked={false}
               label="Aspect ratio"
               id="aspectRatio"
+              ref={aspectRatio => (aspectRatioInstance = aspectRatio)}
               change={setNodeAspectConstraints}
             />
           </div>
@@ -368,7 +403,7 @@ function GettingStartedNodes() {
               checked={false}
               label="Lock"
               id="lock"
-              change={setNodeLockConstraints}
+              change={setLockConstraints}
             />
           </div>
         </div>

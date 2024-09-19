@@ -30,7 +30,7 @@ const ProgrammaticZoomMaps = () => {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast') as MapsTheme;
+        args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5') as MapsTheme;
         // custom code end
     };
     return (
@@ -42,7 +42,7 @@ const ProgrammaticZoomMaps = () => {
                     <LayersDirective>
                         <LayerDirective shapeData={worldMap} shapePropertyPath='name' shapeDataPath='Country' dataSource={datasource.southAmericaCountryCapitals} shapeSettings={{ fill: '#C3E6ED', border: { color: 'black', width: 0.3 } }}>
                             <MarkersDirective>
-                                <MarkerDirective visible={true} animationDuration={0} height={20} width={20} shape='Image' imageUrl='src/maps/images/ballon.png' dataSource={datasource.southAmericaCountryCapitals} tooltipSettings={{ format: '<b>Capital</b> : ${name}<br><b>Country</b> : ${Country}', valuePath: 'name' }}></MarkerDirective>
+                                <MarkerDirective visible={true} animationDuration={0} height={20} width={20} shape='Image' imageUrl='src/maps/images/ballon.png' dataSource={datasource.southAmericaCountryCapitals} tooltipSettings={{ visible: true, format: '<b>Capital</b> : ${name}<br><b>Country</b> : ${Country}', valuePath: 'name' }}></MarkerDirective>
                             </MarkersDirective>
                         </LayerDirective>
                     </LayersDirective>

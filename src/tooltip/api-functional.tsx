@@ -95,7 +95,7 @@
                                     </td>
                                     <td style={{ width: "50%", paddingRight: "10px" }}>
                                         <div>
-                                            <input id="value" onKeyUp={handleKeyPress.bind(this)} type="text" className="e-input" placeholder="Tooltip content" />
+                                            <input id="tooltipContentValue" onKeyUp={handleKeyPress.bind(this)} type="text" className="e-input" placeholder="Tooltip content" />
                                         </div>
                                     </td>
                                 </tr>

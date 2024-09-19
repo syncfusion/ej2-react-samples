@@ -48,7 +48,7 @@ const TicksCustomization = () => {
                 </p>
             </div>
             <div id="description">
-                <p>In this demo, we have demonstrated the following customization of Ticks using CSS.</p>
+                <p>In this demo, we have demonstrated the following customization of Ticks using <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/slider/#cssclass">CSS</a>.</p>
                 <ul>
                     <li>Dynamic ticks color - In this sample, Ticks has been customized to different colors by adding icon at each Ticks.</li>
                     <li>Ticks with legends - In this sample, Track has been formatted to display custom text using renderingTicks and renderedTicks events. </li>

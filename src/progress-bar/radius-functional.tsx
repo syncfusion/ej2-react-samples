@@ -65,7 +65,7 @@ const ProgressBarRadius = () => {
     const content: string = '<div id="point1" style="font-size:20px;font-weight:bold;color:#ffffff;fill:#ffffff"><span>60%</span></div>';
     const progressLoad: EmitType<ILoadedEventArgs> = (args: ILoadedEventArgs) => {
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
         args.progressBar.theme = (selectedTheme.charAt(0).toUpperCase() +
             selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ProgressTheme;
         if (args.progressBar.element.id === 'full-background') {
@@ -123,6 +123,10 @@ const ProgressBarRadius = () => {
                 case 'fluent2':
                     args.progressBar.progressColor = '#0F6CBD';
                     args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#0F6CBD"><span></span></div>';
+                    break;
+                case 'fluent2-highcontrast':
+                    args.progressBar.progressColor = '#1AEBFF';
+                    args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#1AEBFF"><span></span></div>';
                     break;
                 case 'fluent2-dark':
                     args.progressBar.progressColor = '#115EA3';

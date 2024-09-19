@@ -14,9 +14,11 @@ export class SortingAndFiltering extends SampleBase<{}, {}> {
 
     public onCreated(): void {
         this.spreadsheet.cellFormat({ fontWeight: 'bold', textAlign:'center' }, 'A1:G1');
+        this.spreadsheet.numberFormat('m/d/yyyy', 'E2:E51');
         this.spreadsheet.sort({ sortDescriptors: { field: 'B' } }, 'A2:G51').then(() => {
             this.spreadsheet.applyFilter([{ field: 'D', operator: 'equal', value: 'Services' }], 'A1:G51');
         });
+        this.spreadsheet.numberFormat('$#,##0.00', 'F2:F51');
     }
 
     render() {

@@ -26,6 +26,9 @@ const SAMPLE_CSS = `
     .e-view.bootstrap5 div.e-handle-first, .e-view.bootstrap5-dark div.e-handle-first, .e-view.material div.e-handle-first, .e-view.material-dark div.e-handle-first {
         margin-top: -1px;
     }
+    .e-view.fluent2-highcontrast div.e-handle-first {
+        margin-top: 3px;
+    }
     .e-view.fluent2 div.e-handle-first, .e-view.fluent2-highcontrast div.e-handle-first {
         margin-top: 2.5px;
     }
@@ -37,6 +40,9 @@ const SAMPLE_CSS = `
     }
     .e-view.bootstrap5 div.e-handle-first, .e-view.bootstrap5-dark div.e-handle-first {
         margin-top: -2px;
+    }
+    .e-view.bootstrap5_3 div.e-handle-first, .e-view.bootstrap5_3-dark div.e-handle-first {
+        margin-top: -1px;
     }
     .control-fluid {
 		padding: 0px !important;
@@ -85,7 +91,7 @@ const ArcGauge = () => {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5')) as GaugeTheme;
         // custom code end
     }
 

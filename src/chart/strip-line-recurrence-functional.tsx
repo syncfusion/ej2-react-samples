@@ -50,7 +50,7 @@ const Striplinerecurrence = () => {
     };
     const load = (args) => {
         let selectedTheme = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     return (
@@ -101,7 +101,6 @@ const Striplinerecurrence = () => {
                     In this example, you can see how to render and configure a strip line for the chart. To repeat the strip line, you need to set the <code>StartFromAxis</code>, <code>Size</code>, <code>IsRepeat</code>, and <code>RepeatEvery</code> properties accordingly in ChartStripline.
                 </p>
                 <p>Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
-                <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
                     Chart component features are segregated into individual feature-wise modules. To use column series, we need to inject <code>ColumnSeries</code> module using <code>Chart.Inject(ColumnSeries)</code> method.

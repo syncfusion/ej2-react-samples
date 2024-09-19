@@ -11,14 +11,14 @@ import './spreadsheet.css';
 
 export class DataValidation extends SampleBase<{}, {}> {
     public spreadsheet: SpreadsheetComponent;
-    public style1: CellStyleModel = { fontWeight: 'bold', textAlign: 'center', backgroundColor: '#B3FFB3' };
     public currencyFormat: string = '$#,##0.00';
     public onCreated(): void {
         this.spreadsheet.merge('A1:I2');
-        this.spreadsheet.setBorder({ border: '1px solid #A6A6A6' }, "A1:I13");
+        this.spreadsheet.setBorder({ border: '1px solid #A6A6A6' }, 'A1:I13');
         this.spreadsheet.cellFormat({ textAlign: 'center', verticalAlign: 'middle'}, 'A3:I13');
-        this.spreadsheet.cellFormat({ backgroundColor: '#B3FFB3', fontWeight : "bold"}, 'A3:I3');
-        this.spreadsheet.numberFormat('$#,##0.00', 'H4:I13');
+        this.spreadsheet.cellFormat({ backgroundColor: '#B3FFB3', fontWeight : 'bold'}, 'A3:I3');
+        this.spreadsheet.numberFormat(this.currencyFormat, 'H4:I13');
+        this.spreadsheet.numberFormat('m/d/yyyy', 'C4:C13');
         this.spreadsheet.wrap('H3:I3');
         //Add Data validation to range.
         this.spreadsheet.addDataValidation({ type: 'WholeNumber', operator: 'LessThan', value1: '9', ignoreBlank: false }, 'G4:G13');

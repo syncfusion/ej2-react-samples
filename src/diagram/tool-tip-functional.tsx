@@ -21,23 +21,23 @@ import { TooltipModel } from '@syncfusion/ej2-react-popups';
  * Tooltip sample
  */
 
-const SAMPLE_CSS = `table{
+const SAMPLE_CSS = `.diagram-tooltip table{
     border-collapse: separate;
 }
-.content-wrapper {
+.diagram-tooltip .content-wrapper {
     border: 1px solid #D7D7D7;
 }
 #tooltipPropertySection .property-panel-header {
     margin-left: 10px;
 }`;
 
-// FontType Collection
-export let modevalue: { [key: string]: Object }[] = [
+// Collection of relative modes for tooltip
+export let modeValue: { [key: string]: Object }[] = [
     { type: 'Object', text: 'Object' },
     { type: 'Mouse', text: 'Mouse' },
 ];
 
-// FontType Collection
+//Collection of positions for tooltip
 export let PositionValue: { [key: string]: Object }[] = [
     { type: 'TopLeft', text: 'Top Left' },
     { type: 'TopCenter', text: 'Top Center' },
@@ -53,7 +53,7 @@ export let PositionValue: { [key: string]: Object }[] = [
     { type: 'RightBottom', text: 'Right Bottom' },
 ];
 
-//FontType Collection
+//Collection of effects for tooltip
 export let EffectValue: { [key: string]: Object }[] = [
     { type: 'FadeIn', text: 'Fade In' },
     { type: 'FadeOut', text: 'Fade Out' },
@@ -70,11 +70,6 @@ export let EffectValue: { [key: string]: Object }[] = [
     { type: 'ZoomIn', text: 'Zoom In' },
     { type: 'ZoomOut', text: 'Zoom Out' },
     { type: 'None', text: 'None' },
-];
-
-export let contentValue: { [key: string]: Object }[] = [
-    { type: 'HTML Element', text: 'HTML Element' },
-    { type: 'Text', text: 'Text' },
 ];
 
 
@@ -192,11 +187,13 @@ let connectors: ConnectorModel[] = [
     { id: 'connector12', sourceID: 'node10', targetID: 'node12' },
     { id: 'connector13', sourceID: 'node9', targetID: 'node14' },
 ];
+//set default value for connectors.
 function getConnectorDefaults(connector: ConnectorModel, diagram: Diagram): ConnectorModel {
     connector.type = 'Orthogonal';
     connector.style = { strokeWidth: 2 };
     return connector;
 }
+//set default value for nodes.
 function getNodeDefaults(obj: NodeModel): NodeModel {
     obj.offsetX += 0.5;
     obj.offsetY += 0.5;
@@ -204,7 +201,8 @@ function getNodeDefaults(obj: NodeModel): NodeModel {
     obj.style = { strokeWidth: 2 };
     return obj;
 }
-function getcontent(): HTMLElement {
+//set content for diagram tooltip
+function getContent(): HTMLElement {
     let tooltipContent: HTMLElement = document.createElement('div');
     tooltipContent.innerHTML = '<div style="background-color: #f4f4f4; color: black; border-width:1px;border-style: solid;border-color: #d3d3d3; border-radius: 8px;white-space: nowrap;"> <span style="margin: 10px;"> Tooltip !!! </span> </div>';
     return tooltipContent;
@@ -219,7 +217,7 @@ function Tooltip() {
         diagramInstance.fitToPage({ mode: 'Width' });
     }
     return (
-        <div className='control-pane'>
+        <div className='control-pane diagram-tooltip'>
             <div className='col-lg-8 control-section'>
                 <style>{SAMPLE_CSS}</style>
                 <div id="tooltipDiagramSection" className="content-wrapper" style={{ width: "100%" }}>
@@ -227,13 +225,13 @@ function Tooltip() {
                         id='diagram'
                         ref={diagram => (diagramInstance = diagram)}
                         width={'100%'}
-                        height={'645px'}
+                        height={'550px'}
                         nodes={nodes}
                         connectors={connectors}
                         snapSettings={{ constraints: SnapConstraints.None }}
                         getConnectorDefaults={getConnectorDefaults}
                         getNodeDefaults={getNodeDefaults}
-                        tooltip={{ content: getcontent(), position: 'TopLeft', relativeMode: 'Object', animation: { open: { effect: 'FadeZoomIn', delay: 0 }, close: { effect: 'FadeZoomOut', delay: 0 } } }}
+                        tooltip={{ content: getContent(), position: 'TopLeft', relativeMode: 'Object', animation: { open: { effect: 'FadeZoomIn', delay: 0 }, close: { effect: 'FadeZoomOut', delay: 0 } } }}
                     >
                         <Inject services={[BpmnDiagrams]} />
                     </DiagramComponent>
@@ -254,7 +252,7 @@ function Tooltip() {
                                 <DropDownListComponent
                                     id='mode'
                                     ref={dropdown => (modeDropdown = dropdown)}
-                                    dataSource={modevalue}
+                                    dataSource={modeValue}
                                     fields={fields}
                                     placeholder='select a mode value'
                                     popupWidth='150'
@@ -305,42 +303,6 @@ function Tooltip() {
                         </td>
                     </tr>
                     <tr style={{ paddingTop: "10px"}}>
-                        <td></td>
-                        <td>
-                            <div id='textContentDiv' className='row' style={{ display: 'none' }}>
-                                <div>
-                                    <TextBoxComponent
-                                        id='textContent'
-                                        placeholder='Enter text content'
-                                        floatLabelType='Auto'
-                                        change={(args: any) => {
-                                            diagramInstance.tooltip.content = args.value.toString();
-                                            diagramInstance.dataBind();
-                                        }}
-                                    >
-                                    </TextBoxComponent>
-                                </div>
-                            </div>
-                            <div id='htmlContentDiv' className='row' style={{ display: 'none' }}>
-                                <div>
-                                    <TextBoxComponent
-                                        id='htmlContent'
-                                        placeholder='Enter html content'
-                                        floatLabelType='Auto'
-                                        change={(args: any) => {
-                                            let tooltipContent: HTMLDivElement = document.createElement('div');
-                                            let Description: any = args.value.toString();
-                                            tooltipContent.innerHTML = '<div style="background-color: #f4f4f4; color: black; border-width:1px;border-style: solid;border-color: #d3d3d3; border-radius: 8px;corner-radius:2px;white-space: nowrap;"> <span style="margin: 10px;"> ' + Description + ' </span>';
-                                            diagramInstance.tooltip.content = tooltipContent;
-                                            diagramInstance.dataBind();
-                                        }}
-                                    >
-                                    </TextBoxComponent>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr style={{ paddingTop: "10px"}}>
                         <td>
                             <div>
                                 Animation
@@ -349,9 +311,9 @@ function Tooltip() {
                         <td style={{ paddingLeft: "15px" }}>
                             <NumericTextBoxComponent
                                 id='duration'
-                                value={1000}
-                                min={1000}
-                                max={6000}
+                                value={100}
+                                min={100}
+                                max={2000}
                                 step={100}
                                 width={'85%'}
                                 change={(args: any) => {
@@ -389,7 +351,7 @@ function Tooltip() {
                             </div>
                         </td>
                     </tr>
-                    <tr style={{ paddingTop: "10px"}}>
+                    <tr style={{ paddingTop: "20px"}}>
                             <td>Sticky Mode</td>
                             <td style={{ paddingLeft: "15px",width:'70%' }}>
                                 <CheckBoxComponent

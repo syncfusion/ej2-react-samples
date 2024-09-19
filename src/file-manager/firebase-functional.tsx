@@ -15,16 +15,17 @@ const Firebase = () => {
     return (
         <div>
             <div className="control-section">
-                <FileManagerComponent id="firebase" ajaxSettings={{url: hostUrl + 'api/FirebaseProvider/FirebaseRealtimeFileOperations', getImageUrl: hostUrl + 'api/FirebaseProvider/FirebaseRealtimeGetImage', uploadUrl: hostUrl + 'api/FirebaseProvider/FirebaseRealtimeUpload', downloadUrl: hostUrl + 'api/FirebaseProvider/FirebaseRealtimeDownload'}} toolbarSettings={{items: ['NewFolder', 'SortBy', 'Cut', 'Copy', 'Paste', 'Delete', 'Refresh', 'Download', 'Rename', 'Selection', 'View', 'Details']}} contextMenuSettings={{layout: ['SortBy', 'View', 'Refresh', '|', 'Paste', '|', 'NewFolder', '|', 'Details', '|', 'SelectAll']}}>
+                <FileManagerComponent id="firebase" ajaxSettings={{url: hostUrl + 'api/FirebaseProvider/FirebaseRealtimeFileOperations', getImageUrl: hostUrl + 'api/FirebaseProvider/FirebaseRealtimeGetImage', uploadUrl: hostUrl + 'api/FirebaseProvider/FirebaseRealtimeUpload', downloadUrl: hostUrl + 'api/FirebaseProvider/FirebaseRealtimeDownload'}} toolbarSettings={{items: ['NewFolder', 'SortBy', 'Cut', 'Copy', 'Paste', 'Delete', 'Refresh', 'Download', 'Rename', 'Selection', 'View', 'Details']}} contextMenuSettings={{file: [ 'Cut', 'Copy', '|', 'Delete', 'Download', 'Rename', '|', 'Details'], layout: ['SortBy', 'View', 'Refresh', '|', 'Paste', '|', 'NewFolder', '|', 'Details', '|', 'SelectAll'], visible: true }}>
                     <Inject services={[NavigationPane, DetailsView, Toolbar]} />
                 </FileManagerComponent>
             </div>
             <div id="action-description">
-                <p>This sample demonstrates how to utilize the Firebase realtime cloud storage database with File Manager component.To run the service, create an <a target="_blank" href="https://console.firebase.google.com/">firebase realtime database</a> and then register the firebase realtime database <b>Rest API link</b> and <b>root node</b> name using <code>RegisterFirebaseRealtimeDB</code> method to perform the file operations.</p>
+                <p>This sample demonstrates how to utilize the <a target="_blank" href="https://github.com/SyncfusionExamples/firebase-realtime-database-aspcore-file-provider">Firebase Realtime Database file system provider</a> with File Manager component. It supports all basic file operations such as create, rename, delete, cut, copy, paste, upload, download, and more.</p>
             </div>
             <div id="description">
-                <p>The File Manager component is used to explore a file system through a web application, similar to the windows explorer for windows. It supports all the basic file operations such as create, rename, delete and so on.</p>
-                <b>Note: </b>File Manager's upload functionality is restricted in online demo. To work with upload functionality, please download <a target="_blank" href="https://github.com/SyncfusionExamples/ej2-firebase-realtime-database-aspcore-file-provider">ej2-firebase-realtime-database-aspcore-file-provider</a> from the GitHub repository.
+                <p>To run the service, create a <a target="_blank" href="https://console.firebase.google.com/">Firebase realtime database</a> and then register the database's <code>Rest API link</code>, <code>root node name</code>, and <code>service account key path </code> in the <code>RegisterFirebaseRealtimeDB</code> method to perform the file operations.</p>
+                <p>Checkout this <a target="_blank" href="https://github.com/SyncfusionExamples/firebase-realtime-database-aspcore-file-provider">Firebase Realtime Database file system provider</a> from the GitHub repository to connect with <code>RegisterFirebaseRealtimeDB</code> method.</p>
+                <b>Note: </b>File Manager's upload functionality is restricted in online demos for security reasons. To work with upload functionality, please download <a target="_blank" href="https://github.com/SyncfusionExamples/ej2-firebase-realtime-database-aspcore-file-provider">ej2-firebase-realtime-database-aspcore-file-provider</a> from the GitHub repository.
             </div>
         </div>
     );

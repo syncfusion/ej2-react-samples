@@ -7,7 +7,7 @@ import * as ReactDOM from "react-dom";
 import { EmitType } from '@syncfusion/ej2-base';
 import { DataManager, Query } from '@syncfusion/ej2-data';
 import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, IPointRenderEventArgs, ChartTheme, Legend, Category, ColumnSeries, Tooltip, IAxisLabelRenderEventArgs, ILoadedEventArgs, DataLabel } from '@syncfusion/ej2-react-charts';
-import { pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, pointBootstrap5Colors, pointMaterial3Colors, pointMaterial3DarkColors, fluent2Colors, fluent2DarkColors } from './theme-color';
+import { pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, pointBootstrap5Colors, pointMaterial3Colors, pointMaterial3DarkColors, fluent2Colors, fluent2HighContrastColors } from './theme-color';
 import { updateSampleSection } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
 export let dataManager = new DataManager({
@@ -89,8 +89,8 @@ const RemoteData = () => {
             args.fill = pointMaterial3Colors[args.point.index % 10];
         } else if (selectedTheme === 'fluent2') {
             args.fill = fluent2Colors[args.point.index % 10];
-        } else if (selectedTheme === 'fluent2-dark') {
-            args.fill = fluent2DarkColors[args.point.index % 10];
+        } else if (selectedTheme === 'fluent2-highcontrast' || selectedTheme === 'fluent2-dark') {
+            args.fill = fluent2HighContrastColors[args.point.index % 10];
         }
     }
     const onChartLoad = (args: ILoadedEventArgs): void => {
@@ -117,7 +117,7 @@ const RemoteData = () => {
         waitingpopref.current.style.top = (height ? height : 300 / 2 - 25) + 'px';
         waitingpopref.current.style.left = (width / 2 - 25) + 'px';
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     return (

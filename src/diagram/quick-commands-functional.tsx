@@ -12,15 +12,16 @@ import {
   DiagramComponent,
   NodeModel,
   ConnectorModel,
-  Node,
   Connector,
+  Node,
   Diagram,
   Side,
+  ISelectionChangeEventArgs,
   SnapConstraints
 } from "@syncfusion/ej2-react-diagrams";
 import { updateSampleSection } from "../common/sample-base";
 
-const SAMPLE_CSS = `.image-pattern-style {
+const SAMPLE_CSS = `.diagram-userhandle .image-pattern-style {
         background-color: white;
         background-size: contain;
         background-repeat: no-repeat;
@@ -31,54 +32,56 @@ const SAMPLE_CSS = `.image-pattern-style {
         background-position: center;
         float: left;
     }
-
-    .image-pattern-style:hover {
+     .e-remove-selection .property-section-content {
+      pointer-events: none;
+    }
+      .property-section .e-remove-selection {
+      cursor: not-allowed;
+    }
+    .diagram-userhandle .image-pattern-style:hover {
         border-color: gray;
         border-width: 2px;
     }
 
-    .row {
+    .diagram-userhandle .row {
         margin: 10px 0px 0px 0px;
     }
 
-    .e-selected-style {
+    .diagram-userhandle .e-selected-style {
         border-color: #006CE6;
         border-width: 2px;
     }
 
-    .row-header {
+    .diagram-userhandle .row-header {
         font-size: 15px;
         font-weight: 500;
         margin-top: 10px
     }
 
-    .property-panel-header {
+    .diagram-userhandle .property-panel-header {
         padding-top: 2px;
         padding-bottom: 5px;
     }
 
-    .e-checkbox-wrapper .e-label {
+    .diagram-userhandle .e-checkbox-wrapper .e-label {
         font-size: 12px;
     }
 
-    .container-fluid {
+    .diagram-userhandle .container-fluid {
         padding-left: 0px;
     }
 
-    .diagram-control-pane .col-xs-6 {
+    .diagram-userhandle .diagram-control-pane .col-xs-6 {
         padding-left: 0px;
         padding-right: 0px;
         padding-top: 5px;
     }`;
 
-export interface EmployeeInfo {
-  Role: string;
-  color: string;
-}
-
 let diagramInstance: Diagram;
+let appearanceInstance: any;
+let patternInstance: any;
 
-//Defines the nodes collection in diagram
+// Define the collection of nodes in the diagram.
 let nodes: NodeModel[] = [
   {
     id: "NewIdea",
@@ -132,7 +135,8 @@ let nodes: NodeModel[] = [
     offsetX: 550,
     offsetY: 60,
     shape: { type: "Flow", shape: "Card" },
-    annotations: [{ content: "Decision process for new software ideas" }]
+    annotations: [{ content: "Decision process for new software ideas" }],
+    fixedUserHandles: [{ padding: { left: 2, right: 2, top: 2, bottom: 2 }, offset:{x:1.1,y:0.5}, width: 20, height: 20,}]
   },
   {
     id: "Reject",
@@ -154,7 +158,7 @@ let nodes: NodeModel[] = [
   }
 ];
 
-//Defines the connectors collection in diagram
+// Define the collection of connectors in the diagram.
 let connectors: ConnectorModel[] = [
   {
     id: "connector1",
@@ -189,7 +193,7 @@ let connectors: ConnectorModel[] = [
   }
 ];
 
-//Defines the user handle collection for nodes in diagram
+// Define the collection of user handles for nodes in the diagram.
 let handles: UserHandleModel[] = [
   {
     name: "clone",
@@ -213,7 +217,7 @@ function UserHandle() {
   function rendereComplete() {
     diagramInstance.fitToPage();
     diagramInstance.select([diagramInstance.nodes[0]]);
-    document.getElementById("appearance").onclick = (args: MouseEvent) => {
+    appearanceInstance.onclick = (args: MouseEvent) => {
       let target: HTMLElement = args.target as HTMLElement;
       let selectedElement: HTMLCollection = document.getElementsByClassName(
         "e-selected-style"
@@ -236,7 +240,7 @@ function UserHandle() {
       }
       diagramInstance.dataBind();
     };
-    document.getElementById("pattern").onclick = (args: MouseEvent) => {
+    patternInstance.onclick = (args: MouseEvent) => {
       let target: HTMLElement = args.target as HTMLElement;
       let selectedElement: HTMLCollection = document.getElementsByClassName(
         "e-selected-style"
@@ -260,7 +264,7 @@ function UserHandle() {
       diagramInstance.dataBind();
     };
   }
-  //Defines the clone tool used to copy Node/Connector
+ // Define the clone tool for copying Nodes/Connectors.
   class CloneTool extends MoveTool {
     public mouseDown(args: MouseEventArgs): void {
       let newObject: any;
@@ -275,16 +279,24 @@ function UserHandle() {
       }
       newObject.id += randomId();
       diagramInstance.paste([newObject]);
-      args.source = diagramInstance.nodes[
-        diagramInstance.nodes.length - 1
-      ] as IElement;
+      if(diagramInstance.selectedItems.connectors.length > 0)
+        {
+          args.source = diagramInstance.connectors[
+            diagramInstance.connectors.length - 1
+          ] as IElement;
+        }
+      else{
+        args.source = diagramInstance.nodes[
+          diagramInstance.nodes.length - 1
+        ] as IElement;
+      }
       args.sourceWrapper = args.source.wrapper;
       super.mouseDown(args);
       this.inAction = true;
     }
   }
 
-  //Enable the clone Tool for UserHandle.
+  //Enable the clone tool for UserHandle.
   function getTool(action: string): ToolBase {
     let tool: ToolBase;
     if (action === "clone") {
@@ -308,8 +320,14 @@ function UserHandle() {
     diagramInstance.selectedItems.userHandles[0].pathColor = "White";
     target.classList.add("e-selected-style");
   }
+  function fixedUserHandleTemplate(props) {
+      return(<div style={{ width: '100%', height: '100%' }}>
+      <button style={{backgroundColor: 'black', borderRadius: '50%', width: '25px', height: '25px', border: 'none', cursor: 'context-menu', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundImage: `url(src/diagram/Images/user-handle/delete.png)`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
+      </button>
+      </div>)
+  }
   return (
-    <div className="control-pane">
+    <div className="control-pane diagram-userhandle">
       <style>{SAMPLE_CSS}</style>
       <div
         className="col-lg-8 control-section"
@@ -336,6 +354,30 @@ function UserHandle() {
             }}
             //set CustomTool
             getCustomTool={getTool}
+            fixedUserHandleTemplate={fixedUserHandleTemplate.bind(this)}
+            fixedUserHandleClick={()=>{
+              diagramInstance.select([diagramInstance.nameTable['Decision']]);
+              diagramInstance.remove();
+            }}
+            // Enable or disable the property panel based on the selection.
+            selectionChange={(arg: ISelectionChangeEventArgs) => {
+              let propertyAppearance: HTMLElement = document.getElementById("propertypanel");
+              let getSelectedElement: HTMLCollection = document.getElementsByClassName(
+                "e-remove-selection"
+              );
+              if (arg.newValue) {
+              // Check if the item in newValue is either a Node or Connector
+                if ((arg.newValue[0] instanceof Node) || (arg.newValue[0] instanceof Connector)) {
+                  if(getSelectedElement.length > 0) {
+                    getSelectedElement[0].classList.remove("e-remove-selection");
+                 }
+                } else {
+                  if (!propertyAppearance.classList.contains("e-remove-selection")) {
+                    propertyAppearance.classList.add("e-remove-selection");
+                  }
+                }
+              } 
+            }}
           >
           </DiagramComponent>
         </div>
@@ -343,8 +385,10 @@ function UserHandle() {
       <div
         className="col-lg-4 property-section"
       >
+        <div id="propertypanel" className="e-remove-selection">
+        <div className="property-section-content">
         <div className="property-panel-header">Properties</div>
-        <div className="row property-panel-content" id="appearance">
+        <div className="row property-panel-content" id="appearance" ref={(appearance) => (appearanceInstance = appearance)}>
           <div className="row row-header">Alignment</div>
           <div className="row" style={{ paddingTop: "8px" }}>
             <div
@@ -375,7 +419,7 @@ function UserHandle() {
             />
           </div>
         </div>
-        <div className="row property-panel-content" id="pattern">
+        <div className="row property-panel-content" id="pattern" ref={(pattern) => (patternInstance = pattern)}>
           <div className="row row-header">Appearance</div>
           <div className="row" style={{ paddingTop: "8px" }}>
             <div
@@ -406,6 +450,8 @@ function UserHandle() {
             />
           </div>
         </div>
+        </div>
+        </div>
       </div>
       <div id="action-description">
         <p>
@@ -417,11 +463,8 @@ function UserHandle() {
         <p>
           User handles are icons that are placed around the node to run the
           frequently used commands. This example shows how to render and
-          configure user handles and how to interact with the diagram using
-          user handles. The <code>userHandles</code> property of the{" "}
-          <code>selectedItems</code> can be used to add user handles to the
-          diagram. Click the templates in the property panel, to customize the
-          size, position, and appearance of the user handles.
+          configure user handles and how to interact with the diagram using user handles. The <code>userHandles</code> property of the <code>selectedItems</code> can be used to add user handles to the diagram.<code> fixedUserHandleTemplate</code> property of the diagram provides template support for customizing fixed user handles and we provide the HTML  button to delete the node.Click the templates in the property
+          panel, to customize the size, position, and appearance of the user handles.
         </p>
         <br />
       </div>

@@ -41,6 +41,8 @@ export class Nested extends SampleBase<{}, {}> {
         iconCss: 'icon', tooltip: 'text'
     };
 
+    private animation: Object = { duration:0 };
+
   render() {
     return (
       <div className='control-pane'>
@@ -50,7 +52,7 @@ export class Nested extends SampleBase<{}, {}> {
             </style>
 
         {/* ListView element */}
-        <ListViewComponent id='listview' dataSource={nestedListData} fields={this.fields} headerTitle='Folders' showIcon={true} showHeader={true} ></ListViewComponent>
+        <ListViewComponent id='listview' dataSource={nestedListData} fields={this.fields} headerTitle='Folders' showIcon={true} showHeader={true} animation={this.animation} ></ListViewComponent>
         </div>
 
         <div id="action-description">

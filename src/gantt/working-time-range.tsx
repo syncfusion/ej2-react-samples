@@ -128,95 +128,93 @@ public defaultValue: string = "Monday";
               <Inject services={[Selection, DayMarkers ]} />
             </GanttComponent>
           </div>
-          <div className='col-lg-4 property-section'>
+          <div className='col-lg-4 property-section' style={{paddingLeft : '0px'}}>
             <PropertyPane title='Properties'>
-              <table id="property" className="property-panel-table" title="Properties" style={{ width: '100%' }}>
-              <colgroup>
-                <col style={{width:'55%'}} />
-                <col style={{width:'45%'}} />
-              </colgroup>
-              <tbody>
-              <tr>
-                <td style={{ width: '100%' }}>
-                  <label htmlFor='Time range'>Time Range for all days</label>
-                </td>
-              </tr>
-              <tr>
-                  <td style={{ width: '100%' }}>
-                  <div id='workStartTime' style={{marginLeft: '10px', marginTop:"10px"}}>Work Start Time</div>
-                  </td>
-                  <td style={{ width: '100%' }}>
-                    <div style={{ paddingTop: '0px'}}>
-                    <NumericTextBoxComponent ref={NumericTextBox => this.workStartTime = NumericTextBox} id='workStart' value={8} min={0} max={24} showSpinButton={true} change={this.change1.bind(this)} width='120px' step={0.5}></NumericTextBoxComponent>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td style={{ width: '100%' }}>
-                  <div id='workEndTime' style={{marginLeft: '10px', marginTop:"10px"}}>Work End Time</div>
-                  </td>
-                  <td style={{ width: '100%' }}>
-                    <div style={{ paddingTop: '0px'}}>
-                    <NumericTextBoxComponent ref={NumericTextBox => this.workEndTime = NumericTextBox} id='workEnd' value={8} min={0} max={24} showSpinButton={true} change={this.change1.bind(this)} width='120px' step={0.5}></NumericTextBoxComponent>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td style={{ width: '30%' }}>
-                    <div>
-                      <ButtonComponent onClick={this.update.bind(this)}> Update for all days </ButtonComponent>
-                    </div>
-                  </td>
-                </tr>
+              <table id="property" className="property-panel-table" title="Properties" style={{ width: '100%',paddingLeft : '0px' }}>
+                <colgroup>
+                  <col style={{ width: '55%' }} />
+                  <col style={{ width: '45%' }} />
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <td colSpan={2}>
+                      <label htmlFor='Time range'>Time Range for all days</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style={{ paddingBottom: '10px' }}>
+                      <div>Work Start Time</div>
+                    </td>
+                    <td>
+                      <div>
+                        <NumericTextBoxComponent ref={NumericTextBox => this.workStartTime = NumericTextBox} id='workStart' value={8} min={0} max={24} showSpinButton={true} change={this.change1.bind(this)} width='125px' step={0.5} />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style={{ paddingBottom: '10px' }}>
+                      <div>Work End Time</div>
+                    </td>
+                    <td>
+                      <div>
+                        <NumericTextBoxComponent ref={NumericTextBox => this.workEndTime = NumericTextBox} id='workEnd' value={8} min={0} max={24} showSpinButton={true} change={this.change1.bind(this)} width='125px' step={0.5} />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colSpan={2}>
+                      <div>
+                        <ButtonComponent onClick={this.update.bind(this)}>Update for all days</ButtonComponent>
+                      </div>
+                    </td>
+                  </tr>
                 </tbody>
-                <br></br>
-                <tr>
-                  <td style={{ width: '100%' }}>
-                  <label htmlFor='Time Range'>Time range for each day</label>
-                  </td>
-                </tr>
-                <tr>
-                  <td style={{ width: '30%' }}>
-                    <div>
-                      <div id="WorkWeek">Working Days</div>
-                    </div>
-                  </td>
-                  <td style={{ width: '70%' }}>
-                    <div style={{ paddingTop: '0px', paddingLeft: '0px'}}>
-                    <DropDownListComponent ref={dropselect=> this.selectObj = dropselect} id="WorkWeek" style={{ padding: '2px' }} value={this.defaultValue}
+                <tbody>
+                  <tr>
+                    <td colSpan={2}>
+                      <label htmlFor='Time Range' style={{ marginTop: '20px' }}>Time Range for each day</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style={{ paddingBottom: '10px' }}>
+                      <div>Working Days</div>
+                    </td>
+                    <td>
+                      <div>
+                        <DropDownListComponent ref={dropselect => this.selectObj = dropselect} id="WorkWeek" value={this.defaultValue}
                           dataSource={this.workDays} width='100%' popupHeight='350px' fields={{ text: 'day', value: 'id' }}
-                          select={this.select.bind(this)}>
-                      </DropDownListComponent>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td style={{ width: '100%' }}>
-                  <div id='workStart' style={{marginLeft: '10px', marginTop:"10px"}}>Work Start Time</div>
-                  </td>
-                  <td style={{ width: '100%' }}>
-                    <div style={{ paddingTop: '0px'}}>
-                    <NumericTextBoxComponent ref={NumericTextBox => this.workStartTime1 = NumericTextBox} id='workStart' value={8} min={0} max={24} showSpinButton={true} change={this.change2.bind(this)} width='120px' step={0.5}></NumericTextBoxComponent>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td style={{ width: '100%' }}>
-                  <div id='workEnd' style={{marginLeft: '10px', marginTop:"10px"}}>Work End Time</div>
-                  </td>
-                  <td style={{ width: '100%' }}>
-                    <div style={{ paddingTop: '0px'}}>
-                    <NumericTextBoxComponent ref={NumericTextBox => this.workEndTime1 = NumericTextBox} id='workEnd' value={8} min={0} max={24} showSpinButton={true} change={this.change2.bind(this)} width='120px' step={0.5}></NumericTextBoxComponent>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td style={{ width: '30%' }}>
-                    <div>
-                      <ButtonComponent onClick={this.perform.bind(this)}> Update for each day </ButtonComponent>
-                    </div>
-                  </td>
-                </tr>
+                          select={this.select.bind(this)} />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style={{ paddingBottom: '10px' }}>
+                      <div>Work Start Time</div>
+                    </td>
+                    <td>
+                      <div>
+                        <NumericTextBoxComponent ref={NumericTextBox => this.workStartTime1 = NumericTextBox} id='workStart' value={8} min={0} max={24} showSpinButton={true} change={this.change2.bind(this)} width='125px' step={0.5} />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style={{ paddingBottom: '10px' }}>
+                      <div>Work End Time</div>
+                    </td>
+                    <td>
+                      <div>
+                        <NumericTextBoxComponent ref={NumericTextBox => this.workEndTime1 = NumericTextBox} id='workEnd' value={8} min={0} max={24} showSpinButton={true} change={this.change2.bind(this)} width='125px' step={0.5} />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colSpan={2}>
+                      <div>
+                        <ButtonComponent onClick={this.perform.bind(this)}>Update for each day</ButtonComponent>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
               </table>
             </PropertyPane>
           </div>

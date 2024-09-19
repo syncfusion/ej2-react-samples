@@ -15,7 +15,7 @@ export class ProtectSheet extends SampleBase<{}, {}> {
 
     public onCreated(): void {
         this.spreadsheet.cellFormat({ fontWeight: 'bold' }, 'EMI Schedule!A1:F1');
-        this.spreadsheet.numberFormat(getFormatFromType('Currency'), 'EMI Schedule!C2:F13');
+        this.spreadsheet.numberFormat('$#,##0.00', 'EMI Schedule!C2:F13');
     }
     public beforeCellRender(args: CellRenderEventArgs): void {
         if (this.spreadsheet.activeSheetIndex === 0 && args.address === 'B1') {
@@ -42,7 +42,7 @@ export class ProtectSheet extends SampleBase<{}, {}> {
                                     <RowDirective>
                                         <CellsDirective>
                                             <CellDirective index={1} value='Loan Amount:'></CellDirective>
-                                            <CellDirective value='100000' format={getFormatFromType('Currency')} ></CellDirective>
+                                            <CellDirective value='100000' format='$#,##0.00' ></CellDirective>
                                         </CellsDirective>
                                     </RowDirective>
                                     <RowDirective>
@@ -66,7 +66,7 @@ export class ProtectSheet extends SampleBase<{}, {}> {
                                     <RowDirective>
                                         <CellsDirective>
                                             <CellDirective index={1} value='Loan EMI:'></CellDirective>
-                                            <CellDirective value='8698.84' format={getFormatFromType('Currency')}></CellDirective>
+                                            <CellDirective value='8698.84' format='$#,##0.00'></CellDirective>
                                         </CellsDirective>
                                     </RowDirective>
                                     <RowDirective>
@@ -78,13 +78,13 @@ export class ProtectSheet extends SampleBase<{}, {}> {
                                     <RowDirective>
                                         <CellsDirective>
                                             <CellDirective index={1} value='Total Repayment Amount:'></CellDirective>
-                                            <CellDirective value='104386.11' format={getFormatFromType('Currency')}></CellDirective>
+                                            <CellDirective value='104386.11' format='$#,##0.00'></CellDirective>
                                         </CellsDirective>
                                     </RowDirective>
                                     <RowDirective>
                                         <CellsDirective>
                                             <CellDirective index={1} value='Total Interest Amount:'></CellDirective>
-                                            <CellDirective value='4386.11' format={getFormatFromType('Currency')}></CellDirective>
+                                            <CellDirective value='4386.11' format='$#,##0.00'></CellDirective>
                                         </CellsDirective>
                                     </RowDirective>
                                 </RowsDirective>

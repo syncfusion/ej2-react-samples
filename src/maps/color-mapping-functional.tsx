@@ -42,6 +42,9 @@ const SAMPLE_CSS = `
     .colorOpacityCheckBox {
         padding-left: 0px;margin-top: -10px;margin-left: -7px;
     }
+    .e-view.fluent2-highcontrast #property .colorOpacityCheckBox {
+        margin-left: -15px !important;
+    }
     .e-view.fluent2 #property .colorOpacityCheckBox, .e-view.fluent2-dark #property .colorOpacityCheckBox {
         padding-left: 0px;margin-top: -10px;margin-left: -6px;
     }`;
@@ -222,7 +225,7 @@ const ColorMap = () => {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast') as MapsTheme;
+        args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5') as MapsTheme;
         let dropListValue: HTMLInputElement = document.getElementById('Type') as HTMLInputElement;
         let opacityChecked: HTMLInputElement = document.getElementById('opacity') as HTMLInputElement;
         if (dropListValue.value === 'Desaturation') {

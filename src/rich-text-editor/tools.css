@@ -1,9 +1,13 @@
 .e-rte-code-mirror-enabled .rte-code-mirror {
-    display: block !important; /* To show the custom source code view. */
+    display: block !important;
+    /* To show the custom source code view. */
 }
+
 .e-rte-code-mirror-enabled .e-rte-content {
-    display: none !important;  /* To hide the editor area when custom source code enabled. */
+    display: none !important;
+    /* To hide the editor area when custom source code enabled. */
 }
+
 /** Mention template styles **/
 .editor-mention-item-template {
     width: 100%;
@@ -12,11 +16,13 @@
     flex-direction: row;
     align-items: center;
 }
+
 .editor-mention-item-template .em-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
+
 .editor-mention-item-template .em-avatar {
     width: 32px;
     height: 32px;
@@ -31,6 +37,7 @@
     align-items: center;
     justify-content: center;
 }
+
 .editor-mention-item-template .em-name {
     color: rgb(16, 24, 40);
     font-size: 14px;
@@ -38,42 +45,50 @@
     line-height: 14px;
     margin-bottom: 5px;
 }
+
 .editor-mention-item-template .em-email {
     color: gray;
     font-size: 12px;
     font-weight: 400;
     line-height: 14px;
 }
+
 #toolsRTE_rte-edit-view_options li {
     padding: 10px;
     height: 60px;
 }
+
 body[class*="-dark"] .em-name {
     color: #fff !important;
 }
+
 /** custom source code styles **/
 body[class*="-dark"] .rte-code-mirror .cm-tag {
     color: #00ff00;
 }
+
 body[class*="-dark"] .rte-code-mirror .cm-string {
     color: blue;
 }
+
 body[class*="-dark"] .rte-code-mirror .cm-attribute {
     color: #f00;
 }
-body[class*="-dark"] .rte-code-mirror .CodeMirror-gutters, body[class*="-dark"] .rte-code-mirror .CodeMirror{
+
+body[class*="-dark"] .rte-code-mirror .CodeMirror-gutters,
+body[class*="-dark"] .rte-code-mirror .CodeMirror {
     background-color: transparent;
     color: #fff;
 }
+
 .sb-header {
     z-index: 100;
 }
+
 .sb-content.e-view.hide-header {
     top: 0 !important;
 }
+
 .sb-header.e-view.hide-header {
     display: none;
 }
-.e-upload:has(#rteCustomWordUpload) {
-    display: none;
-  }

@@ -89,15 +89,15 @@ export class Spline extends SampleBase<{}, {}> {
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} xName='x' yName='y' width={2} name='Max Temp'
                                 type='Spline'
-                                marker={{ visible: true, width: 10, height: 10 }}>
+                                marker={{ visible: true, width: 7, height: 7, isFilled: true }}>
                             </SeriesDirective>
                             <SeriesDirective dataSource={data2} xName='x' yName='y' width={2} name='Avg Temp'
                                 type='Spline'
-                                marker={{ visible: true, width: 10, height: 10 }}>
+                                marker={{ visible: true, width: 7, height: 7, isFilled: true }}>
                             </SeriesDirective>
                             <SeriesDirective dataSource={data3} xName='x' yName='y' width={2} name='Min Temp'
                                 type='Spline'
-                                marker={{ visible: true, width: 10, height: 10 }}>
+                                marker={{ visible: true, width: 7, height: 7, isFilled: true }}>
                             </SeriesDirective>
                         </SeriesCollectionDirective>
                     </ChartComponent>
@@ -118,7 +118,6 @@ export class Spline extends SampleBase<{}, {}> {
                     <p>
                     <code>Tooltips</code> are enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
                     </p>
-                    <br></br>
                     <p><b>Injecting Module</b></p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To use spline series, we need to inject
@@ -144,7 +143,7 @@ export class Spline extends SampleBase<{}, {}> {
         
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
         

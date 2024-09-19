@@ -88,7 +88,6 @@ export class DateTimeAxis extends SampleBase<{}, {}> {
                         DateTime data is used in this sample and data values are represented using dataLabel. Date time axis uses date time scale and displays the date time values as axis labels. To render dateTime axis, set <code>valueType</code> in axis to <code>DateTime</code>.
                         Format for the axis label will be calculated based on intervalType of axis or we can set the format through labelFormat property in axis.
                     </p>
-                    <br></br>
                     <p><b>Injecting Module</b></p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To use DateTime axis, we need to inject
@@ -109,7 +108,7 @@ export class DateTimeAxis extends SampleBase<{}, {}> {
         
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
         replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast')  as ChartTheme;  
     };

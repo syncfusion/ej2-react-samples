@@ -20,6 +20,7 @@ function CustomToolbar() {
   let currentPageNumber: string = '1';
   let fileName: string = '';
   let isInkEnabled = false;
+  let searchActive: boolean = false;
   const data = [
     {
       iconCss: 'e-icons e-stamp',
@@ -271,7 +272,7 @@ function CustomToolbar() {
   }
   function template() {
     return (
-      <div ><span className='e-pv-total-page-number' id='totalPage'>of 0</span></div>
+      <div style={{margin: '0px 6px'}}><span className='e-pv-total-page-number' id='totalPage'>of 0</span></div>
     );
   }
   function inputTemplate() {
@@ -381,6 +382,7 @@ function CustomToolbar() {
                   type="text"
                   placeholder="Find in document"
                   onKeyPress={searchInputKeypressed}
+                  onChange={inputChange}
                 />
                 <span
                   className="e-input-group-icon e-input-search-group-icon e-icons e-search"
@@ -518,6 +520,7 @@ function CustomToolbar() {
     updatePageNavigation();
   }
   function documentLoaded() {
+    document.addEventListener('click', checkSearchActive.bind(this));
     var pageCount = document.getElementById('totalPage');
     pageCount.textContent = 'of ' + viewer.pageCount;
     updatePageNavigation();
@@ -630,6 +633,7 @@ function CustomToolbar() {
         viewer.textSearchModule.cancelTextSearch();
         searchText = (document.getElementById('container_search_input') as HTMLInputElement).value;
         viewer.textSearchModule.searchText(searchText, matchCase);
+        searchActive = true;
         prevMatchCase = matchCase;
       }
       else {
@@ -647,14 +651,33 @@ function CustomToolbar() {
     const searchTextElement = document.getElementById('container_search_input') as HTMLInputElement;
     searchTextElement.value = '';
   }
+
+  function checkSearchActive() {
+    if(!searchActive) {
+      viewer.textSearchModule.clearAllOccurrences();
+    }
+  }
+
+  function inputChange(): void {
+    viewer.textSearchModule.clearAllOccurrences();
+    searchActive = false;
+    if((document.getElementById('container_search_input') as HTMLInputElement).value == '') {
+      const textsearchcloseElement = document.getElementById('container_close_search_box-icon') as HTMLElement;
+      const textsearchElement = document.getElementById('container_search_box-icon') as HTMLElement;
+      textsearchcloseElement.style.display = 'none';
+      textsearchElement.style.display = 'block';
+    }
+  }
   function nextTextSearch() {
     disableInkAnnotation();
     viewer.textSearchModule.searchNext();
+    this.searchActive = true;
   }
 
   function previousTextSearch() {
     disableInkAnnotation();
     viewer.textSearchModule.searchPrevious();
+    this.searchActive = true;
   }
 
   function disableInkAnnotation() {

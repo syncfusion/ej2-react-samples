@@ -7,10 +7,8 @@ import {
     Inject,
     UndoRedo,
     NodeModel,
-    GridlinesModel,
     Rect,
     SymbolPaletteComponent,
-    Connector,
     IDragEnterEventArgs,
     ConnectorModel,
   } from '@syncfusion/ej2-react-diagrams';
@@ -23,7 +21,7 @@ import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
 Diagram.Inject(UndoRedo);
 
-
+//Initialize the basicshapes for the symbol palatte
 let basicShapes: NodeModel[] = [
     {
       id: 'rectangle',
@@ -74,7 +72,7 @@ let basicShapes: NodeModel[] = [
       shape: { type: 'Basic', shape: 'Parallelogram' },
     },
   ];
-  //Initialize the flowshapes for the symbol palatte
+  //Initialize the flowshapes for the symbol palette
   let flowShapes: NodeModel[]  = [
     { id: 'terminator1', shape: { type: 'Flow', shape: 'Terminator' } },
     { id: 'process1', shape: { type: 'Flow', shape: 'Process' } },
@@ -110,72 +108,62 @@ let basicShapes: NodeModel[] = [
     { id: 'multiDocument1', shape: { type: 'Flow', shape: 'MultiDocument' } },
     { id: 'collate1', shape: { type: 'Flow', shape: 'Collate' } },
   ];
+  //Initialize the connector for the symbol palatte 
   let connectorSymbols: ConnectorModel[] = [
     {
-      id: "Link1",
+      id: "orthogonal",
       type: "Orthogonal",
       sourcePoint: { x: 0, y: 0 },
       targetPoint: { x: 60, y: 60 },
-      targetDecorator: { shape: "Arrow", style: { strokeColor: '#757575', fill: '#757575' } },
-      style: { strokeWidth: 1, strokeColor: '#757575' }
+      targetDecorator: { style: {  fill: '#757575' } },
     },
     {
-      id: "link3",
+      id: "Orthogonal",
       type: "Orthogonal",
       sourcePoint: { x: 0, y: 0 },
       targetPoint: { x: 60, y: 60 },
-      style: { strokeWidth: 1, strokeColor: '#757575' },
       targetDecorator: { shape: "None" },
     },
     {
-      id: "Link21",
+      id: "straight",
       type: "Straight",
       sourcePoint: { x: 0, y: 0 },
       targetPoint: { x: 60, y: 60 },
-      targetDecorator: { shape: "Arrow", style: { strokeColor: '#757575', fill: '#757575' } },
-      style: { strokeWidth: 1, strokeColor: '#757575' }
+      targetDecorator: {style: {fill: '#757575' } },
     },
     {
-      id: "link23",
+      id: "Straight",
       type: "Straight",
       sourcePoint: { x: 0, y: 0 },
       targetPoint: { x: 60, y: 60 },
-      style: { strokeWidth: 1, strokeColor: '#757575' },
       targetDecorator: { shape: "None" }
     },
     {
-      id: "link33",
+      id: "bezier",
       type: "Bezier",
       sourcePoint: { x: 0, y: 0 },
       targetPoint: { x: 60, y: 60 },
-      style: { strokeWidth: 1, strokeColor: '#757575' },
       targetDecorator: { shape: "None" }
     }
   ];
-  let interval: number[];
-  interval = [
-    1, 9, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75,
-    0.25, 9.75, 0.25, 9.75, 0.25, 9.75,
-  ];
-  let gridlines:GridlinesModel = {
-    lineColor: '#e0e0e0',
-    lineIntervals: interval,
-  };
   const sample_css = `
   
-  .db-text-input {
+  .diagram-scroll .db-text-input {
       width: calc(100% - 15px);
       padding: 2px 2px 0px 0px;
   }
   
-  .row{
+  .diagram-scroll .row{
     margin-right:-15px;
     margin-left:-15px;
   }`;
 
 let diagramInstance: DiagramComponent;
 let fontFamily:any;
-
+let scrollableDivInstance:any;
+let autoScrollDivInstance: any;
+let paletteIconInstance: HTMLElement;
+let paletteSpaceInstance: HTMLElement;
 let fields:any = { text: 'text', value: 'value' };
 let scrollLimitDatasource:any = [
   { text: 'Infinity', value: 'Infinity' },
@@ -185,24 +173,24 @@ let scrollLimitDatasource:any = [
 let scrollableArea:any = new Rect(0, 0, 1500, 1500);
   
   export class ScrollingSample extends SampleBase<{}, {}> {
-    rendereComplete() {
+    renderComplete() {
         addEvents();
       }
     render() {
       return (
-        <div className="control-pane">
+        <div className="control-pane diagram-scroll">
           <style>{sample_css}</style>
         <div className="control-section">
           <div style={{ width: '100%' }}>
             <div className="sb-mobile-palette-bar">
               <div
-                id="palette-icon"
+                id="palette-icon"  ref={(paletteIcon) => (paletteIconInstance = paletteIcon)}
                 style={{ float: 'right' }}
                 className="e-ddb-icons1 e-toggle-palette"
               ></div>
             </div>
             <div
-              id="palette-space"
+              id="palette-space" ref={(paletteSpace) => (paletteSpaceInstance = paletteSpace)}
               className="sb-mobile-palette"
               style={{ width: '20%', float: 'left' }}
             >
@@ -236,19 +224,20 @@ let scrollableArea:any = new Rect(0, 0, 1500, 1500);
                 height={'700px'}
                 symbolHeight={60}
                 symbolWidth={60}
+                getConnectorDefaults={getConnectorDefaults}
                 getNodeDefaults={(symbol:any) => {
                   let obj = symbol;
-                  if (obj.id === 'terminator' || obj.id === 'process') {
+                  if (obj.id === 'terminator1' || obj.id === 'process1') {
                     obj.width = 80;
                     obj.height = 40;
                   } else if (
-                    obj.id === 'decision' ||
-                    obj.id === 'document' ||
-                    obj.id === 'preDefinedProcess' ||
-                    obj.id === 'paperTap' ||
-                    obj.id === 'directData' ||
-                    obj.id === 'multiDocument' ||
-                    obj.id === 'data'
+                    obj.id === 'decision1' ||
+                    obj.id === 'document1' ||
+                    obj.id === 'preDefinedProcess1' ||
+                    obj.id === 'paperTap1' ||
+                    obj.id === 'directData1' ||
+                    obj.id === 'multiDocument1' ||
+                    obj.id === 'data1'
                   ) {
                     obj.width = 50;
                     obj.height = 40;
@@ -274,10 +263,6 @@ let scrollableArea:any = new Rect(0, 0, 1500, 1500);
                 ref={(diagram) => (diagramInstance = diagram)}
                 width={'100%'}
                 height={'700px'}
-                snapSettings={{
-                  horizontalGridlines: gridlines,
-                  verticalGridlines: gridlines,
-                }}
                 rulerSettings={{ showRulers: true }}
                 pageSettings={{ width: 1500, height: 1500 }}
                 scrollSettings={{
@@ -286,33 +271,10 @@ let scrollableArea:any = new Rect(0, 0, 1500, 1500);
                   autoScrollBorder: { left: 30, right: 30, top: 30, bottom: 30 },
                   scrollableArea: scrollableArea,
                 }}
-                getNodeDefaults={(node:NodeModel) => {
-                  if (node.width === undefined) {
-                    node.width = 145;
-                  } else {
-                    var ratio = 100 / node.width;
-                    node.width = 100;
-                    node.height *= ratio;
-                  }
-                  node.style = { fill: '#357BD2', strokeColor: 'white' };
-                  node.annotations = [
-                    { style: { color: 'white', fill: 'transparent' } },
-                  ];
-                  return node;
-                }} //Sets the default values of a connector
-                getConnectorDefaults={(connector:Connector) => {
-                  if (connector.id.indexOf('connector') !== -1) {
-                    connector.type = 'Orthogonal';
-                    connector.targetDecorator = {
-                      shape: 'Arrow',
-                      width: 10,
-                      height: 10,
-                    };
-                  }
-                }}
+                getConnectorDefaults={getConnectorDefaults}
                 created={() => {
-                  let element2:any = document.getElementById('scrollableDiv');
-                  element2.className = 'disabledbutton';
+                  let scrollElement:any = scrollableDivInstance;
+                  scrollElement.className = 'disabledbutton';
                 }}
                 //Sets the Node style for DragEnter element.
                 dragEnter={(args:IDragEnterEventArgs) => {
@@ -326,6 +288,9 @@ let scrollableArea:any = new Rect(0, 0, 1500, 1500);
                     obj.offsetX += (obj.width - oWidth) / 2;
                     obj.offsetY += (obj.height - oHeight) / 2;
                     obj.style = { fill: '#357BD2', strokeColor: 'white' };
+                    obj.annotations = [
+                      { style: { color: 'white', fill: 'transparent' } },
+                    ];
                   }
                 }}
               >
@@ -354,7 +319,7 @@ let scrollableArea:any = new Rect(0, 0, 1500, 1500);
                     value={'Infinity'}
                     dataSource={scrollLimitDatasource}
                     change={(args) => {
-                      let element = document.getElementById('scrollableDiv');
+                      let element = scrollableDivInstance
                       element.className =
                         args.value === 'Limited' ? '' : 'disabledbutton';
                       diagramInstance.scrollSettings.scrollLimit = args.value;
@@ -364,7 +329,7 @@ let scrollableArea:any = new Rect(0, 0, 1500, 1500);
                 </div>
               </div>
             </div>
-            <div id="scrollableDiv">
+            <div id="scrollableDiv"  ref={(scrollableDiv) => (scrollableDivInstance = scrollableDiv)}>
               <div className="property-panel-header">Scrollable Area</div>
               <div className="row db-prop-row" style={{ paddingTop: '10px' }}>
                 <div
@@ -490,19 +455,19 @@ let scrollableArea:any = new Rect(0, 0, 1500, 1500);
                   id="EnableScroll"
                   checked={true}
                   change={(args:any) => {
-                    let element4:any = document.getElementById('autoScrollDiv');
+                    let autoScrollElement:any =autoScrollDivInstance;
                     if (args.checked) {
-                      element4.className = '';
+                      autoScrollElement.className = '';
                       diagramInstance.scrollSettings.canAutoScroll = true;
                     } else {
-                      element4.className = 'disabledbutton';
+                      autoScrollElement.className = 'disabledbutton';
                       diagramInstance.scrollSettings.canAutoScroll = false;
                     }
                   }}
                 />
               </div>
             </div>
-            <div id="autoScrollDiv" style={{ marginTop: '30px' }}>
+            <div id="autoScrollDiv" style={{ marginTop: '30px' }} ref={(autoScrollDiv) => (autoScrollDivInstance = autoScrollDiv)}>
               <div className="property-panel-header">AutoScroll border</div>
               <div className="row db-prop-row" style={{ paddingTop: '10px' }}>
                 <div
@@ -642,18 +607,19 @@ let scrollableArea:any = new Rect(0, 0, 1500, 1500);
     }
   }
   let isMobile: boolean;
-
+//To enhance the functionality of a webpage for mobile devices by adding a click event listener 
   function addEvents(): void {
     isMobile = window.matchMedia('(max-width:550px)').matches;
     if (isMobile) {
-      let paletteIcon: HTMLElement = document.getElementById('palette-icon');
+      let paletteIcon: HTMLElement = paletteIconInstance;
       if (paletteIcon) {
         paletteIcon.addEventListener('click', openPalette, false);
       }
     }
   }
+//To manage the visibility state of the palette space on a webpage for mobile devices
   function openPalette(): void {
-    let paletteSpace: HTMLElement = document.getElementById('palette-space');
+    let paletteSpace: HTMLElement = paletteSpaceInstance;
     isMobile = window.matchMedia('(max-width:550px)').matches;
     if (isMobile) {
       if (!paletteSpace.classList.contains('sb-mobile-palette-open')) {
@@ -662,4 +628,12 @@ let scrollableArea:any = new Rect(0, 0, 1500, 1500);
         paletteSpace.classList.remove('sb-mobile-palette-open');
       }
     }
+  }
+  //Sets the default values for a connector
+  var color = '#757575';
+  function getConnectorDefaults(connector: ConnectorModel): void{
+    connector.style.strokeWidth = 1;
+    connector.style.strokeColor = color;
+    connector.targetDecorator.style.fill = color;
+    connector.targetDecorator.style.strokeColor = color;
   }

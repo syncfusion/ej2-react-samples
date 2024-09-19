@@ -2,8 +2,144 @@
 #Overview .e-gantt-parent-taskbar {
     border-radius: 10px;
 }
-.fluent2 #overviewSample .e-toolbar-items .e-toolbar-right .e-template .e-input-group,
-.fluent2-dark #overviewSample .e-toolbar-items .e-toolbar-right .e-template .e-input-group,
-.fluent2-highcontrast #overviewSample .e-toolbar-items .e-toolbar-right .e-template .e-input-group {
+.fluent2 #Overview .e-toolbar-items .e-toolbar-right .e-template .e-input-group,
+.fluent2-dark #Overview .e-toolbar-items .e-toolbar-right .e-template .e-input-group,
+.fluent2-highcontrast #Overview .e-toolbar-items .e-toolbar-right .e-template .e-input-group {
     width: 99px !important;
+}
+.e-bigger.fluent2 .e-toolbar-items .e-toolbar-right .e-template .e-input-group,
+.e-bigger.fluent2-dark .e-toolbar-items .e-toolbar-right .e-template .e-input-group,
+.e-bigger.fluent2-highcontrast .e-toolbar-items .e-toolbar-right .e-template .e-input-group,
+.e-bigger.bootstrap5 .e-toolbar-items .e-toolbar-right .e-template .e-input-group,
+.e-bigger.bootstrap5_3 .e-toolbar-items .e-toolbar-right .e-template .e-input-group,
+.e-bigger.bootstrap5_3-dark-lite .e-toolbar-items .e-toolbar-right .e-template .e-input-group,
+.e-bigger.bootstrap5_3-dark .e-toolbar-items .e-toolbar-right .e-template .e-input-group, 
+.e-bigger.bootstrap5_3-lite .e-toolbar-items .e-toolbar-right .e-template .e-input-group {
+    width: 101px !important;
+}
+  /* settings icon */
+  .e-settings-icon::before {
+    font-family: 'e-icons' !important;
+    content: '\e880';
+    font-size: 15px;
+}
+
+/* cancel icon */
+.e-closed::before {
+    font-family: 'e-icons' !important;
+    content: '\e7e7';
+    font-size: 15px;
+}
+
+.highcontrast .e-closed::before {
+    content: '\e7fc';
+    font-family: 'e-icons';
+    font-size: 15px;
+}
+
+.highcontrast .e-settings-icon::before {
+    content: '\e679';
+    font-family: 'e-icons';
+}
+
+#sideBar {
+    padding-left: 1px !important;
+    padding-right: 1px !important;
+}
+
+.gantt-title-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    width: 262px;
+    height: 57px;
+    color: #fff;
+    background-color: #56697f;
+    position: -webkit-sticky;
+    /* Safari */
+    position: sticky;
+    top: 0;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    z-index: 1000;
+}
+
+.gantt-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.e-closed {
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.content {
+    margin-top: 20px;
+}
+
+.list-fields {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.labels {
+    font-weight: 400;
+    font-size: 14px;
+    padding: 12px;
+}
+
+.scheduling {
+    color: #837c7c;
+    font-size: 16px !important;
+    height: inherit;
+    font-weight: 600;
+}
+
+.list-fields .vertical-align {
+    display: flex;
+    flex-direction: column;
+}
+
+.singleLabel {
+    margin-bottom: 0px;
+}
+
+.section-header {
+    font-weight: 400;
+    font-size: 14px;
+    padding-left: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #837c7c;
+    margin: 10px 0 5px 0; /* Adjusted to reduce the gap */
+}
+.checkbox{
+    float: right; 
+    margin-right: 10px;
+}
+.switch {
+    margin-bottom: 8px;
+}
+.list-field {
+    display: flex;
+    flex-direction: column; 
+    margin-bottom: 10px;
+    width: 100%; 
+}
+.stack-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+.gantt-labels-style {
+    font-weight: 400;
+    font-size: 14px;
+    margin-bottom: 5px; 
+    text-align: left; 
+    padding: 11px;
+}
+#Overview .e-tbar-btn-text{
+    display: none;
 }

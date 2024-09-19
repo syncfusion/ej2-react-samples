@@ -5,6 +5,7 @@ import { employeeData, hierarchyOrderdata, customerData } from './data';
 import { SampleBase } from '../common/sample-base';
 import { ToolbarComponent, ItemsDirective, ItemDirective } from '@syncfusion/ej2-react-navigations';
 import { removeClass, addClass } from '@syncfusion/ej2-base';
+import './print.css';
 
 export class Print extends SampleBase<{}, {}> {
   public grid: GridComponent;
@@ -63,7 +64,7 @@ export class Print extends SampleBase<{}, {}> {
           </ToolbarComponent>
           <br />
           <GridComponent ref={r => this.grid = r} dataSource={employeeData} childGrid={this.childGrid} editSettings={this.editSettings} allowFiltering={true} filterSettings={this.filterSettings} toolbar={this.toolbar}
-          allowSorting={true} hierarchyPrintMode={'All'}>
+          allowSorting={true} hierarchyPrintMode={'All'} cssClass={document.querySelector('.fluent2-highcontrast') ? 'e-print-fluent2-highcontrast' : ''}>
               <ColumnsDirective>
                   <ColumnDirective field='EmployeeID' headerText='Employee ID' width='125' textAlign='Right' validationRules={this.employeeidRules} isPrimaryKey={true}/>
                   <ColumnDirective field='FirstName' headerText='Name' width='125' validationRules={this.firstnameRule} />

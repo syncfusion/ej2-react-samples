@@ -28,11 +28,3 @@
             font-weight: normal;
             font-style: normal;
             }
-
-            fluent2,
-            .fluent2-dark,
-            .fluent2-highcontrast {
-                .e-treegrid .e-toolbar-items{
-                    padding-top: 4px;
-                }
-            }

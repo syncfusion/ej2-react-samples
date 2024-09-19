@@ -5555,5 +5555,268 @@
             "StartTime": "2021-01-09T07:30:00.000Z",
             "EndTime": "2021-01-09T09:00:00.000Z"
         }
+    ],
+    "holidayList": [
+        {
+            "Id": 1,
+            "Subject": "New Year's Day",
+            "StartTime": "2024-01-01T00:00:00",
+            "EndTime": "2024-01-01T23:59:00",
+            "CategoryColor": "#1aaa55",
+            "IsAllDay": true,
+            "IsReadonly": true,
+            "isHoliday": true
+        },
+        {
+            "Id": 2,
+            "Subject": "Makar Sankranti",
+            "StartTime": "2024-01-14T00:00:00",
+            "EndTime": "2024-01-14T23:59:00",
+            "CategoryColor": "#1aaa55",
+            "IsAllDay": true,
+            "isHoliday": true,
+            "IsReadonly": true
+        },
+        {
+            "Id": 3,
+            "Subject": "Republic Day",
+            "StartTime": "2024-01-26T00:00:00",
+            "EndTime": "2024-01-26T23:59:00",
+            "CategoryColor": "#0b8043",
+            "IsAllDay": true,
+            "isHoliday": true,
+            "IsReadonly": true
+        },
+        {
+            "Id": 4,
+            "Subject": "Maha Shivaratri",
+            "StartTime": "2024-03-08T00:00:00",
+            "EndTime": "2024-03-08T23:59:00",
+            "CategoryColor": "#0b8043",
+            "IsAllDay": true,
+            "isHoliday": true,
+            "IsReadonly": true
+        },
+        {
+            "Id": 5,
+            "Subject": "Holi",
+            "StartTime": "2024-03-25T00:00:00",
+            "EndTime": "2024-03-25T23:59:00",
+            "CategoryColor": "#0b8043",
+            "IsAllDay": true,
+            "isHoliday": true,
+            "IsReadonly": true
+        },
+        {
+            "Id": 6,
+            "Subject": "Good Friday",
+            "StartTime": "2024-03-29T00:00:00",
+            "EndTime": "2024-03-29T23:59:00",
+            "CategoryColor": "#0b8043",
+            "IsAllDay": true,
+            "isHoliday": true,
+            "IsReadonly": true
+        },
+        {
+            "Id": 7,
+            "Subject": "Eid al-Fitr",
+            "StartTime": "2024-04-10T00:00:00",
+            "EndTime": "2024-04-10T23:59:00",
+            "CategoryColor": "#0b8043",
+            "IsAllDay": true,
+            "isHoliday": true,
+            "IsReadonly": true
+        },
+        {
+            "Id": 8,
+            "Subject": "Buddha Purnima",
+            "StartTime": "2024-04-23T00:00:00",
+            "EndTime": "2024-04-23T23:59:00",
+            "CategoryColor": "#0b8043",
+            "IsAllDay": true,
+            "isHoliday": true,
+            "IsReadonly": true
+        },
+        {
+            "Id": 9,
+            "Subject": "Raksha Bandhan",
+            "StartTime": "2024-08-19T00:00:00",
+            "EndTime": "2024-08-19T23:59:00",
+            "CategoryColor": "#0b8043",
+            "IsAllDay": true,
+            "isHoliday": true,
+            "IsReadonly": true
+        },
+        {
+            "Id": 10,
+            "Subject": "Janmashtami",
+            "StartTime": "2024-08-26T00:00:00",
+            "EndTime": "2024-08-26T23:59:00",
+            "CategoryColor": "#0b8043",
+            "IsAllDay": true,
+            "isHoliday": true,
+            "IsReadonly": true
+        },
+        {
+            "Id": 11,
+            "Subject": "Independence Day",
+            "StartTime": "2024-08-15T00:00:00",
+            "EndTime": "2024-08-15T23:59:00",
+            "CategoryColor": "#0b8043",
+            "IsAllDay": true,
+            "isHoliday": true,
+            "IsReadonly": true
+        },
+        {
+            "Id": 12,
+            "Subject": "Ganesh Chaturthi",
+            "StartTime": "2024-09-07T00:00:00",
+            "EndTime": "2024-09-07T23:59:00",
+            "CategoryColor": "#0b8043",
+            "IsAllDay": true,
+            "isHoliday": true,
+            "IsReadonly": true
+        },
+        {
+            "Id": 13,
+            "Subject": "Gandhi Jayanti",
+            "StartTime": "2024-10-02T00:00:00",
+            "EndTime": "2024-10-02T23:59:00",
+            "CategoryColor": "#0b8043",
+            "IsAllDay": true,
+            "isHoliday": true,
+            "IsReadonly": true
+        },
+        {
+            "Id": 14,
+            "Subject": "Dussehra",
+            "StartTime": "2024-10-13T00:00:00",
+            "EndTime": "2024-10-13T23:59:00",
+            "CategoryColor": "#0b8043",
+            "IsAllDay": true,
+            "isHoliday": true,
+            "IsReadonly": true
+        },
+        {
+            "Id": 15,
+            "Subject": "Diwali",
+            "StartTime": "2024-11-01T00:00:00",
+            "EndTime": "2024-11-01T23:59:00",
+            "CategoryColor": "#0b8043",
+            "IsAllDay": true,
+            "isHoliday": true,
+            "IsReadonly": true
+        },
+        {
+            "Id": 16,
+            "Subject": "Christmas Day",
+            "StartTime": "2024-12-25T00:00:00",
+            "EndTime": "2024-12-25T23:59:00",
+            "CategoryColor": "#0b8043",
+            "IsAllDay": true,
+            "isHoliday": true,
+            "IsReadonly": true
+        }
+    ],
+    "scheduleEvent": [
+        {
+            "Id": 1,
+            "Subject": "Explosion of Betelgeuse Star",
+            "Location": "Space Centre USA",
+            "StartTime": "2024-07-01T09:30:00",
+            "EndTime": "2024-07-01T11:00:00",
+            "RecurrenceRule": "FREQ=DAILY;INTERVAL=1;COUNT=5"
+        },
+        {
+            "Id": 2,
+            "Subject": "Thule Air Crash Report",
+            "Location": "Newyork City",
+            "StartTime": "2024-07-11T12:00:00",
+            "EndTime": "2024-07-11T14:00:00"
+        },
+        {
+            "Id": 3,
+            "Subject": "Blue Moon Eclipse",
+            "Location": "Space Centre USA",
+            "StartTime": "2024-08-12T09:30:00",
+            "EndTime": "2024-08-12T11:00:00"
+        },
+        {
+            "Id": 4,
+            "Subject": "Meteor Showers in 2021",
+            "Location": "Space Centre USA",
+            "StartTime": "2024-09-13T13:00:00",
+            "EndTime": "2024-09-13T14:30:00"
+        },
+        {
+            "Id": 5,
+            "Subject": "Milky Way as Melting pot",
+            "Location": "Space Centre USA",
+            "StartTime": "2024-07-14T12:00:00",
+            "EndTime": "2024-07-14T14:00:00"
+        },
+        {
+            "Id": 6,
+            "Subject": "Mysteries of Bermuda Triangle",
+            "Location": "Bermuda",
+            "StartTime": "2024-08-14T09:30:00",
+            "EndTime": "2024-08-14T11:00:00"
+        },
+        {
+            "Id": 7,
+            "Subject": "Glaciers and Snowflakes",
+            "Location": "Himalayas",
+            "StartTime": "2024-09-15T11:00:00",
+            "EndTime": "2024-09-15T12:30:00"
+        },
+        {
+            "Id": 8,
+            "Subject": "Life on Mars",
+            "Location": "Space Centre USA",
+            "StartTime": "2024-12-25T09:00:00",
+            "EndTime": "2024-12-25T10:00:00"
+        },
+        {
+            "Id": 9,
+            "Subject": "Alien Civilization",
+            "Location": "Space Centre USA",
+            "StartTime": "2024-01-11T11:00:00",
+            "EndTime": "2024-01-11T13:00:00"
+        },
+        {
+            "Id": 10,
+            "Subject": "Wildlife Galleries",
+            "Location": "Africa",
+            "StartTime": "2024-01-20T11:00:00",
+            "EndTime": "2024-01-20T13:00:00"
+        },
+        {
+            "Id": 11,
+            "Subject": "Best Photography 2021",
+            "Location": "London",
+            "StartTime": "2024-01-21T09:30:00",
+            "EndTime": "2024-01-21T11:00:00"
+        },
+        {
+            "Id": 12,
+            "Subject": "Smarter Puppies",
+            "Location": "Sweden",
+            "StartTime": "2024-08-08T15:00:00",
+            "EndTime": "2024-08-08T15:30:00"
+        },
+        {
+            "Id": 13,
+            "Subject": "Myths of Andromeda Galaxy",
+            "Location": "Space Centre USA",
+            "StartTime": "2024-08-15T15:00:00",
+            "EndTime": "2024-08-15T15:30:00"
+        },
+        {
+            "Id": 14,
+            "Subject": "Aliens vs Humans",
+            "Location": "Research Centre of USA",
+            "StartTime": "2024-08-15T15:00:00",
+            "EndTime": "2024-08-15T15:30:00"
+        }
     ]
 }

@@ -3,7 +3,7 @@
  */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { RichTextEditorComponent, Toolbar, Inject, Image, Table, Link, HtmlEditor, QuickToolbar, IFrameSettingsModel, Audio, Video, EmojiPicker, PasteCleanup} from '@syncfusion/ej2-react-richtexteditor';
+import { RichTextEditorComponent, Toolbar, Inject, Image, Table, Link, HtmlEditor, QuickToolbar, IFrameSettingsModel, Audio, Video, EmojiPicker, PasteCleanup } from '@syncfusion/ej2-react-richtexteditor';
 import { ToolbarSettingsModel, FileManager, FileManagerSettingsModel } from '@syncfusion/ej2-react-richtexteditor';
 import { SampleBase } from '../common/sample-base';
 import { addClass, removeClass, Browser } from '@syncfusion/ej2-base';
@@ -20,7 +20,7 @@ export class IFrame extends SampleBase<{}, {}> {
   };
 
   // Rich Text Editor items list
-  private items: string[] = ['Bold', 'Italic', 'Underline', 'StrikeThrough', 'SuperScript', 'SubScript', '|',
+  private items: string[] = ['Bold', 'Italic', 'Underline', 'StrikeThrough', 'InlineCode', 'SuperScript', 'SubScript', '|',
     'FontName', 'FontSize', 'FontColor', 'BackgroundColor', '|',
     'LowerCase', 'UpperCase', '|',
     'Formats', 'Alignments', 'Blockquote', '|', 'NumberFormatList', 'BulletFormatList', '|',
@@ -88,7 +88,7 @@ export class IFrame extends SampleBase<{}, {}> {
               height={'500px'} actionBegin={this.handleFullScreen.bind(this)} actionComplete={this.actionCompleteHandler.bind(this)} toolbarSettings={this.toolbarSettings}
               iframeSettings={this.iframeSetting} fileManagerSettings={this.fileManagerSettings}>
               <p>The Rich Text Editor component is a WYSIWYG ("what you see is what you get") editor that provides the best user experience to create and update the content.
-  Users can format their content using standard toolbar commands.</p>
+                Users can format their content using standard toolbar commands.</p>
 
               <p><b>Key features:</b></p>
 

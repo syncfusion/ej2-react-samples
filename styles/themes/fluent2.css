@@ -69,9 +69,11 @@
     margin: 5px 5px 0px 0px;
     height: 22px;
 }
-.fluent2 .sb-theme-popup li:hover .sb-theme-select {
-    color: transparent;
-}
 .fluent2 .sb-badge {
     padding: 2px 6px;
+}
+
+.fluent2.e-bigger .e-listview .e-icon-wrapper .e-list-text,
+.fluent2.e-bigger .sb-control-navigation .e-treeview .tree-text {
+    width: calc(100% - 70px);
 }

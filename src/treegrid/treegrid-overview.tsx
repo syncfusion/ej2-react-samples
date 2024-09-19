@@ -14,8 +14,8 @@ export class Overview extends SampleBase<{}, {}> {
   public gridTemplate(props): any { 
     var flagIconLocation = (props.parentItem)? props.parentItem.name : props.name;
     return (<div style={{display: 'inline'}}><div style={{display: 'inline-block'}}>
-    <img className='e-image' src={"src/treegrid/images/"+flagIconLocation+".png"} alt = {flagIconLocation}></img>     
-    </div><div style={{ display: 'inline-block', paddingLeft: '6px',verticalAlign: 'middle'}}>{props.name}</div></div>);
+    <img className='e-treeoverviewimage' src={"src/treegrid/images/"+flagIconLocation+".png"} alt = {flagIconLocation}></img>     
+    </div><div style={{ display: 'inline-block', paddingLeft: '6px'}}>{props.name}</div></div>);
   }
 
   public treegridTemplate(props): any {
@@ -55,7 +55,7 @@ export class Overview extends SampleBase<{}, {}> {
     var locationsrc = 'src/treegrid/images/Map.png';
 
     return (<div id="coordinates">
-      <img src={locationsrc} className='e-image' alt={props.coordinates} />
+      <img src={locationsrc} className='e-treeoverviewimage' alt={props.coordinates} />
       <a target='_blank' href='https://www.google.com/maps/place/'>{props.coordinates}</a>
     </div>);
   }

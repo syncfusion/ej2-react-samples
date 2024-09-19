@@ -7,7 +7,7 @@ import { updateSampleSection } from '../common/sample-base';
 import './spreadsheet.css';
 
 /**
- * Default Spreadsheet sample
+ * Freeze pane Spreadsheet sample
  */
 
 function FreezePane() {

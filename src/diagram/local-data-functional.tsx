@@ -1,8 +1,6 @@
-import * as ReactDOM from "react-dom";
 import * as React from "react";
 import {
   Node,
-  Connector,
   HierarchicalTree,
   DataBinding,
   DiagramComponent,
@@ -14,7 +12,6 @@ import {
 } from "@syncfusion/ej2-react-diagrams";
 import { updateSampleSection } from "../common/sample-base";
 import { DataManager } from "@syncfusion/ej2-data";
-import { Point } from "@syncfusion/ej2-diagrams/src/diagram/primitives/point";
 import { species } from './diagram-data';
 
 
@@ -23,6 +20,7 @@ export interface DataInfo {
 }
 
 function LocalData() {
+  // React useEffect hook to run once on component mount
   React.useEffect(() => {
     updateSampleSection();
   }, [])
@@ -35,7 +33,7 @@ function LocalData() {
           <DiagramComponent
             id="diagram"
             width={"100%"}
-            height={"490"}
+            height={"350px"}
             //Configures data source
             dataSourceSettings={{
               id: "Name",
@@ -45,7 +43,6 @@ function LocalData() {
               doBinding: (
                 nodeModel: NodeModel,
                 data: DataInfo,
-                diagram: Diagram
               ) => {
                 nodeModel.annotations = [
                   {

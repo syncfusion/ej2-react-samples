@@ -26,9 +26,10 @@ Diagram.Inject(ConnectorEditing);
 
 let diagramInstance: DiagramComponent;
 const SAMPLE_CSS = `
-  .row {
+  .diagram-peoperty-tab .row {
     margin-left: 0px;
     margin-right: 0px;
+    padding-top: 8px;
   }`;
 let handles:UserHandleModel[]  = [
     {
@@ -49,7 +50,7 @@ let handles:UserHandleModel[]  = [
       offsetX: 340,
       offsetY: 50,
       // Size of the node
-      width: 500,
+      width: 550,
       height: 50,
       //Sets type of the node
       shape: {
@@ -70,9 +71,7 @@ let handles:UserHandleModel[]  = [
       id: 'rectangle',
       offsetX: 80,
       offsetY: 160,
-      width: 80,
       height: 65,
-      // style: { fill: '#6BA5D7', strokeColor: 'white' },
       shape: { type: 'Basic', shape: 'Rectangle' },
       annotations: [{ content: 'Selection = False' }],
       constraints: NodeConstraints.Default & ~NodeConstraints.Select,
@@ -81,9 +80,7 @@ let handles:UserHandleModel[]  = [
       id: 'ellipse',
       offsetX: 190,
       offsetY: 160,
-      width: 80,
       height: 80,
-      // style: { fill: '#6BA5D7', strokeColor: 'white' },
       shape: { type: 'Basic', shape: 'Ellipse', cornerRadius: 10 },
       annotations: [{ content: 'Dragging = False' }],
       constraints: NodeConstraints.Default & ~NodeConstraints.Drag,
@@ -92,9 +89,7 @@ let handles:UserHandleModel[]  = [
       id: 'heptagon',
       offsetX: 295,
       offsetY: 160,
-      width: 80,
       height: 80,
-      // style: { fill: '#6BA5D7', strokeColor: 'white' },
       shape: { type: 'Basic', shape: 'Heptagon' },
       annotations: [{ content: 'Delete = False' }],
       constraints: NodeConstraints.Default & ~NodeConstraints.Delete,
@@ -103,10 +98,8 @@ let handles:UserHandleModel[]  = [
       id: 'directData',
       offsetX: 410,
       offsetY: 160,
-      width: 80,
       height: 80,
       rotateAngle: -45,
-      // style: { fill: '#6BA5D7', strokeColor: 'white' },
       shape: { type: 'Flow', shape: 'DirectData' },
       annotations: [{ content: 'Rotate = False' }],
       constraints: NodeConstraints.Default & ~NodeConstraints.Rotate,
@@ -115,9 +108,7 @@ let handles:UserHandleModel[]  = [
       id: 'Plus',
       offsetX: 530,
       offsetY: 160,
-      width: 80,
       height: 80,
-      // style: { fill: '#6BA5D7', strokeColor: 'white' },
       shape: { type: 'Basic', shape: 'Plus' },
       annotations: [
         {
@@ -130,9 +121,7 @@ let handles:UserHandleModel[]  = [
       id: 'decision',
       offsetX: 630,
       offsetY: 160,
-      width: 80,
       height: 80,
-      // style: { fill: '#6BA5D7', strokeColor: 'white' },
       shape: { type: 'Flow', shape: 'Decision' },
       annotations: [{ content: 'Resizing = False' }],
       constraints: NodeConstraints.Default & ~NodeConstraints.Resize,
@@ -174,17 +163,6 @@ let handles:UserHandleModel[]  = [
         },
       ],
       constraints: ConnectorConstraints.Default & ~ConnectorConstraints.Select,
-      style: {
-        strokeColor: '#6BA5D7',
-        fill: '#6BA5D7',
-        strokeWidth: 2,
-      },
-      targetDecorator: {
-        style: {
-          fill: '#6BA5D7',
-          strokeColor: '#6BA5D7',
-        },
-      },
       sourcePoint: {
         x: 40,
         y: 350,
@@ -208,17 +186,6 @@ let handles:UserHandleModel[]  = [
         ConnectorConstraints.Default |
         ConnectorConstraints.DragSegmentThumb |
         ConnectorConstraints.Drag,
-      style: {
-        strokeColor: '#6BA5D7',
-        fill: '#6BA5D7',
-        strokeWidth: 2,
-      },
-      targetDecorator: {
-        style: {
-          fill: '#6BA5D7',
-          strokeColor: '#6BA5D7',
-        },
-      },
       sourcePoint: {
         x: 140,
         y: 350,
@@ -241,17 +208,6 @@ let handles:UserHandleModel[]  = [
       constraints:
         (ConnectorConstraints.Default | ConnectorConstraints.DragSegmentThumb) &
         ~(ConnectorConstraints.Delete | ConnectorConstraints.Drag),
-      style: {
-        strokeColor: '#6BA5D7',
-        fill: '#6BA5D7',
-        strokeWidth: 2,
-      },
-      targetDecorator: {
-        style: {
-          fill: '#6BA5D7',
-          strokeColor: '#6BA5D7',
-        },
-      },
       sourcePoint: {
         x: 250,
         y: 350,
@@ -277,17 +233,6 @@ let handles:UserHandleModel[]  = [
           SelectorConstraints.ConnectorSourceThumb |
           SelectorConstraints.ConnectorTargetThumb
         ),
-      style: {
-        strokeColor: '#6BA5D7',
-        fill: '#6BA5D7',
-        strokeWidth: 2,
-      },
-      targetDecorator: {
-        style: {
-          fill: '#6BA5D7',
-          strokeColor: '#6BA5D7',
-        },
-      },
       sourcePoint: {
         x: 360,
         y: 350,
@@ -312,17 +257,6 @@ let handles:UserHandleModel[]  = [
         ~(
           ConnectorConstraints.DragSourceEnd | ConnectorConstraints.DragTargetEnd
         ),
-      style: {
-        strokeColor: '#6BA5D7',
-        fill: '#6BA5D7',
-        strokeWidth: 2,
-      },
-      targetDecorator: {
-        style: {
-          fill: '#6BA5D7',
-          strokeColor: '#6BA5D7',
-        },
-      },
       sourcePoint: {
         x: 460,
         y: 350,
@@ -343,17 +277,6 @@ let handles:UserHandleModel[]  = [
         },
       ],
       constraints: ConnectorConstraints.Default & ~ConnectorConstraints.Drag,
-      style: {
-        strokeColor: '#6BA5D7',
-        fill: '#6BA5D7',
-        strokeWidth: 2,
-      },
-      targetDecorator: {
-        style: {
-          fill: '#6BA5D7',
-          strokeColor: '#6BA5D7',
-        },
-      },
       sourcePoint: {
         x: 580,
         y: 350,
@@ -365,6 +288,10 @@ let handles:UserHandleModel[]  = [
     },
   ];
   export class ConstraintsSample extends SampleBase<{}, {}> {
+  // Method to fit diagramInstance to page width
+  rendereComplete() {
+    diagramInstance.fitToPage({ mode: 'Width' });
+    }
     render() {
       return (
         <div className="control-pane diagram-control-pane">
@@ -379,7 +306,7 @@ let handles:UserHandleModel[]  = [
               id="diagram"
               ref={(diagram) => (diagramInstance = diagram)}
               width={'100%'}
-              height={645}
+              height={'550px'}
               nodes={nodes}
               connectors={connectors}
               selectedItems={{
@@ -390,6 +317,8 @@ let handles:UserHandleModel[]  = [
                 show: true,
               }}
               rulerSettings={{ showRulers: true }}
+              getNodeDefaults={getNodeDefaults}
+              getConnectorDefaults={getConnectorDefaults}
               getCustomTool={getTool}
               created={() => {
                 for (let i = 0; i < diagramInstance.connectors.length; i++) {
@@ -460,13 +389,13 @@ let handles:UserHandleModel[]  = [
             </div>
           </div>
         </div>
-        <div className="col-lg-2 property-section">
+        <div className="col-lg-2 diagram-property-tab">
           <div className="property-panel-header">Diagram Constraints</div>
           <div
             className="row property-panel-content"
             style={{ paddingTop: '10px' }}
           >
-            <div className="row" style={{ paddingTop: '8px' }}>
+            <div className="row">
               <CheckBoxComponent
                 checked={true}
                 label="Zooming"
@@ -474,7 +403,7 @@ let handles:UserHandleModel[]  = [
                 change={Zoomchanged}
               />
             </div>
-            <div className="row" style={{ paddingTop: '8px' }}>
+            <div className="row">
               <CheckBoxComponent
                 checked={true}
                 label="Undo/Redo"
@@ -482,7 +411,7 @@ let handles:UserHandleModel[]  = [
                 change={undoRedo}
               />
             </div>
-            <div className="row" style={{ paddingTop: '8px' }}>
+            <div className="row">
               <CheckBoxComponent
                 checked={true}
                 label="Text Edit"
@@ -490,15 +419,15 @@ let handles:UserHandleModel[]  = [
                 change={textedit}
               />
             </div>
-            <div className="row" style={{ paddingTop: '8px' }}>
+            <div className="row">
               <CheckBoxComponent
                 checked={true}
                 label="Context Menu"
-                id="contextmenu"
-                change={contextmenu}
+                id="contextMenu"
+                change={contextMenu}
               />
             </div>
-            <div className="row" style={{ paddingTop: '8px' }}>
+            <div className="row">
               <CheckBoxComponent
                 checked={true}
                 label="Selectable"
@@ -506,12 +435,12 @@ let handles:UserHandleModel[]  = [
                 change={selectable}
               />
             </div>
-            <div className="row" style={{ paddingTop: '8px' }}>
+            <div className="row">
               <CheckBoxComponent
                 checked={true}
                 label="Draggable"
-                id="draggablee"
-                change={draggablee}
+                id="draggable"
+                change={draggable}
               />
             </div>
           </div>
@@ -544,6 +473,25 @@ let handles:UserHandleModel[]  = [
     }
   }
 
+  function getNodeDefaults(nodes: NodeModel) {
+    if(nodes.id !== "textNode1" && nodes.id !== "textNode2") {
+      nodes.width = 80;
+      nodes.style.fill = '#C7E6FF';
+      nodes.style.strokeColor = '#1587FF';
+      }
+  }  
+
+  //Setting default connector values
+  function getConnectorDefaults(connectors : ConnectorModel) {
+    connectors.style.strokeColor = '#6BA5D7';
+    connectors.style.fill = '#6BA5D7';
+    connectors.style.strokeWidth = 2;
+    connectors.targetDecorator.style.strokeColor = '#6BA5D7';
+    connectors.targetDecorator.style.fill = '#6BA5D7';
+    return connectors;
+  }
+
+  // Retrieves a tool based on the specified action and performs an operation if action is 'delete'  
   function getTool(action: string): ToolBase {
     let tool: ToolBase;
     if (action === 'delete') {
@@ -551,57 +499,57 @@ let handles:UserHandleModel[]  = [
     }
     return tool;
   }
+  // Adjusts diagramInstance constraints to toggle Zoom capability based on args
   function Zoomchanged(args:any) {
     diagramInstance.constraints =
       diagramInstance.constraints ^ DiagramConstraints.Zoom;
   }
+   // Adjusts diagramInstance constraints to toggle UndoRedo capability based on args
   function undoRedo(args:any) {
     diagramInstance.constraints =
       diagramInstance.constraints ^ DiagramConstraints.UndoRedo;
   }
 
+  // Toggles read-only mode for annotations on nodes and connectors based on args.checked
   function textedit(args:any) {
     for (let i = 0; i < diagramInstance.nodes.length; i++) {
       var node = diagramInstance.nodes[i];
-      for (let j = 0; j < node.annotations.length; j++) {
-        if (node.annotations[j].content) {
+        if (node.annotations.length > 0 && node.annotations[0].content) {
           if (args.checked) {
             if (node.id !== 'Plus') {
-              node.annotations[j].constraints =
-                node.annotations[j].constraints ^
+              node.annotations[0].constraints =
+                node.annotations[0].constraints ^
                 AnnotationConstraints.ReadOnly;
             }
           } else {
-            node.annotations[j].constraints =
-              node.annotations[j].constraints | AnnotationConstraints.ReadOnly;
+            node.annotations[0].constraints =
+              node.annotations[0].constraints | AnnotationConstraints.ReadOnly;
           }
         }
-      }
     }
     for (let x = 0; x < diagramInstance.connectors.length; x++) {
       var connector = diagramInstance.connectors[x];
-      for (let y = 0; y < connector.annotations.length; y++) {
-        if (connector.annotations[y].content) {
+        if (connector.annotations.length > 0 && connector.annotations[0].content) {
           if (args.checked) {
             if (connector.id === 'select') {
               connector.constraints =
                 connector.constraints & ~ConnectorConstraints.Select;
             } else {
-              connector.annotations[y].constraints =
-                connector.annotations[y].constraints ^
+              connector.annotations[0].constraints =
+                connector.annotations[0].constraints ^
                 AnnotationConstraints.ReadOnly;
             }
           } else {
-            connector.annotations[y].constraints =
-              connector.annotations[y].constraints ^
+            connector.annotations[0].constraints =
+              connector.annotations[0].constraints ^
               AnnotationConstraints.ReadOnly;
           }
         }
-      }
     }
     diagramInstance.dataBind();
   }
-  function contextmenu(args:any) {
+   // Controls the visibility of the context menu in diagramInstance based on args.checked
+  function contextMenu(args:any) {
     if (args.checked) {
       diagramInstance.contextMenuSettings.show = true;
       diagramInstance.refresh();
@@ -610,6 +558,7 @@ let handles:UserHandleModel[]  = [
     }
     diagramInstance.dataBind();
   }
+  // Enables or disables node and connector selection based on args.checked, excluding the id 'rectangle' and 'select'
   function selectable(args:any) {
     for (let i:number = 0; i < diagramInstance.nodes.length; i++) {
       let node = diagramInstance.nodes[i];
@@ -636,7 +585,8 @@ let handles:UserHandleModel[]  = [
       diagramInstance.dataBind();
     }
   }
-  function draggablee(args:any) {
+  // Controls draggable behavior for nodes and connectors based on args.checked
+  function draggable(args:any) {
     for (let i:number = 0; i < diagramInstance.nodes.length; i++) {
       let nodes = diagramInstance.nodes[i];
       if (args.checked) {

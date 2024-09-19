@@ -85,7 +85,7 @@ const Bar = () => {
                 <p>This sample demonstrates the customization of Slider's selection bar. Drag the thumb over the bar for selecting the values between min and max.</p>
             </div>
             <div id="description">
-                <p>In this demo, customization of track using CSS is demonstrated.</p>
+                <p>In this demo, customization of track using <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/slider/#cssclass">CSS</a> is demonstrated.</p>
                 <ul>
                     <li>Height - In this sample, track has been customized to custom height. Here, thumb has to be adjusted based on the track height.</li>
                     <li>Gradient color - In this sample, track has been customized with gradient color. </li>

@@ -5,6 +5,7 @@ import {
   TextElement,
   HierarchicalTree,
   ConnectorConstraints,
+  SnapConstraints,
   Segments,
   SelectorConstraints,
   DiagramComponent,
@@ -33,13 +34,18 @@ import {
 } from "@syncfusion/ej2-react-dropdowns";
 import {
   ColorPickerComponent,
-  ColorPickerEventArgs
+  ColorPickerEventArgs,
+  NumericTextBoxComponent
 } from "@syncfusion/ej2-react-inputs";
 import { updateSampleSection } from "../common/sample-base";
 import { CheckBoxComponent } from "@syncfusion/ej2-react-buttons";
 
 
 let diagramInstance: DiagramComponent;
+let sourceDecoratorDropDown: DropDownListComponent;
+let targetDecoratorDropDown: DropDownListComponent;
+let appearanceElement: HTMLElement;
+let segmentDecoratorSizeNumericTextBox: NumericTextBoxComponent;
 
 //Initialize shape
 let shape: BasicShapeModel = {
@@ -58,44 +64,44 @@ let nodes: NodeModel[] = [
 ];
 //Initialize Diagram connectors
 let connectors: ConnectorModel[] = [
-  { id: "connectr", sourceID: "node1", targetID: "node2" },
+  { id: "connector", sourceID: "node1", targetID: "node2" },
   {
-    id: "connectr1",
+    id: "connector1",
     sourceID: "node2",
     sourcePortID: "port1",
     targetID: "node3",
     targetPortID: "portIn"
   },
   {
-    id: "connectr2",
+    id: "connector2",
     sourceID: "node2",
     sourcePortID: "port2",
     targetID: "node4",
     targetPortID: "portIn"
   },
   {
-    id: "connectr3",
+    id: "connector3",
     sourceID: "node2",
     sourcePortID: "port3",
     targetID: "node5",
     targetPortID: "portIn"
   },
   {
-    id: "connectr4",
+    id: "connector4",
     sourceID: "node6",
     sourcePortID: "port4",
     targetID: "node3",
     targetPortID: "portOut"
   },
   {
-    id: "connectr5",
+    id: "connector5",
     sourceID: "node6",
     sourcePortID: "port5",
     targetID: "node4",
     targetPortID: "portOut"
   },
   {
-    id: "connectr7",
+    id: "connector7",
     sourceID: "node6",
     sourcePortID: "port6",
     targetID: "node5",
@@ -103,7 +109,8 @@ let connectors: ConnectorModel[] = [
   }
 ];
 
-let decoratorshape = [
+// Shape collection of the decorators.
+let decoratorShape = [
   { shape: 'None', text: 'None' },
   { shape: 'Square', text: 'Square' },
   { shape: 'Circle', text: 'Circle' },
@@ -119,7 +126,7 @@ let decoratorshape = [
 
 const SAMPLE_CSS = `
 /* For connector type and style change in property panel*/
-.image-pattern-style {
+.diagram-connector .image-pattern-style {
         background-color: white;
         background-size: contain;
         background-repeat: no-repeat;
@@ -131,27 +138,27 @@ const SAMPLE_CSS = `
         float: left;
     }
 
-    .image-pattern-style:hover {
+    .diagram-connector .image-pattern-style:hover {
         border-color: gray;
         border-width: 2px;
     }
 
-    .row {
+    .diagram-connector .row {
         margin-left: 0px;
         margin-right: 0px;
     }
 
-    .row-header {
+    .diagram-connector .row-header {
         font-size: 13px;
         font-weight: 500;
     }
 
-    .e-selected-style {
+    .diagram-connector .e-selected-style {
         border-color: #006CE6;
         border-width: 2px;
     }
 
-    label{
+    .diagram-connector label{
       display: inline-block;
       font-size: 13px;
       font-weight: 400;
@@ -170,7 +177,8 @@ function Connectors() {
 
   function rendereComplete() {
     diagramInstance.fitToPage();
-    document.getElementById("appearance").onclick = (args: MouseEvent) => {
+    //Click Event for Appearance of the layout.
+    appearanceElement.onclick = (args: MouseEvent) => {
       let target: HTMLElement = args.target as HTMLElement;
       let selectedElement: HTMLCollection = document.getElementsByClassName(
         "e-selected-style"
@@ -180,40 +188,40 @@ function Connectors() {
       }
       if (target.className === "image-pattern-style") {
         switch (target.id) {
-          case "normalconnector1":
+          case "straightConnector":
             defaultConnectorStyle("Straight", target);
             break;
-          case "normalconnector2":
+          case "orthogonalConnector":
             defaultConnectorStyle("Orthogonal", target);
             break;
-          case "normalconnector3":
+          case "bezierConnector":
             defaultConnectorStyle("Bezier", target);
             break;
-          case "connector1withstroke":
+          case "straightConnectorWithStroke":
             applyConnectorStyle(false, false, false, "Straight", target);
             break;
-          case "connector2withstroke":
+          case "orthogonalConnectorWithStroke":
             applyConnectorStyle(false, false, false, "Orthogonal", target);
             break;
-          case "connector3withstroke":
+          case "bezierConnectorWithStroke":
             applyConnectorStyle(false, false, false, "Bezier", target);
             break;
-          case "connector1withdasharray":
+          case "straightConnectorWithDasharray":
             applyConnectorStyle(true, false, false, "Straight", target);
             break;
-          case "connector2withdasharray":
+          case "orthogonalConnectorWithDasharray":
             applyConnectorStyle(true, false, false, "Orthogonal", target);
             break;
-          case "connector3withdasharray":
+          case "bezierConnectorWithDasharray":
             applyConnectorStyle(true, false, false, "Bezier", target);
             break;
-          case "cornerradious":
+          case "cornerRadius":
             applyConnectorStyle(false, false, true, "Orthogonal", target);
             break;
-          case "sourcedecorator":
+          case "sourceDecorators":
             applyConnectorStyle(false, true, false, "Straight", target);
             break;
-          case "sourcedecoratorwithdasharray":
+          case "sourceDecoratorWithDasharray":
             applyConnectorStyle(true, true, false, "Straight", target);
             break;
         }
@@ -235,7 +243,7 @@ function Connectors() {
     return canvas;
   }
 
-  //creation of the TextElement.
+  //Creation of TextElement for node
   function getTextElement(text: string, color: string): TextElement {
     let textElement: TextElement = new TextElement();
     textElement.id = randomId();
@@ -310,7 +318,7 @@ function Connectors() {
   //ConnectorStyle customization
   function applyConnectorStyle(
     dashedLine: boolean,
-    sourceDec: boolean,
+    sourceDecorator: boolean,
     isRounded: boolean,
     type: Segments,
     target: HTMLElement
@@ -321,7 +329,7 @@ function Connectors() {
       if (isRounded) {
         diagramInstance.connectors[i].cornerRadius = 5;
       }
-      if (sourceDec) {
+      if (sourceDecorator) {
         diagramInstance.connectors[i].sourceDecorator = {
           style: {
             strokeColor:diagramInstance.connectors[i].style.strokeColor,
@@ -330,10 +338,10 @@ function Connectors() {
           },
           shape: "Circle"
         };
-        (document.getElementById('sourceDecorator2') as any).value='Circle';
+        (sourceDecoratorDropDown as any).value='Circle';
       } else {
         diagramInstance.connectors[i].sourceDecorator = { shape: "None" };
-        (document.getElementById('sourceDecorator2') as any).value='None';
+        (sourceDecoratorDropDown as any).value='None';
       }
       if (dashedLine) {
         diagramInstance.connectors[i].style.strokeDashArray = "5,5";
@@ -349,7 +357,8 @@ function Connectors() {
         shape: "Arrow"
       };
       diagramInstance.dataBind();
-      (document.getElementById('targetDecorator') as any).value='Arrow';
+      diagramInstance.updateSelector();
+      (targetDecoratorDropDown as any).value='Arrow';
     }
     target.classList.add("e-selected-style");
   }
@@ -369,12 +378,13 @@ function Connectors() {
         shape: "Arrow"
       };
       diagramInstance.dataBind();
-      (document.getElementById('targetDecorator') as any).value='Arrow';
+      (targetDecoratorDropDown as any).value='Arrow';
     }
     target.classList.add("e-selected-style");
   }
 
-  function srcDecShapeChange(args:any) {
+  //Change Source decorator shape
+  function sourceDecoratorShapeChange(args:any) {
     for (let i = 0; i < diagramInstance.connectors.length; i++) {
       diagramInstance.connectors[i].sourceDecorator = {
         shape: args.itemData.shape,
@@ -387,7 +397,8 @@ function Connectors() {
     diagramInstance.dataBind();
 
   }
-  function tarDecShapeChange(args: any) {
+  //Change target decorator shape
+  function targetDecoratorShapeChange(args: any) {
     for (let i = 0; i < diagramInstance.connectors.length; i++) {
       diagramInstance.connectors[i].targetDecorator = {
         shape: args.itemData.shape,
@@ -399,17 +410,43 @@ function Connectors() {
       diagramInstance.dataBind();
     }
   }
-  function segDecShapeChange(args: any) {
+  //Change segment decorator shape
+  function segmentDecoratorShapeChange(args: any) {
     for (let i = 0; i < diagramInstance.connectors.length; i++) {
       diagramInstance.segmentThumbShape = args.itemData.shape;
     }
     diagramInstance.dataBind();
   }
 
+  //Change Source decorator size
+  function sourceDecoratorSizeChange(args: any) {
+    for (let i = 0; i < diagramInstance.connectors.length; i++) {
+        diagramInstance.connectors[i].sourceDecorator.width = args.value;
+        diagramInstance.connectors[i].sourceDecorator.height = args.value;
+    }
+    diagramInstance.dataBind();
+}
+//Change target decorator size
+function targetDecoratorSizeChange(args: any) {
+    for (let i = 0; i < diagramInstance.connectors.length; i++) {
+        diagramInstance.connectors[i].targetDecorator.width = args.value;
+        diagramInstance.connectors[i].targetDecorator.height = args.value;
+    }
+    diagramInstance.dataBind();
+}
+//Change segment decorator size
+function segmentDecoratorSizeChange(args: any) {
+    let connector = diagramInstance.selectedItems.connectors[0];
+    diagramInstance.segmentThumbSize = args.value;
+    diagramInstance.clearSelection();
+    diagramInstance.select([diagramInstance.nameTable[connector.id]]);
+    diagramInstance.dataBind();
+}
+
   return (
-    <div className="control-pane diagram-control-pane">
+    <div className="control-pane diagram-connector">
       <style>{SAMPLE_CSS}</style>
-      <div className="col-lg-9 control-section">
+      <div className="col-lg-8 control-section">
         <div className="content-wrapper" style={{ width: "100%", background: "white" }}>
           <DiagramComponent
             id="diagram"
@@ -418,10 +455,14 @@ function Connectors() {
             height={580}
             nodes={nodes}
             connectors={connectors}
-            selectedItems={{
-              constraints:
-                SelectorConstraints.ConnectorSourceThumb |
-                SelectorConstraints.ConnectorTargetThumb
+            segmentThumbSize={10}
+            selectionChange={() => {
+              if (diagramInstance.selectedItems.connectors.length > 0) {
+                  (segmentDecoratorSizeNumericTextBox as any).enabled = true;
+              }
+              else{
+                  (segmentDecoratorSizeNumericTextBox as any).enabled = false;
+              }
             }}
             //Configrues hierarchical tree layout
             layout={{
@@ -430,7 +471,7 @@ function Connectors() {
               verticalSpacing: 75,
               margin: { left: 30, right: 0, top: 0, bottom: 0 }
             }}
-            snapSettings={{ constraints: 0 }}
+            snapSettings={{ constraints: SnapConstraints.None }}
             //Sets the default values of nodes
             getNodeDefaults={(obj: Node) => {
               if (obj.id !== "node1") {
@@ -475,14 +516,14 @@ function Connectors() {
           </DiagramComponent>
         </div>
       </div>
-      <div className="col-lg-3 property-section">
+      <div className="col-lg-4 property-section">
         <div className="property-panel-header">Properties</div>
-        <div className="row property-panel-content" id="appearance">
+        <div className="row property-panel-content" id="appearance" ref={appearance => (appearanceElement = appearance)}>
           <div className="row row-header"><b>Connector types</b></div>
           <div className="row" style={{ paddingTop: "8px" }}>
             <div
               className="image-pattern-style"
-              id="normalconnector1"
+              id="straightConnector"
               style={{
                 backgroundImage:
                   "url('src/diagram/Images/connector/Connectors_1.png')",
@@ -491,7 +532,7 @@ function Connectors() {
             />
             <div
               className="image-pattern-style"
-              id="normalconnector2"
+              id="orthogonalConnector"
               style={{
                 backgroundImage:
                   "url('src/diagram/Images/connector/Connectors_2.png')",
@@ -500,7 +541,7 @@ function Connectors() {
             />
             <div
               className="image-pattern-style"
-              id="normalconnector3"
+              id="bezierConnector"
               style={{
                 backgroundImage:
                   "url('src/diagram/Images/connector/Connectors_3.png')",
@@ -511,7 +552,7 @@ function Connectors() {
           <div className="row" style={{ paddingTop: "8px" }}>
             <div
               className="image-pattern-style"
-              id="connector1withstroke"
+              id="straightConnectorWithStroke"
               style={{
                 backgroundImage:
                   "url('src/diagram/Images/connector/Connectors_4.png')",
@@ -520,7 +561,7 @@ function Connectors() {
             />
             <div
               className="image-pattern-style"
-              id="connector2withstroke"
+              id="orthogonalConnectorWithStroke"
               style={{
                 backgroundImage:
                   "url('src/diagram/Images/connector/Connectors_5.png')",
@@ -529,7 +570,7 @@ function Connectors() {
             />
             <div
               className="image-pattern-style"
-              id="connector3withstroke"
+              id="bezierConnectorWithStroke"
               style={{
                 backgroundImage:
                   "url('src/diagram/Images/connector/Connectors_6.png')",
@@ -540,25 +581,25 @@ function Connectors() {
           <div className="row" style={{ paddingTop: "8px" }}>
             <div
               className="image-pattern-style"
-              id="connector1withdasharray"
+              id="straightConnectorWithDasharray"
               style={{
                 backgroundImage:
                   "url('src/diagram/Images/connector/Connectors_7.png')",
-                margin: "3px"
+                marginRight: "3px"
               }}
             />
             <div
               className="image-pattern-style"
-              id="connector2withdasharray"
+              id="orthogonalConnectorWithDasharray"
               style={{
                 backgroundImage:
                   "url('src/diagram/Images/connector/Connectors_8.png')",
-                marginRight: "0px 3px"
+                margin: "0px 3px"
               }}
             />
             <div
               className="image-pattern-style"
-              id="connector3withdasharray"
+              id="bezierConnectorWithDasharray"
               style={{
                 backgroundImage:
                   "url('src/diagram/Images/connector/Connectors_9.png')",
@@ -569,7 +610,7 @@ function Connectors() {
           <div className="row" style={{ paddingTop: "8px" }}>
             <div
               className="image-pattern-style"
-              id="cornerradious"
+              id="cornerRadius"
               style={{
                 backgroundImage:
                   "url('src/diagram/Images/connector/Connectors_10.png')",
@@ -578,7 +619,7 @@ function Connectors() {
             />
             <div
               className="image-pattern-style"
-              id="sourcedecorator"
+              id="sourceDecorators"
               style={{
                 backgroundImage:
                   "url('src/diagram/Images/connector/Connectors_11.png')",
@@ -587,7 +628,7 @@ function Connectors() {
             />
             <div
               className="image-pattern-style"
-              id="sourcedecoratorwithdasharray"
+              id="sourceDecoratorWithDasharray"
               style={{
                 backgroundImage:
                   "url('src/diagram/Images/connector/Connectors_12.png')",
@@ -603,22 +644,45 @@ function Connectors() {
             <div className="row" style={{paddingTop: "8px", display:'flex'}}>
               <label>Source Decorators</label>
               <div>
-                {/* <input type="text" id='sourceDecorator2' /> */}
-                <DropDownListComponent id="sourceDecorator2" value="None" dataSource={decoratorshape} change={srcDecShapeChange}/>
+                {/* <input type="text" id='sourceDecorator' /> */}
+                <DropDownListComponent id="sourceDecorator" ref={sourceDecorator => (sourceDecoratorDropDown = sourceDecorator)} value="None" dataSource={decoratorShape} change={sourceDecoratorShapeChange}/>
               </div>
             </div>
             <div className="row" style={{paddingTop: "8px", display:'flex'}}>
               <label>Target Decorators</label>
               <div>
                 {/* <input type="text" id='targetDecorator' /> */}
-                <DropDownListComponent id="targetDecorator" value="Arrow" dataSource={decoratorshape} change={tarDecShapeChange}/>
+                <DropDownListComponent id="targetDecorator" ref={targetDecorator => (targetDecoratorDropDown = targetDecorator)} value="Arrow" dataSource={decoratorShape} change={targetDecoratorShapeChange}/>
               </div>
             </div>
             <div className="row" style={{paddingTop: "8px", display:'flex'}}>
               <label>Segment Decorators</label>
               <div>
                 {/* <input type="text" id='segmentDecorator' /> */}
-                <DropDownListComponent id="segmentDecorator" value="Circle" dataSource={decoratorshape} change={segDecShapeChange}/>
+                <DropDownListComponent id="segmentDecorator" value="Circle" dataSource={decoratorShape} change={segmentDecoratorShapeChange}/>
+              </div>
+            </div>
+        </div>
+        <div className="row property-panel-content" id="decorators" style={{ paddingTop: "10px" }}>
+            <div className="row row-header" style={{ paddingTop: "8px" }}>
+              <b>Decorators Size</b>
+            </div>
+            <div className="row" style={{ paddingTop: "8px", display: 'flex' }}>
+              <label>Source Decorators Size</label>
+              <div>
+                <NumericTextBoxComponent id="sourceDecoratorSize" enabled={true} format={"###.##"} value={12} step={1} max={20} min={10} change={sourceDecoratorSizeChange}/>
+              </div>
+            </div>
+            <div className="row" style={{ paddingTop: "8px", display: 'flex' }}>
+              <label>Target Decorators Size</label>
+              <div>
+                <NumericTextBoxComponent id="targetDecoratorSize" enabled={true} format={"###.##"} value={12} step={1} max={20} min={10} change={targetDecoratorSizeChange}/>
+              </div>
+            </div>
+            <div className="row" style={{ paddingTop: "8px", display: 'flex' }}>
+              <label>Segment Decorators Size</label>
+              <div>
+                <NumericTextBoxComponent id="segmentDecoratorSize" ref={segmentDecoratorSize => (segmentDecoratorSizeNumericTextBox = segmentDecoratorSize)} enabled={false} format={"###.##"} value={12} step={1} max={20} min={10} change={segmentDecoratorSizeChange}/>
               </div>
             </div>
         </div>
@@ -662,8 +726,9 @@ function Connectors() {
         </p>
 
         <p>
-          To change the appearance, click different styles in the property
-          panel.
+        To change the appearance, click on different styles in the property panel to modify the connector type, decorator shapes, and decorator sizes.
+        The <code>type</code> property of the connector defines its segment type. The <code>shape</code> property specifies the shapes for the source, target, and segment decorators. You can adjust the size of the source and target decorators by setting their
+        <code>width</code>and <code>height</code>. Additionally, the<code>segmentThumbSize</code>property allows you to modify the size of the segment decorator when the connector is selected.
         </p>
 
         <p>

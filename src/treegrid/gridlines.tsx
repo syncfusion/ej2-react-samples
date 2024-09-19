@@ -52,7 +52,7 @@ export class GridLines extends SampleBase<{}, {}> {
                     </td>
                     <td style={{ width: '60%' }}>
                       <div>
-                        <DropDownListComponent width="115px" id="selmode" change={this.change.bind(this)}
+                        <DropDownListComponent width="130px" id="selmode" change={this.change.bind(this)}
                           dataSource={this.lines} fields={{ text: 'type', value: 'id' }} value="Vertical" />
                       </div>
                     </td>

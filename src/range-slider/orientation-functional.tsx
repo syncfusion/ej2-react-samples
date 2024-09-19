@@ -161,7 +161,7 @@ const Orientation = () => {
                 <p>This sample demonstrates the rendering of Slider component in Vertical orientation. Drag the thumb over the bar for selecting the values between min and max.</p>
             </div>
             <div id="description">
-                <p>The Slider component can be rendered in either horizontal or vertical orientation and this can be set through the orientation property</p>
+                <p>The Slider component can be rendered in either horizontal or vertical orientation and this can be set through the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/slider/#orientation">orientation</a> property</p>
                 <p>The Slider component allows the user to select a value or range of values in-between a min and max range, by dragging the thumb over the slider bar in Vertical orientation. There are three types of sliders available in Vertical Orientation:</p>
                 <ul>
                     <li>Default - allows us to select a single value in Vertical Orientation</li>

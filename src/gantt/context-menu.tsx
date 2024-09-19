@@ -127,10 +127,10 @@ export class ContextMenuItem extends SampleBase<{}, {}> {
         </div>
 
         <div id="description">
-        <p>
-        Gantt has an option to show the context menu while performing right click on it. You can configure the default and custom menu items in the context menu using the <code>contextMenuItems</code> property.
-             Each menu item will be displayed contextually based on its target. In this demo we have rendered following default and custom menu items
-    </p>
+          <p>
+            Gantt has an option to show the context menu while performing right click on it. You can configure the default and custom menu items in the context menu using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#columnmenuitems">contextMenuItems</a> property.
+            Each menu item will be displayed contextually based on its target. In this demo we have rendered following default and custom menu items
+          </p>
     <p>Default items:</p>
     <ul>
             <li><code>AutoFitAll</code> - Auto fit all columns.</li>

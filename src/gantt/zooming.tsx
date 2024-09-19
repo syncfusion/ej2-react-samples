@@ -22,16 +22,13 @@ export class Zooming extends SampleBase<{}, {}> {
    position: "35%"
   };
   public toolbar: any = ['ZoomIn','ZoomOut','ZoomToFit'];
-  public projectStartDate: Date = new Date('03/24/2024');
-  public projectEndDate: Date = new Date('04/28/2024');
   render() {
     return (
       <div className='control-pane'>
         <div className='control-section'>
           <GanttComponent id='Zooming' dataSource={zoomingData} toolbar={this.toolbar}
             treeColumnIndex={1} splitterSettings={this.splitterSettings}
-            taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'
-            projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>
+            taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'>
             <ColumnsDirective>
               <ColumnDirective field='TaskID' width='80'></ColumnDirective>
               <ColumnDirective field='TaskName' width='250'></ColumnDirective>

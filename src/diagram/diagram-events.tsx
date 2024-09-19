@@ -1,5 +1,7 @@
+// Importing required React and ReactDOM modules
 import * as ReactDOM from "react-dom";
 import * as React from "react";
+// Importing required Syncfusion Diagram components and services
 import {
     UndoRedo, DiagramContextMenu,
     DiagramComponent,
@@ -28,6 +30,8 @@ import {
     NodeConstraints,
     ConnectorModel
 } from "@syncfusion/ej2-react-diagrams";
+
+// Importing additional Syncfusion components and utilities
 import { SampleBase } from "../common/sample-base";
 import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
@@ -39,6 +43,7 @@ import { BeforeOpenCloseMenuEventArgs, MenuEventArgs } from "@syncfusion/ej2-nav
  * Diagram Events sample
  */
 
+// CSS styles for the sample
 const SAMPLE_CSS = `#diagramEventsControlSection .sb-mobile-palette {
     width: 200px;
     height: 100%;
@@ -145,7 +150,7 @@ const SAMPLE_CSS = `#diagramEventsControlSection .sb-mobile-palette {
     border-top: 1px solid #eee;
   }
 
-  .property-section {
+  .diagramEventsProperty .property-section {
     padding-top: 20px;
     padding-bottom: 20px;
     height: 740px;
@@ -166,6 +171,11 @@ const SAMPLE_CSS = `#diagramEventsControlSection .sb-mobile-palette {
     height: 50%;
   }
 
+  .diagramEventsControl .control-section{
+    display: flex;
+    
+  }
+
  #diagramEventsPropertySection #EventLog {
     height: calc(100% - 50px);
     padding: 15px;
@@ -174,6 +184,7 @@ const SAMPLE_CSS = `#diagramEventsControlSection .sb-mobile-palette {
   }`;
 
 let diagramInstance: DiagramComponent;
+let EventLogInstance: HTMLElement;
 
 //Initialize the basicshapes for the symbol palatte
 let basicShapes: NodeModel[] = [
@@ -198,27 +209,29 @@ let basicShapes: NodeModel[] = [
 let connectorSymbols: ConnectorModel[] = [
     {
         id: 'Link1', type: 'Orthogonal', sourcePoint: { x: 0, y: 0 }, targetPoint: { x: 60, y: 60 },
-        targetDecorator: { shape: 'Arrow', style: {strokeColor: '#757575', fill: '#757575'} }, style: { strokeWidth: 1, strokeColor: '#757575' }
+        targetDecorator: { shape: 'Arrow', style: {strokeColor: '#757575', fill: '#757575'} }
     },
     {
         id: 'link3', type: 'Orthogonal', sourcePoint: { x: 0, y: 0 }, targetPoint: { x: 60, y: 60 },
-        style: { strokeWidth: 1, strokeColor: '#757575' }, targetDecorator: { shape: 'None' }
+        targetDecorator: { shape: 'None' }
     },
     {
         id: 'Link21', type: 'Straight', sourcePoint: { x: 0, y: 0 }, targetPoint: { x: 60, y: 60 },
-        targetDecorator: { shape: 'Arrow', style: {strokeColor: '#757575', fill: '#757575'} }, style: { strokeWidth: 1, strokeColor: '#757575' }
+        targetDecorator: { shape: 'Arrow', style: {strokeColor: '#757575', fill: '#757575'} }
     },
     {
         id: 'link23', type: 'Straight', sourcePoint: { x: 0, y: 0 }, targetPoint: { x: 60, y: 60 },
-        style: { strokeWidth: 1, strokeColor: '#757575' }, targetDecorator: { shape: 'None' }
+        targetDecorator: { shape: 'None' }
     },
     {
         id: 'link33', type: 'Bezier', sourcePoint: { x: 0, y: 0 }, targetPoint: { x: 60, y: 60 },
-        style: { strokeWidth: 1, strokeColor: '#757575' }, targetDecorator: { shape: 'None' }
+        targetDecorator: { shape: 'None' }
     },
 ];
 
+// React component definition for handling diagram events
 export class Events extends SampleBase<{}, {}> {
+    // Data for the list view displaying event names
     public data: { [key: string]: Object }[] = [
         { text: 'Drag enter', id: 'dragEnter' },
         { text: 'Drag leave', id: 'dragLeave' },
@@ -243,18 +256,19 @@ export class Events extends SampleBase<{}, {}> {
         { text: 'Context menu before item render', id: 'contextMenuBeforeItemRender' },
         { text: 'Context menu click', id: 'contextMenuClick' }
     ];
+    // Function to clear event log when clear button is clicked
     rendereComplete() {
-        document.getElementById('clearbtn').onclick = (args: MouseEvent) => {
-            let data: HTMLElement = document.getElementById('EventLog');
+            let data: HTMLElement = EventLogInstance;
             for (let i: number = data.childNodes.length - 1; i >= 0; i--) {
                 data.removeChild(data.childNodes[i]);
             }
-        };
     }
+    // Render function to display the entire component
     render() {
         return (
             <div className="control-pane">
                 <style>{SAMPLE_CSS}</style>
+                <div className="diagramEventsControl">
                 <div className="col-lg-8 control-section">
                     <style>{SAMPLE_CSS}</style>
                     <div id="diagramEventsControlSection" className="content-wrapper" style={{ width: "100%", background: "white" }}>
@@ -288,6 +302,9 @@ export class Events extends SampleBase<{}, {}> {
                                     symbol.height = 50;
                                     symbol.constraints = NodeConstraints.Default | NodeConstraints.AllowDrop;
                                     symbol.style.strokeColor = '#757575';
+                                }}
+                                getConnectorDefaults= {(connector: ConnectorModel): void => {
+                                    connector.style = { strokeWidth: 1 , strokeColor: '#757575' };
                                 }}
                                 getSymbolInfo={(symbol: NodeModel): SymbolInfo => {
                                     return { fit: true };
@@ -383,6 +400,9 @@ export class Events extends SampleBase<{}, {}> {
                         </div>
                     </div>
                 </div>
+                </div>
+                  {/* Section for event list and details */}
+                <div className="diagramEventsProperty">
                 <div className="col-lg-4 property-section">
                     <div id="diagramEventsPropertySection" style={{ height: "100%", border: "1px solid #e0e0e0" }}>
                         <div className="listbox">
@@ -402,14 +422,16 @@ export class Events extends SampleBase<{}, {}> {
                                     <ButtonComponent
                                         id='clearbtn'
                                         content='clear'
+                                        onClick={this.rendereComplete}
                                     >
                                     </ButtonComponent>
                                 </div>
                             </div>
-                            <div id="EventLog">
+                            <div id="EventLog" ref={EventLog => (EventLogInstance = EventLog)}>
                             </div>
                         </div>
                     </div>
+                </div>
                 </div>
                 <div id="action-description">
                     <p>

@@ -250,8 +250,7 @@ export class AllowDragAndDropTemplate extends SampleBase<{}, {}> {
                 </div>
                 <div id='description'>
                     <p>
-                    In this demo, the Query Builder includes a drag-and-drop feature that allows you to move rules or groups to different positions. You can enable or disable this feature using the <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/api/query-builder/#allowdraganddrop'>
-                    allowDragAndDrop</a> property. 
+                    In this demo, the Query Builder includes a drag-and-drop feature that allows you to move rules or groups to different positions. You can enable or disable this feature using the 'allowDragAndDrop' property. 
                     </p>
                     <p>
                         More information about Query Builder can be found in this 

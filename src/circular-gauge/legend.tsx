@@ -16,7 +16,11 @@ const SAMPLE_CSS = `
     }
     .e-view.fluent2 #property .legendPadding, .e-view.fluent2-dark #property .legendPadding {
         padding-top: 0px; margin-left: 0px !important; margin-top: 3px; padding-left:0px !important;
-    }`;
+    }
+    .e-view.fluent2-highcontrast #property .legendPadding {
+        margin-left: -8px !important;
+    }
+    `;
 
 export class Circle extends SampleBase<{}, {}> {
 
@@ -68,7 +72,7 @@ export class Circle extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5')) as GaugeTheme;
         // custom code end
     }
 

@@ -127,15 +127,15 @@ const Api = () => {
                     In this sample, default chip is rendered with minimal configuration.
                 </p>
                 <p>
-                    This sample can be customized further with the combination of Chip properties from the property pane. For
+                    This sample can be customized further with the combination of Chip properties from the property
+                    pane. For
                     example,
                 </p>
                 <ul>
-                    <li>Color variant can be changed by selecting the color dropdownlist from property pane.</li>
-                    <li>Leading and Trailing icons can be enabled by selecting Leading or Trailing Icon checkbox from property
-                        pane.</li>
-                    <li>Leading icon can be customized with avatar initials, icons and images from property pane</li>
-                    <li>Outline chip type can be enabled by checking outline checkbox from property pane.</li>
+                    <li>Color variant can be changed by selecting the color dropdownlist from property pane. This can be achieved by using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chips/#cssclass">CssClass</a> property.</li>
+                    <li><a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chips/#leadingiconcss">Leading</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chips/#trailingiconcss">Trailing</a> icons can be enabled by selecting Leading or Trailing Icon checkbox from property pane.</li>
+                    <li><a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chips/#leadingiconcss">Leading</a> icon can be customized with avatar initials, icons and images from property pane</li>
+                    <li>Outline chip type can be enabled by checking outline checkbox from property pane. This can be achieved by using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chips/#cssclass">CssClass</a> property.</li>
                 </ul>
             </div>
         </div>

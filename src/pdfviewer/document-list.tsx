@@ -77,7 +77,7 @@ export class DocumentList extends SampleBase<{}, { hideDialog: boolean }> {
         isReadOnly: true,
       };
       viewerContainer.contextMenuOption = "None";
-      viewerContainer.annotationSettings = { isLock: true };
+      viewerContainer.annotationSettings = { isLock: true , author: 'Guest' };
       viewerContainer.enableStickyNotesAnnotation = false;
       viewerContainer.toolbar.showAnnotationToolbar(false);
       viewerContainer.isFormDesignerToolbarVisible = false;
@@ -113,7 +113,7 @@ export class DocumentList extends SampleBase<{}, { hideDialog: boolean }> {
       };
 
       viewerContainer.contextMenuOption = "Block";
-      viewerContainer.annotationSettings = { isLock: false };
+      viewerContainer.annotationSettings = { isLock: false , author: 'Guest' };
       viewerContainer.enableStickyNotesAnnotation = true;
       viewerContainer.toolbarSettings = {
         showTooltip: true, toolbarItems: ['OpenOption', 'UndoRedoTool', 'PageNavigationTool',

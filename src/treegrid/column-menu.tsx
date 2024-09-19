@@ -13,7 +13,7 @@ export class TreeGridColumnMenu extends SampleBase<{}, {}> {
         <div className='control-section'>
           <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' height='350' allowPaging={true}
                 pageSettings={{ pageSize: 10 }} allowSorting={true} allowFiltering={true} showColumnMenu={true}
-                filterSettings={{ type:'Menu'}} allowResizing={true} >
+                filterSettings={{ type:'Menu'}} >
             <ColumnsDirective>
               <ColumnDirective field='taskID' headerText='Task ID' width='100' textAlign='Right'></ColumnDirective>
               <ColumnDirective field='taskName' headerText='Task Name' width='150'></ColumnDirective>

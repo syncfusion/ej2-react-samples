@@ -77,7 +77,7 @@ const ResourceView = () => {
         <p>This sample explains the Resource break down view in the Gantt chart that is
           how to visualize the list of tasks assigned to each resource in hierarchy manner and switch the resources as per users need by task
           editing mode.If the no resources are mapped in a task, then it will come under “unassigned Tasks” category.
-          This feature can be enabled by setting the <code>viewType</code> property to “ResourceView”.</p>
+          This feature can be enabled by setting the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#viewtype">viewType</a> property to “ResourceView”.</p>
         <p>When a resource is assigned with two or more tasks which is scheduleduling on a same date is termed as over allocation for a resource.
           The number of over allocation dates ranges are highlighted as with square bracket. The following sample demonstrates the over allocation for a resource.
           In this sample, over allocation can be hidden by using the CSS ‘visibility’ property on custom toolbar item action.
@@ -85,9 +85,9 @@ const ResourceView = () => {
       </div>
       <div id="description">
         <p>
-          In this example, you can see the resource break down from a bulk of tasks done by mapping the predefined resource ID-s to each task and resource information can be shown by using the <code>labelSetting</code> property.
+          In this example, you can see the resource break down from a bulk of tasks done by mapping the predefined resource ID-s to each task and resource information can be shown by using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#labelsettings">labelSetting</a> property.
           Using the toolbar action, you can perform CRUD operation for resource allocation based on their availability and task complexity.</p>
-        <p>The resources and tasks assigned to those resources can be grouped into categories. Resources can be mapped using the <code>resourceFields:-</code>.</p>
+        <p>The resources and tasks assigned to those resources can be grouped into categories. Resources can be mapped using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#resourcefields">resourceFields:</a>.</p>
         <p><code>ID</code>: To map resource ID.</p>
         <p><code>Name</code>: To map resource name.</p>
         <p><code>Unit</code>: To map resource unit.</p>

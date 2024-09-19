@@ -5,10 +5,8 @@ import {
   NodeConstraints,
   SnapConstraints,
   NodeModel,
-  ConnectorModel,
   BasicShapeModel,
   Node,
-  Connector,
   Diagram,
   DiagramTools,
   Inject,
@@ -40,15 +38,7 @@ function Radial() {
   function rendereComplete() {
     diagramInstance.fitToPage();
   }
-  function nodeDefaults(obj: Node): Node {
-    return obj;
-  }
-
-  function connectorDefaults(obj: Connector): Connector {
-    obj.type = "Straight";
-    return obj;
-  }
-  //based on the option, Click event to perform ZoomIn,ZoomOut and Reset.
+ // Perform ZoomIn, ZoomOut, or Reset based on the selected option.
   function onItemClick(args: ClickEventArgs): void {
     switch (args.item.text) {
       case "Zoom In":
@@ -66,7 +56,7 @@ function Radial() {
     }
   }
   return (
-    <div className="control-panel">
+    <div className="control-panel diagram-radialtree">
       <div className="control-section">
         <div className="content-wrapper" style={{ width: "100%" }}>
           {/* create and add ZoomIn,ZoomOut and Reset options in ToolBar. */}
@@ -106,7 +96,8 @@ function Radial() {
               //sets the fields to bind
               id: "Id",
               parentId: "ReportingPerson",
-              dataSource: new DataManager(radialTree as JSON[]), //binds the data with the nodes
+              dataSource: new DataManager(radialTree as JSON[]),
+               //binds the data to the nodes
               doBinding: (
                 nodeModel: NodeModel,
                 data: DataInfo,
@@ -122,8 +113,7 @@ function Radial() {
                   }
                 ];
                 nodeModel.constraints =
-                  (NodeConstraints.Default &
-                    ~NodeConstraints.InheritTooltip) |
+                  (NodeConstraints.Default) |
                   NodeConstraints.Tooltip;
                 nodeModel.tooltip = {
                   content: data.Name + "<br/>" + data.Designation,
@@ -149,23 +139,14 @@ function Radial() {
                 }
               }
             }} //Disables all interactions except zoom/pan
-            tool={DiagramTools.ZoomPan} //Configures automatic layout
+            tool={DiagramTools.ZoomPan} 
+            //Configures automatic layout
             layout={{
               type: "RadialTree",
               verticalSpacing: 30,
               horizontalSpacing: 20,
               root: "Category"
-            }} //Defines the default node and connector properties
-            getNodeDefaults={(obj: Node, diagram: Diagram) => {
-              return obj;
-            }}
-            getConnectorDefaults={(
-              connector: ConnectorModel,
-              diagram: Diagram
-            ) => {
-              connector.type = "Straight";
-              return connector;
-            }}
+            }} 
           >
             <Inject services={[DataBinding, RadialTree]} />
           </DiagramComponent>

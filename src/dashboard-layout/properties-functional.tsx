@@ -49,13 +49,11 @@ const Properties = () => {
         }
     }    
 
-    // custom code start
     const onCreate = (): void => {
         if (document.querySelector('.container-fluid.custom')) {
             document.querySelector('.container-fluid').classList.remove('custom')
         }
     }
-    // custom code end
 
     return (
         <div>

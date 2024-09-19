@@ -77,7 +77,7 @@ const GridLines = () => {
                 <td style={{ width: '100%' }}>
                   <div>
                     <DropDownListComponent id='gridLines' dataSource={linesData} fields={{ text: 'type', value: 'id' }}
-                      value='Both' width={120} change={changeLine.bind(this)}></DropDownListComponent>
+                      value='Both' change={changeLine.bind(this)}></DropDownListComponent>
                   </div>
                 </td>
               </tr>
@@ -91,7 +91,7 @@ const GridLines = () => {
       </div>
 
       <div id="description">
-        <p>The <code>gridLines</code> property is used to control the visibility of line that separates the rows and columns.
+        <p>The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#gridlines">gridLines</a> property is used to control the visibility of line that separates the rows and columns.
           Gantt allows us to display the following grid lines:</p>
         <ul>
           <li><code>None</code> - Shows no line.</li>

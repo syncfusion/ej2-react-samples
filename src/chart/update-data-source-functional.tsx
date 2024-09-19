@@ -4,7 +4,7 @@
 import * as React from "react";
 import { useEffect, useState} from 'react';
 import * as ReactDOM from "react-dom";
-import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ChartTheme, Category, ColumnSeries, ILoadedEventArgs, Series, DataLabel, IPointRenderEventArgs, IAxisRangeCalculatedEventArgs } from '@syncfusion/ej2-react-charts';
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ChartTheme, Category, ColumnSeries, ILoadedEventArgs, Series, DataLabel, IPointRenderEventArgs, IAxisRangeCalculatedEventArgs, MarkerSettingsModel } from '@syncfusion/ej2-react-charts';
 import { EmitType } from '@syncfusion/ej2-base';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
@@ -21,7 +21,7 @@ const data3: Object[] = [
     { x: 'Office Supplies', y: 68 },
     { x: 'Food', y: 45 }
 ];
-import { fabricColors, materialColors, bootstrapColors, highContrastColors, fluent2Colors, fluent2DarkColors } from './theme-color';
+import { fabricColors, materialColors, bootstrapColors, highContrastColors, fluent2Colors, fluent2HighContrastColors } from './theme-color';
 
 export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEventArgs): void => {
     let selectedTheme: string = location.hash.split('/')[1];
@@ -34,10 +34,9 @@ export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEve
         args.fill = highContrastColors[args.point.index % 10];
     } else if (selectedTheme === 'fluent2') {
         args.fill = fluent2Colors[args.point.index % 10];
-    } else if (selectedTheme === 'fluent2-highcontrast') {
-    } else if (selectedTheme === 'fluent2-dark') {
-        args.fill = fluent2DarkColors[args.point.index % 10];
-    }else {
+    } else if (selectedTheme === 'fluent2-highcontrast' || selectedTheme === 'fluent2-dark') {
+        args.fill = fluent2HighContrastColors[args.point.index % 10];
+    } else {
         args.fill = bootstrapColors[args.point.index % 10];
     }
 }; 
@@ -53,7 +52,7 @@ const UpdateDataSource = () => {
 
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
         clearIntervalFn();
         intervalId = setInterval(function () {
@@ -75,6 +74,7 @@ const UpdateDataSource = () => {
         }, 1500);
         if (intervalId) setIntervalId(intervalId);
     };
+    const marker:MarkerSettingsModel = {visible: false, dataLabel: {visible: true, position: 'Top', format: '{value}%', font: { color: '#ffffff' }}};
     const clearIntervalFn = () => {
         if (intervalId) {
             clearInterval(intervalId);
@@ -103,7 +103,7 @@ const UpdateDataSource = () => {
                     chartArea={{ border: { width: 0 } }} load={load.bind(this)} width={Browser.isDevice ? '100%' : '75%'} title='Sales by product' pointRender={pointRender} axisRangeCalculated={axisRangeCalculated.bind(this)} >
                     <Inject services={[ColumnSeries, DataLabel, Category]} />
                     <SeriesCollectionDirective >
-                        <SeriesDirective dataSource={data3} xName='x' yName='y' type='Column' cornerRadius={{ topLeft: Browser.isDevice ? 10 : 15, topRight: Browser.isDevice ? 10 : 15 }} columnWidth={0.5}>
+                        <SeriesDirective dataSource={data3} xName='x' yName='y' type='Column' cornerRadius={{ topLeft: Browser.isDevice ? 10 : 15, topRight: Browser.isDevice ? 10 : 15 }} columnWidth={0.5} marker={marker}>
                         </SeriesDirective>
                     </SeriesCollectionDirective>
                 </ChartComponent>

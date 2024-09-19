@@ -5,6 +5,8 @@ import { orderDetails } from './data';
 import { SampleBase } from '../common/sample-base';
 
 export class Source extends SampleBase<{}, {}> {
+    public grid: GridComponent | null;
+    public destGrid: GridComponent | null;
     public filterSettings: FilterSettingsModel = {type: 'Excel'};
     public toolbar: ToolbarItems[] = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
     public editSettings: EditSettingsModel = { allowEditing: true, allowAdding: true, allowDeleting: true };
@@ -12,10 +14,20 @@ export class Source extends SampleBase<{}, {}> {
     public orderidRules: Object = { required: true, number: true };
     public freightRules: Object = { required: true, min: 0 };
     public data: Object[] = orderDetails;
+    public destData: Object[] = [];
     public rowDropSettings: Object = { targetID: 'DestGrid' };
     public srcSelectionSettings: Object = { type: 'Multiple' };
     public destSelectionSettings: Object = { type: 'Multiple' };
     public rowDropSettings2: Object = { targetID: 'Grid' };
+    public rowDragStart = () => {
+        if (this.destGrid.isEdit) {
+            if (this.destGrid.editModule.formObj.validate()) {
+                this.destGrid.endEdit();
+            } else {
+                this.destGrid.closeEdit();
+            }
+        }
+    }
     render() {
         return (
             <div className='control-pane'>
@@ -23,7 +35,7 @@ export class Source extends SampleBase<{}, {}> {
                     <p>Drag and Drop Rows between two Grids</p>
                     <div style={{ display: 'inline-block' }}>
                         <div style={{ float: 'left', width: '49%' }}>
-                            <GridComponent id="Grid" dataSource={this.data} allowPaging={true} pageSettings={{ pageCount: 1 }} allowSorting={true} editSettings={this.editSettings} allowFiltering={true} filterSettings={this.filterSettings} toolbar={this.toolbar} allowRowDragAndDrop={true} rowDropSettings={this.rowDropSettings} selectionSettings={this.srcSelectionSettings}>
+                            <GridComponent ref={(g) => {this.grid = g;}} id="Grid" dataSource={this.data} allowPaging={true} pageSettings={{ pageCount: 1 }} allowSorting={true} editSettings={this.editSettings} allowFiltering={true} filterSettings={this.filterSettings} toolbar={this.toolbar} allowRowDragAndDrop={true} rowDropSettings={this.rowDropSettings} selectionSettings={this.srcSelectionSettings}>
                                 <ColumnsDirective>
                                 <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={this.orderidRules} isPrimaryKey={true}></ColumnDirective>
                                 <ColumnDirective field='CustomerName' headerText='Customer Name' width='130' validationRules={this.customeridRule}></ColumnDirective>
@@ -33,7 +45,7 @@ export class Source extends SampleBase<{}, {}> {
                             </GridComponent>
                         </div>
                         <div style={{ float: 'right', width: '49%' }}>
-                            <GridComponent id="DestGrid" allowPaging={true} pageSettings={{ pageCount: 2 }} allowSorting={true} editSettings={this.editSettings} allowFiltering={true} filterSettings={this.filterSettings} toolbar={this.toolbar} allowRowDragAndDrop={true} rowDropSettings={this.rowDropSettings2} selectionSettings={this.destSelectionSettings}>
+                            <GridComponent ref={(g) => {this.destGrid = g;}} dataSource={this.destData} id="DestGrid" allowPaging={true} pageSettings={{ pageCount: 2 }} allowSorting={true} editSettings={this.editSettings} allowFiltering={true} filterSettings={this.filterSettings} toolbar={this.toolbar} allowRowDragAndDrop={true} rowDropSettings={this.rowDropSettings2} selectionSettings={this.destSelectionSettings}>
                                 <ColumnsDirective>
                                 <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={this.orderidRules} isPrimaryKey={true}></ColumnDirective>
                                 <ColumnDirective field='CustomerName' headerText='Customer Name' width='130' validationRules={this.customeridRule}></ColumnDirective>

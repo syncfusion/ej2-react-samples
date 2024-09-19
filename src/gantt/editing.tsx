@@ -5,6 +5,7 @@ import { editingData, editingResources } from './data';
 import { SampleBase } from '../common/sample-base';
 
 export class Editing extends SampleBase<{}, {}> {
+  public startDate :any;
   public taskFields: any = {
     id: 'TaskID',
     name: 'TaskName',
@@ -48,6 +49,25 @@ export class Editing extends SampleBase<{}, {}> {
     leftLabel: 'TaskName',
     rightLabel: 'resources'
   };
+  public customFn(args) {
+    var endDate;
+    var gantt = (document.getElementsByClassName('e-gantt')[0] as any).ej2_instances[0];
+        if (args.element && args.value) {
+            endDate = new Date(args.value);
+            if (!this.startDate && gantt.editModule.dialogModule['beforeOpenArgs']) {
+                this.startDate = gantt.editModule.dialogModule['beforeOpenArgs'].rowData['ganttProperties'].startDate;
+                endDate = (gantt.editModule.dialogModule['beforeOpenArgs'].rowData['ganttProperties'].endDate);
+            }
+            this.startDate.setHours(0, 0, 0, 0);
+            endDate.setHours(0, 0, 0, 0);
+        }
+    return this.startDate <= endDate;
+  }
+  public actionbeing(args) {
+    if (args.columnName === "EndDate") {
+      this.startDate = args.rowData.ganttProperties.startDate;
+    }
+  }
   public eventMarkerDay1: Date = new Date('4/17/2024');
   public eventMarkerDay2: Date = new Date('5/3/2024');
   public eventMarkerDay3: Date = new Date('6/7/2024');
@@ -60,13 +80,14 @@ export class Editing extends SampleBase<{}, {}> {
             treeColumnIndex={1} allowSelection={true} showColumnMenu={false} highlightWeekends={true}
             projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}
             taskFields={this.taskFields} timelineSettings={this.timelineSettings} labelSettings={this.labelSettings} splitterSettings={this.splitterSettings}
-            height='410px' editSettings={this.editSettings} gridLines={this.gridLines} toolbar={this.toolbar} resourceFields={this.resourceFields} resources={editingResources}>
+            height='410px' editSettings={this.editSettings} gridLines={this.gridLines} toolbar={this.toolbar} resourceFields={this.resourceFields} resources={editingResources} actionBegin={this.actionbeing}>
             <ColumnsDirective>
               <ColumnDirective field='TaskID' width='80' ></ColumnDirective>
-              <ColumnDirective field='TaskName' headerText='Job Name' width='250' clipMode='EllipsisWithTooltip'></ColumnDirective>
+              <ColumnDirective field='TaskName' headerText='Job Name' width='250' clipMode='EllipsisWithTooltip' validationRules={{ required: true, minLength: [5, 'Task name should have a minimum length of 5 characters'], }}></ColumnDirective>
               <ColumnDirective field='StartDate'></ColumnDirective>
-              <ColumnDirective field='Duration'></ColumnDirective>
-              <ColumnDirective field='Progress'></ColumnDirective>
+              <ColumnDirective field='EndDate' validationRules={{ date: true, required: [this.customFn, 'Please enter a value greater than the start date.'] }}></ColumnDirective>
+              <ColumnDirective field='Duration' validationRules={{ required: true}}></ColumnDirective>
+              <ColumnDirective field='Progress' validationRules={{ required: true, min: 0, max: 100 }}></ColumnDirective>
               <ColumnDirective field='Predecessor'></ColumnDirective>
             </ColumnsDirective>
             <EditDialogFieldsDirective>
@@ -104,9 +125,9 @@ export class Editing extends SampleBase<{}, {}> {
 
         <div id="description">
           <p>
-            This CRUD operations can be configured in Gantt chart using <code>editSettings</code> and
-        <code>allowTaskbarEditing</code>. Gantt chart
-                has two modes to manipulate the datasource
+          This CRUD operations can be configured in Gantt chart using <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#editsettings">editSettings</a> and
+          <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#allowtaskbardraganddrop">allowTaskbarEditing</a>. Gantt chart
+          has two modes to manipulate the datasource
             <li><code>Auto</code></li>
             <li><code>Dialog</code></li>
             In this demo, <code>Auto</code> mode is enabled for editing. On the TreeGrid side, you can start editing any row
@@ -115,6 +136,8 @@ export class Editing extends SampleBase<{}, {}> {
             state. On the chart side, you can edit the tasks using edit dialog by double clicking on the taskbars and you
             can edit the dependency connector lines using drag and drop action with connector line points available on the
             either side of taskbar.
+            <br></br>
+            In this sample <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/columnModel/#validationrules">column.validation</a> has been enabled for the columns. It uses the Form Validator control and the column validation property to define validation rules to display error messages for invalid value entries.
           </p>
           <p>
             Gantt component features are segregated into individual feature-wise modules. To use editing feature, inject the

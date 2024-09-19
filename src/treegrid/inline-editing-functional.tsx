@@ -12,7 +12,7 @@ const SAMPLE_CSS = `
 .fluent2-dark,
 .fluent2-highcontrast {
     #columnddl .e-input-group {
-        width: 130px !important;
+        width: 140px !important;
     }
 }`;
 
@@ -144,7 +144,7 @@ const Editing = () => {
                   <td style={{ width: "70%" }}>
                     <div id="columnddl">
                       <DropDownListComponent
-                        width="125px"
+                        width="140px"
                         id="selmode"
                         change={change.bind(this)}
                         dataSource={editing}

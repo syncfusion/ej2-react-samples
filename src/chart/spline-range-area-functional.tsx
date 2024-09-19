@@ -23,7 +23,7 @@ const SplineRangeArea = () => {
     };
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     
@@ -53,7 +53,6 @@ const SplineRangeArea = () => {
                 <p>
                     The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/tooltip/" aria-label="Navigate to the documentation for Tooltip in React Chart component">tooltip</a> is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
                 </p>
-                <br></br>
                 <p><b>Injecting Module:</b></p>
                 <p>
                     Chart component features are segregated into individual feature-wise modules. To use spline range area series, we need to inject <code>SplineRangeAreaSeries</code> module into <code>services</code>.

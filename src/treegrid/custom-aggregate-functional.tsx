@@ -19,6 +19,14 @@ const SAMPLE_CSS = `
 
   .e-summarycell.e-templatecell {
     pointer-events:visible !important;
+  }
+  
+  .e-treegrid .e-summarycell.e-templatecell .e-input-group {
+    width: 160px !important;
+  }
+  
+  .e-treegrid .e-summarycell.e-templatecell .e-input-group input.e-control.e-dropdownlist.e-lib.e-input {
+    padding-left: 6px !important;
   }`;
 {/* custom code end */ }
 const CustomAggregate = () => {

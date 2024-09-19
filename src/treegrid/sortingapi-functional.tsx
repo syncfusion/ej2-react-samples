@@ -98,7 +98,7 @@ const SortingAPI = () => {
                   <td style={{ width: "80%", paddingRight: "10px" }}>
                     <div>
                       <DropDownListComponent
-                        width="120px"
+                        width="140px"
                         id="columns"
                         ref={columnName}
                         dataSource={columnsName}
@@ -115,7 +115,7 @@ const SortingAPI = () => {
                   <td style={{ width: "80%", paddingRight: "10px" }}>
                     <div>
                       <DropDownListComponent
-                        width="120px"
+                        width="140px"
                         id="direction"
                         ref={sortDirection}
                         dataSource={direction}
@@ -126,7 +126,7 @@ const SortingAPI = () => {
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ width: "30%" }}>
+                  <td style={{ width: '30%', paddingTop: '10px' }}>
                     <div>
                       <ButtonComponent onClick={btnClick.bind(this)}>
                         {" "}

@@ -13,18 +13,19 @@ const Keyboard = () => {
     useEffect(() => {
         updateSampleSection();
     }, []);
-    const fields: object = { text: 'OrderID', value: 'CustomerID' };
+    const fields: object = { text: 'Author', value: 'Title' };
     return(
         <div className='control-pane'>
             <div className="control-section">
                 <div className='control-wrapper keyboard-multicolumn'>
                     <div style={{ paddingTop: '60px' }}>
-                        <MultiColumnComboBoxComponent type="text" dataSource={(data as any).orderDetails} fields={fields} placeholder='Select an order ID' popupHeight={'230px'}>
+                        <MultiColumnComboBoxComponent type="text" dataSource={(data as any).bookDetails} fields={fields} placeholder='Select an Author' popupHeight={'230px'}>
                             <ColumnsDirective>
-                                <ColumnDirective field='OrderID' header='Order ID' width={110}></ColumnDirective>
-                                <ColumnDirective field='CustomerID' header='Customer ID' width={130}></ColumnDirective>
-                                <ColumnDirective field='Freight' header='Freight' width={90}></ColumnDirective>
-                                <ColumnDirective field='ShipCountry' header='Ship Country' width={140}></ColumnDirective>
+                                <ColumnDirective field='Title' header='Title' width={180}></ColumnDirective>
+                                <ColumnDirective field='Author' header='Author' width={150}></ColumnDirective>
+                                <ColumnDirective field='Genre' header='Genre' width={100}></ColumnDirective>
+                                <ColumnDirective field='PublishedYear' header='Published Year' width={120}></ColumnDirective>
+                                <ColumnDirective field='Price' header='Price' width={80}></ColumnDirective>
                             </ColumnsDirective>
                         </MultiColumnComboBoxComponent>
                     </div>

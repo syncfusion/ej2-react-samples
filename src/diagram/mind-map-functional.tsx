@@ -1,9 +1,12 @@
+// Importing necessary modules from React, ReactDOM, and Syncfusion Diagram library
 import * as ReactDOM from "react-dom";
 import * as React from "react";
 import {
+  // Syncfusion Diagram components and utilities
   MindMap as MindMapModule,
   HierarchicalTree,
   ConnectorConstraints,
+  DiagramConstraints,
   ToolBase,
   MouseEventArgs,
   randomId,
@@ -30,17 +33,20 @@ import {
   VerticalAlignment,
   TextModel
 } from "@syncfusion/ej2-react-diagrams";
+
+// Importing base components and data management utilities
 import { updateSampleSection } from "../common/sample-base";
 import { DataManager, Query } from "@syncfusion/ej2-data";
 import { mindMap } from './diagram-data';
 
+// Initialize data manager with mindMap data and query
 let items: DataManager = new DataManager(
   mindMap as JSON[],
   new Query().take(7)
 );
 
 let diagramInstance: Diagram;
-
+// React component for MindMap
 function MindMap() {
   React.useEffect(() => {
     updateSampleSection();
@@ -67,6 +73,8 @@ function MindMap() {
     ];
     return port;
   }
+
+  // Function to add a new node
   function addNode(): NodeModel {
     let obj: NodeModel = {};
     obj.id = randomId();
@@ -75,6 +83,7 @@ function MindMap() {
     return obj;
   }
 
+  // Function to add a connector
   function addConnector(source: NodeModel, target: NodeModel): ConnectorModel {
     let connector: ConnectorModel = {};
     connector.id = randomId();
@@ -82,7 +91,7 @@ function MindMap() {
     connector.targetID = target.id;
     return connector;
   }
-  //Tool for Userhandles.
+  // Function to get custom tool based on action (leftHandle, rightHandle, delete)
   function getTool(action: string): ToolBase {
     let tool: ToolBase;
     if (action === "leftHandle") {
@@ -95,6 +104,7 @@ function MindMap() {
     return tool;
   }
 
+  // Custom tool class for left extension tool
   class LeftExtendTool extends ToolBase {
     public mouseDown(args: MouseEventArgs): void {
       super.mouseDown(args);
@@ -121,6 +131,7 @@ function MindMap() {
     }
   }
 
+  // Custom tool class for right extension tool
   class RightExtendTool extends ToolBase {
     //mouseDown event
     public mouseDown(args: MouseEventArgs): void {
@@ -148,6 +159,8 @@ function MindMap() {
       }
     }
   }
+
+  // Custom tool class for delete tool
   class DeleteClick extends ToolBase {
     //mouseDown event
     public mouseDown(args: MouseEventArgs): void {
@@ -167,7 +180,7 @@ function MindMap() {
         }
       }
     }
-    //Remove the subchild Elements
+    //Function to Remove the subchild Elements
     private removeSubChild(node: Node): void {
       for (let i: number = node.outEdges.length - 1; i >= 0; i--) {
         let connector: Connector = diagramInstance.getObject(
@@ -185,7 +198,7 @@ function MindMap() {
       diagramInstance.remove(node);
     }
   }
-  //hide the require userhandle.
+  //Function to hide the require userhandle.
   function hideUserHandle(name: string): void {
     for (let handle of diagramInstance.selectedItems.userHandles) {
       if (handle.name === name) {
@@ -193,6 +206,7 @@ function MindMap() {
       }
     }
   }
+  // Definition of left arrow path,right arrow path,delete icon path for user handle
   let leftarrow: string =
     "M11.924,6.202 L4.633,6.202 L4.633,9.266 L0,4.633 L4.632,0 L4.632,3.551 L11.923,3.551 L11.923,6.202Z";
   let rightarrow: string =
@@ -202,6 +216,7 @@ function MindMap() {
     "96.74 C 85.97 98.91 82.55 100 78.52 100 L 21.48 100 C 17.45 100 14.03 98.91 11.24 96.74 C 8.45 94.58 7.04" +
     "91.92 7.04 88.8 z M 32.22 0 L 67.78 0 L 75.17 5.47 L 100 5.47 L 100 16.67 L 0 16.67 L 0 5.47 L 24.83 5.47 z";
 
+  // Definition of user handles with their respective properties
   let leftuserhandle: UserHandleModel = setUserHandle(
     //it is in dedicated line here.
     "leftHandle",
@@ -244,8 +259,8 @@ function MindMap() {
     side: Side,
     offset: number,
     margin: MarginModel,
-    halignment: HorizontalAlignment,
-    valignment: VerticalAlignment
+    HorizontalAlignment: HorizontalAlignment,
+    verticalAlignment: VerticalAlignment
   ): UserHandleModel {
     let userhandle: UserHandleModel = {
       name: name,
@@ -255,20 +270,21 @@ function MindMap() {
       side: side,
       offset: offset,
       margin: margin,
-      horizontalAlignment: halignment,
-      verticalAlignment: valignment
+      horizontalAlignment: HorizontalAlignment,
+      verticalAlignment: verticalAlignment
     };
     return userhandle;
   }
 
+  // Function to handle text edit value and add a new node and connector
   function getTextEditValue(selectObject:any, node:any){
     let connector:any = addConnector(selectObject, node);
     diagramInstance.clearSelection();
-   var nd = diagramInstance.add(node);
+   var newNode = diagramInstance.add(node);
    diagramInstance.add(connector);
    diagramInstance.doLayout();
-   diagramInstance.bringIntoView(nd.wrapper.bounds);
-   diagramInstance.select([diagramInstance.nameTable[nd.id]]);
+   diagramInstance.bringIntoView(newNode.wrapper.bounds);
+   diagramInstance.select([diagramInstance.nameTable[newNode.id]]);
    diagramInstance.startTextEdit(diagramInstance.selectedItems.nodes[0]);
   }
   //Change the Position of the UserHandle.
@@ -295,20 +311,20 @@ function MindMap() {
       }
     }
   }
-  //set the value for UserHandle element.
+  //function to set the value for UserHandle element.
   function applyHandle( //it is in dedicated line here.
     handle: UserHandleModel,
     side: Side,
     offset: number,
     margin: MarginModel,
-    halignment: HorizontalAlignment,
-    valignment: VerticalAlignment
+    HorizontalAlignment: HorizontalAlignment,
+    verticalAlignment: VerticalAlignment
   ): void {
     handle.side = side;
     handle.offset = offset;
     handle.margin = margin;
-    handle.horizontalAlignment = halignment;
-    handle.verticalAlignment = valignment;
+    handle.horizontalAlignment = HorizontalAlignment;
+    handle.verticalAlignment = verticalAlignment;
   }
   return (
     <div className="control-pane">
@@ -320,6 +336,9 @@ function MindMap() {
             style={{ width: "74%", height: "550px", float: "left" }}
             width={"100%"}
             height={"550px"}
+            constraints={
+              DiagramConstraints.Default & ~DiagramConstraints.UndoRedo
+            }
             snapSettings={{ constraints: SnapConstraints.None }}
             tool={DiagramTools.SingleSelect}
             layout={{
@@ -521,6 +540,8 @@ function MindMap() {
     </div>
   );
 }
+
+// Interface for defining employee information
 export interface EmployeeInfo {
   branch: string;
   color: string;

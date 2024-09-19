@@ -21,6 +21,7 @@ function DocumentList () {
   const gridInstance = useRef<GridComponent>(null);
   const [isDialogOpen, setDialogOpen] = useState(false);
   const [isGridOpen, setGridOpen] = useState(true);
+  let mode:any;
   const commands:any=[{type:'View',buttonOption:{cssClass:'e-icons e-eye e-flat',title:'View'}},
   {type:'Edit',buttonOption:{cssClass:'e-icons e-edit e-flat',title:'Edit'}}];
 
@@ -29,6 +30,7 @@ function DocumentList () {
     viewer.documentPath=args.rowData.Url;
     dialogInstance.current.header=args.rowData.FileName;
     if(args.commandColumn.buttonOption.title=='View'){
+      mode = 'View';
       setDialogOpen(true);
       setGridOpen(false);
 
@@ -57,7 +59,7 @@ function DocumentList () {
           isReadOnly:true,
       };
 
-      viewer.annotationSettings = { isLock: true };
+      viewer.annotationSettings = { isLock: true , author: 'Guest' };
       viewer.enableStickyNotesAnnotation = false;
       viewer.toolbar.showAnnotationToolbar(false);
       viewer.isFormDesignerToolbarVisible = false;
@@ -70,7 +72,7 @@ function DocumentList () {
   else{
     setDialogOpen(true);
     setGridOpen(false);
-
+    mode = 'Edit';
     viewer.textFieldSettings = {
       isReadOnly: false,
     };
@@ -96,7 +98,7 @@ function DocumentList () {
         isReadOnly:false,
     };
 
-    viewer.annotationSettings = { isLock: false };
+    viewer.annotationSettings = { isLock: false , author: 'Guest'};
     viewer.enableStickyNotesAnnotation = true;
     viewer.contextMenuOption = "Block";
     viewer.toolbarSettings = {
@@ -129,6 +131,15 @@ function destroyed (): void{
 
   function dialogOpen (): void {
     setDialogOpen(true);    
+  }
+
+  function documentLoaded() {
+    if(mode == 'View'){
+      viewer.enablePageOrganizer = false;
+    }
+    else {
+      viewer.enablePageOrganizer = true;
+    }
   }
 
   function change(args : any): void {
@@ -179,7 +190,7 @@ function destroyed (): void{
         
           <DialogComponent id="defaultDialog" showCloseIcon={true} ref={dialogInstance} visible={isDialogOpen} minHeight={'90%'} width={'90%'} height={'90%'} isModal={true} open={dialogOpen} close={dialogClose}>
           <div className='control-section'>
-            <PdfViewerComponent ref={(scope) => { viewer = scope; }} style={{ 'height': '735px' }} id="container" resourceUrl="https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib" >
+            <PdfViewerComponent ref={(scope) => { viewer = scope; }} style={{ 'height': '735px' }} id="container" documentLoad={documentLoaded} resourceUrl="https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib" >
               <Inject services={[Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner, PageOrganizer]} />
             </PdfViewerComponent>
           </div>

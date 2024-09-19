@@ -20,6 +20,10 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the dashed line series.'
     },
     {
+        'path': 'chart/custom-animation', 'component': 'CustomAnimation', 'name': 'Custom Animation', 'order': '02', 'category': 'Line Charts','type' : 'new',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the inversed spline series.'
+    },
+    {
         'path': 'chart/spline-inversed', 'component': 'SplineInversed', 'name': 'Inversed Spline', 'order': '02', 'category': 'Line Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the inversed spline series.'
     },
@@ -50,6 +54,10 @@ export const ChartSampleOrder: Object = [
     {
         'path': 'chart/steparea', 'component': 'StepArea', 'name': 'Step Area', 'order': '03', 'category': 'Area Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the step area series.'
+    },
+    {
+        'path': 'chart/step-line-without-riser', 'component': 'StepLineWithoutRiser', 'name': 'Step Without Riser', 'order': '03', 'category': 'Area Charts', 'type': 'new',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the step area without vertical risers..'
     },
     {
         'path': 'chart/rangesteparea', 'component': 'RangeStepArea', 'name': 'Range Step Area', 'order': '03', 'category': 'Area Charts',
@@ -204,8 +212,24 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the empty points.'
     },
     {
+        'path': 'chart/pie-rounded-corner', 'component': 'PieCornerRadius', 'name': 'Rounded Corner', 'order': '07', 'category': 'Accumulation Charts','type': 'new',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the empty points.'
+    },
+    {
+        'path': 'chart/pie-with-pattern', 'component': 'PieWithPattern', 'name': 'Pie With Patterns', 'order': '07', 'category': 'Accumulation Charts','type': 'new',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the pie chart with patterns.'
+    },
+    {
+        'path': 'chart/update-pie-data-source', 'component': 'PieChartWithDynamicData', 'name': 'Live Update', 'order': '07', 'category': 'Accumulation Charts','type': 'new',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the pie chart with patterns.'
+    },
+    {
         'path': 'chart/waterfall', 'component': 'Waterfall', 'name': 'Waterfall', 'order': '08', 'category': 'Other Types',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the waterfall series.'
+    },
+    {
+        'path': 'chart/horizontal-waterfall', 'component': 'HorizontalWaterfall', 'name': 'Horizontal Waterfall', 'order': '08', 'category': 'Other Types','type': 'new',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the Horizontal waterfall series.'
     },
     {
         'path': 'chart/histogram', 'component': 'Histogram', 'name': 'Histogram', 'order': '08', 'category': 'Other Types',
@@ -277,19 +301,23 @@ export const ChartSampleOrder: Object = [
     },
     {
         'path': 'chart/update-spline', 'component': 'UpdateSpline', 'name': 'Spline updating each second', 'order': '11', 'category': 'Real-time Charts',
-        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the real time charts.', 'type': 'new'
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the real time charts.'
     },
     {
         'path': 'chart/live-stock-data', 'component': 'LiveStock', 'name': 'Live stock data', 'order': '11', 'category': 'Real-time Charts',
-        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the real time charts.', 'type': 'new'
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the real time charts.'
     },
     {
         'path': 'chart/update-data-source', 'component': 'UpdateDataSource', 'name': 'Update data source', 'order': '11', 'category': 'Real-time Charts',
-        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the real time charts.', 'type': 'new'
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the real time charts.'
     },
     {
         'path': 'chart/click-add-point', 'component': 'ClickAddPoint', 'name': 'Click to add a point', 'order': '11', 'category': 'Real-time Charts',
-        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the real time charts.', 'type': 'new'
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the real time charts.'
+    },
+    {
+        'path': 'chart/live-data-sorting', 'component': 'UpdateColumnDataSource', 'name': 'Live Data Sorting', 'order': '11', 'category': 'Real-time Charts','type': 'new',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the real time charts.'
     },
     {
         'path': 'chart/polar-line', 'component': 'PolarLine', 'name': 'Line', 'order': '12', 'category': 'Polar Radar',
@@ -456,7 +484,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates the trackball behavior in chart.'
     },
     {
-        'path': 'chart/zoom', 'component': 'Zooming', 'name': 'Zooming and Panning', 'order': '17', 'category': 'User Interaction',
+        'path': 'chart/zoom', 'component': 'Zooming', 'name': 'Zooming and Panning', 'order': '17', 'category': 'User Interaction','type': 'update',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates the zooming behavior in chart.'
     },
     {

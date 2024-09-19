@@ -35,7 +35,7 @@ export interface EmployeeInfo {
 
 const SAMPLE_CSS = `
 /* Property panel orientation and sub tree alignment */
-.image-pattern-style {
+.diagram-organization .image-pattern-style {
         background-color: white;
         background-size: contain;
         background-repeat: no-repeat;
@@ -47,56 +47,48 @@ const SAMPLE_CSS = `
         float: left;
     }
 
-    .image-pattern-style:hover {
+    .diagram-organization .image-pattern-style:hover {
         border-color: gray;
         border-width: 2px;
     }
 
-    .row {
+    .diagram-organization .row {
         margin-left: 0px;
         margin-right: 0px;
     }
 
-    .row-header {
+    .diagram-organization .row-header {
         font-size: 13px;
         font-weight: 500;
     }
 
-    .row-header1 {
-        font-size: 12px;
-        padding-left: 2px;
-        font-weight: 400;
-    }
-
-    .property-panel-header {
+    .diagram-organization .property-panel-header {
       padding-top: 15px;
       padding-bottom: 15px;
     }
 
-    .e-selected-orientation-style {
+    .diagram-organization .e-selected-orientation-style {
         border-color: #006CE6;
         border-width: 2px;
     }
 
-    .e-selected-pattern-style {
+    .diagram-organization .e-selected-pattern-style {
         border-color: #006CE6;
         border-width: 2px;
     }
 
-    .e-checkbox-wrapper .e-label {
-        font-size: 12px;
-    }
-
-    .diagram-control-pane .col-xs-6 {
+    .diagram-organization .col-xs-6 {
         padding-left: 0px;
         padding-right: 0px;
     }`;
 
 let diagramInstance: DiagramComponent;
-let hSpacing: NumericTextBoxComponent;
-let vSpacing: NumericTextBoxComponent;
-let orien: LayoutOrientation;
-let typ: SubTreeAlignments;
+let horizontalSpacing: NumericTextBoxComponent;
+let verticalSpacing: NumericTextBoxComponent;
+let orientation: LayoutOrientation;
+let type: SubTreeAlignments;
+let orientationInstance: HTMLElement;
+let patternInstance: HTMLElement;
 
 function OrganizationModel() {
   React.useEffect(() => {
@@ -105,7 +97,7 @@ function OrganizationModel() {
   }, [])
   function rendereComplete() {
     //Click Event for orientation of the PropertyPanel.
-    document.getElementById("orientation").onclick = (args: MouseEvent) => {
+    orientationInstance.onclick = (args: MouseEvent) => {
       let target: HTMLElement = args.target as HTMLElement;
       let selectedElement: HTMLCollection = document.getElementsByClassName(
         "e-selected-orientation-style"
@@ -144,7 +136,7 @@ function OrganizationModel() {
       }
     };
     //Click Event for pattern of the PropertyPanel.
-    document.getElementById("pattern").onclick = (args: MouseEvent) => {
+    patternInstance.onclick = (args: MouseEvent) => {
       let target: HTMLElement = args.target as HTMLElement;
       let selectedpatternElement: HTMLCollection = document.getElementsByClassName(
         "e-selected-pattern-style"
@@ -158,40 +150,40 @@ function OrganizationModel() {
       if (target.className === "image-pattern-style e-selected-pattern-style") {
         switch (target.id) {
           case "pattern1":
-            orien = "Vertical".toString() as LayoutOrientation;
-            typ = "Alternate" as SubTreeAlignments;
+            orientation = "Vertical".toString() as LayoutOrientation;
+            type = "Alternate" as SubTreeAlignments;
             break;
           case "pattern2":
-            orien = "Vertical".toString() as LayoutOrientation;
-            typ = "Left" as SubTreeAlignments;
+            orientation = "Vertical".toString() as LayoutOrientation;
+            type = "Left" as SubTreeAlignments;
             break;
           case "pattern3":
-            orien = "Vertical".toString() as LayoutOrientation;
-            typ = "Left" as SubTreeAlignments;
+            orientation = "Vertical".toString() as LayoutOrientation;
+            type = "Left" as SubTreeAlignments;
             break;
           case "pattern4":
-            orien = "Vertical".toString() as LayoutOrientation;
-            typ = "Right" as SubTreeAlignments;
+            orientation = "Vertical".toString() as LayoutOrientation;
+            type = "Right" as SubTreeAlignments;
             break;
           case "pattern5":
-            orien = "Vertical".toString() as LayoutOrientation;
-            typ = "Right" as SubTreeAlignments;
+            orientation = "Vertical".toString() as LayoutOrientation;
+            type = "Right" as SubTreeAlignments;
             break;
           case "pattern6":
-            orien = "Horizontal".toString() as LayoutOrientation;
-            typ = "Balanced" as SubTreeAlignments;
+            orientation = "Horizontal".toString() as LayoutOrientation;
+            type = "Balanced" as SubTreeAlignments;
             break;
           case "pattern7":
-            orien = "Horizontal".toString() as LayoutOrientation;
-            typ = "Center" as SubTreeAlignments;
+            orientation = "Horizontal".toString() as LayoutOrientation;
+            type = "Center" as SubTreeAlignments;
             break;
           case "pattern8":
-            orien = "Horizontal".toString() as LayoutOrientation;
-            typ = "Left" as SubTreeAlignments;
+            orientation = "Horizontal".toString() as LayoutOrientation;
+            type = "Left" as SubTreeAlignments;
             break;
           case "pattern9":
-            orien = "Horizontal".toString() as LayoutOrientation;
-            typ = "Right" as SubTreeAlignments;
+            orientation = "Horizontal".toString() as LayoutOrientation;
+            type = "Right" as SubTreeAlignments;
             break;
           default:
             if (selectedpatternElement.length) {
@@ -207,8 +199,8 @@ function OrganizationModel() {
           if (target.id === "pattern4" || target.id === "pattern3") {
             options.offset = -50;
           }
-          if (orien) {
-            getLayoutInfo(node, options, orien, typ);
+          if (orientation) {
+            getLayoutInfo(node, options, orientation, type);
           }
         };
 
@@ -248,13 +240,9 @@ function OrganizationModel() {
     };
     obj.expandIcon.verticalAlignment = "Center";
     obj.expandIcon.margin = { left: 0, right: 0, top: 0, bottom: 0 };
-    obj.collapseIcon.offset = { x: 0.5, y: 1 };
+    obj.collapseIcon = { height: 10, width: 10, shape: "None", fill: "lightgray", offset: { x: 0.5, y: 1 } };
     obj.collapseIcon.verticalAlignment = "Center";
     obj.collapseIcon.margin = { left: 0, right: 0, top: 0, bottom: 0 };
-    obj.collapseIcon.height = 10;
-    obj.collapseIcon.width = 10;
-    obj.collapseIcon.shape = "None";
-    obj.collapseIcon.fill = "lightgray";
     obj.width = 120;
     obj.height = 30;
     return obj;
@@ -272,13 +260,13 @@ function OrganizationModel() {
     return connector;
   }
   return (
-    <div className="control-pane diagram-control-pane">
+    <div className="control-pane diagram-organization">
       <style>{SAMPLE_CSS}</style>
       <div className="col-lg-8 control-section">
         <div className="content-wrapper" style={{ width: "100%" }}>
           <DiagramComponent
             id="diagram"
-            ref={diagram => (diagramInstance = diagram)}
+            ref={(diagram) => (diagramInstance = diagram)}
             width={"100%"}
             height={"700px"}
             snapSettings={{ constraints: SnapConstraints.None }}
@@ -295,9 +283,9 @@ function OrganizationModel() {
                 nodeModel.shape = {
                   type: "Text",
                   content: (data as EmployeeInfo).Role,
-                  margin: { left: 10, right: 10, top: 10, bottom: 10 }
+                  margin: { left: 10, right: 10, top: 10, bottom: 10 },
                 };
-              }
+              },
             }}
             //Disables all interactions except zoom/pan
             tool={DiagramTools.ZoomPan}
@@ -313,7 +301,7 @@ function OrganizationModel() {
                 if (!options.hasSubTree) {
                   options.type = "Right";
                 }
-              }
+              },
             }}
             //Defines the default node and connector properties
             getNodeDefaults={(obj: Node, diagram: Diagram) => {
@@ -336,13 +324,13 @@ function OrganizationModel() {
 
       <div
         className="col-lg-4 property-section"
-        style={{ float: "right", height: "80%" }}
+        style={{ height: "80%" }}
       >
         <div className="property-panel-header">Properties</div>
         <div className="row property-panel-content" id="appearance">
           <div className="row" style={{ paddingTop: "10px" }}>
             <div className="row row-header">Orientation</div>
-            <div id="orientation">
+            <div id="orientation" ref={(orientation) => (orientationInstance = orientation)}>
               <div className="row" style={{ paddingTop: "8px" }}>
                 <div
                   className="image-pattern-style e-selected-orientation-style"
@@ -387,7 +375,7 @@ function OrganizationModel() {
             <div className="row row-header" style={{ paddingTop: "10px" }}>
               Subtree Alignment
             </div>
-            <div id="pattern">
+            <div id="pattern" ref={(pattern) => (patternInstance = pattern)}>
               <div className="row" style={{ paddingTop: "8px" }}>
                 <div
                   className="image-pattern-style"
@@ -473,8 +461,8 @@ function OrganizationModel() {
             </div>
             <div className="col-xs-6">
               <NumericTextBoxComponent
-                ref={hSpacingRef => (hSpacing = hSpacingRef)}
-                id="hSpacing"
+                ref={(horizontalSpacingRef) => (horizontalSpacing = horizontalSpacingRef)}
+                id="horizontalSpacing"
                 style={{ width: "100%" }}
                 min={20}
                 max={60}
@@ -482,7 +470,7 @@ function OrganizationModel() {
                 value={30}
                 change={() => {
                   diagramInstance.layout.horizontalSpacing = Number(
-                    hSpacing.value
+                    horizontalSpacing.value
                   );
                   diagramInstance.dataBind();
                 }}
@@ -500,8 +488,8 @@ function OrganizationModel() {
             </div>
             <div className="col-xs-6">
               <NumericTextBoxComponent
-                ref={vSpacingRef => (vSpacing = vSpacingRef)}
-                id="vSpacing"
+                ref={(verticalSpacingRef) => (verticalSpacing = verticalSpacingRef)}
+                id="verticalSpacing"
                 style={{ width: "100%" }}
                 min={20}
                 max={60}
@@ -509,7 +497,7 @@ function OrganizationModel() {
                 value={30}
                 change={() => {
                   diagramInstance.layout.verticalSpacing = Number(
-                    vSpacing.value
+                    verticalSpacing.value
                   );
                   diagramInstance.dataBind();
                 }}
