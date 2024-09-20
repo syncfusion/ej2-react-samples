@@ -19,7 +19,7 @@ npm install
 2. Start the development server using gulp
 
 ```bash
-gulp serve
+npm run serve
 ```
 
 3. Open your web browser and navigate to the specified localhost address to view the samples.
