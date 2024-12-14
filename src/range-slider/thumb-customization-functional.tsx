@@ -116,6 +116,13 @@ const slidercss = `
     top: calc(50% - 10px);
     box-shadow: none;
 }
+    
+body.tailwind3 .sliderwrap .e-tick-after.e-scale.e-h-scale .e-tick,
+body.tailwind3-dark .sliderwrap .e-tick-after.e-scale.e-h-scale .e-tick,
+body.tailwind3.e-bigger .sliderwrap .e-tick-after.e-scale.e-h-scale .e-tick
+body.tailwind3-dark.e-bigger .sliderwrap .e-tick-after.e-scale.e-h-scale .e-tick {
+    top: 0px;
+}
 `
 const Thumb = () => {
     useEffect(() => {

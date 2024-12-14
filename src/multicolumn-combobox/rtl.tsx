@@ -17,7 +17,8 @@ export class RTL extends SampleBase<{}, {}> {
                 <div className="control-section">
                     <div className='control-wrapper rtl-multicolumn'>
                         <div style={{ paddingTop: '60px' }}>
-                            <MultiColumnComboBoxComponent type="text" dataSource={(data as any).bookDetails} fields={this.fields} placeholder='Select an Title' popupHeight={'230px'} enableRtl={true}>
+                        <label>Select a title</label>
+                            <MultiColumnComboBoxComponent type="text" dataSource={(data as any).bookDetails} fields={this.fields} placeholder='e.g. The Hobbit' popupHeight={'230px'} popupWidth={'680px'} enableRtl={true}>
                             <ColumnsDirective>
                                 <ColumnDirective field='Title' header='Title' width={180}></ColumnDirective>
                                 <ColumnDirective field='Author' header='Author' width={150}></ColumnDirective>

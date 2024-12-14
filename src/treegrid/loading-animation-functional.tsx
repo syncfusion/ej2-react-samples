@@ -92,7 +92,7 @@ const LoadingAnimation = () => {
                         >
                             <tbody>
                                 <tr style={{ height: "50px" }}>
-                                    <td style={{ width: "30%" }}>
+                                    <td>
                                         <div> Indicator Type </div>
                                     </td>
                                     <td style={{ width: "70%" }}>
@@ -102,6 +102,7 @@ const LoadingAnimation = () => {
                                                 value="Shimmer"
                                                 change={indicatorChange.bind(this)}
                                                 fields={fields}
+                                                width="130px"
                                                 ref={(indicateDropDown) => {
                                                     indicatorDropDown = indicateDropDown;
                                                 }}

@@ -13,19 +13,20 @@ const Sort = () => {
     useEffect(() => {
         updateSampleSection();
     }, []);
-    const fields: object = { text: 'Name', value: 'YearOfJoining' };
+    const fields: object = { text: 'Name', value: 'Category' };
     return(
         <div className='control-pane'>
             <div className="control-section">
                 <div className='control-wrapper sorting-multicolumn'>
                     <div style={{ paddingTop: '60px' }}>
-                        <MultiColumnComboBoxComponent type="text" dataSource={(data as any).workDetails} fields={fields} placeholder='Select a name' popupHeight={'230px'} allowSorting={true} sortOrder={SortOrder.Ascending} sortType='MultiColumn'>
+                    <label>Select a product</label>
+                        <MultiColumnComboBoxComponent type="text" dataSource={(data as any).products} fields={fields} placeholder='e.g. laptop' popupHeight={'230px'} popupWidth={'600px'} allowSorting={true} sortOrder={SortOrder.Ascending} sortType='MultiColumn'>
                         <ColumnsDirective>
-                                <ColumnDirective field='Name' header='Name' width={100}></ColumnDirective>
-                                <ColumnDirective field='YearOfJoining' header='Year Of Joining' width={100}></ColumnDirective>                                
-                                <ColumnDirective field='Status' header='Status' width={60}></ColumnDirective>
-                                <ColumnDirective field='Location' header='Location' width={90}></ColumnDirective>
-                                <ColumnDirective field='Experience' header='Experience in Year' width={120}></ColumnDirective>
+                                <ColumnDirective field='Name' header='Name' width={110}></ColumnDirective>
+                                <ColumnDirective field='Price' header='Price' width={70}></ColumnDirective>
+                                <ColumnDirective field='Availability' header='Availability' width={98}></ColumnDirective>
+                                <ColumnDirective field='Category' header='Category' width={95}></ColumnDirective>
+                                <ColumnDirective field='Rating' header='Rating' width={70}></ColumnDirective>
                             </ColumnsDirective>
                         </MultiColumnComboBoxComponent>
                     </div>

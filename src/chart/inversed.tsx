@@ -10,7 +10,7 @@ import {
 } from '@syncfusion/ej2-react-charts';
 import { SampleBase } from '../common/sample-base';
 import { Browser, EmitType } from '@syncfusion/ej2-base';
-import { fabricColors, materialColors, bootstrapColors, highContrastColors, fluentColors, fluentDarkColors } from './theme-color';
+import { fabricColors, materialColors, bootstrapColors, highContrastColors, fluentColors, fluentDarkColors, pointTailwindColors, pointTailwindDarkColors, pointTailwind3Colors, pointTailwind3DarkColors } from './theme-color';
 
 export let labelRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEventArgs): void => {
     let selectedTheme: string = location.hash.split('/')[1];
@@ -25,6 +25,16 @@ export let labelRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEve
         args.fill = fluentColors[args.point.index % 10];
     } else if (selectedTheme === 'fluent-dark') {
         args.fill = fluentDarkColors[args.point.index % 10];
+    }
+    else if (selectedTheme === 'tailwind') {
+        args.fill = pointTailwindColors[args.point.index % 10];
+    } else if (selectedTheme === 'tailwind-dark') {
+        args.fill = pointTailwindDarkColors[args.point.index % 10];
+    } 
+    else if (selectedTheme === 'tailwind3') {
+        args.fill = pointTailwind3Colors[args.point.index % 10];
+    } else if (selectedTheme === 'tailwind3-dark') {
+        args.fill = pointTailwind3DarkColors[args.point.index % 10];
     } else {
         args.fill = bootstrapColors[args.point.index % 10];
     }

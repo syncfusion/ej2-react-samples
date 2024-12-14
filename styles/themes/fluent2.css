@@ -24,6 +24,14 @@
     background: #0f6cbd;
 }
 
+.fluent2 .sb-content-toolbar, .fluent2-dark .sb-content-toolbar {
+    top: 3px !important;
+}
+
+.fluent2.e-bigger .sb-content-toolbar, .fluent2-dark.e-bigger .sb-content-toolbar {
+    top: 0px !important;
+}
+
 .fluent2 #left-sidebar {
     background: #fff;
 }

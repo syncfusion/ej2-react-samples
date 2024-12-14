@@ -31,7 +31,7 @@ export class SemiPie extends SampleBase<{}, {}> {
       <div className='control-pane'>
       <style>{SAMPLE_CSS}</style>
       <div className='control-section row'>
-          <AccumulationChartComponent id='pie-chart' ref={pie => pie = pie} legendSettings={{ visible: false }} enableBorderOnMouseMove={false} load={this.load.bind(this)} loaded={this.onChartLoad.bind(this)} tooltip={{ enable: true, format: "<b>${point.x}</b><br>Browser Share: <b>${point.tooltip}</b>", header:'' }}>
+          <AccumulationChartComponent id='pie-chart' ref={pie => pie = pie} legendSettings={{ visible: false }} enableBorderOnMouseMove={false} load={this.load.bind(this)} loaded={this.onChartLoad.bind(this)} tooltip={{ enable: true, format: "<b>${point.x}</b><br>Browser Share: <b>${point.tooltip}</b>", header:'', enableHighlight: true }}>
               <Inject services={[AccumulationDataLabel, PieSeries, AccumulationTooltip, ChartAnnotation, AccumulationAnnotation]} />
               <AccumulationSeriesCollectionDirective>
                   <AccumulationSeriesDirective dataSource={data1} tooltipMappingName='tooltipMappingName' xName='x' yName='y' startAngle={270} endAngle={90} explode={false} radius = {Browser.isDevice ? '85%' : '100%'} innerRadius='40%' dataLabel={{ visible: true, position: 'Inside' , enableRotation: true, connectorStyle: { length: '10%' }, name: 'text', font: { fontWeight: '600', size: Browser.isDevice ? '8px' : '11px', color: '#ffffff' } }} />

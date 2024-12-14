@@ -427,7 +427,7 @@ function ESignFormDesigner() {
                     </div>
                 </SidebarComponent>
                 <div style={{ width:`${isMobile ? '100%' : 'calc(100% - 200px)'}`}}>
-                    <PdfViewerComponent ref={viewer} id="container" enableNavigationToolbar={false} enableAnnotationToolbar={false} enableToolbar={false} documentPath="https://cdn.syncfusion.com/content/PDFViewer/Fill+and+Sign.pdf" resourceUrl="https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib" serviceUrl = 'https://services.syncfusion.com/react/production/api/pdfviewer'  documentLoad={documentLoad} formFieldAdd={addFormField} pageClick={pageClick} downloadFileName='eSign_designMode.pdf' style={{ height: `${isMobile ? '500px' : '640px'}` }}>
+                    <PdfViewerComponent ref={viewer} id="container" enableNavigationToolbar={false} enableAnnotationToolbar={false} enableToolbar={false} documentPath="https://cdn.syncfusion.com/content/PDFViewer/Fill+and+Sign.pdf" resourceUrl="https://cdn.syncfusion.com/ej2/27.2.2/dist/ej2-pdfviewer-lib" documentLoad={documentLoad} formFieldAdd={addFormField} pageClick={pageClick} downloadFileName='eSign_designMode.pdf' style={{ height: `${isMobile ? '500px' : '640px'}` }}>
                         <Inject services={[Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner, PageOrganizer]} />
                     </PdfViewerComponent>
                 </div>

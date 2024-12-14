@@ -64,7 +64,7 @@ export class Template extends SampleBase<{}, {}> {
       <div className="responseItemContent">
         <div className="response-header">
           <span className="e-icons e-assistview-icon"></span>
-          AI AssistView
+          AI Assist
         </div>
         <div className="assist-response-content" dangerouslySetInnerHTML={{ __html: props.response}}></div>
       </div>

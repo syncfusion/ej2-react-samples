@@ -62,7 +62,8 @@ const Default = () => {
     return (
         <div className='control-pane'>
             <div className='control-section'>
-                <div className="col-lg-8 otp-wrapper">
+                <div className="col-lg-8">
+                <div className="api-otp-wrapper">
                     <div id="otp-container">
                         <div className="form-container">
                             <span className="otp-header"> Enter verification code </span>
@@ -83,7 +84,8 @@ const Default = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-lg-4 property-section otp-property-panel">
+                </div>
+                <div className="col-lg-4 property-section">
                     <PropertyPane title='Properties'>
                         <table id="property" title="Properties">
                             <tbody>

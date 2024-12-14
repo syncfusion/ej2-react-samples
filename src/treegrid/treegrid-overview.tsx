@@ -15,7 +15,7 @@ export class Overview extends SampleBase<{}, {}> {
     var flagIconLocation = (props.parentItem)? props.parentItem.name : props.name;
     return (<div style={{display: 'inline'}}><div style={{display: 'inline-block'}}>
     <img className='e-treeoverviewimage' src={"src/treegrid/images/"+flagIconLocation+".png"} alt = {flagIconLocation}></img>     
-    </div><div style={{ display: 'inline-block', paddingLeft: '6px'}}>{props.name}</div></div>);
+    </div><div style={{ display: 'inline-block', paddingLeft: '6px', verticalAlign: 'middle' }}>{props.name}</div></div>);
   }
 
   public treegridTemplate(props): any {

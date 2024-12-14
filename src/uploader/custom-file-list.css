@@ -120,7 +120,9 @@
     content: '\e745';
 }
 .tailwind .template_wrapper .close-icon-container.e-icons::before,
-.tailwind-dark .template_wrapper .close-icon-container.e-icons::before {
+.tailwind3 .template_wrapper .close-icon-container.e-icons::before,
+.tailwind-dark .template_wrapper .close-icon-container.e-icons::before,
+.tailwind3-dark .template_wrapper .close-icon-container.e-icons::before {
     content: '\e7e7';
 }
 
@@ -159,7 +161,9 @@
 }
 
 .tailwind .template_wrapper .close-icon-container.delete-icon::before,
-.tailwind-dark .template_wrapper .close-icon-container.delete-icon::before {
+.tailwind3 .template_wrapper .close-icon-container.delete-icon::before,
+.tailwind-dark .template_wrapper .close-icon-container.delete-icon::before,
+.tailwind3-dark .template_wrapper .close-icon-container.delete-icon::before {
     content: '\e820';
 }
 
@@ -177,7 +181,8 @@
     content: '\e965';
 }
 
-.tailwind .template_wrapper .close-icon-container.delete-icon {
+.tailwind .template_wrapper .close-icon-container.delete-icon,
+.tailwind3 .template_wrapper .close-icon-container.delete-icon {
     top: 10px;
 }
 
@@ -300,7 +305,8 @@
 .bootstrap5-dark .template_wrapper span a {
     color:#0d6efd;
 }
-.tailwind-dark .template_wrapper span a {
+.tailwind-dark .template_wrapper span a,
+.tailwind3-dark .template_wrapper span a {
     color:#22d3ee;
 }
 .custom-panel {

@@ -61,7 +61,7 @@ export class Default extends SampleBase<{}, {}> {
           </div>
         </div>
         <div className="col-lg-4 property-section">
-          <textarea id="value" title="Properties" style={{ width: '100%', marginTop: '90px', height: '60px', backgroundColor: 'inherit' }} readOnly >Selected value : </textarea>
+          <textarea id="value" title="Properties" style={{ width: '100%', marginTop: '90px', height: '60px' , backgroundColor: 'inherit' }} readOnly >Selected value : </textarea>
         </div>
 
         <div id="action-description">

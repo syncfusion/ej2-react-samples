@@ -1,11 +1,11 @@
-    .ajaxcontent .e-dialog .e-dlg-header >img.img1 {
+    .ajaxcontent .e-dialog .e-dlg-header >img {
         height: 20px;
         width: 20px;
         float: left;
 		margin-right: 10px;
 		margin-top: 5px;
     }
-    .bootstrap .ajaxcontent .e-dialog .e-dlg-header >img.img1 {
+    .bootstrap .ajaxcontent .e-dialog .e-dlg-header >img {
         height: 20px;
         width: 20px;
         float: left;

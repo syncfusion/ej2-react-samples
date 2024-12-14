@@ -74,27 +74,29 @@ const CheckBox = () => {
             <div className='col-lg-4 property-section'>
                 <PropertyPane title='Properties'>
                     <table id="property" title="Properties" className='property-panel-table' style={{ width: '100%' }}>
-                        <tr>
-                            <td>
-                                <div>
-                                    <CheckBoxComponent checked={showSelectAll} label='Show Select All' change={onChange.bind(this)} />
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div>
-                                    <CheckBoxComponent checked={showDropDownIcon} label='DropDown Button' change={onChangeDrop.bind(this)} />
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div>
-                                    <CheckBoxComponent checked={enableSelectionOrder} label='Selection Reorder' change={onChangeLimit.bind(this)} />
-                                </div>
-                            </td>
-                        </tr>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <CheckBoxComponent checked={showSelectAll} label='Show Select All' change={onChange.bind(this)} />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <CheckBoxComponent checked={showDropDownIcon} label='DropDown Button' change={onChangeDrop.bind(this)} />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <CheckBoxComponent checked={enableSelectionOrder} label='Selection Reorder' change={onChangeLimit.bind(this)} />
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
                 </PropertyPane>
             </div>

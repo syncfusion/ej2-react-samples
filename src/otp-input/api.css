@@ -1,7 +1,9 @@
-.col-lg-8.otp-wrapper {
+.api-otp-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
     min-height: 350px;
 }
 

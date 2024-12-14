@@ -94,7 +94,7 @@ function OverView() {
             majorTickLines: { width: 0 },
             minimum: 0, maximum: 12000,  edgeLabelPlacement: 'Shift', labelFormat: '${value}', lineStyle: { width: 0 },labelStyle:{size:'11px'},titleStyle:{size:'13px'}
           }} 
-          legendSettings={{enableHighlight:true }} tooltip={{ enable: true , shared: true, enableMarker:false}} chartArea={{ border: { width: 0 } }}  >
+          legendSettings={{enableHighlight:true }} tooltip={{ enable: true , shared: true, enableMarker:false,  enableHighlight: true}} chartArea={{ border: { width: 0 } }}  >
           <Inject services={[SplineAreaSeries, Legend, Tooltip, Category, ChartAnnotation, Highlight]}></Inject>
           <SeriesCollectionDirective>
             <SeriesDirective type="SplineArea" dataSource={[{ period : 'Jan', percentage : 3600   }, { period: 'Feb', percentage: 6200  },
@@ -134,7 +134,7 @@ function OverView() {
                 { Product: "Laptop : 40 (16%)", Percentage: 16 , r: "Laptop, 40 <br>16%"},
                 { Product: "Mobile : 90 (36%)", Percentage: 36 , r: "Mobile, 90 <br>36%"},
                 { Product: "Camera : 27 (11%)", Percentage: 11 , r: "Camera, 27 <br>11%"},]}
-              xName="Product" yName="Percentage" innerRadius="40%" border={{width:3,color:'transparent'}}></AccumulationSeriesDirective>
+              xName="Product" yName="Percentage" startAngle={270} innerRadius="40%" border={{width:3,color:'transparent'}}></AccumulationSeriesDirective>
           </AccumulationSeriesCollectionDirective>
         </AccumulationChartComponent>
       </div>

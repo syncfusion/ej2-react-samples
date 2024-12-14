@@ -116,7 +116,7 @@ const PieWithPattern = () => {
                     enableBorderOnMouseMove={false}
                     width={Browser.isDevice ? '100%' : '75%'}
                     pointRender={onPointRender}
-                    tooltip={{ enable: true, format: '<b>${point.x}</b><br>Browser Share: <b>${point.y}%</b>', header: "" }}
+                    tooltip={{ enable: true, format: '<b>${point.x}</b><br>Browser Share: <b>${point.y}%</b>', header: "", enableHighlight: true }}
                     legendSettings={{ visible: false }}
                 >
                     <Inject services={[AccumulationTooltip, AccumulationDataLabel, PieSeries]} />

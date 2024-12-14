@@ -5,7 +5,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { addClass, removeClass, Browser } from '@syncfusion/ej2-base';
-import { RichTextEditorComponent, HtmlEditor, Table, Inject, Toolbar, Link, Image, QuickToolbar, EmojiPicker, PasteCleanup, Audio, Video, FormatPainter, FileManager} from '@syncfusion/ej2-react-richtexteditor';
+import { RichTextEditorComponent, HtmlEditor, Table, Inject, Toolbar, Link, Image, QuickToolbar, EmojiPicker, PasteCleanup, Audio, Video, FormatPainter, FileManager, FileManagerSettingsModel} from '@syncfusion/ej2-react-richtexteditor';
 import { updateSampleSection } from '../common/sample-base';
 import { ActionBeginEventArgs, ActionCompleteEventArgs, ToolbarSettingsModel } from '@syncfusion/ej2-richtexteditor';
 import { PropertyPane } from '../common/property-pane';
@@ -28,6 +28,16 @@ function RTEEvents() {
         'Outdent', 'Indent', '|', 'CreateLink', 'Image', 'FileManager', 'Video', 'Audio', 'CreateTable', '|', 'FormatPainter', 'ClearFormat',
         '|', 'EmojiPicker', 'Print', '|',
         'SourceCode', 'FullScreen', '|', 'Undo', 'Redo'];
+    const fileManagerSettings: FileManagerSettingsModel = {
+        enable: true,
+        path: '/Pictures/Food',
+        ajaxSettings: {
+            url: 'https://ej2-aspcore-service.azurewebsites.net/api/FileManager/FileOperations',
+            getImageUrl: 'https://ej2-aspcore-service.azurewebsites.net/api/FileManager/GetImage',
+            uploadUrl: 'https://ej2-aspcore-service.azurewebsites.net/api/FileManager/Upload',
+            downloadUrl: 'https://ej2-aspcore-service.azurewebsites.net/api/FileManager/Download'
+        }
+    }
     //Rich Text Editor ToolbarSettings
     const toolbarSettings: ToolbarSettingsModel = {
         items: items
@@ -156,6 +166,7 @@ function RTEEvents() {
                 <div className='rte-control-section'>
                     <RichTextEditorComponent id="clientsideRTE" ref={(richtexteditor) => { rteObj = richtexteditor }}
                         toolbarSettings={toolbarSettings}
+                        fileManagerSettings={fileManagerSettings}
                         created={create.bind(this)}
                         actionBegin={actionBegin.bind(this)}
                         actionComplete={actionComplete.bind(this)}

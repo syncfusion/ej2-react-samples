@@ -112,7 +112,7 @@ const ColumnFormat = () => {
             <Inject services={[Page]} />
           </TreeGridComponent>
         </div>
-        <div className="col-lg-3 property-section">
+        <div className="col-lg-3 property-section" style={{paddingLeft:'5px'}}>
           <PropertyPane title="Properties">
             <table
               id="property"
@@ -122,13 +122,13 @@ const ColumnFormat = () => {
             >
               <tbody>
                 <tr style={{ height: "50px" }}>
-                  <td style={{ width: "20%" }}>
+                  <td>
                     <div style={{ paddingTop: "7px" }}> Column </div>
                   </td>
                   <td style={{ width: "70%", paddingRight: "10px" }}>
                     <div>
                       <DropDownListComponent
-                        width="140px"
+                        width="145px"
                         id="columns"
                         change={change.bind(this)}
                         dataSource={columnNames}
@@ -140,13 +140,13 @@ const ColumnFormat = () => {
                   </td>
                 </tr>
                 <tr style={{ height: "50px" }}>
-                  <td style={{ width: "30%" }}>
+                  <td>
                     <div> Format </div>
                   </td>
                   <td style={{ width: "70%", paddingRight: "10px" }}>
                     <div>
                       <DropDownListComponent
-                        width="140px"
+                        width="145px"
                         id="colformat"
                         change={change2.bind(this)}
                         dataSource={priceFormat}

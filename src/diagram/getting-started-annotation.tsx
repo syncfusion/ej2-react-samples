@@ -117,8 +117,8 @@ let fontType: { [key: string]: Object }[] = [
   { type: "Bell MT", text: "Bell MT" },
   { type: "Fantasy", text: "Fantasy" },
   { type: "Times New Roman", text: "Times New Roman" },
-  { type: "Segoe UI", text: "Cubic Bezier" },
-  { type: '"Verdana") ', text: "Cubic Bezaier" }
+  { type: "Segoe UI", text: "Segoe UI" },
+  { type: "Verdana", text: "Verdana" }
 ];
 //Template dropdown option
 let templateList: { [key: string]: Object }[] = [

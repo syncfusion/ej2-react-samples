@@ -73,24 +73,24 @@ export class Reorders extends SampleBase<{}, {}> {
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                 <tbody>
                   <tr style={{ height: '50px' }}>
-                    <td style={{ width: '30%' }}>
+                    <td>
                       <div style={{ paddingTop: '10px' }}> Column </div>
                     </td>
                     <td style={{ width: '70%', paddingRight: '10px' }}>
                       <div>
-                        <DropDownListComponent width="130px" id="columns" change={this.change.bind(this)}
+                        <DropDownListComponent width="140px" id="columns" change={this.change.bind(this)}
                           dataSource={this.columnNames} fields={{ text: 'name', value: 'id' }} value="taskID"
                           ref={dropdown => this.dropdownObj = dropdown} />
                       </div>
                     </td>
                   </tr>
                   <tr style={{ height: '50px' }}>
-                    <td style={{ width: '30%' }}>
+                    <td>
                       <div> Column Index </div>
                     </td>
                     <td style={{ width: '70%', paddingRight: '10px' }}>
                       <div>
-                        <DropDownListComponent width="130px" id="columnindex" change={this.change2.bind(this)}
+                        <DropDownListComponent width="140px" id="columnindex" change={this.change2.bind(this)}
                           dataSource={this.columnsIndex} fields={{ text: 'name', value: 'id' }} value="0"
                           ref={dropdown => this.dropdownObj2 = dropdown} />
                       </div>

@@ -78,29 +78,29 @@ export class ColumnFormat extends SampleBase<{}, {}> {
             <Inject services={[Page]} />
           </TreeGridComponent>
         </div>
-        <div className='col-lg-3 property-section'>
+        <div className='col-lg-3 property-section' style={{paddingLeft:'5px'}}>
           <PropertyPane title='Properties'>
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                 <tbody>
                   <tr style={{ height: '50px' }}>
-                    <td style={{ width: '20%' }}>
+                    <td>
                       <div style={{ paddingTop: '7px' }}> Column </div>
                     </td>
                     <td style={{ width: '70%', paddingRight: '10px' }}>
                       <div>
-                        <DropDownListComponent width="140px" id="columns" change={this.change.bind(this)}
+                        <DropDownListComponent width="145px" id="columns" change={this.change.bind(this)}
                           dataSource={this.columnNames} fields={{ text: 'name', value: 'id' }} value="price"
                           ref={dropdown => this.dropdownObj = dropdown} />
                       </div>
                     </td>
                   </tr>
                   <tr style={{ height: '50px' }}>
-                    <td style={{ width: '30%' }}>
+                    <td>
                       <div> Format </div>
                     </td>
                     <td style={{ width: '70%', paddingRight: '10px' }}>
                       <div>
-                        <DropDownListComponent width="140px" id="colformat" change={this.change2.bind(this)}
+                        <DropDownListComponent width="145px" id="colformat" change={this.change2.bind(this)}
                           dataSource={this.priceFormat} fields={{ text: 'format', value: 'id' }} value="c2"
                           ref={dropdown => this.dropdownObj2 = dropdown} />
                       </div>

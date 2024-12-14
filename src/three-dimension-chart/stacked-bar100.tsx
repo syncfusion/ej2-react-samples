@@ -59,7 +59,7 @@ export class StackedBar100 extends SampleBase<{}, {}> {
                     </p>
                     <p><b>Injecting Module</b></p>
                     <p>
-                        3D chart component features are segregated into individual feature-wise modules. To use 100% stacking area series, we need to inject
+                        3D chart component features are segregated into individual feature-wise modules. To use 100% stacking bar series, we need to inject
                         <code>StackingBarSeries3D</code> module into <code>services</code>.
                     </p>
                     <p>

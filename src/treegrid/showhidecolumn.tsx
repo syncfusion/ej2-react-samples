@@ -13,7 +13,13 @@ const SAMPLE_CSS = `
 .fluent2-dark .btn,
 .fluent2-highcontrast .btn{
   outline: none !important;
-}`;
+}
+  @media (min-width: 990px) and (max-width: 1300px){
+  .column-property {
+  padding-left:5px;
+  }
+  }`
+;
 // custom code end
 
 
@@ -72,24 +78,24 @@ export class ShowHideColumn extends SampleBase<{}, {}> {
             <Inject services={[Page]} />
           </TreeGridComponent>
         </div>
-        <div className='col-md-3 property-section'>
+        <div className='col-md-3 property-section column-property'>
           <PropertyPane title='Properties'>
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                 <tbody>
                   <tr>
-                    <td style={{ width: '30%' }}>
+                    <td>
                       <div> Column </div>
                     </td>
                     <td style={{ width: '70%', paddingRight: '10px' }}>
                       <div id='columnddl'>
-                        <DropDownListComponent width="130px" id="ddlelement"
+                        <DropDownListComponent width="132px" id="ddlelement"
                           dataSource={this.columnsName} fields={{ text: 'name', value: 'id' }} value="taskID"
                           ref={dropdown => this.dropdownObj = dropdown} />
                       </div>
                     </td>
                   </tr>
                   <tr>
-                    <td style={{ width: '30%' }}>
+                    <td>
                       <div>
                         <ButtonComponent id='hide'
                           ref={button => this.buttonObj = button} onClick={this.btnClick.bind(this)}> Hide </ButtonComponent>
@@ -103,12 +109,12 @@ export class ShowHideColumn extends SampleBase<{}, {}> {
                     </td>
                   </tr>
                   <tr>
-                    <td style={{ width: '30%' }}>
+                    <td>
                       <div style={{ paddingTop: '10px' }}> Hidden Columns</div>
                     </td>
                     <td style={{ width: '70%', padding: '10px 10px 10px 0px' }}>
                       <div>
-                        <textarea id='hiddencolumns' style={{ resize: 'none', height: '65px', width: '92px', backgroundColor: '#fff', padding: '6px' }}
+                        <textarea id='hiddencolumns' style={{ resize: 'none', height: '65px', width: '100%', backgroundColor: '#fff', padding: '6px' }}
                           className='form-control'></textarea>
                       </div>
                     </td>

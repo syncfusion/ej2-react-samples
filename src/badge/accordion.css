@@ -139,12 +139,9 @@ body.material3-dark .e-accordion .e-acrdn-item .e-acrdn-header .e-acrdn-header-i
     text-indent: 16px;
 }
 
-.accordion-control-section {
-    margin: 0 10% 0 10%;
-}
-
 .sample_container.badge-accordion #accordion .e-toggle-icon {
     font-size: 18px;
     top: -1px;
     display: block;
 }
+

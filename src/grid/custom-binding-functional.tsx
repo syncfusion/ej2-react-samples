@@ -55,7 +55,7 @@ function CustomBinding() {
       <div className='control-section'>
         <GridComponent dataSource={data} ref={g => grid = g} allowPaging={true} allowSorting={true} pageSettings={{ pageCount: 4, pageSize: 10 }} allowGrouping={true} dataStateChange={dataStateChange.bind(this)}>
           <ColumnsDirective>
-            <ColumnDirective field='OrderID' headerText='Order ID' width='120'></ColumnDirective>
+            <ColumnDirective field='OrderID' headerText='Order ID' width='120' allowGrouping={false}></ColumnDirective>
             <ColumnDirective field='CustomerID' headerText='Customer Name' width='150'></ColumnDirective>
             <ColumnDirective field='ShipName' headerText='Ship Name' width='120' />
             <ColumnDirective field='ShipCity' headerText='Ship City' width='150'></ColumnDirective>

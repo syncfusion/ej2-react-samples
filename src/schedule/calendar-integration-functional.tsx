@@ -36,8 +36,8 @@ const CalendarIntegration = () => {
                 scheduleData.push({
                     Id: event.id,
                     Subject: event.summary,
-                    StartTime: new Date(start),
-                    EndTime: new Date(end),
+                    StartTime: start,
+                    EndTime: end,
                     IsAllDay: !event.start.dateTime
                 });
             }

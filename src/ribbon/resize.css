@@ -144,3 +144,8 @@ line-height: 1;
 [class*="e-ribbon-"] .sf-icon-reuse:before { content: "\e70f"; }
 [class*="e-ribbon-"] .sf-icon-editor:before { content: "\e70a"; }
 [class*="e-ribbon-"] .sf-icon-word:before { content: "\e70d"; }
+
+.ribbon-resize.e-rtl .ribbonResizeDisplayText{
+  direction: rtl;
+  padding-right: 15px;
+}

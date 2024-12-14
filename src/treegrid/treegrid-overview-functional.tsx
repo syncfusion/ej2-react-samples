@@ -27,7 +27,7 @@ const Overview = () => {
             alt = {flagIconLocation}
           ></img>
         </div>
-        <div style={{ display: "inline-block", paddingLeft: "6px" }}>
+        <div style={{ display: "inline-block", paddingLeft: "6px", verticalAlign: 'middle' }}>
           {props.name}
         </div>
       </div>

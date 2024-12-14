@@ -155,7 +155,7 @@ export class Overview extends SampleBase<{}, {}> {
     };
 
     public columnTemplate(props: { ganttProperties: { resourceNames: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | null | undefined; }; }): any {
-        var src = 'https://ej2.syncfusion.com/react/demos/src/gantt/images/' + props.ganttProperties.resourceNames + '.png';
+        var src = 'src/gantt/images/' + props.ganttProperties.resourceNames + '.png';
         if ((props.ganttProperties.resourceNames)) {
             let gantt = (document.getElementsByClassName('e-gantt')[0] as any).ej2_instances[0];
             if (gantt.enableRtl) {
@@ -178,12 +178,13 @@ export class Overview extends SampleBase<{}, {}> {
     }
 
     public load(): void {
-        let themeCollection: any = ['bootstrap5', 'bootstrap', 'bootstrap4', 'fluent', 'fabric', 'fusionnew', 'material3', 'material', 'highcontrast', 'tailwind'];
+        let themeCollection: any = ['bootstrap5', 'bootstrap', 'bootstrap4', 'fluent', 'fabric', 'fusionnew', 'material3', 'material', 'highcontrast', 'tailwind','fluent2','tailwind3','bootstrap5.3'];
         let cls: any = document.body.className.split(' ');
         this.theme = cls.indexOf('bootstrap5') > 0 ? 'bootstrap5' : cls.indexOf('bootstrap') > 0 ? 'bootstrap' : cls.indexOf('tailwind') > 0 ? 'tailwind' :
             cls.indexOf('fluent') > 0 ? 'fluent' : cls.indexOf('fabric') > 0 ? 'fabric' :
                 cls.indexOf('material3') > 0 ? 'material3' : cls.indexOf('bootstrap4') > 0 ? 'bootstrap4' : cls.indexOf('material') > 0 ? 'material' :
-                    cls.indexOf('fusionnew') > 0 ? 'fusionnew' : cls.indexOf('highcontrast') > 0 ? 'highcontrast' : ''
+                    cls.indexOf('fusionnew') > 0 ? 'fusionnew' : cls.indexOf('highcontrast') > 0 ? 'highcontrast' : cls.indexOf('bootstrap5.3') > 0 ? 'bootstrap5.3' :
+                        cls.indexOf('fluent2') > 0 ? 'fluent2' : cls.indexOf('tailwind3') > 0 ? 'tailwind3' : ''
         let check: any = themeCollection.indexOf(this.theme);
         if (check >= 0) {
             this.CurrentTheme = true;
@@ -317,7 +318,7 @@ export class Overview extends SampleBase<{}, {}> {
     private tooltip: any = {
         placement: 'Before',
         isVisible: true,
-        showOn: 'Focus'
+        showOn: 'Hover'
     };
     public onChanged(args: any) {
         const gantt: any = (document.getElementsByClassName('e-gantt')[0] as any).ej2_instances[0];
@@ -626,8 +627,8 @@ export class Overview extends SampleBase<{}, {}> {
                                     <EventMarkerDirective day={this.eventMarkerDay3} label='Q-3 Release' ></EventMarkerDirective>
                                 </EventMarkersDirective>
                                 <HolidaysDirective>
-                                    <HolidayDirective from='01/01/2024' to='01/01/2024' label='New year Holiday'></HolidayDirective>
-                                    <HolidayDirective from='12/25/2023' to='12/26/2023' label='Christmas Holidays'></HolidayDirective>
+                                    <HolidayDirective from={new Date('01/01/2024')} to={new Date('01/01/2024')} label='New year Holiday'></HolidayDirective>
+                                    <HolidayDirective from={new Date('12/25/2023')} to={new Date('12/26/2023')} label='Christmas Holidays'></HolidayDirective>
                                 </HolidaysDirective>
                                 <Inject services={[Edit, Selection, Toolbar, DayMarkers, ColumnMenu, Filter, Sort, Resize, ExcelExport, PdfExport]} />
                             </GanttComponent>

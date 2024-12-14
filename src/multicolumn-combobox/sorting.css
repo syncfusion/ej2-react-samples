@@ -1,6 +1,6 @@
 .control-wrapper.sorting-multicolumn {
     margin: 0 auto;
-    width: 600px;
+    width: 250px;
 }
 
 @media screen and (max-width: 480px) {

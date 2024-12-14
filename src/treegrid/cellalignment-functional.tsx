@@ -12,9 +12,14 @@ const SAMPLE_CSS = `
 .fluent2-dark,
 .fluent2-highcontrast {
   .property-section #columns {
-    width: 100%;
+    width: 95px;
   }
-}`;
+}
+ @media (min-width: 990px) and (max-width: 1300px){
+ .cellalignment {
+      padding-left:0px;
+    }
+} `;
 
 const CellAlign = () => {
   useEffect(() => {
@@ -105,7 +110,7 @@ const CellAlign = () => {
             <Inject services={[Page]} />
           </TreeGridComponent>
         </div>
-        <div className="col-md-3 property-section">
+        <div className="col-md-3 property-section cellalignment">
           <PropertyPane title="Properties">
             <table
               id="property"
@@ -115,13 +120,13 @@ const CellAlign = () => {
             >
               <tbody>
                 <tr style={{ height: "50px" }}>
-                  <td style={{ width: "30%" }}>
+                  <td>
                     <div style={{ paddingTop: "10px" }}> Column </div>
                   </td>
                   <td style={{ width: "70%", paddingRight: "10px" }}>
                     <div>
                       <DropDownListComponent
-                        width="130px"
+                        width="133px"
                         id="columns"
                         change={change.bind(this)}
                         dataSource={columnNames}
@@ -133,13 +138,13 @@ const CellAlign = () => {
                   </td>
                 </tr>
                 <tr style={{ height: "50px" }}>
-                  <td style={{ width: "30%" }}>
+                  <td>
                     <div> Cell Alignment </div>
                   </td>
                   <td style={{ width: "70%", padding: "10px 10px 10px 0px" }}>
                     <div>
                       <DropDownListComponent
-                        width="130px"
+                        width="133px"
                         id="alignment"
                         change={change2.bind(this)}
                         dataSource={alignment}

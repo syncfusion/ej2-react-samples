@@ -2,6 +2,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { GridComponent, ColumnsDirective, ColumnDirective, Page, Toolbar, Edit, Inject, Sort, FilterSettingsModel, Filter } from '@syncfusion/ej2-react-grids';
 import { data } from './data';
+import './sample.css';
 import { updateSampleSection } from '../common/sample-base';
 
 function DialogEdit() {

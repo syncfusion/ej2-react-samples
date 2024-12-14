@@ -39,14 +39,16 @@ const Default = () => {
                 <div id='combopanel' className='col-lg-4 property-section'>
                     <PropertyPane title='Properties'>
                         <table id='property' title='Properties' style={{ width: '100%', margin: '10px' }}>
-                            <tr>
-                                <td style={{ width: '25%' }}>Value</td>
-                                <td>:<span id='value' style={{ paddingLeft: '10px' }}>{value}</span></td>
-                            </tr>
-                            <tr>
-                                <td style={{ width: '25%' }}>Text</td>
-                                <td>:<span id='text' style={{ paddingLeft: '10px' }}>{text}</span></td>
-                            </tr>
+                            <tbody>
+                                <tr>
+                                    <td style={{ width: '25%' }}>Value</td>
+                                    <td>:<span id='value' style={{ paddingLeft: '10px' }}>{value}</span></td>
+                                </tr>
+                                <tr>
+                                    <td style={{ width: '25%' }}>Text</td>
+                                    <td>:<span id='text' style={{ paddingLeft: '10px' }}>{text}</span></td>
+                                </tr>
+                            </tbody>
                         </table>
                     </PropertyPane>
                 </div>

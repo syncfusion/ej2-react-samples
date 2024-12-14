@@ -4,7 +4,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { AutoCompleteComponent, Inject, VirtualScroll } from '@syncfusion/ej2-react-dropdowns';
-import { Query, DataManager, UrlAdaptor } from '@syncfusion/ej2-data';
+import { Query, DataManager, UrlAdaptor  } from '@syncfusion/ej2-data';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import './virtual-scroll.css';
@@ -48,7 +48,7 @@ export class Default extends SampleBase<{}, {}> {
     // bind the DataManager instance to dataSource property
     public customerData: DataManager = new DataManager({
       url: 'https://services.syncfusion.com/js/production/api/VirtualDropdownData',
-      adaptor: new UrlAdaptor,
+      adaptor: new UrlAdaptor ,
       crossDomain: true
   });
   // maps the appropriate column to fields property

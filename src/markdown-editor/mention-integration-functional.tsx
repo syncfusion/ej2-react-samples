@@ -121,7 +121,7 @@ function MentionIntegration() {
     function displayTemplate(data: any): React.JSX.Element {
         return (
         <React.Fragment>
-        [{data.name}](mailto:${data.email})
+        [@{data.name}](mailto:${data.email})
         </React.Fragment>
         );
     }

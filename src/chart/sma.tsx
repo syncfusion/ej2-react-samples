@@ -26,10 +26,10 @@ export class SMA extends SampleBase<{}, {}> {
                     <ChartComponent id='charts' load={this.load.bind(this)} style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'DateTime', majorGridLines: { width: 0 }, zoomFactor: 0.2, zoomPosition: 0.6, crosshairTooltip: { enable: true } }} primaryYAxis={{ title: 'Price (in Million)', labelFormat: '${value}M', minimum: 50, maximum: 170, interval: 30, majorGridLines: { width: 1 }, lineStyle: { width: 0 } }} width={Browser.isDevice ? '100%' : '75%'} tooltip={{ enable: true, shared: true }} chartArea={{ border: { width: 0 } }} crosshair={{ enable: true, lineType: 'Vertical' }} zoomSettings={{ enableSelectionZooming: true, mode: 'X', enablePan: true }} title='AAPL Stock Price 2012-2017' legendSettings={{ visible:false }} loaded={this.onChartLoad.bind(this)}>
                         <Inject services={[CandleSeries, SmaIndicator, Tooltip, DateTime,Legend, Logarithmic, DataLabel, Crosshair, Zoom, LineSeries]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={chartValues} xName='period' yName='silver' name='Apple Inc' low='low' open='open' close='close' high='high' volume='volume' type='Candle' animation={{ enable: false }} />
+                            <SeriesDirective dataSource={chartValues} xName='period' yName='silver' name='Apple Inc' low='low' open='open' close='close' high='high' volume='volume' type='Candle' bearFillColor= '#2ecd71' bullFillColor= '#e74c3d' animation={{ enable: false }} />
                         </SeriesCollectionDirective>
                         <IndicatorsDirective>
-                            <IndicatorDirective type='Sma' fill='blue' seriesName='Apple Inc' period={14} />
+                            <IndicatorDirective type='Sma' fill='#6063ff' seriesName='Apple Inc' period={14} />
                         </IndicatorsDirective>
                     </ChartComponent>
                 </div>

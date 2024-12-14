@@ -917,6 +917,15 @@
 	        "dialog": "Dialog"
         }
     },
+    "chat-ui": {
+        "ControlName": "Chat UI",
+        "Samples": {
+            "default":"Default Functionalities",
+            "template": "Template",
+	        "api": "API",
+            "chat-integration": "Use Case"
+        }
+    },
     "rich-text-editor": {
         "ControlName": "Rich Text Editor",
         "Samples": {

@@ -30,11 +30,34 @@ const MultipleList = () => {
   const dataFields = { text: 'FirstName', value: 'EmployeeID' };
   const localFields = { text: 'Value' };
 
+  const projectsDisplayTemplate = (data: any) => {
+    return (
+      <React.Fragment>
+        <span className="e-success">{data.Value}</span>
+      </React.Fragment>
+    );
+  }
+
+  const costDisplayTemplate = (data: any) => {
+    return (
+      <React.Fragment>
+        <span className="e-error">{data.Value}</span>
+      </React.Fragment>
+    );
+  }
+
+  const statusDisplayTemplate = (data: any) => {
+    return (
+      <React.Fragment>
+        <span className="e-warning">{data.Value}</span>
+      </React.Fragment>
+    );
+  }
 
   return (
     <div className='control-pane'>
       <div className='control-section'>
-        <div className='col-lg-8'>
+        <div className='col-lg-12'>
           <div className="content-wrapper">
             <div id='mention_multiplelist'>
               <table>
@@ -47,11 +70,11 @@ const MultipleList = () => {
               </table>
               <MentionComponent dataSource={remotedata} target={commonTarget} fields={dataFields} suggestionCount={15} query={query} popupWidth={250} allowSpaces={true}></MentionComponent>
 
-              <MentionComponent dataSource={projects} mentionChar={'#'} target={commonTarget} fields={localFields}></MentionComponent>
+              <MentionComponent dataSource={projects} mentionChar={'#'} target={commonTarget} displayTemplate={projectsDisplayTemplate} fields={localFields}></MentionComponent>
 
-              <MentionComponent dataSource={useCosts} mentionChar={'$'} target={commonTarget} fields={localFields}></MentionComponent>
+              <MentionComponent dataSource={useCosts} mentionChar={'$'} target={commonTarget} displayTemplate={costDisplayTemplate} fields={localFields}></MentionComponent>
 
-              <MentionComponent dataSource={status} mentionChar={'%'} target={commonTarget} fields={localFields}></MentionComponent>
+              <MentionComponent dataSource={status} mentionChar={'%'} target={commonTarget} displayTemplate={statusDisplayTemplate} fields={localFields}></MentionComponent>
             </div>
           </div>
         </div>

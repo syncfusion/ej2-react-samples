@@ -12,7 +12,7 @@ import { PropertyPane } from '../common/property-pane';
 import { EmitType, Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
-import { fabricColors, bootstrapColors, materialColors, highContrastColors, fluentColors, fluentDarkColors } from './theme-color';
+import { fabricColors, bootstrapColors, materialColors, highContrastColors, fluentColors, fluentDarkColors, pointTailwindColors, pointTailwindDarkColors, pointTailwind3Colors, pointTailwind3DarkColors } from './theme-color';
 import { NumericTextBoxComponent } from "@syncfusion/ej2-react-inputs";
 
 export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEventArgs): void => {
@@ -28,7 +28,17 @@ export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEve
         args.fill = fluentColors[args.point.index % 10];
     } else if (selectedTheme === 'fluent-dark') {
         args.fill = fluentDarkColors[args.point.index % 10];
-    } else {
+    } 
+    else if (selectedTheme === 'tailwind') {
+        args.fill = pointTailwindColors[args.point.index % 10];
+    } else if (selectedTheme === 'tailwind-dark') {
+        args.fill = pointTailwindDarkColors[args.point.index % 10];
+    }
+    else if (selectedTheme === 'tailwind3') {
+        args.fill = pointTailwind3Colors[args.point.index % 10];
+    } else if (selectedTheme === 'tailwind3-dark') {
+        args.fill = pointTailwind3DarkColors[args.point.index % 10];
+    }else {
         args.fill = bootstrapColors[args.point.index % bootstrapColors.length];
     }
 };
@@ -119,7 +129,7 @@ export class SmartAxisLabels extends SampleBase<{}, {}> {
                             title="Internet Users in Millions"
                             loaded={this.onChartLoad.bind(this)}
                             legendSettings={{ visible: false }}
-                            tooltip={{ enable: true}}>
+                            tooltip={{ enable: true, enableHighlight: true}}>
                             <Inject services={[Category, Category, ColumnSeries, Tooltip, DataLabel]} />
                             <SeriesCollectionDirective>
                                 <SeriesDirective dataSource={data1} xName='x' yName='y' name="Users" type='Column' marker={{ dataLabel: { visible: true, position: Browser.isDevice ? 'Outer' : 'Top',format: "{value}M", font: { fontWeight: '600', color: Browser.isDevice ? '#404041' : '#ffffff' } } }}>

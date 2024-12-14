@@ -8,7 +8,7 @@ import { ChartComponent, SeriesCollectionDirective, SeriesDirective, ChartTheme,
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { } from '@syncfusion/ej2-react-inputs';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
-import { pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, bubbleBootstrap5Colors, pointBootstrap5Colors, pointMaterial3DarkColors, pointMaterial3Colors , fluent2Colors, fluent2HighContrastColors, bootstrap5Colors} from './theme-color';
+import { pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, bubbleBootstrap5Colors, pointBootstrap5Colors, pointMaterial3DarkColors, pointMaterial3Colors , fluent2Colors, fluent2HighContrastColors, bootstrap5Colors, pointTailwind3Colors, pointTailwind3DarkColors} from './theme-color';
 import { PropertyPane } from '../common/property-pane';
 import { EmitType, Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
@@ -38,7 +38,7 @@ const SAMPLE_CSS = `
         content: '\\e780';
     }
  
-    .e-view.tailwind-dark .e-icons.e-export::before, .e-view.tailwind .e-icons.e-export::before {
+    .e-view.tailwind3-dark .e-icons.e-export::before, .e-view.tailwind3 .e-icons.e-export::before {
         content: '\\e7bf';
     }
  
@@ -122,8 +122,18 @@ const ChartExport = () => {
         } else if (selectedTheme === 'fluent2-highcontrast' || selectedTheme === 'fluent2-dark') {
             args.fill = fluent2HighContrastColors[args.point.index % 10];
         }
+        else if (selectedTheme === 'tailwind') {
+            args.fill = pointTailwindColors[args.point.index % 10];
+        } else if (selectedTheme === 'tailwind-dark') {
+            args.fill = pointTailwindDarkColors[args.point.index % 10];
+        }
         else if (selectedTheme === 'bootstrap5' || selectedTheme === 'bootstrap5-dark') {
             args.fill = bootstrap5Colors[args.point.index % bootstrap5Colors.length];
+        }
+        else if (selectedTheme === 'tailwind3') {
+            args.fill = pointTailwind3Colors[args.point.index % 10];
+        } else if (selectedTheme === 'tailwind3-dark') {
+            args.fill = pointTailwind3DarkColors[args.point.index % 10];
         }
     }
     const onClick = (e: Event): void => {

@@ -16,7 +16,7 @@ const ResourceAllocation = () => {
     if (props.ganttProperties.resourceNames) {
       if (props.ganttProperties.resourceNames.split('[')[0].includes('Rose Fuller')) {
         return (
-          <div style={{ width:'110px', height:'24px', borderRadius:'100px', backgroundColor:'#1c5d8e', display:'flex', alignItems:'center', justifyContent:'center' }}>
+          <div style={{ width:'150px', height:'24px', borderRadius:'100px', backgroundColor:'#1c5d8e', display:'flex', alignItems:'center', justifyContent:'center' }}>
           <span style={{ color: 'white', fontWeight: 500 }}>{props.ganttProperties.resourceNames}</span>
           </div>
         );
@@ -24,7 +24,7 @@ const ResourceAllocation = () => {
 
       if (props.ganttProperties.resourceNames.split('[')[0].includes('Fuller King')) {
         return (
-          <div style={{ width:'110px', height:'24px', borderRadius:'100px', backgroundColor:'#4a7537', display:'flex', alignItems:'center', justifyContent:'center' }}>
+          <div style={{ width:'150px', height:'24px', borderRadius:'100px', backgroundColor:'#4a7537', display:'flex', alignItems:'center', justifyContent:'center' }}>
           <span style={{ color: 'white', fontWeight: 500 }}>{props.ganttProperties.resourceNames}</span>
           </div>
         );
@@ -32,7 +32,7 @@ const ResourceAllocation = () => {
 
       if (props.ganttProperties.resourceNames.split('[')[0].includes('Van Jack')) {
         return (
-          <div style={{ width:'110px', height:'24px', borderRadius:'100px', backgroundColor:'#b24531', display:'flex', alignItems:'center', justifyContent:'center' }}>
+          <div style={{ width:'150px', height:'24px', borderRadius:'100px', backgroundColor:'#b24531', display:'flex', alignItems:'center', justifyContent:'center' }}>
           <span style={{ color: 'white', fontWeight: 500 }}>{props.ganttProperties.resourceNames}</span>
           </div>
         );
@@ -40,7 +40,7 @@ const ResourceAllocation = () => {
 
       if (props.ganttProperties.resourceNames.split('[')[0].includes('Bergs Anton')) {
         return (
-          <div style={{ width:'110px', height:'24px', borderRadius:'100px', backgroundColor:'#a53576', display:'flex', alignItems:'center', justifyContent:'center' }}>
+          <div style={{ width:'150px', height:'24px', borderRadius:'100px', backgroundColor:'#a53576', display:'flex', alignItems:'center', justifyContent:'center' }}>
           <span style={{ color: 'white', fontWeight: 500 }}>{props.ganttProperties.resourceNames}</span>
           </div>
         );
@@ -48,7 +48,7 @@ const ResourceAllocation = () => {
 
       if (props.ganttProperties.resourceNames.split('[')[0].includes('Tamer Vinet')) {
         return (
-          <div style={{ width:'110px', height:'24px', borderRadius:'100px', backgroundColor:'#635688', display:'flex', alignItems:'center', justifyContent:'center' }}>
+          <div style={{ width:'150px', height:'24px', borderRadius:'100px', backgroundColor:'#635688', display:'flex', alignItems:'center', justifyContent:'center' }}>
           <span style={{ color: 'white', fontWeight: 500 }}>{props.ganttProperties.resourceNames}</span>
           </div>
         );
@@ -62,27 +62,41 @@ const ResourceAllocation = () => {
   let ganttInstance: any;
   const dropdownlist: IEditCell = {
     read: () => {
+      // Get the selected value from the dropdown
       let value: any = dropdownlistObj.value;
-      if (value == null) {
-          value = [];
+      if (value === null) {
+        // If no value is selected, retain the existing resource(s)
+        value = ganttInstance.treeGridModule.currentEditRow[ganttInstance.taskFields.resourceInfo];
+      } 
+      else {
+        // Update the resource info with the selected value
+        ganttInstance.treeGridModule.currentEditRow[ganttInstance.taskFields.resourceInfo] = [value];
       }
-      ganttInstance.treeGridModule.currentEditRow[ganttInstance.taskFields.resourceInfo] = [value];
       return value;
-      },
+    },
     destroy: () => {
-          dropdownlistObj.destroy();
-      },
-      write: (args: any) => {
-        ganttInstance.treeGridModule.currentEditRow = {};
-        dropdownlistObj = new DropDownList({
-          dataSource: new DataManager(ganttInstance.resources),
-          fields: { text: ganttInstance.resourceFields.name, value: ganttInstance.resourceFields.id },
-          enableRtl: ganttInstance.enableRtl,
-          popupHeight: '350px',
-          value: ganttInstance.treeGridModule.getResourceIds(args.rowData)
-        });
-        dropdownlistObj.appendTo(args.element as HTMLElement);
-      }
+      dropdownlistObj.destroy();
+    },
+    write: (args: any) => {
+      // Ensure the currentEditRow object is initialized
+      ganttInstance.treeGridModule.currentEditRow = {};
+                
+      // Retrieve the existing resource(s) from the row data or set default
+      let existingResourceIds: any = ganttInstance.treeGridModule.getResourceIds(args.rowData);
+      let selectedValue: any = (existingResourceIds && existingResourceIds.length > 0) ? existingResourceIds[0] : null;
+
+      // Initialize the DropDownList
+      dropdownlistObj = new DropDownList({
+        dataSource: new DataManager(ganttInstance.resources),
+        fields: { text: ganttInstance.resourceFields.name, value: ganttInstance.resourceFields.id },
+        enableRtl: ganttInstance.enableRtl,
+        popupHeight: '350px',
+        // Set the existing resource(s) as the selected value
+        value: selectedValue,
+      });
+      // Append the dropdown to the element
+      dropdownlistObj.appendTo(args.element as HTMLElement);
+    }
   };
   const taskFields: any = {
     id: 'TaskID',
@@ -169,10 +183,28 @@ const ResourceAllocation = () => {
   const addDialogFields: any = [
     { type: 'Resources' }
   ];
+  function cellEdit (args: any) {
+    // Restrict editing based on row data
+    if (args.rowData.TaskID === 1 || args.rowData.TaskID === 5) {
+      args.cancel = true; // Cancel editing for this specific cell
+    }
+  };
   function actionBegin (args: any) {
     if (args.requestType === 'beforeOpenEditDialog' || args.requestType === 'beforeOpenAddDialog') {
+      // Restrict editing based on row data for dialog
+      if (args.rowData.TaskID === 1 || args.rowData.TaskID === 5) {
+        args.cancel = true; // Cancel editing for this specific row dialog
+      }
       args.Resources.selectionSettings = {};
       args.Resources.columns.splice(0, 1);
+    }
+  };
+  function actionComplete (args: any) {
+    if (args.requestType === 'add' && !args.data.TaskName) {
+      let taskName: string = 'Task Name ' + args.data.TaskID;
+      args.data.TaskName = taskName;
+      args.data.ganttProperties.taskName = taskName;
+      args.data.taskData.TaskName = taskName;
     }
   };
   const toolbar: any = ['Add', 'Edit', 'Update', 'Delete', 'Cancel', 'ExpandAll', 'CollapseAll'];
@@ -189,12 +221,12 @@ const ResourceAllocation = () => {
   return (
     <div className='control-pane'>
       <div className='control-section'>
-        <GanttComponent id='resource' dataSource={resourceAllocationData} ref={gantt => ganttInstance = gantt} treeColumnIndex={1}
+        <GanttComponent id='resource' dataSource={resourceAllocationData}  ref={gantt => ganttInstance = gantt} treeColumnIndex={1}
           allowSelection={true} highlightWeekends={true} toolbar={toolbar} editSettings={editSettings}
           projectStartDate={projectStartDate} projectEndDate={projectEndDate} resourceFields={resourceFields}
           taskFields={taskFields} taskType={taskType} labelSettings={labelSettings} splitterSettings={splitterSettings}
           height='450px' resources={resourceAllocationResources} workUnit={workUnit}  queryTaskbarInfo={queryTaskbarInfo}
-          addDialogFields= {addDialogFields} editDialogFields={editDialogFields} actionBegin={actionBegin}>
+          addDialogFields= {addDialogFields} editDialogFields={editDialogFields} actionBegin={actionBegin} actionComplete={actionComplete} cellEdit={cellEdit}>
           <ColumnsDirective>
             <ColumnDirective field='TaskID' visible={false} ></ColumnDirective>
             <ColumnDirective field='TaskName' headerText='Task Name' width='180'></ColumnDirective>

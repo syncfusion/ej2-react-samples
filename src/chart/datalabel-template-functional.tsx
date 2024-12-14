@@ -72,6 +72,16 @@ let tailwindWomen: string = '<div style="background-color:#65A30D;border-radius:
     '<div style="color:white; font-family:Roboto; font-style: medium; font-size:14px; float: right;'
     + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
     '${point.y} </span></div></div>';
+let tailwind3Man: string = '<div style="background-color:#2F4074;border-radius: 3px;">' +
+    '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" alt="Male Icon"/>' +
+    '<div style="color:white; font-family:Roboto; font-style: medium; font-size:14px; float: right;'
+    + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
+    '${point.y} </span></div></div>';
+let tailwind3Women: string = '<div style="background-color:#03B4B4;border-radius: 3px;">' +
+    '<img src="src/chart/images/female.png" style="width: 24px; height: 24px; padding: 2px" alt="Female Icon"/>' +
+    '<div style="color:white; font-family:Roboto; font-style: medium; font-size:14px; float: right;'
+    + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
+    '${point.y} </span></div></div>';
 let bootstrap5Man: string = '<div style="background-color:#FD7E14;border-radius: 3px;">' +
     '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" alt="Male Icon"/>' +
     '<div style="color:white; font-family:Roboto; font-style: medium; font-size:14px; float: right;'
@@ -108,6 +118,16 @@ let tailwindDarkMan: string = '<div style="background-color:#8B5CF6;border-radiu
     + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
     '${point.y} </span></div></div>';
 let tailwindDarkWomen: string = '<div style="background-color:#22D3EE;border-radius: 3px;">' +
+    '<img src="src/chart/images/female.png" style="width: 24px; height: 24px; padding: 2px" alt="Female Icon"/>' +
+    '<div style="color:white; font-family:Roboto; font-style: medium; font-size:14px; float: right;'
+    + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
+    '${point.y} </span></div></div>';
+let tailwind3DarkMan: string = '<div style="background-color:#8029F1;border-radius: 3px;">' +
+    '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" alt="Male Icon"/>' +
+    '<div style="color:white; font-family:Roboto; font-style: medium; font-size:14px; float: right;'
+    + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
+    '${point.y} </span></div></div>';
+let tailwind3DarkWomen: string = '<div style="background-color:#1ABC9C;border-radius: 3px;">' +
     '<img src="src/chart/images/female.png" style="width: 24px; height: 24px; padding: 2px" alt="Female Icon"/>' +
     '<div style="color:white; font-family:Roboto; font-style: medium; font-size:14px; float: right;'
     + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
@@ -208,7 +228,10 @@ const DataLabelTemplate = () => {
             args.template = args.series.name === 'Boys' ? fabricMan : fabricWomen;
         } else if (theme === 'Tailwind') {
             args.template = args.series.name === 'Boys' ? tailwindMan : tailwindWomen;
-        } else if (theme.toLowerCase() === 'highcontrast') {
+        }
+        else if (theme === 'Tailwind3') {
+            args.template = args.series.name === 'Boys' ? tailwind3Man : tailwind3Women;
+        }  else if (theme.toLowerCase() === 'highcontrast') {
             args.template = args.series.name === 'Boys' ? highcontrastMan : highcontrastWomen;
         } else if (theme === 'MaterialDark') {
             args.template = args.series.name === 'Boys' ? materialDarkMan : materialDarkWomen;
@@ -216,7 +239,10 @@ const DataLabelTemplate = () => {
             args.template = args.series.name === 'Boys' ? fabricDarkMan : fabricDarkWomen;
         } else if (theme === 'TailwindDark') {
             args.template = args.series.name === 'Boys' ? tailwindDarkMan : tailwindDarkWomen;
-        } else if (theme === 'Bootstrap5Dark') {
+        }
+        else if (theme === 'Tailwind3Dark') {
+            args.template = args.series.name === 'Boys' ? tailwind3DarkMan : tailwind3DarkWomen;
+        }  else if (theme === 'Bootstrap5Dark') {
             args.template = args.series.name === 'Boys' ? bootstrap5DarkMan : bootstrap5DarkWomen;
         } else if (theme === 'Bootstrap5') {
             args.template = args.series.name === 'Boys' ? bootstrap5Man : bootstrap5Women;

@@ -60,7 +60,7 @@ export class CustomThumbnail extends SampleBase<{},{}> {
                     </ul>
                      <p>
                         <b>Note: </b>File Manager's upload functionality is restricted in the online demos for security reasons. If you need to test upload functionality, please install 
-                        <a target="_blank" href="https://www.syncfusion.com/downloads"> Syncfusion Essential Studio </a>on your machine and run the demo.
+                        <a target="_blank" href="https://www.syncfusion.com/downloads"> Syncfusion<sup>®</sup> Essential Studio<sup>®</sup> </a>on your machine and run the demo.
                      </p>
                 </div>
             </div>

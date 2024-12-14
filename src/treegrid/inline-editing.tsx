@@ -71,12 +71,12 @@ export class Editing extends SampleBase<{}, {}> {
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                 <tbody>
                   <tr style={{ height: '50px' }}>
-                    <td style={{ width: '30%' }}>
+                    <td>
                       <div> Edit Mode </div>
                     </td>
                     <td style={{ width: '70%' }}>
                       <div id='columnddl'>
-                        <DropDownListComponent width="140px" id="selmode" change={this.change.bind(this)}
+                        <DropDownListComponent width="147px" id="selmode" change={this.change.bind(this)}
                           dataSource={this.editing} fields={{ text: 'name', value: 'id' }} value="CellEditing" />
                       </div>
                     </td>

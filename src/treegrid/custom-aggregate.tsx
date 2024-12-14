@@ -17,9 +17,6 @@ const SAMPLE_CSS = `
   .e-summarycell.e-templatecell {
     pointer-events:visible !important;
   }
-  .e-treegrid .e-summarycell.e-templatecell .e-input-group {
-    width: 160px !important;
-  }
   
   .e-treegrid .e-summarycell.e-templatecell .e-input-group input.e-control.e-dropdownlist.e-lib.e-input {
     padding-left: 6px !important;
@@ -66,7 +63,7 @@ export class CustomAggregate extends SampleBase<{}, {}> {
             dataSource: this.foods,
             fields: { value: 'food' },
             placeholder: 'Select a Category',
-            width: '130px',
+            width: '165px',
             value: this.item,
             change: () => {
                 setTimeout(

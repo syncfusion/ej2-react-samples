@@ -32,13 +32,13 @@ const Overview = () => {
     }
     return (<div className="control-pane">
         <div className="control-section">
-            <div className="fab-grid-container custom-index">
+            <div id="fabTarget" className="fab-grid-container custom-index">
                 {/* Grid component rendered to add it as target for FAB. */}
                 <GridComponent id="Grid" className="fabgrid" dataSource={orders()}
                     editSettings={editOptions} ref={grid}>
                     <Inject services={[Edit]} />
                 </GridComponent>
-                <FabComponent id="fab" title="Add Record" iconCss="fab-icons fab-icon-add" target="#Grid" onClick={handleClick} />
+                <FabComponent id="fab" title="Add Record" iconCss="e-icons e-plus" target="#fabTarget" onClick={handleClick} />
             </div>
         </div>
         <div id="action-description">

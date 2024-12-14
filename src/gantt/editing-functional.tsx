@@ -48,9 +48,12 @@ const Editing = () => {
     return startDate <= endDate;
   }
   const actionbegin = (args) => {
-    if (args.columnName === "EndDate") {
+    if (args.columnName === "EndDate" || args.requestType === "beforeOpenAddDialog" || args.requestType === "beforeOpenEditDialog") {
       startDate = args.rowData.ganttProperties.startDate;
     }
+    if (args.requestType === "taskbarediting" && args.taskBarEditAction === "ChildDrag") {
+      startDate = args.data.ganttProperties.startDate;
+    }  
   }
   const splitterSettings: any = {
     position: "35%"

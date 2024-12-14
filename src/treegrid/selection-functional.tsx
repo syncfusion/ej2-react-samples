@@ -12,7 +12,7 @@ const SAMPLE_CSS = `
   .fluent2-dark,
   .fluent2-highcontrast {
     #selectiondd1 .e-input-group {
-      width: 110px !important;
+      width: 120px !important;
     }
 }`;
 
@@ -131,8 +131,8 @@ const Selection = () => {
             >
               <tbody>
                 <tr>
-                  <td style={{ width: "30%" }}>
-                    <div style={{ paddingTop: "7px", paddingLeft: "2px" }}>
+                  <td>
+                    <div style={{ paddingTop: "7px", paddingLeft: "10px" }}>
                       {" "}
                       Selection Type{" "}
                     </div>
@@ -140,7 +140,7 @@ const Selection = () => {
                   <td style={{ width: "70%", paddingRight: "10px" }}>
                     <div id='selectiondd1'>
                       <DropDownListComponent
-                        width="100px"
+                        width="120px"
                         id="type"
                         change={typeChange.bind(this)}
                         dataSource={types}
@@ -152,13 +152,13 @@ const Selection = () => {
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ width: "30%", paddingLeft: "2px" }}>
-                    <div> Selection Mode </div>
+                  <td>
+                    <div style={{ paddingLeft: "10px" }}> Selection Mode </div>
                   </td>
                   <td style={{ width: "70%" }}>
-                    <div style={{ paddingRight: "10px", paddingBottom: "10px" }}>
+                    <div style={{ paddingRight: "10px" }}>
                       <DropDownListComponent
-                        width="100px"
+                        width="120px"
                         id="mode"
                         change={modeChange.bind(this)}
                         dataSource={modes}
@@ -170,13 +170,13 @@ const Selection = () => {
                   </td>
                 </tr>
                 <tr id="cellselection" style={{ display: display }}>
-                  <td style={{ width: "30%" }}>
-                    <div> Cell Selection Mode </div>
+                  <td>
+                    <div style={{ paddingLeft: "10px" }}> Cell Selection Mode </div>
                   </td>
                   <td style={{ width: "70%" }}>
                     <div style={{ paddingRight: "10px", paddingBottom: "10px" }}>
                       <DropDownListComponent
-                        width="100px"
+                        width="120px"
                         id="cellmode"
                         change={cellmodeChange.bind(this)}
                         dataSource={cellmodes}

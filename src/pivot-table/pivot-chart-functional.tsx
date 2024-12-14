@@ -155,8 +155,8 @@ function ChartIntegration () {
                         href="https://ej2.syncfusion.com/react/documentation/pivotview/pivot-chart">
                     documentation section</a>.
                 </p>
-            </div >
-        </div >
+            </div>
+        </div>
     )
 }
 

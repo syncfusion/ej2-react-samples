@@ -85,13 +85,13 @@ const GridLines = () => {
             >
               <tbody>
                 <tr style={{ height: "50px" }}>
-                  <td style={{ width: "60%" }}>
+                  <td>
                     <div>Grid Lines</div>
                   </td>
                   <td style={{ width: "60%" }}>
-                    <div>
+                    <div style={{paddingLeft:'15px'}}>
                       <DropDownListComponent
-                        width="130px"
+                        width="138px"
                         id="selmode"
                         change={change.bind(this)}
                         dataSource={lines}

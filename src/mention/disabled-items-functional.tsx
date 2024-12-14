@@ -39,7 +39,7 @@ const DisabledItems = () => {
   return (
     <div className='control-pane'>
       <div className='control-section'>
-        <div className='col-lg-8'>
+        <div className='col-lg-12'>
           <div className="content-wrapper">
             <div id='mention_disabled'>
               <table>

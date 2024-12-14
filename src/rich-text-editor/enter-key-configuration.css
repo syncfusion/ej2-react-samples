@@ -26,8 +26,8 @@
     height: 200px;
     width: 100%;
 }
-.CodeMirror {
-    height: 190px;
+.codeView .CodeMirror {
+    height: 190px !important;
 }
 .codeViewContent {
     padding-left: 16px;
@@ -39,7 +39,7 @@
     overflow: inherit;
     overflow-x: inherit;
 }
-.bootstrap-dark .CodeMirror-scroll, .bootstrap5-dark .CodeMirror-scroll,.bootstrap5\.3-dark .CodeMirror-scroll, .fluent-dark .CodeMirror-scroll, .fluent2-dark .CodeMirror-scroll, .material3-dark .CodeMirror-scroll, .fabric-dark .CodeMirror-scroll, .material-dark .CodeMirror-scroll, .tailwind-dark .CodeMirror-scroll, .highcontrast .CodeMirror-scroll{
+.bootstrap-dark .CodeMirror-scroll, .bootstrap5-dark .CodeMirror-scroll,.bootstrap5\.3-dark .CodeMirror-scroll, .fluent-dark .CodeMirror-scroll, .fluent2-dark .CodeMirror-scroll, .material3-dark .CodeMirror-scroll, .fabric-dark .CodeMirror-scroll, .material-dark .CodeMirror-scroll, .tailwind-dark .CodeMirror-scroll, .tailwind3-dark .CodeMirror-scroll, .highcontrast .CodeMirror-scroll, .fluent2-highcontrast .CodeMirror-scroll{
     color: #fff;
 }
 .bootstrap-dark .CodeMirror-scroll{
@@ -62,10 +62,12 @@
 .material-dark .CodeMirror-scroll{
    background-color: #383838;
 }
-.tailwind-dark .CodeMirror-scroll{
+.tailwind-dark .CodeMirror-scroll,
+.tailwind3-dark .CodeMirror-scroll{
    background-color:#1f2937;
 }
-.highcontrast .CodeMirror-scroll{
+.highcontrast .CodeMirror-scroll,
+.fluent2-highcontrast .CodeMirror-scroll{
    background-color:#000000;
 }
 .bootstrap5\.3-dark .codeView .CodeMirror {

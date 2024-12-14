@@ -43,7 +43,7 @@ export class Pie extends SampleBase<{}, {}> {
                     {SAMPLE_CSS}
                 </style>
         <div className='control-section row'>
-        <AccumulationChartComponent id='pie-chart' title='Browser Market Share' load={this.load.bind(this)} legendSettings={{ visible: false }} enableSmartLabels={true} enableAnimation={false} center={{ x: '50%', y: '50%' }} enableBorderOnMouseMove={false} tooltip={{ enable: true, format: '<b>${point.x}</b><br>Browser Share: <b>${point.y}%</b>',header:""  }} loaded={this.onChartLoad.bind(this)}>
+        <AccumulationChartComponent id='pie-chart' title='Browser Market Share' load={this.load.bind(this)} legendSettings={{ visible: false }} enableSmartLabels={true} enableAnimation={true} center={{ x: '50%', y: '50%' }} enableBorderOnMouseMove={false} tooltip={{ enable: true, format: '<b>${point.x}</b><br>Browser Share: <b>${point.y}%</b>',header:"" ,enableHighlight: true }} loaded={this.onChartLoad.bind(this)}>
                     <Inject services={[AccumulationLegend, PieSeries, AccumulationTooltip, AccumulationDataLabel]} />
                     <AccumulationSeriesCollectionDirective>
                         <AccumulationSeriesDirective dataSource={data1} name='Browser' xName='x' yName='y' explode={true} explodeOffset='10%' explodeIndex={0} startAngle = {Browser.isDevice ? 55 : 35 } dataLabel={{ visible: true, position: 'Outside', name: 'text', font: { fontWeight: '600' }, connectorStyle:{ length : '20px' ,type: 'Curve'} }} radius= {Browser.isDevice ? '40%' : '70%'} />

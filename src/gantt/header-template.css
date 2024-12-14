@@ -1,80 +1,78 @@
 .material img.ganttresource, .fabric img.ganttresource, .bootstrap img.ganttresource,
-.tailwind img.ganttresource, .bootstrap5 img.ganttresource, .bootstrap4 img.ganttresource,
+.tailwind img.ganttresource,.tailwind3 img.ganttresource, .bootstrap5 img.ganttresource, .bootstrap4 img.ganttresource,
 .fluent img.ganttresource,.fluent2 img.ganttresource,.material3 img.ganttresource,
 .bootstrap5_3 img.ganttresource,
 .bootstrap5_3-lite img.ganttresource{
     content: url("src/gantt/images/Resources.png");
 }
 .material-dark img.ganttresource, .fabric-dark img.ganttresource, .bootstrap-dark img.ganttresource,
-.tailwind-dark img.ganttresource, .bootstrap5-dark img.ganttresource, .highcontrast img.ganttresource,
+.tailwind-dark img.ganttresource,.tailwind3-dark img.ganttresource, .bootstrap5-dark img.ganttresource, .highcontrast img.ganttresource,
 .fluent-dark img.ganttresource,.fluent2-dark img.ganttresource,.fluent2-highcontrast img.ganttresource,.material3-dark img.ganttresource,
 .bootstrap5_3-dark-lite img.ganttresource,
 .bootstrap5_3-dark img.ganttresource{
     content: url("src/gantt/images/ResourcesDark.png");
 }
 .material img.gantttaskName, .fabric img.gantttaskName, .bootstrap img.gantttaskName,
-.tailwind img.gantttaskName, .bootstrap5 img.gantttaskName, .bootstrap4 img.gantttaskName,
+.tailwind img.gantttaskName,.tailwind3 img.gantttaskName, .bootstrap5 img.gantttaskName, .bootstrap4 img.gantttaskName,
 .fluent img.gantttaskName,.fluent2 img.gantttaskName,.material3 img.gantttaskName,.material3 img.gantttaskName,
 .bootstrap5_3 img.gantttaskName,
 .bootstrap5_3-lite img.gantttaskName{
     content: url("src/gantt/images/Task name.png");
 }
 .material-dark img.gantttaskName, .fabric-dark img.gantttaskName, .bootstrap-dark img.gantttaskName,
-.tailwind-dark img.gantttaskName, .bootstrap5-dark img.gantttaskName, .highcontrast img.gantttaskName,
+.tailwind-dark img.gantttaskName,.tailwind3-dark img.gantttaskName, .bootstrap5-dark img.gantttaskName, .highcontrast img.gantttaskName,
 .fluent-dark img.gantttaskName,.fluent2-dark img.gantttaskName,.fluent2-highcontrast img.gantttaskName,.material3-dark img.gantttaskName,
 .bootstrap5_3-dark-lite img.gantttaskName,
 .bootstrap5_3-dark img.gantttaskName{
     content: url("src/gantt/images/TaskNameDark.png");
 }
 .material img.ganttstartDate, .fabric img.ganttstartDate, .bootstrap img.ganttstartDate,
-.tailwind img.ganttstartDate, .bootstrap5 img.ganttstartDate, .bootstrap4 img.ganttstartDate,
+.tailwind img.ganttstartDate,.tailwind3 img.ganttstartDate, .bootstrap5 img.ganttstartDate, .bootstrap4 img.ganttstartDate,
 .fluent img.ganttstartDate,.fluent2 img.ganttstartDate,.material3 img.ganttstartDate,
 .bootstrap5_3 img.ganttstartDate,
 .bootstrap5_3-lite img.ganttstartDate{
     content: url("src/gantt/images/Start date.png");
 }
 .material-dark img.ganttstartDate, .fabric-dark img.ganttstartDate, .bootstrap-dark img.ganttstartDate,
-.tailwind-dark img.ganttstartDate, .bootstrap5-dark img.ganttstartDate, .highcontrast img.ganttstartDate,
+.tailwind-dark img.ganttstartDate,.tailwind3-dark img.ganttstartDate, .bootstrap5-dark img.ganttstartDate, .highcontrast img.ganttstartDate,
 .fluent-dark img.ganttstartDate,.fluent2-dark img.ganttstartDate,.fluent2-highcontrast img.ganttstartDate,.material3-dark img.ganttstartDate,
 .bootstrap5_3-dark-lite img.ganttstartDate,
 .bootstrap5_3-dark img.ganttstartDate{
     content: url("src/gantt/images/StartDateDark.png");
 }
 .material img.ganttduration, .fabric img.ganttduration, .bootstrap img.ganttduration,
-.tailwind img.ganttduration, .bootstrap5 img.ganttduration, .bootstrap4 img.ganttduration,
+.tailwind img.ganttduration,.tailwind3 img.ganttduration, .bootstrap5 img.ganttduration, .bootstrap4 img.ganttduration,
 .fluent img.ganttduration,.fluent2 img.ganttduration,.material3 img.ganttduration,
 .bootstrap5_3 img.ganttduration,
 .bootstrap5_3-lite img.ganttduration{
     content: url("src/gantt/images/Duration.png");
 }
 .material-dark img.ganttduration, .fabric-dark img.ganttduration, .bootstrap-dark img.ganttduration,
-.tailwind-dark img.ganttduration, .bootstrap5-dark img.ganttduration, .highcontrast img.ganttduration,
+.tailwind-dark img.ganttduration,.tailwind3-dark img.ganttduration, .bootstrap5-dark img.ganttduration, .highcontrast img.ganttduration,
 .fluent-dark img.ganttduration,.fluent2-dark img.ganttduration,.fluent2-highcontrast img.ganttduration, .material3-dark img.ganttduration,
 .bootstrap5_3-dark-lite img.ganttduration,
 .bootstrap5_3-dark img.ganttduration{
     content: url("src/gantt/images/DurationDark.png");
 }
 .material img.ganttprogressTemplate, .fabric img.ganttprogressTemplate, .bootstrap img.ganttprogressTemplate,
-.tailwind img.ganttprogressTemplate, .bootstrap5 img.ganttprogressTemplate, .bootstrap4 img.ganttprogressTemplate,
+.tailwind img.ganttprogressTemplate,.tailwind3 img.ganttprogressTemplate, .bootstrap5 img.ganttprogressTemplate, .bootstrap4 img.ganttprogressTemplate,
 .fluent img.ganttprogressTemplate,.fluent2 img.ganttprogressTemplate,.material3 img.ganttprogressTemplate,
 .bootstrap5_3 img.ganttprogressTemplate,
 .bootstrap5_3-lite img.ganttprogressTemplate{
     content: url("src/gantt/images/Progress.png");
 }
 .material-dark img.ganttprogressTemplate, .fabric-dark img.ganttprogressTemplate, .bootstrap-dark img.ganttprogressTemplate,
-.tailwind-dark img.ganttprogressTemplate, .bootstrap5-dark img.ganttprogressTemplate, .highcontrast img.ganttprogressTemplate,
+.tailwind-dark img.ganttprogressTemplate,.tailwind3-dark img.ganttprogressTemplate, .bootstrap5-dark img.ganttprogressTemplate, .highcontrast img.ganttprogressTemplate,
 .fluent-dark img.ganttprogressTemplate,.fluent2-dark img.ganttprogressTemplate,.fluent2-highcontrast img.ganttprogressTemplate,.material3-dark img.ganttprogressTemplate,
 .bootstrap5_3-dark-lite img.ganttprogressTemplate,
 .bootstrap5_3-dark img.ganttprogressTemplate{
     content: url("src/gantt/images/ProgressDark.png");
 }
-#ColumnMenu {
-    img.resource,
-    img.taskName,
-    img.startDate,
-    img.duration,
-    img.progressTemplate {
-        margin-right: 8px;
-        display: inline-block;
-    }
+#ColumnMenu .ganttresource,
+#ColumnMenu .ganttprogressTemplate,
+#ColumnMenu .ganttduration,
+#ColumnMenu .ganttstartDate,
+#ColumnMenu .gantttaskName {
+    margin-right: 8px;
+    display: inline-block;
 }

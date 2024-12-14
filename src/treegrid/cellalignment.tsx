@@ -11,8 +11,13 @@ const SAMPLE_CSS = `
 .fluent2-dark,
 .fluent2-highcontrast {
   .property-section #columns {
-    width: 100%;
+    width: 95px;
   }
+}
+@media (min-width: 990px) and (max-width: 1300px){
+ .cellalignment {
+      padding-left:0px;
+    }
 }`;
 
 export class CellAlign extends SampleBase<{}, {}> {
@@ -70,29 +75,29 @@ export class CellAlign extends SampleBase<{}, {}> {
             <Inject services={[Page]} />
           </TreeGridComponent>
         </div>
-        <div className='col-md-3 property-section'>
+        <div className='col-md-3 property-section cellalignment'>
           <PropertyPane title='Properties'>
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                 <tbody>
                   <tr style={{ height: '50px' }}>
-                    <td style={{ width: '30%' }}>
+                    <td>
                       <div style={{ paddingTop: '10px' }}> Column </div>
                     </td>
                     <td style={{ width: '70%', paddingRight: '10px' }}>
                       <div>
-                        <DropDownListComponent width="130px" id="columns" change={this.change.bind(this)}
+                        <DropDownListComponent width="133px" id="columns" change={this.change.bind(this)}
                           dataSource={this.columnNames} fields={{ text: 'name', value: 'id' }} value="taskID"
                           ref={dropdown => this.dropdownObj = dropdown} />
                       </div>
                     </td>
                   </tr>
                   <tr style={{ height: '50px' }}>
-                    <td style={{ width: '30%' }}>
+                    <td>
                       <div> Cell Alignment </div>
                     </td>
                     <td style={{ width: '70%', padding: '10px 10px 10px 0px' }}>
                       <div>
-                        <DropDownListComponent width="130px" id="alignment" change={this.change2.bind(this)}
+                        <DropDownListComponent width="133px" id="alignment" change={this.change2.bind(this)}
                           dataSource={this.alignment} fields={{ text: 'name', value: 'id' }} value="Right"
                           ref={dropdown => this.dropdownObj2 = dropdown} />
                       </div>

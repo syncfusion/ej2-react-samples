@@ -105,7 +105,7 @@ function Overview() {
     `
     };
     const exportPdf: ExportPdfModel = {
-        serviceUrl: hostUrl + 'api/RichTextEditor/ExportToPdf',
+        serviceUrl: 'https://ej2services.syncfusion.com/react/development/api/RichTextEditor/ExportToPdf',
         fileName: 'RichTextEditor.pdf',
         stylesheet: `
         .e-rte-content{

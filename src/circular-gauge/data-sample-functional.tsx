@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { CircularGaugeComponent, AxesDirective, AxisDirective, Inject, ILoadedEventArgs, PointersDirective, PointerDirective, RangesDirective, RangeDirective, Annotations, AnnotationDirective, AnnotationsDirective, GaugeTheme } from '@syncfusion/ej2-react-circulargauge';
 import { GridComponent, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-grids';
 import { updateSampleSection } from '../common/sample-base';
+import { isNullOrUndefined } from '@syncfusion/ej2-base';
 
 const SAMPLE_CSS = `
     .imageStyle {
@@ -74,7 +75,7 @@ const SampleData = () => {
                 let gridData2: number = 6 * value2;
                 let gridData3: number = -7 * value3;
                 let newVal: number = Math.random() * (90 - 20) + 20;
-                if (document.getElementById('sample1-container') && sampleGaugeOne != null) {
+                if (document.getElementById('sample1-container') && !isNullOrUndefined(sampleGaugeOne) && !isNullOrUndefined(sampleGaugeOne.current)) {
                     sampleGaugeOne.current.axes[0].pointers[0].animation.enable = true;
                     sampleGaugeTwo.current.axes[0].pointers[0].animation.enable = true;
                     sampleGaugeThree.current.axes[0].pointers[0].animation.enable = true;
@@ -112,7 +113,7 @@ const SampleData = () => {
     const onGridLoad = (args: {}): void => {
         dataIntervalTwo = setInterval(
             (): void => {
-                if (document.getElementById('sample1-container') && dataGrid != null) {
+                if (document.getElementById('sample1-container') && !isNullOrUndefined(dataGrid) && !isNullOrUndefined(dataGrid.current)) {
                     dataGrid.current.dataSource = orderData;
                     dataGrid.current.refresh()
                 } else {

@@ -480,7 +480,6 @@ function CustomToolbar() {
       <p>
         This sample demonstrate how to perform the PDF Viewer core functionalities using a custom toolbar.In this example, you can see PDF Viewer control API in action to perform the functionalities
       </p>
-      <p>
         <ul>
           <li>Load document - <code>viewer.load(fileName, password)</code></li>
           <li>Save - <code>viewer.download()</code></li>
@@ -500,10 +499,11 @@ function CustomToolbar() {
           <li>Zoom In - <code>viewer.magnification.zoomIn()</code></li>
           <li>Zoom Out - <code>viewer.magnification.zoomOut()</code></li>
         </ul>
+      <p>
+        More information on the PDF Viewer instantiation can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/pdfviewer/getting-started">
+          documentation section
+        </a>.
       </p>
-      More information on the PDF Viewer instantiation can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/pdfviewer/getting-started">
-        documentation section
-      </a>.
     </div>
   </div>
   );
@@ -653,7 +653,7 @@ function CustomToolbar() {
   }
 
   function checkSearchActive() {
-    if(!searchActive) {
+    if(viewer && viewer.textSearchModule && !searchActive) {
       viewer.textSearchModule.clearAllOccurrences();
     }
   }

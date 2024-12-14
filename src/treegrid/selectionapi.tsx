@@ -66,32 +66,32 @@ export class SelectionAPI extends SampleBase<{}, {}> {
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                 <tbody>
                   <tr>
-                    <td style={{ width: '30%' }}>
+                    <td>
                       <div><b>Select Rows</b></div>
                     </td>
                   </tr>
                   <tr>
-                    <td style={{ width: '20%' }}>
+                    <td>
                       <div style={{ paddingTop: '8px' }}>
                         Start
                       </div>
                     </td>
                     <td style={{ width: '80%', paddingRight: '10px' }}>
-                      <div id='numericbox' style={{ minWidth: '95px' }}>
+                      <div id='numericbox' style={{ minWidth: '110%', paddingLeft:'5px' }}>
                         <NumericTextBoxComponent id='start' format='##' min={0} max={11} ref={numeric => this.numericObj = numeric}
-                          width='95px'>
+                          width='110%'>
                         </NumericTextBoxComponent>
                       </div>
                     </td>
                   </tr>
                   <tr>
-                    <td style={{ width: '20%' }}>
+                    <td>
                       <div style={{ paddingTop: '8px' }}> To </div>
                     </td>
                     <td style={{ width: '80%', paddingRight: '10px' }}>
-                      <div id='numericbox' style={{ minWidth: '95px' }}>
+                      <div id='numericbox' style={{ minWidth: '110%', paddingLeft:'5px' }}>
                         <NumericTextBoxComponent id='to' format='##' min={0} max={11} ref={numeric => this.numericObj2 = numeric}
-                          width='95px'>
+                          width='110%'>
                         </NumericTextBoxComponent>
                       </div>
                     </td>

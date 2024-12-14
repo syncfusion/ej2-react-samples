@@ -11,7 +11,7 @@ import {
 import { PropertyPane } from '../common/property-pane';
 import { EmitType } from '@syncfusion/ej2-base';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
-import { fabricColors, materialColors, bootstrapColors, fluentColors, fluentDarkColors } from './theme-color';
+import { fabricColors, materialColors, bootstrapColors, fluentColors, fluentDarkColors, pointTailwind3DarkColors, pointTailwind3Colors } from './theme-color';
 import { SampleBase } from '../common/sample-base';
 import { Browser } from "@syncfusion/ej2/base";
 
@@ -26,6 +26,11 @@ export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEve
         args.fill = fluentColors[args.point.index % 10];
     } else if (selectedTheme === 'fluent-dark') {
         args.fill = fluentDarkColors[args.point.index % 10];
+    }
+    else if (selectedTheme === 'tailwind3-dark') {
+        args.fill = pointTailwind3DarkColors[args.point.index % 10];
+    } else if (selectedTheme === 'tailwind3') {
+        args.fill = pointTailwind3Colors[args.point.index % 10];
     } else {
         args.fill = bootstrapColors[args.point.index % bootstrapColors.length];
     }

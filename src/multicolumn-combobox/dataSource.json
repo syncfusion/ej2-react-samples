@@ -155,6 +155,54 @@
     { "Title": "A Brief History of Time", "Author": "Stephen Hawking", "Genre": "Science", "PublishedYear":2012, "Price": "$18.95"},
     { "Title": "The Hobbit", "Author": "Tolkien", "Genre": "Fantasy", "PublishedYear":2018, "Price": "$15.00"},
     { "Title": "Animal Farm", "Author": "George Orwell", "Genre": "Fiction", "PublishedYear":2017, "Price": "$12.50"}
+   ],
+
+   "products": [
+         { "Name" : "Laptop", "Price" : "999.99m", "Availability" : "In Stock", "Category" : "Electronics", "Rating" : 4.5 },
+         { "Name" : "Smartphone", "Price" : "599.99m", "Availability" : "Out of Stock", "Category" : "Electronics", "Rating" : 4.3 },
+         { "Name" : "Tablet", "Price" : "299.99m", "Availability" : "In Stock", "Category" : "Electronics", "Rating" : 4.2 },
+         { "Name" : "Headphones", "Price" : "49.99m", "Availability" : "In Stock", "Category" : "Accessories", "Rating" : 4.0 },
+         { "Name" : "Smartwatch", "Price" : "199.99m", "Availability" : "Limited Stock", "Category" : "Wearables", "Rating" : 4.4 },
+         { "Name" : "Monitor", "Price" : "129.99m", "Availability" : "In Stock", "Category" : "Electronics", "Rating" : 4.6 },
+         { "Name" : "Keyboard", "Price" : "39.99m", "Availability" : "In Stock", "Category" : "Accessories", "Rating" : 4.1 },
+         { "Name" : "Mouse", "Price" : "19.99m", "Availability" : "Out of Stock", "Category" : "Accessories", "Rating" : 4.3 },
+         { "Name" : "Printer", "Price" : "89.99m", "Availability" : "In Stock", "Category" : "Office Supplies", "Rating" : 4.2 },
+         { "Name" : "Camera", "Price" : "499.99m", "Availability" : "In Stock", "Category" : "Electronics", "Rating" : 4.7 },
+         { "Name" : "Speakers", "Price" : "149.99m", "Availability" : "In Stock", "Category" : "Accessories", "Rating" : 4.5 },
+         { "Name" : "Router", "Price" : "79.99m", "Availability" : "Out of Stock", "Category" : "Electronics", "Rating" : 4.4 },
+         { "Name" : "External Hard Drive", "Price" : "59.99m", "Availability" : "In Stock", "Category" : "Storage", "Rating" : 4.6 },
+         { "Name" : "USB Flash Drive", "Price" : "9.99m", "Availability" : "In Stock", "Category" : "Storage", "Rating" : 4.2 },
+         { "Name" : "Webcam", "Price" : "29.99m", "Availability" : "Limited Stock", "Category" : "Accessories", "Rating" : 4.1 },
+         { "Name" : "Smart TV", "Price" : "799.99m", "Availability" : "In Stock", "Category" : "Electronics", "Rating" : 4.8 },
+         { "Name" : "Projector", "Price" : "299.99m", "Availability" : "Out of Stock", "Category" : "Electronics", "Rating" : 4.5 },
+         { "Name" : "VR Headset", "Price" : "349.99m", "Availability" : "In Stock", "Category" : "Electronics", "Rating" : 4.7 },
+         { "Name" : "Drone", "Price" : "599.99m", "Availability" : "In Stock", "Category" : "Electronics", "Rating" : 4.6 },
+         { "Name" : "Fitness Tracker", "Price" : "99.99m", "Availability" : "In Stock", "Category" : "Wearables", "Rating" : 4.3 }
+   ],
+
+   "productDetails" : [
+         { "ProductID": 1, "ProductName": "Chai", "UnitPrice": "18m", "UnitsInStock": 39 },
+         { "ProductID": 2, "ProductName": "Chang", "UnitPrice": "19m", "UnitsInStock": 45 },
+         { "ProductID": 3, "ProductName": "Aniseed Syrup", "UnitPrice": "23m", "UnitsInStock": 79 },
+         { "ProductID": 4, "ProductName": "Chef Anton Cajun Seasoning", "UnitPrice": "28m", "UnitsInStock": 28 },
+         { "ProductID": 5, "ProductName": "Gumbo Mix", "UnitPrice": "11m", "UnitsInStock": 50 },
+         { "ProductID": 6, "ProductName": "Grandma Boysenberry", "UnitPrice": "37m", "UnitsInStock": 49 },
+         { "ProductID": 7, "ProductName": "Northwoods Cranberry Sauce", "UnitPrice": "23m", "UnitsInStock": 91 },
+         { "ProductID": 8, "ProductName": "Mishi Kobe Niku", "UnitPrice": "32m", "UnitsInStock": 16 },
+         { "ProductID": 9, "ProductName": "Ikura", "UnitPrice": "80m", "UnitsInStock": 29 },
+         { "ProductID": 10, "ProductName": "Uncle Bob Organic Dried Pears", "UnitPrice": "26m", "UnitsInStock": 32 },
+         { "ProductID": 11, "ProductName": "Organic Dried Pears", "UnitPrice": "29m", "UnitsInStock": 19 }
+   ],
+
+   "employee" : [ 
+    { "Name" : "Alice Johnson", "Department" : "Engineering", "Role" : "Software Engineer", "Location" : "New York", "Experience" : 5},
+    { "Name" : "Bob Smith", "Department" : "Marketing", "Role" : "Marketing Manager", "Location" : "San Francisco", "Experience" : 7},
+    { "Name" : "Catherine Lee", "Department" : "Finance", "Role" : "Financial Analyst", "Location" : "Chicago", "Experience" : 4},
+    { "Name" : "David Kim", "Department" : "Engineering", "Role" : "DevOps Engineer", "Location" : "Austin", "Experience" : 6},
+    { "Name" : "Eva Brown", "Department" : "Sales", "Role" : "Sales Executive", "Location" : "Boston", "Experience" : 3},
+    { "Name" : "Frank White", "Department" : "Human Resources", "Role" : "HR Manager", "Location" : "Seattle", "Experience" : 8},
+    { "Name" : "Grace Green", "Department" : "Design", "Role" : "UX Designer", "Location" : "Los Angeles", "Experience" : 5},
+    { "Name" : "Hank Wilson", "Department" : "Engineering", "Role" : "Front-end Developer", "Location" : "Denver", "Experience" : 4}
    ]
    
 }

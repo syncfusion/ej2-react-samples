@@ -53,7 +53,7 @@ export class ContextMenuItem extends SampleBase<{}, {}> {
   };
   private contextMenuOpen(args: ContextMenuOpenEventArgs): void {
     let record: IGanttData = args.rowData;
-    if (args.type !== 'Header') {
+    if (args.type !== 'Header' && record) {
         if (!record.hasChildRecords) {
           args.hideItems.push('Collapse the Row');
           args.hideItems.push('Expand the Row');

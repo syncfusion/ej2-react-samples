@@ -162,7 +162,7 @@ body.bootstrap-dark #letterAvatarList .e-list-item {
 }
 
 .fluent2 .listview #letterAvatarList .listWrapper .e-avatar,
-.fluent2-dark .listview #letterAvatarList .listWrapper .e-avatar {
+.fluent2-dark listview #letterAvatarList .listWrapper .e-avatar {
     top: calc(100% - 38px);
 }
 

@@ -29,25 +29,25 @@
     background: none;
 }
 
-.dialog-aiassistview .assist-left-content .content {
-    height: 80%;
+.dialog-aiassistview .assist-left-content .content,
+.dialog-aiassistview .right-content .content {
     justify-content: flex-start;
     border: none;
     box-shadow: none;
-    padding-left: 3px; 
     background: inherit;
+}
+
+.dialog-aiassistview .assist-left-content .content {
+    height: 80%;
+    padding-left: 3px; 
 }
 
 .dialog-aiassistview .right-content .content {
     height: 100%;
-    justify-content: flex-start;
-    border: none;
-    box-shadow: none;
     margin-top: 20px;
     font-size: 12px;
     overflow: auto;
     line-height: 25px;
-    background: inherit;
 }
 
 .dialog-aiassistview .note-title {
@@ -94,7 +94,6 @@
     flex-direction: column;
     padding: 15px 0 15px 20px;
     gap: 5px;
-    height: 596px;
 }
 
 .dialog-aiassistview .right-content .heading {

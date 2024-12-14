@@ -162,8 +162,8 @@ function DetailTemplate() {
               In this demonstration, the parent row provides information about employees name, ID, team and reporter names. In each employee row with 
               a details view, when expanding the details, you can see the sprint report of that employee. In the details row with two tabs, the first tab contains 
               <code><a target="_blank"className="code" href="https://ej2.syncfusion.com/react/demos/#/fluent2/kanban/overview">
-              Syncfusion Kanban component</a></code> used to list assigned tasks and their current statuses, and the second tab contains <code><a target="_blank"className="code" 
-              href="https://ej2.syncfusion.com/react/demos/#/fluent2/chart/overview.html"> Syncfusion Chart Component</a></code> used to 
+              Syncfusion<sup>®</sup> Kanban component</a></code> used to list assigned tasks and their current statuses, and the second tab contains <code><a target="_blank"className="code" 
+              href="https://ej2.syncfusion.com/react/demos/#/fluent2/chart/overview.html"> Syncfusion<sup>®</sup> Chart Component</a></code> used to 
               display the burndown chart of employee task estimated time vs actual spend time.
           </p>
                 <br />

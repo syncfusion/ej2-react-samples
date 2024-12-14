@@ -9,7 +9,7 @@ import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, IPointRenderEventArgs, ChartTheme,
     Legend, Category, ColumnSeries, Tooltip, IAxisLabelRenderEventArgs, ILoadedEventArgs, DataLabel
 } from '@syncfusion/ej2-react-charts';
-import { bootstrapColors, fabricColors, materialColors, highContrastColors, fluentColors, fluentDarkColors } from './theme-color';
+import { bootstrapColors, fabricColors, materialColors, highContrastColors, fluentColors, fluentDarkColors, pointTailwindColors, pointTailwindDarkColors, pointTailwind3Colors, pointTailwind3DarkColors } from './theme-color';
 import { SampleBase } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
 
@@ -121,7 +121,17 @@ export class RemoteData extends SampleBase<{}, {}> {
             args.fill = fluentColors[args.point.index % 10];
         } else if (selectedTheme === 'fluent-dark') {
             args.fill = fluentDarkColors[args.point.index % 10];
-        } else {
+        } 
+        else if (selectedTheme === 'tailwind') {
+            args.fill = pointTailwindColors[args.point.index % 10];
+        } else if (selectedTheme === 'tailwind-dark') {
+            args.fill = pointTailwindDarkColors[args.point.index % 10];
+        } 
+        else if (selectedTheme === 'tailwind3') {
+            args.fill = pointTailwind3Colors[args.point.index % 10];
+        } else if (selectedTheme === 'tailwind3-dark') {
+            args.fill = pointTailwind3DarkColors[args.point.index % 10];
+        }else {
             args.fill = bootstrapColors[args.point.index % 10];
         }
     }

@@ -14,7 +14,7 @@ function LazyLoadGroupingWithVirtualScrolling() {
             <div className='control-section'>
                 <GridComponent dataSource={lazyLoadData} allowSorting={true} height={400} enableVirtualization={true} allowGrouping={true} groupSettings={groupOptions}>
                     <ColumnsDirective>
-                        <ColumnDirective field='OrderID' headerText='Order ID' textAlign="Right" width='120' ></ColumnDirective>
+                        <ColumnDirective field='OrderID' headerText='Order ID' textAlign="Right" width='120' allowGrouping={false} ></ColumnDirective>
                         <ColumnDirective field='ProductName' headerText='Product Name' width='160' ></ColumnDirective>
                         <ColumnDirective field='ProductID' headerText='Product ID' textAlign="Right" width='120' ></ColumnDirective>
                         <ColumnDirective field='CustomerID' headerText='Customer ID' width='120' ></ColumnDirective>

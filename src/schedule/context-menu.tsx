@@ -53,8 +53,8 @@ export class ContextMenu extends SampleBase<{}, {}> {
       case 'Add':
       case 'AddRecurrence':
         let selectedCells: Element[] = this.scheduleObj.getSelectedElements();
-        let activeCellsData: CellClickEventArgs =
-          this.scheduleObj.getCellDetails(selectedCells.length > 0 ? selectedCells : this.selectedTarget);
+        let isRightClickInSelectedCells: boolean = selectedCells.some(cell => cell === this.selectedTarget);
+        let activeCellsData: CellClickEventArgs = this.scheduleObj.getCellDetails(isRightClickInSelectedCells ? selectedCells : [this.selectedTarget]);
         if (selectedMenuItem === 'Add') {
           this.scheduleObj.openEditor(activeCellsData, 'Add');
         } else {

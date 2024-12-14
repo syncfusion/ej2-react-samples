@@ -43,10 +43,12 @@ const Highlight = () => {
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tr>
-                                <td style={{ width: "50%" }}>FilterType :</td>
-                                <td> <DropDownListComponent id="filter-type" dataSource={filterData} change={onChange.bind(this)} placeholder="Select a type" text='Contains' /></td>
-                            </tr>
+                            <tbody>
+                                <tr>
+                                    <td style={{ width: "50%" }}>FilterType :</td>
+                                    <td> <DropDownListComponent id="filter-type" dataSource={filterData} change={onChange.bind(this)} placeholder="Select a type" text='Contains' /></td>
+                                </tr>
+                            </tbody>
                         </table>
                     </PropertyPane>
                 </div>

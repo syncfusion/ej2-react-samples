@@ -28,7 +28,7 @@ const TooltipTemplate = () => {
     name: 'resourceName'
   };
   const taskbarTooltip = (props) => {
-    var src = 'https://ej2.syncfusion.com/react/demos/src/gantt/images/' + props.ganttProperties.resourceNames + '.png';
+    var src = 'src/gantt/images/' + props.ganttProperties.resourceNames + '.png';
     return (<table>
       {props.ganttProperties.resourceNames &&
         <tr>

@@ -1,3 +1,11 @@
 .e-query-builder {
     margin: 0 auto;
 }
+
+.tailwind3-dark .e-ddt.e-popup {
+    background: #111827;
+}
+
+.tailwind3 .e-ddt.e-popup {
+    background: white;
+}

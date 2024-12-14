@@ -44,5 +44,5 @@ export const TreeViewSampleOrder:Object = [
             { 'displayName': 'local-data.json', 'path': 'src/treeview/dataSource/local-data.json' },
             { 'displayName': 'local-data.css', 'path': 'src/treeview/local-data.css' }
         ]},
-    { 'path': 'treeview/remote-data', 'component':'RemoteData', 'name': 'Remote Data', 'order': '02', 'category': 'Data Binding', 'description': 'This demo for Essential JS 2 treeview control shows how to bind the data from a remote data service.', 'api':'{"TreeViewComponent":["fields","created","dataBound"] }'}
+    { 'path': 'treeview/remote-data', 'component':'RemoteData', 'name': 'Remote Data', 'order': '02', 'category': 'Data Binding', 'description': 'This demo for Essential<sup>®</sup> JS 2 treeview control shows how to bind the data from a remote data service.', 'api':'{"TreeViewComponent":["fields","created","dataBound"] }'}
 ]

@@ -24,7 +24,8 @@
 .bootstrap5-dark .control_wrapper.uploader-form {
     background: #393939;
 }
-.tailwind-dark .control_wrapper.uploader-form { 
+.tailwind-dark .control_wrapper.uploader-form,
+.tailwind3-dark .control_wrapper.uploader-form { 
     background: #6c757d;
 }
 
@@ -52,7 +53,9 @@
 .e-bigger.bootstrap5-dark .e-float-input.upload-area button#browse,
 .e-bigger.bootstrap5 .e-float-input.upload-area button#browse,
 .e-bigger.tailwind-dark .e-float-input.upload-area button#browse,
-.e-bigger.tailwind .e-float-input.upload-area button#browse{
+.e-bigger.tailwind3-dark .e-float-input.upload-area button#browse,
+.e-bigger.tailwind .e-float-input.upload-area button#browse,
+.e-bigger.tailwind3 .e-float-input.upload-area button#browse{
     margin-right: -120px;
 	margin-top: -40px;
 }
@@ -124,7 +127,9 @@
 .fluent .e-bigger .e-dialog .e-dlg-header-content,
 .fluent-dark .e-bigger .e-dialog .e-dlg-header-content,
 .tailwind .e-bigger .e-dialog .e-dlg-header-content,
-.tailwind-dark .e-bigger .e-dialog .e-dlg-header-content{
+.tailwind3 .e-bigger .e-dialog .e-dlg-header-content,
+.tailwind-dark .e-bigger .e-dialog .e-dlg-header-content,
+.tailwind3-dark .e-bigger .e-dialog .e-dlg-header-content {
     padding-bottom: 2%;
 }
 .material-dark .e-bigger .e-dialog .e-dlg-header-content,

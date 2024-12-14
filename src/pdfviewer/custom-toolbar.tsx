@@ -706,7 +706,7 @@ export class CustomToolbar extends SampleBase<{}, {}> {
       currentPage.select();
     }
     const checkSearchActive = function (args: any) {
-      if(!this.searchActive) {
+      if(viewer && viewer.textSearchModule && !this.searchActive) {
         viewer.textSearchModule.clearAllOccurrences();
       }
     }
@@ -1023,7 +1023,7 @@ export class CustomToolbar extends SampleBase<{}, {}> {
     const searchTextElement = document.getElementById('container_search_input') as HTMLInputElement;
     searchTextElement.value = '';
   }
-
+  
   public inputChange(): void {
     viewer.textSearchModule.clearAllOccurrences();
     this.searchActive = false;

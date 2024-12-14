@@ -14,7 +14,7 @@ export class Validation extends SampleBase<{}, {}> {
     public isUserNavigatingReverse: boolean = false;
     public isCurrentStepValid: boolean = false;
 
-    public regex: RegExp = new RegExp('^[A-Za-z0-9._%+-]{1,}@[A-Za-z0-9._%+-]{1,}');
+    public regex: RegExp = new RegExp('^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$');
 
     componentDidMount(): void {
         this.stepperContentRef = element => { this.stepperContentEle = element; };

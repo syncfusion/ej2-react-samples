@@ -19,6 +19,20 @@ const SAMPLE_CSS = `
     #gradient-chart stop[offset="1"] {
         stop-opacity: 0.4;
     }
+#tailwind-dark-gradient-chart stop {
+    stop-color: #8B5CF6;
+}
+
+#tailwind3-dark-gradient-chart stop {
+    stop-color: #8029F1;
+}
+#tailwind-gradient-chart stop {
+    stop-color: #5A61F6;
+}
+
+#tailwind3-gradient-chart stop {
+    stop-color: #2F4074;
+}
     #fluent-gradient-chart stop {
         stop-color: #1AC9E6;
     }
@@ -57,8 +71,7 @@ const PeriodSelector = () => {
     const load = (args: IStockChartEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,  'Contrast') as ChartTheme;
     };
 
     return (
@@ -95,6 +108,14 @@ const PeriodSelector = () => {
                                 <stop offset="1"></stop>
                             </linearGradient>
                             <linearGradient id="material3-gradient-chart" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                            <linearGradient id="tailwind3-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                            <linearGradient id="tailwind3-dark-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
                                 <stop offset="0"></stop>
                                 <stop offset="1"></stop>
                             </linearGradient>

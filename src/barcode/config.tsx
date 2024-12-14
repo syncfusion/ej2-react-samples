@@ -12,6 +12,6 @@ export const BarcodeSampleOrder = [
     { 'path': 'barcode/upce', 'component': 'UpcE', 'name': 'UPC-E', 'description': 'This sample visualizes the processing of an order placed using credit card with built-in flow shapes.', 'order': '01', 'category': 'Getting Started' },
     { 'path': 'barcode/code39', 'component': 'Code39', 'name': 'Code39', 'description': 'This sample visualizes the processing of an order placed using credit card with built-in flow shapes.', 'order': '01', 'category': 'Getting Started' },
     { 'path': 'barcode/code39Extd', 'component': 'Code39Extd', 'name': 'Code 39 Extended', 'description': 'This sample visualizes the processing of an order placed using credit card with built-in flow shapes.', 'order': '01', 'category': 'Getting Started' },
-    { 'path': 'barcode/qrcode', 'component': 'QrCode', 'name': 'QR Code', 'description': 'This sample visualizes the processing of an order placed using credit card with built-in flow shapes.', 'order': '01', 'category': 'Getting Started', 'type': 'update' },
+    { 'path': 'barcode/qrcode', 'component': 'QrCode', 'name': 'QR Code', 'description': 'This sample visualizes the processing of an order placed using credit card with built-in flow shapes.', 'order': '01', 'category': 'Getting Started' },
     { 'path': 'barcode/datamatrix', 'component': 'DataMatrix', 'name': 'Data Matrix', 'description': 'This sample visualizes the processing of an order placed using credit card with built-in flow shapes.', 'order': '01', 'category': 'Getting Started' }
 ];

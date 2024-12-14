@@ -93,7 +93,14 @@ const slidercss = `
     display: flex;
     padding-left: 0;
     text-align: center;
-} 
+}
+
+body.tailwind3 .sliderwrap .e-tick-after.e-scale.e-h-scale .e-tick,
+body.tailwind3-dark .sliderwrap .e-tick-after.e-scale.e-h-scale .e-tick,
+body.tailwind3.e-bigger .sliderwrap .e-tick-after.e-scale.e-h-scale .e-tick
+body.tailwind3-dark.e-bigger .sliderwrap .e-tick-after.e-scale.e-h-scale .e-tick {
+    top: 0px;
+}
 `
 
 const APIs = () => {

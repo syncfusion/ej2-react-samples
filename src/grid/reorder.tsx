@@ -19,7 +19,7 @@ export class Reordering extends SampleBase<{}, {}> {
                             <ColumnDirective field='EmployeeID' headerText='Employee ID' width='150' textAlign="Right" validationRules={this.employeeidRules} isPrimaryKey={true}></ColumnDirective>
                             <ColumnDirective field='FirstName' headerText='Name' width='140' validationRules={this.firstnameRule}></ColumnDirective>
                             <ColumnDirective field='Title' headerText='Title' width='170' />
-                            <ColumnDirective field='HireDate' headerText='Hired Date' width='120' format='yMd' textAlign="Right" editType='datepickeredit'/>
+                            <ColumnDirective field='HireDate' headerText='Hired Date' width='120' format='yMd' textAlign="Right" editType='datepickeredit' type='date'/>
                             <ColumnDirective field='ReportsTo' headerText='Reports To' width='120'></ColumnDirective>
                         </ColumnsDirective>
                         <Inject services={[Reorder, Sort, Toolbar, Filter, Edit]} />

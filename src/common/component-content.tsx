@@ -48,8 +48,12 @@ let isFunctional: boolean = false;
 let hasFunctional: boolean = false;
 let isHookCode: boolean = true;
 export let isRendered: boolean = false;
+export let isFinalize: boolean = false;
 export function initialize(): void {
     isRendered = false
+}
+export function setIsFinalize(): void {
+    isFinalize = true;
 }
 /**
  * Prevent Tab Swipe Function
@@ -620,7 +624,7 @@ export class Content extends React.Component<{}, {}>{
                     break;
                 }
             }
-            location.hash = path ? path : '#/fluent2/grid/overview';
+            location.hash = path ? path : '#/tailwind3/grid/overview';
         }
         let radios: NodeListOf<Element> = document.querySelectorAll('input[name="hooks"]');
         radios.forEach(radio => radio.addEventListener('change', onHooksChange));

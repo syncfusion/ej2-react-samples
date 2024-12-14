@@ -87,7 +87,7 @@ function ColumnTemplate() {
                     placeholder: 'Select a value',
                     popupHeight: '200px',
                     allowFiltering: true,
-                    mode: 'Delimiter',
+                    mode: 'Box',
                 });
                 dropInstance.appendTo(flValInput);
             },
@@ -117,14 +117,14 @@ function ColumnTemplate() {
                         <ColumnDirective field='EmployeeID' headerText='ID' width='160'/>
                         <ColumnDirective field='Name' headerText='Name' width='120' />
                         <ColumnDirective field='MailID' headerText='Email ID' width='150' template={mailIDTemplate}/>
-                        <ColumnDirective field='DateOfJoining' headerText='Date Joined' width='170' textAlign='Right' format='yMd'/>
+                        <ColumnDirective field='DateOfJoining' headerText='Date Joined' width='170' textAlign='Right' format='yMd' type='date'/>
                         <ColumnDirective field='Designation' headerText='Designation' width='160'/>
                         <ColumnDirective field='Team' headerText='Team(s)' width='160'/>
                         <ColumnDirective field='ReportTo' headerText='Reporter' width='120'/>
                         <ColumnDirective field='EmployeeAvailability' headerText='Availability' width='200' template={statusTemplate}/>
                         <ColumnDirective field='YearOfExperience' headerText='Experience' width='180'/>
                         <ColumnDirective field='AssetKit' headerText='Asset Kit' width='180' template={assetTemplate} filter={filter}/>
-                        <ColumnDirective field='AssetKitDistribution' headerText='Assigned Date' width='170' format='yMd' textAlign='Right' />
+                        <ColumnDirective field='AssetKitDistribution' headerText='Assigned Date' width='170' format='yMd' textAlign='Right' type='date'/>
                         <ColumnDirective field='Location' headerText='Location' width='150'template={locationTemplate}/>
                         <ColumnDirective field='PhoneNumber' headerText='Contact No' width='150' textAlign='Right'/>
                     </ColumnsDirective>
@@ -147,7 +147,7 @@ function ColumnTemplate() {
             </p>
             <p>
                 The column template feature allows the customization of grid cells. In this demo, the Grid showcases the <strong>Employee Image</strong>
-                column with employee photos, <strong>Mail ID</strong> column with link tags, <strong>Location</strong> column with location icons, <strong>Asset Kit</strong> column with Syncfusion Chip components and <strong>Employee Availability</strong> column with HTML span elements, using green to indicate available and red to indicate for not available.
+                column with employee photos, <strong>Mail ID</strong> column with link tags, <strong>Location</strong> column with location icons, <strong>Asset Kit</strong> column with Syncfusion<sup>®</sup> Chip components and <strong>Employee Availability</strong> column with HTML span elements, using green to indicate available and red to indicate for not available.
             </p>
             <p>
                 More information on the column template can be found in this

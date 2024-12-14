@@ -112,7 +112,7 @@ export class Resize extends SampleBase<{}, {}> {
                 <div className='col-lg-12 control-section default-ribbon-section'>
                     <div className='control ribbon-sample'>
                         <div id="ribbonContainer" className='resize-ribbon-container'>
-                            <RibbonComponent id='ribbon' ref={resizeRibbon => { this.resizeRibbonObj = resizeRibbon }} enablePersistence={true} fileMenu={{ visible: true, menuItems: this.fileOptions, select: this.fileSelect }} launcherIconClick={this.launchClick}>
+                            <RibbonComponent id='ribbon' ref={resizeRibbon => { this.resizeRibbonObj = resizeRibbon }} enablePersistence={true} fileMenu={{ visible: true, menuItems: this.fileOptions, select: this.fileSelect }} launcherIconClick={this.launchClick}  cssClass='ribbon-resize'>
                                 <RibbonTabsDirective>
                                     <RibbonTabDirective header='Home'>
                                         <RibbonGroupsDirective>

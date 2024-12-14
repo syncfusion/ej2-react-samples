@@ -21,6 +21,10 @@ if (Browser.isIE) {
 }
 
 const TimeZone = () => {
+  useEffect(() => {
+    updateSampleSection();
+  }, [])
+
   const scheduleObj = useRef<ScheduleComponent>(null);
   const fifaEvents: Record<string, any>[] = extend([], ((dataSource as Record<string, any>).fifaEventsData), null, true) as Record<string, any>[];
   const timezone: Timezone = new Timezone();
@@ -37,8 +41,8 @@ const TimeZone = () => {
 
   useEffect(() => {
     for (let event of fifaEvents) {
-      event.StartTime = timezone.removeLocalOffset(new Date(event.StartTime as string));
-      event.EndTime = timezone.removeLocalOffset(new Date(event.EndTime as string));
+      event.StartTime = timezone.removeLocalOffset(new Date(event.StartTime));
+      event.EndTime = timezone.removeLocalOffset(new Date(event.EndTime));
     }
   }, [timezone]);
 

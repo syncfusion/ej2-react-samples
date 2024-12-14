@@ -334,7 +334,7 @@ let scrollableArea:any = new Rect(0, 0, 1500, 1500);
               <div className="row db-prop-row" style={{ paddingTop: '10px' }}>
                 <div
                   className="col-xs-6"
-                  style={{ paddingRight: '15px', width: '150px' }}
+                  style={{ paddingRight: '15px', width: '175px' }}
                 >
                   <div
                     style={{ width: '40%', float: 'left', marginTop: '5px' }}
@@ -364,7 +364,7 @@ let scrollableArea:any = new Rect(0, 0, 1500, 1500);
               <div className="row db-prop-row" style={{ paddingTop: '10px' }}>
                 <div
                   className="col-xs-6"
-                  style={{ paddingRight: '15px', width: '150px' }}
+                  style={{ paddingRight: '15px', width: '175px' }}
                 >
                   <div
                     style={{ width: '40%', float: 'left', marginTop: '5px' }}
@@ -394,7 +394,7 @@ let scrollableArea:any = new Rect(0, 0, 1500, 1500);
               <div className="row db-prop-row" style={{ paddingTop: '10px' }}>
                 <div
                   className="col-xs-6 db-col-left"
-                  style={{ width: '150px' }}
+                  style={{ width: '175px' }}
                 >
                   <div
                     style={{ width: '40%', float: 'left', marginTop: '5px' }}
@@ -422,7 +422,7 @@ let scrollableArea:any = new Rect(0, 0, 1500, 1500);
               <div className="row db-prop-row" style={{ paddingTop: '10px' }}>
                 <div
                   className="col-xs-6 db-col-right"
-                  style={{ width: '150px' }}
+                  style={{ width: '175px' }}
                 >
                   <div
                     style={{ width: '40%', float: 'left', marginTop: '5px' }}
@@ -472,7 +472,7 @@ let scrollableArea:any = new Rect(0, 0, 1500, 1500);
               <div className="row db-prop-row" style={{ paddingTop: '10px' }}>
                 <div
                   className="col-xs-6 db-col-left"
-                  style={{ width: '150px' }}
+                  style={{ width: '175px' }}
                 >
                   <div
                     style={{ width: '40%', float: 'left', marginTop: '5px' }}
@@ -500,7 +500,7 @@ let scrollableArea:any = new Rect(0, 0, 1500, 1500);
               <div className="row db-prop-row" style={{ paddingTop: '10px' }}>
                 <div
                   className="col-xs-6 db-col-right"
-                  style={{ width: '150px' }}
+                  style={{ width: '175px' }}
                 >
                   <div
                     style={{ width: '40%', float: 'left', marginTop: '5px' }}
@@ -528,7 +528,7 @@ let scrollableArea:any = new Rect(0, 0, 1500, 1500);
               <div className="row db-prop-row" style={{ paddingTop: '10px' }}>
                 <div
                   className="col-xs-6 db-col-left"
-                  style={{ width: '150px' }}
+                  style={{ width: '175px' }}
                 >
                   <div
                     style={{ width: '40%', float: 'left', marginTop: '5px' }}
@@ -556,7 +556,7 @@ let scrollableArea:any = new Rect(0, 0, 1500, 1500);
               <div className="row db-prop-row" style={{ paddingTop: '10px' }}>
                 <div
                   className="col-xs-6 db-col-right"
-                  style={{ width: '150px' }}
+                  style={{ width: '175px' }}
                 >
                   <div
                     style={{ width: '40%', float: 'left', marginTop: '5px' }}

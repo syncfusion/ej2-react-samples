@@ -8,3 +8,6 @@
 {
     max-width: 552px;
 }
+.e-dialog.e-edit-dialog {
+    max-height: 589px !important;
+}

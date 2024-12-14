@@ -11,19 +11,19 @@ const Default = () => {
     const items: SpeedDialItemModel[] = [
         {
             title: 'Home',
-            iconCss: 'speeddial-icons speeddial-icon-house'
+            iconCss:'e-icons e-home'
         },
         {
             title: 'People',
-            iconCss: 'speeddial-icons speeddial-icon-people'
+            iconCss:'e-icons e-people'
         },
         {
             title: 'Search',
-            iconCss: 'speeddial-icons speeddial-icon-search'
+            iconCss:'e-icons e-search'
         },
         {
             title: 'Message',
-            iconCss: 'speeddial-icons speeddial-icon-message'
+            iconCss:'e-icons e-comment-show'
         }
     ];
 
@@ -32,7 +32,7 @@ const Default = () => {
             <div className='control-section'>
                 <div id="speed-dial-wrapper">
                     <div id="speeddialtarget" className="speeddial-default-target  custom-index">
-                        <SpeedDialComponent title="Menu" openIconCss='speeddial-icons speeddial-icon-menu' closeIconCss='speeddial-icons speeddial-icon-close' target='#speeddialtarget' position='BottomCenter' items={items}></SpeedDialComponent>
+                        <SpeedDialComponent title="Menu" openIconCss='e-icons e-justify' closeIconCss='e-icons e-close' target='#speeddialtarget' position='BottomCenter' items={items}></SpeedDialComponent>
                     </div>
                 </div>
             </div>

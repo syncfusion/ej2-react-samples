@@ -1,7 +1,0 @@
-.bootstrap .sb-reset-icon:before {
-    content: '\e7fc';
-}
-
-.bootstrap .e-tab .sb-content-tab-header.e-tab-header::before {
-    border-width: 0;
-}

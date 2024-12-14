@@ -9,6 +9,13 @@ import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import { SortDirection } from '@syncfusion/ej2-grids';
 
+const SAMPLE_CSS = `
+@media (min-width: 990px) and (max-width: 1300px) {
+  .property-panel-section{
+    padding-left:0px;
+  }
+}`;
+
 const SortingAPI = () => {
   useEffect(() => {
     updateSampleSection();
@@ -82,6 +89,9 @@ const SortingAPI = () => {
             <Inject services={[Sort]} />
           </TreeGridComponent>
         </div>
+        <style>
+          {SAMPLE_CSS}
+        </style>
         <div className="col-md-3 property-section">
           <PropertyPane title="Properties">
             <table
@@ -92,13 +102,13 @@ const SortingAPI = () => {
             >
               <tbody>
                 <tr>
-                  <td style={{ width: "20%" }}>
+                  <td>
                     <div> Column </div>
                   </td>
                   <td style={{ width: "80%", paddingRight: "10px" }}>
-                    <div>
+                    <div style={{ paddingLeft: '8px' }}>
                       <DropDownListComponent
-                        width="140px"
+                        width="146px"
                         id="columns"
                         ref={columnName}
                         dataSource={columnsName}
@@ -109,13 +119,13 @@ const SortingAPI = () => {
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ width: "20%" }}>
+                  <td>
                     <div> Direction </div>
                   </td>
                   <td style={{ width: "80%", paddingRight: "10px" }}>
-                    <div>
+                    <div style={{ paddingLeft: '8px' }}>
                       <DropDownListComponent
-                        width="140px"
+                        width="146px"
                         id="direction"
                         ref={sortDirection}
                         dataSource={direction}
@@ -126,21 +136,14 @@ const SortingAPI = () => {
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ width: '30%', paddingTop: '10px' }}>
-                    <div>
-                      <ButtonComponent onClick={btnClick.bind(this)}>
-                        {" "}
-                        Sort{" "}
-                      </ButtonComponent>
-                    </div>
-                  </td>
-                  <td style={{ width: "70%", padding: "10px 10px 0px 0px" }}>
-                    <div>
-                      <ButtonComponent onClick={btnClick2.bind(this)}>
-                        {" "}
-                        Clear{" "}
-                      </ButtonComponent>
-                    </div>
+                  <td colSpan={2} style={{  paddingTop: '10%', paddingLeft:'10px' }}>
+                    <ButtonComponent
+                      style={{ marginRight: '10px' }}
+                      onClick={btnClick.bind(this)}
+                    >
+                      Sort
+                    </ButtonComponent>
+                    <ButtonComponent onClick={btnClick2.bind(this)}>Clear</ButtonComponent>
                   </td>
                 </tr>
               </tbody>

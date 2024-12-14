@@ -23,7 +23,7 @@ export class CustomBinding extends SampleBase<{}, {}> {
         <div className='control-section'>
           <GridComponent dataSource={this.data} ref={g => this.grid = g} allowPaging={true} allowSorting={true} pageSettings={{ pageCount: 4, pageSize: 10 }} allowGrouping={true} dataStateChange={this.dataStateChange.bind(this)}>
             <ColumnsDirective>
-              <ColumnDirective field='OrderID' headerText='Order ID' width='120'></ColumnDirective>
+              <ColumnDirective field='OrderID' headerText='Order ID' width='120' allowGrouping={false}></ColumnDirective>
               <ColumnDirective field='CustomerID' headerText='Customer Name' width='150'></ColumnDirective>
               <ColumnDirective field='ShipName' headerText='Ship Name' width='120' />
               <ColumnDirective field='ShipCity' headerText='Ship City' width='150'></ColumnDirective>

@@ -1,6 +1,6 @@
 .control-wrapper.virtualization-multicolumn {
     margin: 0 auto;
-    width: 550px;
+    width: 250px;
 }
 
 @media screen and (max-width: 480px) {

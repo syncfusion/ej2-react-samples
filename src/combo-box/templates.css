@@ -49,7 +49,8 @@
      color: #2899F5;
 }
 
-.tailwind-dark #employees_popup .header {
+.tailwind-dark #employees_popup .header,
+.tailwind3-dark #employees_popup .header {
     background: #374151;
     color: rgb(255, 255, 255);
 }
@@ -125,12 +126,14 @@
     margin-top: 4px;
 }
 
-.tailwind #employees_popup .job {
+.tailwind #employees_popup .job,
+.tailwind3 #employees_popup .job {
     margin-top: -10px;
     margin-bottom: 4px;
 }
 
-.e-bigger.tailwind #employees_popup .job {
+.e-bigger.tailwind #employees_popup .job,
+.e-bigger.tailwind3 #employees_popup .job {
     margin-top: -15px;
     margin-bottom: 4px;
 }

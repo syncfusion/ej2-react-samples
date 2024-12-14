@@ -11,7 +11,7 @@ const SAMPLE_CSS = `
   .fluent2-dark,
   .fluent2-highcontrast {
     #selectiondd1 .e-input-group {
-      width: 110px !important;
+      width: 120px !important;
     }
 }`;
 export class Selection extends SampleBase<{}, {}> {
@@ -90,36 +90,36 @@ export class Selection extends SampleBase<{}, {}> {
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                 <tbody>
                   <tr>
-                    <td style={{ width: '30%' }}>
-                      <div style={{ paddingTop: '7px', paddingLeft: '2px' }}> Selection Type </div>
+                    <td>
+                      <div style={{ paddingTop: '7px', paddingLeft: '10px' }}> Selection Type </div>
                     </td>
                     <td style={{ width: '70%', paddingRight: '10px' }}>
                       <div id='selectiondd1'>
-                        <DropDownListComponent width="100px" id="type" change={this.typeChange.bind(this)}
+                        <DropDownListComponent width="120px" id="type" change={this.typeChange.bind(this)}
                           dataSource={this.types} fields={{ text: 'type', value: 'id' }} value="Multiple"
                           ref={dropdown => this.typeDropdownObj = dropdown} />
                       </div>
                     </td>
                   </tr>
                   <tr>
-                    <td style={{ width: '30%', paddingLeft: '2px' }}>
-                      <div> Selection Mode </div>
+                    <td>
+                      <div style={{paddingLeft:'10px'}}> Selection Mode </div>
                     </td>
                     <td style={{ width: '70%' }}>
-                      <div style={{ paddingRight: '10px', paddingBottom: '10px' }}>
-                        <DropDownListComponent width="100px" id="mode" change={this.modeChange.bind(this)}
+                      <div style={{ paddingRight: '10px' }}>
+                        <DropDownListComponent width="120px" id="mode" change={this.modeChange.bind(this)}
                           dataSource={this.modes} fields={{ text: 'mode', value: 'id' }} value="Row"
                           ref={dropdown => this.modeDropdownObj = dropdown} />
                       </div>
                     </td>
                   </tr>
                   <tr id='cellselection' style={{ display: 'none' }}>
-                    <td style={{ width: '30%' }}>
-                      <div> Cell Selection Mode </div>
+                    <td>
+                      <div style={{ paddingLeft: "10px" }}> Cell Selection Mode </div>
                     </td>
                     <td style={{ width: '70%' }}>
                       <div style={{ paddingRight: '10px', paddingBottom: '10px' }}>
-                        <DropDownListComponent width="100px" id="cellmode" change={this.cellmodeChange.bind(this)}
+                        <DropDownListComponent width="120px" id="cellmode" change={this.cellmodeChange.bind(this)}
                           dataSource={this.cellmodes} fields={{ text: 'mode', value: 'id' }} value="Flow"
                         />
                       </div>

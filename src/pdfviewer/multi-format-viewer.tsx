@@ -97,6 +97,9 @@ export class MultiFormatViewer extends SampleBase<{}, {}>{
       return;
     }
     document.getElementById("fileName").innerHTML = args.filesData[0].name;
+    let viewer = (document.getElementById('pdfviewer') as any).ej2_instances[0];
+    viewer.downloadFileName = args.filesData[0].name;
+    viewer.exportAnnotationFileName = args.filesData[0].name;
     let size = document.getElementById("fileSize") as HTMLElement;
     if ((args.filesData[0].size.toString()).length <= 7) {
       size.innerHTML = ((args.filesData[0].size / 1024).toFixed(1)).toString() + " KB";
@@ -274,6 +277,7 @@ export class MultiFormatViewer extends SampleBase<{}, {}>{
             </div>
             {/* Render the PDF Viewer */}
             <PdfViewerComponent id="pdfviewer"
+              className = "e-pv-multi-format-pdfviewer"
               toolbarSettings={{
                 showTooltip: true, toolbarItems: ["DownloadOption",
                   "UndoRedoTool",

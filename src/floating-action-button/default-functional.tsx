@@ -28,16 +28,16 @@ const Default = () => {
                 </div>
 
                 {/* Icon and isPrimary is false */}
-                <FabComponent id="fab1" iconCss='fab-icons fab-icon-mic'
-                    isPrimary={false} position='MiddleCenter' title="Mic" target='#target1'></FabComponent>
+                <FabComponent id="fab1" iconCss='e-icons e-people'
+                    isPrimary={false} position='MiddleCenter' title="Contact" target='#target1'></FabComponent>
 
                 {/* Icon with Label */}
-                <FabComponent id="fab2" iconCss='fab-icons fab-icon-people'
+                <FabComponent id="fab2" iconCss='e-icons e-people'
                     content="Contact" position='MiddleCenter' target='#target2'></FabComponent>
 
                 {/* Icon with Disabled true */}
                 <FabComponent id="fab3" content='Disabled'
-                    disabled={true} iconCss='fab-icons fab-icon-people'
+                    disabled={true} iconCss='e-icons e-people'
                     position='MiddleCenter' target='#target3'></FabComponent>
 
                 {/* Label only */}

@@ -8,7 +8,7 @@ import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Category, I
 import { PropertyPane } from '../common/property-pane';
 import { Browser } from '@syncfusion/ej2-base';
 import { EmitType } from '@syncfusion/ej2-base';
-import { pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, pointBootstrap5Colors, pointMaterial3DarkColors, pointMaterial3Colors, pointFluent2Colors, pointFluent2HighContrastColors } from './theme-color';
+import { pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, pointBootstrap5Colors, pointMaterial3DarkColors, pointMaterial3Colors, pointFluent2Colors, pointFluent2HighContrastColors, pointTailwind3Colors, pointTailwind3DarkColors } from './theme-color';
 import { updateSampleSection } from '../common/sample-base';
 export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEventArgs): void => {
     let selectedTheme: string = location.hash.split('/')[1];
@@ -47,7 +47,12 @@ export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEve
         args.fill = pointFluent2Colors[args.point.index % 10];
     } else if (selectedTheme === 'fluent2-highcontrast' || selectedTheme === 'fluent2-dark') {
         args.fill = pointFluent2HighContrastColors[args.point.index % 10];
-    };
+    }
+    else if (selectedTheme === 'tailwind3-dark') {
+        args.fill = pointTailwind3DarkColors[args.point.index % 10];
+    } else if (selectedTheme === 'tailwind3') {
+        args.fill = pointTailwind3Colors[args.point.index % 10];
+    } ;
 }
 
 export let data1: any[] = [

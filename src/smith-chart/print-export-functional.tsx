@@ -37,8 +37,12 @@ const SAMPLE_CSS = `
         content: '\\e743';
     }
  
-    .e-view.tailwind .e-print-icon::before, .e-view.tailwind-dark .e-print-icon::before {
-        content: '\\e76c';
+   .e-view.tailwind3 .e-print-icon::before, .e-view.tailwind3-dark .e-print-icon::before {
+          content: '\\e76c';
+    }
+    
+    .e-view.tailwind3 .e-export-icon::before, .e-view.tailwind3-dark .e-export-icon::before {
+          content: '\\e7bf';
     }
  
     .e-view.highcontrast .e-print-icon::before {
@@ -69,9 +73,9 @@ const SAMPLE_CSS = `
     .e-view.bootstrap4 .e-icons.e-export::before {
         content: '\\e7bf';
     }
- 
-    .e-view.tailwind-dark .e-export-icon::before, .e-view.tailwind .e-export-icon::before {
-        content: '\\e7bf';
+
+.e-view.tailwind\x03-dark .e-export-icon::before, .e-view.tailwind\x03 .e-export-icon::before {
+        content: '\e7bf';
     }
  
     .e-view.highcontrast .e-export-icon::before {
@@ -79,7 +83,7 @@ const SAMPLE_CSS = `
     }
  
     .e-view.bootstrap5 .e-export-icon::before, .e-view.bootstrap5-dark .e-export-icon::before {
-        content: '\\e72e';
+            content: '\\e728';
     }
     .e-view.fluent .e-export-icon::before, .e-view.fluent-dark .e-export-icon::before {
         content: '\\e72e';

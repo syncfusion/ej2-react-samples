@@ -1962,6 +1962,9 @@ propertye pane
 
 /*sb-hide */
 
+#sb-setting-theme_options li[data-value="highcontrast"],
+#sb-setting-theme_options li[data-value="fluent"],
+#sb-setting-theme_options li[data-value="tailwind"],
 .sb-hide {
     display: none;
 }
@@ -2255,7 +2258,7 @@ RTE toolbar not visible in fullscreen
         margin: 17px auto 0px;
         float: none;
         width: 242px;
-        padding: 11px 61px;
+        padding: 11px 55px;
     }
 
     .content-area {
@@ -2286,10 +2289,10 @@ RTE toolbar not visible in fullscreen
 
     .free-trial {
         display: block;
-        margin: 17px auto 0px;
+        margin: 4px auto 0px;
         float: none;
         width: 242px;
-        padding: 11px 61px;
+        padding: 11px 55px;
     }
 
     .content-area {
@@ -2384,7 +2387,7 @@ RTE toolbar not visible in fullscreen
         display: block;
         margin: 17px auto 0px;
         float: none;
-        width: 242px;
+        width: 251px;
         padding: 11px 61px;
     }
 
@@ -2545,6 +2548,13 @@ RTE toolbar not visible in fullscreen
 
     .banner-cnt-pt {
         display: flex;
+    }
+}
+
+@media only screen and (min-width: 2500px) and (max-width: 2600px) {
+    .free-trial {
+        width: 210px;
+        padding: 12px 40px;
     }
 }
 

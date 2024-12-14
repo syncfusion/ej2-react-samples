@@ -1,12 +1,10 @@
 import * as React from 'react';
 import {
     PdfViewerComponent, Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, Annotation, FormFields, FormDesigner,
-    ThumbnailView, Print, TextSelection, TextSearch, PageOrganizer, Inject, StandardBusinessStampItem, SignStampItem, DynamicStampItem,
-    AnnotationAddEventArgs,
-    AnnotationRemoveEventArgs,
+    ThumbnailView, Print, TextSelection, TextSearch, PageOrganizer, Inject, AnnotationAddEventArgs,AnnotationRemoveEventArgs
 } from '@syncfusion/ej2-react-pdfviewer';
-import { ToolbarComponent, ItemsDirective, ItemDirective, ClickEventArgs, MenuComponent, AppBarComponent } from '@syncfusion/ej2-react-navigations';
-import { ButtonComponent, SwitchComponent } from '@syncfusion/ej2-react-buttons';
+import { ToolbarComponent, ItemsDirective, ItemDirective, ClickEventArgs, AppBarComponent } from '@syncfusion/ej2-react-navigations';
+import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import './pdf.component.css';
 import { updateSampleSection } from '../common/sample-base';
 import { ComboBoxComponent } from '@syncfusion/ej2-react-dropdowns';
@@ -40,6 +38,7 @@ function Redaction() {
         'drop-area-wrap'
     )[0];
     let allowedExtensions: string = '.png, .jpg, .jpeg';
+    let url = "https://ej2services.syncfusion.com/react/development/api/pdfviewer/Redaction";
 
     function template() {
         return (
@@ -110,22 +109,34 @@ function Redaction() {
 
             case 'redacticon':
                 {
-                    viewer.serverActionSettings.download = "Redaction";
-                    let data: any;
-                    let base64data: any;
-                    viewer.saveAsBlob().then((value) => {
-                        data = value;
-                        var reader = new FileReader();
-                        reader.readAsDataURL(data);
-                        reader.onload = () => {
-                            base64data = reader.result;
-                            viewer.load(base64data, null);
-                        };
-
-                    });
-                    redactionCount = 0;
-                    updateRedaction();
-                    viewer.serverActionSettings.download = "Download";
+                    if (redactionCount > 0) {
+                        viewer.saveAsBlob().then(function (value) {
+                            var data = value;
+                            var reader = new FileReader();
+                            reader.readAsDataURL(data);
+                            reader.onload = function (e) {
+                                var base64String = e.target?.result;
+                                var xhr = new XMLHttpRequest();
+                                xhr.open('POST', url, true);
+                                xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
+                                var requestData = JSON.stringify({ base64String: base64String });
+                                xhr.onload = function () {
+                                    if (xhr.status === 200) {
+                                        viewer.load(xhr.responseText, null);
+                                    }
+                                    else {
+                                        console.error('Redaction failed:', xhr.statusText);
+                                    }
+                                };
+                                xhr.onerror = function () {
+                                    console.error('An error occurred during the redaction:', xhr.statusText);
+                                };
+                                xhr.send(requestData);
+                            };
+                        });
+                        redactionCount = 0;
+                        updateRedaction();
+                    }
                     break;
                 }
         }
@@ -134,13 +145,84 @@ function Redaction() {
 
     //To download the redacted pdf
     function download() {
-        viewer.fileName = fileName;
-        viewer.downloadFileName = fileName;
-        viewer.serverActionSettings.download = "Redaction";
-        viewer.download();
-        viewer.serverActionSettings.download = "Download";
+        viewer.saveAsBlob().then(function (value) {
+            let reader = new FileReader();
+            reader.readAsDataURL(value);
+            reader.onload = function (e) {
+                const base64String = e.target?.result as string;
+                const xhr: XMLHttpRequest = new XMLHttpRequest();
+                xhr.open('POST', url, true);
+                xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
+                const requestData = JSON.stringify({ base64String: base64String });
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        const blobUrl = createBlobUrl(xhr.responseText.split('base64,')[1], 'application/pdf');
+                        downloadDocument(blobUrl);
+                    }
+                    else {
+                        console.error('Download failed:', xhr.statusText);
+                    }
+                };
+                xhr.onerror = function () {
+                    console.error('An error occurred during the download:', xhr.statusText);
+                };
+                xhr.send(requestData);
+            };
+        }).catch(function (error) {
+            console.error('Error saving Blob:', error);
+        });
     }
-
+    function createBlobUrl(base64String: string, contentType: string):any {
+        const sliceSize:number = 512;
+        const byteCharacters:string = atob(base64String);
+        const byteArrays:any = [];
+        for (let offset:number = 0; offset < byteCharacters.length; offset += sliceSize) {
+            const slice:string = byteCharacters.slice(offset, offset + sliceSize);
+            const byteNumbers:any = new Array(slice.length);
+            for (let i:number = 0; i < slice.length; i++) {
+                byteNumbers[parseInt(i.toString(), 10)] = slice.charCodeAt(i);
+            }
+            const byteArray:any = new Uint8Array(byteNumbers);
+            byteArrays.push(byteArray);
+        }
+        const blob:any = new Blob(byteArrays, { type: contentType });
+        return blob;
+    }
+    function downloadDocument(blobUrl: string):void {
+        const Url:any = URL || webkitURL;
+        blobUrl = Url.createObjectURL(blobUrl);
+        viewer.fileName = fileName;
+        const anchorElement:HTMLElement = document.createElement('a');
+        if (anchorElement.click) {
+            (anchorElement as HTMLAnchorElement).href = blobUrl;
+            (anchorElement as HTMLAnchorElement).target = '_parent';
+            if ('download' in anchorElement) {
+                const downloadFileName = viewer.fileName || 'downloadedFile.pdf';
+                if (downloadFileName) {
+                    if (downloadFileName.endsWith('.pdf')) {
+                        (anchorElement as HTMLAnchorElement).download = downloadFileName;
+                    }
+                    else {
+                        const splitPdf:string = downloadFileName.split('.pdf')[0] + '.pdf';
+                        (anchorElement as HTMLAnchorElement).download = splitPdf;
+                    }
+                }
+                else {
+                    (anchorElement as HTMLAnchorElement).download = 'Default.pdf';
+                }
+            }
+            (document.body || document.documentElement).appendChild(anchorElement);
+            anchorElement.click();
+        }
+        else {
+            if (window.top === window &&
+                blobUrl.split('#')[0] === window.location.href.split('#')[0]) {
+                const padCharacter:string = blobUrl.indexOf('?') === -1 ? '?' : '&';
+                blobUrl = blobUrl.replace(/#|$/, padCharacter + '$&');
+            }
+            window.open(blobUrl, '_parent');
+        }
+    }
 
     //Updating the number of redaction while the annotation has been added
     function annotationAdd(e: AnnotationAddEventArgs): void {
@@ -337,9 +419,9 @@ function Redaction() {
             <div className='e-pv-secondary-toolbar' id='toolbar_secondary'>
                 <ToolbarComponent ref={(scope) => { toolbar = scope; }} clicked={clickHandler.bind(this)} id='e-pv-redact-sb-toolbar-secondary'>
                     <ItemsDirective>
-                        <ItemDirective prefixIcon='e-icons e-chevron-left' cssClass='e-pv-redact-sb-previous-container'  tooltipText="Previous Page" id='previousPage' disabled={true}></ItemDirective>
+                        <ItemDirective prefixIcon='e-icons e-chevron-left' cssClass='e-pv-redact-sb-previous-container' tooltipText="Previous Page" id='previousPage' disabled={true}></ItemDirective>
                         <ItemDirective template={template} tooltipText="Page Number"></ItemDirective>
-                        <ItemDirective prefixIcon='e-icon e-chevron-right' cssClass='e-pv-redact-sb-next-container' id='nextPage' disabled={true} tooltipText="Next Page"></ItemDirective>
+                        <ItemDirective prefixIcon='e-icon e-chevron-right' cssClass='e-pv-redact-sb-next-container' tooltipText="Next Page" id='nextPage' disabled={true}></ItemDirective>
                         <ItemDirective type='Separator'></ItemDirective>
                         <ItemDirective cssClass='percentage' type="Input" tooltipText="Zoom" template={dropDown} align="Left" />
                     </ItemsDirective>
@@ -349,7 +431,7 @@ function Redaction() {
                 <DialogComponent header={header as any} footerTemplate={footerTemplate as any} content={contentTemplate as any} showCloseIcon={true} target="#targetDialog" width={'477px'} ref={dialogInstance} visible={false} isModal={true} id='e-pv-redact-sb-dialog'></DialogComponent>
             </div>
             {/* Render the PDF Viewer */}
-            <PdfViewerComponent ref={(scope) => { viewer = scope; }} id="container" documentPath="https://cdn.syncfusion.com/content/pdf/programmatical-annotations.pdf" serviceUrl='https://ej2services.syncfusion.com/react/development/api/pdfviewer'
+            <PdfViewerComponent ref={(scope) => { viewer = scope; }} id="container" documentPath="https://cdn.syncfusion.com/content/pdf/programmatical-annotations.pdf" resourceUrl="https://cdn.syncfusion.com/ej2/27.1.55/dist/ej2-pdfviewer-lib"
                 style={{ 'height': '640px' }} enableToolbar={false} enableNavigationToolbar={false} enableAnnotationToolbar={false} enableCommentPanel={false}
                 documentLoad={documentLoaded} pageChange={onPageChange} annotationAdd={annotationAdd} annotationRemove={annotationRemove}>
                 <Inject services={[Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner, PageOrganizer]} />

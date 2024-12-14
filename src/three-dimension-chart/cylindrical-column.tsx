@@ -5,7 +5,7 @@ import * as React from 'react';
 import { Chart3DComponent, Chart3DLoadedEventArgs, ColumnSeries3D, Category3D, Tooltip3D, ChartTheme, Chart3DSeriesDirective, Chart3DSeriesCollectionDirective, Inject, Chart3DAxisLabelRenderEventArgs , Chart3DPointRenderEventArgs } from '@syncfusion/ej2-react-charts';
 import { Browser, EmitType } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
-import { pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrap5Colors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, pointMaterial3DarkColors, pointMaterial3Colors } from './theme-color';
+import { pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrap5Colors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, pointMaterial3DarkColors, pointMaterial3Colors, pointTailwind3DarkColors, pointTailwind3Colors } from './theme-color';
 
 export let data: Object[] = [{ x: 'Czechia', y: 1.11 }, { x: 'Spain', y: 1.66 }, { x: 'USA', y: 1.56 }, { x: 'Germany', y: 3.1 }, { x: 'Russia', y: 1.35 }, { x: 'Slovakia', y: 1 }, { x: 'South Korea', y: 3.16 }, { x: 'France', y: 0.92 }];
 export let pointRender: EmitType<Chart3DPointRenderEventArgs> = (args: Chart3DPointRenderEventArgs): void => {
@@ -41,6 +41,11 @@ export let pointRender: EmitType<Chart3DPointRenderEventArgs> = (args: Chart3DPo
         args.fill = pointMaterial3DarkColors[args.point.index % 10];
     } else if (selectedTheme === 'material3') {
         args.fill = pointMaterial3Colors[args.point.index % 10];
+    }
+    else if (selectedTheme === 'tailwind3-dark') {
+        args.fill = pointTailwind3DarkColors[args.point.index % 10];
+    } else if (selectedTheme === 'tailwind3') {
+        args.fill = pointTailwind3Colors[args.point.index % 10];
     }
 };
 export class CylindricalColumn extends SampleBase<{}, {}> {

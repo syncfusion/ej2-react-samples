@@ -46,12 +46,12 @@ export class Search extends SampleBase<{}, {}> {
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                 <tbody>
                   <tr>
-                    <td style={{ width: '30%' }}>
+                    <td>
                       <div style={{ paddingTop: '10px' }}> Hierarchy Mode </div>
                     </td>
                     <td style={{ width: '70%' }}>
                       <div>
-                        <DropDownListComponent width="100px" id="selmode" change={this.onChange.bind(this)}
+                        <DropDownListComponent width="110px" id="selmode" change={this.onChange.bind(this)}
                           dataSource={this.modes} value="Parent" />
                       </div>
                     </td>

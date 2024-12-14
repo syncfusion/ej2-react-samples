@@ -24,7 +24,7 @@ function Paging () {
     let pagerViewData: string[] = ['Row', 'Column', 'Both'];
 
     let remoteData: DataManager = new DataManager({
-        url: 'https://bi.syncfusion.com/northwindservice/api/orders',
+        url: 'https://ej2services.syncfusion.com/react/development/api/order',
         adaptor: new WebApiAdaptor,
         crossDomain: true
     });

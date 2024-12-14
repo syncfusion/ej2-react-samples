@@ -31,7 +31,7 @@ function AggregateDefault() {
   return (
     <div className='control-pane'>
       <div className='control-section'>
-        <GridComponent dataSource={OverallData} height='300' gridLines='Vertical' allowSorting={true} allowMultiSorting={true} enableHover={false} allowFiltering={true} filterSettings={filterSettings} >
+        <GridComponent id="default-aggregate-grid" dataSource={OverallData} height='300' enableHover={false} gridLines='Vertical' allowSorting={true} allowMultiSorting={true} allowFiltering={true} filterSettings={filterSettings} >
           <ColumnsDirective>
           <ColumnDirective field='Month' headerText='Time Stamp' textAlign='Left' width='140' clipMode='EllipsisWithTooltip' isPrimaryKey={true}></ColumnDirective>
             <ColumnDirective field='Sales' headerText='Sales' width='150' textAlign='Right' clipMode='EllipsisWithTooltip' format='C2'></ColumnDirective>

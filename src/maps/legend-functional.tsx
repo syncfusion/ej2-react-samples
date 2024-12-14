@@ -132,7 +132,7 @@ const LegendMaps = () => {
                 <MapsComponent id="maps" tooltipRender={tooltip} loaded={onMapsLoad} load={load} ref={mapInstance} zoomSettings={{ enable: false }} legendSettings={{ visible: true, position: position, height: legendHeight, width: legendWidth, orientation: orientation, mode: mode, toggleLegendSettings: { enable: isEnableToggleLegend } }} titleSettings={{ text: 'Population density (per square kilometer) - 2015', textStyle: { size: '16px' } }}>
                     <Inject services={[Legend, MapsTooltip]} />
                     <LayersDirective>
-                        <LayerDirective shapeData={worldMap} shapePropertyPath='name' shapeDataPath='name' dataSource={datasource.legend} tooltipSettings={{ visible: true, valuePath: 'name', format: '${name} : ${density}' }} shapeSettings={{ colorValuePath: 'density', colorMapping: colorMappingData }} />
+                        <LayerDirective shapeData={worldMap} shapePropertyPath='name' shapeDataPath='name' dataSource={datasource.legend} tooltipSettings={{ visible: true, valuePath: 'name', format: '${name} : ${density}' }} shapeSettings={{ colorValuePath: 'density', colorMapping: colorMappingData, fill: '#E5E5E5' }} />
                     </LayersDirective>
                 </MapsComponent>
                 {/* Source Link */}

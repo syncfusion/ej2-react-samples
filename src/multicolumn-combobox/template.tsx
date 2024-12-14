@@ -16,7 +16,8 @@ export class Template extends SampleBase<{}, {}> {
                 <div className="control-section">
                     <div className='control-wrapper template-multicolumn'>
                         <div style={{ paddingTop: '55px' }}>
-                            <MultiColumnComboBoxComponent cssClass='multicolumn-customize' type="text" dataSource={(data as any).empList} fields={this.fields} placeholder='Select an employee' popupHeight={'230px'} gridSettings={{ rowHeight: 40 }}>
+                        <label>Select an employee</label>
+                            <MultiColumnComboBoxComponent cssClass='multicolumn-customize' type="text" dataSource={(data as any).empList} fields={this.fields} placeholder='e.g. Andrew Fuller' popupHeight={'230px'} popupWidth={'540px'} gridSettings={{ rowHeight: 40 }}>
                                 <ColumnsDirective>
                                     <ColumnDirective field='Eimg' header='Photos' width={90} headerTemplate={'<div class="header"> <span>Photo</span> </div>'} template={'<div><img class="empImage" src="src/multicolumn-combobox/Employees/${Eimg}.png" alt="employee"/> </div>'}></ColumnDirective>
                                     <ColumnDirective field='Name' header='Employee Name' width={160} headerTemplate={'<div class="header"> <span class="e-icons e-multicolumn-userlogin"></span> <span>Employee info</span> </div>'} template={'<div class="ename"> ${Name} </div>' + '<div class="job"> ${Designation} </div>'}></ColumnDirective>

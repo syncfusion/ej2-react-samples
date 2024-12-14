@@ -58,9 +58,9 @@ const themesToRedirect: string[] = ['material', 'material-dark', 'bootstrap4', '
 /**
  * default theme on sample loaded
  */
-export let selectedTheme: string = location.hash.split('/')[1] || localStorage.getItem('ej2-theme') || 'fluent2';
+export let selectedTheme: string = location.hash.split('/')[1] || localStorage.getItem('ej2-theme') || 'tailwind3';
 localStorage.removeItem('ej2-theme');
-const themeCollection: string[] = ['material3', 'bootstrap5', 'fluent2', 'tailwind', 'fluent2-highcontrast', 'highcontrast', 'fluent'];
+const themeCollection: string[] = ['material3', 'bootstrap5', 'fluent2', 'tailwind3', 'tailwind', 'fluent2-highcontrast', 'highcontrast', 'fluent'];
 let themeList: HTMLElement = document.getElementById('themelist');
 
 /**
@@ -96,7 +96,7 @@ let cultureDropDown: DropDownList;
 let currencyDropDown: DropDownList;
 let newYear: number = new Date().getFullYear();
 let copyRight: HTMLElement= document.querySelector('.sb-footer-copyright');
-copyRight.innerHTML = "Copyright © 2001 - " + newYear + " Syncfusion Inc.";
+copyRight.innerHTML = "Copyright © 2001 - " + newYear + " Syncfusion<sup>®</sup> Inc.";
 isMobile = window.matchMedia('(max-width:550px)').matches;
 if (Browser.isDevice || isMobile) {
   if (sidebar) {
@@ -851,7 +851,7 @@ function processResize(e: any): void {
  * Theme Loading
  */
 function loadTheme(theme: string): void {
-  theme = themesToRedirect.indexOf(theme) !== -1 ? 'fluent2': theme;
+  theme = themesToRedirect.indexOf(theme) !== -1 ? 'tailwind3': theme;
   let body: HTMLElement = document.body;
   if (body.classList.length > 0) {
     for (let themeItem of themeCollection) {
@@ -861,7 +861,7 @@ function loadTheme(theme: string): void {
   body.classList.add(theme.includes('bootstrap5') ? theme.replace('bootstrap5', 'bootstrap5_3') : theme);
   const activeTheme: string = theme.replace('-dark', '');
   themeList.querySelector('#' + activeTheme).classList.add('active');
-  let ajax: Ajax = new Ajax('./styles/' + (theme.includes('bootstrap5') ? theme.replace('bootstrap5', 'bootstrap5.3') : theme) + '.css', 'GET', true);
+  let ajax: Ajax = new Ajax('./styles/' + (theme.includes('bootstrap5') ? theme.replace('bootstrap5', 'bootstrap5.3') : theme ) + '.css', 'GET', true);
   ajax.send().then((result: any) => {
     let doc: HTMLFormElement = document.getElementById('themelink') as HTMLFormElement;
     doc.innerHTML = result;

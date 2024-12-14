@@ -301,7 +301,7 @@ function PivotToolbar() {
                         virtualization</a> support.
                 </p><br />
                 <p>
-                    More information on the Essential JS2 Pivot Table can be found in this <a target="_blank"
+                    More information on the Essential<sup>®</sup> JS2 Pivot Table can be found in this <a target="_blank"
                         href="https://ej2.syncfusion.com/react/documentation/pivotview/getting-started/#getting-started">
                     documentation section</a>.
                 </p>

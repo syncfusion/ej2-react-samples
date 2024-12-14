@@ -70,30 +70,32 @@ export class CheckBox extends SampleBase<{}, {}> {
         <div className='col-lg-4 property-section'>
           <PropertyPane title='Properties'>
             <table id="property" title="Properties" className='property-panel-table' style={{ width: '100%' }}>
-              <tr>
-                <td>
-                  <div>
-                    <CheckBoxComponent checked={true} label='Show Select All'
-                      ref={(scope) => { this.checkboxObj = scope; }} change={this.onChange.bind(this)} ></CheckBoxComponent>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div>
-                    <CheckBoxComponent checked={true} label='DropDown Button'
-                      ref={(scope) => { this.checkboxObj = scope; }} change={this.onChangeDrop.bind(this)} ></CheckBoxComponent>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div>
-                    <CheckBoxComponent checked={true} label='Selection Reorder'
-                      ref={(scope) => { this.checkboxObj = scope; }} change={this.onChangeLimit.bind(this)} ></CheckBoxComponent>
-                  </div>
-                </td>
-              </tr>
+              <tbody>
+                <tr>
+                  <td>
+                    <div>
+                      <CheckBoxComponent checked={true} label='Show Select All'
+                        ref={(scope) => { this.checkboxObj = scope; }} change={this.onChange.bind(this)} ></CheckBoxComponent>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div>
+                      <CheckBoxComponent checked={true} label='DropDown Button'
+                        ref={(scope) => { this.checkboxObj = scope; }} change={this.onChangeDrop.bind(this)} ></CheckBoxComponent>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div>
+                      <CheckBoxComponent checked={true} label='Selection Reorder'
+                        ref={(scope) => { this.checkboxObj = scope; }} change={this.onChangeLimit.bind(this)} ></CheckBoxComponent>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </PropertyPane>
         </div>

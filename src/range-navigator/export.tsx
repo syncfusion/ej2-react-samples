@@ -19,12 +19,10 @@ import { dataCollection } from './export-data';
 export let zoomFactor : number;
 export let zoomPosition :number;
 export let dateTimeData: Object[] = dataCollection;
-export let themes: string[] = ['Material', 'Fabric', 'Bootstrap', 'Highcontrast', 'Bootstrap5', 'Tailwind','MaterialDark', 'FabricDark', 'BootstrapDark', 'TailwindDark', 'Bootstrap5Dark', 'Bootstrap4', 'Fluent', 'FluentDark', 'Material3', 'Material3Dark'];
-export let borderColor: string[] = ['#FF4081', '#007897', '#428BCA', '#FFD939', '#FFD939', '#FD7E14', '#4F46E5','#FF4081', '#007897', '#428BCA', '#22D3EE', '#FD7E14', '#1AC9E6', '#1AC9E6', '#6355C7', '#4EAAFF', '#6200EE', '#9BB449', '#9BB449'];
-export let regionColor: string[] = ['rgba(255, 64, 129, 0.3)', ' rgba(0, 120, 151, 0.3)', 'rgba(66, 139, 202, 0.3)', 'rgba(255, 217, 57, 0.3)', 'rgba(79, 70, 229, 0.3)',
-    'rgba(79, 70, 229, 0.3)', 'rgba(255, 64, 129, 0.3)', 'rgba(0, 120, 151, 0.3)', 'rgba(66, 139, 202, 0.3)', 'rgba(34, 211, 238, 0.3)', 'rgba(173,181,189,0.3)',
-    'rgba(255, 217, 57, 0.3)', 'rgba(97,69,112,0.3)', 'rgba(138,177,19,0.3)', 'rgba(99, 85, 199, 0.3)', 'rgba(78, 170, 255, 0.3)'];
-
+export let themes: string[] = ['Material', 'Fabric', 'Bootstrap', 'Bootstrap4', 'HighContrast', 'Bootstrap5', 'Tailwind','MaterialDark', 'FabricDark', 'BootstrapDark', 'TailwindDark', 'Bootstrap5Dark', 'Fluent', 'FluentDark', 'Material3', 'Material3Dark', 'Fluent2', 'Fluent2HighContrast', 'Fluent2Dark', 'Tailwind3', 'Tailwind3Dark'];
+export let borderColor: string[] = ['#FF4081', '#007897', '#428BCA', '#FFD939', '#FFD939', '#FD7E14', '#4F46E5', '#FF4081', '#007897', '#428BCA', '#22D3EE', '#FD7E14', '#1AC9E6', '#1AC9E6', '#6355C7', '#4EAAFF', '#6200EE', '#9BB449', '#9BB449', '#2F4074', '#8029F1'];
+export let regionColor: string[] = ['rgba(255, 64, 129, 0.3)', ' rgba(0, 120, 151, 0.3)',     'rgba(66, 139, 202, 0.3)', 'rgba(255, 217, 57, 0.3)', 'rgba(255, 217, 57, 0.3)', 'rgba(253, 126, 20, 0.3)', 'rgba(79, 70, 229, 0.3)',
+    'rgba(255, 64, 129, 0.3)', 'rgba(0, 120, 151, 0.3)', 'rgba(66, 139, 202, 0.3)', 'rgba(34, 211, 238, 0.3)', 'rgba(253, 126, 20, 0.3)', 'rgba(26, 201, 230, 0.3)', 'rgba(26, 201, 230, 0.3)', 'rgba(99, 85, 199, 0.3)', 'rgba(78, 170, 255, 0.3)', 'rgba(98, 0, 238, 0.3)', 'rgba(155, 180, 73, 0.3)', 'rgba(155, 180, 73, 0.3)', 'rgba(47, 64, 116, 0.3)', 'rgba(128, 41, 241, 0.3)'];
 const SAMPLE_CSS = `
         .control-fluid {
             padding: 0px !important;
@@ -59,8 +57,12 @@ const SAMPLE_CSS = `
             content: '\e743';
         }
      
-        .e-view.tailwind .e-print-icon::before, .e-view.tailwind-dark .e-print-icon::before {
-            content: '\e76c';
+       .e-view.tailwind3 .e-print-icon::before, .e-view.tailwind3-dark .e-print-icon::before {
+            content: '\\e76c';
+        }
+
+       .e-view.tailwind3 .e-export-icon::before, .e-view.tailwind3-dark .e-export-icon::before {
+            content: '\\e7bf';
         }
      
         .e-view.highcontrast .e-print-icon::before {
@@ -91,11 +93,7 @@ const SAMPLE_CSS = `
         .e-view.bootstrap4 .e-export-icon::before {
             content: '\e780';
         }
-     
-        .e-view.tailwind-dark .e-export-icon::before, .e-view.tailwind .e-export-icon::before {
-            content: '\e7bf';
-        }
-     
+
         .e-view.highcontrast .e-export-icon::before {
             content: '\e710';
         }

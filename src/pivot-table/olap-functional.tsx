@@ -23,12 +23,7 @@ let dataSourceSettings: any = {
     valueSortSettings: { headerDelimiter: ' - ' },
     values: [{ name: '[Measures].[Customer Count]', caption: 'Customer Count' }, { name: '[Measures].[Internet Sales Amount]', caption: 'Internet Sales Amount' }],
     rows: [{ name: '[Customer].[Customer Geography]', caption: 'Customer Geography' }],
-    filters: [{ name: '[Date].[Fiscal]', caption: 'Date Fiscal' }],
-    filterSettings: [{
-        name: '[Date].[Fiscal]', items: ['[Date].[Fiscal].[Fiscal Quarter].&[2002]&[4]', '[Date].[Fiscal].[Fiscal Year].&[2005]'],
-        levelCount: 3
-    }
-    ]
+    filters: [{ name: '[Date].[Fiscal]', caption: 'Date Fiscal' }]
 };
 
 function OlapSample () {

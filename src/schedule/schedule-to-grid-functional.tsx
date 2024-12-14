@@ -9,7 +9,7 @@ import "./schedule-to-grid.css";
 import { extend } from "@syncfusion/ej2-base";
 
 import * as dataSource from './datasource.json';
-import { updateSampleSection } from '../common/sample-base';
+import { updateSampleSection } from "../common/sample-base";
 
 
 const ScheduleToGrid = () => {

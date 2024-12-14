@@ -357,12 +357,12 @@ export class ESignFormDesigner extends SampleBase<{}, {}> {
         return (<div>
             <div className='e-pv-e-sign control-section' >
                 <div className="e-pv-e-sign-property-sec" >
-                <ToolbarComponent id="e-pv-e-sign-toolbar-user-viewer" className={`${!this.isMobile ? 'e-pv-sign-show-toolbar ' : 'e-pv-sign-hide-toolbar'}`}>
+                <ToolbarComponent id="e-pv-e-sign-toolbar-user-viewer" className={`${!this.isMobile ? 'e-pv-sign-show-toolbar ' : '.e-pv-sign-hide-toolbar'}`}>
             <ItemsDirective>
               <ItemDirective prefixIcon="e-icons e-download" align="Right" text="Download" id="e-pv-e-sign-download" tooltipText="downLoad" click={this.downLoadFile}></ItemDirective>
             </ItemsDirective>
           </ToolbarComponent>
-          <ToolbarComponent id="e-pv-e-sign-toolbar-user-viewer" className={`${this.isMobile ? 'e-pv-sign-show-toolbar ' : 'e-pv-sign-hide-toolbar'}`} >
+          <ToolbarComponent id="e-pv-e-sign-toolbar-user-viewer" className={`${this.isMobile ? 'e-pv-sign-show-toolbar ' : '.e-pv-sign-hide-toolbar'}`} >
             <ItemsDirective>
               <ItemDirective template={this.dropdownComponent}></ItemDirective>
               <ItemDirective prefixIcon="e-icons e-download" align="Right" tooltipText="downLoad" click={this.downLoadFile}></ItemDirective>
@@ -425,8 +425,8 @@ export class ESignFormDesigner extends SampleBase<{}, {}> {
                         </div>
                     </SidebarComponent>
                 </div>
-                <div style={{ width:'100%'}}>
-                    <PdfViewerComponent ref={(scope) => { this.viewer = scope; }} id="container" enableNavigationToolbar={false} enableAnnotationToolbar={false} enableToolbar={false} documentPath="https://cdn.syncfusion.com/content/PDFViewer/Fill+and+Sign.pdf" resourceUrl="https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib" serviceUrl = 'https://services.syncfusion.com/react/production/api/pdfviewer' documentLoad={this.documentLoad} formFieldAdd={this.addFormField} pageClick={this.pageClick} downloadFileName='eSign_designMode.pdf' style={{ 'height': '640px' }}>
+                <div style={{ width:`${this.isMobile ? '100%' : 'calc(100% - 200px)'}`}}>
+                    <PdfViewerComponent ref={(scope) => { this.viewer = scope; }} id="container" enableNavigationToolbar={false} enableAnnotationToolbar={false} enableToolbar={false} documentPath="https://cdn.syncfusion.com/content/PDFViewer/Fill+and+Sign.pdf" resourceUrl="https://cdn.syncfusion.com/ej2/27.2.2/dist/ej2-pdfviewer-lib"  documentLoad={this.documentLoad} formFieldAdd={this.addFormField} pageClick={this.pageClick} downloadFileName='eSign_designMode.pdf' style={{ 'height': '640px' }}>
                         <Inject services={[Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner, PageOrganizer]} />
                     </PdfViewerComponent>
                 </div>

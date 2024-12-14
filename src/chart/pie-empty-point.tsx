@@ -45,7 +45,7 @@ export class PieEmptyPoint extends SampleBase<{}, {}> {
                 </style>
                 <div className='control-section row'>
                 <div className='col-md-8'>
-                <AccumulationChartComponent id='pie-chart' ref={pie => this.pie = pie} title='Annual Product-Wise Profit Analysis' load={this.load.bind(this)} textRender={this.textRender.bind(this)} legendSettings={{ visible: false }} tooltip={{ enable: true,header:"", format: '<b>${point.x}</b><br> Profit: <b>$${point.y}K</b>' }}   enableBorderOnMouseMove={false} loaded={this.onChartLoad.bind(this)}>
+                <AccumulationChartComponent id='pie-chart' ref={pie => this.pie = pie} title='Annual Product-Wise Profit Analysis' load={this.load.bind(this)} textRender={this.textRender.bind(this)} legendSettings={{ visible: false }} tooltip={{ enable: true,header:"", format: '<b>${point.x}</b><br> Profit: <b>$${point.y}K</b>', enableHighlight: true }}   enableBorderOnMouseMove={false} loaded={this.onChartLoad.bind(this)}>
                             <Inject services={[PieSeries, AccumulationDataLabel, AccumulationTooltip]}/>
                             <AccumulationSeriesCollectionDirective>
                                 <AccumulationSeriesDirective dataSource={data1} xName='x' yName='y' name='Profit' dataLabel={{ visible: true, position: 'Inside', enableRotation: true, font: { fontWeight: '600' } }} emptyPointSettings={{ fill: '#e6e6e6' }}> 
@@ -100,6 +100,9 @@ export class PieEmptyPoint extends SampleBase<{}, {}> {
         selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
         args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
         replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as AccumulationTheme;
+        if(selectedTheme === 'bootstrap5-dark'){
+            args.chart.series[0].emptyPointSettings.fill = '#FF7F7F';
+        }
     };
     
     textRender(args: { text: string; point: { x: string; y: string; }; })

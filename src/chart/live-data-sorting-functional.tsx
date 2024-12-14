@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { Inject, IAccLoadedEventArgs, IAccTextRenderEventArgs, IAnnotationRenderEventArgs, sort, ChartTheme, ChartComponent, IPointRenderEventArgs, SeriesCollectionDirective, SeriesDirective, ColumnSeries, Category, DataLabel, IAxisRangeCalculatedEventArgs, ILoadedEventArgs } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
-import { fabricColors, materialColors, highContrastColors, fluent2Colors, fluent2DarkColors, bootstrapColors } from './theme-color';
+import { fabricColors, materialColors, highContrastColors, fluent2Colors, fluent2DarkColors, bootstrapColors, pointTailwindColors, pointTailwindDarkColors, pointTailwind3Colors, pointTailwind3DarkColors } from './theme-color';
 import { updateSampleSection } from '../common/sample-base';
 import { EmitType } from '@syncfusion/ej2-base'
 
@@ -224,7 +224,18 @@ const UpdateColumnDataSource = () => {
             args.fill = fluent2Colors[args.point.index % 10];
         } else if (selectedTheme === 'fluent2-dark') {
             args.fill = fluent2DarkColors[args.point.index % 10];
-        } else {
+        } 
+        else if (selectedTheme === 'tailwind') {
+            args.fill = pointTailwindColors[args.point.index % 10];
+        } else if (selectedTheme === 'tailwind-dark') {
+            args.fill = pointTailwindDarkColors[args.point.index % 10];
+        }
+        else if (selectedTheme === 'tailwind3') {
+            args.fill = pointTailwind3Colors[args.point.index % 10];
+        } else if (selectedTheme === 'tailwind3-dark') {
+            args.fill = pointTailwind3DarkColors[args.point.index % 10];
+        }
+        else {
             args.fill = bootstrapColors[args.point.index % 10];
         }
     };

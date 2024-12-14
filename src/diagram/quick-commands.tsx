@@ -465,7 +465,7 @@ function applyUserHandleStyle(bgcolor: string, target: HTMLElement): void {
 }
 function fixedUserHandleTemplate(props) {
   return(<div style={{ width: '100%', height: '100%' }}>
-  <button style={{backgroundColor: 'black', borderRadius: '50%', width: '25px', height: '25px', border: 'none', cursor: 'context-menu', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundImage: `url(src/diagram/Images/user-handle/delete.png)`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
+  <button style={{backgroundColor: 'black', borderRadius: '50%', width: '25px', height: '25px', border: 'none', cursor: 'context-menu', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundImage: `url(https://ej2.syncfusion.com/react/demos/src/diagram/Images/user-handle/delete.png)`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
   </button>
   </div>)
 }

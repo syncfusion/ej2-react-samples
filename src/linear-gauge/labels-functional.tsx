@@ -35,6 +35,12 @@ const Labels = () => {
             setPointerColor('#292827');
         } else if (args.gauge.theme === 'Bootstrap5Dark'){
             setPointerColor('#343A40');
+        } else if (args.gauge.theme === 'Tailwind3Dark') {
+            setPointerColor('#282F3C');
+        } else if (args.gauge.theme === 'Material3') {
+            setPointerColor('#C4C7C5');
+        } else if (args.gauge.theme === 'Material3Dark') {
+            setPointerColor('#938F99');
         }
     }
 

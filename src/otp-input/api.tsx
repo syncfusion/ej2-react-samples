@@ -72,28 +72,30 @@ export class OtpAPI extends SampleBase<{}, OTPState> {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <div className="col-lg-8 otp-wrapper">
-                    <div id="otp-container">
-                        <div className="form-container">
-                            <span className="otp-header"> Enter verification code </span>
-                            <OtpInputComponent
-                                ref={def => { this.otpRef = def }}
-                                separator={this.state.separator}
-                                placeholder={this.state.placeholder}
-                                disabled={this.state.disabled}
-                                length={this.state.length}
-                                cssClass={this.state.validationValue}
-                                stylingMode={this.state.modeValue}
-                                input={this.handleOtpChange.bind(this)}>
-                            </OtpInputComponent>
-                            <div className="otp-actions">
-                                <button className="e-btn" type="button" disabled={this.state.resetDisabled} onClick={this.handleResetClick.bind(this)}> Clear </button>
-                                <button className="e-btn e-primary" type="button" disabled={this.state.verifyDisabled} onClick={this.handleVerifyClick.bind(this)}> Verify </button>
+                    <div className="col-lg-8">
+                    <div className="api-otp-wrapper">
+                        <div id="otp-container">
+                            <div className="form-container">
+                                <span className="otp-header"> Enter verification code </span>
+                                <OtpInputComponent
+                                    ref={def => { this.otpRef = def }}
+                                    separator={this.state.separator}
+                                    placeholder={this.state.placeholder}
+                                    disabled={this.state.disabled}
+                                    length={this.state.length}
+                                    cssClass={this.state.validationValue}
+                                    stylingMode={this.state.modeValue}
+                                    input={this.handleOtpChange.bind(this)}>
+                                </OtpInputComponent>
+                                <div className="otp-actions">
+                                    <button className="e-btn" type="button" disabled={this.state.resetDisabled} onClick={this.handleResetClick.bind(this)}> Clear </button>
+                                    <button className="e-btn e-primary" type="button" disabled={this.state.verifyDisabled} onClick={this.handleVerifyClick.bind(this)}> Verify </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                     </div>
-                    <div className="col-lg-4 property-section otp-property-panel">
+                    <div className="col-lg-4 property-section">
                         <PropertyPane title='Properties'>
                             <table id="property" title="Properties">
                                 <tbody>

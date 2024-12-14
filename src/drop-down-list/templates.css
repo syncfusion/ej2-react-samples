@@ -54,7 +54,8 @@
      color: #2899F5;
 }
 
-.tailwind-dark #employees_popup .header {
+.tailwind-dark #employees_popup .header,
+.tailwind3-dark #employees_popup .header {
     background: #374151;
     color: rgb(255, 255, 255);
 }
@@ -118,11 +119,13 @@
     padding: 11px 42px;
 }
 
-.tailwind.e-bigger #template .value {
+.tailwind.e-bigger #template .value,
+.tailwind3.e-bigger #template .value{
     margin-top: 5px;
 }
 
-.tailwind #template .name {
+.tailwind #template .name,
+.tailwind3 #template .name {
     padding: 8px 42px;
 }
 

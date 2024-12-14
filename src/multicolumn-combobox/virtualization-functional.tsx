@@ -13,36 +13,35 @@ const Virtual = () => {
         updateSampleSection();
     }, []);
     const data: Function = (count: number) => {
-        let names = ["John", "Alice", "Bob", "Mario Pontes", "Yang Wang", "Michael", "Nancy", "Robert King"];
-        let hours = [8, 12, 16];
-        let status = ["Pending", "Completed", "In Progress"];
-        let designation = ["Engineer", "Manager", "Tester"];
-        let result: Object[] = [];
+        let names = ["John Doe", "Jane Smith", "Alice Johnson", "Bob Brown", "Emily Davis"];
+        let departments = ["HR", "IT", "Finance", "Marketing", "Sales"];
+        let roles = ["Manager", "Developer", "Analyst", "Consultant", "Executive"];
+        let locations = ["New York", "San Francisco", "London", "Berlin", "Tokyo"];
+        let result = [];
         for (let i = 0; i < count; i++) {
             result.push({
-                TaskID: i + 1,
-                Engineer: names[Math.floor(Math.random() * names.length)],
-                Designation: designation[Math.floor(Math.random() * designation.length)],
-                Estimation: hours[Math.floor(Math.random() * hours.length)],
-                Status: status[Math.floor(Math.random() * status.length)]
+                Name: names[Math.floor(Math.random() * names.length)],
+                Department: departments[Math.floor(Math.random() * departments.length)],
+                Role: roles[Math.floor(Math.random() * roles.length)],
+                Location: locations[Math.floor(Math.random() * locations.length)]
             });
         }
         return result;
     };
     const gridSettings: object = { rowHeight: 40 };
-    const fields: object = { text: 'Engineer', value: 'TaskID'};
+    const fields: object = { text: 'Name', value: 'Name'};
     return(
         <div className='control-pane'>
             <div className="control-section">
                 <div className='control-wrapper virtualization-multicolumn'>
                     <div style={{ paddingTop: '55px' }}>
-                        <MultiColumnComboBoxComponent type="text" dataSource={data(150)} enableVirtualization={true} fields={fields} placeholder='Select an engineer' popupHeight={'230px'} gridSettings={gridSettings}>
+                    <label>Select an employee</label>
+                        <MultiColumnComboBoxComponent type="text" dataSource={data(150)} enableVirtualization={true} fields={fields} placeholder='e.g. Alice Johnson' popupHeight={'230px'} popupWidth={'550px'} gridSettings={gridSettings}>
                             <ColumnsDirective>
-                                <ColumnDirective field='TaskID' header='Task ID' width={100}></ColumnDirective>
-                                <ColumnDirective field='Engineer' header='Engineer' width={140}></ColumnDirective>
-                                <ColumnDirective field='Designation' header='Designation' width={130}></ColumnDirective>
-                                <ColumnDirective field='Estimation' header='Estimation' width={120}></ColumnDirective>
-                                <ColumnDirective field='Status' header='Status' width={120}></ColumnDirective>
+                                <ColumnDirective field='Name' header='Name' width={100}></ColumnDirective>
+                                <ColumnDirective field='Department' header='Department' width={100}></ColumnDirective>
+                                <ColumnDirective field='Role' header='Role' width={90}></ColumnDirective>
+                                <ColumnDirective field='Location' header='Location' width={90}></ColumnDirective>
                             </ColumnsDirective>
                         </MultiColumnComboBoxComponent>
                     </div>

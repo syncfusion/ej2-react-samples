@@ -206,7 +206,7 @@ function Default () {
                     In this demo, the pivot table is populated with its minimum default settings.
                 </p><br />
                 <p>
-                    More information on the Essential JS2 Pivot Table can be found in this <a target="_blank"
+                    More information on the Essential<sup>®</sup> JS2 Pivot Table can be found in this <a target="_blank"
                         href="https://ej2.syncfusion.com/react/documentation/pivotview/getting-started#adding-pivot-table-component">
                     documentation section</a>.
                 </p>

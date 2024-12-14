@@ -1,0 +1,174 @@
+.tailwind3 .sb-reset-icon:before {
+    content: '\e7e7';
+}
+
+.tailwind3 .copycode::before {
+    content: '\e77c';
+    font-size: 25px;
+}
+
+/*Hide property pane */
+@media (max-width: 480px) {
+    .tailwind3 .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item>.e-tab-wrap {
+        height: 70px;
+    }
+}
+
+.tailwind3 .e-samplestatus.new.tree,
+.tailwind3 .e-samplestatus.update.tree,
+.tailwind3 .e-samplestatus.preview.tree {
+    margin: 0px !important;
+    height: 22px !important;
+}
+
+.e-bigger.tailwind3 .e-samplestatus.new.tree,
+.e-bigger.tailwind3 .e-samplestatus.update.tree,
+.e-bigger.tailwind3 .e-samplestatus.preview.tree {
+    margin-top: 1px !important;
+}
+
+.tailwind3.e-bigger .e-samplestatus.new,
+.tailwind3.e-bigger .e-samplestatus.update,
+.tailwind3.e-bigger .e-samplestatus.preview {
+    margin: 5px 0 !important;
+    height: 22px !important;
+}
+
+.tailwind3 .sb-content-toolbar, .tailwind3-dark .sb-content-toolbar {
+    top: 4px !important;
+}
+
+.tailwind3.e-bigger .sb-content-toolbar, .tailwind3-dark.e-bigger .sb-content-toolbar {
+    top: 0px !important;
+}
+
+.tailwind3 .e-samplestatus.new,
+.tailwind3 .e-samplestatus.update,
+.tailwind3 .e-samplestatus.preview {
+    margin: 2px 0 !important;
+    height: 22px !important;
+}
+
+.tailwind3 .sb-source-code-section .e-toolbar .e-toolbar-items {
+    vertical-align: middle;
+}
+
+.tailwind3 #sb-nextjs-btn.e-btn.e-link {
+    color: #0278d7;
+}
+
+.tailwind3 #sb-nextjs-btn.e-link:hover {
+    color: #0664b2;
+}
+
+.tailwind3 .sb-badge {
+    padding: 2px 8px;
+}
+
+.tailwind3 .sb-theme-studio a {
+    color: #4f46e5;
+}
+
+.tailwind3 .sb-header .sb-icons{
+    color: #6B7280;
+} 
+
+.tailwind3 .sb-icon-Hamburger,
+.tailwind3 .control-name,
+.tailwind3 .sb-plnr-section,
+.tailwind3 .sb-nextjs-text,
+.tailwind3 .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item.e-active>.e-tab-wrap>.e-text-wrap>.e-tab-text,
+.tailwind3 .sb-footer-links a,
+.tailwind3 .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item>.e-tab-wrap>.e-text-wrap>.e-tab-text:hover,
+.tailwind3 .sb-search-result .e-list-group-item {
+    color: #4F46E5 !important;
+}
+
+.tailwind3 .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-indicator {
+    background: #4F46E5;
+}
+
+.tailwind3 .sb-bread-crumb-text{
+    color:#4B5563;
+}
+
+.tailwind3 .sb-left-pane .e-listview .e-list-item.e-active{
+    background-color: #E5E7EB ;
+}
+
+.tailwind3 .sb-left-pane .e-listview .e-list-item.e-hover{
+    background-color:#F9FAFB;
+    border: none;
+} 
+
+.tailwind3 #sb-content {
+    border-radius: 12px;
+    border: 1px solid #E5E7EB;
+}
+
+.tailwind3 .sb-content-section .sb-content-tab-header{
+    border-radius: 12px 12px 0 0;
+}
+
+.tailwind3 .sb-content-section {
+    background-color: transparent;
+}
+
+.tailwind3 .e-treeview .e-list-item.e-hover,
+.sb-left-pane .e-treeview .e-list-item.e-hover>.e-fullrow{
+    background-color: #F9FAFB;
+}
+
+.tailwind3 .sb-switch-popup li:first-child,
+.tailwind3 .toggle-active,
+.tailwind3 .sample-navigation>button:hover,
+.tailwind3 .sb-open-new-wrapper a:hover,
+.tailwind3 .description-section a,
+.tailwind3 #action-description a {
+    color: #4f46e5 !important;
+}
+.tailwind3 .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item>.e-tab-wrap>.e-text-wrap>.e-tab-text {
+    color: #374151 !important;
+}
+.tailwind3 #sb-header-text,
+.tailwind3 #header-theme-switcher,
+.tailwind3 .sb-component-name,
+.tailwind3 .sb-action-description,
+.tailwind3 .e-list-item.e-level-1 .e-text-content .e-list-text {
+    color: #111827 !important;
+}
+
+.tailwind3 .sb-lang-toggler-wrapper,
+.tailwind3 .sb-theme-switcher,
+.tailwind3 .sb-search-btn,
+.tailwind3 .sb-icon-Settings-Preferences,
+.tailwind3 #sb-left-back,
+.tailwind3 .e-list-group-item.e-level-1 .e-text-content .e-list-text {
+    color: #6b7280;
+}
+
+.tailwind3 .crumb-sample,
+.tailwind3 .description-section {
+    color: #374151 !important;
+}
+
+.tailwind3 .sample-navigation,
+.tailwind3 .sb-open-new-wrapper {
+    color: #6b7280;
+}
+
+.tailwind3 .sb-download-splitter,
+.tailwind3 .sb-toolbar-splitter {
+    border-left: 1px solid #e5e7eb;
+}
+
+.tailwind3 .sb-icon-Home,
+.tailwind3 .sb-home-text,
+.tailwind3 .sb-bread-crumb .sb-bread-crumb-text>div {
+    color: #4b5563;
+}
+
+.tailwind3 .sb-left-pane .e-treeview .e-list-item.e-active>.e-fullrow,
+.tailwind3 .sb-left-pane .e-treeview .e-list-item.e-active.e-hover>.e-fullrow {
+    background-color: #e5e7eb;
+}

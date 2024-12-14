@@ -879,7 +879,7 @@ function lockObject(args: any) {
   for (let i: number = 0; i < diagramInstance.selectedItems.nodes.length; i++) {
     let node = diagramInstance.selectedItems.nodes[i];
     if (node.constraints & NodeConstraints.Drag) {
-      node.constraints = NodeConstraints.PointerEvents | NodeConstraints.Select;
+      node.constraints = NodeConstraints.PointerEvents | NodeConstraints.Select | NodeConstraints.ReadOnly;
       isChecked = true;
     } else {
       node.constraints = NodeConstraints.Default;
@@ -889,7 +889,7 @@ function lockObject(args: any) {
   for (let j: number = 0; j < diagramInstance.selectedItems.connectors.length; j++) {
     let connector = diagramInstance.selectedItems.connectors[j];
     if (connector.constraints & ConnectorConstraints.Drag) {
-      connector.constraints = ConnectorConstraints.PointerEvents | ConnectorConstraints.Select;
+      connector.constraints = ConnectorConstraints.PointerEvents | ConnectorConstraints.Select | ConnectorConstraints.ReadOnly;
       isChecked = true;
     } else {
       connector.constraints = ConnectorConstraints.Default;

@@ -64,9 +64,12 @@ export class Editing extends SampleBase<{}, {}> {
     return this.startDate <= endDate;
   }
   public actionbeing(args) {
-    if (args.columnName === "EndDate") {
+    if (args.columnName === "EndDate" || args.requestType === "beforeOpenAddDialog" || args.requestType === "beforeOpenEditDialog") {
       this.startDate = args.rowData.ganttProperties.startDate;
     }
+    if (args.requestType === "taskbarediting" && args.taskBarEditAction === "ChildDrag") {
+      this.startDate = args.data.ganttProperties.startDate;
+    }  
   }
   public eventMarkerDay1: Date = new Date('4/17/2024');
   public eventMarkerDay2: Date = new Date('5/3/2024');

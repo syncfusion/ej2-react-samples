@@ -132,6 +132,7 @@ export class LegendMaps extends SampleBase<{}, {}> {
                                 }}
                                 shapeSettings={{
                                     colorValuePath: 'density',
+                                    fill: '#E5E5E5',
                                     colorMapping: [
                                         {
                                             from: 0.00001, to: 100, color: 'rgb(153,174,214)', label: '<100'

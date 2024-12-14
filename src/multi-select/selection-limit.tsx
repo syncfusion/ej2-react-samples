@@ -40,24 +40,26 @@ export class SelectionLimit extends SampleBase<{}, {}> {
         <div className='col-lg-4 property-section'>
           <PropertyPane title='Properties'>
             <table id="property" title="Properties" className='property-panel-table' style={{ width: '100%' }}>
-              <tr>
-                <td>
-                  <div>Selection Limit </div>
-                </td>
-                <td>
-                  <div>
-                    <NumericTextBoxComponent id='length' format="n0" max={this.countries.length} value={3} min={1}></NumericTextBoxComponent>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td></td>
-                <td>
-                  <div>
-                    <ButtonComponent id="buttonApply" cssClass='e-btn e-control e-outline' style={{ marginBottom: '10px', marginLeft: '100px' }} onClick={this.applyRange.bind(this)}>Apply</ButtonComponent>
-                  </div>
-                </td>
-              </tr>
+              <tbody>
+                <tr>
+                  <td>
+                    <div>Selection Limit </div>
+                  </td>
+                  <td>
+                    <div>
+                      <NumericTextBoxComponent id='length' format="n0" max={this.countries.length} value={3} min={1}></NumericTextBoxComponent>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>
+                    <div>
+                      <ButtonComponent id="buttonApply" cssClass='e-btn e-control e-outline' style={{ marginBottom: '10px', marginLeft: '100px' }} onClick={this.applyRange.bind(this)}>Apply</ButtonComponent>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </PropertyPane>
         </div>

@@ -5,16 +5,31 @@ import { TreeGridComponent, ColumnsDirective, ColumnDirective, Inject, Toolbar }
 import { sampleData } from './data';
 import { SampleBase } from '../common/sample-base';
 
+// custom code start
+const SAMPLE_CSS = `
+.e-print-fluent2-highcontrast.e-treegrid.e-print-grid-layout,
+    .e-print-fluent2-highcontrast.e-treegrid.e-print-grid-layout .e-gridheader,
+    .e-print-fluent2-highcontrast.e-treegrid.e-print-grid-layout .e-rowcell {
+        border-color: gray !important;
+    }
+`;
+// custom code end
+
 export class Print extends SampleBase<{}, {}> {
 
   public toolbarOptions: any = ['Print'];
-
+  public load(): void {
+    (this as any).grid.cssClass = document.querySelector('.fluent2-highcontrast') ? 'e-print-fluent2-highcontrast' : '';
+  }
   render() {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks'
-            toolbar={this.toolbarOptions} height='410'>
+          <style>
+            {SAMPLE_CSS}
+          </style>
+          <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks'
+            toolbar={this.toolbarOptions} load={this.load} height='410'>
             <ColumnsDirective>
               <ColumnDirective field='taskID' headerText='Task ID' width='70' textAlign='Right'></ColumnDirective>
               <ColumnDirective field='taskName' headerText='Task Name' width='180'></ColumnDirective>

@@ -85,13 +85,13 @@ const FilterMenu = () => {
             >
               <tbody>
                 <tr>
-                  <td style={{ width: "30%" }}>
+                  <td>
                     <div style={{ paddingTop: "10px" }}> Filter Type </div>
                   </td>
                   <td style={{ width: "70%" }}>
                     <div>
                       <DropDownListComponent
-                        width="100px"
+                        width="110px"
                         id="seltype"
                         change={onChange.bind(this)}
                         dataSource={filterType}
@@ -101,13 +101,13 @@ const FilterMenu = () => {
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ width: "30%" }}>
+                  <td>
                     <div style={{ paddingTop: "10px" }}> Hierarchy Mode </div>
                   </td>
                   <td style={{ width: "70%" }}>
                     <div>
                       <DropDownListComponent
-                        width="100px"
+                        width="110px"
                         id="selmode"
                         change={onChange2.bind(this)}
                         dataSource={modes}

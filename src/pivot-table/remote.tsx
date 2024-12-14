@@ -19,7 +19,7 @@ export class Remote extends SampleBase<{}, {}> {
     ];
 
     private remoteData: DataManager = new DataManager({
-        url: 'https://bi.syncfusion.com/northwindservice/api/orders',
+        url: 'https://ej2services.syncfusion.com/react/development/api/order',
         adaptor: new WebApiAdaptor,
         crossDomain: true
     });
@@ -36,7 +36,7 @@ export class Remote extends SampleBase<{}, {}> {
     };
 
     private csvReport: IDataOptions = {
-        url: 'https://bi.syncfusion.com/productservice/api/sales',
+        url: 'https://ej2services.syncfusion.com/react/development/api/product',
         type: 'CSV',
         expandAll: false,
         enableSorting: true,
@@ -114,7 +114,7 @@ export class Remote extends SampleBase<{}, {}> {
                     <code>dataSourceSettings-&gt;dataSource</code> property. But for CSV, the service URL is directly set to <code>url</code> for remote data consumption.
                     <br />
                     <p>
-                        More information on the Essential JS2 Pivot Table can be found in these <a target="_blank"
+                        More information on the Essential<sup>®</sup> JS2 Pivot Table can be found in these <a target="_blank"
                             href="https://ej2.syncfusion.com/react/documentation/pivotview/data-binding#binding-json-data-via-remote">JSON</a> & <a target="_blank"
                             href="https://ej2.syncfusion.com/react/documentation/pivotview/data-binding#binding-csv-data-via-remote">CSV</a> documentation section.
                     </p>

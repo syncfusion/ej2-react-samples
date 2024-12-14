@@ -480,10 +480,11 @@ span.e-label .offer {
     opacity: 1;
 }
 
-.bootstrap5\.3-dark .discount .e-label, .bootstrap5\.3-dark #cloud-slider-text .suffix {
+.bootstrap5\.3-dark .discount .e-label, .bootstrap5\.3-dark #cloud-slider-text .suffix,
+.tailwind3-dark .discount .e-label, .tailwind3-dark #cloud-slider-text .suffix {
     color: black;
 }
-
+ 
 #dialog-header {
     color: #000000;
     opacity: .87;

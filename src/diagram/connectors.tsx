@@ -39,6 +39,7 @@ import {
 } from "@syncfusion/ej2-react-inputs";
 import { SampleBase } from "../common/sample-base";
 import { CheckBoxComponent } from "@syncfusion/ej2-react-buttons";
+Diagram.Inject(ConnectorEditing);
 
 let diagramInstance: DiagramComponent;
 let sourceDecoratorDropDown: DropDownListComponent;
@@ -297,7 +298,7 @@ export class Connectors extends SampleBase<{}, {}> {
         </div>
         <div className="col-lg-4 property-section">
           <div className="property-panel-header">Properties</div>
-          <div className="row property-panel-content" id="appearance">
+          <div className="row property-panel-content" id="appearance" ref={appearance => (appearanceElement = appearance)}>
             <div className="row row-header"><b>Connector types</b></div>
             <div className="row" style={{ paddingTop: "8px" }}>
               <div

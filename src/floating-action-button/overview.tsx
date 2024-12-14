@@ -30,7 +30,7 @@ export class Overview extends SampleBase<{}, {}> {
     render() {
         return (<div className="control-pane">
             <div className="control-section">
-                <div className="fab-grid-container custom-index">
+                <div id="fabTarget" className="fab-grid-container custom-index">
                     {/* Grid component rendered to add it as target for FAB. */}
                     <GridComponent id="Grid" className="fabgrid"
                         dataSource={this.orders()}
@@ -38,7 +38,7 @@ export class Overview extends SampleBase<{}, {}> {
                         <Inject services={[Edit]} />
                     </GridComponent>
                     <FabComponent id="fab" title="Add Record"
-                        iconCss="fab-icons fab-icon-add" target="#Grid"
+                        iconCss="e-icons e-plus" target="#fabTarget"
                         onClick={this.handleClick = this.handleClick.bind(this)}
                     ></FabComponent>
                 </div>

@@ -1,21 +1,29 @@
-.e-gantt .e-gantt-tree-grid-pane .e-timeline-single-header-outer-div{
+#TimelineTemplate .e-gantt-tree-grid-pane .e-columnheader{
     height: 70px !important;
-    }
-    .e-gantt .e-gantt-chart .e-timeline-single-header-outer-div {
+}
+#TimelineTemplate .e-gantt-tree-grid-pane .e-headercell{
     height: 70px !important;
-    }
-    .e-gantt .e-gantt-chart .e-timeline-single-header-cell {
+}
+#TimelineTemplate  .e-timeline-header-container {
     height: 70px !important;
-    }
-.e-header-cell-label.e-gantt-top-cell-text{
+}
+#TimelineTemplate .e-timeline-single-header-cell {
+    height: 70px !important;
+}   
+#TimelineTemplate .e-header-cell-label.e-gantt-top-cell-text{
     background-color: #fff
 }
 .fluent2-highcontrast .e-header-cell-label.e-gantt-top-cell-text,
 .fluent-dark .e-header-cell-label.e-gantt-top-cell-text,
-.fluent2-dark .e-header-cell-label.e-gantt-top-cell-text {
+.fluent2-dark .e-header-cell-label.e-gantt-top-cell-text,
+.material3-dark .e-header-cell-label.e-gantt-top-cell-text,
+.highcontrast .e-header-cell-label.e-gantt-top-cell-text {
     background-color: #000;
 }
 
 .bootstrap5_3-dark .e-header-cell-label.e-gantt-top-cell-text{
+    background-color: #000;
+}
+.tailwind3-dark .e-header-cell-label.e-gantt-top-cell-text{
     background-color: #000;
 }

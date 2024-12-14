@@ -2,11 +2,11 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { Animation, Browser, extend, select } from '@syncfusion/ej2-base';
 import { ListViewComponent, ListView, SelectEventArgs } from '@syncfusion/ej2-react-lists';
-import { TreeViewComponent } from '@syncfusion/ej2-react-navigations';
+import { TreeView, TreeViewComponent } from '@syncfusion/ej2-react-navigations';
 import { DataManager, Query, DataUtil } from '@syncfusion/ej2-data';
 import { samplesList } from './sample-list';
 import { toggleLeftPane, isLeftPaneOpen, sampleOverlay } from './index';
-import { selectDefaultTab, initialize } from './component-content';
+import { selectDefaultTab, initialize, isFinalize } from './component-content';
 
 let isMobile: boolean;
 let isTablet: boolean;
@@ -42,6 +42,7 @@ function viewSwitch(from: HTMLElement, to: HTMLElement, reverse?: boolean): void
 }
 
 function showHideControlTree(): void {
+    if (!isFinalize) return; 
     let controlTree: HTMLElement = select('#controlTree') as HTMLElement;
     let controlList: HTMLElement = select('#controlSamples') as HTMLElement;
     let reverse: boolean = controlTree.classList.contains('sb-hide');
@@ -70,6 +71,8 @@ export function setSelectList(): void {
             list.selectItem(selectSample);
             selectSample.scrollIntoView({block:"nearest"});
         }
+        let treeControl: TreeView = (select('#controlTree') as any).ej2_instances[0];
+        treeControl.selectedNodes = [control.getAttribute('data-uid')];
     } else {
         if (select('#controlList').classList.contains('sb-hide')) {
             showHideControlTree();            

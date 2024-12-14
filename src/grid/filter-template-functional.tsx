@@ -177,7 +177,7 @@ function FilterTemplate() {
             <div id='description'>
                 <p>
                     The <code><a target="_blank" className="code"
-                        href="https://ej2.syncfusion.com/react/documentation/api/grid/column/#filtertemplate">filterTemplate</a></code> feature in the Syncfusion EJ2 React Grid allows customization of the controls in
+                        href="https://ej2.syncfusion.com/react/documentation/api/grid/column/#filtertemplate">filterTemplate</a></code> feature in the Syncfusion<sup>®</sup> EJ2 React Grid allows customization of the controls in
                     the filter bar. By default, a text box appears in the filter bar cell. In this demo, the Grid showcases various
                     custom input components: a custom input component for the ID, Name and Price columns, and a Syncfusion
                     DropDownList for the Discontinued column, all achieved through

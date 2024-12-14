@@ -165,7 +165,7 @@ const PagingAPI = () => {
                   <td style={{ width: "50%", paddingTop: "10px 10px 10px 0px" }}>
                     <div id="dropdown">
                       <DropDownListComponent
-                        width="90px"
+                        width="115px"
                         id="sizemode"
                         change={change.bind(this)}
                         dataSource={type}
@@ -188,7 +188,7 @@ const PagingAPI = () => {
                         min={1}
                         max={200}
                         value={12}
-                        width="110px"
+                        width="115px"
                         ref={pageSizeObj}
                         change={changeNum.bind(this)}
                       ></NumericTextBoxComponent>
@@ -207,7 +207,7 @@ const PagingAPI = () => {
                         min={1}
                         max={4}
                         value={2}
-                        width="110px"
+                        width="115px"
                         ref={pageCountObj}
                         change={countChange.bind(this)}
                       ></NumericTextBoxComponent>
@@ -226,7 +226,7 @@ const PagingAPI = () => {
                         min={1}
                         max={17}
                         value={1}
-                        width="110px"
+                        width="115px"
                         ref={currentPageObj}
                         change={currentPageChange.bind(this)}
                       ></NumericTextBoxComponent>

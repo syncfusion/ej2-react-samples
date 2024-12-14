@@ -36,6 +36,7 @@ const SAMPLE_CSS = `
     }
     .e-control-wrapper.e-slider-container.e-horizontal .e-range {
         height: 0px !important;
+        width: 0px !important;
     }`;
 export class MapSlider extends SampleBase<{}, {}> {
     private mapInstance: MapsComponent;

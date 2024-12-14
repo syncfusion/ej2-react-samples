@@ -115,7 +115,7 @@ const handleApply = () => {
 
   return (
     <div className='control-pane'>
-      <div className='control-section'>
+      <div className='control-section' style={{ paddingTop: '0px' }}>
         <div id='ganttsidebar-parent' style={{overflow: 'hidden', height:'460px'}}>
           <ButtonComponent id='filter-btn' onClick={triggerSidebar}>
             <span className='e-quickfilter' style={{padding: '3px'}} ></span>

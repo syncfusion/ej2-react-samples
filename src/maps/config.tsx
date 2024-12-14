@@ -108,17 +108,23 @@ export const MapSampleOrder: Object = [
         'order': '04', 'category': 'Map Providers'
     },
     {
-        'path': 'maps/osm-with-navigation-lines', 'component': 'OSMNavigation', 'name': 'OSM with Navigation Lines', 'sourceFiles': [
-            { 'displayName': 'osm-with-navigation-lines.tsx', 'path': './src/maps/osm-with-navigation-lines.tsx' },
-            { 'displayName': 'osm-with-navigation-lines.jsx', 'path': './src/maps/osm-with-navigation-lines.jsx' }
-        ], 'description': 'This demo for Essential JS2 Maps control illustrates the flight route from Los Angeles to Mexico City using Navigation lines.', 'order': '04', 'category': 'Map Providers'
-    },
-    {
         'path': 'maps/osm-with-sublayers', 'component': 'OSMSubLayer', 'name': 'OSM with Sublayer', 'sourceFiles': [
             { 'displayName': 'osm-with-sublayers.tsx', 'path': './src/maps/osm-with-sublayers.tsx' },
             { 'displayName': 'osm-with-sublayers.jsx', 'path': './src/maps/osm-with-sublayers.jsx' },
             { 'displayName': 'africa.json', 'path': './src/maps/map-data/africa.json' }
         ], 'description': 'This demo for Essential JS2 Maps control illustrates the Africa continent location in the World map.', 'order': '04', 'category': 'Map Providers'
+    },
+    {
+        'path': 'maps/osm-with-marker-clustering', 'component': 'OSMMarkerCluster', 'type': 'new', 'name': 'OSM with Marker Clustering', 'sourceFiles': [
+            { 'displayName': 'osm-with-marker-clustering.tsx', 'path': './src/maps/osm-with-marker-clustering.tsx' },
+            { 'displayName': 'osm-with-marker-clustering.jsx', 'path': './src/maps/osm-with-marker-clustering.jsx' }
+        ], 'description': 'This demo for Essential JS2 Maps control illustrates the popular attractions from various countries, represented as markers and grouped using clustering.', 'order': '04', 'category': 'Map Providers'
+    },
+    {
+        'path': 'maps/osm-with-navigation-lines', 'component': 'OSMNavigation', 'name': 'OSM with Navigation Lines', 'sourceFiles': [
+            { 'displayName': 'osm-with-navigation-lines.tsx', 'path': './src/maps/osm-with-navigation-lines.tsx' },
+            { 'displayName': 'osm-with-navigation-lines.jsx', 'path': './src/maps/osm-with-navigation-lines.jsx' }
+        ], 'description': 'This demo for Essential JS2 Maps control illustrates the flight route from Los Angeles to Mexico City using Navigation lines.', 'order': '04', 'category': 'Map Providers'
     },
     {
         'path': 'maps/osm-with-legend', 'component': 'OSMLegend', 'name': 'OSM with Legend', 'sourceFiles': [

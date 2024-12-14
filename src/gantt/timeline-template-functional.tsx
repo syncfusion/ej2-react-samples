@@ -3,6 +3,7 @@ import * as React from 'react';
 import { useEffect } from 'react';
 import { GanttComponent, Inject, Selection, DayMarkers, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
 import { timelineTemplateData } from './data';
+import { Internationalization } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import './timelinetemplate.css'
 const TimelineTemplate = () => {
@@ -18,20 +19,51 @@ const TimelineTemplate = () => {
     dependency: 'Predecessor',
     child: 'subtasks'
   };
- const weekDate=(dateString)=>{
-    const date = new Date(dateString);
-    const options: any = { weekday: 'short' };
-    return date.toLocaleDateString('en-US', options);
+  let ganttInstance: any;
+ // Create an Internationalization instance
+ const intlObj = new Internationalization();
+
+ const weekDate = (dateString) => {
+    const date = ganttInstance.locale === 'ar' ? parseArabicDate(dateString) : parseDateString(dateString);
+    return intlObj.formatDate(date, { skeleton: 'E' });
   };
 
- const formatDate = (dateString)=> {
-    const date = new Date(dateString);
-    const options: any = { day: 'numeric' };
-    return date.toLocaleDateString('en-US', options);
+ const formatDate = (dateString) => {
+    const date = ganttInstance.locale === 'ar' ? parseArabicDate(dateString) : parseDateString(dateString);
+    return intlObj.formatDate(date, { skeleton: 'd' });
   };
 
- const imageString=(value)=> {
-    return `src/gantt/images/${value.toLowerCase()}.svg`;
+ const imageString = (date) => {
+    const imageDate = ganttInstance.locale === 'ar' ? parseArabicDate(date) : parseDateString(date);
+    return `src/gantt/images/${imageDate.getDay()}.svg`;
+  };
+
+  const convertArabicNumeralsToWestern = (arabicNumerals: any) => {
+    const arabicToWesternMap: { [key: string]: string }  = { '٠': '0', '١': '1', '٢': '2', '٣': '3', '٤': '4', '٥': '5', '٦': '6', '٧': '7', '٨': '8', '٩': '9' };
+    return arabicNumerals.replace(/[\u0660-\u0669]/g, (match: string) => arabicToWesternMap[match]);
+  };
+
+  const parseArabicDate = (arabicDateString: any) => {
+    // To convert the 'arabicDateString' Arabic Date to ISO Date format
+    const normalizedDate = convertArabicNumeralsToWestern(arabicDateString);
+    const parts = normalizedDate.split('/'); // Assuming "DD/MM/YYYY" format
+    const day = parseInt(parts[0], 10);
+    const month = parseInt(parts[1], 10) - 1; // Months are zero-based
+    const year = parseInt(parts[2], 10);
+    return new Date(year, month, day);
+  };
+
+  const parseDateString = (dateString: any) => {
+    // Check if the date string is in the format "DD.MM.YYYY"
+    if (dateString.includes('.')) {
+      var parts = dateString.split('.');
+      var day = parseInt(parts[0], 10);
+      var month = parseInt(parts[1], 10) - 1;
+      var year = parseInt(parts[2], 10);
+      return new Date(year, month, day);
+    }
+    // Fallback to default date parsing
+    return new Date(dateString);
   };
  const timelineTemplate =(props): any =>{
     if (props.tier == 'topTier') {
@@ -73,7 +105,7 @@ const TimelineTemplate = () => {
             <img style={{
               width: '100%',
               height: '100%'
-            }} src={imageString(props.value)} />
+            }} src={imageString(props.date)} />
           </div>
         </div>
       </div>)
@@ -97,7 +129,7 @@ const TimelineTemplate = () => {
   return (
     <div className='control-pane'>
       <div className='control-section'>
-      <GanttComponent id='Timeline' dataSource={timelineTemplateData} 
+      <GanttComponent id='TimelineTemplate' dataSource={timelineTemplateData} ref={gantt => ganttInstance = gantt}
             splitterSettings={splitterSettings}
             taskFields={taskFields} height='550px'
             projectStartDate={projectStartDate} projectEndDate={projectEndDate} timelineSettings={timelineSettings}

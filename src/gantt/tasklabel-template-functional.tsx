@@ -33,7 +33,7 @@ const TasklabelTemplate = () => {
       let resources = props.ganttProperties.resourceInfo;
       let out = [];
       for (let index = 0; index < resources.length; index++) {
-        let src = 'https://ej2.syncfusion.com/react/demos/src/gantt/images/' + resources[index].resourceName + '.png';
+        let src = 'src/gantt/images/' + resources[index].resourceName + '.png';
         let img = <img src={src} height='40px' alt={resources[index].resourceName}/>;
         let span = <span style={{ marginLeft: '5px', marginRight: '5px' }}>{resources[index].resourceName}</span>;
         out.push(img, span);

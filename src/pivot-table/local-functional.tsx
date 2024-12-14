@@ -149,7 +149,7 @@ function Local () {
                     <code>dataSourceSettings-&gt;dataSource</code> property can be assigned with the source data to populate the pivot table.</p>
                 <p>In this demo, the JSON and CSV data is assigned from an external file.</p><br />
                 <p>
-                    More information on the Essential JS2 Pivot Table can be found in these <a target="_blank"
+                    More information on the Essential<sup>®</sup> JS2 Pivot Table can be found in these <a target="_blank"
                         href="https://ej2.syncfusion.com/react/documentation/pivotview/data-binding#binding-json-data-via-local">JSON</a> & <a target="_blank"
                         href="https://ej2.syncfusion.com/react/documentation/pivotview/data-binding#binding-csv-data-via-local">CSV</a> documentation section.
                 </p>

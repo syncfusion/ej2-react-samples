@@ -43,7 +43,7 @@ const SmartLabels = () => {
     return (
         <div className='control-pane'>
             <div className='control-section'>
-                <AccumulationChartComponent id='pie-chart' title='Rio Olympics Gold' tooltip={{ enable: true, format: '<b>${point.x}</b><br> Gold Medals: <b>${point.y}</b>' }} load={load.bind(this)} enableBorderOnMouseMove={false} legendSettings={{ visible: false }} loaded={onChartLoad.bind(this)}>
+                <AccumulationChartComponent id='pie-chart' title='Rio Olympics Gold' tooltip={{ enable: true, format: '<b>${point.x}</b><br> Gold Medals: <b>${point.y}</b>', enableHighlight: true }} load={load.bind(this)} enableBorderOnMouseMove={false} legendSettings={{ visible: false }} loaded={onChartLoad.bind(this)}>
                     <Inject services={[AccumulationDataLabel, AccumulationTooltip, PieSeries]} />
                     <AccumulationSeriesCollectionDirective>
                         <AccumulationSeriesDirective dataSource={data1} xName='x' yName='y' startAngle={60} dataLabel={{ visible: true, position: 'Outside', connectorStyle: { length: '20px', type: 'Curve' }, name: 'text', font: { fontWeight: '600' } }} radius= {Browser.isDevice ? '40%' : '70%'} />

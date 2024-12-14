@@ -20,7 +20,7 @@ export class BatteryIndicator extends SampleBase<{}, {}> {
             selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5')) as LinearGaugeTheme;
         // custom code end           
         this.borderColor = args.gauge.theme.indexOf('Dark') > -1 ? 'white' : '#bfbfbf';
-        if (args.gauge.theme == 'Bootstrap5Dark' || args.gauge.theme == 'TailwindDark') {
+        if (args.gauge.theme == 'Bootstrap5Dark' || args.gauge.theme == 'Tailwind3Dark') {
             this.borderColor = "#4b5563";
         }
         if (args.gauge.theme == 'Fluent2HighContrast' || args.gauge.theme == 'FabricDark' || args.gauge.theme == 'BootstrapDark' || args.gauge.theme == 'MaterialDark' || args.gauge.theme == 'HighContrast' || args.gauge.theme == 'Material' || args.gauge.theme == 'Fabric' || args.gauge.theme == 'Bootstrap') {
@@ -32,7 +32,7 @@ export class BatteryIndicator extends SampleBase<{}, {}> {
         if (args.gauge.theme == 'FluentDark' || args.gauge.theme == 'Fluent2Dark' || args.gauge.theme == 'Fluent2HighContrast') {
             this.borderColor = "#292827";
         }
-        if (args.gauge.theme == 'Bootstrap5' || args.gauge.theme == 'Tailwind') {
+        if (args.gauge.theme == 'Bootstrap5' || args.gauge.theme == 'Tailwind3') {
             this.borderColor = "#E5E7EB";
         }
         args.gauge.annotations[0].content = `<div style="width: 16px;height: 37px;border: 5px solid ${this.borderColor};margin-left:26px;margin-top:57px;border-radius: 6px;" />`;
@@ -70,7 +70,7 @@ export class BatteryIndicator extends SampleBase<{}, {}> {
                                     x={0} zIndex='1'
                                     y={0}>
                                 </AnnotationDirective>
-                                <AnnotationDirective content='<div style="width: 134px;font-size: 20px;margin-top:-47px;margin-left:147px;color:##000000;">Charged: 75%</div>' axisIndex={0}
+                                <AnnotationDirective content='<div style="width: 137px;font-size: 20px;margin-top:-47px;margin-left:147px;color:##000000;">Charged: 75%</div>' axisIndex={0}
                                     axisValue={0}
                                     x={0} zIndex='1'
                                     y={0}>

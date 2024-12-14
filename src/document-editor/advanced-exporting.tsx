@@ -82,7 +82,7 @@ export class Export extends SampleBase<{}, {}> {
                 <p>In this example, Document Editor provides exporting of the document as follows</p>
                 <p style={{ "display": "block" }}>Client-side exporting</p>
                 <ul>
-                <li>Syncfusion Document Text (*.sfdt)</li>
+                <li>Syncfusion<sup>®</sup> Document Text (*.sfdt)</li>
                     <li>Word Document (*.docx)</li>
                     <li>Word Template (*.dotx)</li>
                     <li>Plain Text (*.txt)</li>
@@ -113,7 +113,7 @@ export class Export extends SampleBase<{}, {}> {
             },
             {
                 class: 'data',
-                text: 'Syncfusion Document Text (*.sfdt)',
+                text: 'Syncfusion® Document Text (*.sfdt)',
                 id: 'sfdt',
                 category: 'Client side exporting',
             },

@@ -8,7 +8,7 @@ export const DateTimeOrder: Object = [
         ]
     },
     {
-        'path': 'datetimepicker/date-time-range', 'component': 'Range', 'name': 'DateTime Range', 'type': 'update', 'description': 'This example demonstrates how to disables the specific range of dates and times (min, max, minTime and maxTime) in a React DateTimePicker', 'order': '01', 'category': 'DateTimePicker', 'api': '{"DatePicker": [ "min", "max", "minTime", "maxTime", "value" ]}',
+        'path': 'datetimepicker/date-time-range', 'component': 'Range', 'name': 'DateTime Range', 'description': 'This example demonstrates how to disables the specific range of dates and times (min, max, minTime and maxTime) in a React DateTimePicker', 'order': '01', 'category': 'DateTimePicker', 'api': '{"DatePicker": [ "min", "max", "minTime", "maxTime", "value" ]}',
         'sourceFiles': [
             { 'displayName': 'date-time-range.tsx', 'path': 'src/datetimepicker/date-time-range.tsx' },
             { 'displayName': 'date-time-range.jsx', 'path': 'src/datetimepicker/date-time-range.jsx' },

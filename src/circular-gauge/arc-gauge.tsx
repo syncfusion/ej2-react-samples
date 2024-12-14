@@ -70,6 +70,7 @@ const SAMPLE_CSS = `
     }
     .e-control-wrapper.e-slider-container.e-horizontal .e-range {
         height: 0px !important;
+        width: 0px !important;
     }
     #slider.e-control.e-slider .e-slider-track {
         height: 8px;

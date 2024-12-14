@@ -61,7 +61,7 @@ export class MultipleExport extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='col-lg-9 control-section'>
                 <p className="e-mastertext">Master Grid</p>
-                    <GridComponent id='MasterGrid' dataSource={this.master} selectedRowIndex={2} allowExcelExport={true} allowPdfExport={true} toolbar={this.toolbarOptions}
+                    <GridComponent id='MasterGrid' ref={grid => this.masterGrid = grid} dataSource={this.master} selectedRowIndex={2} allowExcelExport={true} allowPdfExport={true} toolbar={this.toolbarOptions}
                         exportGrids={this.exportGrids} rowSelected={this.rowselect.bind(this)} toolbarClick={this.toolbarClick.bind(this)}>
                         <ColumnsDirective>
                             <ColumnDirective field='ContactName' headerText='Customer Name' width='150'></ColumnDirective>

@@ -5,7 +5,7 @@ import { Month, ScheduleComponent, ViewsDirective, ViewDirective, ResourcesDirec
 import './schedule-to-schedule-drag-drop.css';
 
 import { SampleBase } from '../common/sample-base';
-import { extend } from '@syncfusion/ej2/base';
+import { extend } from '@syncfusion/ej2-base';
 
 import * as dataSource from './datasource.json';
 
@@ -51,13 +51,22 @@ class ScheduleDragAndDrop extends SampleBase<{}, {}> {
     if (cellData && sourceSchedule && targetSchedule) {
       sourceSchedule.deleteEvent(args.data.Id);
       const resourceDetails = targetSchedule.getResourcesByIndex(cellData.groupIndex);
-      const startTime = new Date(cellData.startTime);
-      const endTime = new Date(startTime.getTime() + this.draggedEventDurations * 60 * 60 * 1000);
+      let droppedEventStartTime: Date;
+      let droppedEventEndTime: Date;
+      const eventDuration = new Date(args.data.EndTime).getTime() - new Date(args.data.StartTime).getTime();
+      if (!args.data.IsAllDay) {
+          droppedEventStartTime = new Date(cellData.startTime);
+          droppedEventStartTime.setHours(args.data.StartTime.getHours(), args.data.StartTime.getMinutes());
+          droppedEventEndTime = new Date(droppedEventStartTime.getTime() + eventDuration);
+      } else {
+          droppedEventStartTime = cellData.startTime;
+          droppedEventEndTime = new Date(droppedEventStartTime.getTime() + eventDuration);
+      }
       const eventData = {
         Id: targetSchedule.getEventMaxID(),
         Subject: args.data.Subject,
-        StartTime: args.data.StartTime,
-        EndTime: args.data.EndTime,
+        StartTime: droppedEventStartTime,
+        EndTime: droppedEventEndTime,
         IsAllDay: args.data.IsAllDay,
         Location: args.data.Location,
         Description: args.data.Description,

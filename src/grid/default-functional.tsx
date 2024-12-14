@@ -19,7 +19,7 @@ function Default() {
       <div className='control-section'>
         <GridComponent dataSource={orderDetails} height='350' allowSorting={true} editSettings={editSettings} allowFiltering={true} filterSettings={filterSettings} toolbar={toolbar}>
           <ColumnsDirective>
-            <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={orderidRules} isPrimaryKey={true}></ColumnDirective>
+            <ColumnDirective field='OrderID' headerText='Order ID' width='180' textAlign='Right' validationRules={orderidRules} isPrimaryKey={true}></ColumnDirective>
             <ColumnDirective field='CustomerName' headerText='Customer Name' width='150' validationRules={customeridRule}></ColumnDirective>
             <ColumnDirective field='OrderDate' headerText='Order Date' width='130' format='yMd' textAlign='Right' editType='datepickeredit'/>
             <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' validationRules={freightRules} editType='numericedit'/>

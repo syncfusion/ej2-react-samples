@@ -217,7 +217,7 @@ export class OverView extends SampleBase<{}, {}> {
         <span id='msg'></span>
         <br/>
         </div>
-          <GridComponent id="overviewgrid" dataSource={this.data} query={this.query} enableHover={false} enableVirtualization={true} loadingIndicator= {{ indicatorType: 'Shimmer' }} rowHeight={38} height='400' ref={(g) => { this.gridInstance = g }} actionComplete={this.onComplete.bind(this)} load={this.onLoad.bind(this)} dataBound={this.onDataBound.bind(this)} filterSettings={this.Filter} allowFiltering={true} allowSorting={true} allowSelection={true} selectionSettings={this.select} enableHeaderFocus={true}>
+          <GridComponent id="overviewgrid" dataSource={this.data} query={this.query} enableHover={false} enableVirtualization={true} loadingIndicator= {{ indicatorType: 'Shimmer' }} rowHeight={38} height='400' ref={(g) => { this.gridInstance = g }} actionComplete={this.onComplete.bind(this)} load={this.onLoad.bind(this)} dataBound={this.onDataBound.bind(this)} filterSettings={this.Filter} allowFiltering={true} allowSorting={true} allowSelection={true} selectionSettings={this.select}>
             <ColumnsDirective>
             <ColumnDirective type='checkbox' allowSorting={false} allowFiltering={false}  width='60'></ColumnDirective>
               <ColumnDirective field='EmployeeID' visible={false} headerText='Employee ID' isPrimaryKey={true} width='130'></ColumnDirective>

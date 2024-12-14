@@ -26,7 +26,8 @@ const Remote = () => {
             <div className="control-section">
                 <div className='control-wrapper remote-multicolumn'>
                     <div style={{ paddingTop: '60px'}}>
-                        <MultiColumnComboBoxComponent dataSource={dataSource} fields={fields} query={query} placeholder='Select a name' popupHeight={'230px'} allowSorting={false}>
+                    <label>Select an employee</label>
+                        <MultiColumnComboBoxComponent dataSource={dataSource} fields={fields} query={query} placeholder='eg. Andrew' popupHeight={'230px'} popupWidth={'500px'} allowSorting={false}>
                             <ColumnsDirective>
                                 <ColumnDirective field='EmployeeID' header='Employee ID' width={120}></ColumnDirective>
                                 <ColumnDirective field='FirstName' header='Name' width={130}></ColumnDirective>

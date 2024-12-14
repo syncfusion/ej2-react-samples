@@ -1,3 +1,6 @@
+#target {
+    height: 350px;
+}
 .control-pane .modal-dialog-target {
     min-height: 350px;
 }

@@ -54,7 +54,7 @@ export class Line extends SampleBase<{}, {}>{
                             title: 'Million Metric Tons', rangePadding: 'None', minimum: 0, maximum: 20, interval: 4, lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 },
                         }}
                         chartArea={{ border: { width: 0 } }}
-                        tooltip={{ enable: true }}
+                        tooltip={{ enable: true, enableHighlight: true }}
                         legendSettings={{ enableHighlight: true }}
                         width={Browser.isDevice ? '100%' : '75%'}
                         title="Crude Steel Production Annual Growth"
@@ -102,7 +102,7 @@ export class Line extends SampleBase<{}, {}>{
                         You can use <code>dashArray</code>, <code>width</code>, <code>fill</code> properties to customize the line. <code>marker</code> and <code>dataLabel</code> are used to represent individual data and its value.
                     </p>
                     <p>
-                        Tooltips are enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+                        Tooltips are enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices. The <code>enableHighlight</code> property in the tooltip allows the corresponding series to be highlighted when a data point is hovered over.
                     </p>
                     <p><b>Injecting Module</b></p>
                     <p>

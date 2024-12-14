@@ -39,7 +39,7 @@ const Line = () => {
         <div className="control-pane">
             <style>{SAMPLE_CSS}</style>
             <div className="control-section">
-                <ChartComponent id="charts" style={{ textAlign: 'center' }} primaryXAxis={{ valueType: 'DateTime', edgeLabelPlacement: 'Shift', majorGridLines: { width: 0 }, labelFormat: 'y' }} load={load.bind(this)} primaryYAxis={{ title: 'Million Metric Tons', rangePadding: 'None', minimum: 0, maximum: 20, interval: 4, lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 } }} chartArea={{ border: { width: 0 } }} tooltip={{ enable: true }} legendSettings={{ enableHighlight: true }} width={Browser.isDevice ? '100%' : '75%'} title="Crude Steel Production Annual Growth" loaded={onChartLoad.bind(this)}>
+                <ChartComponent id="charts" style={{ textAlign: 'center' }} primaryXAxis={{ valueType: 'DateTime', edgeLabelPlacement: 'Shift', majorGridLines: { width: 0 }, labelFormat: 'y' }} load={load.bind(this)} primaryYAxis={{ title: 'Million Metric Tons', rangePadding: 'None', minimum: 0, maximum: 20, interval: 4, lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 } }} chartArea={{ border: { width: 0 } }} tooltip={{ enable: true, enableHighlight: true }} legendSettings={{ enableHighlight: true }} width={Browser.isDevice ? '100%' : '75%'} title="Crude Steel Production Annual Growth" loaded={onChartLoad.bind(this)}>
                     <Inject services={[LineSeries, DateTime, Legend, Tooltip, Highlight]} />
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={data2} xName="x" yName="y" name="Vietnam" width={2} marker={{ visible: true, width: 7, height: 7, shape: 'Circle', isFilled: true }} type="Line"></SeriesDirective>
@@ -61,7 +61,9 @@ const Line = () => {
                     In this example, you can see how to render and configure the line type charts. Line type charts are used to represent time-dependent data, showing trends in data at equal intervals.
                     You can use <code>dashArray</code>, <code>width</code>, <code>fill</code> properties to customize the line. <code>marker</code> and <code>dataLabel</code> are used to represent individual data and its value.
                 </p>
-                <p>Tooltips are enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
+                <p>
+                    Tooltips are enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices. The <code>enableHighlight</code> property in the tooltip allows the corresponding series to be highlighted when a data point is hovered over.
+                </p>
                 <p><b>Injecting Module</b></p>
                 <p>
                     Chart component features are segregated into individual feature-wise modules. To use line series, we need to

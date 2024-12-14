@@ -21,10 +21,6 @@ const SAMPLE_CSS = `
     pointer-events:visible !important;
   }
   
-  .e-treegrid .e-summarycell.e-templatecell .e-input-group {
-    width: 160px !important;
-  }
-  
   .e-treegrid .e-summarycell.e-templatecell .e-input-group input.e-control.e-dropdownlist.e-lib.e-input {
     padding-left: 6px !important;
   }`;
@@ -72,7 +68,7 @@ const CustomAggregate = () => {
         dataSource: foods,
         fields: { value: "food" },
         placeholder: "Select a Category",
-        width: "130px",
+        width: "165px",
         value: item,
         change: () => {
           setTimeout(() => {

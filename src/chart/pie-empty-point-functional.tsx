@@ -46,6 +46,9 @@ const PieEmptyPoint = () => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
         args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as AccumulationTheme;
+        if(selectedTheme === 'bootstrap5-dark'){
+            args.chart.series[0].emptyPointSettings.fill = '#FF7F7F';
+        }
     };
     const textRender = (args: { text: string; point: { x: string; y: string; }; }) => {
         args.text = args.point.x + ": $" + args.point.y + "K";
@@ -55,7 +58,7 @@ const PieEmptyPoint = () => {
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-md-8'>
-                    <AccumulationChartComponent id='pie-chart' ref={pie} title='Annual Product-Wise Profit Analysis' load={load.bind(this)} textRender={textRender.bind(this)} legendSettings={{ visible: false }} tooltip={{ enable: true, header: "", format: '<b>${point.x}</b><br> Profit: <b>$${point.y}K</b>' }} enableBorderOnMouseMove={false} loaded={onChartLoad.bind(this)}>
+                    <AccumulationChartComponent id='pie-chart' ref={pie} title='Annual Product-Wise Profit Analysis' load={load.bind(this)} textRender={textRender.bind(this)} legendSettings={{ visible: false }} tooltip={{ enable: true, header: "", format: '<b>${point.x}</b><br> Profit: <b>$${point.y}K</b>', enableHighlight: true }} enableBorderOnMouseMove={false} loaded={onChartLoad.bind(this)}>
                         <Inject services={[PieSeries, AccumulationDataLabel, AccumulationTooltip]} />
                         <AccumulationSeriesCollectionDirective>
                             <AccumulationSeriesDirective dataSource={data1} xName='x' yName='y' name='Profit' dataLabel={{ visible: true, position: 'Inside', enableRotation: true, font: { fontWeight: '600' } }} emptyPointSettings={{ fill: '#e6e6e6', mode: emptyPointMode }} />

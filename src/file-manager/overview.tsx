@@ -54,7 +54,7 @@ export class Overview extends SampleBase<{},{}> {
                     <p>The custom toolbar items can be added and customized using the <a href="https://ej2.syncfusion.com/react/documentation/api/file-manager/#toolbarsettings" target="_blank"> toolbarSettings </a> API. If a new toolbar is needed, it can be added using the <a href="https://ej2.syncfusion.com/react/documentation/api/file-manager/#toolbarsettings" target="_blank"> toolbarSettings </a>.</p>
                     <p>
                         <b>Note: </b>File Manager's upload functionality is restricted in the online demos for security reasons. If you need to test upload functionality, please install 
-                        <a target="_blank" href="https://www.syncfusion.com/downloads"> Syncfusion Essential Studio </a>on your machine and run the demo.
+                        <a target="_blank" href="https://www.syncfusion.com/downloads"> Syncfusion<sup>®</sup> Essential Studio<sup>®</sup> </a>on your machine and run the demo.
                      </p>
                 </div>
             </div>

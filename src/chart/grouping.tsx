@@ -54,7 +54,7 @@ export class Grouping extends SampleBase<{}, {}> {
             <AccumulationChartComponent id='pie-chart' ref={pie => this.pie = pie}
               title='Rio Olympic Gold Medals'
               load={this.load.bind(this)}
-              tooltip={{ enable: true ,format:"<b>${point.x}</b><br> Gold Medals: <b>${point.y}</b>"}}
+              tooltip={{ enable: true ,format:"<b>${point.x}</b><br> Gold Medals: <b>${point.y}</b>", enableHighlight: true}}
               legendSettings={{ visible: false }}
               textRender={this.onTextRender.bind(this)}
               pointRender={this.onPointRender.bind(this)}

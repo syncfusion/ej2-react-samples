@@ -62,7 +62,7 @@ export class Default extends SampleBase<{}, {}> {
                     <div className='contextmenu-section'>
                         <div id='contextmenu-control'>
                             <div id="contextmenutarget">{this.content}</div>
-                            <ContextMenuComponent target='#contextmenutarget' items={this.menuItems} animationSettings={this.animationSettings} beforeItemRender={this.addDisabled} />
+                            <ContextMenuComponent target='#contextmenutarget' items={this.menuItems} cssClass="default-context-menu" animationSettings={this.animationSettings} beforeItemRender={this.addDisabled} />
                         </div>
                     </div>
                 </div>

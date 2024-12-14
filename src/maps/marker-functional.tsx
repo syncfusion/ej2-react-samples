@@ -59,54 +59,57 @@ const MarkerMaps = () => {
     return (
         <main><div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
-            <div className='col-lg-9 control-section'>
-                <MapsComponent id="maps" loaded={onMapsLoad} load={load} ref={mapInstance} useGroupingSeparator={true} format={"n"} zoomSettings={{ enable: false }} titleSettings={{ text: 'Top 25 populated cities in the world', textStyle: { size: '16px' } }}>
-                    <Inject services={[Marker, MapsTooltip]} />
-                    <LayersDirective>
-                        <LayerDirective shapeData={worldMap} shapePropertyPath='name' shapeDataPath='Country' dataSource={datasource.population} shapeSettings={{ fill: '#C3E6ED' }}>
-                            <MarkersDirective>
-                                <MarkerDirective visible={true} animationDuration={0} shape='Circle' fill='white' width={10} border={{ color: '#285255', width: 2 }} dataSource={datasource.population} tooltipSettings={{ template: template, visible: true, valuePath: 'population' }} />
-                            </MarkersDirective>
-                        </LayerDirective>
-                    </LayersDirective>
-                </MapsComponent>
-                {/* Source Link */}
-                <div style={{ float: 'right', marginRight: '10px' }}>
-                    Source: <a href="http://www.citymayors.com/statistics/largest-cities-population-125.html' target='_blank">www.citymayors.com</a>
+            <div className='control-section row'>
+                <div className='col-md-9'>
+                    <MapsComponent id="maps" loaded={onMapsLoad} load={load} ref={mapInstance} useGroupingSeparator={true} format={"n"} zoomSettings={{ enable: false }} titleSettings={{ text: 'Top 25 populated cities in the world', textStyle: { size: '16px' } }}>
+                        <Inject services={[Marker, MapsTooltip]} />
+                        <LayersDirective>
+                            <LayerDirective shapeData={worldMap} shapePropertyPath='name' shapeDataPath='Country' dataSource={datasource.population} shapeSettings={{ fill: '#C3E6ED' }}>
+                                <MarkersDirective>
+                                    <MarkerDirective visible={true} animationDuration={0} shape='Circle' fill='white' width={10} border={{ color: '#285255', width: 2 }} dataSource={datasource.population} tooltipSettings={{ template: template, visible: true, valuePath: 'population' }} />
+                                </MarkersDirective>
+                            </LayerDirective>
+                        </LayersDirective>
+                    </MapsComponent>
+                    {/* Source Link */}
+                    <div style={{ float: 'right', marginRight: '10px' }}>
+                        Source: <a href="http://www.citymayors.com/statistics/largest-cities-population-125.html' target='_blank">www.citymayors.com</a>
+                    </div>
                 </div>
-            </div>
-            {/* Property Panel */}
-            <div className='col-lg-3 property-section'>
-                <PropertyPane title='Properties'>
-                    <table id='property' role='none' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px', marginTop: '10px' }}>
-                      <tbody>
-                        <tr style={{}}>
-                            <td style={{ width: "70%" }}>
-                                <div className='property-text' style={{ padding: '0px' }}>
-                                    Bind markers shape from data source
-                                </div>
-                            </td>
-                            <td style={{ width: "30%" }}>
-                                <div className='col' style={{ paddingTop: '0px', marginTop: '-10px' }}>
-                                    <CheckBoxComponent id="shapeCheckBox" change={shapeChange} />
-                                </div>
-                            </td>
-                        </tr>
-                        <tr style={{}}>
-                            <td style={{ width: "70%" }}>
-                                <div className='property-text' style={{ padding: '0px' }}>
-                                    Bind markers color from data source
-                                </div>
-                            </td>
-                            <td style={{ width: "30%" }}>
-                                <div className="col" style={{ paddingTop: '0px', marginTop: '-10px' }}>
-                                    <CheckBoxComponent id="colorCheckBox" change={colorChange} />
-                                </div>
-                            </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                </PropertyPane>
+
+                {/* Property Panel */}
+                <div className='col-lg-3 property-section'>
+                    <PropertyPane title='Properties'>
+                        <table id='property' role='none' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px', marginTop: '10px' }}>
+                            <tbody>
+                                <tr style={{}}>
+                                    <td style={{ width: "70%" }}>
+                                        <div className='property-text' style={{ padding: '0px' }}>
+                                            Bind markers shape from data source
+                                        </div>
+                                    </td>
+                                    <td style={{ width: "30%" }}>
+                                        <div className='col' style={{ paddingTop: '0px', marginTop: '-10px' }}>
+                                            <CheckBoxComponent id="shapeCheckBox" change={shapeChange} />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr style={{}}>
+                                    <td style={{ width: "70%" }}>
+                                        <div className='property-text' style={{ padding: '0px' }}>
+                                            Bind markers color from data source
+                                        </div>
+                                    </td>
+                                    <td style={{ width: "30%" }}>
+                                        <div className="col" style={{ paddingTop: '0px', marginTop: '-10px' }}>
+                                            <CheckBoxComponent id="colorCheckBox" change={colorChange} />
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </PropertyPane>
+                </div>
             </div>
         </div>
             <section id="action-description" aria-label="Description of Maps sample">

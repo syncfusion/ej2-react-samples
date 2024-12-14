@@ -489,7 +489,8 @@ const Overview = () => {
       case 'Add':
       case 'AddRecurrence':
         let selectedCells: Element[] = scheduleObj.current.getSelectedElements();
-        let activeCellsData: CellClickEventArgs = scheduleObj.current.getCellDetails(selectedCells.length > 0 ? selectedCells : selectedTarget);
+        let isRightClickInSelectedCells: boolean = selectedCells.some(cell => cell === selectedTarget);
+        let activeCellsData: CellClickEventArgs = scheduleObj.current.getCellDetails(isRightClickInSelectedCells ? selectedCells : [selectedTarget]);
         if (selectedMenuItem === 'Add') {
           scheduleObj.current.openEditor(activeCellsData, 'Add');
         } else {

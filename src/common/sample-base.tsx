@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { setResponsiveElement, selectedTheme, setSbLink, removeOverlay } from './index';
 import { setSelectList } from './leftpane';
-import { sampleNameElement, onComponentLoad, setNavButtonState, intialLoadScrollTop, renderDescriptions, checkApiTableDataSource, showHooks, isRendered } from './component-content';
+import { sampleNameElement, onComponentLoad, setNavButtonState, intialLoadScrollTop, renderDescriptions, checkApiTableDataSource, showHooks, isRendered, setIsFinalize } from './component-content';
 
 export class SampleBase<P, S> extends React.PureComponent<P, S>{
 
@@ -48,6 +48,7 @@ export function updateSampleSection(): void {
     finalizeContent();
     setTimeout(() => {
         finalizeTab();
+        setIsFinalize();
     });
 }
 

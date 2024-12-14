@@ -94,7 +94,7 @@ const PieCornerRadius = () => {
                     center={{ x: '50%', y: '50%' }}
                     enableBorderOnMouseMove={false}
                     width= {Browser.isDevice ? '100%' : '75%'}
-                    tooltip={{ enable: true, header: '<b>Budget</b>', format: '${point.x}: <b>${point.y}%</b>' }}
+                    tooltip={{ enable: true, header: '<b>Budget</b>', format: '${point.x}: <b>${point.y}%</b>', enableHighlight: true }}
                     loaded={onChartLoad.bind(this)}
                     pointRender={onPointRender}
                 >

@@ -138,13 +138,13 @@ const Editing = () => {
             >
               <tbody>
                 <tr style={{ height: "50px" }}>
-                  <td style={{ width: "30%" }}>
+                  <td>
                     <div> Edit Mode </div>
                   </td>
                   <td style={{ width: "70%" }}>
                     <div id="columnddl">
                       <DropDownListComponent
-                        width="140px"
+                        width="147px"
                         id="selmode"
                         change={change.bind(this)}
                         dataSource={editing}

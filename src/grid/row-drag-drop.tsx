@@ -37,9 +37,9 @@ export class Source extends SampleBase<{}, {}> {
                         <div style={{ float: 'left', width: '49%' }}>
                             <GridComponent ref={(g) => {this.grid = g;}} id="Grid" dataSource={this.data} allowPaging={true} pageSettings={{ pageCount: 1 }} allowSorting={true} editSettings={this.editSettings} allowFiltering={true} filterSettings={this.filterSettings} toolbar={this.toolbar} allowRowDragAndDrop={true} rowDropSettings={this.rowDropSettings} selectionSettings={this.srcSelectionSettings}>
                                 <ColumnsDirective>
-                                <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={this.orderidRules} isPrimaryKey={true}></ColumnDirective>
-                                <ColumnDirective field='CustomerName' headerText='Customer Name' width='130' validationRules={this.customeridRule}></ColumnDirective>
-                                <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' validationRules={this.freightRules} editType='numericedit'/>
+                                <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={this.orderidRules} isPrimaryKey={true} type='number'></ColumnDirective>
+                                <ColumnDirective field='CustomerName' headerText='Customer Name' width='130' validationRules={this.customeridRule} type='string'></ColumnDirective>
+                                <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' validationRules={this.freightRules} editType='numericedit' type='number' />
                                 </ColumnsDirective>
                                 <Inject services={[Page, RowDD, Sort, Toolbar, Filter, Edit]} />
                             </GridComponent>
@@ -47,9 +47,9 @@ export class Source extends SampleBase<{}, {}> {
                         <div style={{ float: 'right', width: '49%' }}>
                             <GridComponent ref={(g) => {this.destGrid = g;}} dataSource={this.destData} id="DestGrid" allowPaging={true} pageSettings={{ pageCount: 2 }} allowSorting={true} editSettings={this.editSettings} allowFiltering={true} filterSettings={this.filterSettings} toolbar={this.toolbar} allowRowDragAndDrop={true} rowDropSettings={this.rowDropSettings2} selectionSettings={this.destSelectionSettings}>
                                 <ColumnsDirective>
-                                <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={this.orderidRules} isPrimaryKey={true}></ColumnDirective>
-                                <ColumnDirective field='CustomerName' headerText='Customer Name' width='130' validationRules={this.customeridRule}></ColumnDirective>
-                                <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' validationRules={this.freightRules} editType='numericedit'/>
+                                <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={this.orderidRules} isPrimaryKey={true} type='number'></ColumnDirective>
+                                <ColumnDirective field='CustomerName' headerText='Customer Name' width='130' validationRules={this.customeridRule} type='string'></ColumnDirective>
+                                <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' validationRules={this.freightRules} editType='numericedit' type='number' />
                                 </ColumnsDirective>
                                 <Inject services={[Page, RowDD, Sort, Toolbar, Filter, Edit]} />
                             </GridComponent>

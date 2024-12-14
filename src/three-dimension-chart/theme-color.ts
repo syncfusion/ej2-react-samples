@@ -15,10 +15,10 @@ export let pointMaterialDarkColors: string[] = ["#9ECB08", "#56AEFF", "#C57AFF",
     "#F7C928"];
 export let pointFluentDarkColors: string[] = ['#1AC9E6', '#DA4CB2', '#EDBB40', '#AF4BCF', '#FF7266', '#1BD565', '#EE993D', '#5887FF', '#EC548D',
     '#7D39C0'];
-export let pointTailwindColors: string[] = ["#5A61F6", "#65A30D", "#334155", "#14B8A6", "#8B5CF6", "#0369A1", "#F97316", "#9333EA", "#F59E0B",
-    "#15803D"];
-export let pointTailwindDarkColors: string[] = ["#8B5CF6", "#22D3EE", "#F87171", "#4ADE80", "#E879F9", "#FCD34D", "#F97316", "#2DD4BF", "#F472B6",
-    "#10B981"];
+export let pointTailwindColors: string[] = ["#5A61F6", "#65A30D", "#334155", "#14B8A6", "#8B5CF6", "#0369A1", "#F97316", "#9333EA", "#F59E0B", "#15803D"];
+export let pointTailwindDarkColors: string[] = ["#8B5CF6", "#22D3EE", "#F87171", "#4ADE80", "#E879F9", "#FCD34D", "#F97316", "#2DD4BF", "#F472B6", "#10B981"];
+export let pointTailwind3Colors: string[] = ["rgba(47, 64, 116)", "rgba(3, 180, 180)", "rgba(13, 114, 222)", "rgba(255, 87, 51)", "rgba(214, 51, 132)", "rgba(243, 156, 18)", "rgba(239, 41, 31)", "rgba(145, 200, 34)", "rgba(47, 64, 116)", "rgba(3, 180, 180)"];
+export let pointTailwind3DarkColors: string[] = ["rgba(128, 41, 241)", "rgba(26, 188, 156)", "rgba(13, 114, 222)", "rgba(255, 87, 51)", "rgba(214, 51, 132)", "rgba(243, 156, 18)", "rgba(239, 41, 31)", "rgba(145, 200, 34)", "rgba(128, 41, 241)", "rgba(26, 188, 156)"];
 export let pointBootstrap5Colors: string[] = ['#6355C7', '#FFB400', '#2196F5', '#F7523F', '#963C70', '#4BE0BC', '#FD7400', '#C9E422', '#DE3D8A',
     '#162F88'];
 export let pointBootstrap5DarkColors: string[] = ['#8F80F4', '#FFD46D', '#6CBDFF', '#FF7F71', '#FF6DB3', '#63F5D2', '#FCAA65', '#ECFF77', '#EF8EFF',

@@ -12,7 +12,7 @@ function AutoWrap() {
     return (
         <div className='control-pane'>
             <div className='control-section'>
-                <GridComponent dataSource={inventoryData} allowPaging={true} pageSettings={{ pageCount: 5 }} allowTextWrap={true}  height='400'>
+                <GridComponent dataSource={inventoryData} allowPaging={true} pageSettings={{ pageCount: 5 }} allowTextWrap={true} height='400'>
                     <ColumnsDirective>
                         <ColumnDirective field='Inventor' headerText='Inventor' width='180' textAlign='Right'></ColumnDirective>
                         <ColumnDirective field='NumberofPatentFamilies' headerText='Number of Patent Families' width='180' textAlign='Right'></ColumnDirective>

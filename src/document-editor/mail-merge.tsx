@@ -223,7 +223,7 @@ export class MailMerge extends SampleBase<{}, {}> {
                 </p>
                 <ul>
                     <li>Fields can be inserted using API.</li>
-                    <li>Document generated is mail merged by Syncfusion DocIO on the server-side.</li>
+                    <li>Document generated is mail merged by Syncfusion<sup>®</sup> DocIO on the server-side.</li>
                     <li>Merged document is opened in the DocumentEditor.</li>
                 </ul>
                 <p style={{ 'display': 'block' }}> More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/document-editor/web-services/mvc/">documentation section.</a>

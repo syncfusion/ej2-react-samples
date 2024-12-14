@@ -35,6 +35,10 @@ const SAMPLE_CSS = `
             stop-color: #5A61F6;
         }
 
+        #tailwind3-gradient-chart stop {
+            stop-color: #2F4074;
+        }
+
         #bootstrap5-gradient-chart stop {
             stop-color: #FD7E14;
         }
@@ -52,7 +56,11 @@ const SAMPLE_CSS = `
         }
 
         #tailwind-dark-gradient-chart stop {
-            stop-color: #8B5CF6;
+        stop-color: #8B5CF6;
+        }
+
+        #tailwind3-dark-gradient-chart stop {
+        stop-color: #8029F1;
         }
 
         #bootstrap5-dark-gradient-chart stop {
@@ -130,9 +138,11 @@ export class Zooming extends SampleBase<{}, {}> {
                         primaryXAxis={{ valueType: 'DateTime', majorGridLines: { width: 0 }, majorTickLines: { width: 0 }, scrollbarSettings: { enableZoom: false } }}
                         primaryYAxis={{ title: 'Temperature', labelFormat: '{value}°C', majorTickLines: { width: 0 }, lineStyle: { width: 0 }, enableScrollbarOnZooming: false }}
                         chartArea={{ border: { width: 0 } }}
-                        zoomSettings={{ enableSelectionZooming: true, enableMouseWheelZooming: true, enableDeferredZooming: false, enableScrollbar: true, enablePinchZooming: true, mode: 'X', enableAnimation: true }}
+                        margin = {{top: 20}}
+                        zoomSettings={{ enableSelectionZooming: true, enableMouseWheelZooming: true, enableDeferredZooming: false, enableScrollbar: true, enablePinchZooming: true, mode: 'X', enableAnimation: true, showToolbar : true, toolbarPosition:{y: -60, draggable: true}}}
                         load={this.load}
-                        title='Global Warming: Monthly Temperature Anomalies'
+                        title={Browser.isDevice ? 'Monthly Temperature Anomalies' : 'Global Warming: Monthly Temperature Anomalies'}
+                        titleStyle= {{ textAlignment: Browser.isDevice ? 'Near' : 'Center' }}
                         tooltip={{ enable: false}}
                         width={Browser.isDevice ? '100%' : '80%'}>
                         <Inject services={[LineSeries, DateTime, Zoom, Crosshair, Tooltip, ScrollBar]} />
@@ -145,32 +155,32 @@ export class Zooming extends SampleBase<{}, {}> {
                     <p>This sample demonstrates the zooming and panning features of the charts.</p>
                 </div>
                 <div id="description">
-                    <p>This sample shows the following zooming and panning behaviors.</p>
-                    <ul>
-                        <li>Click and drag the mouse on a chart area to enable selection zooming.</li>
-                        <li>Hover the mouse on the toolbar at the top right corner of chart area to switch between zooming and panning.</li>
-                        <li>Pinch in and pinch out the chart area to zoom in or zoom out the chart in touch enabled devices.</li>
-                        <li>Touch and drag to pan the chart.</li>
-                        <li>Double tap to reset the zoomed chart.</li>
-                    </ul>
-                    <p>Chart component supports four types of zooming which can be set using <code>enableSelectionZooming</code>, <code>enablePinchZooming</code>, <code>enableMouseWheelZooming</code>, <code>enableDeferredZooming</code> property.</p>
-                    <p>
-                        Chart supports two mode of zooming which can be set using
-                        <code><a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/zoomSettings/#mode" aria-label="Navigate to the Mode property reference for React ChartZoomSettings">mode</a></code> property.
+                    <p>The chart component supports four types of zooming, which can be configured using the <a target="_blank" href="https://ej2.syncfusion.com/documentation/api/chart/zoomSettingsModel/#enableselectionzooming" aria-label="Navigate to the enableSelectionZooming property reference for TypeScript Chart ZoomSettings">enableSelectionZooming</a>, <a target="_blank" href="https://ej2.syncfusion.com/documentation/api/chart/zoomSettingsModel/#enablepinchzooming" aria-label="Navigate to the enablePinchZooming property reference for TypeScript Chart ZoomSettings">enablePinchZooming</a>, <a target="_blank" href="https://ej2.syncfusion.com/documentation/api/chart/zoomSettingsModel/#enablemousewheelzooming" aria-label="Navigate to the enableMouseWheelZooming property reference for TypeScript Chart ZoomSettings">enableMouseWheelZooming</a>, and <a target="_blank" href="https://ej2.syncfusion.com/documentation/api/chart/zoomSettingsModel/#enabledeferredzooming" aria-label="Navigate to the enableDeferredZooming property reference for TypeScript Chart ZoomSettings">enableDeferredZooming</a> properties. This sample demonstrates the following zooming and panning behaviors:
                     </p>
                     <ul>
-                        <li><code>XY</code> - Zoom the chart with respect to both the axis.</li>
-                        <li><code>X</code> - Zoom the chart with respect to horizontal axis.</li>
-                        <li><code>Y</code> - Zoom the chart with respect to vertical axis.</li>
+                        <li><b>Selection Zooming</b> : Click and drag the mouse over the chart area to enable selection zooming.</li>
+                        <li><b>Toolbar</b> : Hover over the toolbar at the top-right corner of the chart area to switch between zooming and panning.</li>
+                        <li><b>Pinch Zooming</b> : Pinch in or pinch out on the chart area to zoom in or out on touch-enabled devices.</li>
+                        <li><b>Panning</b> : Touch and drag to pan the chart.</li>
+                        <li><b>Reset Zoom</b> : Double-tap to reset the zoomed chart.</li>
                     </ul>
+                    <p>The chart also supports different zooming modes, which can be configured using the <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-zoomSettings.html#mode-zoommode" aria-label="Navigate to the mode property reference for TypeScript Chart ZoomSettings">mode</a> property.</p>
+                    <ul>
+                        <li><b>XY</b> - Zoom the chart with respect to both axes.</li>
+                        <li><b>X</b> - Zoom the chart with respect to the horizontal axis only.</li>
+                        <li><b>Y</b> - Zoom the chart with respect to the vertical axis only.</li>
+                    </ul>
+                    <p>The <code>toolbarPosition</code> property is used to adjust the position of the zoom toolbar. In this example, the toolbar is moved 60 pixels upward from its default position. The <code>draggable</code> property is used to drag and drop the zoom toolbar to any position within the chart area</p>
+
                     <p><b>Injecting Module</b></p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To use zooming, we need to inject
-                        <code>Zoom</code> module into <code>services</code>.
+                        <code>Zoom</code> module using <code>Chart.Inject(Zoom)</code> method.
                     </p>
                     <p>
-                        More information on the Zooming can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/zooming/" aria-label="Navigate to the documentation for Zooming in React Chart component">documentation section</a>.
-                    </p>
+                        More information on the Zooming can be found in this
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/zooming" aria-label="Navigate to the documentation for Zooming in TypeScript Chart control"> documentation section</a>.
+                    </p> 
                 </div>
             </div>
         )

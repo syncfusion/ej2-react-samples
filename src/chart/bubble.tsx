@@ -9,7 +9,7 @@ import {
     BubbleSeries, Tooltip, IPointRenderEventArgs, ILoadedEventArgs, ChartTheme, DataLabel
 } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
-import { bubbleFabricColors, bubbleMaterialDarkColors, bubbleMaterialColors, bubbleBootstrap5DarkColors, bubbleBootstrapColors, bubbleHighContrastColors, bubbleFluentDarkColors, bubbleFluentColors, bubbleTailwindDarkColors, bubbleTailwindColors, pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, bubbleBootstrap5Colors, pointBootstrap5Colors, bubbleMaterial3Colors, pointMaterial3Colors, bubbleMaterial3DarkColors, pointMaterial3DarkColors } from './theme-color';
+import { bubbleFabricColors, bubbleMaterialDarkColors, bubbleMaterialColors, bubbleBootstrap5DarkColors, bubbleBootstrapColors, bubbleHighContrastColors, bubbleFluentDarkColors, bubbleFluentColors, bubbleTailwindDarkColors, bubbleTailwindColors, pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, bubbleBootstrap5Colors, pointBootstrap5Colors, bubbleMaterial3Colors, pointMaterial3Colors, bubbleMaterial3DarkColors, pointMaterial3DarkColors, bubbleTailwind3Colors, bubbleTailwind3DarkColors, pointTailwind3Colors, pointTailwind3DarkColors } from './theme-color';
 import { SampleBase } from '../common/sample-base';
 export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEventArgs): void => {
     let selectedTheme: string = location.hash.split('/')[1];
@@ -61,6 +61,14 @@ export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEve
     } else if (selectedTheme === 'material3-dark') {
         args.fill = bubbleMaterial3DarkColors[args.point.index % 10];
         args.border.color = pointMaterial3DarkColors[args.point.index % 10];
+    }
+    else if (selectedTheme === 'tailwind3-dark') {
+        args.fill = bubbleTailwind3DarkColors[args.point.index % 10];
+        args.border.color = pointTailwind3DarkColors[args.point.index % 10];
+    } 
+    else if (selectedTheme === 'tailwind3') {
+        args.fill = bubbleTailwind3Colors[args.point.index % 10];
+        args.border.color = pointTailwind3Colors[args.point.index % 10];
     }
 };
 export let data: any[] = [

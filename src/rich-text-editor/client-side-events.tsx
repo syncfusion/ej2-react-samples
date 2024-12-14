@@ -5,7 +5,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { addClass, removeClass, Browser } from '@syncfusion/ej2-base';
-import { RichTextEditorComponent, HtmlEditor, Table, Inject, Toolbar, Link, Image, QuickToolbar, EmojiPicker, PasteCleanup, Audio, Video, FormatPainter, FileManager } from '@syncfusion/ej2-react-richtexteditor';
+import { RichTextEditorComponent, HtmlEditor, Table, Inject, Toolbar, Link, Image, QuickToolbar, EmojiPicker, PasteCleanup, Audio, Video, FormatPainter, FileManager, FileManagerSettingsModel } from '@syncfusion/ej2-react-richtexteditor';
 import { SampleBase } from '../common/sample-base';
 import { ActionBeginEventArgs, ActionCompleteEventArgs, ToolbarSettingsModel } from '@syncfusion/ej2-richtexteditor';
 import { PropertyPane } from '../common/property-pane';
@@ -38,7 +38,16 @@ export class RTEEvents extends SampleBase<{}, {}> {
     private toolbarSettings: ToolbarSettingsModel = {
         items: this.items
     };
-
+    private fileManagerSettings: FileManagerSettingsModel = {
+        enable: true,
+        path: '/Pictures/Food',
+        ajaxSettings: {
+            url: 'https://ej2-aspcore-service.azurewebsites.net/api/FileManager/FileOperations',
+            getImageUrl: 'https://ej2-aspcore-service.azurewebsites.net/api/FileManager/GetImage',
+            uploadUrl: 'https://ej2-aspcore-service.azurewebsites.net/api/FileManager/Upload',
+            downloadUrl: 'https://ej2-aspcore-service.azurewebsites.net/api/FileManager/Download'
+        }
+    }
     public ClearClick(): void {
         this.EventLogEle.innerHTML = '';
     }
@@ -187,6 +196,7 @@ export class RTEEvents extends SampleBase<{}, {}> {
                             blur={this.blur.bind(this)}
                             change={this.change.bind(this)}
                             toolbarClick={this.toolbarClick.bind(this)}
+                            fileManagerSettings={this.fileManagerSettings}
                             beforeDialogOpen={this.beforeDialogOpen.bind(this)}
                             dialogOpen={this.dialogOpen.bind(this)}
                             dialogClose={this.dialogClose.bind(this)}

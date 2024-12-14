@@ -24,7 +24,7 @@ export class PieRadius extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
       <div className='control-section'>
-          <AccumulationChartComponent id='pie-chart' legendSettings={{ visible: true, reverse: true }} enableSmartLabels={true} title='Pie with different Radius' enableBorderOnMouseMove={false} enableAnimation={true} load={this.load.bind(this)} tooltip={{ enable: true, format: '<b>${point.x}</b><br/>Area in square km: <b>${point.y} </b> <br/> Population density per square km: <b>${point.tooltip}</b>' }}>
+          <AccumulationChartComponent id='pie-chart' legendSettings={{ visible: true, reverse: true }} enableSmartLabels={true} title='Pie with different Radius' enableBorderOnMouseMove={false} enableAnimation={true} load={this.load.bind(this)} tooltip={{ enable: true, format: '<b>${point.x}</b><br/>Area in square km: <b>${point.y} </b> <br/> Population density per square km: <b>${point.tooltip}</b>', enableHighlight: true }}>
               <Inject services={[AccumulationLegend, PieSeries, AccumulationDataLabel, AccumulationTooltip]} />
               <AccumulationSeriesCollectionDirective>
                   <AccumulationSeriesDirective dataSource={data1} xName='x' yName='y' innerRadius='20%' tooltipMappingName='r' dataLabel={{ visible: true, position: Browser.isDevice ? 'Inside' : 'Outside', name: 'text',enableRotation: true, font: { fontWeight: '600' }, connectorStyle:{length : '20px' ,type: 'Curve'} }} radius='r' />

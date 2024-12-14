@@ -5,8 +5,10 @@ export let highContrastColors: string[] = ['#43ACEF', '#00C27A', '#FA83C3', '#BA
 export let materialColors: string[] = ['#63C7FF', '#8A77FF', '#F45C5C', '#EBBB3E', '#61EAA9', '#C57AFF', '#56AEFF', '#9ECB08'];
 export let bootstrapDarkColors: string[] = ['#407c92', '#8A77FF', '#7953ac', '#ff6ea6', '#7ddf1e',
     '#55a5c2', '#f7ce69', '#a16ee5'];
-export let tailwindColors: string[] = ['#9333EA', '#F97316', '#0369A1', '#8B5CF6', '#14B8A6', '#334155', '#65A30D', '#5A61F6'];
-export let tailwindDarkColors: string[] = ['#2DD4BF', '#F97316', '#FCD34D', '#E879F9', '#4ADE80', '#F87171', '#22D3EE', '#8B5CF6'];
+export let tailwindColors: string[] = [`#9333EA`, `#F97316`, `#0369A1`, `#8B5CF6`, `#14B8A6`, `#334155`, `#65A30D`, `#5A61F6`];
+export let tailwindDarkColors: string[] = [`#2DD4BF`, `#F97316`, `#FCD34D`, `#E879F9`, `#4ADE80`, `#F87171`, `#22D3EE`, `#8B5CF6`];
+export let tailwind3Colors: string[] = ['#2F4074', '#03B4B4', '#0D72DE', '#FF5733', '#D63384', '#F39C12', '#EF291F', '#91C822'];
+export let tailwind3DarkColors: string[] = ['#8029F1', '#1ABC9C', '#0D72DE', '#FF5733', '#D63384', '#F39C12', '#EF291F', '#91C822'];
 export let bootstarp5Colors: string[] = ['#FD7E14', '#6610F2', '#6F42C1', '#D63384', '#DC3545', '#FFC107', '#198754', '#0DCAF0'];
 export let bootstarp5DarkColors: string[] = ['#FD7E14', '#6610F2', '#6F42C1', '#D63384', '#DC3545', '#FFC107', '#198754', '#0DCAF0'];
 export let fluentColors: string[] = ['#5887FF', '#EE993D', '#1BD565', '#FF7266', '#AF4BCF', '#EDBB40', '#DA4CB2', '#1AC9E6'];

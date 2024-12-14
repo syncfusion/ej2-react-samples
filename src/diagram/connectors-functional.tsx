@@ -39,6 +39,7 @@ import {
 } from "@syncfusion/ej2-react-inputs";
 import { updateSampleSection } from "../common/sample-base";
 import { CheckBoxComponent } from "@syncfusion/ej2-react-buttons";
+Diagram.Inject(ConnectorEditing);
 
 
 let diagramInstance: DiagramComponent;

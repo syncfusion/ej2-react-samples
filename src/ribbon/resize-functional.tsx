@@ -117,7 +117,7 @@ const Resize = () => {
             <div className='col-lg-12 control-section resize-ribbon-section'>
                 <div className='control ribbon-sample'>
                     <div id="ribbonContainer" className='resize-ribbon-container'>
-                        <RibbonComponent id='ribbon' ref={ resizeRibbonObj } enablePersistence={true} fileMenu={{ visible: true, menuItems: fileOptions, select: fileSelect }} launcherIconClick={launchClick}>
+                        <RibbonComponent id='ribbon' ref={ resizeRibbonObj } enablePersistence={true} fileMenu={{ visible: true, menuItems: fileOptions, select: fileSelect }} launcherIconClick={launchClick}  cssClass='ribbon-resize'>
                             <RibbonTabsDirective>
                                 <RibbonTabDirective header='Home'>
                                     <RibbonGroupsDirective>

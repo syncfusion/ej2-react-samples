@@ -64,7 +64,7 @@ export class DataBinding extends SampleBase<{}, {}> {
         </div>
         <div id="description">
           <p>
-            In this demo, products and its details available in our Syncfusion has been shown as slide show. The data to the
+            In this demo, products and its details available in our Syncfusion<sup>®</sup> has been shown as slide show. The data to the
             React Carousel component is bound using <code>dataSource</code> property. Also,
             <code>itemTemplate</code> is used to customize the slides of the carousel.
           </p>

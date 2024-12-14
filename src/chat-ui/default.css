@@ -1,0 +1,29 @@
+.default-chatui {
+    height: 500px;
+    width: 65%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+.default-chatui .chat_user1_avatar {
+    background-image: url('./src/chat-ui/images/andrew.png');
+    background-color: unset;
+}
+
+.default-chatui .chat_user2_avatar {
+    background-image: url('./src/chat-ui/images/reena.png');
+    background-color: unset;
+}    
+
+@media only screen and (max-width: 850px) {
+    .default-chatui {
+        flex-direction: column;
+        height: 500px;
+        width: 80%;
+    }
+    .chat-ui.control-section {
+        height: 1050px;
+    }
+}

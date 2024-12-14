@@ -219,7 +219,7 @@ function OverView() {
           <span id='msg'></span>
           <br />
         </div>
-        <GridComponent id="overviewgrid" dataSource={data} loadingIndicator= {{ indicatorType: 'Shimmer' }} query={query} enableHover={false} enableVirtualization={true} rowHeight={38} height='400' ref={(g) => { gridInstance = g }} actionComplete={onComplete.bind(this)} load={onLoad.bind(this)} dataBound={onDataBound.bind(this)} filterSettings={gridFilter} allowFiltering={true} allowSorting={true} allowSelection={true} selectionSettings={select} enableHeaderFocus={true}>
+        <GridComponent id="overviewgrid" dataSource={data} loadingIndicator= {{ indicatorType: 'Shimmer' }} query={query} enableHover={false} enableVirtualization={true} rowHeight={38} height='400' ref={(g) => { gridInstance = g }} actionComplete={onComplete.bind(this)} load={onLoad.bind(this)} dataBound={onDataBound.bind(this)} filterSettings={gridFilter} allowFiltering={true} allowSorting={true} allowSelection={true} selectionSettings={select}>
           <ColumnsDirective>
             <ColumnDirective type='checkbox' allowSorting={false} allowFiltering={false} width='60'></ColumnDirective>
             <ColumnDirective field='EmployeeID' visible={false} headerText='Employee ID' isPrimaryKey={true} width='130'></ColumnDirective>

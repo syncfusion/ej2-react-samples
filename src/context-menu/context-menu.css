@@ -33,7 +33,9 @@
     padding: 10px;
     position: relative;
     text-align: center;
-    line-height: 17;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 14px;
 }
 
@@ -43,106 +45,105 @@
         width: auto;
     }
     #contextmenutarget {
-        line-height: 19;
         font-size: 12px;
     }
 }
 
 /* custom code end */
 
-.e-menu-item .e-cm-icons.e-cut::before {
+.e-contextmenu-wrapper.default-context-menu .e-menu-item .e-cut::before {
     content: '\e264';
 }
 
-.e-menu-item .e-cm-icons.e-paste::before {
+.e-contextmenu-wrapper.default-context-menu .e-menu-item .e-paste::before {
     content: '\e959';
 }
 
-.e-menu-item .e-cm-icons.e-font::before {
+.e-contextmenu-wrapper.default-context-menu .e-menu-item .e-font::before {
     content: '\e262';
 }
 
-.e-menu-item .e-cm-icons.e-cm-copy::before {
+.e-contextmenu-wrapper.default-context-menu .e-menu-item .e-cm-copy::before {
     content: '\e263';
 }
 
-.e-menu-item .e-cm-icons.e-link::before {
+.e-contextmenu-wrapper.default-context-menu .e-menu-item .e-link::before {
     content: '\e265';
 }
 
-.e-menu-item .e-cm-icons.e-comment::before {
+.e-contextmenu-wrapper.default-context-menu .e-menu-item .e-comment::before {
     content: '\e267';
 }
 
-.e-menu-item .e-cm-icons.e-pastetext::before {
+.e-contextmenu-wrapper.default-context-menu .e-menu-item .e-pastetext::before {
     content: '\e261';
 }
 
-.e-menu-item .e-cm-icons.e-pastespecial::before {
+.e-contextmenu-wrapper.default-context-menu .e-menu-item .e-pastespecial::before {
     content: '\e260';
 }
 
-.fabric .e-menu-item .e-cm-icons.e-cut::before {
+.fabric .e-contextmenu-wrapper.default-context-menu .e-menu-item .e-cut::before {
     content: '\e251';
 }
 
-.fabric .e-menu-item .e-cm-icons.e-paste::before {
+.fabric .e-contextmenu-wrapper.default-context-menu .e-menu-item .e-paste::before {
     content: '\e940';
 }
 
-.fabric .e-menu-item .e-cm-icons.e-font::before {
+.fabric .e-contextmenu-wrapper.default-context-menu .e-menu-item .e-font::before {
     content: '\e252';
 }
 
-.fabric .e-menu-item .e-cm-icons.e-cm-copy::before {
+.fabric .e-contextmenu-wrapper.default-context-menu .e-menu-item .e-cm-copy::before {
     content: '\e255';
 }
 
-.fabric .e-menu-item .e-cm-icons.e-link::before {
+.fabric .e-contextmenu-wrapper.default-context-menu .e-menu-item .e-link::before {
     content: '\e254';
 }
 
-.fabric .e-menu-item .e-cm-icons.e-comment::before {
+.fabric .e-contextmenu-wrapper.default-context-menu .e-menu-item .e-comment::before {
     content: '\e253';
 }
 
-.fabric .e-menu-item .e-cm-icons.e-pastetext::before {
+.fabric .e-contextmenu-wrapper.default-context-menu .e-menu-item .e-pastetext::before {
     content: '\e258';
 }
 
-.fabric .e-menu-item .e-cm-icons.e-pastespecial::before {
+.fabric .e-contextmenu-wrapper.default-context-menu .e-menu-item .e-pastespecial::before {
     content: '\e256';
 }
 
-.bootstrap .e-menu-item .e-cm-icons.e-cut::before {
+.bootstrap .e-contextmenu-wrapper.default-context-menu .e-menu-item .e-cut::before {
     content: '\e248';
 }
 
-.bootstrap .e-menu-item .e-cm-icons.e-paste::before {
+.bootstrap .e-contextmenu-wrapper.default-context-menu .e-menu-item .e-paste::before {
     content: '\e95a';
 }
 
-.bootstrap .e-menu-item .e-cm-icons.e-font::before {
+.bootstrap .e-contextmenu-wrapper.default-context-menu .e-menu-item .e-font::before {
     content: '\e247';
 }
 
-.bootstrap .e-menu-item .e-cm-icons.e-cm-copy::before {
+.bootstrap .e-contextmenu-wrapper.default-context-menu .e-menu-item .e-cm-copy::before {
     content: '\e249';
 }
 
-.bootstrap .e-menu-item .e-cm-icons.e-link::before {
+.bootstrap .e-contextmenu-wrapper.default-context-menu .e-menu-item .e-link::before {
     content: '\e245';
 }
 
-.bootstrap .e-menu-item .e-cm-icons.e-comment::before {
+.bootstrap .e-contextmenu-wrapper.default-context-menu .e-menu-item .e-comment::before {
     content: '\e246';
 }
 
-.bootstrap .e-menu-item .e-cm-icons.e-pastetext::before {
+.bootstrap .e-contextmenu-wrapper.default-context-menu .e-menu-item .e-pastetext::before {
     content: '\e257';
 }
 
-.bootstrap .e-menu-item .e-cm-icons.e-pastespecial::before {
+.bootstrap .e-contextmenu-wrapper.default-context-menu .e-menu-item .e-pastespecial::before {
     content: '\e259';
 }
 

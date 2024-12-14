@@ -347,6 +347,8 @@ export class Port extends SampleBase<{}, {}> {
                                                 format={"###.##"}
                                                 value={1}
                                                 step={0.5}
+                                                max={20} 
+                                                min={1}
                                                 change={(args: NumericChangeEventArgs) => {
                                                     applyPortStyle("strokewidth");
                                                 }}
@@ -364,6 +366,8 @@ export class Port extends SampleBase<{}, {}> {
                                                 format={"###.##"}
                                                 value={6}
                                                 step={1}
+                                                max={30} 
+                                                min={1}
                                                 change={(args: NumericChangeEventArgs) => {
                                                     applyPortStyle("size");
                                                 }}

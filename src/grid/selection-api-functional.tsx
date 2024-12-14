@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { ToolbarComponent, ItemsDirective, ItemDirective } from '@syncfusion/ej2-react-navigations';
-import { GridComponent, ColumnsDirective, ColumnDirective, Sort, Page, Selection, Inject, SelectionSettings, Toolbar, ToolbarItems, FilterSettingsModel, EditSettingsModel, Filter, Edit } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Sort, Page, Selection, Inject, SelectionSettings, FilterSettingsModel, Filter } from '@syncfusion/ej2-react-grids';
 import { CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
 import { ChangeEventArgs } from '@syncfusion/ej2-buttons';
 import { data } from './data';
@@ -13,11 +13,6 @@ function SelectionAPI() {
     }, [])
     const selectionsettings: Object = { type: 'Multiple' };
     const filterSettings: FilterSettingsModel = {type: 'Excel'};
-    const toolbar: ToolbarItems[] = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
-    const editSettings: EditSettingsModel = { allowEditing: true, allowAdding: true, allowDeleting: true };
-    const customeridRule: Object = { required: true, minLength: 5};
-    const orderidRules: Object = { required: true, number: true };
-    const freightRules: Object = { required: true, min: 0 };
     let ToolbarInstance: ToolbarComponent;
     let checkboxObj: CheckBoxComponent;
     let gridInstance: GridComponent;
@@ -80,16 +75,16 @@ function SelectionAPI() {
                     </ItemsDirective>
                 </ToolbarComponent>
                 <br />
-                <GridComponent dataSource={data} ref={grid => gridInstance = grid} enableHover={false} allowSorting={true} editSettings={editSettings} allowFiltering={true} filterSettings={filterSettings} toolbar={toolbar} allowPaging={true} pageSettings={{ pageCount: 5 }} selectionSettings={selectionsettings}
+                <GridComponent dataSource={data} ref={grid => gridInstance = grid} enableHover={false} allowSorting={true} allowFiltering={true} filterSettings={filterSettings} allowPaging={true} pageSettings={{ pageCount: 5 }} selectionSettings={selectionsettings}
                     rowSelecting={selectingEvents} cellSelecting={selectingEvents}>
                     <ColumnsDirective>
-                        <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign="Right" validationRules={orderidRules} isPrimaryKey={true}></ColumnDirective>
-                        <ColumnDirective field='CustomerName' headerText='Customer Name' width='150' validationRules={customeridRule}></ColumnDirective>
-                        <ColumnDirective field='OrderDate' headerText='Order Date' width='130' format='yMd' textAlign='Right' editType='datepickeredit'/>
-                        <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' validationRules={freightRules} editType='numericedit'/>
-                        <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='130' format="yMd" textAlign="Right" editType='datepickeredit'></ColumnDirective>
+                        <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign="Right" isPrimaryKey={true}></ColumnDirective>
+                        <ColumnDirective field='CustomerName' headerText='Customer Name' width='150'></ColumnDirective>
+                        <ColumnDirective field='OrderDate' headerText='Order Date' width='130' format='yMd' textAlign='Right'/>
+                        <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right'/>
+                        <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='130' format="yMd" textAlign="Right"></ColumnDirective>
                     </ColumnsDirective>
-                    <Inject services={[Page, Selection, Sort, Toolbar, Filter, Edit]} />
+                    <Inject services={[Page, Selection, Sort, Filter]} />
                 </GridComponent>
             </div>
             <div id="action-description">

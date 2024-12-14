@@ -64,13 +64,15 @@ let SynchronizedChart = () => {
         let bootstrap5Colors: string[] = ['#FD7E14', '#6610F2', '#6F42C1', '#D63384'];
         let bootstrap5DarkColors: string[] = ['#FD7E14', '#6610F2', '#6F42C1', '#D63384'];
         let fluentColors: string[] = ['#1AC9E6', '#DA4CB2', '#EDBB40', '#AF4BCF'];
-        let tailwindColors: string[] = ['#5A61F6', '#65A30D', '#334155', '#14B8A6'];
-        let tailwindDarkColors: string[] = ['#8B5CF6', '#22D3EE', '#F87171', '#4ADE80'];
         let fabricdarkColors: string[] = ['#4472c4', '#ed7d31', '#ffc000', '#70ad47'];
         let material3Colors: string[] = ['#6355C7', '#00AEE0', '#FFB400', '#F7523F'];
         let material3DarkColors: string[] = ['#4EAAFF', '#FA4EAB', '#FFF500', '#17EA58'];
         let fluent2Colors: string[] = ['#6200EE', '#09AF74', '#0076E5', '#CB3587'];
         let fluent2HighContrastColors: string[] = ['#9BB449', '#2A72D5', '#43B786', '#3F579A'];
+        let tailwindColors: string[] = ['#5A61F6', '#65A30D', '#334155', '#14B8A6'];
+        let tailwindDarkColors: string[] = ['#8B5CF6', '#22D3EE', '#F87171', '#4ADE80'];
+        let tailwind3Colors: string[] = ['#2F4074', '#03B4B4', '#0D72DE', '#FF5733'];
+        let tailwind3DarkColors: string[] = ['#8029F1', '#1ABC9C', '#0D72DE', '#FF5733'];
         // check the theme
         if (args.chart.theme === 'MaterialDark') {
             themeColor = materialDarkColors;
@@ -122,6 +124,12 @@ let SynchronizedChart = () => {
         }
         else if (args.chart.theme === 'Fluent2HighContrast' || args.chart.theme === 'Fluent2Dark') {
             themeColor = fluent2HighContrastColors;
+        }
+        else if (args.chart.theme === 'Tailwind3Dark') {
+            themeColor = tailwind3DarkColors;
+        }
+        else if (args.chart.theme === 'Tailwind3') {
+            themeColor = tailwind3Colors;
         }
         else {
             themeColor = fluentColors;

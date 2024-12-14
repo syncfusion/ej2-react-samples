@@ -74,7 +74,7 @@ export class ExportDocument extends SampleBase<{}, {}> {
     };
 
     private exportPdf: ExportPdfModel = {
-        serviceUrl: this.hostUrl + 'api/RichTextEditor/ExportToPdf',
+        serviceUrl: 'https://ej2services.syncfusion.com/react/development/api/RichTextEditor/ExportToPdf',
         fileName: 'RichTextEditor.pdf',
         stylesheet: `
         .e-rte-content{

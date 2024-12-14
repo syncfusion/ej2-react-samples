@@ -87,6 +87,9 @@ function MultiFormatViewer() {
       return;
     }
     document.getElementById("fileName").innerHTML = args.filesData[0].name;
+    viewer = (document.getElementById('pdfviewer') as any).ej2_instances[0];
+    viewer.downloadFileName = args.filesData[0].name;
+    viewer.exportAnnotationFileName = args.filesData[0].name;
     let size = document.getElementById("fileSize") as HTMLElement;
     if ((args.filesData[0].size.toString()).length <= 7) {
       size.innerHTML = ((args.filesData[0].size / 1024).toFixed(1)).toString() + " KB";
@@ -252,6 +255,7 @@ function MultiFormatViewer() {
         </div>
         {/* Render the PDF Viewer */}
         <PdfViewerComponent id="pdfviewer"
+          className="e-pv-multi-format-pdfviewer"
           resourceUrl="https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib"
           toolbarSettings={{
             showTooltip: true, toolbarItems: [

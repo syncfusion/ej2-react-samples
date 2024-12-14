@@ -117,11 +117,13 @@
     content: '\e94a';
 }
 
-.tailwind .template_wrapper .close-icon-container.delete-icon::before {
+.tailwind .template_wrapper .close-icon-container.delete-icon::before,
+.tailwind3 .template_wrapper .close-icon-container.delete-icon::before {
     content: '\e78d';
 }
 
-.tailwind .template_wrapper .close-icon-container.delete-icon::before {
+.tailwind .template_wrapper .close-icon-container.delete-icon::before,
+.tailwind3 .template_wrapper .close-icon-container.delete-icon::before {
     top: 10px;
 }
 

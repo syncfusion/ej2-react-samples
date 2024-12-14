@@ -58,7 +58,7 @@ export  class OverView extends SampleBase<{}, {}> {
       <div className="template" >
         <ChartComponent style={{ "height": "100%", "width": "100%", }} primaryXAxis={{ valueType: 'Category',  majorGridLines: { width: 0 },labelStyle:{size:'11px'} }}  load={this.load.bind(this)} primaryYAxis={{
           minimum:0, maximum:100, interval:20,majorTickLines: { width: 0 }, labelFormat: '{value}%', lineStyle: { width: 0 }, labelStyle:{size:'11px'}, titleStyle:{size:'13px'} ,
-        }} tooltip={{ enable: false }} legendSettings={{ padding:5, shapeHeight:8, shapeWidth:8}} chartArea={{ border: { width: 0 } }}  >
+        }} tooltip={{ enable: true ,  enableHighlight: true}} legendSettings={{ padding:5, shapeHeight:8, shapeWidth:8}} chartArea={{ border: { width: 0 } }}  >
           <Inject services={[ColumnSeries, Legend, Tooltip, Category, DataLabel]}></Inject>
           <SeriesCollectionDirective>
             <SeriesDirective type="Column" dataSource={[
@@ -131,7 +131,7 @@ export  class OverView extends SampleBase<{}, {}> {
                 { Product: "Laptop : 16%", Percentage: 16 , r:'Laptop : 40 (16%)' },
                 { Product: "Mobile : 36%", Percentage: 36 , r:'Mobile : 90 (36%)'},
                 { Product: "Camera : 11%", Percentage: 11 , r:'Camera : 27 (11%)'},]}
-              xName="Product" yName="Percentage" innerRadius="40%" border={{width:3,color:'transparent'}}></AccumulationSeriesDirective>
+              xName="Product" yName="Percentage" startAngle={270} innerRadius="40%" border={{width:3,color:'transparent'}}></AccumulationSeriesDirective>
           </AccumulationSeriesCollectionDirective>
         </AccumulationChartComponent>
       </div>

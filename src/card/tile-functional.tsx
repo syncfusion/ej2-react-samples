@@ -1,4 +1,4 @@
-import * as ReactDOM from 'react-dom';
+import * as ReactDOM from 'react-dom/client';
 import * as React from 'react';
 import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
@@ -42,7 +42,8 @@ const cardRendering = (cardObj: Object[]): void => {
         cardObj.forEach((data: cardData, index) => {
             cardEle = document.getElementById('card_sample_' + (++index));
             if (cardEle) {
-                ReactDOM.render(<CardRender data={data} />, cardEle  );
+                const root = ReactDOM.createRoot(cardEle);
+                root.render(<CardRender data={data} />);
             }
         });
     } else {
@@ -53,7 +54,8 @@ const cardRendering = (cardObj: Object[]): void => {
 const destroyAllCard = () => {
     let cards = document.querySelectorAll('.card-control-section .e-card');
     [].slice.call(cards).forEach((el) => {
-        ReactDOM.unmountComponentAtNode(el.parentElement);
+        const root = ReactDOM.createRoot(el.parentElement);
+        root.unmount();
     });
 }
 

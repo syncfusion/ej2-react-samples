@@ -65,7 +65,7 @@ const Default = () => {
                 <div className='contextmenu-section'>
                     <div id='contextmenu-control'>
                         <div id="contextmenutarget">{content}</div>
-                        <ContextMenuComponent target='#contextmenutarget' items={menuItems} animationSettings={animationSettings} beforeItemRender={addDisabled} />
+                        <ContextMenuComponent target='#contextmenutarget' items={menuItems} cssClass="default-context-menu" animationSettings={animationSettings} beforeItemRender={addDisabled} />
                     </div>
                 </div>
             </div>

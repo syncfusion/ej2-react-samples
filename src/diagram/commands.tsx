@@ -99,12 +99,12 @@ let toolbarItems: any = [
 
     { type: 'Separator', id: 'seperator1' },
 
-    { prefixIcon: 'sf-icon-align-left-1', tooltipText: 'Align Left', disabled: true, id: 'align_left' },
-    { prefixIcon: 'sf-icon-align-center-1', tooltipText: 'Align Center', disabled: true, id: 'align_center' },
-    { prefixIcon: 'sf-icon-align-right-1', tooltipText: 'Align Right', disabled: true, id: 'align_right' },
-    { prefixIcon: 'sf-icon-align-top-1', tooltipText: 'Align Top', disabled: true, id: 'align_top' },
-    { prefixIcon: 'sf-icon-align-middle-1', tooltipText: 'Align Middle', disabled: true, id: 'align_middle' },
-    { prefixIcon: 'sf-icon-align-bottom-1', tooltipText: 'Align Bottom', disabled: true, id: 'align_bottom' },
+    { prefixIcon: 'sf-diagram-icon-align-left-1', tooltipText: 'Align Left', disabled: true, id: 'align_left' },
+    { prefixIcon: 'sf-diagram-icon-align-center-1', tooltipText: 'Align Center', disabled: true, id: 'align_center' },
+    { prefixIcon: 'sf-diagram-icon-align-right-1', tooltipText: 'Align Right', disabled: true, id: 'align_right' },
+    { prefixIcon: 'sf-diagram-icon-align-top-1', tooltipText: 'Align Top', disabled: true, id: 'align_top' },
+    { prefixIcon: 'sf-diagram-icon-align-middle-1', tooltipText: 'Align Middle', disabled: true, id: 'align_middle' },
+    { prefixIcon: 'sf-diagram-icon-align-bottom-1', tooltipText: 'Align Bottom', disabled: true, id: 'align_bottom' },
 
     { type: 'Separator', id: 'seperator2' },
 
@@ -118,14 +118,14 @@ let toolbarItems: any = [
 
     { type: 'Separator', id: 'seperator4' },
 
-    { prefixIcon: 'sf-icon-distribute-horizontal', tooltipText: 'Distribute Objects Horizontally', disabled: true, id: 'distribute_horizontal' },
-    { prefixIcon: 'sf-icon-distribute-vertical', tooltipText: 'Distribute Objects Vertically', disabled: true, id: 'distribute_vertical' },
+    { prefixIcon: 'sf-diagram-icon-distribute-horizontal', tooltipText: 'Distribute Objects Horizontally', disabled: true, id: 'distribute_horizontal' },
+    { prefixIcon: 'sf-diagram-icon-distribute-vertical', tooltipText: 'Distribute Objects Vertically', disabled: true, id: 'distribute_vertical' },
 
     { type: 'Separator', id: 'seperator5' },
 
-    { prefixIcon: 'sf-icon-same-width', tooltipText: 'Same Width', disabled: true, id: 'same_width' },
-    { prefixIcon: 'sf-icon-same-height', tooltipText: 'Same Height', disabled: true, id: 'same_height' },
-    { prefixIcon: 'sf-icon-same-size', tooltipText: 'Same Size', disabled: true, id: 'same_size' }
+    { prefixIcon: 'sf-diagram-icon-same-width', tooltipText: 'Same Width', disabled: true, id: 'same_width' },
+    { prefixIcon: 'sf-diagram-icon-same-height', tooltipText: 'Same Height', disabled: true, id: 'same_height' },
+    { prefixIcon: 'sf-diagram-icon-same-size', tooltipText: 'Same Size', disabled: true, id: 'same_size' }
 ];
 export class CommandsSample extends SampleBase<{}, {}> {
     render() {

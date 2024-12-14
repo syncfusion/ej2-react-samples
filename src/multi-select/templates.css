@@ -68,7 +68,8 @@
      color: #2899F5;
 }
 
-.tailwind-dark #multiTemplate_popup .header {
+.tailwind-dark #multiTemplate_popup .header,
+.tailwind3-dark #multiTemplate_popup .header {
     background: #374151;
     color: rgb(255, 255, 255);
 }
@@ -159,7 +160,9 @@
 }
 
 .tailwind.e-bigger #multitemplate .nameTemp,
-.tailwind-dark.e-bigger #multitemplate .nameTemp {
+.tailwind-dark.e-bigger #multitemplate .nameTemp,
+.tailwind3.e-bigger #multitemplate .nameTemp,
+.tailwind3-dark.e-bigger #multitemplate .nameTemp {
     padding: 0 0 0 35px;
     line-height: 1.2em;
 }
@@ -171,7 +174,9 @@
 }
 
 .tailwind #multitemplate .nameTemp,
-.tailwind-dark #multitemplate .nameTemp {
+.tailwind-dark #multitemplate .nameTemp,
+.tailwind3 #multitemplate .nameTemp,
+.tailwind3-dark #multitemplate .nameTemp {
     padding: 7px 0px 0px 35px;
     line-height: 1.2em;
 }
@@ -203,13 +208,17 @@
 }
 
 .tailwind #multitemplate .valueTemp,
-.tailwind-dark #multitemplate .valueTemp {
+.tailwind-dark #multitemplate .valueTemp,
+.tailwind3 #multitemplate .valueTemp,
+.tailwind3-dark #multitemplate .valueTemp {
     margin-top: 3px;
     height: 22px;
     width: 22px;
 }
 .tailwind.e-bigger #multitemplate .valueTemp,
-.tailwind-dark.e-bigger #multitemplate .valueTemp {
+.tailwind-dark.e-bigger #multitemplate .valueTemp,
+.tailwind3.e-bigger #multitemplate .valueTemp,
+.tailwind3-dark.e-bigger #multitemplate .valueTemp {
     margin-top: -5px;
     height: 26px;
     width: 26px;
@@ -365,12 +374,13 @@
     margin-top: -15px;
 }
 
-.tailwind #multiTemplate_popup .ms-job {
+.tailwind #multiTemplate_popup .ms-job,
+.tailwind3 #multiTemplate_popup .ms-job {
     margin-top: -7px;
     margin-bottom: 5px;
 }
-
-.e-bigger.tailwind #multiTemplate_popup .ms-job {
+.e-bigger.tailwind #multiTemplate_popup .ms-job,
+.e-bigger.tailwind3 #multiTemplate_popup .ms-job {
     margin-top: -15px;
     margin-bottom: 5px;
 }

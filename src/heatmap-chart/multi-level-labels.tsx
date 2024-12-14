@@ -145,7 +145,7 @@ export class MultiLevelLabels extends SampleBase<{}, {}> {
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5') as HeatMapTheme;
         selectedTheme = selectedTheme.toLowerCase();
-            if(selectedTheme === 'highcontrast' || args.heatmap.theme === 'Bootstrap5Dark' || selectedTheme === 'fluent2-highcontrast' || selectedTheme === 'material-dark' || selectedTheme === 'fabric-dark' || selectedTheme === 'bootstrap-dark' || selectedTheme === 'tailwind-dark' || selectedTheme === 'material3-dark' || selectedTheme === 'fluent-dark' || selectedTheme === 'fluent2-dark' || selectedTheme === 'fluent2-highcontrast')
+            if(selectedTheme === 'highcontrast' || args.heatmap.theme === 'Bootstrap5Dark' || selectedTheme === 'fluent2-highcontrast' || selectedTheme === 'material-dark' || selectedTheme === 'fabric-dark' || selectedTheme === 'bootstrap-dark' || selectedTheme === 'tailwind3-dark' || selectedTheme === 'material3-dark' || selectedTheme === 'fluent-dark' || selectedTheme === 'fluent2-dark' || selectedTheme === 'fluent2-highcontrast')
             {
                 args.heatmap.xAxis.textStyle.color = 'White';
                 args.heatmap.yAxis.textStyle.color = 'White';

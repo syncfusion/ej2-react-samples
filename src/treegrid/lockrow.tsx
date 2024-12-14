@@ -74,16 +74,23 @@ const SAMPLE1_CSS = `
 .highcontrast .disableRow .e-rowcell{
   color: #757575 !important;
 }
-.tailwind .disableRow .e-rowcell{
+.tailwind .disableRow .e-rowcell,
+.tailwind3 .disableRow .e-rowcell {
   color: #757575 !important;
 }
-.tailwind-dark .disableRow .e-rowcell{
+.tailwind-dark .disableRow .e-rowcell,
+.tailwind3-dark .disableRow .e-rowcell{
   color: #757575 !important;
 }
 .e-multiselect {
   padding-left : 0px !important;
   padding-top: 0px !important;
 }
+  @media (min-width: 990px) and (max-width: 1300px){
+  .lockrow-propertypanel {
+  padding-left:5px;
+  }
+  }
 `;
 {/* custom code end */}
 export class LockRow extends SampleBase<{}, {}> {
@@ -155,13 +162,13 @@ export class LockRow extends SampleBase<{}, {}> {
             <Inject services={[Page, Edit, Toolbar]}/>
           </TreeGridComponent>
         </div>
-        <div className='col-md-3 property-section'>
+        <div className='col-md-3 property-section lockrow-propertypanel'>
           <PropertyPane title='Properties' aria-label="Property Pane">
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                 <tbody>
                   <tr style={{ height: '50px' }}>
-                    <td style={{ width: '10%' }}>
-                      <div style={{ paddingLeft: '0px' }}> Disable Rows </div>
+                    <td>
+                      <div style={{ paddingLeft: '10px' }}> Disable Rows </div>
                     </td>
                     <td style={{ width: '60%' }}>
                       <div>

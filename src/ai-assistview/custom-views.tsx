@@ -131,14 +131,12 @@ export class CustomViews extends SampleBase<{}, {}> {
         </div>
         <div id="description">
           <p>In this example, the AI AssistView component is configured with three distinct views using the <code>views</code> property.</p>
-          <p>
-            Each view displays its own unique content:
+          <p>Each view displays its own unique content:</p>
             <ul>
               <li>The <code>prompt</code> view includes a textarea with a <code>Generate</code> button and displays a list of suggestions</li>
               <li>The <code>response</code> view shows the generated response with a copy option.</li>
               <li>The <code>custom</code> view allows to display the custom content.</li>
             </ul>
-          </p>
         </div>
       </div>
     )

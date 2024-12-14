@@ -8,7 +8,7 @@ import {
     ILoadedEventArgs, Category, ColumnSeries, Inject, IPointRenderEventArgs, Legend, DataLabel
 } from '@syncfusion/ej2-react-charts';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
-import { fabricColors, bootstrapColors, materialColors, highContrastColors, fluentColors, fluentDarkColors, bootstrap5Colors} from './theme-color';
+import { fabricColors, bootstrapColors, materialColors, highContrastColors, fluentColors, fluentDarkColors, bootstrap5Colors, pointTailwindColors, pointTailwindDarkColors, pointTailwind3Colors, pointTailwind3DarkColors} from './theme-color';
 import { PropertyPane } from '../common/property-pane';
 import { EmitType, Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
@@ -44,7 +44,7 @@ const SAMPLE_CSS = `
         content: '\\e743';
     }
     
-    .e-view.tailwind .e-print-icon::before, .e-view.tailwind-dark .e-print-icon::before {
+    .e-view.tailwind3 .e-print-icon::before, .e-view.tailwind3-dark .e-print-icon::before {
         content: '\\e76c';
     }
 
@@ -127,6 +127,16 @@ export class Print extends SampleBase<{}, {}> {
         }
         else if (selectedTheme === 'bootstrap5' || selectedTheme === 'bootstrap5-dark') {
             args.fill = bootstrap5Colors[args.point.index % 10];
+        }
+        else if (selectedTheme === 'tailwind') {
+            args.fill = pointTailwindColors[args.point.index % 10];
+        } else if (selectedTheme === 'tailwind-dark') {
+            args.fill = pointTailwindDarkColors[args.point.index % 10];
+        }
+        else if (selectedTheme === 'tailwind3') {
+            args.fill = pointTailwind3Colors[args.point.index % 10];
+        } else if (selectedTheme === 'tailwind3-dark') {
+            args.fill = pointTailwind3DarkColors[args.point.index % 10];
         }
         else {
             args.fill = bootstrapColors[args.point.index % 10];

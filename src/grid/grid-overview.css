@@ -31,9 +31,13 @@ _:-ms-fullscreen, :root .highcontrast .e-userimg.sf-icon-FeMale::before{
 .fluent .empimg{
     background-color:#106EBE;
 }
+.tailwind3 .empimg,
+.tailwind3-dark .empimg{
+    background-color:rgba(79, 70, 229);
+}
 
 #Emptext{
-top: -12px;
+top: -14px;
 left: 41px;
 position: relative;
 }
@@ -44,7 +48,7 @@ border-radius: 14px;
 background-color:#e3165b;
 }
 #overviewgrid.e-rtl #Emptext{
-    top: -12px;
+    top: -14px;
     left: -41px;
     position: relative;
 }

@@ -18,7 +18,7 @@ export class Rtl extends SampleBase<{}, {}> {
                             <ColumnDirective field='OrderID' headerText='Order ID' isPrimaryKey={true} width='120' textAlign='Right'></ColumnDirective>
                             <ColumnDirective field='CustomerName' headerText='Customer Name' width='150' textAlign='Left'></ColumnDirective>
                             <ColumnDirective field='OrderDate' editType='datepickeredit' headerText='Order Date' width='130' format='yMd'
-                                textAlign='Right' />
+                                textAlign='Right' allowGrouping={false} />
                             <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' />
                             <ColumnDirective field='ShipCountry' headerText='Ship Country' width='170' textAlign='Left'></ColumnDirective>
                         </ColumnsDirective>

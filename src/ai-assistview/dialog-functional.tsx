@@ -67,7 +67,7 @@ const Dialog = () => {
                 <div className="heading">Meeting with Stakeholders</div>
                 <hr />
                 <div className="date-info">Tuesday, August 27, 2024</div>
-                <div className="content e-card" contentEditable={true}>
+                <div className="content e-card" contentEditable={true} suppressContentEditableWarning={true}>
                     <i><mark>(Open AI Assist, generate a response, and click 'Copy' from the toolbar item to get it updated here.)</mark></i>
                     Discuss strategies for conducting productive meetings with stakeholders. <br />
                     Highlight the significance of setting clear agendas, defining outcomes, and maintaining open communication. <br />

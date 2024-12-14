@@ -107,7 +107,7 @@ export class PagingAPI extends SampleBase<{}, {}> {
                     </td>
                     <td style={{ width: '50%', paddingTop: '10px 10px 10px 0px' }}>
                       <div id='dropdown'>
-                        <DropDownListComponent width="110px" id="sizemode" change={this.change.bind(this)}
+                        <DropDownListComponent width="115px" id="sizemode" change={this.change.bind(this)}
                           dataSource={this.type} fields={{ text: 'type', value: 'id' }} value="All"
                           ref={dropdown => this.sizemodeObj = dropdown} />
                       </div>
@@ -119,7 +119,7 @@ export class PagingAPI extends SampleBase<{}, {}> {
                     </td>
                     <td style={{ width: '50%', paddingTop: '10px 10px 10px 0px' }}>
                       <div id='numericbox'>
-                        <NumericTextBoxComponent id='pagesize' format='##' min={1} max={200} value={12} width='110px'
+                        <NumericTextBoxComponent id='pagesize' format='##' min={1} max={200} value={12} width='115px'
                           ref={numeric => this.pageSizeObj = numeric} change={this.changeNum.bind(this)}>
                         </NumericTextBoxComponent>
                       </div>
@@ -131,7 +131,7 @@ export class PagingAPI extends SampleBase<{}, {}> {
                     </td>
                     <td style={{ width: '50%', paddingTop: '10px 10px 10px 0px' }}>
                       <div id='numericbox'>
-                        <NumericTextBoxComponent id='pagecount' format='##' min={1} max={4} value={2} width='110px'
+                        <NumericTextBoxComponent id='pagecount' format='##' min={1} max={4} value={2} width='115px'
                           ref={numeric => this.pageCountObj = numeric} change={this.countChange.bind(this)}>
                         </NumericTextBoxComponent>
                       </div>
@@ -143,7 +143,7 @@ export class PagingAPI extends SampleBase<{}, {}> {
                     </td>
                     <td style={{ width: '50%', paddingTop: '10px 10px 10px 0px' }}>
                       <div id='numericbox'>
-                        <NumericTextBoxComponent id='currentpage' format='##' min={1} max={17} value={1} width='110px'
+                        <NumericTextBoxComponent id='currentpage' format='##' min={1} max={17} value={1} width='115px'
                           ref={numeric => this.currentPageObj = numeric} change={this.currentPageChange.bind(this)}>
                         </NumericTextBoxComponent>
                       </div>

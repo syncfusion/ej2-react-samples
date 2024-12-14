@@ -112,13 +112,13 @@ const Reorders = () => {
             >
               <tbody>
                 <tr style={{ height: "50px" }}>
-                  <td style={{ width: "30%" }}>
+                  <td>
                     <div style={{ paddingTop: "10px" }}> Column </div>
                   </td>
                   <td style={{ width: "70%", paddingRight: "10px" }}>
                     <div>
                       <DropDownListComponent
-                        width="130px"
+                        width="140px"
                         id="columns"
                         change={change.bind(this)}
                         dataSource={columnNames}
@@ -130,13 +130,13 @@ const Reorders = () => {
                   </td>
                 </tr>
                 <tr style={{ height: "50px" }}>
-                  <td style={{ width: "30%" }}>
+                  <td>
                     <div> Column Index </div>
                   </td>
                   <td style={{ width: "70%", paddingRight: "10px" }}>
                     <div>
                       <DropDownListComponent
-                        width="130px"
+                        width="140px"
                         id="columnindex"
                         change={change2.bind(this)}
                         dataSource={columnsIndex}

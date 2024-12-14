@@ -1,6 +1,6 @@
 {
   "name": "@syncfusion/ej2-react-samples",
-  "version": "27.1.48",
+  "version": "28.1.33",
   "description": "Examples of React UI Components",
   "author": "Syncfusion Inc.",
   "license": "SEE LICENSE IN license",
@@ -44,7 +44,6 @@
     "@syncfusion/ej2-react-image-editor": "*",
     "@syncfusion/ej2-react-multicolumn-combobox": "*",
     "@syncfusion/ej2-react-interactive-chat": "*",
-    "form-data": "^4.0.0",
     "react": "18.3.0",
     "react-dom": "18.3.0",
     "react-router-dom": "6.16.0"
@@ -52,7 +51,6 @@
   "devDependencies": {
     "@microsoft/signalr": "7.0.11",
     "@types/codemirror": "5.60.10",
-    "@types/form-data": "^2.5.0",
     "@types/history": "4.7.11",
     "@types/marked": "5.0.1",
     "@types/moment-timezone": "0.5.13",

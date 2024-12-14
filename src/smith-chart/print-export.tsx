@@ -32,6 +32,13 @@ const SAMPLE_CSS = `
     }
     .e-play-icon::before {
         content: "\\e813";
+    }
+   .e-view.tailwind3 .e-print-icon::before, .e-view.tailwind3-dark .e-print-icon::before {
+          content: '\\e76c';
+    }
+    
+    .e-view.tailwind3 .e-export-icon::before, .e-view.tailwind3-dark .e-export-icon::before {
+          content: '\\e7bf';
     }`;
     // custom code end
 export class Print extends SampleBase<{}, {}> {

@@ -12,7 +12,7 @@ import { PropertyPane } from '../common/property-pane';
 import { EmitType, Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
-import {  fabricColors, bootstrapColors, materialColors, highContrastColors, fluentColors, fluentDarkColors, bubbleFabricColors, bubbleMaterialDarkColors, bubbleMaterialColors, bubbleBootstrap5DarkColors, bubbleBootstrapColors, bubbleHighContrastColors, bubbleFluentDarkColors, bubbleFluentColors, bubbleTailwindDarkColors, bubbleTailwindColors, pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, bubbleBootstrap5Colors, pointBootstrap5Colors, pointMaterial3DarkColors, pointMaterial3Colors, fluent2Colors, fluent2HighContrastColors  } from './theme-color';
+import {  fabricColors, bootstrapColors, materialColors, highContrastColors, fluentColors, fluentDarkColors, bubbleFabricColors, bubbleMaterialDarkColors, bubbleMaterialColors, bubbleBootstrap5DarkColors, bubbleBootstrapColors, bubbleHighContrastColors, bubbleFluentDarkColors, bubbleFluentColors, bubbleTailwindDarkColors, bubbleTailwindColors, pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, bubbleBootstrap5Colors, pointBootstrap5Colors, pointMaterial3DarkColors, pointMaterial3Colors, fluent2Colors, fluent2HighContrastColors, pointTailwind3Colors, pointTailwind3DarkColors  } from './theme-color';
 import { NumericTextBoxComponent } from "@syncfusion/ej2-react-inputs";
 export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEventArgs): void => {
     let selectedTheme: string = location.hash.split('/')[1];
@@ -51,6 +51,16 @@ export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEve
         args.fill = fluent2Colors[args.point.index % 10];
     } else if (selectedTheme === 'fluent2-highcontrast' || selectedTheme === 'fluent2-dark') {
         args.fill = fluent2HighContrastColors[args.point.index % 10];
+    }
+    else if (selectedTheme === 'tailwind') {
+        args.fill = pointTailwindColors[args.point.index % 10];
+    } else if (selectedTheme === 'tailwind-dark') {
+        args.fill = pointTailwindDarkColors[args.point.index % 10];
+    }
+    else if (selectedTheme === 'tailwind3') {
+        args.fill = pointTailwind3Colors[args.point.index % 10];
+    } else if (selectedTheme === 'tailwind3-dark') {
+        args.fill = pointTailwind3DarkColors[args.point.index % 10];
     }
 };
 export let data1: any[] = [{ x: 'South Korea', y: 39 }, { x: 'India', y: 61 },
@@ -143,7 +153,7 @@ function SmartAxisLabels() {
                         title="Internet Users in Millions"
                         loaded={onChartLoad.bind(this)}
                         legendSettings={{ visible: false }}
-                        tooltip={{ enable: true , format: "<b>${point.x}</b> <br> Internet Users : <b>${point.y}M</b>", header: '' }}>
+                        tooltip={{ enable: true , format: "<b>${point.x}</b> <br> Internet Users : <b>${point.y}M</b>", header: '' , enableHighlight: true}}>
                         <Inject services={[Category, Category, ColumnSeries, Tooltip, DataLabel]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} xName='x' yName='y' name="Users" type='Column' marker={{ dataLabel: { visible: true, enableRotation: Browser.isDevice ? true : false, angle: -90, position: 'Top', format:"{value}M", font: { fontWeight: '600', color: '#ffffff' } } }}>

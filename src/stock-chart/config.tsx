@@ -11,7 +11,7 @@ export const StockChartSampleOrder: Object = [
     'description': 'This demo for Essential JS2 Stock Chart control shows the default rendering of Stock with Spline series.' },
     { 'path': 'stock-chart/area', 'component': 'Area', 'name': 'Area', 'order': '01', 'category': 'Stock Chart',
     'description': 'This demo for Essential JS2 Stock Chart control shows the default rendering of Stock with Area series.' },
-    { 'path': 'stock-chart/spline-area', 'component': 'SplineArea', 'name': 'Spline Area', 'order': '01', 'category': 'Stock Chart',
+    { 'path': 'stock-chart/spline-area', 'component': 'SplineArea', 'name': 'Spline Area', 'order': '01', 'category': 'Stock Chart', 'type':'update',
     'description': 'This demo for Essential JS2 Stock Chart control shows the default rendering of Stock with Spline Area series.' },
     { 'path': 'stock-chart/inversed-area', 'component': 'InversedArea', 'name': 'Inversed Area', 'order': '01', 'category': 'Stock Chart',
     'description': 'This demo for Essential JS2 Stock Chart control shows the default rendering of Stock with Area series inverted.' },

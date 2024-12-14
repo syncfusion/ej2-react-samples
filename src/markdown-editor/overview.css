@@ -41,6 +41,8 @@
 
 .tailwind #rtePreview .e-icon-btn.e-active .e-md-preview::before,
 .tailwind-dark #rtePreview .e-icon-btn.e-active .e-md-preview::before,
+.tailwind3 #rtePreview .e-icon-btn.e-active .e-md-preview::before,
+.tailwind3-dark #rtePreview .e-icon-btn.e-active .e-md-preview::before,
 .fluent #rtePreview .e-icon-btn.e-active .e-md-preview::before,
 .fluent-dark #rtePreview .e-icon-btn.e-active .e-md-preview::before,
 .fluent2 #rtePreview .e-icon-btn.e-active .e-md-preview::before,
@@ -56,6 +58,8 @@
 
 .tailwind #rtePreview .e-icon-btn .e-md-preview::before,
 .tailwind-dark #rtePreview .e-icon-btn .e-md-preview::before,
+.tailwind3 #rtePreview .e-icon-btn .e-md-preview::before,
+.tailwind3-dark #rtePreview .e-icon-btn .e-md-preview::before,
 .bootstrap5 #rtePreview .e-icon-btn .e-md-preview::before,
 .bootstrap5\.3 #rtePreview .e-icon-btn .e-md-preview::before,
 .bootstrap5\.3-dark #rtePreview .e-icon-btn .e-md-preview::before,

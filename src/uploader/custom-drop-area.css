@@ -22,6 +22,7 @@
 .bootstrap-dark .customdropArea a,
 .bootstrap5-dark .customdropArea a,
 .tailwind-dark .customdropArea a,
+.tailwind3-dark .customdropArea a,
 .fluent-dark .customdropArea a,
 .fluent2-dark .customdropArea a {
     color: #fff;
@@ -120,7 +121,8 @@ span#dropText {
   background-color: #6c757d;
 }
 
-.tailwind-dark #customTarget {
+.tailwind-dark #customTarget,
+.tailwind3-dark #customTarget {
   background-color: #6c757d;
 }
 

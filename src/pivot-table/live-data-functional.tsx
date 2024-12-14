@@ -325,7 +325,7 @@ function LiveData() {
                     </li>
                 </ul><br />
                 <p>
-                    More information on the Essential JS2 Pivot Table can be found in these <a target="_blank"
+                    More information on the Essential<sup>®</sup> JS2 Pivot Table can be found in these <a target="_blank"
                         href="https://ej2.syncfusion.com/react/documentation/pivotview/row-and-column#cell-template">Cell Template</a> & <a target="_blank"
                         href="https://ej2.syncfusion.com/react/documentation/pivotview/pivot-chart">Pivot Chart</a> documentation section.
                 </p>

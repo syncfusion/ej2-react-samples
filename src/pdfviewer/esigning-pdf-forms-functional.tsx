@@ -89,17 +89,85 @@ function ESigningPdfForms() {
     const finishSigning = () => {
         for (const formField of viewer.current.formFieldCollections) {
             viewer.current?.formDesignerModule.updateFormField(formField, { backgroundColor: finishedBackground.current } as TextFieldSettings);
-          }
-          viewer.current.serverActionSettings.download = "FlattenDownload";
-          viewer.current.download();
-          viewer.current.serverActionSettings.download = "Download";
+        }
+        const url = "https://ej2services.syncfusion.com/react/development/api/pdfviewer/FlattenDownload";
+        viewer.current.saveAsBlob().then((blob) => {
+            return convertBlobToBase64(blob);
+        }).then((base64String) => {
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', url, true);
+            xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+            const requestData = JSON.stringify({ base64String });
+            xhr.onload = () => {
+                if (xhr.status === 200) {
+                    const responseBase64 = xhr.responseText.split('base64,')[1];
+                    if (responseBase64) {
+                        const blob = createBlobFromBase64(responseBase64, 'application/pdf');
+                        const blobUrl = URL.createObjectURL(blob);
+                        downloadDocument(blobUrl);
+                        viewer.current.load(xhr.responseText, null);
+                        btnElement.current.disabled = true;
+                        userMenu.current.enabled = false;
+                    } else {
+                        console.error('Invalid base64 response.');
+                    }
+                } else {
+                    console.error('Download failed:', xhr.statusText);
+                }
+            };
+            xhr.onerror = () => {
+                console.error('An error occurred during the download:', xhr.statusText);
+            };
+            xhr.send(requestData);
+        }).catch((error) => {
+            console.error('Error saving Blob:', error);
+        });
     }
 
-    const downloadEnd = (args: any) => {
-        viewer.current.load(args.downloadDocument, null);
-        btnElement.current.disabled = true;
-        userMenu.current.enabled = false;
-    }
+    const convertBlobToBase64 = (blob) => {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(blob);
+            reader.onloadend = () => {
+                if (typeof reader.result === 'string') {
+                    resolve(reader.result);
+                } else {
+                    reject(new Error('Failed to convert Blob to Base64'));
+                }
+            };
+            reader.onerror = (error) => reject(error);
+        });
+    };
+
+    const createBlobFromBase64 = (base64String, contentType) => {
+        const sliceSize = 512;
+        const byteCharacters = atob(base64String);
+        const byteArrays = [];
+        for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+            const slice = byteCharacters.slice(offset, offset + sliceSize);
+            const byteNumbers = new Array(slice.length);
+            for (let i = 0; i < slice.length; i++) {
+                byteNumbers[i] = slice.charCodeAt(i);
+            }
+            const byteArray = new Uint8Array(byteNumbers);
+            byteArrays.push(byteArray);
+        }
+        return new Blob(byteArrays, { type: contentType });
+    };
+
+    const downloadDocument = (blobUrl) => {
+        const anchorElement = document.createElement('a');
+        anchorElement.href = blobUrl;
+        anchorElement.target = '_parent';
+        const downloadFileName = viewer.current.fileName || 'default.pdf';
+        anchorElement.download = downloadFileName.endsWith('.pdf')
+            ? downloadFileName
+            : `${downloadFileName.split('.pdf')[0]}.pdf`;
+        document.body.appendChild(anchorElement);
+        anchorElement.click();
+        document.body.removeChild(anchorElement);
+        URL.revokeObjectURL(blobUrl);
+    };
 
     const updateUserFormField = () => {
         var otherFormFieldDetails = viewer.current.formFieldCollections.filter(formField => (formField.customData as any).author === "anne");
@@ -312,7 +380,7 @@ function ESigningPdfForms() {
                         <ItemDirective align='Right' template={buttonComponent} ></ItemDirective>
                     </ItemsDirective>
                 </ToolbarComponent>
-                <PdfViewerComponent ref={viewer} id="container" enableNavigationToolbar={false} enableAnnotationToolbar={false} enableToolbar={false} enableFormDesignerToolbar={false} documentPath="https://cdn.syncfusion.com/content/pdf/eSign_filling.pdf" resourceUrl="https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib" serviceUrl = 'https://services.syncfusion.com/react/production/api/pdfviewer'  downloadFileName='eSign_filling.pdf' documentLoad={documentLoad} formFieldPropertiesChange={fieldChange} downloadEnd={downloadEnd} style={{ 'height': '640px' }}>
+                <PdfViewerComponent ref={viewer} id="container" enableNavigationToolbar={false} enableAnnotationToolbar={false} enableToolbar={false} enableFormDesignerToolbar={false} documentPath="https://cdn.syncfusion.com/content/pdf/eSign_filling.pdf" resourceUrl="https://cdn.syncfusion.com/ej2/27.2.2/dist/ej2-pdfviewer-lib"   downloadFileName='eSign_filling.pdf' documentLoad={documentLoad} formFieldPropertiesChange={fieldChange} style={{ 'height': '640px' }}>
                     <Inject services={[Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner, PageOrganizer]} />
                 </PdfViewerComponent>
                 <div id='e-pv-e-sign-dialog-target'>

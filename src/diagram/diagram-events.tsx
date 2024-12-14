@@ -345,31 +345,47 @@ export class Events extends SampleBase<{}, {}> {
                                     getEventDetails(args);
                                 }}
                                 selectionChange={(args: ISelectionChangeEventArgs) => {
-                                    getEventDetails(args);
+                                    if (args.state === 'Changed') {
+                                        getEventDetails(args);
+                                    }
                                 }}
                                 sizeChange={(args: ISizeChangeEventArgs) => {
-                                    getEventDetails(args);
+                                    if (args.state === 'Completed') {
+                                        getEventDetails(args);
+                                    }
                                 }}
                                 connectionChange={(args: IConnectionChangeEventArgs) => {
-                                    getEventDetails(args);
+                                    if (args.state === 'Changed') {
+                                        getEventDetails(args);
+                                    }
                                 }}
                                 sourcePointChange={(args: IEndChangeEventArgs) => {
-                                    getEventDetails(args);
+                                    if (args.state === 'Completed') {
+                                        getEventDetails(args);
+                                    }
                                 }}
                                 targetPointChange={(args: IEndChangeEventArgs) => {
-                                    getEventDetails(args);
+                                    if (args.state === 'Completed') {
+                                        getEventDetails(args);
+                                    }
                                 }}
                                 propertyChange={(args: IPropertyChangeEventArgs) => {
                                     getEventDetails(args);
                                 }}
                                 positionChange={(args: IDraggingEventArgs) => {
-                                    getEventDetails(args);
+                                    if (args.state === 'Completed') {
+                                        getEventDetails(args);
+                                    }
                                 }}
                                 rotateChange={(args: IRotationEventArgs) => {
-                                    getEventDetails(args);
+                                    if (args.state === 'Completed') {
+                                        getEventDetails(args);
+                                    }
                                 }}
                                 collectionChange={(args: ICollectionChangeEventArgs) => {
-                                    getEventDetails(args);
+                                    if (args.state === 'Changed') {
+                                        getEventDetails(args);
+                                    }
                                 }}
                                 mouseEnter={(args: IMouseEventArgs) => {
                                     getEventDetails(args);

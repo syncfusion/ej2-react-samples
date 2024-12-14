@@ -135,7 +135,7 @@ export class HolidayCalendar extends SampleBase<{}, {}> {
               cellClick={this.clickOnHoliday.bind(this)}
               cellDoubleClick={this.clickOnHoliday.bind(this)}
               resizeStop={this.onEventDragOrResize.bind(this)}
-              dragStop={this.onEventDragOrResize.bind(this)} >
+              dragStop={this.onEventDragOrResize.bind(this)}>
               <ViewsDirective>
                 <ViewDirective option='Month' />
               </ViewsDirective>

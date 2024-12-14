@@ -29,7 +29,7 @@ export class AggregateDefault extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <GridComponent id="default-aggregate-grid" dataSource={OverallData} height='300' gridLines='Vertical' allowSorting={true} allowMultiSorting={true} enableHover={false} allowFiltering={true} filterSettings={this.filterSettings} >
+          <GridComponent id="default-aggregate-grid" dataSource={OverallData} enableHover={false} height='300' gridLines='Vertical' allowSorting={true} allowMultiSorting={true} allowFiltering={true} filterSettings={this.filterSettings} >
             <ColumnsDirective>
               <ColumnDirective field='Month' headerText='Time Stamp' textAlign='Left' width='140' isPrimaryKey={true}></ColumnDirective>
               <ColumnDirective field='Sales' headerText='Sales' width='150' textAlign='Right' format='C2'></ColumnDirective>

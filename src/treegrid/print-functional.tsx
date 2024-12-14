@@ -5,20 +5,35 @@ import { TreeGridComponent, ColumnsDirective, ColumnDirective, Inject, Toolbar }
 import { sampleData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
+// custom code start
+const SAMPLE_CSS = `
+.e-print-fluent2-highcontrast.e-treegrid.e-print-grid-layout,
+    .e-print-fluent2-highcontrast.e-treegrid.e-print-grid-layout .e-gridheader,
+    .e-print-fluent2-highcontrast.e-treegrid.e-print-grid-layout .e-rowcell {
+        border-color: gray !important;
+    }
+`;
+// custom code end
+
 const Print = () => {
   useEffect(() => {
     updateSampleSection();
   }, [])
   let toolbarOptions: any = ["Print"];
+  const load = function (): void {
+    (this as any).grid.cssClass = document.querySelector('.fluent2-highcontrast') ? 'e-print-fluent2-highcontrast' : '';
+  };
   return (
     <div className="control-pane">
       <div className="control-section">
+        <style>{SAMPLE_CSS}</style>
         <TreeGridComponent
           dataSource={sampleData}
           treeColumnIndex={1}
           childMapping="subtasks"
           toolbar={toolbarOptions}
           height="410"
+          load={load}
         >
           <ColumnsDirective>
             <ColumnDirective

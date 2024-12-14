@@ -106,7 +106,7 @@ const ProgressBarLabels = () => {
                 </p>
             </div>
             <div id="description">
-                <p>This demo for Essential JS2 Progress Bar control shows the linear progress bar with different labels format with help of <code>labelStyle</code> and provide different modes using <code>role</code> property.</p>
+                <p>This demo for Essential<sup>®</sup> JS2 Progress Bar control shows the linear progress bar with different labels format with help of <code>labelStyle</code> and provide different modes using <code>role</code> property.</p>
             </div>
         </div>
     )

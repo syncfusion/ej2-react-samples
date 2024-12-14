@@ -35,6 +35,12 @@ export class Labels extends SampleBase<{}, {}> {
             this.pointerColor  = '#292827';
         } else if (args.gauge.theme === 'Bootstrap5Dark'){
             this.pointerColor  = '#343A40'
+        } else if (args.gauge.theme === 'Tailwind3Dark') {
+            this.pointerColor = '#282F3C';
+        } else if (args.gauge.theme === 'Material3') {
+            this.pointerColor = '#C4C7C5';
+        } else if (args.gauge.theme === 'Material3Dark') {
+            this.pointerColor = '#938F99';
         }
     }
 

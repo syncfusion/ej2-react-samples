@@ -15,7 +15,7 @@ import {
 import { SampleBase } from '../common/sample-base';
 import { ChangeEventArgs, DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
-import { DataManager } from '@syncfusion/ej2/data';
+import { DataManager } from '@syncfusion/ej2-data';
 Diagram.Inject(ConnectorEditing);
 
 
@@ -47,7 +47,6 @@ const SAMPLE_CSS = `
         width: 24%; /* Adjusted to fill the remaining space */
         float: right; /* Ensure the property panel is on the right */
         padding: 10px;
-        background: white;
     }
 
     /* Align labels and inputs within the property panel */
@@ -115,7 +114,7 @@ export class FlowchartLayoutSample extends SampleBase<{}, {}> {
                                 id="diagram"
                                 ref={(diagram) => (diagramInstance = diagram)}
                                 width={'100%'}
-                                height={'750px'}
+                                height={'1500px'}
                                 scrollSettings={{scrollLimit: 'Infinity'}}
                                 rulerSettings={{ showRulers: true }}
                                 getNodeDefaults={getNodeDefaults}

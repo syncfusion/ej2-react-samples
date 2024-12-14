@@ -10,7 +10,7 @@ const ColumnTemplate = () => {
     updateSampleSection();
   }, [])
   const columnTemplate = (props): any => {
-    var src = 'https://ej2.syncfusion.com/react/demos/src/gantt/images/' + props.ganttProperties.resourceNames + '.png';
+    var src = 'src/gantt/images/' + props.ganttProperties.resourceNames + '.png';
     if ((props.ganttProperties.resourceNames)) {
       let gantt = (document.getElementsByClassName('e-gantt')[0] as any).ej2_instances[0];
       if (gantt.enableRtl) {

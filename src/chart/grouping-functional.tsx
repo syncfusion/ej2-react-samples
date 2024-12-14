@@ -79,7 +79,7 @@ const Grouping = () => {
         <div className='control-pane'>
             <div className='control-section row'>
                 <div className='col-lg-9'>
-                    <AccumulationChartComponent id='pie-chart' ref={pie} title='Rio Olympic Gold Medals' load={load.bind(this)} tooltip={{ enable: true, format: "<b>${point.x}</b><br> Gold Medals: <b>${point.y}</b>" }} legendSettings={{ visible: false }} textRender={onTextRender.bind(this)} pointRender={onPointRender.bind(this)} enableSmartLabels={true} loaded={onChartLoad.bind(this)} enableBorderOnMouseMove={false}>
+                    <AccumulationChartComponent id='pie-chart' ref={pie} title='Rio Olympic Gold Medals' load={load.bind(this)} tooltip={{ enable: true, format: "<b>${point.x}</b><br> Gold Medals: <b>${point.y}</b>", enableHighlight: true }} legendSettings={{ visible: false }} textRender={onTextRender.bind(this)} pointRender={onPointRender.bind(this)} enableSmartLabels={true} loaded={onChartLoad.bind(this)} enableBorderOnMouseMove={false}>
                         <Inject services={[AccumulationLegend, PieSeries, AccumulationTooltip, AccumulationDataLabel]} />
                         <AccumulationSeriesCollectionDirective>
                             <AccumulationSeriesDirective dataSource={data1} xName='x' yName='y' animation={{ enable: true }} explode={true} radius={Browser.isDevice ? '40%'  : '70%' } groupTo='9' groupMode='Point' startAngle={0} endAngle={360} innerRadius='0%' dataLabel={{ visible: true, position: 'Outside', connectorStyle: { type: 'Curve', length: '20px' }, font: { fontWeight: '600' } }} />

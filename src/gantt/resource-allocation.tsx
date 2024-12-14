@@ -12,7 +12,7 @@ export class ResourceAllocation extends SampleBase<{}, {}> {
     if (props.ganttProperties.resourceNames) {
       if (props.ganttProperties.resourceNames.split('[')[0].includes('Rose Fuller')) {
         return (
-          <div style={{ width:'110px', height:'24px', borderRadius:'100px', backgroundColor:'#1c5d8e', display:'flex', alignItems:'center', justifyContent:'center' }}>
+          <div style={{ width:'150px', height:'24px', borderRadius:'100px', backgroundColor:'#1c5d8e', display:'flex', alignItems:'center', justifyContent:'center' }}>
           <span style={{ color: 'white', fontWeight: 500 }}>{props.ganttProperties.resourceNames}</span>
           </div>
         );
@@ -20,7 +20,7 @@ export class ResourceAllocation extends SampleBase<{}, {}> {
 
       if (props.ganttProperties.resourceNames.split('[')[0].includes('Fuller King')) {
         return (
-          <div style={{ width:'110px', height:'24px', borderRadius:'100px', backgroundColor:'#4a7537', display:'flex', alignItems:'center', justifyContent:'center' }}>
+          <div style={{ width:'150px', height:'24px', borderRadius:'100px', backgroundColor:'#4a7537', display:'flex', alignItems:'center', justifyContent:'center' }}>
           <span style={{ color: 'white', fontWeight: 500 }}>{props.ganttProperties.resourceNames}</span>
           </div>
         );
@@ -28,7 +28,7 @@ export class ResourceAllocation extends SampleBase<{}, {}> {
 
       if (props.ganttProperties.resourceNames.split('[')[0].includes('Van Jack')) {
         return (
-          <div style={{ width:'110px', height:'24px', borderRadius:'100px', backgroundColor:'#b24531', display:'flex', alignItems:'center', justifyContent:'center' }}>
+          <div style={{ width:'150px', height:'24px', borderRadius:'100px', backgroundColor:'#b24531', display:'flex', alignItems:'center', justifyContent:'center' }}>
           <span style={{ color: 'white', fontWeight: 500 }}>{props.ganttProperties.resourceNames}</span>
           </div>
         );
@@ -36,7 +36,7 @@ export class ResourceAllocation extends SampleBase<{}, {}> {
 
       if (props.ganttProperties.resourceNames.split('[')[0].includes('Bergs Anton')) {
         return (
-          <div style={{ width:'110px', height:'24px', borderRadius:'100px', backgroundColor:'#a53576', display:'flex', alignItems:'center', justifyContent:'center' }}>
+          <div style={{ width:'150px', height:'24px', borderRadius:'100px', backgroundColor:'#a53576', display:'flex', alignItems:'center', justifyContent:'center' }}>
           <span style={{ color: 'white', fontWeight: 500 }}>{props.ganttProperties.resourceNames}</span>
           </div>
         );
@@ -44,7 +44,7 @@ export class ResourceAllocation extends SampleBase<{}, {}> {
 
       if (props.ganttProperties.resourceNames.split('[')[0].includes('Tamer Vinet')) {
         return (
-          <div style={{ width:'110px', height:'24px', borderRadius:'100px', backgroundColor:'#635688', display:'flex', alignItems:'center', justifyContent:'center' }}>
+          <div style={{ width:'150px', height:'24px', borderRadius:'100px', backgroundColor:'#635688', display:'flex', alignItems:'center', justifyContent:'center' }}>
           <span style={{ color: 'white', fontWeight: 500 }}>{props.ganttProperties.resourceNames}</span>
           </div>
         );
@@ -53,32 +53,45 @@ export class ResourceAllocation extends SampleBase<{}, {}> {
      return <div></div>
     }
 }
-  public template: any = this.resColumnTemplate.bind(this);
-  public dropdownlistObj: DropDownList;
-  public ganttInstance: GanttComponent;
+public template: any = this.resColumnTemplate.bind(this);
+public dropdownlistObj: DropDownList;
+public ganttInstance: GanttComponent;
   public dropdownlist: IEditCell = {
     read: () => {
+      // Get the selected value from the dropdown
       let value: any = this.dropdownlistObj.value;
-      if (value == null) {
-          value = [];
+      if (value === null) {
+          // If no value is selected, retain the existing resource(s)
+          value = this.ganttInstance.treeGridModule.currentEditRow[this.ganttInstance.taskFields.resourceInfo];
+      } else {
+          // Update the resource info with the selected value
+          this.ganttInstance.treeGridModule.currentEditRow[this.ganttInstance.taskFields.resourceInfo] = [value];
       }
-      this.ganttInstance.treeGridModule.currentEditRow[this.ganttInstance.taskFields.resourceInfo] = [value];
       return value;
-      },
+    },
     destroy: () => {
-          this.dropdownlistObj.destroy();
-      },
-      write: (args: any) => {
-        this.ganttInstance.treeGridModule.currentEditRow = {};
-        this.dropdownlistObj = new DropDownList({
-          dataSource: new DataManager(this.ganttInstance.resources),
-          fields: { text: this.ganttInstance.resourceFields.name, value: this.ganttInstance.resourceFields.id },
-          enableRtl: this.ganttInstance.enableRtl,
-          popupHeight: '350px',
-          value: this.ganttInstance.treeGridModule.getResourceIds(args.rowData)
-        });
-        this.dropdownlistObj.appendTo(args.element as HTMLElement);
-      }
+      this.dropdownlistObj.destroy();
+    },
+    write: (args: any) => {
+      // Ensure the currentEditRow object is initialized
+      this.ganttInstance.treeGridModule.currentEditRow = {};
+                
+      // Retrieve the existing resource(s) from the row data or set default
+      let existingResourceIds: any = this.ganttInstance.treeGridModule.getResourceIds(args.rowData);
+      let selectedValue: any = (existingResourceIds && existingResourceIds.length > 0) ? existingResourceIds[0] : null;
+
+      // Initialize the DropDownList
+      this.dropdownlistObj = new DropDownList({
+        dataSource: new DataManager(this.ganttInstance.resources),
+        fields: { text: this.ganttInstance.resourceFields.name, value: this.ganttInstance.resourceFields.id },
+        enableRtl: this.ganttInstance.enableRtl,
+        popupHeight: '350px',
+        // Set the existing resource(s) as the selected value
+        value: selectedValue,
+      });
+      // Append the dropdown to the element
+      this.dropdownlistObj.appendTo(args.element as HTMLElement);
+    }
   };
   public taskFields: any = {
     id: 'TaskID',
@@ -165,10 +178,28 @@ export class ResourceAllocation extends SampleBase<{}, {}> {
   public addDialogFields: any = [
     { type: 'Resources' }
   ];
+  public cellEdit (args: any) {
+    // Restrict editing based on row data
+    if (args.rowData.TaskID === 1 || args.rowData.TaskID === 5) {
+      args.cancel = true; // Cancel editing for this specific cell
+    }
+  };
   public actionBegin (args: any) {
     if (args.requestType === 'beforeOpenEditDialog' || args.requestType === 'beforeOpenAddDialog') {
+      // Restrict editing based on row data for dialog
+      if (args.rowData.TaskID === 1 || args.rowData.TaskID === 5) {
+        args.cancel = true; // Cancel editing for this specific row dialog
+      }
       args.Resources.selectionSettings = {};
       args.Resources.columns.splice(0, 1);
+    }
+  };
+  public actionComplete (args: any) {
+    if (args.requestType === 'add' && !args.data.TaskName) {
+      let taskName: string = 'Task Name ' + args.data.TaskID;
+      args.data.TaskName = taskName;
+      args.data.ganttProperties.taskName = taskName;
+      args.data.taskData.TaskName = taskName;
     }
   };
   public toolbar: any = ['Add', 'Edit', 'Update', 'Delete', 'Cancel', 'ExpandAll', 'CollapseAll'];
@@ -191,7 +222,7 @@ export class ResourceAllocation extends SampleBase<{}, {}> {
             projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate} resourceFields={this.resourceFields}
             taskFields={this.taskFields} taskType={this.taskType} labelSettings={this.labelSettings} splitterSettings={this.splitterSettings}
             height='450px' resources={resourceAllocationResources} workUnit={this.workUnit} queryTaskbarInfo={this.queryTaskbarInfo}
-            editDialogFields={this.editDialogFields} addDialogFields={this.addDialogFields} actionBegin={this.actionBegin}>
+            editDialogFields={this.editDialogFields} addDialogFields={this.addDialogFields} actionBegin={this.actionBegin} actionComplete={this.actionComplete} cellEdit={this.cellEdit}>
             <ColumnsDirective>
               <ColumnDirective field='TaskID' visible ={false} ></ColumnDirective>
               <ColumnDirective field='TaskName' headerText='Task Name' width='180'></ColumnDirective>

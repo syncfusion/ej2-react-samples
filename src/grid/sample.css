@@ -167,6 +167,18 @@ td.e-rowcell .statustxt.e-nonavailablecolor {
     font-weight: normal;
     font-style: normal;
 }
+
+.material3 #gridheadersample .e-gridheader .e-headercelldiv span.e-icons,
+.material3-dark #gridheadersample .e-gridheader .e-headercelldiv span.e-icons,
+.fluent #gridheadersample .e-gridheader .e-headercelldiv span.e-icons,
+.fluent-dark #gridheadersample .e-gridheader .e-headercelldiv span.e-icons,
+.tailwind #gridheadersample .e-gridheader .e-headercelldiv span.e-icons,
+.tailwind-dark #gridheadersample .e-gridheader .e-headercelldiv span.e-icons,
+.tailwind3 #gridheadersample .e-gridheader .e-headercelldiv span.e-icons,
+.tailwind3-dark #gridheadersample .e-gridheader .e-headercelldiv span.e-icons {
+    vertical-align: sub;
+}
+
 .e-icon-calender::before { 
         font-family: 'ej2-header';
         content: "\e960"; }
@@ -191,6 +203,11 @@ td.e-rowcell .statustxt.e-nonavailablecolor {
 }
 #gridheadersample .e-icon-calender, #gridheadersample .e-icon-userlogin, #gridheadersample .e-location, #gridheadersample .e-description, #gridheadersample .e-mail, #gridheadersample .e-phone {
     margin-right: 5px;
+}
+.highcontrast .e-grid td.e-rowcell.e-selectionbackground.e-active .e-icons,
+.fluent2-highcontrast .e-grid .e-row:hover:not(.e-editedrow) .e-icons,
+.fluent2-highcontrast .e-grid td.e-rowcell.e-selectionbackground.e-active .e-icons {
+    color: black;
 }
 
  .detailtable td{
@@ -224,6 +241,10 @@ td.e-rowcell .statustxt.e-nonavailablecolor {
 
 .e-ghidden {
     opacity: 0.35;
+}
+
+.e-dialog.e-edit-dialog {
+    max-height: 589px !important;
 }
 
 .e-mastertext,

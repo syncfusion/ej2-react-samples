@@ -9,8 +9,10 @@ import { updateSampleSection } from '../common/sample-base';
 
 const SAMPLE_CSS = `
     .control-fluid { padding: 0px !important; }
-    .titleText { font-family: inherit; font-size: 22px; margin-top: 13px; }
-    .e-view.tailwind div.titleText, .e-view.tailwind-dark div.titleText { font-size: 22px; margin-top: 0px; }
+     .titleText { font-family: inherit; font-size: 22px; margin-top: 8px; }
+     .e-view.tailwind div.titleText, .e-view.tailwind-dark div.titleText { font-size: 22px; margin-top: -3px; }
+     .e-view.tailwind3 div.titleText, .e-view.tailwind3-dark div.titleText { font-size: 22px; margin-top: -2px; }
+     .e-view.material3 div.titleText, .e-view.material3-dark div.titleText { font-size: 22px; margin-top: 10px; }
     .annotation { font-family: inherit; font-size: 18px; }
     @media screen and (max-width: 420px) {
         .titleText {font-size: 15px; }

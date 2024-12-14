@@ -17,7 +17,7 @@ export class Default extends SampleBase<{}, {}> {
         <div className='control-section'>
           <GridComponent dataSource={orderDetails} height='350' allowSorting={true} editSettings={this.editSettings} allowFiltering={true} filterSettings={this.filterSettings} toolbar={this.toolbar}>
             <ColumnsDirective>
-            <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={this.orderidRules} isPrimaryKey={true}></ColumnDirective>
+            <ColumnDirective field='OrderID' headerText='Order ID' width='180' textAlign='Right' validationRules={this.orderidRules} isPrimaryKey={true}></ColumnDirective>
             <ColumnDirective field='CustomerName' headerText='Customer Name' width='150' validationRules={this.customeridRule}></ColumnDirective>
             <ColumnDirective field='OrderDate' headerText='Order Date' width='130' format='yMd' textAlign='Right' editType='datepickeredit'/>
             <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' validationRules={this.freightRules} editType='numericedit'/>

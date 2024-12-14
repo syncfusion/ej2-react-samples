@@ -15,6 +15,14 @@
     border-width: 0;
 }
 
+.bootstrap5_3 .sb-content-toolbar, .bootstrap5_3 .sb-content-toolbar {
+    top: -2.5px !important;
+}
+
+.bootstrap5_3.e-bigger .sb-content-toolbar, .bootstrap5_3.e-bigger .sb-content-toolbar {
+    top: -0.5px !important;
+}
+
 .bootstrap5_3 .sb-plnr-section {
     line-height: 25px;
     height: 30px;
@@ -28,7 +36,7 @@
 .bootstrap5_3 .e-samplestatus.new,
 .bootstrap5_3 .e-samplestatus.update,
 .bootstrap5_3 .e-samplestatus.preview {
-    margin: 4px 0;
+    margin: 0;
     height: 22px;
     padding: 1px 4px;
 }

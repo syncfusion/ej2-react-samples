@@ -21,6 +21,7 @@
   .fluent2-highcontrast #analytic_dashboard .card-content.text
   .bootstrap5-dark #analytic_dashboard .card-content.text,
   .tailwind-dark #analytic_dashboard .card-content.text,
+  .tailwind3-dark #analytic_dashboard .card-content.text,
   .material-dark #analytic_dashboard .card-content.text,
   .bootstrap-dark #analytic_dashboard .card-content.text,
   .highcontrast #analytic_dashboard .card-content.text {
@@ -50,7 +51,7 @@
   }
 
   @media (max-width: 650px) {
-    .e-bigger .searchContent {
+    .e-bigger .searchContent .analysis {
       display: none;
     }
     .information{
@@ -384,6 +385,7 @@ body.bootstrap-dark #dockSideDash li.sidebar-item.filterHover,
 body.material-dark #dockSideDash li.sidebar-item.filterHover,
 body.fabric-dark #dockSideDash li.sidebar-item.filterHover,
 body.tailwind-dark #dockSideDash li.sidebar-item.filterHover,
+body.tailwind3-dark #dockSideDash li.sidebar-item.filterHover,
 body.bootstrap5-dark #dockSideDash li.sidebar-item.filterHover,
 body.fluent-dark #dockSideDash li.sidebar-item.filterHover{
   background: inherit;

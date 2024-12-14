@@ -28,10 +28,10 @@ export class AggregateGroup extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-        <GridComponent id="group-aggregate-grid" dataSource={energyData} enableHover={false} allowSorting={true} gridLines='Vertical' allowMultiSorting={true} height={300} allowGrouping={true} groupSettings={this.groupSettings} allowFiltering={true} filterSettings={this.filterSettings}>
+        <GridComponent id="group-aggregate-grid" dataSource={energyData} gridLines='Vertical' enableHover={false} allowSorting={true} allowMultiSorting={true} height={300} allowGrouping={true} groupSettings={this.groupSettings} allowFiltering={true} filterSettings={this.filterSettings}>
             <ColumnsDirective>             
             <ColumnDirective field='ID' visible={false} isPrimaryKey={true}></ColumnDirective>
-              <ColumnDirective field='Month' headerText='Month' format='yMd' width='120'  ></ColumnDirective>
+              <ColumnDirective field='Month' headerText='Month' format='yMd' width='120' type='date'></ColumnDirective>
               <ColumnDirective field='ConsumptionCategory' headerText='Category' width='130' textAlign='Left' ></ColumnDirective>
               <ColumnDirective  headerTemplate={this.energyHeaderTemplate} width='130' textAlign='Center' columns={[{ field: 'EnergyConsumed', headerText: 'Consumed', width: 150, textAlign: 'Right'},
             { field: 'EnergyProduced', headerText: 'Produced', width: 300, textAlign: 'Right'}]}></ColumnDirective>

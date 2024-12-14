@@ -45,14 +45,14 @@ export class GridLines extends SampleBase<{}, {}> {
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                 <tbody>
                   <tr style={{ height: '50px' }}>
-                    <td style={{ width: '60%' }}>
+                    <td>
                       <div>
                         Grid Lines
                       </div>
                     </td>
                     <td style={{ width: '60%' }}>
-                      <div>
-                        <DropDownListComponent width="130px" id="selmode" change={this.change.bind(this)}
+                      <div style={{paddingLeft:'15px'}}>
+                        <DropDownListComponent width="138px" id="selmode" change={this.change.bind(this)}
                           dataSource={this.lines} fields={{ text: 'type', value: 'id' }} value="Vertical" />
                       </div>
                     </td>
