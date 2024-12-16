@@ -1,4 +1,4 @@
-import FormData from 'form-data';
+import * as FormData from 'form-data';
 
 // Search and Replace
 export async function StabilityAiModel(file: File, prompt: string, searchPrompt: string) {
