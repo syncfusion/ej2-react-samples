@@ -6,12 +6,12 @@ import { resourceAllocationData, resourceAllocationResources } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import { IEditCell } from '@syncfusion/ej2-grids';
 import { DropDownList } from '@syncfusion/ej2-dropdowns';
-import { DataManager } from '@syncfusion/ej2/data';
+import { DataManager } from '@syncfusion/ej2-data';
 
 const ResourceAllocation = () => {
   useEffect(() => {
     updateSampleSection();
-  }, [])
+  }, [])    
   const resColumnTemplate = (props): any => {
     if (props.ganttProperties.resourceNames) {
       if (props.ganttProperties.resourceNames.split('[')[0].includes('Rose Fuller')) {

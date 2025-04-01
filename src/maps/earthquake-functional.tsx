@@ -19,6 +19,10 @@ const SAMPLE_CSS = `
         background:#E94430;
         position: relative;
     }
+    .pulse-container {
+      width: 20px;
+      height: 20px;
+    }
     .pulse-css:before, .pulse-css:after {
         content: '';
         width: 20px;
@@ -56,7 +60,7 @@ const SAMPLE_CSS = `
         opacity: 0;
         }
     }`;
-let marketTemp: string = '<div id="template"> <div class="pulse-container"><div class="pulse-box"><div class="pulse-css"></div></div></div></div>';
+let marketTemp: string = '<div> <div class="pulse-container"><div class="pulse-box"><div class="pulse-css"></div></div></div></div>';
 const EarthquakeMaps = () => {
     useEffect(() => {
         updateSampleSection();
@@ -77,12 +81,12 @@ const EarthquakeMaps = () => {
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-md-12'>
-                    <MapsComponent id="maps" loaded={onMapsLoad} load={load} zoomSettings={{ enable: false, zoomFactor: 7 }} mapsArea={{ background: '#AEE2FA' }} titleSettings={{ text: '7.6 Magnitude earthquake strikes Sumatra - 2009', textStyle: { size: '18px' } }} centerPosition={{ latitude: 1.5053645409602877, longitude: 105.14038085937499 }}>
+                    <MapsComponent id="maps" loaded={onMapsLoad} load={load} zoomSettings={{ enable: false, zoomFactor: 7 }} mapsArea={{ background: '#AEE2FA' }} titleSettings={{ text: '7.6 Magnitude earthquake strikes Sumatra - 2009', textStyle: { size: '18px' } }} centerPosition={{  latitude:  0.720, longitude: 99.867 }}>
                         <Inject services={[Zoom, Marker]} />
                         <LayersDirective>
                             <LayerDirective shapeData={asiaMap} shapePropertyPath='name' shapeDataPath='name' shapeSettings={{ fill: '#FFFDCF', border: { color: '#3497C3', width: 0.5 } }}>
                                 <MarkersDirective>
-                                    <MarkerDirective visible={true} height={100} width={100} animationDuration={0} template={marketTemp} dataSource={[{ latitude: 1.625758360412755, longitude: 106.5693359375 }]} />
+                                    <MarkerDirective visible={true} height={100} width={100} animationDuration={0} template={marketTemp} dataSource={[{  latitude:  0.720, longitude: 99.867 }]} />
                                 </MarkersDirective>
                             </LayerDirective>
                         </LayersDirective>

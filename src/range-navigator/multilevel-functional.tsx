@@ -9,7 +9,7 @@ import {
 } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
-
+import { loadRangeNavigatorTheme } from './theme-color';
 export let data: Object[] = [];
 export let value: number = 0;
 export let point: Object = {};
@@ -78,10 +78,7 @@ function MultilevelLabels() {
     )
 
     function load(args: IRangeLoadedEventArgs): void {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadRangeNavigatorTheme(args);
         args.rangeNavigator.dateTimeModule = new DateTime(args.rangeNavigator as any);
     };
 }

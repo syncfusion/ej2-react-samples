@@ -10,75 +10,103 @@ import { PropertyPane } from '../common/property-pane';
 import { addClass, removeClass } from '@syncfusion/ej2-base';
 
 const SAMPLE_CSS = `
+.disableRow .e-rowcell,
 .material .disableRow .e-rowcell{
     color: rgba(0, 0, 0, .38) !important;
+  }
+.disableRow .e-rowcell,
+  body:not([class]) #_gridcontrol .disableRow .e-rowcell,
+  .ej2-new #_gridcontrol .disableRow .e-rowcell {
+   color: rgba(0, 0, 0, .38) !important;
   }`;
 {/* custom code start */ }
 const SAMPLE1_CSS = `
+.disableRow .e-rowcell,
 .material-dark .disableRow .e-rowcell{
   color: #757575 !important;
 }
+.disableRow .e-rowcell,
 .material3 .disableRow .e-rowcell{
   color: rgba(0, 0, 0, .38) !important;
 }
+.disableRow .e-rowcell,
 .material3-dark .disableRow .e-rowcell{
   color: #757575 !important;
 }
+.disableRow .e-rowcell,
 .fabric .disableRow .e-rowcell{
   color: #c8c8c8 !important;
 }
+.disableRow .e-rowcell,
 .fabric-dark .disableRow .e-rowcell{
   color: #757575 !important;
 }    
+.disableRow .e-rowcell,
 .bootstrap .disableRow .e-rowcell{
   color: rgba(0, 0, 0, .35) !important;
 }
+.disableRow .e-rowcell,
 .bootstrap-dark .disableRow .e-rowcell{
   color: #757575 !important;
 }
+.disableRow .e-rowcell,
 .bootstrap4 .disableRow .e-rowcell{
   color: rgba(0, 0, 0, .35) !important;
 }
+.disableRow .e-rowcell,
 .bootstrap5 .disableRow .e-rowcell{
   color: rgba(0, 0, 0, .35) !important;
 }
+.disableRow .e-rowcell,
 .bootstrap5\.3 .disableRow .e-rowcell{
   color: rgba(0, 0, 0, .35) !important;
 }
+.disableRow .e-rowcell,
 .bootstrap5_3 .disableRow .e-rowcell{
   color: rgba(0, 0, 0, .35) !important;
 }
+.disableRow .e-rowcell,
 .fluent .disableRow .e-rowcell{
   color: rgba(0, 0, 0, .35) !important;
 }
+.disableRow .e-rowcell,
 .fluent2 .disableRow .e-rowcell{
   color: rgba(0, 0, 0, .35) !important;
 }
+.disableRow .e-rowcell,
 .bootstrap5-dark .disableRow .e-rowcell{
   color: #757575 !important;
 }
+.disableRow .e-rowcell,
 .bootstrap5\.3-dark .disableRow .e-rowcell{
   color: #757575 !important;
 }
+.disableRow .e-rowcell,
 .bootstrap5_3-dark .disableRow .e-rowcell{
   color: #757575 !important;
 }
+.disableRow .e-rowcell,
 .fluent-dark .disableRow .e-rowcell{
   color: #757575 !important;
 }
+.disableRow .e-rowcell,
  .fluent2-dark .disableRow .e-rowcell{
   color: #757575 !important;
 }
+.disableRow .e-rowcell,
 .fluent2-highcontrast .disableRow .e-rowcell{
   color: #757575 !important;
 }
+.disableRow .e-rowcell,
 .highcontrast .disableRow .e-rowcell{
   color: #757575 !important;
 }
+.disableRow .e-rowcell,
 .tailwind .disableRow .e-rowcell,
 .tailwind3 .disableRow .e-rowcell {
   color: #757575 !important;
 }
+.disableRow .e-rowcell,
 .tailwind-dark .disableRow .e-rowcell,
 .tailwind3-dark .disableRow .e-rowcell{
   color: #757575 !important;
@@ -109,9 +137,10 @@ const LockRow = () => {
   const editparams: any = { params: { popupHeight: "300px" } };
   const validationRule: Object = { required: true, number: true };
   const validationRule1: Object = { required: true };
-  const validationRule2: Object = { date: true };
+  const validationRule2: Object = { date: ['M/d/yyyy', 'Please enter a valid date']};
   const validationRule3: Object = { number: true, min: 0 };
   const editparams2: any = { params: { format: "n" } };
+  const editparams3: any = { params: { format: 'M/d/yyyy' } };
   const pageSettings: Object = { pageSize: 2, pageSizeMode: "Root" };
   const rowValues: number[] = [2, 6];
 
@@ -187,6 +216,7 @@ const LockRow = () => {
                 textAlign="Right"
                 editType="datepickeredit"
                 format="yMd"
+                edit={editparams3}
                 validationRules={validationRule2}
               />
               <ColumnDirective

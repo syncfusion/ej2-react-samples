@@ -1,11 +1,11 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { TreeGridComponent, ColumnsDirective, ColumnDirective, Freeze, Inject, Sort } from '@syncfusion/ej2-react-treegrid';
+import { TreeGridComponent, ColumnsDirective, ColumnDirective, Freeze, Inject, Sort, Column } from '@syncfusion/ej2-react-treegrid';
 import { frozenSampleData } from './data';
 import { SampleBase } from '../common/sample-base';
 import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import { DialogComponent } from '@syncfusion/ej2-react-popups';
-import { freezeDirection, Column } from '@syncfusion/ej2-react-grids';
+import { freezeDirection } from '@syncfusion/ej2-react-grids';
 
 
 export class FrozenAPI extends SampleBase<{}, {}> {
@@ -35,20 +35,24 @@ export class FrozenAPI extends SampleBase<{}, {}> {
     public directionChange(e: ChangeEventArgs): void {
       if (this.refresh) {
         let columnName: string = this.columnDropDown.value as string;
-        let mvblColumns: any = this.treegrid.grid.getMovableColumns();
+        let mvblColumns: any = this.treegrid.getMovableColumns();
         if (mvblColumns.length === 1 && columnName === mvblColumns[0].field && e.value !== mvblColumns[0].freeze) {
           this.alertDialogInstance.show();
           this.refresh = false; this.freezeDropDown.value = "Center"; this.freezeDropDown.refresh();
         } else {
-          this.treegrid.grid.getColumnByField(columnName).freeze = e.value === 'Center' ? undefined : e.value as freezeDirection;
-          this.treegrid.grid.refreshColumns();
+          let columns: Column[] = this.treegrid.getColumns();
+          let column = columns.find((col) => col.field === columnName);
+          if (column) {
+            column.freeze = e.value === 'Center' ? undefined : e.value as freezeDirection;
+          }
+          this.treegrid.columns = columns;
         }
       }
       this.refresh = true;
     };
     public columnChange(e:ChangeEventArgs): void {
       let columnName: string = e.value as string;
-      let column: Column = this.treegrid.grid.getColumnByField(columnName);
+      let column: Column = this.treegrid.getColumnByField(columnName);
       let value: string = column.freeze === undefined ? 'Center' : column.freeze;
       this.refresh = this.freezeDropDown.value === value;
       this.freezeDropDown.value = value;

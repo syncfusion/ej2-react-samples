@@ -102,7 +102,7 @@ export class PivotOverview extends SampleBase<{}, {}> {
 
     queryCellInfo(args): any {
         if (args.cell && args.cell.classList.contains('e-valuescontent') && args.data && args.data[0].hasChild) {
-            let pivotValues: any; let colIndex: number = Number(args.cell.getAttribute('data-colindex'));
+            let pivotValues: any; let colIndex: number = Number(args.cell.getAttribute('aria-colindex')) - 1;
             if (!isNaN(colIndex)) {
                 pivotValues = this.pivotObj.pivotValues[args.data[colIndex].rowIndex][args.data[colIndex].colIndex];
             }
@@ -127,14 +127,14 @@ export class PivotOverview extends SampleBase<{}, {}> {
             let cellValue: Element = select('.e-cellvalue', args.targetCell);
             cellValue.classList.add('e-hyperlinkcell');
             cellValue.addEventListener('click', this.hyperlinkCellClick.bind(this.pivotObj));
-            args.targetCell.insertBefore(imgElement, cellValue);
+            args.targetCell.firstElementChild.insertBefore(imgElement, cellValue);
         }
         return '';
     }
 
     hyperlinkCellClick(args: MouseEvent) {
-        let cell: Element = (args.target as Element).parentElement;
-        let pivotValue: IAxisSet = this.pivotObj.pivotValues[Number(cell.getAttribute('index'))][Number(cell.getAttribute('data-colindex'))] as IAxisSet;
+        let cell: Element = (args.target as Element).closest('.e-rowsheader');
+        let pivotValue: IAxisSet = this.pivotObj.pivotValues[Number(cell.getAttribute('index'))][Number(cell.getAttribute('aria-colindex')) - 1] as IAxisSet;
         let link: string = UniversityData[pivotValue.index[0]].link as string;
         window.open(link, '_blank');
     }

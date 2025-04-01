@@ -9,7 +9,7 @@ import { PropertyPane } from '../common/property-pane';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { ColorPickerComponent, ColorPickerEventArgs, } from '@syncfusion/ej2-react-inputs';
 import { updateSampleSection } from '../common/sample-base';
-
+import { loadChartTheme } from './theme-color';
 export let data1: any[] = [
     { x: 'China', y: 17 }, { x: 'USA', y: 19 },
     { x: 'India', y: 29 }, { x: 'Japan', y: 13 },
@@ -69,9 +69,7 @@ const SelectionChart = () => {
         chart.setAttribute('align', 'center');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
     const change = (): void => {
         setSelectMode(dropElement.current.value as SelectionMode);
@@ -113,7 +111,7 @@ const SelectionChart = () => {
         <div className='control-pane'>
             <div className='control-section row'>
                 <div className='col-md-8'>
-                    <ChartComponent id='charts' ref={chartInstance} style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', interval: 1, labelIntersectAction: 'Rotate90', majorTickLines: {width : 0}, minorTickLines: {width: 0} }} primaryYAxis={{ title: 'Distribution', labelFormat: '{value}%', lineStyle : {width : 0}, interval: 20 }} load={load.bind(this)} chartArea={{ border: { width: 0 } }} title='Age Distribution by Country' loaded={onChartLoad.bind(this)} legendSettings={{ visible: true, toggleVisibility: false }} selectionMode={selectMode} highlightMode={highlightMode} selectionPattern={selectPattern} highlightPattern={highlightPattern} isMultiSelect={isMultiSelect} highlightColor={highlightColor}>
+                    <ChartComponent id='charts' ref={chartInstance} style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', interval: 1, labelIntersectAction: 'Rotate90', majorTickLines: {width : 0}, minorTickLines: {width: 0}, majorGridLines: { width: 0 } }} primaryYAxis={{ title: 'Distribution', labelFormat: '{value}%', lineStyle: { width: 0 }, interval: 20, majorTickLines: { width: 0 } }} load={load.bind(this)} chartArea={{ border: { width: 0 }, margin: { bottom: 12 } }} title='Age Distribution by Country' loaded={onChartLoad.bind(this)} legendSettings={{ visible: true, toggleVisibility: false }} selectionMode={selectMode} highlightMode={highlightMode} selectionPattern={selectPattern} highlightPattern={highlightPattern} isMultiSelect={isMultiSelect} highlightColor={highlightColor}>
                         <Inject services={[Selection, ColumnSeries, Legend, Category, ScatterSeries, Highlight]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} xName='x' width={2} yName='y' name='Age 0-14' type='Column' />

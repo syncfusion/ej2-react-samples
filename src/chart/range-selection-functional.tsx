@@ -8,6 +8,7 @@ import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, Cha
 import { updateSampleSection } from '../common/sample-base';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { PropertyPane } from '../common/property-pane';
+import { loadChartTheme } from './theme-color';
 export let data: any[] = [
     { x: 1971, y: 50 }, { x: 1972, y: 20 }, { x: 1973, y: 63 }, { x: 1974, y: 81 }, { x: 1975, y: 64 },
     { x: 1976, y: 36 }, { x: 1977, y: 22 }, { x: 1978, y: 78 }, { x: 1979, y: 60 }, { x: 1980, y: 41 },
@@ -56,9 +57,7 @@ const RangeSelection = () => {
         document.getElementById('charts').setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
     const change = (): void => {
         chartInstance.current.selectionMode = dropElement.current.value as SelectionMode;
@@ -78,7 +77,7 @@ const RangeSelection = () => {
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-md-8'>
-                    <ChartComponent id='charts' ref={chartInstance} primaryXAxis={{ minimum: 1970, maximum: 2016, majorGridLines: { width: 0 }, majorTickLines: {width : 0}, minorTickLines: {width: 0} }} primaryYAxis={{ title: 'Sales', labelFormat: '{value}%', interval: 25, minimum: 0, maximum: 100, lineStyle: {width : 0}, majorTickLines: {width : 0}, minorTickLines: {width: 0} }} chartArea={{ border: { width: 0 } }} legendSettings={{ visible: true, toggleVisibility: false }} title='Profit Comparision of A and B' loaded={onChartLoad.bind(this)} selectionMode={selectionMode} load={load.bind(this)}>
+                    <ChartComponent id='charts' ref={chartInstance} primaryXAxis={{ minimum: 1970, maximum: 2016, majorGridLines: { width: 0 }, majorTickLines: {width : 0}, minorTickLines: {width: 0} }} primaryYAxis={{ title: 'Sales', labelFormat: '{value}%', interval: 25, minimum: 0, maximum: 100, lineStyle: {width : 0}, majorTickLines: {width : 0}, minorTickLines: {width: 0} }} chartArea={{ border: { width: 0 }, margin: { bottom: 12 } }} legendSettings={{ visible: true, toggleVisibility: false }} title='Profit Comparision of A and B' loaded={onChartLoad.bind(this)} selectionMode={selectionMode} load={load.bind(this)}>
                         <Inject services={[Selection, Legend, ColumnSeries, Category, ScatterSeries]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data} name='Product A' xName='x' yName='y' type='Scatter' marker={{ shape: 'Triangle', width: 10, height: 10 }} /> 

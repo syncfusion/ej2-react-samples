@@ -367,7 +367,6 @@ function ESigningPdfForms() {
 
     const documentLoad = () => {
         viewer.current.designerMode = false;
-        viewer.current.magnification.fitToPage();
         updateUserFormField();
     } 
 
@@ -380,7 +379,7 @@ function ESigningPdfForms() {
                         <ItemDirective align='Right' template={buttonComponent} ></ItemDirective>
                     </ItemsDirective>
                 </ToolbarComponent>
-                <PdfViewerComponent ref={viewer} id="container" enableNavigationToolbar={false} enableAnnotationToolbar={false} enableToolbar={false} enableFormDesignerToolbar={false} documentPath="https://cdn.syncfusion.com/content/pdf/eSign_filling.pdf" resourceUrl="https://cdn.syncfusion.com/ej2/27.2.2/dist/ej2-pdfviewer-lib"   downloadFileName='eSign_filling.pdf' documentLoad={documentLoad} formFieldPropertiesChange={fieldChange} style={{ 'height': '640px' }}>
+                <PdfViewerComponent ref={viewer} id="container" enableNavigationToolbar={false} enableAnnotationToolbar={false} enableToolbar={false} enableFormDesignerToolbar={false} documentPath="https://cdn.syncfusion.com/content/pdf/eSign_filling.pdf" resourceUrl="https://cdn.syncfusion.com/ej2/27.2.2/dist/ej2-pdfviewer-lib" zoomMode="FitToPage" downloadFileName='eSign_filling.pdf' documentLoad={documentLoad} formFieldPropertiesChange={fieldChange} style={{ 'height': '640px' }}>
                     <Inject services={[Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner, PageOrganizer]} />
                 </PdfViewerComponent>
                 <div id='e-pv-e-sign-dialog-target'>

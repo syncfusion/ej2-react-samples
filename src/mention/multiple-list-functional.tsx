@@ -61,16 +61,18 @@ const MultipleList = () => {
           <div className="content-wrapper">
             <div id='mention_multiplelist'>
               <table>
-                <tr>
-                  <td>
-                    <label id="label" className="multiple">Start typing <code>@</code>, <code>#</code>, <code>$</code> or <code>%</code> to select the respective values</label>
-                    <div id="multipleList" placeholder="Type here..!"></div>
-                  </td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <td>
+                      <label id="label" className="multiple">Start typing <code>@</code>, <code>#</code>, <code>$</code> or <code>%</code> to select the respective values</label>
+                      <div id="multipleList" placeholder="Type here..!"></div>
+                    </td>
+                  </tr>
+                </tbody>
               </table>
               <MentionComponent dataSource={remotedata} target={commonTarget} fields={dataFields} suggestionCount={15} query={query} popupWidth={250} allowSpaces={true}></MentionComponent>
 
-              <MentionComponent dataSource={projects} mentionChar={'#'} target={commonTarget} displayTemplate={projectsDisplayTemplate} fields={localFields}></MentionComponent>
+              <MentionComponent dataSource={projects} requireLeadingSpace={false} mentionChar={'#'} target={commonTarget} displayTemplate={projectsDisplayTemplate} fields={localFields}></MentionComponent>
 
               <MentionComponent dataSource={useCosts} mentionChar={'$'} target={commonTarget} displayTemplate={costDisplayTemplate} fields={localFields}></MentionComponent>
 
@@ -84,6 +86,10 @@ const MultipleList = () => {
       </div>
 
       <div id="description">
+        <p>
+          The <code>requireLeadingSpace</code> property in Mention controls whether a space is needed before triggering the Mention suggestion popup.
+          When set to <code>false</code>, it activates without a space; when set to <code>true</code>, a space is required before the Mention character. To see this feature in action, start typing with <code>#</code>.
+        </p>
         <p>In the above sample, the following are configured for the contenteditable div element with @mention integrated.</p>
         <ul>
           <li><code>@</code> - Typing <code>@</code> lists out the suggestions of the employee names.</li>

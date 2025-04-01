@@ -107,7 +107,7 @@ export class PolarLine extends SampleBase<{}, {}> {
                                 labelFormat: '{value}°C'
                             }}
                             title='Alaska Weather Statistics - 2016' loaded={this.onChartLoad.bind(this)}
-                            tooltip={{ enable: true }}>
+                            tooltip={{ enable: true, enableHighlight: true }}>
                             <Inject services={[LineSeries, Legend, DataLabel, Category, PolarSeries, RadarSeries, Tooltip]} />
                             <SeriesCollectionDirective>
                                 <SeriesDirective dataSource={data1} xName='x' yName='y' name='Warmest' type='Polar'

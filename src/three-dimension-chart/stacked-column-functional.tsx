@@ -7,6 +7,7 @@ import * as ReactDOM from "react-dom";
 import { Chart3DComponent, Chart3DSeriesCollectionDirective, Chart3DSeriesDirective, Inject, Legend3D, Category3D, StackingColumnSeries3D, Tooltip3D, Chart3DLoadedEventArgs, ChartTheme, Chart3DAxisLabelRenderEventArgs , Highlight3D } from '@syncfusion/ej2-react-charts';
 import { updateSampleSection } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
+import { load3DChartTheme } from './theme-color';
 export let data1: any[] = [
     { x: '2018', y: 24.5 },
     { x: '2019', y: 25.6 },
@@ -45,9 +46,7 @@ const StackedColumn = () => {
         chart.setAttribute('title', '');
     };
     const load = (args: Chart3DLoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        load3DChartTheme(args);
     };
     const axisLabelRender = (args: Chart3DAxisLabelRenderEventArgs ): void => {
         if (args.axis.name === 'primaryYAxis') {

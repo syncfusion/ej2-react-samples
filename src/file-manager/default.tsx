@@ -9,6 +9,12 @@ import { FileManagerComponent, Inject, NavigationPane, Toolbar } from '@syncfusi
 const defaultcss = `
 #all-property-table .property-panel-section .property-panel-content table#property tr {
     height: 50px;
+}
+
+@media (max-width: 550px) {
+    #rangeSelectionRow {
+        display: none;
+    }
 }`
 
 /**
@@ -82,7 +88,7 @@ export class Default extends SampleBase<{},{}> {
                 <PropertyPane title='Properties'>
                 <table id="property" title="Properties" className='property-panel-table' style={{ width: "100%" }}>
                     <tbody>
-                    <tr>
+                    <tr id="rangeSelectionRow">
                         <td style={{ width: '50%' }}>
                             <div style={{ fontSize : '14px', paddingLeft: '0px' }}>Enable Range Selection</div>
                         </td>
@@ -162,7 +168,7 @@ export class Default extends SampleBase<{},{}> {
                     <p><code>disableToolbarItems</code> specifies which items should be disabled in the toolbar.</p>
                     <p>
                         <b>Note: </b>File Manager's upload functionality is restricted in the online demos for security reasons. If you need to test upload functionality, please install 
-                        <a target="_blank" href="https://www.syncfusion.com/downloads"> Syncfusion<sup>®</sup> Essential Studio<sup>®</sup> </a>on your machine and run the demo.
+                        <a target="_blank" href="https://www.syncfusion.com/downloads"> Syncfusion Essential Studio </a>on your machine and run the demo.
                      </p>
                 </div>
             </div>

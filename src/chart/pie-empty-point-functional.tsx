@@ -9,6 +9,7 @@ import { PropertyPane } from '../common/property-pane';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { EmitType } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import { loadAccumulationChartTheme, loadChartTheme } from './theme-color';
 export let data1: any[] = [
     { x: 'Rice', y: 80, }, { x: 'Wheat', y: null }, { x: 'Oil', y: 70 },
     { x: 'Corn', y: 60 }, { x: 'Gram', y: null },
@@ -43,10 +44,8 @@ const PieEmptyPoint = () => {
         chart.setAttribute('align', 'center');
     };
     const load = (args: IAccLoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as AccumulationTheme;
-        if(selectedTheme === 'bootstrap5-dark'){
+        let selectedTheme: string = loadAccumulationChartTheme(args);
+        if(selectedTheme === 'Bootstrap5-Dark'){
             args.chart.series[0].emptyPointSettings.fill = '#FF7F7F';
         }
     };

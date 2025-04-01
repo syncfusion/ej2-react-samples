@@ -8,6 +8,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { SampleBase } from '../common/sample-base';
 import './custom-format.css';
+import { Tooltip } from '@syncfusion/ej2-react-popups';
 
 export class CustomFormat extends SampleBase<{}, {}> {
 
@@ -20,16 +21,16 @@ export class CustomFormat extends SampleBase<{}, {}> {
     // Rich Text Editor items list
     private items: (string | IToolbarItems)[] = ['Bold', 'Italic', 'StrikeThrough', '|',
         'Formats', 'Blockquote', 'OrderedList', 'UnorderedList', '|',
-        'CreateLink', 'Image', '|',
         {
-            tooltipText: 'Preview',
-            template: '<button id="preview-code" class="e-tbar-btn e-control e-btn e-icon-btn"  aria-label="Preview Code">' +
-                '<span class="e-btn-icon e-icons e-md-preview"></span></button>'
+            template:
+              '<button id="preview-code" class="e-tbar-btn e-control e-btn e-icon-btn" aria-label="Preview Code">' +
+              '<span class="e-btn-icon e-icons e-md-preview"></span></button>'
         }, 'Undo', 'Redo'];
 
     private textArea: HTMLTextAreaElement;
     private mdsource: HTMLElement;
     private mdPreview: HTMLElement;
+    private tooltipObj: Tooltip;
 
     //Rich Text Editor ToolbarSettings
     private toolbarSettings: ToolbarSettingsModel = {
@@ -57,9 +58,9 @@ export class CustomFormat extends SampleBase<{}, {}> {
         let htmlPreview: HTMLElement = this.rteObj.element.querySelector('#' + id);
         if (this.mdsource.classList.contains('e-active')) {
             this.mdsource.classList.remove('e-active');
-            this.mdsource.parentElement.title = 'Preview';
             this.rteObj.enableToolbarItem(this.rteObj.toolbarSettings.items as string[]);
             this.textArea.style.display = 'block';
+            this.tooltipObj.content = "Preview";
             htmlPreview.style.display = 'none';
         } else {
             this.mdsource.classList.add('e-active');
@@ -71,9 +72,9 @@ export class CustomFormat extends SampleBase<{}, {}> {
             }
             this.textArea.style.display = 'none';
             htmlPreview.style.display = 'block';
+            this.tooltipObj.content = "Codeview";
             htmlPreview.innerHTML = Marked.marked((this.rteObj.contentModule.getEditPanel() as HTMLTextAreaElement).value);
 
-            this.mdsource.parentElement.title = 'Code View';
         }
     }
     public rendereComplete(): void {
@@ -81,11 +82,18 @@ export class CustomFormat extends SampleBase<{}, {}> {
         this.textArea = this.rteObj.contentModule.getEditPanel() as HTMLTextAreaElement;
         this.textArea.addEventListener('keyup', (e: KeyboardEventArgs) => {
             this.markdownConversion();
+            this.rteObj.toolbarModule.baseToolbar.toolbarObj.hideItem(13, true);
+
         });
         this.mdsource = document.getElementById('preview-code');
         this.mdsource.addEventListener('click', (e: MouseEvent) => {
             this.fullPreview();
         });
+        this.tooltipObj = new Tooltip({
+            content: "Preview",  
+            target: "#preview-code"  
+          });
+        this.tooltipObj.appendTo("#preview-code");
     }
     render() {
         return (

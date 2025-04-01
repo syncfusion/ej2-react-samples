@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Highlight, ILoadedEventArgs, ChartTheme, Inject, Tooltip, DateTime, StackingAreaSeries, Legend } from '@syncfusion/ej2-react-charts';
 import { updateSampleSection } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
+import { loadChartTheme } from './theme-color';
 export let data1 = [
     { x: new Date(2000, 0, 1), y: 0.61 }, { x: new Date(2001, 0, 1), y: 0.81 }, { x: new Date(2002, 0, 1), y: 0.91 },
     { x: new Date(2003, 0, 1), y: 1 }, { x: new Date(2004, 0, 1), y: 1.19 }, { x: new Date(2005, 0, 1), y: 1.47 },
@@ -49,15 +50,13 @@ const StackedArea = () => {
 
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
     return (
         <div className="control-pane">
             <style>{SAMPLE_CSS}</style>
             <div className="control-section">
-                <ChartComponent id="charts" style={{ textAlign: 'center' }} primaryXAxis={{ valueType: 'DateTime', intervalType: 'Years', majorGridLines: { width: 0 }, labelFormat: 'y', edgeLabelPlacement: 'Shift' }} load={load.bind(this)} primaryYAxis={{ title: 'Amount of sales in €', minimum: 0, maximum: 7, interval: 1, lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 }, labelFormat: '{value}k' }} chartArea={{ border: { width: 0 } }} width={Browser.isDevice ? '100%' : '75%'} legendSettings={{ enableHighlight: true }} title="Amount of Sales by Payment Mode" loaded={onChartLoad.bind(this)} tooltip={{ enable: true }}>
+                <ChartComponent id="charts" style={{ textAlign: 'center' }} primaryXAxis={{ valueType: 'DateTime', intervalType: 'Years', majorGridLines: { width: 0 }, labelFormat: 'y', edgeLabelPlacement: 'Shift' }} load={load.bind(this)} primaryYAxis={{ title: 'Amount of sales in €', minimum: 0, maximum: 7, interval: 1, lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 }, labelFormat: '{value}k' }} chartArea={{ border: { width: 0 }, margin: { bottom: 12 } }} width={Browser.isDevice ? '100%' : '75%'} legendSettings={{ enableHighlight: true }} title="Amount of Sales by Payment Mode" loaded={onChartLoad.bind(this)} tooltip={{ enable: true, enableHighlight: true, showNearestTooltip: true }}>
                     <Inject services={[StackingAreaSeries, Legend, DateTime, Tooltip, Highlight]} />
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={data1} xName="x" yName="y" opacity={1} name="Bank-Transfer" type="StackingArea" border={{ width: 2, color: '#666666' }}></SeriesDirective>
@@ -72,6 +71,9 @@ const StackedArea = () => {
             </div>
             <div id="description">
                 <p>In this example, you can see how to render and configure the stacked area chart. This chart visualizes data with y-values stacked one over another in a series order. It shows the relationship between individual values to the total sum of points.</p>
+                <p>
+                    <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
+                </p>
                 <p><b>Injecting Module</b></p>
                 <p>
                     Chart component features are segregated into individual feature-wise modules. To use stacking area series, we need to inject <code>StackingAreaSeries</code> module into <code>services</code>.

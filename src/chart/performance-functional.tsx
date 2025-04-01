@@ -9,7 +9,7 @@ import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, Are
 import { EmitType } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
-
+import { loadChartTheme } from './theme-color';
 const SAMPLE_CSS = `
     #material-gradient-chart stop {
         stop-color: #00bdae;
@@ -136,9 +136,7 @@ const Performance = () => {
         args.chart.series[0].dataSource = series1;
         args.chart.series[0].xName = 'x';
         args.chart.series[0].yName = 'y';
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        let selectedTheme: string = loadChartTheme(args, true);
         args.chart.series[0].border.color = borderColor[themes.indexOf(args.chart.theme.toLowerCase())];
         args.chart.series[0].fill = 'url(#' + selectedTheme.toLowerCase() + '-gradient-chart)';
         args.chart.series[0].border = { width: 2, color: borderColor[themes.indexOf(args.chart.theme.toLowerCase())] }

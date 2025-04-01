@@ -9,6 +9,7 @@ import {
 import { Browser } from '@syncfusion/ej2-base';
 import { GetDateTimeData } from './data-service';
 import { updateSampleSection } from '../common/sample-base';
+import { loadRangeNavigatorTheme } from './theme-color';
 
 export let data: Object[] = GetDateTimeData(new Date(2018, 0, 1), new Date(2019, 0, 1));
 const SAMPLE_CSS = `
@@ -139,10 +140,7 @@ function LightWeight() {
     };
 
     function load(args: IRangeLoadedEventArgs): void {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+       loadRangeNavigatorTheme(args);
     };
 
 }

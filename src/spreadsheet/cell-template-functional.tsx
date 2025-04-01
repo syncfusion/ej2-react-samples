@@ -38,7 +38,7 @@ function CellTemplate() {
 
     function genderRadioButton(): JSX.Element {
         return (
-            <div>
+            <div style={{ paddingLeft: '2px' }}>
                 <RadioButtonComponent name="gender" value="male" label="Male"></RadioButtonComponent>
                 <RadioButtonComponent name="gender" value="female" label="Female"></RadioButtonComponent>
             </div>
@@ -92,7 +92,7 @@ function CellTemplate() {
     return (
         <div className='control-pane'>
             <div className='control-section spreadsheet-control'>
-                <SpreadsheetComponent showRibbon={false} allowPrint={false} showFormulaBar={false} cssClass={'e-custom-spreadsheet'} allowOpen={false} allowSave={false}
+                <SpreadsheetComponent showRibbon={false} enableContextMenu={false} allowPrint={false} showFormulaBar={false} cssClass={'e-custom-spreadsheet'} allowOpen={false} allowSave={false}
                     ref={(ssObj) => { spreadsheet = ssObj }} created={onCreated.bind(this)} name={'Candidates List'}
                     scrollSettings={scrollSettings} allowEditing={false} selectionSettings={selectionSettings}>
                     <SheetsDirective>

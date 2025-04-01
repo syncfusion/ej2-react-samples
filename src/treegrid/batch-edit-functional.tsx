@@ -20,9 +20,10 @@ const Batch = () => {
     newRowPosition: "Below",
   };
   const validationRule: Object = { required: true };
-  const validationRule1: Object = { date: true };
+  const validationRule1: Object = { date: ['M/d/yyyy', 'Please enter a valid date'] };
   const validationRule2: Object = { required: true, number: true };
   const editparams2: any = { params: { format: "n" } };
+  const editparams3: any = { params: {format:'M/d/yyyy'}};
   return (
     <div className="control-pane">
       <div className="control-section">
@@ -57,6 +58,7 @@ const Batch = () => {
               textAlign="Right"
               editType="datepickeredit"
               format="yMd"
+              edit={editparams3}
               validationRules={validationRule1}
             />
             <ColumnDirective

@@ -8,9 +8,9 @@
 }
 
 /*Hide property pane */
-@media (max-width: 480px) {
-    .tailwind3-dark .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item>.e-tab-wrap {
-        height: 70px;
+@media (max-width: 550px) {
+    .tailwind3-dark .sb-mobile-setting {
+        padding-top: 2px;
     }
 }
 
@@ -317,10 +317,6 @@ body.tailwind3-dark,
 .tailwind3-dark .sb-theme-studio a  {
     color: #6366f1;
 }
-.tailwind3-dark .sb-download-btn {
-    background-color: #6366f1;
-}
-
 .tailwind3-dark .sb-download-splitter,
 .tailwind3-dark .sb-toolbar-splitter.sb-custom-item {
     border-left: 1px solid #282f3c;

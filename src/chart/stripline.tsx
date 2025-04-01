@@ -203,7 +203,9 @@ export class Stripline extends SampleBase<{}, {}> {
                                 enable: true,
                                 header: '',
                                 format: '<b>${point.x}</b> <br> ${series.name} : <b>${point.y}</b',
-                                enableMarker: false
+                                enableMarker: false,
+                                enableHighlight: true,
+                                showNearestTooltip: true
                             }}
                             chartArea= {{
                                 border: { width: 0 }
@@ -251,7 +253,7 @@ export class Stripline extends SampleBase<{}, {}> {
                         In this example, you can see how to render and configure a strip line for the chart. Use the <code>start</code> and <code>end</code> properties in the <code>chartStripline</code> option to add a strip line to an axis. Additionally, the title for the chart can be positioned anywhere in the chart by using the <code>position</code> property in <code>titleStyle</code>.
                     </p>
                     <p>
-                        <code>Tooltip</code> is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+                        <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
                     </p>
                     <p><b>Injecting Module</b></p>
                     <p>

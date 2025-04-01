@@ -12,6 +12,19 @@ export const ChatUISampleOrder: Object = [
       { 'displayName': 'messageData.json', 'path': 'src/chat-ui/messageData.json' }
     ]
   },
+  { 'path': 'chat-ui/loadOn-demand',
+    'component': 'LoadOnDemand',
+    'name': 'Load On-demand',
+    'description':'Displays the loadon-demand supports in the ChatUI component, displaying initial set of messages and loads dynamically when the scroll hits top.',
+    'order': '01',
+    'category': 'Chat UI',
+    'type': 'new',
+    'api':'{"ChatUIComponent":["headerText", "headerIconCss", "messages", "user", "loadOnDemand"] }',
+    'sourceFiles': [
+      { 'displayName': 'loadOn-demand.tsx', 'path': 'src/chat-ui/loadOn-demand.tsx' },
+      { 'displayName': 'loadOn-demand.jsx', 'path': 'src/chat-ui/loadOn-demand.jsx' }
+    ]
+  },
   { 'path': 'chat-ui/template',
     'component': 'Template',
     'name': 'Template',

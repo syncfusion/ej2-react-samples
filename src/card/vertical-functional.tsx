@@ -45,7 +45,8 @@ const Vertical = () => {
                                         </div>
                                     </div>
                                     <div className="e-card-content e-card-left" style={{ textAlign: 'left' }}>
-                                        <table>
+                                    <table>
+                                        <tbody>
                                             <tr>
                                                 <td>johndoe@mail.com</td>
                                             </tr>
@@ -55,7 +56,8 @@ const Vertical = () => {
                                             <tr>
                                                 <td>www.johndoe.com</td>
                                             </tr>
-                                        </table>
+                                        </tbody>
+                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -97,11 +99,11 @@ const Vertical = () => {
             </div>
             <div id="description">
                 <p>
-                    The vertical card sample illustrate card contents in vertically aligned layout with header, content, and action buttons.
-                    <p>
-                        More information about Card can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/card/getting-started/">
-                        documentation</a> section.
-                    </p>
+                    The vertical card sample illustrates card contents in a vertically aligned layout with a header, content, and action buttons.
+                </p>
+                <p>
+                    More information about Card can be found in this 
+                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/card/getting-started/"> documentation</a> section.
                 </p>
             </div>
         </div>

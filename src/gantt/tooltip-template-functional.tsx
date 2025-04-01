@@ -70,11 +70,85 @@ const TooltipTemplate = () => {
       </tbody>
     </table>);
   };
-  const templateBaseline: any = baselineTooltip;
+  const templateBaseline: any = baselineTooltip; 
+  const timelineTooltip = (props) => {
+    const tier = props.tier;
+    const date = props.date;
+    const endDate = new Date(date);
+    if (tier === 'topTier' && ganttInstance.current.timelineSettings.topTier.unit) {
+      endDate.setDate(endDate.getDate() + 6);
+    }
+    const data = getTooltipData(new Date(date), endDate, tier);
+
+    const themeIsDark = document.body.classList.contains('tailwind3-dark') ||
+                      document.body.classList.contains('fluent2-dark') ||
+                      document.body.classList.contains('material3-dark') ||
+                      document.body.classList.contains('bootstrap5.3-dark') ||
+                      document.body.classList.contains('fluent2-highcontrast') ||
+                      document.body.classList.contains('highcontrast') ||
+                      document.body.classList.contains('fluent2-dark');
+    const borderColor = themeIsDark ? 'black' : 'white';
+
+    return (
+      <div style={{ padding: '5px' }}>
+        <div style={{ paddingBottom: '9px', textAlign: 'center' , borderBottom: `2px solid ${borderColor}` }}>
+          <span style={{ fontWeight: 'bold', fontSize: '14px' }}>
+            {tier === 'topTier' ? props.value : date}
+          </span>
+        </div>
+        <div style={{ display: 'flex', paddingBottom: '5px',  paddingTop: '9px' }}>
+          <span style={{ fontWeight: 'bold' }}>Active Tasks:</span>
+          <span style={{ paddingLeft: '2px' }}>{data.activeTasks}</span>
+        </div>
+        <div style={{ display: 'flex', paddingBottom: '5px' }}>
+          <span style={{ fontWeight: 'bold' }}>Milestones:</span>
+          <span style={{ paddingLeft: '2px' }}>{data.milestones}</span>
+        </div>
+        <div style={{ display: 'flex', paddingBottom: '5px' }}>
+          <span style={{ fontWeight: 'bold' }}>Overall Progress:</span>
+          <span style={{ paddingLeft: '2px' }}>{data.overallProgress}</span>
+        </div>
+      </div>
+    );
+  };
+  const templateTimeline: any = timelineTooltip;
+  const getTooltipData = (startDate: Date, endDate: Date, tier: string) => {
+    const gantt = ganttInstance.current;
+    let activeTasks = [];
+   
+    if (tier === 'topTier') {
+      activeTasks = gantt.currentViewData.filter((task) => {
+        const taskStart = new Date(task['StartDate']);
+        const taskEnd = new Date(task['EndDate']);
+        taskStart.setHours(0, 0, 0, 0);
+        taskEnd.setHours(0, 0, 0, 0);
+        return (taskStart >= startDate && taskEnd <= endDate);
+      });
+    } else {
+      activeTasks = gantt.currentViewData.filter((task) => {
+        const taskStart = new Date(task['StartDate']);
+        const taskEnd = new Date(task['EndDate']);
+        taskStart.setHours(0, 0, 0, 0);
+        taskEnd.setHours(0, 0, 0, 0);
+        return (taskStart.getTime() === startDate.getTime() && taskEnd.getTime() === endDate.getTime());
+      });
+    }
+
+    const milestones = activeTasks.filter((task) => task.Duration === 0);
+    const totalProgress = activeTasks.reduce((acc, task) => acc + (task.Progress || 0), 0);
+    const overallProgress = (activeTasks.length > 0) ? (totalProgress / activeTasks.length).toFixed(2) : '0';
+   
+    return {
+      activeTasks: activeTasks.length,
+      milestones: milestones.length,
+      overallProgress: overallProgress
+    };
+  }
   const tooltipSettings: any = {
     showTooltip: true,
     taskbar: templateTaskbar.bind(this),
-    baseline: templateBaseline.bind(this)
+    baseline: templateBaseline.bind(this),
+    timeline: templateTimeline.bind(this),
   };
   const labelSettings: any = {
     leftLabel: 'TaskName',
@@ -114,8 +188,9 @@ const TooltipTemplate = () => {
 
       <div id="description">
         <p>Tooltip can be enabled or disabled using <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/tooltipSettings/#showtooltip">tooltipSettings.showTooltip</a> property.In this demo, the
-          tooltip template is rendered for <code>taskbar</code> and <code>baseline</code> using the
-          <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/tooltipSettings/#taskbar">tooltipSettings.taskbar</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/tooltipSettings/#baseline">tooltipSettings.baseline</a> properties.</p>
+          tooltip template is rendered for <code>taskbar</code>, <code>timeline</code> and <code>baseline</code> using the
+          <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/tooltipSettings/#taskbar">tooltipSettings.taskbar</a>,  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/tooltipSettings/#timeline">tooltipSettings.timeline</a>
+           and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/tooltipSettings/#baseline">tooltipSettings.baseline</a> properties.</p>
         <p>The baseline feature enables the user to view the deviation between the planned dates and the actual dates of the tasks in a project.
           Baselines can be enabled in Gantt chart by enabling the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#renderbaseline">renderBaseline</a> property along with mapping the data source values for <code>baselineStartDate</code> and <code>baselineEndDate</code> properties.</p>
 

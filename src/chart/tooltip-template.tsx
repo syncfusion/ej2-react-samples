@@ -66,7 +66,7 @@ export class ChartTooltipTemplate extends SampleBase<{}, {}> {
                             lineStyle: { width: 0 },
                         }}
                         chartArea={{ border: { width: 0 } }}
-                        tooltip={{ enable: true,
+                        tooltip={{ enable: true, showNearestTooltip: true, enableHighlight: true,
                         template: this.tooltipTemplate.bind(this) }}
                         width={Browser.isDevice ? '100%' : '75%'}
                         title='USA Wheat Production' loaded={this.onChartLoad.bind(this)}>
@@ -93,12 +93,10 @@ export class ChartTooltipTemplate extends SampleBase<{}, {}> {
                 <div id="description">
                     <p>
                     In this example, you can see how to render and configure the backgroundImage and tooltip template for the charts. You can use backgroundImage, tooltip, fill properties to customize the line. marker is used to represent individual data and its value.
-
-Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
                   </p>
                     <p>
-                        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-                  </p>
+                        <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
+                    </p>
                     <p><b>Injecting Module</b></p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To use Tooltip, we need to inject

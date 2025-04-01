@@ -14,6 +14,7 @@
  import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
  import { updateSampleSection } from '../common/sample-base';
  import { products } from './data-source';
+ import { loadSparkLineTheme } from './theme-color';
  const SAMPLE_CSS = `
      .control-fluid {
          padding: 0px !important;
@@ -43,9 +44,7 @@
      let minElement: SliderComponent;
      let maxElement: SliderComponent;
      function load(args: ISparklineLoadedEventArgs): void {
-         let theme: string = location.hash.split('/')[1];
-         theme = theme ? theme : 'Fluent2';
-         args.sparkline.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as SparklineTheme;
+       loadSparkLineTheme(args);
      }
      let lineData: Object[] = [
          [0, 6, 4, 1, 3, 2, 5],

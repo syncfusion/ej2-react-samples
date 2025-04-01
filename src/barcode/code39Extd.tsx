@@ -14,7 +14,7 @@ import {
   ColorPickerComponent,
   ColorPickerEventArgs
 } from "@syncfusion/ej2-react-inputs";
-import { CheckBoxComponent } from "@syncfusion/ej2-react-buttons";
+import { CheckBoxComponent, ButtonComponent } from "@syncfusion/ej2-react-buttons";
 import { CheckBoxChangeEventArgs } from "@syncfusion/ej2-grids";
 
 let canShowError: boolean = false;
@@ -315,6 +315,15 @@ export class Code39Extd extends SampleBase<{}, {}> {
                 change={textOnChange}
               />
             </div>
+          </div>
+          <div className="row sb-child-row">
+                <div className="col-xs-6 top barcode-panel-left">
+                    <ButtonComponent id="downloadBtn1"
+                    onClick={()=>{
+                      barcodeInstance.exportImage("Barcode", "PNG");
+                    }}
+                    >Download</ButtonComponent>
+                </div>
           </div>
         </div>
         {/* <div className="sb-property-border sb-prop-md-4" style={{ left: '63%' }}></div> */}

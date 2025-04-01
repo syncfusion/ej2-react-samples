@@ -67,7 +67,7 @@ export class ClipboardSchedule extends SampleBase<{}, {}> {
             <div className='schedule-container'>
               <ScheduleComponent width='100%' height='550px' ref={schedule => this.scheduleObj = schedule}
                 selectedDate={new Date(2021, 0, 10)} eventSettings={{ dataSource: this.data }}
-                allowClipboard={true}  showQuickInfo={false}>
+                allowClipboard={true} showQuickInfo={false}>
                 <ViewsDirective>
                   <ViewDirective option='Week' />
                   <ViewDirective option='Day' />

@@ -1,3 +1,4 @@
+
 /**
  * Sample for Category Axis
  */
@@ -6,69 +7,19 @@ import { useEffect } from "react";
 import * as ReactDOM from "react-dom";
 import { EmitType } from '@syncfusion/ej2-base';
 import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, DataLabel, ChartTheme, Legend, Tooltip, BarSeries, Category, IPointRenderEventArgs, ILoadedEventArgs } from '@syncfusion/ej2-react-charts';
-import { Browser } from '@syncfusion/ej2-base';
-import { fabricColors, bootstrapColors, materialColors, highContrastColors, fluentColors, fluentDarkColors, bubbleFabricColors, bubbleMaterialDarkColors, bubbleMaterialColors, bubbleBootstrap5DarkColors, bubbleBootstrapColors, bubbleHighContrastColors, bubbleFluentDarkColors, bubbleFluentColors, bubbleTailwindDarkColors, bubbleTailwindColors, pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, bubbleBootstrap5Colors, pointBootstrap5Colors, pointMaterial3DarkColors, pointMaterial3Colors, fluent2Colors, fluent2HighContrastColors, pointTailwindColors, pointTailwindDarkColors, pointTailwind3Colors, pointTailwind3DarkColors } from './theme-color';
+import { Browser } from '@syncfusion/ej2-base'; 
+import { loadChartTheme, pointRenderEvent } from './theme-color';
 import { updateSampleSection } from '../common/sample-base';
-export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEventArgs): void => {
-    let selectedTheme: string = location.hash.split('/')[1];
-    selectedTheme = selectedTheme ? selectedTheme : 'Material';
-    if (selectedTheme && selectedTheme.indexOf('fabric') > -1) {
-        args.fill = pointFabricColors[args.point.index % 10];;
-    } else if (selectedTheme === 'material-dark') {
-        args.fill = pointMaterialDarkColors[args.point.index % 10];;
-    } else if (selectedTheme === 'material') {
-        args.fill = pointMaterialColors[args.point.index % 10];
-    } else if (selectedTheme === 'bootstrap5-dark') {
-        args.fill = pointBootstrap5DarkColors[args.point.index % 10];
-    } else if (selectedTheme === 'bootstrap5') {
-        args.fill = pointBootstrap5Colors[args.point.index % 10];
-    } else if (selectedTheme === 'bootstrap') {
-        args.fill = pointBootstrapColors[args.point.index % 10];
-    } else if (selectedTheme === 'bootstrap4') {
-        args.fill = pointBootstrapColors[args.point.index % 10];
-    } else if (selectedTheme === 'bootstrap-dark') {
-        args.fill = pointBootstrapColors[args.point.index % 10];
-    } else if (selectedTheme === 'highcontrast') {
-        args.fill = pointHighContrastColors[args.point.index % 10];
-    } else if (selectedTheme === 'fluent-dark') {
-        args.fill = pointFluentDarkColors[args.point.index % 10];
-    } else if (selectedTheme === 'fluent') {
-        args.fill = pointFluentColors[args.point.index % 10];
-    } else if (selectedTheme === 'tailwind-dark') {
-        args.fill = pointTailwindDarkColors[args.point.index % 10];
-    } else if (selectedTheme === 'tailwind') {
-        args.fill = pointTailwindColors[args.point.index % 10];
-    } else if (selectedTheme === 'material3-dark') {
-        args.fill = pointMaterial3DarkColors[args.point.index % 10];
-    } else if (selectedTheme === 'material3') {
-        args.fill = pointMaterial3Colors[args.point.index % 10];
-    } else if (selectedTheme === 'fluent2') {
-        args.fill = fluent2Colors[args.point.index % 10];
-    } else if (selectedTheme === 'fluent2-highcontrast' || selectedTheme === 'fluent2-dark') {
-        args.fill = fluent2HighContrastColors[args.point.index % 10];
-    }
-    else if (selectedTheme === 'tailwind') {
-        args.fill = pointTailwindColors[args.point.index % 10];
-    } else if (selectedTheme === 'tailwind-dark') {
-        args.fill = pointTailwindDarkColors[args.point.index % 10];
-    }
-    else if (selectedTheme === 'tailwind3') {
-        args.fill = pointTailwind3Colors[args.point.index % 10];
-    } else if (selectedTheme === 'tailwind3-dark') {
-        args.fill = pointTailwind3DarkColors[args.point.index % 10];
-    };
-}
-export let data: any[] = [
-    { x: 'Germany', y: 72, country: 'GER: 72' },
-    { x: 'Russia', y: 103.1, country: 'RUS: 103.1' },
-    { x: 'Brazil', y: 139.1, country: 'BRZ: 139.1' },
-    { x: 'India', y: 462.1, country: 'IND: 462.1' },
-    { x: 'China', y: 721.4, country: 'CHN:  721.4' },
-    { x: 'United States<br>Of America', y: 286.9, country: 'USA: 286.9' },
-    { x: 'Great Britain', y: 115.1, country: 'GBR: 115.1' },
-    { x: 'Nigeria', y: 97.2, country: 'NGR:  97.2' },
+export let categoryData: Object[] = [
+    { x: 'Facebook', y: 3049, country: 'Facebook: 3049' },
+    { x: 'YouTube', y: 2491, country: 'YouTube: 2491' },
+    { x: 'WhatsApp', y: 2000, country: 'WhatsApp: 2000' },
+    { x: 'Instagram', y: 2000, country: 'Instagram: 2000' },
+    { x: 'TikTok', y: 1562, country: 'TikTok:  1562' },
+    { x: 'WeChat', y: 1336, country: 'WeChat: 1336' },
+    { x: 'Facebook Messenger', y: 979, country: 'Facebook Messenger: 979' },
+    { x: 'Telegram', y: 800, country: 'Telegram:  800' },
 ];
-
 const SAMPLE_CSS = `
     .control-fluid {
         padding: 0px !important;
@@ -80,29 +31,26 @@ const CategoryAxis = () => {
     useEffect(() => {
         updateSampleSection();
     }, [])
-
     const onChartLoad = (args: ILoadedEventArgs): void => {
         let chart: Element = document.getElementById('charts');
         chart.setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
+    const pointRender = (args: IPointRenderEventArgs): void => {
+        pointRenderEvent(args);
+    }
     return (
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
-                <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', majorGridLines: { width: 0 }, enableTrim: false, majorTickLines: {width : 0}, minorTickLines: {width: 0} }} primaryYAxis={{ minimum: 0, maximum: 800, labelFormat: '{value}M', edgeLabelPlacement: 'Shift', majorGridLines: { width: 0 }, majorTickLines: { width: 0 }, lineStyle: { width: 0 }, labelStyle: { color: 'transparent' } }} load={load.bind(this)} width={Browser.isDevice ? '100%' : '75%'} chartArea={{ border: { width: 0 } }} legendSettings={{ visible: false }} title={Browser.isDevice ? 'Internet Users in Million – 2016' : 'Internet Users – 2016'} pointRender={pointRender} loaded={onChartLoad.bind(this)} tooltip={{ enable: false, format: '${point.tooltip}' }}>
+                <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', enableWrap: true, maximumLabelWidth: 50, majorGridLines: { width: 0 }, majorTickLines: {width : 0}, minorTickLines: {width: 0}, }} primaryYAxis={{ labelFormat: '{value}M', edgeLabelPlacement: 'Shift', majorGridLines: { width: 0 }, majorTickLines: { width: 0 }, lineStyle: { width: 0 }, labelStyle: { color: 'transparent' } }} load={load.bind(this)} width={Browser.isDevice ? '100%' : '75%'} chartArea={{ border: { width: 0 } }} legendSettings={{ visible: false }} title='Active Users of Largest Social Networking Services (January 2024)' subTitle='Source: wikipedia.org' pointRender={pointRender} loaded={onChartLoad.bind(this)} tooltip={{ enable: false, format: '${point.tooltip}' }}>
                     <Inject services={[BarSeries, Legend, Tooltip, DataLabel, Category]} />
                     <SeriesCollectionDirective>
-                        <SeriesDirective dataSource={data} xName='x' yName='y' type='Bar' width={2} tooltipMappingName='country' marker={{ dataLabel: { visible: true, position: 'Top', font: { fontWeight: '600', color: '#ffffff', size: Browser.isDevice ? '9px' : '11px' } } }} name='Users' />
+                        <SeriesDirective dataSource={categoryData} xName='x' yName='y' type='Bar' width={2} tooltipMappingName='country' marker={{ dataLabel: { visible: true, position: 'Top', font: { fontWeight: '600', color: '#ffffff', size: Browser.isDevice ? '9px' : '11px' } } }} name='Users' />
                     </SeriesCollectionDirective>
                 </ChartComponent>
-                <div style={{ float: 'right', marginRight: '10px' }}>Source: &nbsp;
-                    <a href="http://www.internetworldstats.com/top20.htm" target="_blank" aria-label="Navigate to the documentation for internet world stats">www.internetworldstats.com</a>
-                </div>
             </div>
             <div id="action-description">
                 <p>This sample shows a category axis in a chart with details about internet users across different countries.</p>

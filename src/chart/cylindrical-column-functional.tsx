@@ -1,19 +1,20 @@
 /**
- * Sample for Cylindrical Column series
+ * Sample for the Cylindrical Column series
  */
 import * as React from 'react';
 import { useEffect } from "react";
-import { ChartComponent, ILoadedEventArgs, ColumnSeries, Category, DataLabel, Tooltip, ChartTheme, SeriesDirective, SeriesCollectionDirective, Inject } from '@syncfusion/ej2-react-charts';
+import { ChartComponent, ILoadedEventArgs, ColumnSeries, Category, DataLabel, Tooltip, SeriesDirective, SeriesCollectionDirective, Inject, Legend } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import { loadChartTheme } from './theme-color';
 
-export let data: Object[] = [
-    { x: 'China', y: 26, tooltipMappingName: 'China' },
-    { x: 'Australia', y: 8, tooltipMappingName: 'Australia' },
-    { x: 'Germany', y: 17, tooltipMappingName: 'Germany' },
-    { x: 'Spain', y: 7, tooltipMappingName: 'Spain' },
-    { x: 'Japan', y: 12, tooltipMappingName: 'Japan' },
-    { x: 'USA', y: 46, tooltipMappingName: 'United States' }
+export let cylindricalData: Object[] = [
+    { year: '2017 - 18', energy: 228.0 },
+    { year: '2018 - 19', energy: 261.8 },
+    { year: '2019 - 20', energy: 294.3 },
+    { year: '2020 - 21', energy: 297.5 },
+    { year: '2021 - 22', energy: 322.6 },
+    { year: '2022 - 23', energy: 365.59 },
 ];
 
 const CylindricalColumn = () => {
@@ -27,16 +28,15 @@ const CylindricalColumn = () => {
     };
 
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
     return (
         <div className='control-pane'>
             <div className='control-section'>
                 <ChartComponent id='charts' style={{ textAlign: "center" }}
                     chartArea={{ border: { width: 0 } }}
-                    title='Olympic Gold Medal Counts - RIO'
+                    title='Year-wise Renewable Energy Generation Trends in India'
+                    subTitle='Source: wikipedia.org'
                     primaryXAxis={{
                         valueType: 'Category',
                         interval: 1,
@@ -47,38 +47,41 @@ const CylindricalColumn = () => {
                         minorTickLines: { width: 0 }
                     }}
                     primaryYAxis={{
-                        title: 'Medal Count',
+                        title: 'Total Renewable Power (TWh)',
+                        labelFormat: '{value}TWh',
+                        minimum: 150,
+                        maximum: 400,
+                        interval: 50,
                         majorTickLines: { width: 0 },
-                        lineStyle: { width: 0 },
-                        maximum: 50,
-                        interval: 10
+                        lineStyle: { width: 0 }
                     }}
                     tooltip={{
                         enable: true,
-                        header: "<b>${point.tooltip}</b>",
-                        format: "Gold Medal: <b>${point.y}</b>"
+                        header: '<b>${point.x}</b>',
+                        format: '${series.name}: <b>${point.y}</b>'
                     }}
+                    legendSettings={{ visible: false }}
                     load={load.bind(this)}
                     loaded={onChartLoad.bind(this)}
                     width={Browser.isDevice ? '100%' : '75%'}>
-                    <Inject services={[ColumnSeries, Category, DataLabel, Tooltip]} />
+                    <Inject services={[ColumnSeries, Category, DataLabel, Tooltip, Legend]} />
                     <SeriesCollectionDirective>
                         <SeriesDirective
-                            dataSource={data}
+                            dataSource={cylindricalData}
                             columnFacet='Cylinder'
                             type='Column'
-                            xName='x'
-                            yName='y'
-                            width={2}
-                            columnSpacing={0.1}
-                            tooltipMappingName='tooltipMappingName'>
+                            name='India'
+                            xName='year'
+                            yName='energy'
+                            columnSpacing={0.3}>
                         </SeriesDirective>
                     </SeriesCollectionDirective>
                 </ChartComponent>
             </div>
             <div id="action-description">
                 <p>
-                    This sample visualizes the gold medal count from the Rio Olympics using a cylindrical column chart.            </p>
+                   This sample visualizes the year-wise renewable energy generation trends in India using a cylindrical column chart. The chart displays the total renewable energy generation in terawatt-hours (TWh) for each year from 2017 to 2023.
+                </p>
             </div>
             <div id="description">
                 <p>

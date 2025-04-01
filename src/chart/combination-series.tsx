@@ -31,7 +31,7 @@ export class CombinationSeries extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <style>{SAMPLE_CSS}</style>
                 <div className='control-section'>
-                    <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ interval: Browser.isDevice ? 2 : 1, labelIntersectAction: 'Rotate45', valueType: 'Category', majorGridLines: { width: 0 }, minorGridLines: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 }, lineStyle: { width: 0 } }} load={this.load.bind(this)} primaryYAxis={{ title: 'Growth (in Billion)', minimum: -3, maximum: 3, interval: 1, lineStyle: { width: 0 }, majorTickLines: { width: 0 }, majorGridLines: { width: 1 }, minorGridLines: { width: 1 }, minorTickLines: { width: 0 }, labelFormat: '{value}B' }} chartArea={{ border: { width: 0 } }} title='Annual Growth GDP in France' loaded={this.onChartLoad.bind(this)} tooltip={{ enable: true }} width={Browser.isDevice ? '100%' : '75%'} legendSettings={{ visible: true, enableHighlight: true }}>
+                    <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ interval: Browser.isDevice ? 2 : 1, labelIntersectAction: 'Rotate45', valueType: 'Category', majorGridLines: { width: 0 }, minorGridLines: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 }, lineStyle: { width: 0 } }} load={this.load.bind(this)} primaryYAxis={{ title: 'Growth (in Billion)', minimum: -3, maximum: 3, interval: 1, lineStyle: { width: 0 }, majorTickLines: { width: 0 }, majorGridLines: { width: 1 }, minorGridLines: { width: 1 }, minorTickLines: { width: 0 }, labelFormat: '{value}B' }} chartArea={{ border: { width: 0 } }} title='Annual Growth GDP in France' loaded={this.onChartLoad.bind(this)} tooltip={{ enable: true, enableHighlight: true }} width={Browser.isDevice ? '100%' : '75%'} legendSettings={{ visible: true, enableHighlight: true }}>
                         <Inject services={[StackingColumnSeries, LineSeries, Category, ColumnSeries, Tooltip, Legend, Highlight]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data} xName='x' yName='y' name='Private Consumption' type='StackingColumn' />
@@ -41,9 +41,6 @@ export class CombinationSeries extends SampleBase<{}, {}> {
                             <SeriesDirective dataSource={data} xName='x' yName='y4' name='GDP' type='Line' width={2} opacity={0.6} marker={{ visible: true, width: 7, height: 7 }} />
                         </SeriesCollectionDirective>
                     </ChartComponent>
-                    <div style={{ float: 'right', marginRight: '10px' }}>Source: &nbsp;
-                        <a href="http://perspectives.pictet.com/2016/01/29/growth-accelerated-markedly-in-france-and-spain-in-2015/" target="_blank" aria-label="Navigate to the documentation for perspectives pictet">perspectives.pictet.com</a>
-                    </div>
                 </div>
                 <div id="action-description">
                     <p>This sample illustrates a combination of line and stacked column series. Tooltip shows the information about the data point.</p>

@@ -28,10 +28,13 @@ export class LiveStream extends SampleBase<{}, {}> {
     public initial: boolean = true;
     timerID: any;
 
-    public load(this: TreeGridComponent, args: LoadEventArgs): void{
+    public load(){
+        document.getElementById('update1')?.click();
+    }
+
+    public created(this: TreeGridComponent, args: LoadEventArgs): void {
         (this as any).grid.on('data-ready', () => {
             if ((this.grid as any).initial) {
-                document.getElementById('update1')?.click();
                 (this as any).initial = false;
                 ((this as any).feedDelayInput as NumericTextBoxComponent).element.addEventListener('keypress', (e: any) => {
                     if (e && e.key === 'Enter' && ((this as any).feedDelayInput as any).element.parentElement.classList.contains('e-input-focus')) {
@@ -204,7 +207,8 @@ export class LiveStream extends SampleBase<{}, {}> {
                         }}
                         allowSelection={false}
                         queryCellInfo={this.queryCellInfo}
-                        load={this.load.bind(this)}
+                        load={this.load}
+                        created={this.created.bind(this)}
                     >
                         <ColumnsDirective>
                             <ColumnDirective

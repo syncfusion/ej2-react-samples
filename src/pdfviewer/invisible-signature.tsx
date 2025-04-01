@@ -50,12 +50,13 @@ export class InvisibleDigitalSignature extends SampleBase<{}, {}> {
                     {/* Render the PDF Viewer */}
                     <PdfViewerComponent id="container" ref={(scope) => { this.viewer = scope; }} enableToolbar={false} enableNavigationToolbar={false}
                         documentLoad={this.documentLoaded}
-                        serviceUrl='https://services.syncfusion.com/react/production/api/pdfviewer'
-                        documentPath="InvisibleDigitalSignature.pdf"
+                        enableAnnotationToolbar={false}
+                        documentPath="https://cdn.syncfusion.com/content/pdf/InvisibleDigitalSignature.pdf"
+                        resourceUrl='https://cdn.syncfusion.com/ej2/27.2.2/dist/ej2-pdfviewer-lib'
                         addSignature={this.addSignature}
                         style={{ 'display': 'block', 'height': '640px' }}>
                         <Inject services={[Magnification, FormFields, FormDesigner, Navigation, LinkAnnotation, BookmarkView,PageOrganizer,
-                            ThumbnailView, Annotation, Print, TextSelection, TextSearch]} />
+                            ThumbnailView, Annotation, Print, TextSearch]} />
                     </PdfViewerComponent>
                     <input type="file" id="fileUpload" accept=".pdf" onChange={this.readFile.bind(this)} style={{ 'display': 'block', 'visibility': 'hidden', 'width': '0', 'height': '0' }} />
                 </div>
@@ -110,26 +111,37 @@ export class InvisibleDigitalSignature extends SampleBase<{}, {}> {
                 break;
 
             case 'pdfviewer_sign':
-                this.viewer.serverActionSettings.download = 'AddSignature';
-                let data;
-                let base64data;
-                this.viewer.saveAsBlob().then((value) => {
-                    data = value;
+                var url = "https://services.syncfusion.com/react/production/api/pdfviewer/AddSignature";
+                this.viewer.saveAsBlob().then(function (value) {
                     var reader = new FileReader();
-                    reader.readAsDataURL(data);
-                    reader.onload = () => {
-                        base64data = reader.result;
-                        this.documentData = base64data;
-                        this.viewer.load(base64data, null);
-                        this.downloadVisiblity = false;
-                        this.buttonVisiblity = true;
-                        this.toolbar.items[1].disabled = true;
-                        this.toolbar.items[2].disabled = false;
-                        this.viewer.fileName = this.fileName;
-				        this.viewer.downloadFileName = this.fileName;
+                    reader.readAsDataURL(value);
+                    reader.onload = (e) => {
+                        var base64String = e.target ? e.target.result : null;
+                        const xhr = new XMLHttpRequest();
+                        xhr.open('POST', url, true);
+                        xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
+                        var requestData = JSON.stringify({ base64String: base64String });
+                        xhr.onload = () => {
+                            if (xhr.status === 200) {
+                                this.documentData = xhr.responseText;
+                                this.viewer.load(xhr.responseText, null);
+                                this.toolbar.items[1].disabled = true;
+                                this.toolbar.items[2].disabled = false;
+                                this.viewer.fileName = this.fileName;
+                                this.viewer.downloadFileName = this.fileName;
+                            }
+                            else {
+                                console.error('Error in AddSignature API:', xhr.statusText);
+                            }
+                        };
+                        xhr.onerror = function () {
+                            console.error('Error reading Blob as Base64.', xhr.statusText);
+                        };
+                        xhr.send(requestData);
                     };
+                }).catch(function (error) {
+                    console.error('Error saving Blob:', error);
                 });
-                this.viewer.serverActionSettings.download = 'Download';
                 break;
             //Downloads the PDF document being loaded in the PDFViewer.
             case 'download':
@@ -223,5 +235,4 @@ export class InvisibleDigitalSignature extends SampleBase<{}, {}> {
             }
         }
     }
-
 }

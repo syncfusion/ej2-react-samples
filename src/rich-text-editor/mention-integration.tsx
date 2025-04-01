@@ -73,7 +73,7 @@ export class MentionIntegration extends SampleBase<{}, {}> {
         </div>
 
         <MentionComponent ref={(scope) => { this.mentionObj = scope; }} id="mentionEditor" target="#mention_integration_rte-edit-view" suggestionCount={8} showMentionChar={false}  allowSpaces={true} dataSource={this.data} fields={this.fieldsData} 
-                popupWidth="250px" popupHeight="200px" itemTemplate={this.itemTemplate} displayTemplate={this.displayTemplate}></MentionComponent>
+                popupWidth="250px" popupHeight="200px" itemTemplate={this.itemTemplate} displayTemplate={this.displayTemplate} suffixText='&nbsp;'></MentionComponent>
 
         <div id="action-description">
         <p>This example shows how to integrate @mention component within Rich Text Editor component. Type `@` character and select a user from the suggestion list.</p>

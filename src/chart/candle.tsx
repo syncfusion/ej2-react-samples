@@ -29,14 +29,14 @@ export class Candle extends SampleBase<{}, {}> {
                 <style>{SAMPLE_CSS}</style>
                 <div className='control-section'>
                     <div className="row">
-                        <ChartComponent id='charts' style={{ textAlign: "center" }} load={this.load.bind(this)} primaryXAxis={{ valueType: 'DateTime', crosshairTooltip: { enable: true }, majorGridLines: { width: 0 } }} primaryYAxis={{ title: 'Volume', labelFormat: '{value}M', opposedPosition: true, majorGridLines: { width: 1 }, lineStyle: { width: 0 } }} legendSettings= {{visible: false}} tooltip={{ enable: true, shared: true,  header: "",format: "<b>Apple Inc.(AAPL)</b> <br> High : <b>${point.high}</b> <br> Low : <b>${point.low}</b> <br> Open : <b>${point.open}</b> <br> Close : <b>${point.close}</b> <br> Volume : <b>${point.volume}</b>" }} width={Browser.isDevice ? '100%' : '80%'} axisLabelRender={this.axisLabelRender.bind(this)} chartArea={{ border: { width: 0 } }} title="AAPL Historical" loaded={this.onChartLoad.bind(this)}>
+                        <ChartComponent id='charts' style={{ textAlign: "center" }} load={this.load.bind(this)} primaryXAxis={{ valueType: 'DateTime', crosshairTooltip: { enable: true }, majorGridLines: { width: 0 } }} primaryYAxis={{ title: 'Volume', labelFormat: '{value}M', opposedPosition: true, majorGridLines: { width: 1 }, lineStyle: { width: 0 }, majorTickLines: { width: 0 } }} legendSettings= {{visible: false}} tooltip={{ enable: true, shared: true,  header: "",format: "<b>Apple Inc.(AAPL)</b> <br> High : <b>${point.high}</b> <br> Low : <b>${point.low}</b> <br> Open : <b>${point.open}</b> <br> Close : <b>${point.close}</b> <br> Volume : <b>${point.volume}</b>" }} width={Browser.isDevice ? '100%' : '80%'} axisLabelRender={this.axisLabelRender.bind(this)} chartArea={{ border: { width: 0 } }} title="AAPL Historical" loaded={this.onChartLoad.bind(this)}>
                             <Inject services={[CandleSeries, StripLine, Category, Tooltip, DateTime, Zoom, Legend, ColumnSeries, Logarithmic, Crosshair]} />
                             <RowsDirective>
                                 <RowDirective height={'30%'} />
                                 <RowDirective height={'70%'} />
                             </RowsDirective>
                             <AxesDirective>
-                                <AxisDirective name='secondary' rangePadding={"None"}  maximum= {150} minimum= {55}  opposedPosition={true} rowIndex={1} majorGridLines={{ width: 1 }} labelFormat='n0' title='Price' plotOffset={30} lineStyle={{ width: 0 }} />
+                                <AxisDirective name='secondary' rangePadding={"None"}  maximum= {150} minimum= {55}  opposedPosition={true} rowIndex={1} majorGridLines={{ width: 1 }} labelFormat='n0' title='Price' plotOffset={30} lineStyle={{ width: 0 }} majorTickLines={{ width: 0 }} />
                             </AxesDirective>
                             <SeriesCollectionDirective>
                                 <SeriesDirective type='Column' dataSource={chartValues} animation={{ enable: true }} xName='period' yName='volume' enableTooltip={false} name='Volume' />

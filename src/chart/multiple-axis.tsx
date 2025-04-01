@@ -34,7 +34,7 @@ export class MultipleAxis extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <style>{SAMPLE_CSS}</style>
                 <div className='control-section'>
-                    <ChartComponent id='charts' style={{ textAlign: "center" }} ref={charts=>this.chartInstance=charts} primaryXAxis={{ valueType: 'Category', minorGridLines: { width : 0}, majorGridLines: { width: 0 } }} primaryYAxis={{ minimum: 0, maximum: 100, interval: 20, lineStyle: { width: 0 }, labelFormat: '{value}°F' }} width={Browser.isDevice ? '100%' : '75%'} chartArea={{ border: { width: 0 } }} load={this.load.bind(this)} legendSettings={{ visible: false }} title='Weather Data' loaded={this.onChartLoad.bind(this)} tooltip={{ enable: true }}>
+                    <ChartComponent id='charts' style={{ textAlign: "center" }} ref={charts=>this.chartInstance=charts} primaryXAxis={{ valueType: 'Category', minorGridLines: { width : 0}, majorGridLines: { width: 0 } }} primaryYAxis={{ minimum: 0, maximum: 100, interval: 20, lineStyle: { width: 0 }, labelFormat: '{value}°F', majorTickLines: { width: 0 } }} width={Browser.isDevice ? '100%' : '75%'} chartArea={{ border: { width: 0 } }} load={this.load.bind(this)} legendSettings={{ visible: false }} title='Weather Data' loaded={this.onChartLoad.bind(this)} tooltip={{ enable: true, enableHighlight: true }}>
                         <Inject services={[LineSeries, ColumnSeries, Category, Tooltip, SplineSeries, ChartAnnotation]} />
                         <AxesDirective>
                             <AxisDirective majorGridLines={{ width: 0 }} rowIndex={0} opposedPosition={true} lineStyle={{ width: 0 }} minimum={24} maximum={36} interval={2} majorTickLines={{ width: 0 }} name='yAxis1' labelFormat='{value}°C' />

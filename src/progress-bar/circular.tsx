@@ -9,6 +9,7 @@ import {
 } from '@syncfusion/ej2-react-progressbar';
 import { EmitType } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
+import { loadProgressBarTheme } from './theme-colors';
 
 
 const SAMPLE_CSS = `
@@ -74,10 +75,7 @@ export class ProgressBarDefault extends SampleBase<{}, {}> {
     }
     private progressLoad: EmitType<ILoadedEventArgs> = (args: ILoadedEventArgs) => {
         let div: HTMLCollection = document.getElementsByClassName('progress-text-align');
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.progressBar.theme = (selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast') as ProgressTheme;
+        loadProgressBarTheme(args);
         if(args.progressBar.theme === 'HighContrast' || args.progressBar.theme === 'Bootstrap5Dark' || args.progressBar.theme === 'BootstrapDark' || args.progressBar.theme === 'FabricDark'
         || args.progressBar.theme === 'TailwindDark' || args.progressBar.theme === 'Tailwind3Dark' ||  args.progressBar.theme === 'MaterialDark' || args.progressBar.theme === 'FluentDark' || args.progressBar.theme === 'Material3Dark') {
                 for (let i = 0; i < div.length; i++) {

@@ -9,6 +9,7 @@ import { Browser } from '@syncfusion/ej2-base';
 import { PropertyPane } from '../common/property-pane';
 import { EmitType } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import { loadChartTheme } from './theme-color';
 export let data1: any[] = [
     { x: 'India', y: 7.3 },
     { x: 'Myanmar', y: 7.9 },
@@ -62,16 +63,14 @@ const IndexedAxis = () => {
         document.getElementById('charts').setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
     return (
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-md-9'>
-                    <ChartComponent id='charts' ref={chartInstance} primaryXAxis={{ valueType: 'Category', interval: 1, crosshairTooltip: { enable: false }, isIndexed: true, labelRotation: Browser.isDevice ? -45 : 0, labelIntersectAction: Browser.isDevice ? 'None' : 'Rotate45', majorTickLines: {width : 0}, minorTickLines: {width: 0} }} primaryYAxis={{ labelFormat: '{value}%', title: 'GDP Growth Rate' }} chartArea={{ border: { width: 0 } }} load={load.bind(this)} title="GDP by Countries" loaded={onChartLoad.bind(this)} tooltip={{ enable: false}} crosshair={{ enable: false, lineType: 'Vertical' }}>
+                    <ChartComponent id='charts' ref={chartInstance} primaryXAxis={{ valueType: 'Category', interval: 1, crosshairTooltip: { enable: false }, isIndexed: true, labelRotation: Browser.isDevice ? -45 : 0, labelIntersectAction: Browser.isDevice ? 'None' : 'Rotate45', majorTickLines: {width : 0}, minorTickLines: {width: 0}, majorGridLines: { width: 0 } }} primaryYAxis={{ labelFormat: '{value}%', title: 'GDP Growth Rate', majorTickLines: { width: 0 }, lineStyle: { width: 0 } }} chartArea={{ border: { width: 0 }, margin: { bottom: 12 } }} load={load.bind(this)} title="GDP by Countries" loaded={onChartLoad.bind(this)} tooltip={{ enable: false}} crosshair={{ enable: false, lineType: 'Vertical' }}>
                         <Inject services={[Legend, Category, LineSeries, ColumnSeries,  Crosshair, DataLabel]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} xName='x' yName='y' name='2015' width={2} type='Column' marker={{ height: 10, width: 10, dataLabel: { visible: true, position: 'Top', enableRotation : Browser.isDevice ? true : false, angle: -90, font: {  size : Browser.isDevice ? '8px' : '11px' } } }} />

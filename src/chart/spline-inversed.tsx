@@ -2,77 +2,59 @@
  * Sample for Inversed Spline series
  */
 import * as React from 'react';
-import {
-    ChartComponent,
-    SeriesCollectionDirective,
-    SeriesDirective, ILoadedEventArgs, ChartTheme,
-    Inject,
-    Category,
-    SplineSeries,
-    Tooltip,
-    Highlight
-} from '@syncfusion/ej2-react-charts';
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, ILoadedEventArgs, Inject, Category, SplineSeries, Tooltip, Highlight } from '@syncfusion/ej2-react-charts';
+import { loadChartTheme } from './theme-color';
 import { SampleBase } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
-export let data1 = [
-    { Month: 2000, LDN_Temperature: -1, FR_Temperature: 10 },{ Month: 2002, LDN_Temperature: -1, FR_Temperature: 7 },{ Month: 2004, LDN_Temperature: 25, FR_Temperature: 13 },
-    { Month: 2005, LDN_Temperature: 31, FR_Temperature: 16 },{ Month: 2007, LDN_Temperature: 14, FR_Temperature: 11 },{ Month: 2010, LDN_Temperature: 8, FR_Temperature: 10 },
-    { Month: 2011, LDN_Temperature: 8, FR_Temperature: 15 },{ Month: 2013, LDN_Temperature: 8, FR_Temperature: 20 },{ Month: 2014, LDN_Temperature: 8, FR_Temperature: 17 },
-    { Month: 2015, LDN_Temperature: 8, FR_Temperature: 5 }
+export let inversedData: Object[] = [
+    { country: 'United States', y: 194.55 },
+    { country: 'Japan', y: 146.2 },
+    { country: 'China', y: 65.1 },
+    { country: 'France', y: 84.9 },
+    { country: 'India', y: 140.1 },
+    { country: 'Canada', y: 160.7 },
+    { country: 'Brazil', y: 68.4 },
+    { country: 'United Kingdom', y: 100.2 },
+    { country: 'Sweden', y: 162 },
+    { country: 'Netherlands', y: 132.3 },
+    { country: 'Bangladesh', y: 27.7 }
 ];
 const SAMPLE_CSS = `
      .control-fluid {
          padding: 0px !important;
      }`;
-export class SplineInversed extends SampleBase<{}, {}>{
+export class SplineInversed extends SampleBase<{}, {}> {
     render() {
         return (
             <div className="control-pane">
                 <style>{SAMPLE_CSS}</style>
                 <div className="control-section">
-                    <ChartComponent
-                        id="charts"
-                        style={{ textAlign: 'center' }}
-                        isTransposed={true}
-                        primaryXAxis={{ interval: 4, title: 'Years', edgeLabelPlacement: 'Shift', minimum: 2000, maximum: 2016, labelIntersectAction: 'Rotate90', minorTickLines: { width: 0 } }}
-                        load={this.load.bind(this)}
-                        width={Browser.isDevice ? '100%' : '75%'}
-                        legendSettings={{visible : false}}
-                        chartArea={{ border: { width: 1 } }}
-                        primaryYAxis={{ labelFormat: '{value}M', minimum: 0, title: 'Sales (In Millions)', maximum: 25, interval: 5, }}
-                        tooltip={{ enable: true , shared:true, header:'<b>Album Sale</b>', format:'${point.x}: <b>${point.y}</b>'}}
-                        title="Music Album Sales"
-                        loaded={this.onChartLoad.bind(this)}>
+                    <ChartComponent id="charts" style={{ textAlign: 'center' }} isTransposed={true} primaryXAxis={{ valueType: 'Category', minorTickLines: { width: 0 }, lineStyle: { width: 0 }, majorTickLines: { width: 0 }, labelPlacement: 'OnTicks' }} load={this.load.bind(this)} width={Browser.isDevice ? '100%' : '75%'} legendSettings={{ visible: false }} chartArea={{ border: { width: 0 } }} primaryYAxis={{ labelFormat: '{value}%', title: 'Capitalization Ratio (% of GDP)', interval: 40, edgeLabelPlacement: 'Shift', lineStyle: { width: 0 }, majorTickLines: { width: 0 }, majorGridLines: { width: 0 }, labelRotation: Browser.isDevice ? -45 : 0 }} tooltip={{ enable: true, showNearestTooltip: true, header: '<b>Stock Market Cap</b>', format: '${point.x}: <b>${point.y}</b>', enableHighlight: true }} title="Stock Market Capitalization as a Percentage of GDP by Country" subTitle='Source: wikipedia.org' loaded={this.onChartLoad.bind(this)}>
                         <Inject services={[SplineSeries, Category, Tooltip, Highlight]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={data1} xName="Month" yName="FR_Temperature" width={2} name="London" type="Spline" marker={{ visible: true, width: 7, height: 7, isFilled: true }}></SeriesDirective>
+                            <SeriesDirective dataSource={inversedData} xName="country" yName="y" width={2} type="Spline" marker={{ visible: true, width: 7, height: 7, isFilled: true }}></SeriesDirective>
                         </SeriesCollectionDirective>
                     </ChartComponent>
-                    <div style={{ float: 'right', marginRight: '10px' }}>Source: &nbsp;
-                         <a href="https://www.worldweatheronline.com/mooresville-weather/north-carolina/us.aspx" target="_blank">www.worldweatheronline.com</a>
-                    </div>
                 </div>
                 <div id="action-description">
-                <p>
-                This sample shows the music album sales with the spline series by inversing X and Y Axis. Data points are enhanced by a marker and tooltip.
-            </p>
+                    <p>
+                        This sample showcases an inversed spline chart depicting stock market capitalization as a percentage of GDP by country, with enhanced interactivity through markers and tooltips.
+                    </p>
                 </div>
                 <div id="description">
                     <p>
-                    In this example, you can see how to render and configure the spline type charts. A Spline chart uses a curved line to connect points in a data series.
-                      <code>Marker</code> are used to represent individual data and its values.
+                        In this example, you can see how to render and configure inversed spline type charts using the <code>isTransposed</code> property. A spline chart uses a curved line to connect points in a data series.
+                        <code>Markers</code> are used to represent individual data points and their values.
                     </p>
                     <p>
-                    <code>Tooltips</code> are enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+                        <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
                     </p>
                     <p><b>Injecting Module</b></p>
                     <p>
-                        Chart component features are segregated into individual feature-wise modules. To use spline series, we need to inject
-                        <code>SplineSeries</code> module into <code>services</code>.
+                        Chart component features are segregated into individual feature-wise modules. To use spline series, we need to inject <code>SplineSeries</code> module into <code>services</code>.
                     </p>
                     <p>
-                        More information on the spline series can be found in this &nbsp;
-                         <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/spline" aria-label="Navigate to the documentation for Spline Chart in React Chart component">documentation section</a>.
+                        More information on the spline series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/spline" aria-label="Navigate to the documentation for Spline Chart in React Chart component">documentation section</a>.
                     </p>
                 </div>
             </div>
@@ -81,13 +63,10 @@ export class SplineInversed extends SampleBase<{}, {}>{
     public onChartLoad(args: ILoadedEventArgs): void {
         let chart: Element = document.getElementById('charts');
         chart.setAttribute('title', '');
+    };
 
-    };
-        
     public load(args: ILoadedEventArgs): void {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme =(selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
-        
+
 }

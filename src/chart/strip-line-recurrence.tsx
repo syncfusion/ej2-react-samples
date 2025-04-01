@@ -68,7 +68,9 @@ export class Striplinerecurrence extends SampleBase<{}, {}> {
                                 ]
                             }}
                             tooltip={{
-                                enable: true, format: ' Year: ${point.x}<br> Tons Per Day: ${point.y}'
+                                enable: true, 
+                                format: ' Year: ${point.x}<br> Tons Per Day: ${point.y}',
+                                enableHighlight: true
                             }}
                             loaded={this.onChartLoad.bind(this)}
                             title='World Pollution Report'>

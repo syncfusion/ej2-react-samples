@@ -5,6 +5,13 @@ import { TreeGridComponent, ColumnsDirective, ColumnDirective, Page, Inject, Edi
 import { sampleData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
+  {/* custom code start */}
+  const editDialog_height = `
+  #_gridcontrol_dialogEdit_wrapper.e-dialog.e-edit-dialog {
+    max-height: 589px !important;
+  } `;
+  {/* custom code end */}
+
 const Dialog = () => {
   useEffect(() => {
     updateSampleSection();
@@ -18,13 +25,19 @@ const Dialog = () => {
   };
   const editparams: any = { params: { popupHeight: "300px" } };
   const validationRule: Object = { required: true };
-  const validationRule1: Object = { date: true };
+  const validationRule1: Object = { date: ['M/d/yyyy', 'Please enter a valid date'] };
+  const editparams3: any = { params: { format:'M/d/yyyy',}};
   const validationRule2: Object = { required: true, number: true };
   const editparams2: any = { params: { format: "n" } };
   const pageSettings: Object = { pageCount: 8 };
   return (
     <div className="control-pane">
       <div className="control-section">
+         {/* custom code start */}
+         <style>
+            {editDialog_height}
+          </style>
+         {/* custom code end */}
         <TreeGridComponent
           dataSource={sampleData}
           treeColumnIndex={1}
@@ -57,6 +70,7 @@ const Dialog = () => {
               textAlign="Right"
               editType="datepickeredit"
               format="yMd"
+              edit={editparams3}
               validationRules={validationRule1}
             />
             <ColumnDirective

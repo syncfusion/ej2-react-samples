@@ -99,6 +99,7 @@ export class KeyboardNavigation extends SampleBase<{}, {}> {
                         enableAnimation={false}
                         legendClick={this.legendClick.bind(this)}
                         load={this.load.bind(this)}
+                        loaded={this.loaded.bind(this)}
                         primaryXAxis= {{ title:"Manager",
                                         valueType: 'Category',
                                         majorGridLines: { width: 0 }, 
@@ -371,6 +372,11 @@ export class KeyboardNavigation extends SampleBase<{}, {}> {
         args.chart.primaryYAxis.stripLines[3].textStyle.color = FontColor;
         args.chart.primaryYAxis.stripLines[5].textStyle.color = FontColor;
         args.chart.primaryYAxis.stripLines[7].textStyle.color = FontColor;
+    };
+
+    public loaded (args: ILoadedEventArgs): void {
+        let chart: Element = document.getElementById('keyboard_charts');
+        chart.setAttribute('title', '');
     };
      
 }

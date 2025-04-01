@@ -7,77 +7,9 @@ import * as ReactDOM from "react-dom";
 import { EmitType } from '@syncfusion/ej2-base';
 import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, BubbleSeries, Tooltip, IPointRenderEventArgs, ILoadedEventArgs, ChartTheme, DataLabel } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
-import { bubbleFabricColors, bubbleMaterialDarkColors, bubbleMaterialColors, bubbleBootstrap5DarkColors, bubbleBootstrapColors, bubbleHighContrastColors, bubbleFluentDarkColors, bubbleFluentColors, bubbleTailwindDarkColors, bubbleTailwindColors, pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, bubbleBootstrap5Colors, pointBootstrap5Colors, bubbleMaterial3Colors, pointMaterial3Colors, bubbleMaterial3DarkColors, pointMaterial3DarkColors, pointFluent2Colors, bubbleFluent2Colors, pointFluent2HighContrastColors, bubbleFluent2HighContrastColors, pointFluent2DarkColors, bubbleFluent2DarkColors, bubbleTailwind3Colors, bubbleTailwind3DarkColors, pointTailwind3Colors, pointTailwind3DarkColors } from './theme-color';
+import { loadChartTheme, bubblePointRender } from './theme-color';
 import { updateSampleSection } from '../common/sample-base';
-export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEventArgs): void => {
-    let selectedTheme: string = location.hash.split('/')[1];
-    selectedTheme = selectedTheme ? selectedTheme : 'material';
-    if (selectedTheme && selectedTheme.indexOf('fabric') > -1) {
-        args.fill = bubbleFabricColors[args.point.index % 10];
-        args.border.color = pointFabricColors[args.point.index % 10];
-    } else if (selectedTheme === 'material-dark') {
-        args.fill = bubbleMaterialDarkColors[args.point.index % 10];
-        args.border.color = pointMaterialDarkColors[args.point.index % 10];
-    } else if (selectedTheme === 'material') {
-        args.fill = bubbleMaterialColors[args.point.index % 10];
-        args.border.color = pointMaterialColors[args.point.index % 10];
-    } else if (selectedTheme === 'bootstrap5-dark') {
-        args.fill = bubbleBootstrap5DarkColors[args.point.index % 10];
-        args.border.color = pointBootstrap5DarkColors[args.point.index % 10];
-    } else if (selectedTheme === 'bootstrap5') {
-        args.fill = bubbleBootstrap5Colors[args.point.index % 10];
-        args.border.color = pointBootstrap5Colors[args.point.index % 10];
-    } else if (selectedTheme === 'bootstrap') {
-        args.fill = bubbleBootstrapColors[args.point.index % 10];
-        args.border.color = pointBootstrapColors[args.point.index % 10];
-    } else if (selectedTheme === 'bootstrap4') {
-        args.fill = bubbleBootstrapColors[args.point.index % 10];
-        args.border.color = pointBootstrapColors[args.point.index % 10];
-    } else if (selectedTheme === 'bootstrap-dark') {
-        args.fill = bubbleBootstrapColors[args.point.index % 10];
-        args.border.color = pointBootstrapColors[args.point.index % 10];
-    } else if (selectedTheme === 'highcontrast') {
-        args.fill = bubbleHighContrastColors[args.point.index % 10];
-        args.border.color = pointHighContrastColors[args.point.index % 10];
-    } else if (selectedTheme === 'fluent-dark') {
-        args.fill = bubbleFluentDarkColors[args.point.index % 10];
-        args.border.color = pointFluentDarkColors[args.point.index % 10];
-    } else if (selectedTheme === 'fluent') {
-        args.fill = bubbleFluentColors[args.point.index % 10];
-        args.border.color = pointFluentColors[args.point.index % 10];
-    } else if (selectedTheme === 'tailwind-dark') {
-        args.fill = bubbleTailwindDarkColors[args.point.index % 10];
-        args.border.color = pointTailwindDarkColors[args.point.index % 10];
-    } else if (selectedTheme === 'tailwind') {
-        args.fill = bubbleTailwindColors[args.point.index % 10];
-        args.border.color = pointTailwindColors[args.point.index % 10];
-    } else if (selectedTheme === 'material3') {
-        args.fill = bubbleMaterial3Colors[args.point.index % 10];
-        args.border.color = pointMaterial3Colors[args.point.index % 10];
-    } else if (selectedTheme === 'material3-dark') {
-        args.fill = bubbleMaterial3DarkColors[args.point.index % 10];
-        args.border.color = pointMaterial3DarkColors[args.point.index % 10];
-    } else if (selectedTheme === 'fluent2') {
-        args.fill = bubbleFluent2Colors[args.point.index % 10];
-        args.border.color = pointFluent2Colors[args.point.index % 10];
-    }
-    else if (selectedTheme === 'fluent2-highcontrast') {
-        args.fill = bubbleFluent2HighContrastColors[args.point.index % 10];
-        args.border.color = pointFluent2HighContrastColors[args.point.index % 10];
-    }
-    else if (selectedTheme === 'fluent2-dark') {
-        args.fill = bubbleFluent2DarkColors[args.point.index % 10];
-        args.border.color = pointFluent2DarkColors[args.point.index % 10];
-    }
-    else if (selectedTheme === 'tailwind3-dark') {
-        args.fill = bubbleTailwind3DarkColors[args.point.index % 10];
-        args.border.color = pointTailwind3DarkColors[args.point.index % 10];
-    } 
-    else if (selectedTheme === 'tailwind3') {
-        args.fill = bubbleTailwind3Colors[args.point.index % 10];
-        args.border.color = pointTailwind3Colors[args.point.index % 10];
-    }
-};
+
 export let data: any[] = [
     { x: 92.2, y: 7.8, size: 1.347, toolTipMappingName: 'China', text:'China' },
     { x: 74, y: 6.5, size: 1.241, toolTipMappingName: 'India', text:'India' },
@@ -120,10 +52,11 @@ const Bubble = () => {
         chart.setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
+      const pointRender = (args: IPointRenderEventArgs): void => {
+        bubblePointRender(args);
+    }
     return (
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>

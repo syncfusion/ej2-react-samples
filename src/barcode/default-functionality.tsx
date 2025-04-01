@@ -15,7 +15,7 @@ import {
   ColorPickerEventArgs
 } from "@syncfusion/ej2-react-inputs";
 import { FormValidator, FormValidatorModel } from '@syncfusion/ej2-inputs';
-import { CheckBoxComponent } from "@syncfusion/ej2-react-buttons";
+import { CheckBoxComponent, ButtonComponent } from "@syncfusion/ej2-react-buttons";
 import { CheckBoxChangeEventArgs } from "@syncfusion/ej2-grids";
 
 
@@ -103,6 +103,7 @@ export class Default extends SampleBase<{}, {}> {
                   <NumericTextBoxComponent
                     //ref={widthRef => (portWidthNum = widthRef)}
                     id="width"
+                    width={100}
                     enabled={true}
                     format={"###.##"}
                     value={200}
@@ -119,6 +120,7 @@ export class Default extends SampleBase<{}, {}> {
                   <NumericTextBoxComponent
                     //ref={widthRef => (portWidthNum = widthRef)}
                     id="width"
+                    width={100}
                     enabled={true}
                     format={"###.##"}
                     value={150}
@@ -318,6 +320,15 @@ export class Default extends SampleBase<{}, {}> {
                 change={textOnChange}
               />
             </div>
+          </div>
+          <div className="row sb-child-row">
+                <div className="col-xs-6 top barcode-panel-left">
+                    <ButtonComponent id="downloadBtn1"
+                    onClick={()=>{
+                      barcodeInstance.exportImage("Barcode", "PNG");
+                    }}
+                    >Download</ButtonComponent>
+                </div>
           </div>
         </div>
         {/* <div className="sb-property-border sb-prop-md-4" style={{ left: '63%' }}></div> */}

@@ -92,17 +92,24 @@ const Template = () => {
         ]
     };
 
+    const handleAction = (e) => {
+        var target = e.target as any;
+        var prompt = '';
+        if (target.tagName === 'IMG') {
+            prompt = target.nextElementSibling.textContent;
+        } else if (target.className === 'e-card-header') {
+            prompt = target.textContent;
+        }
+        if (prompt) { templateAiAssistView.current.executePrompt(prompt); }
+    }
+
     const created = () => {
         setTimeout(() => {
             assistViewCarousel.current.element.addEventListener('click', (e) => {
-                var target = e.target as any;
-                var prompt = '';
-                if (target.tagName === 'IMG') {
-                    prompt = target.nextElementSibling.textContent;
-                } else if (target.className === 'e-card-header') {
-                    prompt = target.textContent;
-                }
-                if (prompt) { templateAiAssistView.current.executePrompt(prompt); }
+                handleAction(e);
+            });
+            assistViewCarousel.current.element.addEventListener('touchstart', (e) => {
+                handleAction(e);
             });
         });
     

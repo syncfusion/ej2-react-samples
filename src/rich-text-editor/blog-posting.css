@@ -153,7 +153,7 @@
 }
 
 #rteUseCase .control-wrapper .questionar {
-    background: url(./src/rich-text-editor/images/emp1.png);
+    background-image: url(https://ej2.syncfusion.com/react/demos/src/rich-text-editor/images/emp1.png);
     margin-top: 2px;
 }
 
@@ -179,23 +179,23 @@
 }
 
 #rteUseCase .control-wrapper .logos {
-    background: url(./src/rich-text-editor/images/emp2.png);
+    background-image: url(https://ej2.syncfusion.com/react/demos/src/rich-text-editor/images/emp2.png);
 }
 
 #rteUseCase .control-wrapper .logo {
-    background: url(./src/rich-text-editor/images/author.png) no-repeat scroll 0 0 transparent;
+    background-image: url(https://ej2.syncfusion.com/react/demos/src/rich-text-editor/images/author.png);
 }
 
 #rteUseCase .control-wrapper .emp1 {
-    background: url(./src/rich-text-editor/images/1.png) no-repeat scroll 0 0 transparent;
+    background-image: url(https://ej2.syncfusion.com/react/demos/src/rich-text-editor/images/1.png);
 }
 
 #rteUseCase .control-wrapper .emp2 {
-    background: url(./src/rich-text-editor/images/2.png) no-repeat scroll 0 0 transparent;
+    background-image: url(https://ej2.syncfusion.com/react/demos/src/rich-text-editor/images/2.png);
 }
 
 #rteUseCase .control-wrapper .emp3 {
-    background: url(./src/rich-text-editor/images/3.png) no-repeat scroll 0 0 transparent;
+    background-image: url(https://ej2.syncfusion.com/react/demos/src/rich-text-editor/images/3.png);
 }
 
  #rteUseCase .control-wrapper .blog-avatar{

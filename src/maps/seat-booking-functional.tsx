@@ -4,7 +4,7 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, ProjectionType, Selection, ISelectionEventArgs } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
@@ -50,6 +50,7 @@ const SeatBookingMaps = () => {
     useEffect(() => {
         updateSampleSection();
     }, []);
+    let mapInstance = useRef<MapsComponent>(null);
     const shapeSelected = (args: ISelectionEventArgs): void => {
         seatInfo = document.getElementById('selectedseats') as HTMLDivElement;
         if ((args.shapeData as SeatInfo).fill === 'Orange') {
@@ -86,12 +87,12 @@ const SeatBookingMaps = () => {
         // custom code end
     };
     const clearseats = (): void => {
-        if (seatInfo != null) {
-            seatInfo.innerHTML = '';
-            let selected: HTMLCollection = document.getElementsByClassName('ShapeselectionMapStyle');
-            for (let i: number = 0, length: number = selected.length; i < length; i++) {
-                selected[0].setAttribute('class', '');
+        if (seatInfo != null && seatInfo.innerHTML !== '') {
+            let seats: any[] = seatInfo.innerText.split('-')[1].trim().split(',').map(num => Number(num.trim()));
+            for (let i: number = 0, length: number = seats.length; i < length; i++) {
+                mapInstance.current.shapeSelection(0, 'seatno', seats[i], false);
             }
+            seatInfo.innerHTML = '';
         }
     }
     return (
@@ -105,7 +106,7 @@ const SeatBookingMaps = () => {
                     </div>
                     <div style={{ border: '3px solid darkgray', width: 200, display: 'block', margin: 'auto' }}>
                         <img src="src/maps/images/wheel.png" alt="Stering wheel icon" style={{ width: 30, height: 30, marginLeft: '18%', marginTop: 10 }}></img>
-                        <MapsComponent id="maps" load={load} zoomSettings={{ enable: false }} height="400" itemSelection={shapeSelected}>
+                        <MapsComponent id="maps" load={load} zoomSettings={{ enable: false }} height="400" itemSelection={shapeSelected} ref={mapInstance}>
                             <Inject services={[Selection]} />
                             <LayersDirective>
                                 <LayerDirective shapeData={seatSelection} geometryType='Normal' shapeSettings={{ colorValuePath: 'fill' }} selectionSettings={{ enable: true, opacity: 1, enableMultiSelect: true }} />

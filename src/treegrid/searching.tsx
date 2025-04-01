@@ -34,8 +34,8 @@ export class Search extends SampleBase<{}, {}> {
             <ColumnsDirective>
               <ColumnDirective field='taskID' headerText='Task ID' width='70' textAlign='Right'></ColumnDirective>
               <ColumnDirective field='taskName' headerText='Task Name' width='200'></ColumnDirective>
-              <ColumnDirective field='startDate' headerText='Start Date' width='90' format='yMd' textAlign='Right' />
               <ColumnDirective field='duration' headerText='Duration' width='80' textAlign='Right' />
+              <ColumnDirective field='priority' headerText='Priority' width='100' textAlign='Left'/>
               <ColumnDirective field='progress' headerText='Progress' width='80' textAlign='Right' />
             </ColumnsDirective>
             <Inject services={[Filter, Page, Toolbar]} />

@@ -3,18 +3,18 @@
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import {
-    ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ChartTheme,
-    Legend, Category, Tooltip, ColumnSeries, ILoadedEventArgs, DataLabel, Highlight
-} from '@syncfusion/ej2-react-charts';
-import { PropertyPane } from '../common/property-pane';
-import { EmitType } from '@syncfusion/ej2-base';
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ColumnSeries, Category, Legend, Tooltip, ILoadedEventArgs, IAxisLabelRenderEventArgs, ITooltipRenderEventArgs } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
+import { loadChartTheme } from './theme-color';
 
-export let data1 = [{ x: 'GBR', y: 27, r:'Great Britain'  }, { x: 'CHN', y: 26 , r:'China' }, { x: 'AUS', y: 8, r:'Australia'}, { x: 'RUS', y: 19, r:'Russia' }, { x: 'GER', y: 17, r:'Germany' }, { x: 'UA', y: 2, r:'Ukraine' }, { x: 'ES', y: 7, r:'Spain' }, { x: 'UZB', y: 4, r:'Uzbekistan' }, { x: 'JPN', y: 12, r:'Japan' }, { x: 'NL', y: 8, r:'NetherLand' }, { x: 'USA', y: 46, r:'United States' }];
-export let data2 = [{ x: 'GBR', y: 23 , r:'Great Britain'}, { x: 'CHN', y: 18, r:'China'}, { x: 'AUS', y: 11, r:'Australia' }, { x: 'RUS', y: 17, r:'Russia' }, { x: 'GER', y: 10, r:'Germany' }, { x: 'UA', y: 5, r:'Ukraine'}, { x: 'ES', y: 4, r:'Spain' }, { x: 'UZB', y: 2, r:'Uzbekistan' }, { x: 'JPN', y: 8, r:'Japan' }, { x: 'NL', y: 7, r:'NetherLand' }, { x: 'USA', y: 37, r:'United States' }];
-export let data3 = [{ x: 'GBR', y: 17 , r:'Great Britain'}, { x: 'CHN', y: 26, r:'China' }, { x: 'AUS', y: 10, r:'Australia' }, { x: 'RUS', y: 20, r:'Russia' }, { x: 'GER', y: 15, r:'Germany' }, { x: 'UA', y: 24, r:'Ukraine' }, { x: 'ES', y: 6, r:'Spain' }, { x: 'UZB', y: 7, r:'Uzbekistan' }, { x: 'JPN', y: 8, r:'Japan' }, { x: 'NL', y: 4, r:'NetherLand' }, { x: 'USA', y: 38, r:'United States' }];
+export let columnData: Object[] = [
+    { country: 'Chile', walnuts: 175000, almonds: 11300 },
+    { country: 'European Union', walnuts: 140000, almonds: 135000 },
+    { country: 'Turkey', walnuts: 67000, almonds: 24000 },
+    { country: 'India', walnuts: 33000, almonds: 4200 },
+    { country: 'Australia', walnuts: 12000, almonds: 154000 }
+];
 
 const SAMPLE_CSS = `
     .control-fluid {
@@ -24,47 +24,35 @@ export class Column extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <style>
-                    {SAMPLE_CSS}
-                </style>
+                <style>{SAMPLE_CSS}</style>
                 <div className='control-section'>
-                    <ChartComponent id='charts' style={{ textAlign: "center" }}    legendSettings={{ enableHighlight :true }} primaryXAxis={{ valueType: 'Category', interval: 1, majorGridLines: { width: 0 }, majorTickLines : {width:0} }}  primaryYAxis={{
-                        title: 'Medal Count',
-                        majorTickLines: { width: 0 },lineStyle: {width: 0}, maximum : 50 , interval: 10,
-                    }} chartArea={{ border: { width: 0 } }} load={this.load.bind(this)} tooltip={{ enable: true, header:"<b>${point.tooltip}</b>", shared: true}} width={Browser.isDevice ? '100%' : '75%'} title='Olympic Medal Counts - RIO'  loaded={this.onChartLoad.bind(this)}>
-                        <Inject services={[ColumnSeries, Legend, Tooltip, Category, DataLabel, Highlight]} />
+                    <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', interval: 1, labelIntersectAction: Browser.isDevice ? 'None' : 'Trim', labelRotation: Browser.isDevice ? -45 : 0, majorGridLines: { width: 0 }, majorTickLines: { width: 0 } }} primaryYAxis={{ title: 'Metric Tons', interval: 40000, majorTickLines: { width: 0 }, lineStyle: { width: 0 } }} legendSettings={{ visible: true, enableHighlight: true, shapeWidth: 9, shapeHeight: 9 }} chartArea={{ border: { width: 0 }, margin: { bottom: 12 } }} tooltip={{ enable: true, header: '<b>${point.x}</b>', format: '${series.name}: <b>${point.y}</b>', enableHighlight: true }} width={Browser.isDevice ? '100%' : '75%'} title='Walnuts and Almonds Estimated Production for 2023' subTitle='Source: fas.usda.gov' loaded={this.onChartLoad.bind(this)} load={this.load.bind(this)} axisLabelRender={this.axisLabelRender.bind(this)} tooltipRender={this.tooltipRender.bind(this)}>
+                        <Inject services={[ColumnSeries, Category, Legend, Tooltip]} />
                         <SeriesCollectionDirective >
-                            <SeriesDirective dataSource={data1}  tooltipMappingName='r' xName='x' columnSpacing={0.1} yName='y' name='Gold' type='Column'>
-                            </SeriesDirective>
-                            <SeriesDirective dataSource={data2}   tooltipMappingName='r' xName='x' columnSpacing={0.1} yName='y' name='Silver' type='Column'>
-                            </SeriesDirective>
-                            <SeriesDirective dataSource={data3}  tooltipMappingName='r' xName='x' columnSpacing={0.1} yName='y' name='Bronze' type='Column'>
-                            </SeriesDirective>
-
+                            <SeriesDirective dataSource={columnData} xName='country' yName='walnuts' name='Walnuts' type='Column' cornerRadius={{ topLeft: 4, topRight: 4 }} columnSpacing={0.4} legendShape='Rectangle' />
+                            <SeriesDirective dataSource={columnData} xName='country' yName='almonds' name='Almonds' type='Column' cornerRadius={{ topLeft: 4, topRight: 4 }} columnSpacing={0.4} legendShape='Rectangle' />
                         </SeriesCollectionDirective>
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                <p>
-                This React column chart example visualizes the medal count from the Rio Olympics with the default column series in the chart.
-            </p>
+                    <p>
+                        This React column chart example visualizes the production of Walnuts and Almonds for different countries in 2023.
+                    </p>
                 </div>
                 <div id="description">
                     <p>
-                    In this example, you can see how to render and configure a column chart. The column chart is used to compare the frequency, count, total, or average of data in different categories.
-                   </p>
+                        In this example, you can see how to render and configure a column chart. The column chart is used to compare the frequency, count, total, or average of data in different categories.
+                    </p>
                     <p>
-                    Tooltip is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.
-                   </p>
+                        Tooltip is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.
+                    </p>
                     <p><b>Injecting Module</b></p>
                     <p>
-                        Chart component features are segregated into individual feature-wise modules. To use column series, we need to inject
-                       <code>ColumnSeries</code> module into <code>services</code>.
-                  </p>
+                        Chart component features are segregated into individual feature-wise modules. To use column series, we need to inject <code>ColumnSeries</code> module into <code>services</code>.
+                    </p>
                     <p>
-                        More information on the column series can be found in this &nbsp;
-                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/column" aria-label="Navigate to the documentation for Column Chart in React Chart component">documentation section</a>.
-                  </p>
+                        More information on the column series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/column" aria-label="Navigate to the documentation for Column Chart in React Chart component">documentation section</a>.
+                    </p>
                 </div>
             </div>
         )
@@ -74,14 +62,19 @@ export class Column extends SampleBase<{}, {}> {
         chart.setAttribute('title', '');
     };
     public load(args: ILoadedEventArgs): void {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
-         if (selectedTheme === 'highcontrast') {
-            args.chart.series[0].marker.dataLabel.font.color = '#000000';
-            args.chart.series[1].marker.dataLabel.font.color = '#000000';
-            args.chart.series[2].marker.dataLabel.font.color = '#000000';
-            }
+        loadChartTheme(args);
     };
-        
+    public axisLabelRender (args: IAxisLabelRenderEventArgs): void {
+        const value: number = parseInt(args.text.replace(/,/g, ''), 10);
+        if (value >= 1000) {
+            args.text = value / 1000 + 'K';
+        }
+    };
+    public tooltipRender (args: ITooltipRenderEventArgs): void {
+        if (args.text) {
+            let value: string = args.point.y.toLocaleString('en-US');
+            args.text = `${args.series.name}: <b>${value}</b>`;
+        }
+    };
+
 }

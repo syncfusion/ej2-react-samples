@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { AccumulationChartComponent, AccumulationSeriesCollectionDirective, AccumulationSeriesDirective, Inject, AccumulationDataLabel, PieSeries, AccumulationTheme, IAccLoadedEventArgs, IAccTextRenderEventArgs, AccumulationLegend, ILoadedEventArgs } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
-
+import { loadAccumulationChartTheme } from './theme-color';
 const SAMPLE_CSS = `
   .control-fluid {
     padding: 0px !important;
@@ -119,9 +119,7 @@ const UpdatePieDataSource = () => {
         yearIndex = 2;
         year = 10;
         args.accumulation.centerLabel.text = "2010";
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as AccumulationTheme;
+        loadAccumulationChartTheme(args);
 
         updateData(args);
     };

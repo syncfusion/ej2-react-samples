@@ -100,6 +100,6 @@ body[class*="material3-dark"].e-bigger .fab-hover:hover .text-container {
     content: "\e70c";
 }
 
-.e-fab.e-btn .e-btn-icon {
+.fab-control-pane .e-fab.e-btn .e-btn-icon {
     margin-top: 5px !important;
 }

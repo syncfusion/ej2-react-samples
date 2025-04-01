@@ -9,6 +9,7 @@ import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { PropertyPane } from '../common/property-pane';
 import { EmitType, Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import { loadChartTheme } from './theme-color';
 export let data1: any[] = [
     { x: 'Jan', y: -7.1 },
     { x: 'Feb', y: -3.7 },
@@ -60,9 +61,7 @@ const PolarLine = () => {
         document.getElementById('charts').setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
     const change = (): void => {
         chartInstance.series[0].type = dropElement.value as ChartSeriesType;
@@ -118,7 +117,7 @@ const PolarLine = () => {
                         }}
                         title='Alaska Weather Statistics - 2016' loaded={onChartLoad.bind(this)}
                         legendSettings={{ enableHighlight: true }}
-                        tooltip={{ enable: true }}>
+                        tooltip={{ enable: true, enableHighlight: true }}>
                         <Inject services={[LineSeries, Legend, DataLabel, Category, PolarSeries, RadarSeries, Tooltip, Highlight]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} xName='x' yName='y' name='Germany' type='Polar'

@@ -8,6 +8,7 @@ import { StockChartComponent, StockChartSeriesCollectionDirective, StockChartSer
 import { EmaIndicator, RsiIndicator, BollingerBands, TmaIndicator, MomentumIndicator, SmaIndicator, AtrIndicator, AccumulationDistributionIndicator, MacdIndicator, StochasticIndicator, Export } from '@syncfusion/ej2-react-charts';
 import { updateSampleSection } from '../common/sample-base';
 import { googl } from './stock-data';
+import { loadStockChartTheme } from './theme-color';
 const SAMPLE_CSS = `
 
     #control-container {
@@ -113,24 +114,18 @@ const SAMPLE_CSS = `
     }
 
 `
-let selectedTheme: string = location.hash.split('/')[1];
-selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-let theme: ChartTheme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
- replace(/-dark/i, "Dark").replace(/contrast/i,  'Contrast') as ChartTheme;
+
 let themes: string[] = ['bootstrap5', 'bootstrap5dark', 'tailwind', 'tailwinddark', 'material', 'materialdark', 'bootstrap4', 'bootstrap', 'bootstrapdark', 'fabric', 'fabricdark', 'highcontrast', 'fluent', 'fluentdark', 'material3', 'material3dark', 'fluent2', 'fluent2highcontrast', 'fluent2dark', 'tailwind3', 'tailwind3dark'];
 let borderColor: string[] = ['#FD7E14', '#FD7E14', '#5A61F6', '#8B5CF6', '#00bdae', '#9ECB08', '#a16ee5', '#a16ee5', '#a16ee5', '#4472c4', '#4472c4', '#79ECE4', '#1AC9E6', '#1AC9E6', '#6355C7', '#4EAAFF', '#6200EE', '#9BB449', '#9BB449', '#2F4074', '#8029F1'];
-let fill: string = 'url(#' + selectedTheme + '-gradient-chart)';
 const SplineArea = () => {
     useEffect(() => {
         updateSampleSection();
     }, [])
 
     const load = (args: IStockChartEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,  'Contrast') as ChartTheme;
-        args.stockChart.series[0].border = { width: 2, color: borderColor[themes.indexOf(args.stockChart.theme.toLowerCase())] };
-
+      let selectedTheme: string = loadStockChartTheme(args);
+      args.stockChart.series[0].border = { width: 2, color: borderColor[themes.indexOf(args.stockChart.theme.toLowerCase())] };
+      args.stockChart.series[0].fill = 'url(#' + selectedTheme + '-gradient-chart)';
     };
 
     return (
@@ -276,7 +271,7 @@ const SplineArea = () => {
                     }} id='stockchartsplinearea' primaryXAxis={{ valueType: 'DateTime', majorGridLines: { width: 0 }, crosshairTooltip: { enable: true } }} primaryYAxis={{ lineStyle: { color: 'transparent' }, majorTickLines: { color: 'transparent', height: 0 }, crosshairTooltip: { enable: true } }} load={load.bind(this)} seriesType={[]} indicatorType={[]} chartArea={{ border: { width: 0 } }} crosshair={{ enable: true, lineType: 'Both' , snapToData: true, dashArray: '5, 5'}} title='Google Stock Price'>
                     <Inject services={[DateTime, SplineAreaSeries, RangeTooltip, Tooltip,  Crosshair, LineSeries, SplineSeries, CandleSeries, HiloOpenCloseSeries, HiloSeries, RangeAreaSeries, Trendlines, EmaIndicator, RsiIndicator, BollingerBands, TmaIndicator, MomentumIndicator, SmaIndicator, AtrIndicator, Export, AccumulationDistributionIndicator, MacdIndicator, StochasticIndicator]} />
                     <StockChartSeriesCollectionDirective>
-                    <StockChartSeriesDirective dataSource={googl} xName='x' yName='high' type='SplineArea' opacity={0.5}  border={{ width: 2, color: borderColor[themes.indexOf(theme)] }}fill= {fill} >
+                    <StockChartSeriesDirective dataSource={googl} xName='x' yName='high' type='SplineArea' opacity={0.5} >
                     </StockChartSeriesDirective>
                     </StockChartSeriesCollectionDirective>
                 </StockChartComponent>

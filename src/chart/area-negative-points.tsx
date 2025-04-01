@@ -46,7 +46,7 @@ export class AreaNegative extends SampleBase<{}, {}> {
             margin={{left : Browser.isDevice ? 2 : 10 ,  right : Browser.isDevice ? 2 : 10, top : Browser.isDevice ? 2 : 10, bottom : Browser.isDevice ? 2 : 10}}
             width={Browser.isDevice ? '100%' : '75%'}
             title="Profit and Loss"
-            tooltip={{ enable: true }}
+            tooltip={{ enable: true, enableHighlight: true, showNearestTooltip: true }}
             loaded={this.onChartLoad.bind(this)}
           >
             <Inject services={[AreaSeries, Category, Tooltip, Legend, Highlight]} />
@@ -66,6 +66,9 @@ export class AreaNegative extends SampleBase<{}, {}> {
                     <p>
                     In this example, you can see how to render an area series with negative values. Similar to line type series, but the area gets closed and filled with series color. You can use <a target="_blank" href=" https://ej2.syncfusion.com/react/documentation/api/chart/series/#border" aria-label="Navigate to the border property reference for React Chart component">border</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/series/#fill" aria-label="Navigate to the fill property reference for React Chart component">fill </a> properties to customize the area. Also, the legend is enabled with the shape of the series type.
                    </p>
+                    <p>
+                        <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
+                    </p>
                     <p>
                     More information on the area negative points can be found in this &nbsp;
                       <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/working-with-data#empty-points" aria-label="Navigate to the documentation for Empty points in React Chart component">documentation section</a>.

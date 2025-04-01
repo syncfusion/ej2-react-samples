@@ -10,6 +10,7 @@ import { Browser } from '@syncfusion/ej2-base';
 import { GridComponent, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-grids';
 import { employeeData } from './data-source';
 import { updateSampleSection } from '../common/sample-base';
+import { loadRangeNavigatorTheme } from './theme-color';
 
 export let transX: string = 'translateX(10%)';
 const divStyle = {
@@ -113,10 +114,7 @@ function Customization() {
     };
 
     function load(args: IRangeLoadedEventArgs): void {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+       loadRangeNavigatorTheme(args);
     };
 
     function gridCreated(args: Object): void {

@@ -5,15 +5,12 @@ import { TreeGridComponent, ColumnsDirective, ColumnDirective, Inject, Toolbar }
 import { sampleData } from './data';
 import { SampleBase } from '../common/sample-base';
 
-// custom code start
 const SAMPLE_CSS = `
 .e-print-fluent2-highcontrast.e-treegrid.e-print-grid-layout,
     .e-print-fluent2-highcontrast.e-treegrid.e-print-grid-layout .e-gridheader,
     .e-print-fluent2-highcontrast.e-treegrid.e-print-grid-layout .e-rowcell {
         border-color: gray !important;
-    }
-`;
-// custom code end
+    }`;
 
 export class Print extends SampleBase<{}, {}> {
 

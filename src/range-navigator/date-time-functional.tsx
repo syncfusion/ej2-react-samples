@@ -13,6 +13,7 @@ import { Browser, remove } from '@syncfusion/ej2-base';
 import { stockData } from './stock-data';
 import { updateSampleSection } from '../common/sample-base';
 import { getElement } from '@syncfusion/ej2-svg-base/src/tooltip/helper';
+import { loadRangeNavigatorTheme } from './theme-color';
 
 
 export let zoomFactor: number;
@@ -333,20 +334,14 @@ function DateTimeAxis() {
     function chartLoad(args: ILoadedEventArgs): void {
         args.chart.primaryXAxis.zoomFactor = zoomFactor;
         args.chart.primaryXAxis.zoomPosition = zoomPosition;
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadRangeNavigatorTheme(args);
         chartRendered = true;
     };
     function rangeLoad(args: IRangeLoadedEventArgs): void {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
-        let rangeTheme: string = args.rangeNavigator.theme;
+        let selectedTheme: string = loadRangeNavigatorTheme(args, true);
         args.rangeNavigator.series[0].type = "Area";
         args.rangeNavigator.series[0].fill = 'url(#' + selectedTheme.toLowerCase() + '-gradient-chart)';
-        args.rangeNavigator.series[0].border.color = borderColor[themes.indexOf(rangeTheme.toLowerCase())];
+        args.rangeNavigator.series[0].border.color = borderColor[themes.indexOf(args.rangeNavigator.theme.toLowerCase())];
     };
 }
 export default DateTimeAxis;

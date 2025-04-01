@@ -7,7 +7,7 @@ import { BulletChartComponent, BulletRangeCollectionDirective, BulletRangeDirect
 import { IBulletLoadedEventArgs, ChartTheme } from '@syncfusion/ej2-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
-import { fabricColors, bootstrapColors, highContrastColors, materialColors, bootstarp5Colors, bootstarp5DarkColors, bootstrapDarkColors, tailwindColors, tailwindDarkColors, material3Colors, material3DarkColors, defaultColors, fluentColors, fluent2Colors, fluent2DarkColors, tailwind3Colors, tailwind3DarkColors  } from './theme-color'
+import { fabricColors, bootstrapColors, highContrastColors, materialColors, bootstarp5Colors, bootstarp5DarkColors, bootstrapDarkColors, tailwindColors, tailwindDarkColors, material3Colors, material3DarkColors, defaultColors, fluentColors, fluent2Colors, fluent2DarkColors, tailwind3Colors, tailwind3DarkColors, loadBulletChartTheme  } from './theme-color'
 
 const SAMPLE_CSS = `
       .control-fluid {
@@ -127,9 +127,7 @@ function BulletChartMultipleData() {
     function bulletLoad(args: IBulletLoadedEventArgs): void {
         let chart: Element = document.getElementById('multipleData');
         chart.setAttribute('title', '');
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.bulletChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/light/i, 'Light').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadBulletChartTheme(args);
         let color: string[] = [];
         switch (args.bulletChart.theme) {
             case 'Fabric':

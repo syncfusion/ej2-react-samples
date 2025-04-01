@@ -18,7 +18,7 @@ import { PropertyPane } from '../common/property-pane';
         }, []);
         const fields: object = { text: 'Name', value: 'Experience' };
         const mccbDropdownListData: string[] = ['StartsWith','EndsWith','Contains'];
-        const [filterType, setFilterType] = useState('');
+        const [filterType, setFilterType] = useState('StartsWith');
 
         const change = (args: ChangeEventArgs) => {
             setFilterType(args.value.toString());

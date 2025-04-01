@@ -37,9 +37,8 @@ function LiveStream() {
             }
         });
         this.on('destroy', function () {
-            if (timerID) {
-                clearInterval(timerID);
-                timerID = undefined;
+            if (clearButton && (clearButton as ButtonComponent).element) {
+                (clearButton as ButtonComponent).element.click();
             }
         });
     }

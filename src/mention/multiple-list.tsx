@@ -57,17 +57,19 @@ export class MultipleList extends SampleBase<{}, {}> {
             <div className="content-wrapper">
               <div id='mention_multiplelist'>
                 <table>
+                  <tbody>
                     <tr>
                       <td>
                           <label id="label" className="multiple">Start typing <code>@</code>, <code>#</code>, <code>$</code> or <code>%</code> to select the respective values</label>
                           <div id="multipleList" placeholder="Type here..!"></div>
                       </td>
-                  </tr>
+                    </tr>
+                  </tbody>
                 </table>
 
                 <MentionComponent dataSource={this.data} target={this.commonTarget} fields={this.dataFields} suggestionCount={15} query={this.query} popupWidth={250} popupHeight={250} allowSpaces={true}></MentionComponent>
 
-                <MentionComponent dataSource={this.projects} mentionChar={'#'} target={this.commonTarget} displayTemplate={this.projectsDisplayTemplate} fields={this.localFields}></MentionComponent>
+              <MentionComponent dataSource={this.projects} requireLeadingSpace={false} mentionChar={'#'} target={this.commonTarget} displayTemplate={this.projectsDisplayTemplate} fields={this.localFields}></MentionComponent>
 
                 <MentionComponent dataSource={this.useCosts} mentionChar={'$'} target={this.commonTarget} displayTemplate={this.costDisplayTemplate} fields={this.localFields}></MentionComponent>
 
@@ -80,6 +82,12 @@ export class MultipleList extends SampleBase<{}, {}> {
         </div>
             
         <div id="description">
+          <p>
+            The <code>requireLeadingSpace</code> property in Mention controls whether a space is needed before triggering the
+            Mention suggestion popup.
+            When set to <code>false</code>, it activates without a space; when set to <code>true</code>, a space is required
+            before the Mention character. To see this feature in action, start typing with <code>#</code>.
+          </p>
           <p>In the above sample, the following are configured for the contenteditable div element with @mention integrated.</p>
           <ul>
               <li><code>@</code> - Typing <code>@</code> lists out the suggestions of the employee names.</li>

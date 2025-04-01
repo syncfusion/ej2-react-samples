@@ -8,6 +8,7 @@ import { EmitType } from '@syncfusion/ej2-base';
 import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, LineSeries, DateTime, Logarithmic, Legend, Tooltip, ILoadedEventArgs, ChartTheme } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import { loadChartTheme } from './theme-color';
 export let data: any[] = [
     { x: new Date(1995, 0, 1), y: 80 },
     { x: new Date(1996, 0, 1), y: 200 },
@@ -35,15 +36,13 @@ const LogAxis = () => {
         chart.setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
     return (
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
-                <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ labelFormat: 'y', valueType: 'DateTime', edgeLabelPlacement: 'Shift' }} load={load.bind(this)} primaryYAxis={{ valueType: 'Logarithmic', edgeLabelPlacement: 'Shift', minorTicksPerInterval: 5, majorGridLines: { width: 1.5 }, minorTickLines: { width: 0, height: 4 }, minimum: 0, maximum: 100000, interval: 1, labelFormat: '${value}' }} legendSettings={{ visible: false }} width={Browser.isDevice ? '100%' : '75%'} title='Product X Growth [1995-2005]' loaded={onChartLoad.bind(this)} tooltip={{ enable: true, header: '' }}>
+                <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ labelFormat: 'y', valueType: 'DateTime', edgeLabelPlacement: 'Shift', majorGridLines: { width: 0 } }} load={load.bind(this)} primaryYAxis={{ valueType: 'Logarithmic', edgeLabelPlacement: 'Shift', minorTicksPerInterval: 5, majorGridLines: { width: 1.5 }, minorTickLines: { width: 0, height: 4 }, minimum: 0, maximum: 100000, interval: 1, labelFormat: '${value}', majorTickLines: { width: 0 }, lineStyle: { width: 0 } }} legendSettings={{ visible: false }} width={Browser.isDevice ? '100%' : '75%'} title='Product X Growth [1995-2005]' loaded={onChartLoad.bind(this)} tooltip={{ enable: true, header: '', showNearestTooltip: true, enableHighlight: true }} chartArea={{ border: { width: 0 } }}>
                     <Inject services={[LineSeries, DateTime, Logarithmic, Legend, Tooltip]} />
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={data} xName='x' name='Product X' yName='y' type='Line' width={2} marker={{ visible: true, height: 7, width: 7, isFilled: true }} />

@@ -110,6 +110,7 @@ const CustomAggregate = () => {
               field="category"
               headerText="Category"
               width="270"
+              minWidth="270"
             />
             <ColumnDirective
               field="units"

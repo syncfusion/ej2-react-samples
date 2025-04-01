@@ -826,27 +826,37 @@
     "pivot-table": {
         "ControlName": "Pivot Table",
         "Samples": {
+            "overview": "Overview",
             "default": "Default Functionalities",
+            "classic-layout": "Classic Layout",
+            "live-data": "Live Data",
             "local": "Local Data",
             "remote": "Remote Data",
+            "server-side-aggregation": "Server-Side Aggregation",
             "olap": "OLAP",
+            "performance": "Performance",
             "pivot-chart": "Pivot Chart",
             "external-binding": "External Binding",
+            "heatmap": "HeatMap",
             "field-list": "Field List",
             "grouping-bar": "Grouping Bar",
             "conditional-formatting": "Conditional Formatting",
             "selection": "Selection",
+            "drill-down": "Drill Down",
             "summary-customization": "Show/Hide Totals",
             "grouping": "Grouping",
             "tool-bar": "Toolbar",
+            "keyboard-navigation": "Keyboard Navigation",
             "calculated-field": "Calculated Field",
             "aggregation": "Aggregation",
             "sorting": "Default Sorting",
+            "custom-sorting": "Custom Sorting",
             "value-sorting": "Value Sorting",
             "filtering": "Default Filtering",
             "label-filtering": "Label Filtering",
             "value-filtering": "Value Filtering",
             "virtual-scrolling": "Virtual Scrolling",
+            "paging": "Paging",
             "cell-template": "Cell Template",
             "drill-through": "Drill Through",
             "editing": "Editing",
@@ -913,6 +923,7 @@
         "Samples": {
             "default":"Default Functionalities",
             "custom-views": "Custom Views",
+            "streaming": "Streaming Response",
             "template": "Template",
 	        "dialog": "Dialog"
         }
@@ -921,6 +932,7 @@
         "ControlName": "Chat UI",
         "Samples": {
             "default":"Default Functionalities",
+            "loadOn-demand": "Load On-demand",
             "template": "Template",
 	        "api": "API",
             "chat-integration": "Use Case"
@@ -1102,7 +1114,7 @@
             "default": "Default Functionalities",
 	   		"formula": "Formula",
             "protect-sheet": "Protect Sheet",
-			"freeze-panes": "Freeze Panes",
+			"freeze-pane": "Freeze Panes",
 			"data-validation": "Data Validation",
 			"hyperlink": "Hyperlink",
 			"cell-data-binding": "Cell Data Binding",
@@ -1114,7 +1126,7 @@
 			"chart": "Chart",
 			"image": "Image",
  			"cell-template": "Cell Template",
-			"note": "Note",
+			"notes": "Note",
 			"print": "Print"
         }
     },
@@ -1311,6 +1323,14 @@
             "image-preview": "Image Preview",
             "file-upload-with-forms": "Form Support",
             "custom-drop-area": "Custom Drop Area"
+        }
+    },
+    "speech-to-text": {
+        "ControlName": "Speech TocText",
+        "Samples": {
+            "default": "Default Functionalities",
+            "use-case": "Use Case",
+            "integration": "Ai-Assistview"
         }
     }
 }

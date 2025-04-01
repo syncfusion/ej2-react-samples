@@ -8,6 +8,7 @@ import { ChartComponent, SeriesCollectionDirective, SeriesDirective, AxesDirecti
 import { updateSampleSection } from '../common/sample-base';
 import { axesData } from './financial-data';
 import { Browser } from '@syncfusion/ej2-base';
+import { loadChartTheme } from './theme-color';
 /**
  * Crosshair sample
  */
@@ -118,10 +119,7 @@ const CrosshairChart = () => {
     useEffect(() => {
         updateSampleSection();
     }, [])
-    let selectedTheme: string = location.hash.split('/')[1];
-    selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-    const theme = (selectedTheme.charAt(0).toUpperCase() +
-        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast');
+    let selectedTheme: string = loadChartTheme(null, true);
     let themes: string[] = ['bootstrap5', 'bootstrap5dark', 'tailwind', 'tailwinddark', 'material', 'materialdark', 'bootstrap4', 'bootstrap', 'bootstrapdark', 'fabric', 'fabricdark', 'highcontrast', 'fluent', 'fluentdark', 'material3', 'material3dark', 'fluent2', 'fluent2highcontrast', 'fluent2dark', 'tailwind3', 'tailwind3dark'];
     let borderColor: string[] = ['#FD7E14', '#FD7E14', '#5A61F6', '#8B5CF6', '#00bdae', '#9ECB08', '#a16ee5', '#a16ee5', '#a16ee5', '#4472c4', '#4472c4', '#79ECE4', '#1AC9E6', '#1AC9E6', '#6355C7', '#4EAAFF', '#6200EE', '#9BB449', '#9BB449', '#2F4074', '#8029F1'];
     const fill = 'url(#' + selectedTheme + '-gradient-chart)';
@@ -130,10 +128,8 @@ const CrosshairChart = () => {
         chart.setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
-        args.chart.series[0].border = { width: 2, color: borderColor[themes.indexOf(args.chart.theme.toLowerCase())] };
+        let selectedTheme: ChartTheme | string = loadChartTheme(args);
+        args.chart.series[0].border = { width: 2, color: borderColor[themes.indexOf(selectedTheme.toLowerCase())] };
     };
     return (
         <div className='control-pane'>
@@ -287,11 +283,11 @@ const CrosshairChart = () => {
                         }}
                         tooltip={{
                             enable: true,
-                            shared: true,
                             location: { x: 70, y:52 },
                             format: '<b>${point.x}</b> <br>Stock Price : <b>${point.y}</b>',
                             header: '',
-                            enableMarker: false
+                            enableMarker: false,
+                            showNearestTooltip: true
                         }}
                         chartArea={{border:{width: 0}}}
                         width={Browser.isDevice ? '100%' : '75%'}
@@ -452,6 +448,9 @@ const CrosshairChart = () => {
                 </p>
                 <p>
                     The <code>snapToData</code> property snaps the crosshair to the nearest data point instead of following the exact mouse position, providing a more precise focus on data points.
+                </p>
+                <p>
+                    <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
                 </p>
                 <br />
                 <p><b>Injecting Module</b></p>

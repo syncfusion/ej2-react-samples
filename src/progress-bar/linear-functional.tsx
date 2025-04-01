@@ -7,6 +7,7 @@ import { useEffect, useRef, useState, CSSProperties } from 'react';
 import { ProgressBarComponent, ILoadedEventArgs, ProgressTheme, AnimationModel } from '@syncfusion/ej2-react-progressbar';
 import { EmitType } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import { loadProgressBarTheme } from './theme-colors';
 
 const SAMPLE_CSS = `
       #control-container {
@@ -54,12 +55,9 @@ const ProgressBarLinear = () => {
         delay: 0,
     };
     const progressLoad: EmitType<ILoadedEventArgs> = (args: ILoadedEventArgs) => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.progressBar.theme = (selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ProgressTheme;
-        if (args.progressBar.theme === 'HighContrast' || args.progressBar.theme === 'Bootstrap5Dark' || args.progressBar.theme === 'BootstrapDark' || args.progressBar.theme === 'FabricDark'
-            || args.progressBar.theme === 'TailwindDark' || args.progressBar.theme === 'Tailwind3Dark' || args.progressBar.theme === 'MaterialDark' || args.progressBar.theme === 'FluentDark' || args.progressBar.theme === 'Material3Dark' || args.progressBar.theme === 'Fluent2Dark' || args.progressBar.theme === 'Fluent2HighContrast') {
+        let theme: string = loadProgressBarTheme(args);
+        if (theme === 'HighContrast' || theme === 'Bootstrap5Dark' || theme === 'BootstrapDark' || theme === 'FabricDark'
+            || theme === 'TailwindDark' || theme === 'Tailwind3Dark' || theme === 'MaterialDark' || theme === 'FluentDark' || theme === 'Material3Dark' || theme === 'Fluent2Dark' || theme === 'Fluent2HighContrast') {
             setStyle({ color: "White" });
         }
     }

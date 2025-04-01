@@ -71,10 +71,13 @@ export class IndexedAxis extends SampleBase<{}, {}> {
                                 interval: 1,
                                 edgeLabelPlacement: 'Shift',
                                 crosshairTooltip: { enable: false },
-                                isIndexed: true
+                                isIndexed: true,
+                                majorGridLines: { width: 0 }
                             }}
                             primaryYAxis={{
-                                labelFormat: '{value}%'
+                                labelFormat: '{value}%',
+                                majorTickLines: { width: 0 }, 
+                                lineStyle: { width: 0 }
                             }}
                             chartArea={{ border: { width: 0 } }}
                             load={this.load.bind(this)}

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ColumnSeries, DataLabel, Category, Legend, Tooltip, Highlight, ILoadedEventArgs, ChartTheme, IPointEventArgs, IPointRenderEventArgs, IAxisLabelRenderEventArgs, Series, IAxisLabelClickEventArgs } from '@syncfusion/ej2-react-charts';
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ColumnSeries, DataLabel, Category, Legend, Tooltip, Highlight, ILoadedEventArgs, IPointRenderEventArgs, Series, ITooltipRenderEventArgs, IAxisLabelClickEventArgs } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
+import { bubbleFabricColors, pointFabricColors, pointMaterialDarkColors, bubbleMaterialDarkColors, bubbleMaterialColors, pointMaterialColors, bubbleBootstrap5DarkColors, pointBootstrap5DarkColors, bubbleBootstrap5Colors, pointBootstrap5Colors, bubbleBootstrapColors, pointBootstrapColors, bubbleHighContrastColors, pointHighContrastColors, bubbleFluentDarkColors, pointFluentDarkColors, bubbleFluentColors, pointFluentColors, bubbleTailwindDarkColors, pointTailwindDarkColors, bubbleTailwindColors, pointTailwindColors, bubbleMaterial3Colors, pointMaterial3Colors, bubbleMaterial3DarkColors, pointMaterial3DarkColors, bubbleFluent2Colors, pointFluent2Colors, bubbleFluent2HighContrastColors, pointFluent2HighContrastColors, bubbleFluent2DarkColors, pointFluent2DarkColors, pointTailwind3Colors, pointTailwind3DarkColors, loadChartTheme, bubbleTailwind3DarkColors, bubbleTailwind3Colors } from './theme-color';
 import { SampleBase } from '../common/sample-base';
-import { bubbleFabricColors, pointFabricColors, bubbleMaterialDarkColors, pointMaterialDarkColors, bubbleMaterialColors, pointMaterialColors, bubbleBootstrap5DarkColors, pointBootstrap5DarkColors, bubbleBootstrap5Colors, pointBootstrap5Colors, bubbleBootstrapColors, pointBootstrapColors, bubbleHighContrastColors, pointHighContrastColors, bubbleFluentDarkColors, pointFluentDarkColors, bubbleFluentColors, pointFluentColors, bubbleTailwindDarkColors, pointTailwindDarkColors, bubbleTailwindColors, pointTailwindColors, bubbleMaterial3Colors, pointMaterial3Colors, bubbleMaterial3DarkColors, pointMaterial3DarkColors, bubbleFluent2Colors, pointFluent2Colors, bubbleFluent2HighContrastColors, pointFluent2HighContrastColors, bubbleFluent2DarkColors, pointFluent2DarkColors, bubbleTailwind3DarkColors, pointTailwind3DarkColors, bubbleTailwind3Colors, pointTailwind3Colors } from './theme-color';
 
 const SAMPLE_CSS = `
    #control-container {
@@ -10,8 +10,9 @@ const SAMPLE_CSS = `
     }
 
     .no-underline {
-        text-decoration: none !important;
-        cursor: auto !important;
+      text-decoration: none !important;
+      cursor: auto !important;
+
     }
 
     #drilldown0_AxisLabel_0,
@@ -25,29 +26,33 @@ const SAMPLE_CSS = `
     #drilldown_Series_0_Point_3,
     #drilldown_Series_0_Point_4,
     #drilldown0_AxisLabel_5 {
-        text-decoration: underline;
-        cursor: pointer;
+           text-decoration: underline;
+           cursor: pointer;
+
     }
 
     #category:hover {
         cursor: pointer;
     }`;
 
-    export class ColumnDrilldown extends SampleBase<{}, {}> {
+export class ColumnDrilldown extends SampleBase<{}, {}> {
     private chartRef = React.createRef<ChartComponent>();
 
     private clicked = false;
-    private data =[
+    private data = [
         { y: 4778, drilldown: 'Asia' },
         { y: 1481, drilldown: 'Africa' },
         { y: 746, drilldown: 'Europe' },
         { y: 379, drilldown: 'North America' },
         { y: 46, drilldown: 'Oceania' }];
 
-    private title ='Top Populated Continents of 2023';
+    private title = 'Top Populated Continents of 2023';
+    private subTitle = 'A Look at Population Rankings and Trends in 2023';
     private categoryText = '';
-  
+
     private loaded(args: ILoadedEventArgs): void {
+        let chart: Element = document.getElementById('drilldown');
+        chart.setAttribute('title', '');
         if (this.clicked) {
             for (let i = 0; i <= 6; i++) {
                 const axisLabel = document.getElementById(`drilldown0_AxisLabel_${i}`);
@@ -62,12 +67,10 @@ const SAMPLE_CSS = `
         }
     };
     private load(args: ILoadedEventArgs): void {
-        let selectedTheme = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
 
-    private onPointRender (args: IPointRenderEventArgs): void {
+    private onPointRender(args: IPointRenderEventArgs): void {
         if (!this.clicked) {
             let selectedTheme = location.hash.split('/')[1];
             selectedTheme = selectedTheme ? selectedTheme : 'material';
@@ -98,7 +101,7 @@ const SAMPLE_CSS = `
             args.border.color = themeColors[1][args.point.index % 10];
         }
     };
-        public pointClick(args: IPointRenderEventArgs): void {
+    public pointClick(args: IPointRenderEventArgs): void {
         args.series.fill = args.point.color;
         if (args.point.index !== 6) {
             args.series.yAxis.interval = null;
@@ -136,161 +139,166 @@ const SAMPLE_CSS = `
                 document.getElementById("text")!.style.visibility = "visible";
                 if (args.point.index === 0) {
                     args.series.chart.title = "Top Populated Countries of Asia - 2023";
+                    args.series.chart.subTitle = "A Look at Population Rankings and Trends in 2023";
                     this.clicked = true;
                     args.series.chart.series[0].dataSource = [{
-                            y: 1422,
-                            drilldown: 'China'
-                        },
-                        {
-                            y: 1438,
-                            drilldown: 'India'
-                        },
-                        {
-                            y: 278,
-                            drilldown: 'Indonesia'
-                        },
-                        {
-                            y: 240,
-                            drilldown: 'Pakistan'
-                        },
-                        {
-                            y: 173,
-                            drilldown: 'Bangladesh'
-                        },
-                        {
-                            y: 125,
-                            drilldown: 'Japan'
-                        },
-                        {
-                            y: 117,
-                            drilldown: 'Philippines'
-                        },
-                        {
-                            y: 99,
-                            drilldown: 'Vietnam'
-                        }
+                        y: 1422,
+                        drilldown: 'China'
+                    },
+                    {
+                        y: 1438,
+                        drilldown: 'India'
+                    },
+                    {
+                        y: 278,
+                        drilldown: 'Indonesia'
+                    },
+                    {
+                        y: 240,
+                        drilldown: 'Pakistan'
+                    },
+                    {
+                        y: 173,
+                        drilldown: 'Bangladesh'
+                    },
+                    {
+                        y: 125,
+                        drilldown: 'Japan'
+                    },
+                    {
+                        y: 117,
+                        drilldown: 'Philippines'
+                    },
+                    {
+                        y: 99,
+                        drilldown: 'Vietnam'
+                    }
                     ];
                 }
                 if (args.point.index === 1) {
                     args.series.chart.title = "Top Populated Countries of Africa - 2023";
+                    args.series.chart.subTitle = "A Look at Population Rankings and Trends in 2023";
                     this.clicked = true;
                     args.series.chart.series[0].dataSource = [{
-                            y: 223,
-                            drilldown: 'Nigeria'
-                        },
-                        {
-                            y: 126,
-                            drilldown: 'Ethiopia'
-                        },
-                        {
-                            y: 113,
-                            drilldown: 'Egypt'
-                        },
-                        {
-                            y: 68,
-                            drilldown: 'Tanzania'
-                        },
-                        {
-                            y: 60,
-                            drilldown: 'South Africa'
-                        },
-                        {
-                            y: 55,
-                            drilldown: 'Kenya'
-                        },
-                        {
-                            y: 48,
-                            drilldown: 'Uganda'
-                        }
+                        y: 223,
+                        drilldown: 'Nigeria'
+                    },
+                    {
+                        y: 126,
+                        drilldown: 'Ethiopia'
+                    },
+                    {
+                        y: 113,
+                        drilldown: 'Egypt'
+                    },
+                    {
+                        y: 68,
+                        drilldown: 'Tanzania'
+                    },
+                    {
+                        y: 60,
+                        drilldown: 'South Africa'
+                    },
+                    {
+                        y: 55,
+                        drilldown: 'Kenya'
+                    },
+                    {
+                        y: 48,
+                        drilldown: 'Uganda'
+                    }
                     ];
                 }
                 if (args.point.index === 2) {
                     args.series.chart.title = "Top Populated Countries of Europe - 2023";
+                    args.series.chart.subTitle = "A Look at Population Rankings and Trends in 2023";
                     this.clicked = true;
                     args.series.chart.series[0].dataSource = [{
-                            y: 143,
-                            drilldown: 'Russia'
-                        },
-                        {
-                            y: 84,
-                            drilldown: 'Germany'
-                        },
-                        {
-                            y: 67,
-                            drilldown: 'United Kingdom'
-                        },
-                        {
-                            y: 65,
-                            drilldown: 'France'
-                        },
-                        {
-                            y: 59,
-                            drilldown: 'Italy'
-                        },
-                        {
-                            y: 47,
-                            drilldown: 'Spain'
-                        }
+                        y: 143,
+                        drilldown: 'Russia'
+                    },
+                    {
+                        y: 84,
+                        drilldown: 'Germany'
+                    },
+                    {
+                        y: 67,
+                        drilldown: 'United Kingdom'
+                    },
+                    {
+                        y: 65,
+                        drilldown: 'France'
+                    },
+                    {
+                        y: 59,
+                        drilldown: 'Italy'
+                    },
+                    {
+                        y: 47,
+                        drilldown: 'Spain'
+                    }
                     ];
                 }
                 if (args.point.index === 3) {
                     args.series.chart.title = "Top Populated Countries of North America - 2023";
+                    args.series.chart.subTitle = "A Look at Population Rankings and Trends in 2023";
                     this.clicked = true;
                     args.series.chart.series[0].dataSource = [{
-                            y: 339,
-                            drilldown: 'United States'
-                        },
-                        {
-                            y: 127,
-                            drilldown: 'Mexico'
-                        },
-                        {
-                            y: 39,
-                            drilldown: 'Canada'
-                        },
-                        {
-                            y: 19,
-                            drilldown: 'Guatemala'
-                        },
-                        {
-                            y: 10,
-                            drilldown: 'Honduras'
-                        },
-                        {
-                            y: 6,
-                            drilldown: 'El Salvador'
-                        },
-                        {
-                            y: 6,
-                            drilldown: 'Nicaragua'
-                        },
-                        {
-                            y: 5,
-                            drilldown: 'Costa Rica'
-                        }
+                        y: 339,
+                        drilldown: 'United States'
+                    },
+                    {
+                        y: 127,
+                        drilldown: 'Mexico'
+                    },
+                    {
+                        y: 39,
+                        drilldown: 'Canada'
+                    },
+                    {
+                        y: 19,
+                        drilldown: 'Guatemala'
+                    },
+                    {
+                        y: 10,
+                        drilldown: 'Honduras'
+                    },
+                    {
+                        y: 6,
+                        drilldown: 'El Salvador'
+                    },
+                    {
+                        y: 6,
+                        drilldown: 'Nicaragua'
+                    },
+                    {
+                        y: 5,
+                        drilldown: 'Costa Rica'
+                    }
                     ];
                 }
                 if (args.point.index === 4) {
                     args.series.chart.title = "Top Populated Countries of Oceania - 2023";
+                    args.series.chart.subTitle = "A Look at Population Rankings and Trends in 2023";
                     this.clicked = true;
                     args.series.chart.series[0].dataSource = [{
-                            y: 26,
-                            drilldown: 'Australia'
-                        },
-                        {
-                            y: 9,
-                            drilldown: 'Papua New Guinea'
-                        },
-                        {
-                            y: 5,
-                            drilldown: 'New Zealand'
-                        }
+                        y: 26,
+                        drilldown: 'Australia'
+                    },
+                    {
+                        y: 9,
+                        drilldown: 'Papua New Guinea'
+                    },
+                    {
+                        y: 5,
+                        drilldown: 'New Zealand'
+                    }
                     ];
                 }
             }
         }
     }
-    private onAxisLabelClick (args: IAxisLabelClickEventArgs): void {
+    private onAxisLabelClick(args: IAxisLabelClickEventArgs): void {
         if (args.axis.name === "primaryXAxis") {
             args.chart.series[0].fill = (args.chart.series[0] as Series).points[args.index].color;
             if (args.index !== 6) {
@@ -329,6 +337,7 @@ const SAMPLE_CSS = `
                     document.getElementById("text").style.visibility = "visible";
                     if (args.index === 0) {
                         args.chart.title = "Top Populated Countries of Asia - 2023";
+                        args.chart.subTitle = "A Look at Population Rankings and Trends in 2023";
                         this.clicked = true;
                         args.chart.series[0].dataSource = [{
                             y: 1422,
@@ -366,6 +375,7 @@ const SAMPLE_CSS = `
                     }
                     if (args.index === 1) {
                         args.chart.title = "Top Populated Countries of Africa - 2023";
+                        args.chart.subTitle = "A Look at Population Rankings and Trends in 2023";
                         this.clicked = true;
                         args.chart.series[0].dataSource = [{
                             y: 223,
@@ -399,6 +409,7 @@ const SAMPLE_CSS = `
                     }
                     if (args.index === 2) {
                         args.chart.title = "Top Populated Countries of Europe - 2023";
+                        args.chart.subTitle = "A Look at Population Rankings and Trends in 2023";
                         this.clicked = true;
                         args.chart.series[0].dataSource = [{
                             y: 143,
@@ -428,6 +439,7 @@ const SAMPLE_CSS = `
                     }
                     if (args.index === 3) {
                         args.chart.title = "Top Populated Countries of North America - 2023";
+                        args.chart.subTitle = "A Look at Population Rankings and Trends in 2023";
                         this.clicked = true;
                         args.chart.series[0].dataSource = [{
                             y: 339,
@@ -465,6 +477,7 @@ const SAMPLE_CSS = `
                     }
                     if (args.index === 4) {
                         args.chart.title = "Top Populated Countries of Oceania - 2023";
+                        args.chart.subTitle = "A Look at Population Rankings and Trends in 2023";
                         this.clicked = true;
                         args.chart.series[0].dataSource = [{
                             y: 26,
@@ -485,9 +498,10 @@ const SAMPLE_CSS = `
         }
     };
 
-    private  goBack(e):void {
+    private goBack(e): void {
         const chart = this.chartRef.current;
         chart.title = "Top Populated Continents of 2023";
+        chart.subTitle = "A Look at Population Rankings and Trends in 2023";
         chart.primaryXAxis.labelStyle.color = "blue";
         chart.primaryYAxis.interval = 1000;
         chart.series[0].dataSource = this.data;
@@ -495,6 +509,12 @@ const SAMPLE_CSS = `
         (e.target as HTMLButtonElement).style.visibility = 'hidden';
         document.getElementById(('symbol')).style.visibility = 'hidden';
         document.getElementById(('text')).style.visibility = 'hidden';
+    };
+
+    public tooltipRender(args: ITooltipRenderEventArgs): void {
+        args.text = args.text.replace(/\d+/g, (num: string) =>
+            Number(num).toLocaleString('en-US')
+        );
     };
 
     render() {
@@ -508,87 +528,89 @@ const SAMPLE_CSS = `
                         <p id="text" style={{ visibility: this.clicked ? 'visible' : 'hidden', display: 'inline-block' }}>{this.categoryText}</p>
                     </div>
 
-                <ChartComponent
-                    id="drilldown"
-                    style={{ textAlign: "center" }}
-                    ref={this.chartRef}
-                    primaryXAxis={{
-                        valueType: 'Category',
-                        labelStyle: { color: 'blue' },
-                        interval: 1,
-                        majorGridLines: { width: 0 },
-                        labelIntersectAction: Browser.isDevice ? 'None' : 'Rotate90',
-                        labelRotation: Browser.isDevice ? -45 : 0,
-                        majorTickLines: { width: 0 },
-                        minorTickLines: { width: 0 }
-                    }}
-                    primaryYAxis={{
-                        interval: 1000,
-                        title: 'Population (in Millions)',
-                        majorTickLines: { width: 0 },
-                        lineStyle: { width: 0 }
-                    }}
-                    width={Browser.isDevice ? '100%' : '75%'}
-                    title={this.title}
-                    tooltip={{ enable: true, header: "<b>Population - 2023</b>", format: '${point.x}: ${point.y}M' }}
-                    legendSettings={{ visible: false }}
-                    chartArea={{ border: { width: 0 } }}
-                    load={this.load.bind(this)}
-                    loaded={this.loaded.bind(this)}
-                    pointRender={this.onPointRender}
-                    pointClick={this.pointClick}
-                    axisLabelClick={this.onAxisLabelClick}
-                >
-                    <Inject services={[ColumnSeries, DataLabel, Category, Legend, Tooltip, Highlight]} />
-                    <SeriesCollectionDirective>
-                        <SeriesDirective
-                            dataSource={this.data}
-                            xName='drilldown'
-                            yName='y'
-                            name='Population'
-                            type='Column'
-                            cornerRadius={{ topLeft: 5, topRight: 5 }}
-                            marker = {{
-                                dataLabel: {
-                                   visible: true,
-                                   position: 'Outer',
-                               }
-                           }}
-                            width={2}
-                        />
-                    </SeriesCollectionDirective>
-                </ChartComponent>
-            </div>
-            <div id="action-description">
-                <p>
-                    This drilldown column chart example visualizes the population distribution across different continents. Users
-                    can click on the columns to explore further details, allowing for an interactive analysis of population
-                    statistics by country within each continent.
-                </p>
-            </div>
-            <div id="description">
-                <p>
-                    In this example, you can see how to render and configure a drilldown column chart. Each column represents a
-                    continent, and users can drill down to view detailed population statistics by country upon selection. This
-                    functionality enhances data exploration and provides a clearer understanding of demographic distributions.
-                </p>
-                <p>
-                    Tooltip is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in
-                    touch-enabled devices.
-                </p>
-                <p><b>Injecting Module</b></p>
+                    <ChartComponent
+                        id="drilldown"
+                        style={{ textAlign: "center" }}
+                        ref={this.chartRef}
+                        primaryXAxis={{
+                            valueType: 'Category',
+                            labelStyle: { color: 'blue' },
+                            interval: 1,
+                            majorGridLines: { width: 0 },
+                            labelIntersectAction: Browser.isDevice ? 'None' : 'Rotate90',
+                            labelRotation: Browser.isDevice ? -45 : 0,
+                            majorTickLines: { width: 0 },
+                            minorTickLines: { width: 0 }
+                        }}
+                        primaryYAxis={{
+                            interval: 1000,
+                            title: 'Population (in Millions)',
+                            majorTickLines: { width: 0 },
+                            lineStyle: { width: 0 }
+                        }}
+                        width={Browser.isDevice ? '100%' : '75%'}
+                        title={this.title}
+                        subTitle={this.subTitle}
+                        tooltip={{ enable: true, header: "<b>Population - 2023</b>", format: '${point.x}: <b>${point.y}M</b>' }}
+                        legendSettings={{ visible: false }}
+                        chartArea={{ border: { width: 0 } }}
+                        load={this.load.bind(this)}
+                        loaded={this.loaded.bind(this)}
+                        pointRender={this.onPointRender}
+                        pointClick={this.pointClick}
+                        axisLabelClick={this.onAxisLabelClick}
+                        tooltipRender={this.tooltipRender.bind(this)}
+                    >
+                        <Inject services={[ColumnSeries, DataLabel, Category, Legend, Tooltip, Highlight]} />
+                        <SeriesCollectionDirective>
+                            <SeriesDirective
+                                dataSource={this.data}
+                                xName='drilldown'
+                                yName='y'
+                                name='Population'
+                                type='Column'
+                                cornerRadius={{ topLeft: 5, topRight: 5 }}
+                                marker={{
+                                    dataLabel: {
+                                        visible: true,
+                                        position: 'Outer',
+                                    }
+                                }}
+                                width={2}
+                            />
+                        </SeriesCollectionDirective>
+                    </ChartComponent>
+                </div>
+                <div id="action-description">
+                    <p>
+                        This drilldown column chart example visualizes the population distribution across different continents. Users
+                        can click on the columns to explore further details, allowing for an interactive analysis of population
+                        statistics by country within each continent.
+                    </p>
+                </div>
+                <div id="description">
+                    <p>
+                        In this example, you can see how to render and configure a drilldown column chart. Each column represents a
+                        continent, and users can drill down to view detailed population statistics by country upon selection. This
+                        functionality enhances data exploration and provides a clearer understanding of demographic distributions.
+                    </p>
+                    <p>
+                        Tooltip is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in
+                        touch-enabled devices.
+                    </p>
+                    <p><b>Injecting Module</b></p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To use column series, we need to inject
                         <code>ColumnSeries</code> module into <code>services</code>.
                     </p>
-                <p>
-                    More information on the column series can be found in this
-                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/Chart-types/column"
-                        aria-label="Navigate to the documentation for Column Chart in TypeScript Chart control">documentation
-                        section</a>.
-                </p>
+                    <p>
+                        More information on the column series can be found in this
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/Chart-types/column"
+                            aria-label="Navigate to the documentation for Column Chart in TypeScript Chart control"> documentation
+                            section</a>.
+                    </p>
+                </div>
             </div>
-        </div>
-    );
-}
+        );
     }
+}

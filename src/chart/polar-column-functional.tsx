@@ -9,6 +9,7 @@ import { PropertyPane } from '../common/property-pane';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { EmitType, Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import { loadChartTheme } from './theme-color';
 export let data1: any[] = [
     { text: 'Japan', x: 'JPN', y: 137.9, y1: 127.6, y2: 108.8 },
     { text: 'Indonesia', x: 'Indonesia', y: 85.0, y1: 246.9, y2: 45.5 },
@@ -39,9 +40,7 @@ const PolarColumn = () => {
         document.getElementById('charts').setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
     const change = (): void => {
         chartInstance.current.series[0].type = dropElement.current.value as ChartSeriesType;
@@ -61,7 +60,7 @@ const PolarColumn = () => {
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-md-8'>
-                    <ChartComponent id='charts' ref={chartInstance} primaryXAxis={{ valueType: 'Category', labelPlacement: 'OnTicks', coefficient: Browser.isDevice ? 80 : 100, interval: 1 }} primaryYAxis={{ labelFormat: '{value}M' }} load={load.bind(this)} legendSettings= {{ visible: true, enableHighlight: true }} title="Top 10 Mobile Markets by Number of Subscriptions" loaded={onChartLoad.bind(this)} tooltip={{ enable: true, header: "", format: '<b>${point.text}</b> <br> ${series.name} : <b>${point.y}</b>' }}>
+                    <ChartComponent id='charts' ref={chartInstance} primaryXAxis={{ valueType: 'Category', labelPlacement: 'OnTicks', coefficient: Browser.isDevice ? 80 : 100, interval: 1 }} primaryYAxis={{ labelFormat: '{value}M' }} load={load.bind(this)} legendSettings= {{ visible: true, enableHighlight: true }} title="Top 10 Mobile Markets by Number of Subscriptions" loaded={onChartLoad.bind(this)} tooltip={{ enable: true, header: "", format: '<b>${point.text}</b> <br> ${series.name} : <b>${point.y}</b>', enableHighlight: true }}>
                         <Inject services={[Legend, Category, PolarSeries, RadarSeries,Highlight, Tooltip, ColumnSeries]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} xName='text' yName='y' name='Population' type={type} drawType='Column' border={{ color: 'white', width: 1 }} marker={{ dataLabel: { name: 'text' } }} />

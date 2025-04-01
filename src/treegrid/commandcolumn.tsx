@@ -5,12 +5,13 @@ import { sampleData } from './data';
 import { SampleBase } from '../common/sample-base';
 
 export class Command extends SampleBase<{}, {}> {
-  public editSettings: any = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Row' };
+  public editSettings: any = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Row', allowEditOnDblClick: false };
   public taskIDRule: Object = { required: true, number: true};
   public taskNameRule: Object = { required: true};
-  public dateRule: Object = { date: true};
+  public dateRule: Object = { date: ['M/d/yyyy', 'Please enter a valid date']};
   public durationRule: Object = { number: true, min: 0};
   public editparams2: any = { params: { format: 'n' } };
+  public editparams3: any = { params: { format: 'M/d/yyyy' } };
   public commands: any = [{ type: 'Edit', buttonOption: { iconCss: ' e-icons e-edit', cssClass: 'e-flat' } },
   { type: 'Delete', buttonOption: { iconCss: 'e-icons e-delete', cssClass: 'e-flat' } },
   { type: 'Save', buttonOption: { iconCss: 'e-icons e-update', cssClass: 'e-flat' } },
@@ -27,7 +28,7 @@ export class Command extends SampleBase<{}, {}> {
                 isPrimaryKey={true}></ColumnDirective>
               <ColumnDirective field='taskName' headerText='Task Name' width='200' validationRules={this.taskNameRule}></ColumnDirective>
               <ColumnDirective field='startDate' headerText='Start Date' width='140' textAlign='Right'
-                editType='datepickeredit' format='yMd' validationRules={this.dateRule} type='date' />
+                editType='datepickeredit' format='yMd' edit={this.editparams3} validationRules={this.dateRule} type='date' />
               <ColumnDirective field='duration' headerText='Duration' width='130' editType='numericedit' textAlign='Right'
                 validationRules={this.durationRule} edit={this.editparams2} />
               <ColumnDirective field='progress' headerText='Progress' width='150' textAlign='Right' editType='numericedit' 

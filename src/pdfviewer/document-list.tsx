@@ -170,9 +170,7 @@ export class DocumentList extends SampleBase<{}, { hideDialog: boolean }> {
               <span className="e-msg-icon render-mode-info-icon"
                 title="Turn OFF to render the PDF Viewer as server-backed"></span>
             </div>
-            <div>
-              <SwitchComponent cssClass="buttonSwitch" id="checked" change={this.change} checked={true}></SwitchComponent>
-            </div>
+            <SwitchComponent cssClass="buttonSwitch" id="checked" change={this.change} checked={true}></SwitchComponent>
           </div>
           <GridComponent ref={grid => this.gridInstance = grid} dataSource={gridData} commandClick={this.buttonClick.bind(this)} destroyed={this.destroyed.bind(this)}>
             <ColumnsDirective>

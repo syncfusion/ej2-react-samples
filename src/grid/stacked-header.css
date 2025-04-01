@@ -1,0 +1,278 @@
+#column-chooser-icon, #column-chooser-text {
+    position: relative;
+}
+
+#column-chooser-icon {
+    top: 3px;
+}
+
+#column-chooser-text {
+    left: 5px;
+}
+
+.e-rtl #column-chooser-icon {
+    top: 3px;
+    right: 5px;
+}
+
+.e-rtl #column-chooser-text {
+    left: 0;
+}
+
+.no-record-text {
+    padding: 5px;
+}
+  
+  .custom-rating.e-rating-container .e-rating-item-container,
+      .e-bigger
+        .custom-rating.e-rating-container
+        .e-rating-item-container
+        .e-rating-icon,
+      .e-bigger.custom-rating.e-rating-container
+        .e-rating-item-container
+        .e-rating-icon {
+        font-size: 11px;
+  }
+  
+  .custom-rating.e-rating-container
+      .e-rating-item-container
+      .e-rating-icon {
+      -webkit-text-fill-color: lightgrey;
+      -webkit-text-stroke: 1px lightgrey;
+  }
+  
+  .custom-rating.e-rating-container
+      .e-rating-item-container.e-rating-selected
+      .e-rating-icon {
+      background: linear-gradient(
+      to right,
+      #ffa600 var(--rating-value),
+      #ffa600 var(--rating-value)
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke: 1px #ffa600;
+  }
+  
+  .e-grid .e-image {
+      height: 13px;
+      width: 14px;
+  }
+  
+  .fluent .e-grid .e-rowcell.e-delivered,
+  .fluent2 .e-grid .e-rowcell.e-delivered,
+  .bootstrap5 .e-grid .e-rowcell.e-delivered,
+  .bootstrap5\.3 .e-grid .e-rowcell.e-delivered,
+  .tailwind3 .e-grid .e-rowcell.e-delivered,
+  .tailwind .e-grid .e-rowcell.e-delivered,
+  .material .e-grid .e-rowcell.e-delivered,
+  .fabric .e-grid .e-rowcell.e-delivered,
+  .bootstrap4 .e-grid .e-rowcell.e-delivered,
+  .bootstrap .e-grid .e-rowcell.e-delivered,
+  .highcontrast .e-grid .e-rowcell.e-delivered,
+  .fluent
+      .e-grid
+      .e-rowcell.e-delivered:not(.e-editedbatchcell):not(.e-updatedtd),
+  .fluent2
+      .e-grid
+      .e-rowcell.e-delivered:not(.e-editedbatchcell):not(.e-updatedtd),
+  .bootstrap5
+      .e-grid
+      .e-rowcell.e-delivered:not(.e-editedbatchcell):not(.e-updatedtd),
+  .bootstrap5\.3
+      .e-grid
+      .e-rowcell.e-delivered:not(.e-editedbatchcell):not(.e-updatedtd),
+  .tailwind3
+      .e-grid
+      .e-rowcell.e-delivered:not(.e-editedbatchcell):not(.e-updatedtd),
+  .tailwind
+      .e-grid
+      .e-rowcell.e-delivered:not(.e-editedbatchcell):not(.e-updatedtd),
+  .material
+      .e-grid
+      .e-rowcell.e-delivered:not(.e-editedbatchcell):not(.e-updatedtd),
+  .fabric
+      .e-grid
+      .e-rowcell.e-delivered:not(.e-editedbatchcell):not(.e-updatedtd),
+  .bootstrap4
+      .e-grid
+      .e-rowcell.e-delivered:not(.e-editedbatchcell):not(.e-updatedtd),
+  .bootstrap
+      .e-grid
+      .e-rowcell.e-delivered:not(.e-editedbatchcell):not(.e-updatedtd),
+  .highcontrast
+      .e-grid
+      .e-rowcell.e-delivered:not(.e-editedbatchcell):not(.e-updatedtd),
+  .e-grid .e-rowcell.e-delivered,
+  .e-grid
+      .e-rowcell.e-delivered:not(.e-editedbatchcell):not(.e-updatedtd) {
+      background-color: #dfffe2;
+      color: #00a653;
+  }
+  
+  .fluent-dark .e-grid .e-rowcell.e-delivered,
+  .fluent2-dark .e-grid .e-rowcell.e-delivered,
+  .fluent2-highcontrast .e-grid .e-rowcell.e-delivered,
+  .bootstrap5-dark .e-grid .e-rowcell.e-delivered,
+  .bootstrap5\.3-dark .e-grid .e-rowcell.e-delivered,
+  .highcontrast .e-grid .e-rowcell.e-delivered,
+  .tailwind3-dark .e-grid .e-rowcell.e-delivered,
+  .tailwind-dark .e-grid .e-rowcell.e-delivered,
+  .material-dark .e-grid .e-rowcell.e-delivered,
+  .fabric-dark .e-grid .e-rowcell.e-delivered,
+  .bootstrap-dark .e-grid .e-rowcell.e-delivered,
+  .fluent-dark
+      .e-grid
+      .e-rowcell.e-delivered:not(.e-editedbatchcell):not(.e-updatedtd),
+  .fluent2-dark
+      .e-grid
+      .e-rowcell.e-delivered:not(.e-editedbatchcell):not(.e-updatedtd),
+  .fluent2-highcontrast
+      .e-grid
+      .e-rowcell.e-delivered:not(.e-editedbatchcell):not(.e-updatedtd),
+  .bootstrap5-dark
+      .e-grid
+      .e-rowcell.e-delivered:not(.e-editedbatchcell):not(.e-updatedtd),
+  .bootstrap5\.3-dark
+      .e-grid
+      .e-rowcell.e-delivered:not(.e-editedbatchcell):not(.e-updatedtd),
+  .highcontrast
+      .e-grid
+      .e-rowcell.e-delivered:not(.e-editedbatchcell):not(.e-updatedtd),
+  .tailwind3-dark
+      .e-grid
+      .e-rowcell.e-delivered:not(.e-editedbatchcell):not(.e-updatedtd),
+  .tailwind-dark
+      .e-grid
+      .e-rowcell.e-delivered:not(.e-editedbatchcell):not(.e-updatedtd),
+  .material-dark
+      .e-grid
+      .e-rowcell.e-delivered:not(.e-editedbatchcell):not(.e-updatedtd),
+  .fabric-dark
+      .e-grid
+      .e-rowcell.e-delivered:not(.e-editedbatchcell):not(.e-updatedtd),
+  .bootstrap-dark
+      .e-grid
+      .e-rowcell.e-delivered:not(.e-editedbatchcell):not(.e-updatedtd) {
+        background-color: #315c35;
+        color: #38ff9c;
+  }
+  
+  .material3-dark .e-grid .e-rowcell.e-delivered,
+  .material3-dark
+      .e-grid
+      .e-rowcell.e-delivered:not(.e-editedbatchcell):not(.e-updatedtd) {
+        background-color: #143e17;
+        color: #8eda94;
+  }
+  
+  .fluent .e-grid .e-rowcell.e-inprogress,
+  .fluent2 .e-grid .e-rowcell.e-inprogress,
+  .bootstrap5 .e-grid .e-rowcell.e-inprogress,
+  .bootstrap5\.3 .e-grid .e-rowcell.e-inprogress,
+  .tailwind3 .e-grid .e-rowcell.e-inprogress,
+  .tailwind .e-grid .e-rowcell.e-inprogress,
+  .material .e-grid .e-rowcell.e-inprogress,
+  .fabric .e-grid .e-rowcell.e-inprogress,
+  .bootstrap4 .e-grid .e-rowcell.e-inprogress,
+  .bootstrap .e-grid .e-rowcell.e-inprogress,
+  .highcontrast .e-grid .e-rowcell.e-inprogress,
+  .fluent
+      .e-grid
+      .e-rowcell.e-inprogress:not(.e-editedbatchcell):not(.e-updatedtd),
+  .fluent2
+      .e-grid
+      .e-rowcell.e-inprogress:not(.e-editedbatchcell):not(.e-updatedtd),
+  .bootstrap5
+      .e-grid
+      .e-rowcell.e-inprogress:not(.e-editedbatchcell):not(.e-updatedtd),
+  .bootstrap5\.3
+      .e-grid
+      .e-rowcell.e-inprogress:not(.e-editedbatchcell):not(.e-updatedtd),
+  .tailwind3
+      .e-grid
+      .e-rowcell.e-inprogress:not(.e-editedbatchcell):not(.e-updatedtd),
+  .tailwind
+      .e-grid
+      .e-rowcell.e-inprogress:not(.e-editedbatchcell):not(.e-updatedtd),
+  .material
+      .e-grid
+      .e-rowcell.e-inprogress:not(.e-editedbatchcell):not(.e-updatedtd),
+  .fabric
+      .e-grid
+      .e-rowcell.e-inprogress:not(.e-editedbatchcell):not(.e-updatedtd),
+  .bootstrap4
+      .e-grid
+      .e-rowcell.e-inprogress:not(.e-editedbatchcell):not(.e-updatedtd),
+  .bootstrap
+      .e-grid
+      .e-rowcell.e-inprogress:not(.e-editedbatchcell):not(.e-updatedtd),
+  .highcontrast
+      .e-grid
+      .e-rowcell.e-inprogress:not(.e-editedbatchcell):not(.e-updatedtd),
+  .e-grid .e-rowcell.e-inprogress,
+  .e-grid
+      .e-rowcell.e-inprogress:not(.e-editedbatchcell):not(.e-updatedtd) {
+        background-color: #ffebe9;
+        color: #ff3740;
+  }
+  
+  .fluent-dark .e-grid .e-rowcell.e-inprogress,
+  .fluent2-dark .e-grid .e-rowcell.e-inprogress,
+  .fluent2-highcontrast .e-grid .e-rowcell.e-inprogress,
+  .bootstrap5-dark .e-grid .e-rowcell.e-inprogress,
+  .bootstrap5\.3-dark .e-grid .e-rowcell.e-inprogress,
+  .highcontrast .e-grid .e-rowcell.e-inprogress,
+  .tailwind3-dark .e-grid .e-rowcell.e-inprogress,
+  .tailwind-dark .e-grid .e-rowcell.e-inprogress,
+  .material-dark .e-grid .e-rowcell.e-inprogress,
+  .fabric-dark .e-grid .e-rowcell.e-inprogress,
+  .bootstrap-dark .e-grid .e-rowcell.e-inprogress,
+  .fluent-dark
+      .e-grid
+      .e-rowcell.e-inprogress:not(.e-editedbatchcell):not(.e-updatedtd),
+  .fluent2-dark
+      .e-grid
+      .e-rowcell.e-inprogress:not(.e-editedbatchcell):not(.e-updatedtd),
+  .fluent2-highcontrast
+      .e-grid
+      .e-rowcell.e-inprogress:not(.e-editedbatchcell):not(.e-updatedtd),
+  .bootstrap5-dark
+      .e-grid
+      .e-rowcell.e-inprogress:not(.e-editedbatchcell):not(.e-updatedtd),
+  .bootstrap5\.3-dark
+      .e-grid
+      .e-rowcell.e-inprogress:not(.e-editedbatchcell):not(.e-updatedtd),
+  .highcontrast
+      .e-grid
+      .e-rowcell.e-inprogress:not(.e-editedbatchcell):not(.e-updatedtd),
+  .tailwind3-dark
+      .e-grid
+      .e-rowcell.e-inprogress:not(.e-editedbatchcell):not(.e-updatedtd),
+  .tailwind-dark
+      .e-grid
+      .e-rowcell.e-inprogress:not(.e-editedbatchcell):not(.e-updatedtd),
+  .material-dark
+      .e-grid
+      .e-rowcell.e-inprogress:not(.e-editedbatchcell):not(.e-updatedtd),
+  .fabric-dark
+      .e-grid
+      .e-rowcell.e-inprogress:not(.e-editedbatchcell):not(.e-updatedtd),
+  .bootstrap-dark
+      .e-grid
+      .e-rowcell.e-inprogress:not(.e-editedbatchcell):not(.e-updatedtd) {
+        background-color: #55241e;
+        color: #ff9ca0;
+  }
+  
+  .material3-dark .e-grid .e-rowcell.e-inprogress,
+  .material3-dark
+      .e-grid
+      .e-rowcell.e-inprogress:not(.e-editedbatchcell):not(.e-updatedtd) {
+      background-color: #3a1618;
+      color: #ff7b81;
+  }
+
+  .no-border {
+    border: none !important;
+  }

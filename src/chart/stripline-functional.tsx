@@ -9,6 +9,7 @@ import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { EmitType } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
+import { loadChartTheme } from './theme-color';
 export let data: any[] = [
     { x: new Date(2023, 4, 1), wind : 19 },
     { x: new Date(2023, 4, 2), wind : 17 },
@@ -121,9 +122,7 @@ const Stripline = () => {
         document.getElementById('charts').setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
     return (
         <div className='control-pane' >
@@ -149,7 +148,7 @@ const Stripline = () => {
                 </defs>
             </svg>
             <div className='control-section row'>              
-                <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'DateTimeCategory', majorGridLines: { width: 0 }, majorTickLines: { width: 0 }, labelFormat: 'E dd/MM', labelRotation: -90, labelIntersectAction: Browser.isDevice ? 'Rotate90' : 'None' }} load={load.bind(this)} primaryYAxis={{ minimum: 0, maximum: 30, interval: 10, title: 'Wind Speed and Gust (km/h)', lineStyle: { width: 0 }, rangePadding: 'None', majorTickLines: {width: 0}, majorGridLines: {width: 0}, stripLines: [{ start: 0, end: 5, text: 'Calm', color: 'rgba(68, 170, 213, 0.1)', visible: true, horizontalAlignment: 'Start', textStyle: { size: '13px' }, border: { width: 0 } }, { start: 5, end: 8, text: 'Light Air', color: 'rgba(0, 0, 0, 0)', horizontalAlignment: 'Start', visible: true, textStyle: { size: '13px' }, border: { width: 0 } }, { start: 8, end: 11, text: 'Light Breeze', horizontalAlignment: 'Start', visible: true, textStyle: { size: '13px' }, border: { width: 0 }, color: 'rgba(68, 170, 213, 0.1)' }, { start: 11, end: 18, text: 'Gentle Breeze', color: 'rgba(0, 0, 0, 0)', visible: true, horizontalAlignment: 'Start', textStyle: { size: '13px' }, border: { width: 0 }}, { start: 18, end: 28, text: 'Moderate Breeze', color: 'rgba(68, 170, 213, 0.1)', visible: true, horizontalAlignment: 'Start', textStyle: { size: '13px' }, border: { width: 0 }},  { start: 28, end: 30, text: 'Fresh Breeze', color: 'rgba(0, 0, 0, 0)', visible: true, horizontalAlignment: 'Start', textStyle: { size: '13px' }, border: { width: 0 }}] }} tooltip={{ enable: true, header: " ", format: "<b>${point.x}</b> <br> ${series.name} : <b>${point.y}</b>", enableMarker: false }} legendSettings={{ visible: true, enableHighlight: true, shapeHeight: 6, shapeWidth: 15 }} width={Browser.isDevice ? "100%" : "75%"} loaded={onChartLoad.bind(this)} title='Wind Speed and Gust (km/h)' titleStyle={ {position: 'Bottom', textAlignment: 'Far'}} subTitle= 'WorldWeatherOnline.com' chartArea={{border: {width: 0}}} >
+                <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'DateTimeCategory', majorGridLines: { width: 0 }, majorTickLines: { width: 0 }, labelFormat: 'E dd/MM', labelRotation: -90, labelIntersectAction: Browser.isDevice ? 'Rotate90' : 'None' }} load={load.bind(this)} primaryYAxis={{ minimum: 0, maximum: 30, interval: 10, title: 'Wind Speed and Gust (km/h)', lineStyle: { width: 0 }, rangePadding: 'None', majorTickLines: {width: 0}, majorGridLines: {width: 0}, stripLines: [{ start: 0, end: 5, text: 'Calm', color: 'rgba(68, 170, 213, 0.1)', visible: true, horizontalAlignment: 'Start', textStyle: { size: '13px' }, border: { width: 0 } }, { start: 5, end: 8, text: 'Light Air', color: 'rgba(0, 0, 0, 0)', horizontalAlignment: 'Start', visible: true, textStyle: { size: '13px' }, border: { width: 0 } }, { start: 8, end: 11, text: 'Light Breeze', horizontalAlignment: 'Start', visible: true, textStyle: { size: '13px' }, border: { width: 0 }, color: 'rgba(68, 170, 213, 0.1)' }, { start: 11, end: 18, text: 'Gentle Breeze', color: 'rgba(0, 0, 0, 0)', visible: true, horizontalAlignment: 'Start', textStyle: { size: '13px' }, border: { width: 0 }}, { start: 18, end: 28, text: 'Moderate Breeze', color: 'rgba(68, 170, 213, 0.1)', visible: true, horizontalAlignment: 'Start', textStyle: { size: '13px' }, border: { width: 0 }},  { start: 28, end: 30, text: 'Fresh Breeze', color: 'rgba(0, 0, 0, 0)', visible: true, horizontalAlignment: 'Start', textStyle: { size: '13px' }, border: { width: 0 }}] }} tooltip={{ enable: true, header: " ", format: "<b>${point.x}</b> <br> ${series.name} : <b>${point.y}</b>", enableMarker: false, enableHighlight: true, showNearestTooltip: true }} legendSettings={{ visible: true, enableHighlight: true, shapeHeight: 6, shapeWidth: 15 }} width={Browser.isDevice ? "100%" : "75%"} loaded={onChartLoad.bind(this)} title='Wind Speed and Gust (km/h)' titleStyle={ {position: 'Bottom', textAlignment: 'Far'}} subTitle= 'WorldWeatherOnline.com' chartArea={{ border: { width: 0 }, margin: { bottom: 12 } }} >
                     <Inject services={[SplineSeries, DateTimeCategory, Legend, Tooltip, StripLine, Highlight]} />
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={data} xName="x" yName="wind" width={4} type="Spline" legendShape="HorizontalLine" name="Wind Speed (km/h)" />
@@ -164,7 +163,9 @@ const Stripline = () => {
                 <p>
                     In this example, you can see how to render and configure a strip line for the chart. Use the <code>start</code> and <code>end</code> properties in the <code>chartStripline</code> option to add a strip line to an axis. Additionally, the title for the chart can be positioned anywhere in the chart by using the <code>position</code> property in <code>titleStyle</code>.
                 </p>
-                <p><code>Tooltip</code> is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
+                <p>
+                    <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
+                </p>
                 <p><b>Injecting Module</b></p>
                 <p>
                     Chart component features are segregated into individual feature-wise modules. To use strip line, we need to inject <code>StripLine</code> module into <code>services</code>.

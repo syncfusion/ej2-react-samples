@@ -88,31 +88,13 @@ const Exporting = () => {
       ganttInstance.current.csvExport();
     }
     else if (args.item.id === "GanttExport_pdfexport") {
-      var exportProperties: PdfExportProperties = {
-        fitToWidthSettings: {
-            isFitToWidth: isFitToWidth,
-        }};
-      ganttInstance.current.pdfExport(exportProperties);
+      ganttInstance.current.pdfExport();
     }
   }
-  const autofit  = (args: any) =>  {
-    if (args.checked) {
-        isFitToWidth = true;
-    } else {
-        isFitToWidth = false;
-    }
-}
+
   return (
     <div className='control-pane'>
       <div className='control-section'>
-      <div style={{ display: 'flex' }}>
-            <div style={{ display: 'flex' }}>
-                <label htmlFor="unchecked" id="exported" style={{ fontSize: '15px', margin: '0px 5px 0px 5px' }}> AutoFit in Pdf Export </label>
-              <div>
-                <SwitchComponent id="unchecked" checked={false} change={autofit.bind(this)}></SwitchComponent>
-              </div>
-            </div>
-        </div>
         <GanttComponent id='GanttExport' ref={ganttInstance} dataSource={editingData} dateFormat={'MMM dd, y'}
           treeColumnIndex={1} allowExcelExport={true} allowPdfExport={true} allowSelection={true} showColumnMenu={false} highlightWeekends={true}
           allowUnscheduledTasks={true} projectStartDate={projectStartDate} projectEndDate={projectEndDate} splitterSettings={splitterSettings}
@@ -135,9 +117,6 @@ const Exporting = () => {
             <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#pdfexport">pdfExport</a>
             and
             <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#csvexport">csvExport</a> methods.</p>
-          <p>In addition we have provided support to export the Gantt component where each rows are auto-fit to the PDF document page width using
-          <a target="_blank" href="hhttps://ej2.syncfusion.com/react/documentation/api/gantt/pdfExportProperties/#fittowidthsettings">fitToWidthSettings</a>
-            in <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/pdfExportProperties">PdfExportProperties</a> and also it includes the functionality allowing the PDF export of <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#holidays">holidays</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#eventmarkers">eventMarkers</a></p>
           <p>Injecting Module:</p>
           <p>To use Excel and CSV export features, we need to inject
               <code><a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#excelexport">

@@ -19,9 +19,7 @@ export class FormFilling extends SampleBase<{}, {}> {
                 <div className="e-message render-mode-info">
                     <span className="e-msg-icon render-mode-info-icon" title="Turn OFF to render the PDF Viewer as server-backed"></span>
                 </div>
-                <div>
-                    <SwitchComponent cssClass="buttonSwitch" id="checked" change={this.change} checked={true}></SwitchComponent>
-                </div>
+                <SwitchComponent cssClass="buttonSwitch" id="checked" change={this.change} checked={true}></SwitchComponent>
             </div>
             {/* Render the PDF Viewer */}
             <PdfViewerComponent id="container" ref={(scope) => { this.viewer = scope; }} documentPath="https://cdn.syncfusion.com/content/pdf/form-filling-document.pdf" resourceUrl = "https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib" validateFormFields={this.validateFormFields} enableFormFieldsValidation={true} showNotificationDialog={false} style={{ 'height': '640px' }}>

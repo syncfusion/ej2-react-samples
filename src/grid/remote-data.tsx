@@ -3,15 +3,28 @@ import * as React from 'react';
 import { GridComponent, ColumnsDirective, ColumnDirective, Page, Inject } from '@syncfusion/ej2-react-grids';
 import { DataManager, WebApiAdaptor, Query, DataOptions } from '@syncfusion/ej2-data';
 import { SampleBase } from '../common/sample-base';
+import { SwitchComponent } from '@syncfusion/ej2-react-buttons';
+import './remote-data.css';
 
 export class RemoteDataBinding extends SampleBase<{}, {}> {
     public hostUrl = 'https://services.syncfusion.com/react/production/';
     public data = new DataManager({ url: this.hostUrl + 'api/Orders', adaptor: new WebApiAdaptor  });
     public gridInstance: GridComponent;
+    public onChanged(args: any) {
+        this.gridInstance.dataSource = new DataManager({ url: this.hostUrl + 'api/Orders', adaptor: new WebApiAdaptor, enableCache: args.checked });
+    }
     render() {
         return (
             <div className='control-pane'>
-                <div className='control-section'>
+                 <div className='control-section'>
+                    <div style={{ display: 'flex' }}>
+                        <div id="export-cache-container">
+                            <label htmlFor="unchecked"> Enable Cache </label>
+                            <div>
+                                <SwitchComponent id="unchecked" checked={false} change={this.onChanged.bind(this)}></SwitchComponent>
+                            </div>
+                        </div>
+                    </div>
                     <GridComponent id="Grid" dataSource={this.data} ref={grid => this.gridInstance = grid} allowPaging={true} >
                         <ColumnsDirective>
                             <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right'></ColumnDirective>
@@ -23,6 +36,7 @@ export class RemoteDataBinding extends SampleBase<{}, {}> {
                         <Inject services={[Page]} />
                     </GridComponent>
                 </div>
+                
                 <div id='waitingpopup' className='waitingpopup'>
                     <span id='gif' className='image'></span>
                 </div>
@@ -61,7 +75,10 @@ export class RemoteDataBinding extends SampleBase<{}, {}> {
                             href="https://ej2.syncfusion.com/react/documentation/api/grid#datasource">
                             dataSource
         </a></code> property.</p>
-
+        <p>The <code>DataManager</code> provides an option to avoid sending requests for previously visited pages by enabling the <code>enableCache</code> property.
+            When this property is enabled, the DataManager does not send a request to the server when revisiting a page. 
+            However, the cache will be reset if any data action, such as sorting or filtering, is performed.
+        </p>
                     <p>
                         More information on the data binding can be found in this
             <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/grid/data-binding.html#remote-data">documentation section</a>.

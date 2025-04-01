@@ -9,6 +9,7 @@ import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import { AccumulationChartComponent, AccumulationSeriesCollectionDirective, AccumulationSeriesDirective, AccumulationLegend, PieSeries, AccumulationTooltip, IAccTextRenderEventArgs, AccumulationTheme, Inject, AccumulationDataLabel, IAccPointRenderEventArgs, IAccLoadedEventArgs, GroupModes } from '@syncfusion/ej2-react-charts';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
+import { loadAccumulationChartTheme} from './theme-color';
 export let data1: any[] = [
     { 'x': 'Australia', y: 26, text: 'Australia: 26' },
     { 'x': 'Russia', y: 19, text: 'Russia: 19' },
@@ -71,9 +72,7 @@ const Grouping = () => {
         pie.current.refreshChart();
     };
     const load = (args: IAccLoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as AccumulationTheme;
+        loadAccumulationChartTheme(args);
     };
     return (
         <div className='control-pane'>

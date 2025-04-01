@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { useEffect } from 'react';
-import { AccumulationChartComponent, AccumulationSeriesCollectionDirective, AccumulationSeriesDirective, Inject, AccumulationTooltip, AccumulationDataLabel, PieSeries, IAccPointRenderEventArgs } from '@syncfusion/ej2-react-charts';
+import { AccumulationChartComponent, AccumulationSeriesCollectionDirective, AccumulationSeriesDirective, Inject, AccumulationTooltip, AccumulationDataLabel, PieSeries, IAccPointRenderEventArgs, IAccLoadedEventArgs } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { EmitType } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
-
+import { accpatternPointRender, loadAccumulationChartTheme } from './theme-color';
 const SAMPLE_CSS = `
     .control-fluid {
         padding: 0px !important;
     }`;
 
-const data = [
+const data: Object[] = [
     { x: 'Internet Explorer', y: 6.12, text: Browser.isDevice ? 'Internet Explorer:<br> 6.12%' : 'Internet Explorer: 6.12%' },
     { x: 'Chrome', y: 57.28, text: Browser.isDevice ? 'Chrome:<br> 57.282%' : 'Chrome: 57.28%' },
     { x: 'Safari', y: 4.73, text: Browser.isDevice ? 'Safari:<br> 4.73%' : 'Safari: 4.73%' },
@@ -26,81 +26,10 @@ const PieWithPattern = () => {
     }, []);
 
     const onPointRender: EmitType<IAccPointRenderEventArgs> = (args: IAccPointRenderEventArgs): void => {
-        if (args.point.index == 0) {
-            args.pattern = 'DiagonalBackward'
-
-        }
-        else if (args.point.index == 1) {
-            args.pattern = 'DiagonalForward'
-
-        }
-        else if (args.point.index == 2) {
-            args.pattern = 'HorizontalStripe'
-
-        }
-        else if (args.point.index == 3) {
-            args.pattern = 'VerticalStripe'
-
-        }
-        else if (args.point.index == 4) {
-            args.pattern = 'HorizontalDash'
-
-        }
-        let selectedTheme = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        if (selectedTheme.indexOf('dark') > -1) {
-            if (selectedTheme.indexOf('material') > -1) {
-                args.border.color = '#303030';
-
-            }
-            else if (selectedTheme.indexOf('bootstrap5') > -1) {
-                args.border.color = '#212529';
-
-            }
-            else if (selectedTheme.indexOf('bootstrap') > -1) {
-                args.border.color = '#1A1A1A';
-
-            }
-            else if (selectedTheme.indexOf('fabric') > -1) {
-                args.border.color = '#201f1f';
-
-            }
-            else if (selectedTheme.indexOf('fluent') > -1) {
-                args.border.color = '#252423';
-
-            }
-            else if (selectedTheme.indexOf('bootstrap') > -1) {
-                args.border.color = '#1A1A1A';
-
-            }
-            else if (selectedTheme.indexOf('tailwind') > -1) {
-                args.border.color = '#1F2937';
-
-            }
-            else {
-                args.border.color = '#222222';
-
-            }
-        }
-        else if (selectedTheme.indexOf('highcontrast') > -1) {
-            args.border.color = '#000000';
-
-        }
-        else if (selectedTheme.indexOf('fluent2-highcontrast') > -1) {
-            args.border.color = '#000000';
-
-        }
-        else {
-            args.border.color = '#FFFFFF';
-
-        }
+        accpatternPointRender(args);
     }
-    const load = (args) => {
-        let selectedTheme = location.hash.split('/')[1] || 'Fluent2';
-        args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1))
-            .replace(/-dark/i, 'Dark')
-            .replace(/contrast/i, 'Contrast')
-            .replace(/-highContrast/i, 'HighContrast');
+    const load = (args: IAccLoadedEventArgs) => {
+        loadAccumulationChartTheme(args);
     };
 
     return (
@@ -112,10 +41,10 @@ const PieWithPattern = () => {
                     id='pie-chart'
                     style={{ textAlign: 'center' }}
                     title='Browser Market Share'
-                    load={load}
+                    load={load.bind(this)}
                     enableBorderOnMouseMove={false}
                     width={Browser.isDevice ? '100%' : '75%'}
-                    pointRender={onPointRender}
+                    pointRender={onPointRender.bind(this)}
                     tooltip={{ enable: true, format: '<b>${point.x}</b><br>Browser Share: <b>${point.y}%</b>', header: "", enableHighlight: true }}
                     legendSettings={{ visible: false }}
                 >

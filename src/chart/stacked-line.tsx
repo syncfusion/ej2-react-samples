@@ -2,72 +2,103 @@
  * Sample for Stacking Line series
  */
 import * as React from "react";
-import { ChartComponent, SeriesCollectionDirective, ILoadedEventArgs, ChartTheme,Highlight, SeriesDirective, Inject, Legend, Category, StackingLineSeries, Tooltip } from '@syncfusion/ej2-react-charts';
+import { ChartComponent, SeriesCollectionDirective, ILoadedEventArgs, Highlight, SeriesDirective, Inject, Legend, Double, StackingLineSeries, Tooltip } from '@syncfusion/ej2-react-charts';
+import { loadChartTheme } from './theme-color';
 import { SampleBase } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
-export let chartData = [
-    { x: 'Food', y: 90, y1: 40, y2: 70, y3: 120 },{ x: 'Transport', y: 80, y1: 90, y2: 110, y3: 70 },{ x: 'Medical', y: 50, y1: 80, y2: 120, y3: 50 },
-    { x: 'Clothes', y: 70, y1: 30, y2: 60, y3: 180 },{ x: 'Personal Care', y: 30, y1: 80, y2: 80, y3: 30 },{ x: 'Books', y: 10, y1: 40, y2: 30, y3: 270 },
-    { x: 'Fitness', y: 100, y1: 30, y2: 70, y3: 40 },{ x: 'Electricity', y: 55, y1: 95, y2: 55, y3: 75 },{ x: 'Tax', y: 20, y1: 50, y2: 40, y3: 65 },
-    { x: 'Pet Care', y: 40, y1: 20, y2: 80, y3: 95 },{ x: 'Education', y: 45, y1: 15, y2: 45, y3: 195 },{ x: 'Entertainment', y: 75, y1: 45, y2: 65, y3: 115 }
+export let chartData1: Object[] = [
+    { x: 2015, y: 28.2 },
+    { x: 2016, y: 28.6 },
+    { x: 2017, y: 46.0 },
+    { x: 2018, y: 52.7 },
+    { x: 2019, y: 62.0 },
+    { x: 2020, y: 64.6 },
+    { x: 2021, y: 60.1 },
+    { x: 2022, y: 68.6 },
+    { x: 2023, y: 71.81 }
+];
+export let chartData2: Object[] = [
+    { x: 2015, y: 15.0 },
+    { x: 2016, y: 16.7 },
+    { x: 2017, y: 14.2 },
+    { x: 2018, y: 15.3 },
+    { x: 2019, y: 16.4 },
+    { x: 2020, y: 13.9 },
+    { x: 2021, y: 14.8 },
+    { x: 2022, y: 16.1 },
+    { x: 2023, y: 16.02 }
+];
+export let chartData3: Object[] = [
+    { x: 2015, y: 8.1 },
+    { x: 2016, y: 8.4 },
+    { x: 2017, y: 7.73 },
+    { x: 2018, y: 5.1 },
+    { x: 2019, y: 8.7 },
+    { x: 2020, y: 9.4 },
+    { x: 2021, y: 10.3 },
+    { x: 2022, y: 10.4 },
+    { x: 2023, y: 11.17 }
+];
+export let chartData4: Object[] = [
+    { x: 2015, y: 4.6 },
+    { x: 2016, y: 7.5 },
+    { x: 2017, y: 12.1 },
+    { x: 2018, y: 25.9 },
+    { x: 2019, y: 39.3 },
+    { x: 2020, y: 50.1 },
+    { x: 2021, y: 60.4 },
+    { x: 2022, y: 73.5 },
+    { x: 2023, y: 102.01 }
 ];
 const SAMPLE_CSS = `
      .control-fluid {
          padding: 0px !important;
      }`;
-export class StackedLine extends SampleBase<{}, {}>{
+export class StackedLine extends SampleBase<{}, {}> {
     render() {
-        return (<div className='control-pane'>
-            <style>
-                {SAMPLE_CSS}
-            </style>
-            <div className='control-section'>
-                <ChartComponent id='charts' style={{ textAlign: "center" }}
-                    primaryXAxis={{ majorGridLines: { width: 0 }, minorGridLines: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 }, interval: 1, lineStyle: { width: 0 }, valueType: 'Category' }}
-
-                    primaryYAxis={{ title: 'Expense', lineStyle: { width: 0 }, minimum: 0, maximum: 400, interval: 100, majorTickLines: { width: 0 }, majorGridLines: { width: 1 }, minorGridLines: { width: 1 }, minorTickLines: { width: 0 }, labelFormat: '${value}', }}
-                    legendSettings={{enableHighlight: true}}
-                    width={Browser.isDevice ? '100%' : '75%'} chartArea={{ border: { width: 0 } }} load={this.load.bind(this)} title='Family Expenses Per Month' tooltip={{ enable: true }}> 
-                    <Inject services={[StackingLineSeries, Category, Legend, Tooltip, Highlight ]} />
-                    <SeriesCollectionDirective>
-                        <SeriesDirective dataSource={chartData} xName='x' yName='y' name='John' width={2} type='StackingLine' marker={{ isFilled: true, visible: true, shape: 'Circle', width: 7, height: 7 }} >
-                        </SeriesDirective>
-                        <SeriesDirective dataSource={chartData} xName='x' yName='y1' name='Peter' width={2} type='StackingLine' marker={{ isFilled: true, visible: true, shape: 'Diamond', width: 7, height: 7 }} >
-                        </SeriesDirective>
-                        <SeriesDirective dataSource={chartData} xName='x' yName='y2' name='Steve' width={2} type='StackingLine' marker={{ isFilled: true, visible: true, shape: 'Rectangle', width: 5, height: 5 }} >
-                        </SeriesDirective>
-                        <SeriesDirective dataSource={chartData} xName='x' yName='y3' name='Charle' width={2} type='StackingLine' marker={{ isFilled: true, visible: true, shape: 'Triangle', width: 6, height: 6 }} >
-                        </SeriesDirective>
-                    </SeriesCollectionDirective>
-                </ChartComponent>
-            </div>
+        return (
+            <div className='control-pane'>
+                <style> {SAMPLE_CSS} </style>
+                <div className='control-section'>
+                    <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ majorGridLines: { width: 0 }, minorGridLines: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 }, lineStyle: { width: 0 }, valueType: 'Double', labelRotation: Browser.isDevice ? -45 : 0, labelIntersectAction: Browser.isDevice ? 'None' : 'Trim' }} primaryYAxis={{ lineStyle: { width: 0 }, majorTickLines: { width: 0 }, majorGridLines: { width: 1 }, minorGridLines: { width: 1 }, minorTickLines: { width: 0 }, labelFormat: '{value}TWh', title: 'Energy Generation (TWh)' }} legendSettings={{ enableHighlight: true }} width={Browser.isDevice ? '100%' : '75%'} chartArea={{ border: { width: 0 }, margin: { bottom: 12 } }} load={this.load.bind(this)} loaded={this.loaded.bind(this)} title='Yearly Renewable Energy Generation in India (2015-2023)' subTitle='Source: wikipedia.org' tooltip={{ enable: true, enableHighlight: true, showNearestTooltip: true, header: '<b>${series.name}</b>', format: '${point.x} : <b>${point.y}</b>' }}>
+                        <Inject services={[StackingLineSeries, Double, Legend, Tooltip, Highlight]} />
+                        <SeriesCollectionDirective>
+                            <SeriesDirective dataSource={chartData1} xName='x' yName='y' name='Wind' width={2} type='StackingLine' marker={{ isFilled: true, visible: true, shape: 'Circle', width: 7, height: 7 }} />
+                            <SeriesDirective dataSource={chartData2} xName='x' yName='y' name='Bio mass' width={2} type='StackingLine' marker={{ isFilled: true, visible: true, shape: 'Diamond', width: 7, height: 7 }} />
+                            <SeriesDirective dataSource={chartData3} xName='x' yName='y' name='Small Hydro' width={2} type='StackingLine' marker={{ isFilled: true, visible: true, shape: 'Rectangle', width: 5, height: 5 }} />
+                            <SeriesDirective dataSource={chartData4} xName='x' yName='y' name='Solar' width={2} type='StackingLine' marker={{ isFilled: true, visible: true, shape: 'Triangle', width: 6, height: 6 }} />
+                        </SeriesCollectionDirective>
+                    </ChartComponent>
+                </div>
                 <div id="action-description">
-                <p>
-                This React Stacked Line Chart example visualizes the family expenses data with a stacked line series in the chart to identify who spent more money in each category.
-            </p>
+                    <p>
+                        This React Stacked Line Chart example visualizes the yearly renewable energy generation in India from 2015 to 2023.
+                    </p>
                 </div>
                 <div id="description">
-                     <p>
-                     In this example, you can see how to render and configure the stacked line chart. The stacked line chart visualizes data with y-values stacked one over another in a series order. It shows the relationship between individual values to the total sum of points. 
-                  </p>
+                    <p>In this example, you can see how to render and configure the stacked line chart. The stacked line chart visualizes data with y-values stacked one over another in a series order. It shows the relationship between individual values to the total sum of points.</p>
+                    <p>
+                        <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
+                    </p>
                     <p><b>Injecting Module</b></p>
                     <p>
-                    Chart component features are segregated into individual feature-wise modules. To use stacking line series, we need to inject
-                          <code>StackingLineSeries</code> module into <code>services</code>.
+                        Chart component features are segregated into individual feature-wise modules. To use stacking line series, we need to inject <code>StackingLineSeries</code> module into <code>services</code>.
                     </p>
                     <p>
-                        More information on the stacked line series can be found in this &nbsp;
-                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/stack-line" aria-label="Navigate to the documentation for Stacked Line Chart in React Chart component">documentation section</a>.
-                  </p>
+                        More information on the stacked line series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/stack-line" aria-label="Navigate to the documentation for Stacked Line Chart in React Chart component">documentation section</a>.
+                    </p>
                 </div>
             </div>
         )
     }
-        
-    public load(args: ILoadedEventArgs): void {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+
+    public loaded (args: ILoadedEventArgs): void {
+        let chart: Element = document.getElementById('charts');
+        chart.setAttribute('title', '');
     };
-        
+
+    public load(args: ILoadedEventArgs): void {
+        loadChartTheme(args);
+    };
+
 }

@@ -7,6 +7,7 @@ import * as ReactDOM from "react-dom";
 import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, Legend, Category, ILoadedEventArgs, PolarSeries, RadarSeries, Tooltip, ChartTheme, Highlight, StackingColumnSeries } from '@syncfusion/ej2-react-charts';
 import { EmitType, Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import { loadChartTheme } from './theme-color';
 export let data1: any[] = [
     { x: 'N', y: 1, y1: 0.8, y2: 0.8, y3: 0.3, y4: 0.2, y5: 0.2 },
     { x: 'NNE', y: 0.9, y1: 0.7, y2: 0.7, y3: 0.3, y4: 0.2, y5: 0.2 },
@@ -38,15 +39,13 @@ const PolarStackedColumn = () => {
         document.getElementById('charts').setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
     return (
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
-                <ChartComponent id='charts'style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', labelPlacement: 'OnTicks', interval: 1, coefficient: Browser.isDevice ? 80 : 100 }} load={load.bind(this)} legendSettings= {{ visible: true, enableHighlight: true }} title="Wind Rose Chart" loaded={onChartLoad.bind(this)} tooltip={{ enable: true }}>
+                <ChartComponent id='charts'style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', labelPlacement: 'OnTicks', interval: 1, coefficient: Browser.isDevice ? 80 : 100 }} load={load.bind(this)} legendSettings= {{ visible: true, enableHighlight: true }} title="Wind Rose Chart" loaded={onChartLoad.bind(this)} tooltip={{ enable: true, enableHighlight: true }}>
                     <Inject services={[Tooltip, Legend,Highlight, Category, PolarSeries, RadarSeries, StackingColumnSeries]} />
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={data1} xName='x' yName='y' name='6-9' type='Polar' drawType='StackingColumn' border={{ color: 'white', width: 1 }} />

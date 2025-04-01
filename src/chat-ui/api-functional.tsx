@@ -23,7 +23,7 @@ const API = () => {
     };
 
     const handleMultiSelectChange = (args, action) => {
-        const user: UserModel = { user: args.itemData, avatarBgColor: '#bacbe4' };
+        const user: UserModel = { user: args.itemData, avatarBgColor: '#87cefa' };
         if (['Laura', 'Charlie'].includes(args.itemData)) {
             user.avatarBgColor = args.itemData === 'Charlie' ? '#e6cdde' : '#dec287';
             user.avatarUrl = `./src/chat-ui/images/${args.itemData.toLowerCase()}.png`;

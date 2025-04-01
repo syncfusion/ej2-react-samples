@@ -4,12 +4,20 @@ import { TreeGridComponent, ColumnsDirective, ColumnDirective } from '@syncfusio
 import { sampleData } from './data';
 import { SampleBase } from '../common/sample-base';
 
+const rowhover_css = `
+    .material3 #TreeGrid .e-gridcontent tr.e-row:hover .e-rowcell:not(.e-selectionbackground):not(.e-active) {
+       background-color: rgba(28, 27, 31, 0.05) !important;
+    }
+    .material3-dark #TreeGrid .e-gridcontent tr.e-row:hover .e-rowcell:not(.e-selectionbackground):not(.e-active) {
+       background-color: rgba(230, 225, 229, 0.05) !important;
+    }`;
 
 export class RowHover extends SampleBase<{}, {}> {
 
   render() {
     return (
       <div className='control-pane'>
+        <style>{rowhover_css }</style>
         <div className='control-section'>
             <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks' height='350' enableHover={true}>
               <ColumnsDirective>

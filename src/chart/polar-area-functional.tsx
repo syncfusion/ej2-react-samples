@@ -9,6 +9,7 @@ import { PropertyPane } from '../common/property-pane';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { EmitType, Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import { loadChartTheme } from './theme-color';
 export let data1: any[] = [
     { x: '2000', y: 4 }, { x: '2001', y: 3.0 },
     { x: '2002', y: 3.8 }, { x: '2003', y: 3.4 },
@@ -41,9 +42,7 @@ const PolarArea = () => {
         document.getElementById('charts').setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
     const change = (): void => {
         chartInstance.current.series[0].type = dropElement.current.value as ChartSeriesType;
@@ -63,7 +62,7 @@ const PolarArea = () => {
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-md-8'>
-                    <ChartComponent id='charts' ref={chartInstance} primaryXAxis={{ valueType: 'Category', labelPlacement: 'OnTicks', interval: 1, coefficient: Browser.isDevice ? 80 : 100 }} primaryYAxis={{ title: 'Revenue in Millions', labelFormat: '{value}M' }} legendSettings= {{ visible: true, enableHighlight: true }} tooltip={{enable: true}} load={load.bind(this)} title="Average Sales Comparison" loaded={onChartLoad.bind(this)}>
+                    <ChartComponent id='charts' ref={chartInstance} primaryXAxis={{ valueType: 'Category', labelPlacement: 'OnTicks', interval: 1, coefficient: Browser.isDevice ? 80 : 100 }} primaryYAxis={{ title: 'Revenue in Millions', labelFormat: '{value}M' }} legendSettings= {{ visible: true, enableHighlight: true }} tooltip={{ enable: true, enableHighlight: true }} load={load.bind(this)} title="Average Sales Comparison" loaded={onChartLoad.bind(this)}>
                         <Inject services={[AreaSeries, Legend, Category, PolarSeries, RadarSeries, Highlight, Tooltip]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} xName='x' yName='y' name='Product A' width={2} opacity={0.5} type={type} drawType='Area' border={{ color: 'transparent' }} />

@@ -50,15 +50,23 @@ function CalculatedFieldFunction () {
         <div className='control-pane'>
             <div className='control-section'>
                 <div className='col-lg-9 adaptive'>
-                    <PivotViewComponent id='PivotView' ref={(pivotview) => { pivotObj = pivotview }} dataSourceSettings={dataSourceSettings} showFieldList={true} width={'100%'} height={'300'} allowCalculatedField={true} gridSettings={{columnWidth: 140}}>
+                    <PivotViewComponent id='PivotView' ref={(pivotview) => { pivotObj = pivotview }} dataSourceSettings={dataSourceSettings} showFieldList={true} width={'100%'} height={'300'} allowCalculatedField={true} gridSettings={{ columnWidth: 140 }}>
                         <Inject services={[CalculatedField, FieldList]} />
                     </PivotViewComponent>
                 </div>
                 <div className='col-lg-3 property-section'>
                     <PropertyPane title='Properties'>
-                        <div style={{ float: 'right', marginRight: '10px' }}>
-                            <ButtonComponent cssClass='e-primary' onClick={btnClick.bind(this)}>Calculated Field</ButtonComponent>
-                        </div>
+                        <table id="property" title="Properties" style={{ width: '100%' }}>
+                            <tbody>
+                                <tr style={{ height: '50px' }}>
+                                    <td>
+                                        <div>
+                                            <ButtonComponent cssClass='e-primary' onClick={btnClick.bind(this)}>Calculated Field</ButtonComponent>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </PropertyPane>
                 </div>
 

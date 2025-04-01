@@ -177,6 +177,7 @@ const FilterMenu = () => {
             <code>None</code> - Only the filtered records are displayed.
           </li>
         </ul>
+        <p>The Tree Grid now supports improved <code>in</code> and <code>not in</code> filter operators, allowing users to filter multiple values within the same column. When the menu filter is enabled, a Syncfusion DropDownList component with checkboxes appears to select the <code>in</code> or <code>not in</code> operators.</p>
         <p>
           {" "}
           In this demo, filter menu enabled by default, you can switch to other

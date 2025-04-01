@@ -9,8 +9,12 @@
     display: flex;
 }
 
-.e-min-max-separator {
+.e-grid:not(.e-rtl) .e-min-max-separator {
     margin-right: 5px;
+}
+
+.e-rtl .e-min-max-separator {
+    margin-left: 5px;
 }
 
 .e-grid .e-gridheader tr th:first-child.e-filterbarcell.e-fltrtemp {

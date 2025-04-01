@@ -9,6 +9,7 @@ import {
 } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import { loadChartTheme } from './theme-color';
 
 const SAMPLE_CSS = `
     .control-fluid {
@@ -24,10 +25,12 @@ const ClickAddPoint = () => {
         updateSampleSection();
     }, [])
 
+    const loaded = (args: ILoadedEventArgs): void => {
+        let chart: Element = document.getElementById('AddPoint');
+        chart.setAttribute('title', '');
+    };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
     
     const axisRangeCalculated = (args: IAxisRangeCalculatedEventArgs): void  => {
@@ -84,8 +87,8 @@ const ClickAddPoint = () => {
                     }} primaryYAxis={{
                         title: 'Value', interval: 20, lineStyle: { width: 0 }, majorTickLines: { width: 0 }
                     }} chartMouseClick={chartMouseClick.bind(this)} axisRangeCalculated={axisRangeCalculated.bind(this)}
-                    tooltip={{ enable: true }}
-                    chartArea={{ border: { width: 0 } }} load={load.bind(this)} width={Browser.isDevice ? '100%' : '70%'} title='User supplied data' >
+                    tooltip={{ enable: true, enableHighlight: true }}
+                    chartArea={{ border: { width: 0 } }} load={load.bind(this)} loaded={loaded.bind(this)} width={Browser.isDevice ? '100%' : '70%'} title='User supplied data' >
                     <Inject services={[LineSeries, DataLabel, Tooltip]} />
                     <SeriesCollectionDirective >
                         <SeriesDirective dataSource={chartData} xName='x' yName='y' type='Line' width={3} marker={{ visible: true, isFilled: true, border: { width: 2, color: 'White' }, width: 13, height: 13 }}>

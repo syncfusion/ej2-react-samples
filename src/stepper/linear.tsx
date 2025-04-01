@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { StepperComponent, StepsDirective, StepDirective, StepperChangedEventArgs } from '@syncfusion/ej2-react-navigations';
 import { SampleBase } from '../common/sample-base';
-import './orientation.css';
+import './linear.css';
 
 export class Linear extends SampleBase<{}, {}> {
 

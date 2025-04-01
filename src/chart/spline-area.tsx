@@ -31,7 +31,7 @@ export class SplineArea extends SampleBase<{}, {}> {
             <div className="control-pane">
                 <style>{SAMPLE_CSS}</style>
                 <div className="control-section">
-                    <ChartComponent id="charts" style={{ textAlign: 'center' }} primaryXAxis={{ valueType: 'DateTime', labelFormat: 'y', majorGridLines: { width: 0 }, intervalType: 'Years', minimum: new Date(2001, 0, 1), maximum: new Date(2012, 0, 1), edgeLabelPlacement: 'Shift' }} primaryYAxis={{ labelFormat: '{value}%', lineStyle: { width: 0 }, maximum: 4, interval: 1, majorTickLines: { width: 0 }, minorTickLines: { width: 0 } }} load={this.load.bind(this)} width={Browser.isDevice ? '100%' : '75%'} legendSettings={{ enableHighlight: true }} chartArea={{ border: { width: 0 } }} title="Inflation Rate in Percentage" loaded={this.onChartLoad.bind(this)} tooltip={{ enable: true }}>
+                    <ChartComponent id="charts" style={{ textAlign: 'center' }} primaryXAxis={{ valueType: 'DateTime', labelFormat: 'y', majorGridLines: { width: 0 }, intervalType: 'Years', minimum: new Date(2001, 0, 1), maximum: new Date(2012, 0, 1), edgeLabelPlacement: 'Shift' }} primaryYAxis={{ labelFormat: '{value}%', lineStyle: { width: 0 }, maximum: 4, interval: 1, majorTickLines: { width: 0 }, minorTickLines: { width: 0 } }} load={this.load.bind(this)} width={Browser.isDevice ? '100%' : '75%'} legendSettings={{ enableHighlight: true }} chartArea={{ border: { width: 0 } }} title="Inflation Rate in Percentage" loaded={this.onChartLoad.bind(this)} tooltip={{ enable: true, enableHighlight: true, showNearestTooltip: true }}>
                         <Inject services={[SplineAreaSeries, DateTime, Tooltip, Legend, Highlight]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} xName="x" yName="y" name="US" marker={{ visible: true, isFilled: true, height: 6, width: 6, shape: 'Circle' }} opacity={0.5} type="SplineArea" width={2} border={{ width: 2 }}></SeriesDirective>
@@ -44,6 +44,9 @@ export class SplineArea extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>In this example, you can see how to render and configure a spline area chart. This chart plots a fitted curve through each data point in a series. It is used to represent time-dependent data and show trends in data at equal intervals.</p>
+                    <p>
+                        <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
+                    </p>
                     <p><b>Injecting Module</b></p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To use spline area series, we need to inject

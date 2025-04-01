@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { Inject, IAccLoadedEventArgs, IAccTextRenderEventArgs, IAnnotationRenderEventArgs, sort, ChartTheme, ChartComponent, IPointRenderEventArgs, SeriesCollectionDirective, SeriesDirective, ColumnSeries, Category, DataLabel, IAxisRangeCalculatedEventArgs, ILoadedEventArgs } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
-import { fabricColors, materialColors, highContrastColors, fluent2Colors, fluent2DarkColors, bootstrapColors, pointTailwindColors, pointTailwindDarkColors, pointTailwind3Colors, pointTailwind3DarkColors } from './theme-color';
+import { fabricColors, materialColors, highContrastColors, fluent2Colors, fluent2DarkColors, bootstrapColors, pointTailwindColors, pointTailwindDarkColors, pointTailwind3Colors, pointTailwind3DarkColors, loadAccumulationChartTheme, pointRenderEvent, loadChartTheme } from './theme-color';
 import { updateSampleSection } from '../common/sample-base';
 import { EmitType } from '@syncfusion/ej2-base'
 
@@ -145,12 +145,8 @@ const UpdateColumnDataSource = () => {
         updateSampleSection();
     }, []);
 
-    const load = (args: IAccLoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
-
+    const load = (args: ILoadedEventArgs): void => {
+        loadChartTheme(args);
         updateClearInterval();
         intervalId = setInterval(() => {
             let container: HTMLElement = document.getElementById('data-sorting-container');
@@ -210,35 +206,10 @@ const UpdateColumnDataSource = () => {
         let  chart:  Element  =  document.getElementById('data-sorting-container');
         chart.setAttribute('title',  '');
     };
-
-    const labelRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        if (selectedTheme && selectedTheme.indexOf('fabric') > -1) {
-            args.fill = fabricColors[args.point.index % 10];
-        } else if (selectedTheme === 'material') {
-            args.fill = materialColors[args.point.index % 10];
-        } else if (selectedTheme === 'highcontrast') {
-            args.fill = highContrastColors[args.point.index % 10];
-        } else if (selectedTheme === 'fluent2') {
-            args.fill = fluent2Colors[args.point.index % 10];
-        } else if (selectedTheme === 'fluent2-dark') {
-            args.fill = fluent2DarkColors[args.point.index % 10];
-        } 
-        else if (selectedTheme === 'tailwind') {
-            args.fill = pointTailwindColors[args.point.index % 10];
-        } else if (selectedTheme === 'tailwind-dark') {
-            args.fill = pointTailwindDarkColors[args.point.index % 10];
-        }
-        else if (selectedTheme === 'tailwind3') {
-            args.fill = pointTailwind3Colors[args.point.index % 10];
-        } else if (selectedTheme === 'tailwind3-dark') {
-            args.fill = pointTailwind3DarkColors[args.point.index % 10];
-        }
-        else {
-            args.fill = bootstrapColors[args.point.index % 10];
-        }
-    };
+    const pointRender = (args: IPointRenderEventArgs): void => {
+        pointRenderEvent(args);
+    }
+   
     return (
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
@@ -268,7 +239,7 @@ const UpdateColumnDataSource = () => {
                     loaded={onChartLoad.bind(this)}
                     chartArea={{ border: { width: 0 } }}
                     title='Nitrogen Fertilizer Usage'
-                    pointRender={labelRender}
+                    pointRender={pointRender}
                     width={Browser.isDevice ? '100%' : '75%'}
                     load={load.bind(this)}
                     axisRangeCalculated={axisRangeCalculated}

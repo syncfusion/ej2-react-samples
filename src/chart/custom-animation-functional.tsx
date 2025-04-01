@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ILoadedEventArgs, ChartTheme, Legend, DateTime, Tooltip, Highlight, ChartAnnotation, SplineSeries } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import { loadChartTheme } from './theme-color';
 const chartData: Object[] = [
     { x: new Date(2010, 0, 1), y: 5.00, y1: 4.54, y2: 3.62, y3: 2.92, y4: 1.87 },
     { x: new Date(2011, 0, 1), y: 5.69, y1: 4.50, y2: 3.23, y3: 3.00, y4: 1.87 },
@@ -38,22 +39,20 @@ const CustomAnimation = () => {
         chart.setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
 
     return (
         <div className="control-pane">
             <style>{SAMPLE_CSS}</style>
             <div className="control-section">
-                <ChartComponent id="charts" style={{ textAlign: 'center' }} primaryXAxis={{ valueType: 'DateTime', edgeLabelPlacement: 'Shift', majorGridLines: { width: 0 }, labelFormat: 'y' }} load={load.bind(this)} primaryYAxis={{ title: 'Yield (In Tons per Hectare)', lineStyle: { width: 0 }, majorTickLines: { width: 0 }, maximum: 8, interval: 2, minorTickLines: { width: 0 } }} chartArea={{ border: { width: 0 } }} tooltip={{
+                <ChartComponent id="charts" style={{ textAlign: 'center' }} primaryXAxis={{ valueType: 'DateTime', edgeLabelPlacement: 'Shift', majorGridLines: { width: 0 }, labelFormat: 'y' }} load={load.bind(this)} primaryYAxis={{ title: 'Yield (In Tons per Hectare)', lineStyle: { width: 0 }, majorTickLines: { width: 0 }, maximum: 8, interval: 2, minorTickLines: { width: 0 } }} chartArea={{ border: { width: 0 }, margin: { bottom: 12 } }} tooltip={{
                     enable: true,
-                    shared: true,
                     header: '<b>Almond Yield - ${point.x}</b>',
-                    format: '${series.name}: <b>${point.y}</b>'
-                }} legendSettings={{ visible: true, enableHighlight: true }} width={Browser.isDevice ? '100%' : '75%'} title="Almond Yield" loaded={onChartLoad.bind(this)}>
+                    format: '${series.name}: <b>${point.y}</b>',
+                    enableHighlight: true, 
+                    showNearestTooltip: true
+                }} legendSettings={{ visible: true, enableHighlight: true }} width={Browser.isDevice ? '100%' : '75%'} title="Almond Yield Comparison Across Countries (2010–2022)" loaded={onChartLoad.bind(this)}>
                     <Inject services={[SplineSeries, DateTime, Legend, Tooltip, Highlight, ChartAnnotation]} />
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={chartData} xName="x" yName="y1" name="United States" width={3} animation={{ enable: true, duration: 1500 }} type="Spline"></SeriesDirective>
@@ -76,7 +75,7 @@ const CustomAnimation = () => {
                     The <code>width</code> and <code>animation</code> properties are used to customize the appearance and behavior of the spline. The staggered animations enhance the visual experience by introducing each spline in sequence.
                 </p>
                 <p>
-                    Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+                    <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
                 </p>
                 <p style={{ fontWeight: 500 }}><b>Injecting Module</b></p>
                 <p>

@@ -37,14 +37,11 @@ const InlineEditing = () => {
             args.element.style.backgroundColor = categoryColor;
         }
     }
-    const onNavigating = (args: NavigatingEventArgs): void => {
-        setCurrentView(args.currentView as View)
-    }
     return (
         <div className='schedule-control-section'>
             <div className='col-lg-12 control-section'>
                 <div className='control-wrapper'>
-                    <ScheduleComponent width='100%' height='650px' cssClass='inline-edit' workDays={workDays} currentView={currentView} allowInline={true} selectedDate={new Date(2023, 0, 4)} eventSettings={{ dataSource: data }} group={{ resources: ['Categories'] }} eventRendered={onEventRendered} navigating={onNavigating}>
+                    <ScheduleComponent width='100%' height='650px' cssClass='inline-edit' workDays={workDays} currentView={currentView} allowInline={true} selectedDate={new Date(2023, 0, 4)} eventSettings={{ dataSource: data }} group={{ resources: ['Categories'] }} eventRendered={onEventRendered}>
                         <ResourcesDirective>
                             <ResourceDirective field='TaskId' title='Category' name='Categories' allowMultiple={true} dataSource={categoriesData} textField='text' idField='id' colorField='color' />
                         </ResourcesDirective>

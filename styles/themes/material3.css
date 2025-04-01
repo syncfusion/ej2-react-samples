@@ -45,6 +45,9 @@
 .material3 #sb-content {
     border-radius: 12px;
 }
+.material3 .sb-download-btn  {
+    font-weight: 400;
+}
 
 .material3 .e-samplestatus.new,
 .material3 .e-samplestatus.new.tree,

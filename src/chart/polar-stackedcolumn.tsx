@@ -67,7 +67,7 @@ export class PolarStackedColumn extends SampleBase<{}, {}> {
                             }}
                             load={this.load.bind(this)}
                             title="Wind Rose Chart" loaded={this.onChartLoad.bind(this)}
-                            tooltip={{ enable: true }}>
+                            tooltip={{ enable: true, enableHighlight: true }}>
                             <Inject services={[Tooltip, Legend, Category, PolarSeries, RadarSeries]} />
                             <SeriesCollectionDirective>
                                 <SeriesDirective dataSource={data1} xName='x' yName='y' name='6-9'

@@ -247,11 +247,11 @@ function ComplexHierarchicalModel() {
                 <div className="row property-panel-content" style={{ paddingTop: "10px" }}>
                     <div className="row row-header">Behaviour</div>
                     {[
-                        { id: "marginLeft", label: "Margin X", value: 10 },
-                        { id: "marginTop", label: "Margin Y", value: 50 },
-                        { id: "horizontalSpacing", label: "Horizontal Spacing", value: 40 },
-                        { id: "verticalSpacing", label: "Vertical Spacing", value: 40 },
-                    ].map(({ id, label, value }) => (
+                        { id: "marginLeft", label: "Margin X", value: 10, min: 10, max: 120 },
+                        { id: "marginTop", label: "Margin Y", value: 50, min: 10, max: 120 },
+                        { id: "horizontalSpacing", label: "Horizontal Spacing", value: 40, min: 20, max: 60 },
+                        { id: "verticalSpacing", label: "Vertical Spacing", value: 40, min: 20, max: 60 },
+                    ].map(({ id, label, value, min, max }) => (
                         <div className="row" style={{ paddingTop: "8px" }}>
                             <div style={{ display: "table", height: "35px", paddingLeft: "0px" }} className="col-xs-5">
                                 <div style={{ display: "table-cell", verticalAlign: "middle" }}>{label}</div>
@@ -260,6 +260,8 @@ function ComplexHierarchicalModel() {
                                 <NumericTextBoxComponent
                                     id={id}
                                     value={value}
+                                    min={min}
+                                    max={max}  
                                     step={1}
                                     format={"##.##"}
                                     change={(args: ChangeEventArgs) => {

@@ -8,6 +8,7 @@ import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, Leg
 import { PropertyPane } from '../common/property-pane';
 import { EmitType } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import { loadChartTheme } from './theme-color';
 export let data1: any[] = [
     { x: new Date(1970, 1, 1), y: 16500 }, { x: new Date(1975, 1, 1), y: 16000 }, { x: new Date(1980, 1, 1), y: 15400 },
     { x: new Date(1985, 1, 1), y: 15800 }, { x: new Date(1990, 1, 1), y: 14000 }, { x: new Date(1995, 1, 1), y: 10500 },
@@ -49,16 +50,14 @@ const Striplinerecurrence = () => {
         document.getElementById('charts').setAttribute('title', '');
     };
     const load = (args) => {
-        let selectedTheme = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
     return (
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-md-8'>
-                    <ChartComponent id='charts' ref={chartInstance} primaryXAxis={{ valueType: 'DateTime', intervalType: 'Years', majorGridLines: { width: 0 }, edgeLabelPlacement: 'Shift', minimum: new Date(1965, 1, 1), maximum: new Date(2010, 1, 1),  majorTickLines: {width : 0}, minorTickLines: {width: 0}, stripLines: [{ startFromAxis: true, size: 5, sizeType: 'Years', isRepeat: true, repeatEvery: 10, visible: isVisibleX, color: 'rgba(167,169,171, 0.1)' }] }} chartArea={{ border: { width: 0 } }} load={load.bind(this)} primaryYAxis={{ minimum: 0, maximum: 18000, interval: 2000, majorGridLines: { color: 'rgba(167,169,171, 0.3)' }, majorTickLines: { width: 0 }, lineStyle: { width: 0 }, labelStyle: { color: 'transparent' }, stripLines: [{ startFromAxis: true, size: 2000, isRepeat: true, repeatEvery: 4000, visible: isVisibleY, color: 'rgba(167,169,171, 0.1)' }] }} legendSettings={{ visible: true, enableHighlight: true }} tooltip={{ enable: true, format: ' Year: <b>${point.x}</b><br> Tons Per Day: <b>${point.y}</b>' }} loaded={onChartLoad.bind(this)} title='World Pollution Report'>
+                    <ChartComponent id='charts' ref={chartInstance} primaryXAxis={{ valueType: 'DateTime', intervalType: 'Years', majorGridLines: { width: 0 }, edgeLabelPlacement: 'Shift', minimum: new Date(1965, 1, 1), maximum: new Date(2010, 1, 1),  majorTickLines: {width : 0}, minorTickLines: {width: 0}, stripLines: [{ startFromAxis: true, size: 5, sizeType: 'Years', isRepeat: true, repeatEvery: 10, visible: isVisibleX, color: 'rgba(167,169,171, 0.1)' }] }} chartArea={{ border: { width: 0 }, margin: { bottom: 12 } }} load={load.bind(this)} primaryYAxis={{ minimum: 0, maximum: 18000, interval: 2000, majorGridLines: { color: 'rgba(167,169,171, 0.3)' }, majorTickLines: { width: 0 }, lineStyle: { width: 0 }, labelStyle: { color: 'transparent' }, stripLines: [{ startFromAxis: true, size: 2000, isRepeat: true, repeatEvery: 4000, visible: isVisibleY, color: 'rgba(167,169,171, 0.1)' }] }} legendSettings={{ visible: true, enableHighlight: true }} tooltip={{ enable: true, format: ' Year: <b>${point.x}</b><br> Tons Per Day: <b>${point.y}</b>', enableHighlight: true }} loaded={onChartLoad.bind(this)} title='World Pollution Report'>
                         <Inject services={[ColumnSeries, DateTime, Category, Legend, Tooltip, StripLine, Highlight]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} xName='x' yName='y' width={2} columnSpacing={0.1} type='Column' name='AllSources' />

@@ -6,9 +6,9 @@ import { useEffect, useRef, useState } from "react";
 import * as ReactDOM from "react-dom";
 import { ChartComponent, SeriesCollectionDirective, SeriesDirective, ILoadedEventArgs, Category, StackingColumnSeries, Inject, ChartTheme, sort, Legend, Tooltip } from '@syncfusion/ej2-react-charts';
 import { PropertyPane } from '../common/property-pane';
-import { EmitType, Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
+import { loadChartTheme } from './theme-color';
 export let data1: any[] = [
     { x: 'Asia', car: 120, trucks: 90, bike: 180, cycle: 90 },
     { x: 'Canada', car: 100, trucks: 80, bike: 90, cycle: 80 },
@@ -40,9 +40,7 @@ const Sorting = () => {
         chart.setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
     const change = (): void => {
         sortDataSource(dropElement.current.value + '');
@@ -77,7 +75,7 @@ const Sorting = () => {
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-md-8'>
-                    <ChartComponent id='charts' ref={chartInstance} style={{ textAlign: "center" }} primaryXAxis={{ majorGridLines: { width: 0 }, minorGridLines: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 }, interval: 1, lineStyle: { width: 0 }, labelIntersectAction: 'Rotate45', valueType: 'Category' }} width={'92%'} chartArea={{ border: { width: 0 } }} primaryYAxis={{ title: 'Sales', lineStyle: { width: 0 }, majorTickLines: { width: 0 }, majorGridLines: { width: 1 }, minorGridLines: { width: 1 }, minorTickLines: { width: 0 }, labelFormat: '{value}K' }} load={load.bind(this)} title="Vehicle Sales by Region" loaded={onChartLoad.bind(this)} legendSettings={{ visible: true }} tooltip={{ enable: true }}>
+                    <ChartComponent id='charts' ref={chartInstance} style={{ textAlign: "center" }} primaryXAxis={{ majorGridLines: { width: 0 }, minorGridLines: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 }, interval: 1, lineStyle: { width: 0 }, labelIntersectAction: 'Rotate45', valueType: 'Category' }} width={'92%'} chartArea={{ border: { width: 0 }, margin: { bottom: 12 } }} primaryYAxis={{ title: 'Sales', lineStyle: { width: 0 }, majorTickLines: { width: 0 }, majorGridLines: { width: 1 }, minorGridLines: { width: 1 }, minorTickLines: { width: 0 }, labelFormat: '{value}K' }} load={load.bind(this)} title="Vehicle Sales by Region" loaded={onChartLoad.bind(this)} legendSettings={{ visible: true }} tooltip={{ enable: true, enableHighlight: true }}>
                         <Inject services={[Category, StackingColumnSeries, Legend, Tooltip]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={dataSource} xName='x' yName='car' name="Car" type='StackingColumn' width={2} />
@@ -128,7 +126,7 @@ const Sorting = () => {
                     Chart component features are segregated into individual feature-wise modules. To use stacking column series, we need to inject <code>StackingColumnSeries</code> module using <code>Chart.Inject(StackingColumnSeries)</code> method.
                 </p>
             </div>
-        </div >
+        </div>
     )
 }
 export default Sorting;

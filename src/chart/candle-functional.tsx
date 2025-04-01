@@ -8,6 +8,7 @@ import { ChartComponent, SeriesCollectionDirective, AxesDirective, AxisDirective
 import { updateSampleSection } from '../common/sample-base';
 import { chartValues } from './financial-data';
 import { Browser } from '@syncfusion/ej2-base';
+import { loadChartTheme } from './theme-color';
 
 export let zoomFactor: number;
 export let zoomPosition: number;
@@ -33,9 +34,7 @@ const Candle = () => {
     const load = (args: ILoadedEventArgs): void => {
         args.chart.primaryXAxis.zoomFactor = zoomFactor;
         args.chart.primaryXAxis.zoomPosition = zoomPosition;
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
     const axisLabelRender = (args: IAxisLabelRenderEventArgs): void => {
         args.text = args.text.replace("0000000M", "M");
@@ -45,14 +44,14 @@ const Candle = () => {
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
                 <div className="row">
-                    <ChartComponent id='charts' style={{ textAlign: "center" }} load={load.bind(this)} primaryXAxis={{ valueType: 'DateTime', crosshairTooltip: { enable: true }, majorGridLines: { width: 0 } }} primaryYAxis={{ title: 'Volume', labelFormat: '{value}M', opposedPosition: true, majorGridLines: { width: 1 }, lineStyle: { width: 0 } }} legendSettings= {{visible: false}} tooltip={{ enable: true, shared: true,  header: "",format: "<b>Apple Inc.(AAPL)</b> <br> High : <b>${point.high}</b> <br> Low : <b>${point.low}</b> <br> Open : <b>${point.open}</b> <br> Close : <b>${point.close}</b> <br> Volume : <b>${point.volume}</b>" }} width={Browser.isDevice ? '100%' : '80%'} axisLabelRender={axisLabelRender.bind(this)} chartArea={{ border: { width: 0 } }} title="AAPL Historical" loaded={onChartLoad.bind(this)}>
+                    <ChartComponent id='charts' style={{ textAlign: "center" }} load={load.bind(this)} primaryXAxis={{ valueType: 'DateTime', crosshairTooltip: { enable: true }, majorGridLines: { width: 0 } }} primaryYAxis={{ title: 'Volume', labelFormat: '{value}M', opposedPosition: true, majorGridLines: { width: 1 }, lineStyle: { width: 0 }, majorTickLines: { width: 0 } }} legendSettings= {{visible: false}} tooltip={{ enable: true, shared: true,  header: "",format: "<b>Apple Inc.(AAPL)</b> <br> High : <b>${point.high}</b> <br> Low : <b>${point.low}</b> <br> Open : <b>${point.open}</b> <br> Close : <b>${point.close}</b> <br> Volume : <b>${point.volume}</b>" }} width={Browser.isDevice ? '100%' : '80%'} axisLabelRender={axisLabelRender.bind(this)} chartArea={{ border: { width: 0 } }} title="AAPL Historical" loaded={onChartLoad.bind(this)}>
                         <Inject services={[CandleSeries, StripLine, Category, Tooltip, DateTime, Zoom, Legend, ColumnSeries, Logarithmic, Crosshair]} />
                         <RowsDirective>
                             <RowDirective height={'30%'} />
                             <RowDirective height={'70%'} />
                         </RowsDirective>
                         <AxesDirective>
-                            <AxisDirective name='secondary' rangePadding={"None"}  maximum= {150} minimum= {55}  opposedPosition={true} rowIndex={1} majorGridLines={{ width: 1 }} labelFormat='n0' title='Price' plotOffset={30} lineStyle={{ width: 0 }} />
+                            <AxisDirective name='secondary' rangePadding={"None"}  maximum= {150} minimum= {55}  opposedPosition={true} rowIndex={1} majorGridLines={{ width: 1 }} labelFormat='n0' title='Price' plotOffset={30} lineStyle={{ width: 0 }} majorTickLines={{ width: 0 }} />
                         </AxesDirective>
                         <SeriesCollectionDirective>
                             <SeriesDirective type='Column' dataSource={chartValues} animation={{ enable: true }} xName='period' yName='volume' enableTooltip={false} name='Volume' />

@@ -62,7 +62,7 @@ const AnnotationMaps = () => {
                     </LayersDirective>
                 </MapsComponent>
             </div>
-            <svg height="150" width="400">
+            <svg height="70" width="400">
                 <defs>
                     <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
                         <stop offset="0%" style={{ stopColor: '#C5494B', stopOpacity: '1' }} />

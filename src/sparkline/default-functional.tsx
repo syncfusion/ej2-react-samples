@@ -12,7 +12,7 @@ const SAMPLE_CSS = `
 const titleStyle: React.CSSProperties = { width: "400px", textAlign: "center", fontSize: "17px", margin: "auto" };
 const width100 = { width: "100%" };
 const sparklineStyle1: React.CSSProperties = { width: "150px", height: "50px", textAlign: "center" };
-
+import { loadSparkLineTheme } from './theme-color';
 function Default() {
     React.useEffect(() => {
         updateSampleSection();
@@ -20,9 +20,7 @@ function Default() {
     let sparklineInstance: SparklineComponent;
 
     function load(args: ISparklineLoadedEventArgs): void {
-        let theme: string = location.hash.split('/')[1];
-        theme = theme ? theme : 'Fluent2';
-        args.sparkline.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as SparklineTheme;
+        loadSparkLineTheme(args);
     }
 
 

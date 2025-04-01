@@ -31,7 +31,7 @@ export class AreaEmpty extends SampleBase<{}, {}> {
             style={{ textAlign: 'center' }}
             primaryXAxis={{ valueType: 'Category', interval: 1, majorGridLines: { width: 0 }, edgeLabelPlacement: 'Shift' }}
             primaryYAxis={{ labelFormat: '{value}MB', lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 }, minimum: 0, maximum: 5, interval: 1 }}
-            tooltip={{ enable: true, format: '${point.x} : <b>${point.y}</b>' }}
+            tooltip={{ enable: true, format: '${point.x} : <b>${point.y}</b>', enableHighlight: true, showNearestTooltip: true }}
             legendSettings={{ enableHighlight :true }}
             chartArea={{ border: { width: 0 } }}
             load={this.load.bind(this)}
@@ -55,6 +55,9 @@ export class AreaEmpty extends SampleBase<{}, {}> {
                     <p>
                     In this example, you can see how to render an area series with empty points. Also, a legend is enabled in the shape of the series.  
                    </p>
+                    <p>
+                        <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
+                    </p>
                     <p><b>Injecting Module</b></p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To use area series, we need to inject

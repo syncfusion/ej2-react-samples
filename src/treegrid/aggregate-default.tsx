@@ -14,7 +14,16 @@ export class AggregateRow extends SampleBase<{}, {}> {
 
   public treegridObj: TreeGridComponent;
   public toolbarOptions = ['ExcelExport', 'PdfExport', 'CsvExport'];
-
+  public QueryCellInfo = (args: any) => {
+    if (args.column && args.column.footerTemplate) {
+      if (args.cell.value !== null && args.cell.value !== undefined) {
+        const aggregateType = args.column.footerTemplate.match(/Minimum|Maximum/);
+        if (aggregateType) {
+          args.value = `${aggregateType[0]}: ${args.value}`;
+        }
+      }
+    }
+  };
   public toolbarClick(args: ClickEventArgs): void {
     switch (args.item.id) {
       case this.treegridObj.grid.element.id + '_pdfexport':
@@ -38,14 +47,6 @@ export class AggregateRow extends SampleBase<{}, {}> {
     }
   }
 
-  public footerSum(props):any{
-    return(<span>Minimum: {props.Min}</span>)
-  }
-
-  public footerSum2(props):any{
-    return(<span>Maximum: {props.Max}</span>)
-  }
-
   public onChange(args: ChangeEventArgs): void {
     if (args.checked) {
       this.treegridObj.aggregates[0].showChildSummary = true;
@@ -63,7 +64,8 @@ export class AggregateRow extends SampleBase<{}, {}> {
           <div className = 'col-md-9'>
             <TreeGridComponent dataSource={summaryRowData} treeColumnIndex={0} childMapping='children' height='410' toolbar={this.toolbarOptions} toolbarClick={this.toolbarClick.bind(this)}
             allowExcelExport={true} allowPdfExport={true}
-                ref={treegrid=> this.treegridObj = treegrid}>
+                ref={treegrid=> this.treegridObj = treegrid} excelQueryCellInfo={this.QueryCellInfo}
+                pdfQueryCellInfo={this.QueryCellInfo}>
               <ColumnsDirective>
                 <ColumnDirective field='FreightID' headerText='Freight ID' width='150'></ColumnDirective>
                 <ColumnDirective field='FreightName' headerText='Freight Name' width='190'></ColumnDirective>
@@ -74,9 +76,9 @@ export class AggregateRow extends SampleBase<{}, {}> {
                 <AggregateDirective>
                   <AggregateColumnsDirective>
                   <AggregateColumnDirective field='TotalUnits' columnName='TotalUnits' type='Min'
-                        footerTemplate={this.footerSum}> </AggregateColumnDirective>
+                        footerTemplate="Minimum: ${Min}"> </AggregateColumnDirective>
                   <AggregateColumnDirective field='UnitWeight' columnName='UnitWeight' type='Max'
-                        footerTemplate={this.footerSum2}> </AggregateColumnDirective>
+                        footerTemplate="Maximum: ${Max}"> </AggregateColumnDirective>
                   </AggregateColumnsDirective>
                   </AggregateDirective>
             </AggregatesDirective>

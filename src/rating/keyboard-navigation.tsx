@@ -2,14 +2,34 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { RatingComponent } from '@syncfusion/ej2-react-inputs';
 import { SampleBase } from '../common/sample-base';
+import { Browser } from '@syncfusion/ej2-base';
 import './keyboard-navigation.css';
 
 export class KeyboardNavigation extends SampleBase<{}, {}> {
+    componentDidMount() {
+        if (document.getElementById('right-pane')) {
+            document.getElementById('right-pane')?.addEventListener('scroll', this.hideTooltipOnScroll);
+        }
+    }
+
+    componentWillUnmount() {
+        if (document.getElementById('right-pane')) {
+            document.getElementById('right-pane')?.removeEventListener('scroll', this.hideTooltipOnScroll);
+        }
+    }
+
+    hideTooltipOnScroll = () => {
+        const tooltipElement = document.querySelector('.e-rating-tooltip');
+        if (tooltipElement && Browser.isDevice) {
+            (tooltipElement as HTMLElement).style.display = 'none';
+        }
+    }
+
     render() {
         return (
           <div className='control-pane'>
                 <div id="nav-rating-control">
-                    <RatingComponent id='rating1' allowReset={true} value={3.0}></RatingComponent> 
+                    <RatingComponent id='rating1' allowReset={true} value={3.0}></RatingComponent>
                 </div>
                 <div id="action-description">
                     <p>

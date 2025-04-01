@@ -17,7 +17,8 @@ import {
   ConnectorConstraints,
   IHistoryChangeArgs,
   ISelectionChangeEventArgs,
-  IScrollChangeEventArgs
+  IScrollChangeEventArgs,
+  FlipDirection
 } from "@syncfusion/ej2-react-diagrams";
 import { SampleBase } from "../common/sample-base";
 import "./font-icons.css";
@@ -851,7 +852,7 @@ function onSelectFlip(args: any) {
 function flipObjects(flipType: any) {
   let selectedObjects = diagramInstance.selectedItems.nodes.concat((diagramInstance.selectedItems as any).connectors);
   for (let i: number = 0; i < selectedObjects.length; i++) {
-    selectedObjects[i].flip = flipType === 'Flip Horizontal' ? 'Horizontal' : 'Vertical';
+    selectedObjects[i].flip ^= flipType === 'Flip Horizontal' ? FlipDirection.Horizontal : FlipDirection.Vertical;
   }
   diagramInstance.dataBind();
 }

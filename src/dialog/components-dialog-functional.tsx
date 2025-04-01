@@ -111,7 +111,7 @@ const ComponentsDialog = () => {
   }
   const content2 = () => {
     return (
-      <ChartComponent id="DialogChart" primaryXAxis={{valueType: 'DateTime',labelFormat: 'y',intervalType: 'Years',edgeLabelPlacement: 'Shift',majorGridLines: { width: 0 },}} load={load} primaryYAxis={{labelFormat: '{value}%',rangePadding: 'None',minimum: 0,maximum: 100,interval: 20,lineStyle: { width: 0 },majorTickLines: { width: 0 },minorTickLines: { width: 0 },}} chartArea={{ border: { width: 0 } }} tooltip={{ enable: true }} width={Browser.isDevice ? '100%' : '60%'} title="Inflation - Consumer Price" loaded={onChartLoad}>
+      <ChartComponent id="DialogChart" primaryXAxis={{valueType: 'DateTime',labelFormat: 'y',intervalType: 'Years',edgeLabelPlacement: 'Shift',majorGridLines: { width: 0 },}} load={load} primaryYAxis={{labelFormat: '{value}%',rangePadding: 'None',minimum: 0,maximum: 100,interval: 20,lineStyle: { width: 0 },majorTickLines: { width: 0 },minorTickLines: { width: 0 },}} chartArea={{ border: { width: 0 } }} tooltip={{ enable: true }} width="100%" height="300px" title="Inflation - Consumer Price" loaded={onChartLoad}>
         <Inject services={[LineSeries, DateTime, Legend, Tooltip]} />
         <SeriesCollectionDirective>
           <SeriesDirective dataSource={data1} xName="x" yName="y" name="Germany" width={2} marker={{ visible: true, width: 10, height: 10 }} type="Line"></SeriesDirective>

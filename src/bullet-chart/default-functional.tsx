@@ -6,6 +6,7 @@ import * as ReactDOM from "react-dom";
 import { BulletChartComponent, BulletRangeCollectionDirective, BulletRangeDirective, IBulletLoadedEventArgs, ChartTheme, BulletTooltip, Inject } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import { loadBulletChartTheme } from './theme-color';
 
 const SAMPLE_CSS = `
       .control-fluid {
@@ -172,9 +173,7 @@ function BulletChartDefault() {
             chart.setAttribute('title', '');
         }
 
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.bulletChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/light/i, 'Light').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadBulletChartTheme(args);
     }
 }
 export default BulletChartDefault;

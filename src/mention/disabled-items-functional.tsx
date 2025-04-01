@@ -43,12 +43,14 @@ const DisabledItems = () => {
           <div className="content-wrapper">
             <div id='mention_disabled'>
               <table>
-                <tr>
-                  <td>
-                    <label className="disabled-size">Compose your content</label>
-                    <div id="disabledMention" placeholder="Begin writing here..!"></div>
-                  </td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <td>
+                      <label className="disabled-size">Compose your content</label>
+                      <div id="disabledMention" placeholder="Begin writing here..!"></div>
+                    </td>
+                  </tr>
+                </tbody>
               </table>
 
               <MentionComponent dataSource={emailData} target={disabledTarget} fields={disabledFields} itemTemplate={itemTemplate} displayTemplate={displayTemplate} noRecordsTemplate={"No item related to the search"} popupWidth={250} popupHeight={200}></MentionComponent>

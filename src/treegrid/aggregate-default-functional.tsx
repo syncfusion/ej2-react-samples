@@ -19,7 +19,16 @@ const AggregateRow = () => {
   }, [])
   let treegridObj = useRef<TreeGridComponent>(null);
   let toolbarOptions = ["ExcelExport", "PdfExport", "CsvExport"];
-
+  const QueryCellInfo = (args: any) => {
+    if (args.column && args.column.footerTemplate) {
+      if (args.cell.value !== null && args.cell.value !== undefined) {
+        const aggregateType = args.column.footerTemplate.match(/Minimum|Maximum/);
+        if (aggregateType) {
+          args.value = `${aggregateType[0]}: ${args.value}`;
+        }
+      }
+    }
+  };
   const toolbarClick = (args: ClickEventArgs): void => {
     switch (args.item.id) {
       case treegridObj.current.grid.element.id + "_pdfexport":
@@ -41,14 +50,6 @@ const AggregateRow = () => {
         treegridObj.current.csvExport();
         break;
     }
-  };
-
-  const footerSum = (props): any => {
-    return <span>Minimum: {props.Min}</span>;
-  };
-
-  const footerSum2 = (props): any => {
-    return <span>Maximum: {props.Max}</span>;
   };
 
   const onChange = (args: ChangeEventArgs): void => {
@@ -74,6 +75,8 @@ const AggregateRow = () => {
             allowExcelExport={true}
             allowPdfExport={true}
             ref={treegridObj}
+            excelQueryCellInfo={QueryCellInfo}
+            pdfQueryCellInfo={QueryCellInfo}
           >
             <ColumnsDirective>
               <ColumnDirective
@@ -106,7 +109,7 @@ const AggregateRow = () => {
                     field="TotalUnits"
                     columnName="TotalUnits"
                     type="Min"
-                    footerTemplate={footerSum}
+                    footerTemplate="Minimum: ${Min}"
                   >
                     {" "}
                   </AggregateColumnDirective>
@@ -114,7 +117,7 @@ const AggregateRow = () => {
                     field="UnitWeight"
                     columnName="UnitWeight"
                     type="Max"
-                    footerTemplate={footerSum2}
+                    footerTemplate="Maximum: ${Max}"
                   >
                     {" "}
                   </AggregateColumnDirective>

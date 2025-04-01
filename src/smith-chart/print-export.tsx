@@ -11,6 +11,7 @@ import {
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { PropertyPane } from '../common/property-pane';
 import { SampleBase } from '../common/sample-base';
+import { loadSmithChartTheme } from './theme-color';
 // custom code start
 const SAMPLE_CSS = `
     .control-fluid {
@@ -63,10 +64,7 @@ export class Print extends SampleBase<{}, {}> {
         this.smithchartInstance.export((this.mode.value as SmithchartExportType), fileName);
     }
     public load(args: ISmithchartLoadedEventArgs): void {
-        let theme: string = location.hash.split('/')[1];
-        theme = theme ? theme : 'Fluent2';
-        args.smithchart.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).
-            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as SmithchartTheme;
+        loadSmithChartTheme(args);
     }
     render() {
         return (

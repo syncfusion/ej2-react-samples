@@ -16,6 +16,7 @@ import { SwitchComponent, ChangeEventArgs } from '@syncfusion/ej2-react-buttons'
 import { updateSampleSection } from '../common/sample-base';
 import { periodData } from './period-data';
 import { getElement } from "@syncfusion/ej2-svg-base/src/tooltip/helper";
+import { loadRangeNavigatorTheme } from './theme-color';
 
 export let zoomFactor: number;
 export let zoomPosition: number;
@@ -279,10 +280,7 @@ function PeriodSelectorCandle() {
     function chartLoad(args: ILoadedEventArgs): void {
         args.chart.primaryXAxis.zoomFactor = zoomFactor;
         args.chart.primaryXAxis.zoomPosition = zoomPosition;
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadRangeNavigatorTheme(args);
         args.chart.tooltip.format = args.chart.series[0].type === 'Candle' ?
             '${point.x}<br/>High : <b>${point.high}</b><br/>Low : <b>${point.low}</b><br/>' +
             'Open : <b>${point.open}</b><br/>Close : <b>${point.close}</b>' :
@@ -290,18 +288,12 @@ function PeriodSelectorCandle() {
         chartRendered = true;
     };
     function rangeLoad(args: IRangeLoadedEventArgs): void {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+       loadRangeNavigatorTheme(args);
         args.rangeNavigator.periodSelectorSettings.height = document.body.className.indexOf('e-bigger') > -1 ? 56 : 42;
         range1Rendered = true;
     };
     function rangeLoad2(args: IRangeLoadedEventArgs): void {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadRangeNavigatorTheme(args);
         args.rangeNavigator.dateTimeModule = new DateTime(args.rangeNavigator as any);
         range2Rendered = true;
     };

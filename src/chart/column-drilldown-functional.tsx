@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ColumnSeries, DataLabel, Category, Legend, Tooltip, Highlight, ILoadedEventArgs, IPointRenderEventArgs, Series } from '@syncfusion/ej2-react-charts';
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ColumnSeries, DataLabel, Category, Legend, Tooltip, Highlight, ILoadedEventArgs, IPointRenderEventArgs, Series, ITooltipRenderEventArgs, IAxisLabelClickEventArgs } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
-import { bubbleFabricColors, pointFabricColors, bubbleMaterialDarkColors, pointMaterialDarkColors, bubbleMaterialColors, pointMaterialColors, bubbleBootstrap5DarkColors, pointBootstrap5DarkColors, bubbleBootstrap5Colors, pointBootstrap5Colors, bubbleBootstrapColors, pointBootstrapColors, bubbleHighContrastColors, pointHighContrastColors, bubbleFluentDarkColors, pointFluentDarkColors, bubbleFluentColors, pointFluentColors, bubbleTailwindDarkColors, pointTailwindDarkColors, bubbleTailwindColors, pointTailwindColors, bubbleMaterial3Colors, pointMaterial3Colors, bubbleMaterial3DarkColors, pointMaterial3DarkColors, bubbleFluent2Colors, pointFluent2Colors, bubbleFluent2HighContrastColors, pointFluent2HighContrastColors, bubbleFluent2DarkColors, pointFluent2DarkColors, bubbleTailwind3Colors, bubbleTailwind3DarkColors, pointTailwind3Colors, pointTailwind3DarkColors } from './theme-color';
+import { bubbleFabricColors, pointFabricColors, pointMaterialDarkColors, bubbleMaterialDarkColors, bubbleMaterialColors, pointMaterialColors, bubbleBootstrap5DarkColors, pointBootstrap5DarkColors, bubbleBootstrap5Colors, pointBootstrap5Colors, bubbleBootstrapColors, pointBootstrapColors, bubbleHighContrastColors, pointHighContrastColors, bubbleFluentDarkColors, pointFluentDarkColors, bubbleFluentColors, pointFluentColors, bubbleTailwindDarkColors, pointTailwindDarkColors, bubbleTailwindColors, pointTailwindColors, bubbleMaterial3Colors, pointMaterial3Colors, bubbleMaterial3DarkColors, pointMaterial3DarkColors, bubbleFluent2Colors, pointFluent2Colors, bubbleFluent2HighContrastColors, pointFluent2HighContrastColors, bubbleFluent2DarkColors, pointFluent2DarkColors, pointTailwind3Colors, pointTailwind3DarkColors, loadChartTheme, bubbleTailwind3DarkColors, bubbleTailwind3Colors } from './theme-color';
 
 const SAMPLE_CSS = `
    #control-container {
@@ -49,10 +49,13 @@ const ColumnDrilldown = () => {
         { y: 379, drilldown: 'North America' },
         { y: 46, drilldown: 'Oceania' }
     ]);
-    let title = 'Top Populated Continents of 2023'
+    let title: string = 'Top Populated Continents of 2023';
+    let subTitle: string = 'A Look at Population Rankings and Trends in 2023';
     let categoryText = '';
   
     const loaded: (args: ILoadedEventArgs) => void = (args) => {
+        let chart: Element = document.getElementById('drilldown');
+        chart.setAttribute('title', '');
         if (clicked) {
             for (let i = 0; i <= 6; i++) {
                 const axisLabel = document.getElementById(`drilldown0_AxisLabel_${i}`);
@@ -67,9 +70,7 @@ const ColumnDrilldown = () => {
         }
     };
     const onLoad = (args) => {
-        let selectedTheme = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast');
+        loadChartTheme(args);
     };
 
     const onPointRender = (args) => {
@@ -141,6 +142,7 @@ const ColumnDrilldown = () => {
                 document.getElementById("text")!.style.visibility = "visible";
                 if (args.point.index === 0) {
                     args.series.chart.title = "Top Populated Countries of Asia - 2023";
+                    args.series.chart.subTitle = "A Look at Population Rankings and Trends in 2023";
                     clicked = true;
                     args.series.chart.series[0].dataSource = [{
                             y: 1422,
@@ -178,6 +180,7 @@ const ColumnDrilldown = () => {
                 }
                 if (args.point.index === 1) {
                     args.series.chart.title = "Top Populated Countries of Africa - 2023";
+                    args.series.chart.subTitle = "A Look at Population Rankings and Trends in 2023";
                     clicked = true;
                     args.series.chart.series[0].dataSource = [{
                             y: 223,
@@ -211,6 +214,7 @@ const ColumnDrilldown = () => {
                 }
                 if (args.point.index === 2) {
                     args.series.chart.title = "Top Populated Countries of Europe - 2023";
+                    args.series.chart.subTitle = "A Look at Population Rankings and Trends in 2023";
                     clicked = true;
                     args.series.chart.series[0].dataSource = [{
                             y: 143,
@@ -240,6 +244,7 @@ const ColumnDrilldown = () => {
                 }
                 if (args.point.index === 3) {
                     args.series.chart.title = "Top Populated Countries of North America - 2023";
+                    args.series.chart.subTitle = "A Look at Population Rankings and Trends in 2023";
                     clicked = true;
                     args.series.chart.series[0].dataSource = [{
                             y: 339,
@@ -277,6 +282,7 @@ const ColumnDrilldown = () => {
                 }
                 if (args.point.index === 4) {
                     args.series.chart.title = "Top Populated Countries of Oceania - 2023";
+                    args.series.chart.subTitle = "A Look at Population Rankings and Trends in 2023";
                     clicked = true;
                     args.series.chart.series[0].dataSource = [{
                             y: 26,
@@ -296,7 +302,7 @@ const ColumnDrilldown = () => {
         }
     }
     
-    const onAxisLabelClick = (args) => {
+    const onAxisLabelClick = (args: IAxisLabelClickEventArgs) => {
         if (args.axis.name === "primaryXAxis") {
             args.chart.series[0].fill = (args.chart.series[0] as Series).points[args.index].color;
             if (args.index !== 6) {
@@ -335,6 +341,7 @@ const ColumnDrilldown = () => {
                     document.getElementById("text").style.visibility = "visible";
                     if (args.index === 0) {
                         args.chart.title = "Top Populated Countries of Asia - 2023";
+                        args.chart.subTitle = "A Look at Population Rankings and Trends in 2023";
                         clicked = true;
                         args.chart.series[0].dataSource = [{
                             y: 1422,
@@ -372,6 +379,7 @@ const ColumnDrilldown = () => {
                     }
                     if (args.index === 1) {
                         args.chart.title = "Top Populated Countries of Africa - 2023";
+                        args.chart.subTitle = "A Look at Population Rankings and Trends in 2023";
                         clicked = true;
                         args.chart.series[0].dataSource = [{
                             y: 223,
@@ -405,6 +413,7 @@ const ColumnDrilldown = () => {
                     }
                     if (args.index === 2) {
                         args.chart.title = "Top Populated Countries of Europe - 2023";
+                        args.chart.subTitle = "A Look at Population Rankings and Trends in 2023";
                         clicked = true;
                         args.chart.series[0].dataSource = [{
                             y: 143,
@@ -434,6 +443,7 @@ const ColumnDrilldown = () => {
                     }
                     if (args.index === 3) {
                         args.chart.title = "Top Populated Countries of North America - 2023";
+                        args.chart.subTitle = "A Look at Population Rankings and Trends in 2023";
                         clicked = true;
                         args.chart.series[0].dataSource = [{
                             y: 339,
@@ -471,6 +481,7 @@ const ColumnDrilldown = () => {
                     }
                     if (args.index === 4) {
                         args.chart.title = "Top Populated Countries of Oceania - 2023";
+                        args.chart.subTitle = "A Look at Population Rankings and Trends in 2023";
                         clicked = true;
                         args.chart.series[0].dataSource = [{
                             y: 26,
@@ -495,6 +506,7 @@ const ColumnDrilldown = () => {
     const goBack = (e) => {
         const chart = chartRef.current;
         chart.title = "Top Populated Continents of 2023";
+        chart.subTitle = "A Look at Population Rankings and Trends in 2023";
         chart.primaryXAxis.labelStyle.color = "blue";
         chart.primaryYAxis.interval = 1000;
         chart.series[0].dataSource = data;
@@ -502,6 +514,11 @@ const ColumnDrilldown = () => {
         (e.target as HTMLButtonElement).style.visibility = 'hidden';
         document.getElementById(('symbol')).style.visibility = 'hidden';
         document.getElementById(('text')).style.visibility = 'hidden';
+    };
+    const tooltipRender = (args: ITooltipRenderEventArgs) => {
+        args.text = args.text.replace(/\d+/g, (num: string) =>
+            Number(num).toLocaleString('en-US')
+        );
     };
 
     return (
@@ -536,7 +553,8 @@ const ColumnDrilldown = () => {
                     }}
                     width={Browser.isDevice ? '100%' : '75%'}
                     title={title}
-                    tooltip={{ enable: true, header: "<b>Population - 2023</b>", format: '${point.x}: ${point.y}M' }}
+                    subTitle={subTitle}
+                    tooltip={{ enable: true, header: "<b>Population - 2023</b>", format: '${point.x}: <b>${point.y}M</b>' }}
                     legendSettings={{ visible: false }}
                     chartArea={{ border: { width: 0 } }}
                     load={onLoad.bind(this)}
@@ -544,6 +562,7 @@ const ColumnDrilldown = () => {
                     pointRender={onPointRender}
                     pointClick={pointClick}
                     axisLabelClick={onAxisLabelClick}
+                    tooltipRender={tooltipRender.bind(this)}
                 >
                     <Inject services={[ColumnSeries, DataLabel, Category, Legend, Tooltip, Highlight]} />
                     <SeriesCollectionDirective>

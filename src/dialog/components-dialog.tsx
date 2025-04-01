@@ -148,7 +148,7 @@ export class ComponentsDialog extends SampleBase<{}, { hideDialog: boolean; }> {
                         }}
                         chartArea={{ border: { width: 0 } }}
                         tooltip={{ enable: true }}
-                        width={Browser.isDevice ? '100%' : '60%'}
+                        width="100%" height="300px"
                         title='Inflation - Consumer Price' loaded={this.onChartLoad.bind(this)}>
                         <Inject services={[LineSeries, DateTime, Legend, Tooltip]} />
                         <SeriesCollectionDirective>

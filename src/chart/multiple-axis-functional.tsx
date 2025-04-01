@@ -7,6 +7,7 @@ import * as ReactDOM from "react-dom";
 import { ChartComponent, SeriesCollectionDirective, AxesDirective, AxisDirective, SeriesDirective, Inject, LineSeries, ChartAnnotation, ColumnSeries, AnnotationsDirective, AnnotationDirective, Category, Tooltip, ILoadedEventArgs, ChartTheme, SplineSeries } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import { loadChartTheme } from './theme-color';
 export let data1: any[] = [
     { x: 'Sun', y: 35 }, { x: 'Mon', y: 40 },
     { x: 'Tue', y: 80 }, { x: 'Wed', y: 70 }, { x: 'Thu', y: 65 }, { x: 'Fri', y: 55 },
@@ -33,15 +34,13 @@ const MultipleAxis = () => {
         chart.setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
     return (
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
-                <ChartComponent id='charts' style={{ textAlign: "center" }} ref={chartInstance} primaryXAxis={{ valueType: 'Category', minorGridLines: { width : 0}, majorGridLines: { width: 0 } }} primaryYAxis={{ minimum: 0, maximum: 100, interval: 20, lineStyle: { width: 0 }, labelFormat: '{value}°F' }} width={Browser.isDevice ? '100%' : '75%'} chartArea={{ border: { width: 0 } }} load={load.bind(this)} legendSettings={{ visible: false }} title='Weather Data' loaded={onChartLoad.bind(this)} tooltip={{ enable: true }}>
+                <ChartComponent id='charts' style={{ textAlign: "center" }} ref={chartInstance} primaryXAxis={{ valueType: 'Category', minorGridLines: { width : 0}, majorGridLines: { width: 0 } }} primaryYAxis={{ minimum: 0, maximum: 100, interval: 20, lineStyle: { width: 0 }, labelFormat: '{value}°F', majorTickLines: { width: 0 } }} width={Browser.isDevice ? '100%' : '75%'} chartArea={{ border: { width: 0 } }} load={load.bind(this)} legendSettings={{ visible: false }} title='Weather Data' loaded={onChartLoad.bind(this)} tooltip={{ enable: true, enableHighlight: true }}>
                     <Inject services={[LineSeries, ColumnSeries, Category, Tooltip, SplineSeries, ChartAnnotation]} />
                     <AxesDirective>
                         <AxisDirective majorGridLines={{ width: 0 }} rowIndex={0} opposedPosition={true} lineStyle={{ width: 0 }} minimum={24} maximum={36} interval={2} majorTickLines={{ width: 0 }} name='yAxis1' labelFormat='{value}°C' />

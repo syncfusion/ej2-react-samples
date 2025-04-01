@@ -6,6 +6,7 @@ import * as React from 'react';
 import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
+import { loadAccumulationChartTheme } from './theme-color';
 import { AccumulationChartComponent, AccumulationSeriesCollectionDirective, AccumulationSeriesDirective, AccumulationLegend, PieSeries, AccumulationDataLabel, AccumulationTooltip, Inject, IAccLoadedEventArgs, AccumulationTheme } from '@syncfusion/ej2-react-charts';
 export let data1: any[] = [
     { x: 'Argentina', y: 505370, r: Browser.isDevice ? '110' : '100', text: 'Argentina'},
@@ -21,15 +22,18 @@ const PieRadius = () => {
         updateSampleSection();
     }, [])
 
+    const loaded = (args: IAccLoadedEventArgs): void => {
+        let chart: Element = document.getElementById('pie-chart');
+        chart.setAttribute('title', '');
+    };
+
     const load = (args: IAccLoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as AccumulationTheme;
+        loadAccumulationChartTheme(args);
     };
     return (
         <div className='control-pane'>
             <div className='control-section'>
-                <AccumulationChartComponent id='pie-chart' legendSettings={{ visible: true, reverse: true }} enableSmartLabels={true} title='Pie with different Radius' enableBorderOnMouseMove={false} enableAnimation={true} load={load.bind(this)} tooltip={{ enable: true, format: '<b>${point.x}</b><br/>Area in square km: <b>${point.y} </b> <br/> Population density per square km: <b>${point.tooltip}</b>', enableHighlight: true }}>
+                <AccumulationChartComponent id='pie-chart' legendSettings={{ visible: true, reverse: true }} enableSmartLabels={true} title='Pie with different Radius' enableBorderOnMouseMove={false} enableAnimation={true} load={load.bind(this)} loaded={loaded.bind(this)} tooltip={{ enable: true, format: '<b>${point.x}</b><br/>Area in square km: <b>${point.y} </b> <br/> Population density per square km: <b>${point.tooltip}</b>', enableHighlight: true }}>
                     <Inject services={[AccumulationLegend, PieSeries, AccumulationDataLabel, AccumulationTooltip]} />
                     <AccumulationSeriesCollectionDirective>
                         <AccumulationSeriesDirective dataSource={data1} xName='x' yName='y' innerRadius='20%' tooltipMappingName='r' dataLabel={{ visible: true, position: Browser.isDevice ? 'Inside' : 'Outside', name: 'text',enableRotation: true, font: { fontWeight: '600' }, connectorStyle:{length : '20px' ,type: 'Curve'} }} radius='r' />

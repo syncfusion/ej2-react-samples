@@ -127,3 +127,12 @@ line-height: 1;
 .e-rating-svg-icon #grad4 .end {
     stop-color: #4eaa01;
 }
+
+.fluent2-dark #default-rating-control {
+    background-color: #1f1f1f;
+    color: #fff
+}
+.fluent2-highcontrast #default-rating-control {
+    background-color: #1C1B1F;
+    color: #fff
+}

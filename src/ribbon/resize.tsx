@@ -345,7 +345,7 @@ export class Resize extends SampleBase<{}, {}> {
                                 <Inject services={[RibbonFileMenu, RibbonColorPicker]} />
                             </RibbonComponent>
                             <div id="ribbonPlaceHolder">
-                                <div style={{ width: '100%', height: '40px' }}>
+                                <div style={{ width: '100%', height: '40px' }} className='ribbonSliderWrapper'>
                                     <p className='ribbonResizeDisplayText'>Resize Ribbon</p>
                                     <div id='ribbonSlider' style={{ width: '200px', margin: '0 15px' }}>
                                         <SliderComponent id='slider' ref={slider => { this.sliderRef = slider }} min={350} change={this.onChange.bind(this)} created={this.onCreated.bind(this)} />

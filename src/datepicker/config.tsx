@@ -16,7 +16,7 @@ export const DatePickerSampleOrder: Object = [
         ]
     },
     {
-        'path': 'datepicker/date-format', 'component': 'Dateformat', 'name': 'Format', 'description': 'This example demonstrates how to change the date time format in the input field based on the format in a React DatePicker', 'order': '01', 'category': 'DatePicker', 'api': '{"DatePicker": ["format", "value", "placeholder" ]}',
+        'path': 'datepicker/date-format', 'component': 'Dateformat',  'type': 'update', 'name': 'Format', 'description': 'The InputFormats feature allows users to define multiple input formats, automatically converting typed values to the display format for a seamless experience.', 'order': '01', 'category': 'DatePicker', 'api': '{"DatePicker": ["format", "value", "placeholder" ]}',
         'sourceFiles': [
             { 'displayName': 'date-format.tsx', 'path': 'src/datepicker/date-format.tsx' },
             { 'displayName': 'date-format.jsx', 'path': 'src/datepicker/date-format.jsx' },

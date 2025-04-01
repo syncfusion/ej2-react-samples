@@ -114,7 +114,8 @@ export class Flip extends SampleBase<{}, {}> {
                                             </div>
                                             <div className="e-card-separator e-card-left"></div>
                                             <div className="e-card-content e-card-left" style={{ textAlign: 'left' }}>
-                                                <table>
+                                            <table>
+                                                <tbody>
                                                     <tr>
                                                         <td>johndoe@mail.com</td>
                                                     </tr>
@@ -124,7 +125,8 @@ export class Flip extends SampleBase<{}, {}> {
                                                     <tr>
                                                         <td>www.johndoe.com</td>
                                                     </tr>
-                                                </table>
+                                                </tbody>
+                                            </table>
                                             </div>
                                         </div>
                                     </div>
@@ -142,10 +144,11 @@ export class Flip extends SampleBase<{}, {}> {
                 <div id="description">
                     <p>
                         Cards in this sample have a hidden content within the DOM (Document Object Model), which is set behind the visible card.
-                    On the click action handler of front card, the back-side content is shown with a flip animation.
-                    <p> More information about Card can be found in this
-                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/card/getting-started/">
-                                documentation</a> section.</p>
+                        On the click action handler of front card, the back-side content is shown with a flip animation.
+                    </p>
+                    <p>
+                        More information about Card can be found in this 
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/card/getting-started/">documentation</a> section.
                     </p>
                 </div>
             </div>

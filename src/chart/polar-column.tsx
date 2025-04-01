@@ -54,7 +54,7 @@ export class PolarColumn extends SampleBase<{}, {}> {
                 <style>{SAMPLE_CSS}</style>
                 <div className='control-section row'>
                     <div className='col-md-8'>
-                        <ChartComponent id='charts' ref={chart=>this.chartInstance=chart} primaryXAxis={{ valueType: 'Category', labelPlacement: 'OnTicks', coefficient: Browser.isDevice ? 80 : 100, interval: 1 }} primaryYAxis={{ labelFormat: '{value}M' }} load={this.load.bind(this)} legendSettings= {{ visible: true, enableHighlight: true }} title="Top 10 Mobile Markets by Number of Subscriptions" loaded={this.onChartLoad.bind(this)} tooltip={{ enable: true, header: "", format: '<b>${point.text}</b> <br> ${series.name} : <b>${point.y}</b>' }}>
+                        <ChartComponent id='charts' ref={chart=>this.chartInstance=chart} primaryXAxis={{ valueType: 'Category', labelPlacement: 'OnTicks', coefficient: Browser.isDevice ? 80 : 100, interval: 1 }} primaryYAxis={{ labelFormat: '{value}M' }} load={this.load.bind(this)} legendSettings= {{ visible: true, enableHighlight: true }} title="Top 10 Mobile Markets by Number of Subscriptions" loaded={this.onChartLoad.bind(this)} tooltip={{ enable: true, header: "", format: '<b>${point.text}</b> <br> ${series.name} : <b>${point.y}</b>', enableHighlight: true }}>
                             <Inject services={[Legend, Category, PolarSeries, RadarSeries,Highlight, Tooltip]} />
                             <SeriesCollectionDirective>
                                 <SeriesDirective dataSource={data1} xName='text' yName='y' name='Population' type='Polar' drawType='Column' border={{ color: 'white', width: 1 }} marker={{ dataLabel: { name: 'text' } }} />

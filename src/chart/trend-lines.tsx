@@ -143,7 +143,7 @@ export class Trend extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <style>{SAMPLE_CSS}</style>
                 <div className='control-section '>               
-                    <ChartComponent id='charts' style={{ textAlign: "center" }} load={this.load.bind(this)} primaryXAxis={{ valueType: 'Category', edgeLabelPlacement: 'Shift', majorGridLines: { width: 0 }, majorTickLines: {width: 0}, lineStyle:{ width: 1} }} primaryYAxis={{ minimum: 0 , maximum: 80, interval: 10, labelFormat: "₹{value}", title: 'Rupees against Dollars', minorTickLines: {width: 0}, lineStyle: { width: 0 }, majorTickLines: { width: 0 } }} chartArea={{ border: { width: 0 } }} tooltip= {{ enable: true }} width= {Browser.isDevice ? '100%' : '75%'} title='USD to INR Rates' loaded={this.onChartLoad.bind(this)}>
+                    <ChartComponent id='charts' style={{ textAlign: "center" }} load={this.load.bind(this)} primaryXAxis={{ valueType: 'Category', edgeLabelPlacement: 'Shift', majorGridLines: { width: 0 }, majorTickLines: {width: 0}, lineStyle:{ width: 1} }} primaryYAxis={{ minimum: 0 , maximum: 80, interval: 10, labelFormat: "₹{value}", title: 'Rupees against Dollars', minorTickLines: {width: 0}, lineStyle: { width: 0 }, majorTickLines: { width: 0 } }} chartArea={{ border: { width: 0 } }} tooltip= {{ enable: true, showNearestTooltip: true, enableHighlight: true }} width= {Browser.isDevice ? '100%' : '75%'} title='USD to INR Rates' loaded={this.onChartLoad.bind(this)}>
                         <Inject services={[Category,  ScatterSeries, SplineSeries, LineSeries, Tooltip, Trendlines, Category, Legend]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={series1} xName='Period' yName='Rupees' name='Rupees' type='Spline' marker={{ visible: true , isFilled: true, height: 7, width: 7}}>
@@ -169,6 +169,9 @@ export class Trend extends SampleBase<{}, {}> {
                         <li>Moving Average</li>
                         <li>Forecasting</li>
                     </ul>
+                    <p>
+                        <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
+                    </p>
                     <p><b>Injecting Module</b></p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To use Trend Line series, we need to inject

@@ -31,7 +31,7 @@ export class Symbols extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <style>{SAMPLE_CSS}</style>
                 <div className='control-section'>
-                    <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', interval: 1, labelIntersectAction: Browser.isDevice ? 'None' : 'Trim', majorGridLines: { width: 0 },  majorTickLines: {width : 0}, minorTickLines: {width: 0}, labelRotation: Browser.isDevice ? -45 : 0 }} load={this.load.bind(this)} primaryYAxis={{ title: 'Penetration', rangePadding: 'None', labelFormat: '{value}%', minimum: 0, lineStyle: { width: 0 }, maximum: 75, interval: 15 }} width={Browser.isDevice ? '100%' : '75%'} chartArea={{ border: { width: 0 } }} title='FB Penetration of Internet Audience' loaded={this.onChartLoad.bind(this)} legendSettings={{ visible: true, enableHighlight: true }} tooltip={{ enable: true, header:"" ,format:"<b>${point.text}</b> <br> ${series.name} : <b>${point.y}</b>" }}>
+                    <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', interval: 1, labelIntersectAction: Browser.isDevice ? 'None' : 'Trim', majorGridLines: { width: 0 },  majorTickLines: {width : 0}, minorTickLines: {width: 0}, labelRotation: Browser.isDevice ? -45 : 0 }} load={this.load.bind(this)} primaryYAxis={{ title: 'Penetration', rangePadding: 'None', labelFormat: '{value}%', minimum: 0, lineStyle: { width: 0 }, maximum: 75, interval: 15, majorTickLines: { width: 0 } }} width={Browser.isDevice ? '100%' : '75%'} chartArea={{ border: { width: 0 } }} title='FB Penetration of Internet Audience' loaded={this.onChartLoad.bind(this)} legendSettings={{ visible: true, enableHighlight: true }} tooltip={{ enable: true, header: "" , format: "<b>${point.text}</b> <br> ${series.name} : <b>${point.y}</b>", enableHighlight: true, showNearestTooltip: true }}>
                         <Inject services={[LineSeries, Legend, Tooltip, DataLabel, Category, Highlight]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data} xName='x' yName='y' width={2} name='2007' type='Line' marker={{ visible: true, dataLabel: { name: 'text' }, width: 8, height: 8, shape: 'Diamond', isFilled: true }}>
@@ -53,7 +53,9 @@ export class Symbols extends SampleBase<{}, {}> {
                     <p>
                         Each points in a series can be represented as a symbol through marker. We can also customize the shape, size and color of a symbol through <code>marker</code> properties.
                     </p>
-                    <p>Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
+                    <p>
+                        <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
+                    </p>
                     <p>
                         More information on the marker can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/data-markers/" aria-label="Navigate to the documentation for Data Markers in React Chart component">documentation section</a>.
                     </p>

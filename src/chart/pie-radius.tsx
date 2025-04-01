@@ -24,7 +24,7 @@ export class PieRadius extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
       <div className='control-section'>
-          <AccumulationChartComponent id='pie-chart' legendSettings={{ visible: true, reverse: true }} enableSmartLabels={true} title='Pie with different Radius' enableBorderOnMouseMove={false} enableAnimation={true} load={this.load.bind(this)} tooltip={{ enable: true, format: '<b>${point.x}</b><br/>Area in square km: <b>${point.y} </b> <br/> Population density per square km: <b>${point.tooltip}</b>', enableHighlight: true }}>
+          <AccumulationChartComponent id='pie-chart' legendSettings={{ visible: true, reverse: true }} enableSmartLabels={true} title='Pie with different Radius' enableBorderOnMouseMove={false} enableAnimation={true} load={this.load.bind(this)} loaded={this.loaded.bind(this)} tooltip={{ enable: true, format: '<b>${point.x}</b><br/>Area in square km: <b>${point.y} </b> <br/> Population density per square km: <b>${point.tooltip}</b>', enableHighlight: true }}>
               <Inject services={[AccumulationLegend, PieSeries, AccumulationDataLabel, AccumulationTooltip]} />
               <AccumulationSeriesCollectionDirective>
                   <AccumulationSeriesDirective dataSource={data1} xName='x' yName='y' innerRadius='20%' tooltipMappingName='r' dataLabel={{ visible: true, position: Browser.isDevice ? 'Inside' : 'Outside', name: 'text',enableRotation: true, font: { fontWeight: '600' }, connectorStyle:{length : '20px' ,type: 'Curve'} }} radius='r' />
@@ -53,6 +53,11 @@ export class PieRadius extends SampleBase<{}, {}> {
     selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
     args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
     replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast')  as AccumulationTheme;
+  };
+
+  public loaded(args: IAccLoadedEventArgs): void {
+    let chart: Element = document.getElementById('pie-chart');
+    chart.setAttribute('title', '');
   };
      
 }

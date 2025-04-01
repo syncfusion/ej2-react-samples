@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { ChartComponent, SeriesCollectionDirective, Highlight, SeriesDirective, ChartTheme, Inject, ILoadedEventArgs, Tooltip, DateTime, SplineAreaSeries, Legend } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import { loadChartTheme } from './theme-color';
 export let data1 = [
     { x: new Date(2002, 0, 1), y: 2.2 }, { x: new Date(2003, 0, 1), y: 3.4 }, { x: new Date(2004, 0, 1), y: 2.8 },
     { x: new Date(2005, 0, 1), y: 1.6 }, { x: new Date(2006, 0, 1), y: 2.3 }, { x: new Date(2007, 0, 1), y: 2.5 },
@@ -35,15 +36,13 @@ const SplineArea = () => {
         chart.setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
     return (
         <div className="control-pane">
             <style>{SAMPLE_CSS}</style>
             <div className="control-section">
-                <ChartComponent id="charts" style={{ textAlign: 'center' }} primaryXAxis={{ valueType: 'DateTime', labelFormat: 'y', majorGridLines: { width: 0 }, intervalType: 'Years', minimum: new Date(2001, 0, 1), maximum: new Date(2012, 0, 1), edgeLabelPlacement: 'Shift' }} primaryYAxis={{ labelFormat: '{value}%', lineStyle: { width: 0 }, maximum: 4, interval: 1, majorTickLines: { width: 0 }, minorTickLines: { width: 0 } }} load={load.bind(this)} width={Browser.isDevice ? '100%' : '75%'} legendSettings={{ enableHighlight: true }} chartArea={{ border: { width: 0 } }} title="Inflation Rate in Percentage" loaded={onChartLoad.bind(this)} tooltip={{ enable: true }}>
+                <ChartComponent id="charts" style={{ textAlign: 'center' }} primaryXAxis={{ valueType: 'DateTime', labelFormat: 'y', majorGridLines: { width: 0 }, intervalType: 'Years', minimum: new Date(2001, 0, 1), maximum: new Date(2012, 0, 1), edgeLabelPlacement: 'Shift' }} primaryYAxis={{ labelFormat: '{value}%', lineStyle: { width: 0 }, maximum: 4, interval: 1, majorTickLines: { width: 0 }, minorTickLines: { width: 0 } }} load={load.bind(this)} width={Browser.isDevice ? '100%' : '75%'} legendSettings={{ enableHighlight: true }} chartArea={{ border: { width: 0 }, margin: { bottom: 12 } }} title="Inflation Rate in Percentage" loaded={onChartLoad.bind(this)} tooltip={{ enable: true, enableHighlight: true, showNearestTooltip: true }}>
                     <Inject services={[SplineAreaSeries, DateTime, Tooltip, Legend, Highlight]} />
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={data1} xName="x" yName="y" name="US" marker={{ visible: true, isFilled: true, height: 6, width: 6, shape: 'Circle' }} opacity={0.5} type="SplineArea" width={2} border={{ width: 2 }}></SeriesDirective>
@@ -56,6 +55,9 @@ const SplineArea = () => {
             </div>
             <div id="description">
                 <p>In this example, you can see how to render and configure a spline area chart. This chart plots a fitted curve through each data point in a series. It is used to represent time-dependent data and show trends in data at equal intervals.</p>
+                <p>
+                    <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
+                </p>
                 <p><b>Injecting Module</b></p>
                 <p>
                     Chart component features are segregated into individual feature-wise modules. To use spline area series, we need to inject <code>SplineAreaSeries</code> module into <code>services</code>.

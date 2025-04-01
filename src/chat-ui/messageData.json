@@ -11,7 +11,8 @@
         {
             "author": {
                 "user": "Michale Suyama",
-                "id": "user1"
+                "id": "user1",
+                "avatarBgColor": "#87cefa"
             },
             "text": "Hi Alice! Yes, Dana’s new UI design is incredible.",
             "timeStamp": "October 25, 2024 08:00"
@@ -37,7 +38,8 @@
         {
             "author": {
                 "user": "Michale Suyama",
-                "id": "user1"
+                "id": "user1",
+                "avatarBgColor": "#87cefa"
             },
             "text": "We should organize a design challenge.",
             "timeStamp": "October 26, 2024 12:15"
@@ -72,7 +74,8 @@
         {
             "author": {
                 "user": "Michale Suyama",
-                "id": "user1"
+                "id": "user1",
+                "avatarBgColor": "#87cefa"
             },
             "text": "Agreed! Excited to see everyone’s ideas."
         },

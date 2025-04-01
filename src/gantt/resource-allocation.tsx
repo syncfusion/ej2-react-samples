@@ -5,7 +5,7 @@ import { resourceAllocationData, resourceAllocationResources } from './data';
 import { SampleBase } from '../common/sample-base';
 import { DropDownList } from '@syncfusion/ej2-react-dropdowns';
 import { IEditCell } from '@syncfusion/ej2-react-grids';
-import { DataManager } from '@syncfusion/ej2/data';
+import { DataManager } from '@syncfusion/ej2-data';
 
 export class ResourceAllocation extends SampleBase<{}, {}> {
   public resColumnTemplate(props): any {

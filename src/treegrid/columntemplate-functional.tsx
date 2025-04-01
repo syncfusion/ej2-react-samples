@@ -15,14 +15,14 @@ const ColumnTemplate = () => {
   useEffect(() => {
     updateSampleSection();
   }, [])
-  // custom code start
+
   const load = (args: ISparklineLoadedEventArgs): void => {
     let theme: string = location.hash.split("/")[1];
     theme = theme ? theme : "Material";
     args.sparkline.theme = (theme.charAt(0).toUpperCase() +
       theme.slice(1)) as SparklineTheme;
   };
-  // custom code end
+ 
   const rowDataBound = (args: RowDataBoundEventArgs): void => {
     let data: string = getObject("EmployeeID", args.data);
     let spkline: HTMLElement = args.row.querySelector("#spkline" + data);

@@ -95,6 +95,7 @@ export class AxisCrossing extends SampleBase<{}, {}> {
                             }}
                             load={this.load.bind(this)}
                             title="Spline Interpolation"
+                            tooltip={{ enable: true, enableHighlight: true }}
                             loaded={this.onChartLoad.bind(this)}>
                             <Inject services={[LineSeries, ScatterSeries, SplineSeries, Tooltip, Legend]} />
                             <SeriesCollectionDirective>

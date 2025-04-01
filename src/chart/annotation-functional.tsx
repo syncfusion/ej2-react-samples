@@ -5,6 +5,7 @@ import { chartDatas } from './financial-data';
 import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, StackingColumnSeries, Category, Legend, ILoadedEventArgs, Selection, IMouseEventArgs, IAccLoadedEventArgs, ChartAnnotation, AccumulationChart, AccumulationDataLabel, IAnimationCompleteEventArgs, AccumulationTheme, ChartTheme, AnnotationsDirective, AnnotationDirective, Series, AreaSeries, IAxisLabelRenderEventArgs, Tooltip } from '@syncfusion/ej2-react-charts';
 import { updateSampleSection } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
+import { loadChartTheme } from './theme-color';
 AccumulationChart.Inject(AccumulationDataLabel);
 const SAMPLE_CSS = `
     #dark-gradient-chart stop {
@@ -288,10 +289,8 @@ const Annotation = () => {
         chart.setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
-        if ( args.chart.theme.includes('Dark') || args.chart.theme.includes('highcontrast')) {   
+        let selectedTheme: string = loadChartTheme(args);
+        if ( selectedTheme.includes('Dark') || selectedTheme.includes('highcontrast')) {   
             args.chart.series[0].fill = "url(#dark-gradient-chart)";
         }
         else {
@@ -307,7 +306,7 @@ const Annotation = () => {
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
-                <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ title: 'Distance', labelFormat: 'N2', majorGridLines: {width : 0}, minimum: 0.00, maximum: 4.00 }} chartArea={{ border: { width: 0 } }} primaryYAxis={{ title: 'Speed (KM/H)', lineStyle: { width: 0 }, minimum: 50, maximum: 400, majorTickLines: { width: 0 } }} load={load.bind(this)} width={Browser.isDevice ? '100%' : '75%'} animationComplete={onChartLoad.bind(this)} axisLabelRender={axisLabelRender.bind(this)} selectionMode='Cluster' tooltip={{ enable : true, shared: true, header: " ", enableMarker: false, format: "Distance: ${point.x} KM <br> ${point.y} KM/H", fill: "white", border:{color:"rgb(247, 206, 105)", width: 2},textStyle:{color:"black"} }} selectedDataIndexes={[{ series: 0, point: 0 }]} legendSettings={{ visible: true, toggleVisibility: false }} title="Speed Data Plot for Interlagos Circuit">
+                <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ title: 'Distance', labelFormat: 'N2', majorGridLines: {width : 0}, minimum: 0.00, maximum: 4.00 }} chartArea={{ border: { width: 0 } }} primaryYAxis={{ title: 'Speed (KM/H)', lineStyle: { width: 0 }, minimum: 50, maximum: 400, majorTickLines: { width: 0 } }} load={load.bind(this)} width={Browser.isDevice ? '100%' : '75%'} animationComplete={onChartLoad.bind(this)} axisLabelRender={axisLabelRender.bind(this)} selectionMode='Cluster' tooltip={{ enable : true, showNearestTooltip: true, header: " ", enableMarker: false, format: "Distance: ${point.x} KM <br> ${point.y} KM/H", fill: "white", border:{color:"rgb(247, 206, 105)", width: 2},textStyle:{color:"black"} }} selectedDataIndexes={[{ series: 0, point: 0 }]} legendSettings={{ visible: true, toggleVisibility: false }} title="Speed Data Plot for Interlagos Circuit">
                     <Inject services={[StackingColumnSeries, Category, Legend,Tooltip, Selection, ChartAnnotation, AreaSeries]} />
                     <AnnotationsDirective>
                         <AnnotationDirective content= '<div class="first-box-bottom" > Senna S </div>' x='0.360' y='80' coordinateUnits='Point' />
@@ -354,6 +353,9 @@ const Annotation = () => {
                 <p>
                     In this example, you can see how to render and configure annotation feature in chart. We have used a pie chart to depict the sales for each year using annotation support,
                     while selecting a particular year from the StackedColumn series, the respective data's are showed in pie. An annotation can hold any html element as its content, here we have added the Pie chart as its content.
+                </p>
+                <p>
+                    <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
                 </p>
                 <p><b>Injecting Module</b></p>
                 <p>

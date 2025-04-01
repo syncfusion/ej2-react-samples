@@ -7,6 +7,7 @@ import * as ReactDOM from "react-dom";
 import { Chart3DComponent, Chart3DSeriesCollectionDirective, Chart3DSeriesDirective, Inject, Legend3D, Category3D, StackingBarSeries3D, Tooltip3D, Chart3DLoadedEventArgs, ChartTheme, Highlight3D } from '@syncfusion/ej2-react-charts';
 import { updateSampleSection } from '../common/sample-base';
 import { Browser, EmitType } from '@syncfusion/ej2-base';
+import { load3DChartTheme } from './theme-color';
 export let data: any[] = [
     { x: 'Sochi 2014', y: 9 },
     { x: 'Rio 2016', y: 46 },
@@ -49,9 +50,7 @@ const StackedBar = () => {
         chart.setAttribute('title', '');
     };
     const load = (args: Chart3DLoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        load3DChartTheme(args);
     };
     return (
         <div className='control-pane'>

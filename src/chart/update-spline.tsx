@@ -53,7 +53,7 @@ export class UpdateSpline extends SampleBase<{}, {}> {
                     <ChartComponent id='spline' style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'DateTime', interval: 2, edgeLabelPlacement: Browser.isDevice ? 'None' : 'Shift', labelRotation: Browser.isDevice ? 45 : 0, majorGridLines: { width: 0 } }} primaryYAxis={{
                         title: 'Value', interval: 20, lineStyle: { width: 0 }, majorTickLines: { width: 0 }
                     }} axisRangeCalculated={this.axisRangeCalculated.bind(this)}
-                        chartArea={{ border: { width: 0 } }} load={this.load.bind(this)} width={Browser.isDevice ? '100%' : '75%'} title='Live data' >
+                        chartArea={{ border: { width: 0 } }} load={this.load.bind(this)} loaded={this.onChartLoad.bind(this)} width={Browser.isDevice ? '100%' : '75%'} title='Live data' >
                         <Inject services={[SplineSeries, DateTime, DataLabel]} />
                         <SeriesCollectionDirective >
                             <SeriesDirective dataSource={data} xName='x' yName='y' type='Spline'  width={2} marker={{ visible: true, isFilled: true, width: 7, height: 7 }}>

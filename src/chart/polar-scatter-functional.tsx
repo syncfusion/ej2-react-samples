@@ -9,6 +9,7 @@ import { PropertyPane } from '../common/property-pane';
 import { EmitType, Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
+import { loadChartTheme } from './theme-color';
 export let data1: any[] = [
     { text: 'Myanmar', x: 'MMR', y: 7.3, y1: 6.3, y2: 7.5 },
     { text: 'India', x: 'IND', y: 7.9, y1: 6.8, y2: 7.2 },
@@ -46,9 +47,7 @@ const PolarScatter = () => {
         document.getElementById('charts').setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
     const change = (): void => {
         chartInstance.current.series[0].type = dropElement.current.value as ChartSeriesType;
@@ -68,7 +67,7 @@ const PolarScatter = () => {
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-md-8'>
-                    <ChartComponent id='charts' ref={chartInstance} primaryXAxis={{ valueType: 'Category', labelPlacement: 'OnTicks', interval: 1, coefficient: Browser.isDevice ? 80 : 100 }} primaryYAxis={{ labelFormat: '{value}%', minimum: 0, maximum: 8, interval: 2 }} legendSettings= {{ visible: true, enableHighlight: true }} load={load.bind(this)} title="GDP by Countries" loaded={onChartLoad.bind(this)} tooltip={{ enable: true, format: '${point.text} : <b>${point.y}%</b>' }}>
+                    <ChartComponent id='charts' ref={chartInstance} primaryXAxis={{ valueType: 'Category', labelPlacement: 'OnTicks', interval: 1, coefficient: Browser.isDevice ? 80 : 100 }} primaryYAxis={{ labelFormat: '{value}%', minimum: 0, maximum: 8, interval: 2 }} legendSettings= {{ visible: true, enableHighlight: true }} load={load.bind(this)} title="GDP by Countries" loaded={onChartLoad.bind(this)} tooltip={{ enable: true, format: '${point.text} : <b>${point.y}%</b>', enableHighlight: true }}>
                         <Inject services={[Legend, Category, PolarSeries, RadarSeries, Highlight, ScatterSeries, Tooltip]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} xName='text' yName='y' name='2015' type={type} drawType='Scatter' marker={{ height: 7, width: 7, dataLabel: { name: 'text' } }} />

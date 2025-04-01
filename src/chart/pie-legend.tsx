@@ -45,12 +45,12 @@ export class Doughnut extends SampleBase<{}, {}> {
       <div className='control-pane'>
       <style>{SAMPLE_CSS}</style>
       <div className='control-section'>
-          <AccumulationChartComponent id='pie-chart2'  title = { Browser.isDevice ? "Browser Market Share" : '' } load={this.load.bind(this)} legendSettings={{ visible: true, toggleVisibility: false, position: 'Bottom', maximumColumns: Browser.isDevice ? 2 : 3 }} enableSmartLabels={true} enableAnimation={false} selectionMode={'Point'} center={{ x: '50%', y: '50%' }} enableBorderOnMouseMove={false} tooltip={{ enable: true, format: '<b>${point.x}</b><br>Browser Share: <b>${point.y}%</b>',header:"", enableHighlight: true, pointRender: labelRender  }}>
+          <AccumulationChartComponent id='pie-chart2'  title = { Browser.isDevice ? "Browser Market Share" : '' } load={this.load.bind(this)} legendSettings={{ visible: true, toggleVisibility: false, position: 'Bottom', maximumColumns: Browser.isDevice ? 2 : 3 }} enableSmartLabels={true} enableAnimation={false} center={{ x: '50%', y: '50%' }} enableBorderOnMouseMove={false} tooltip={{ enable: true, format: '<b>${point.x}</b><br>Browser Share: <b>${point.y}%</b>', header: "", enableHighlight: true }} pointRender={labelRender.bind(this)}>
               <Inject services={[AccumulationLegend, PieSeries, AccumulationDataLabel, AccumulationTooltip, AccumulationSelection, Selection, ChartAnnotation, AccumulationAnnotation]} />
               <AccumulationSeriesCollectionDirective>
               <AccumulationSeriesDirective dataSource={data1} xName='x' yName='y' explode={false} explodeOffset='10%' explodeIndex={0} startAngle={30} innerRadius='50%' dataLabel={{
                             visible: true, position: 'Inside',
-                            font: { fontWeight: '600', color: '#ffffff' }, name: 'y', connectorStyle: { length: '20px', type: 'Curve' }
+                            font: { fontWeight: '600', color: '#ffffff' }, name: 'text', connectorStyle: { length: '20px', type: 'Curve' }
                         }} radius={Browser.isDevice ? '80%' : '85%'} />
               </AccumulationSeriesCollectionDirective>
               <AccumulationAnnotationsDirective>

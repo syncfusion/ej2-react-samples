@@ -29,18 +29,20 @@ const Default = () => {
           <div className="content-wrapper">
             <div id='mention_default'>
               <table>
-                <tr>
-                  <td>
-                    <label className="default-size">E-mails</label>
-                    <TextBoxComponent id="emailsMention" placeholder="Type @ and tag the email" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label className="default-size">Comments</label>
-                    <div id="commentsMention" placeholder="Type @ and select your comments" ></div>
-                  </td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <td>
+                      <label className="default-size">E-mails</label>
+                      <TextBoxComponent id="emailsMention" placeholder="Type @ and tag the email" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label className="default-size">Comments</label>
+                      <div id="commentsMention" placeholder="Type @ and select your comments" ></div>
+                    </td>
+                  </tr>
+                </tbody>
               </table>
 
               <MentionComponent dataSource={emailData} target={emailTarget} fields={emailFields}></MentionComponent>

@@ -75,23 +75,31 @@ const Horizontal = () => {
                         </div>
                     </div>
                     <div id='source_link'>Source: &nbsp;
-                        <table>
+                    <table>
+                        <tbody>
                             <tr>
                                 <td>
-                                    <a href="https://www.philips.co.in/c-m-pe/face-stylers-and-grooming-kits/trimmers" target='_blank'>https://www.philips.co.in/c-m-pe/face-stylers-and-grooming-kits/trimmers</a>
+                                    <a href="https://www.philips.co.in/c-m-pe/face-stylers-and-grooming-kits/trimmers" target='_blank'>
+                                        https://www.philips.co.in/c-m-pe/face-stylers-and-grooming-kits/trimmers
+                                    </a>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <a href="https://en.wikipedia.org/wiki/IPhone_X" target='_blank'>https://en.wikipedia.org/wiki/IPhone_X</a>
+                                    <a href="https://en.wikipedia.org/wiki/IPhone_X" target='_blank'>
+                                        https://en.wikipedia.org/wiki/IPhone_X
+                                    </a>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <a href="https://en.wikipedia.org/wiki/Canon_EF_135mm_lens" target='_blank'>https://en.wikipedia.org/wiki/Canon_EF_135mm_lens</a>
+                                    <a href="https://en.wikipedia.org/wiki/Canon_EF_135mm_lens" target='_blank'>
+                                        https://en.wikipedia.org/wiki/Canon_EF_135mm_lens
+                                    </a>
                                 </td>
                             </tr>
-                        </table>
+                        </tbody>
+                    </table>
                     </div>
                 </div>
             </div>
@@ -100,9 +108,12 @@ const Horizontal = () => {
             </div>
             <div id="description">
                 <p>
-                    By default, card elements are stacked one after another vertically. You can customize the card with specific direction by adding
-                    <b>e-card-horizontal</b> to align elements horizontally. Using <b>e-card-stacked</b> class, you can split the horizontal layout with a stacked element on left or right of the card.
-                    <p>More information about Card can be found in this.<a target="_blank" href="https://ej2.syncfusion.com/react/documentation/card/getting-started/"> documentation</a> section. </p>
+                    By default, card elements are stacked one after another vertically. You can customize the card with a specific direction by adding
+                    <b> e-card-horizontal </b> to align elements horizontally. Using <b> e-card-stacked </b> class, you can split the horizontal layout with a stacked element on the left or right of the card.
+                </p>
+                <p>
+                    More information about Card can be found in this
+                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/card/getting-started/"> documentation</a> section.
                 </p>
             </div>
         </div>

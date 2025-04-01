@@ -11,6 +11,7 @@ import { DatePickerComponent, ChangedEventArgs } from '@syncfusion/ej2-react-cal
 import { NumericTextBoxComponent, ChangeEventArgs as NumericChange } from '@syncfusion/ej2-react-inputs';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
+import { loadChartTheme } from './theme-color';
 const SAMPLE_CSS = `
     .control-fluid {
         padding: 0px !important;
@@ -38,9 +39,7 @@ const LazyLoading = () => {
         chart.current.dataBind();
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
     const minChange = (args: ChangedEventArgs): void => {
         chart.current.primaryXAxis.scrollbarSettings.range.minimum = args.value;
@@ -129,7 +128,7 @@ const LazyLoading = () => {
             <style>{SAMPLE_CSS}</style>
             <div className='control-section' >
                 <div className='col-md-8'>
-                    <ChartComponent id='charts' ref={chart} primaryXAxis={{ valueType: 'DateTime', edgeLabelPlacement: 'Shift', skeleton: 'yMMM', skeletonType: 'Date', scrollbarSettings: { range: { minimum: new Date(2009, 0, 1), maximum: new Date(2014, 0, 1) }, enable: true, pointsLength: 1000, enableZoom: false, height: 14 } }} primaryYAxis={{ title: 'Server Load', labelFormat: '{value}MB' }} tooltip={{ enable: true, shared: true, header: '<b>${point.x}</b>', format: 'Server load : <b>${point.y}</b>' }} legendSettings={{ visible: true }} scrollEnd={scrollEnd.bind(this)} load={load.bind(this)} title='Network Load' height='450' width='100%' >
+                    <ChartComponent id='charts' ref={chart} primaryXAxis={{ valueType: 'DateTime', edgeLabelPlacement: 'Shift', skeleton: 'yMMM', skeletonType: 'Date', majorGridLines: { width: 0 }, scrollbarSettings: { range: { minimum: new Date(2009, 0, 1), maximum: new Date(2014, 0, 1) }, enable: true, pointsLength: 1000, enableZoom: false, height: 14 } }} primaryYAxis={{ title: 'Server Load', labelFormat: '{value}MB', majorTickLines: { width: 0 }, lineStyle: { width: 0 } }} tooltip={{ enable: true, showNearestTooltip: true, header: '<b>${point.x}</b>', format: 'Server load : <b>${point.y}</b>', enableHighlight: true }} legendSettings={{ visible: true }} scrollEnd={scrollEnd.bind(this)} load={load.bind(this)} title='Network Load' height='450' width='100%' chartArea={{ border: { width: 0 } }}>
                         <Inject services={[LineSeries, DateTime, Tooltip, ScrollBar, Zoom, Crosshair]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={GetDateTimeData(new Date(2009, 0, 1), new Date(2009, 8, 1))} xName='x' yName='y'
@@ -191,6 +190,9 @@ const LazyLoading = () => {
             <div id="description">
                 <p>
                     In this example, you can see how to load data for the chart on demand. The chart will fire the <code>scrollEnd</code> event, and in that event, we can update the chart with the required data based on the point length and axis range. The scrollbar in the chart can be customized using the <code>height</code>, <code>trackColor</code>, <code>trackRadius</code>, <code>scrollbarRadius</code>, <code>scrollbarColor</code>, <code>enableZoom</code>, and <code>gripColor</code> properties in <code>scrollbarSettings</code>.
+                </p>
+                <p>
+                    <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
                 </p>
                 <p><b>Injecting Module</b></p>
                 <p>

@@ -99,6 +99,7 @@ export class ChatIntegration extends SampleBase<{}, {}> {
                                             cssClass="e-list-template"
                                             showHeader={true}
                                             select={(args) => this.handleSelect(args)}
+                                            ref={listview => (this.listviewInst = listview)}
                                         />
                                     </div>
                                 </div>
@@ -113,6 +114,7 @@ export class ChatIntegration extends SampleBase<{}, {}> {
                                         user={{ id: 'user1', user: 'Albert', avatarUrl: './src/chat-ui/images/andrew.png' }}
                                         headerToolbar={userToolbarSettings}
                                         messageSend={(args) => this.handleMessageSend(args)}
+                                        ref={chatUI => (this.chatUiInst = chatUI)}
                                     />
                             </div>
                         </SplitterComponent>

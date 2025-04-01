@@ -615,7 +615,7 @@ export class Overview extends SampleBase<{}, {}> {
                                 <ColumnsDirective>
                                     <ColumnDirective field='TaskId' headerText='Task Id' width='180' visible={false}></ColumnDirective>
                                     <ColumnDirective field='TaskName' headerText='Product Release' width='250'></ColumnDirective>
-                                    <ColumnDirective field='resources' headerText='Assignee' allowSorting={false} width='140' template={this.template}></ColumnDirective>
+                                    <ColumnDirective field='Assignee' headerText='Assignee' allowSorting={false} width='170' template={this.template}></ColumnDirective>
                                     <ColumnDirective field='Status' headerText='Status' minWidth="100" width="120" template={this.statusTemplate}></ColumnDirective>
                                     <ColumnDirective field='Priority' headerText='Priority' minWidth='80' width='100' template={this.priorityTemplate}></ColumnDirective>
                                     <ColumnDirective field='Work' headerText='Planned Hours' width='120'></ColumnDirective>

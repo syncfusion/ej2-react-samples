@@ -10,6 +10,16 @@ let instance: Internationalization = new Internationalization();
 interface DateFormat extends Window {
     format?: Function;
 }
+
+const textcolor_CSS = `
+ .tailwind3-dark #TreeGrid .e-description,
+.fluent2-dark #TreeGrid .e-description,
+.bootstrap5\.3-dark #TreeGrid .e-description,
+.material3-dark #TreeGrid .e-description,
+.fluent2-highcontrast #TreeGrid .e-description {
+    color: #fff;
+}`;
+
 export class DetailTemplate extends SampleBase<{}, {}> {
 
     public format = (value: Date) => {
@@ -37,6 +47,9 @@ export class DetailTemplate extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
+                <style>
+                    {textcolor_CSS}
+                </style>
                 <div className='control-section'>
                     <TreeGridComponent dataSource={textdata} childMapping='Children' detailTemplate={this.template.bind(this)} treeColumnIndex={0} height='335' >
                         <ColumnsDirective>

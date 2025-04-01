@@ -92,7 +92,7 @@ const Editing = () => {
           <ColumnDirective field='TaskID' width='80' ></ColumnDirective>
             <ColumnDirective field='TaskName' headerText='Job Name' width='250' clipMode='EllipsisWithTooltip' validationRules={{ required: true, minLength: [5, 'Task name should have a minimum length of 5 characters'], }}></ColumnDirective>
             <ColumnDirective field='StartDate'></ColumnDirective>
-            <ColumnDirective field='EndDate' validationRules={{ date: true, required: [customFn, 'Please enter a value greater than the start date.'] }}></ColumnDirective>
+            <ColumnDirective field='EndDate' validationRules={{ required: [customFn, 'Please enter a value greater than the start date.'] }}></ColumnDirective>
             <ColumnDirective field='Duration' validationRules={{ required: true }}></ColumnDirective>
             <ColumnDirective field='Progress' validationRules={{ required: true, min: 0, max: 100 }}></ColumnDirective>
             <ColumnDirective field='Predecessor'></ColumnDirective>

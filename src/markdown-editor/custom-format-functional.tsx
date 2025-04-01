@@ -8,6 +8,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { updateSampleSection } from '../common/sample-base';
 import './custom-format.css';
+import { Tooltip } from '@syncfusion/ej2-react-popups';
 function CustomFormat() {
     React.useEffect(() => {
         updateSampleSection();
@@ -21,13 +22,13 @@ function CustomFormat() {
         'Formats', 'Blockquote', 'OrderedList', 'UnorderedList', '|',
         'CreateLink', 'Image', '|',
         {
-            tooltipText: 'Preview',
             template: '<button id="preview-code" class="e-tbar-btn e-control e-btn e-icon-btn" aria-label="Preview Code">' +
                 '<span class="e-btn-icon e-icons e-md-preview"></span></button>'
         }, 'Undo', 'Redo'];
     let textArea: HTMLTextAreaElement;
     let mdsource: HTMLElement;
     let mdPreview: HTMLElement;
+    let tooltipObj: Tooltip;
     //Rich Text Editor ToolbarSettings
     const toolbarSettings: ToolbarSettingsModel = {
         items: items
@@ -51,10 +52,10 @@ function CustomFormat() {
         let htmlPreview: HTMLElement = rteObj.element.querySelector('#' + id);
         if (mdsource.classList.contains('e-active')) {
             mdsource.classList.remove('e-active');
-            mdsource.parentElement.title = 'Preview';
             rteObj.enableToolbarItem(rteObj.toolbarSettings.items as string[]);
             textArea.style.display = 'block';
             htmlPreview.style.display = 'none';
+            tooltipObj.content = "Preview";
         } else {
             mdsource.classList.add('e-active');
             rteObj.disableToolbarItem(rteObj.toolbarSettings.items as string[]);
@@ -65,8 +66,8 @@ function CustomFormat() {
             }
             textArea.style.display = 'none';
             htmlPreview.style.display = 'block';
+            tooltipObj.content = "Codeview";
             htmlPreview.innerHTML = Marked.marked((rteObj.contentModule.getEditPanel() as HTMLTextAreaElement).value);
-            mdsource.parentElement.title = 'Code View';
         }
     }
     function rendereComplete(): void {
@@ -79,6 +80,11 @@ function CustomFormat() {
         mdsource.addEventListener('click', (e: MouseEvent) => {
             fullPreview();
         });
+        tooltipObj = new Tooltip({
+                    content: "Preview",  
+                    target: "#preview-code"  
+                  });
+        tooltipObj.appendTo("#preview-code");
     }
     return (
         <div className='control-pane'>

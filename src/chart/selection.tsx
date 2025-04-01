@@ -111,12 +111,15 @@ export class SelectionChart extends SampleBase<{}, {}> {
                                 title: 'Countries',
                                 valueType: 'Category',
                                 interval: 1,
-                                labelIntersectAction: 'Rotate90'
+                                labelIntersectAction: 'Rotate90',
+                                majorGridLines: { width: 0 }
                             }}
                             primaryYAxis={{
                                 title: 'Distribution',
                                 labelFormat: '{value}%',
-                                interval: 20
+                                interval: 20,
+                                lineStyle: { width: 0 },
+                                majorTickLines: { width: 0 }
                             }}
                             load={this.load.bind(this)}
                             title='Age Distribution by Country' loaded={this.onChartLoad.bind(this)}

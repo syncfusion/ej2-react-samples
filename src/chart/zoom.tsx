@@ -140,10 +140,11 @@ export class Zooming extends SampleBase<{}, {}> {
                         chartArea={{ border: { width: 0 } }}
                         margin = {{top: 20}}
                         zoomSettings={{ enableSelectionZooming: true, enableMouseWheelZooming: true, enableDeferredZooming: false, enableScrollbar: true, enablePinchZooming: true, mode: 'X', enableAnimation: true, showToolbar : true, toolbarPosition:{y: -60, draggable: true}}}
-                        load={this.load}
+                        load={this.load.bind(this)}
+                        loaded={this.onChartLoad.bind(this)}
+                        tooltip={{ enable: true, showNearestTooltip: true, header: '<b>${point.x}</b>', format: 'Temperature: <b>${point.y}</b>', enableHighlight: true }}
                         title={Browser.isDevice ? 'Monthly Temperature Anomalies' : 'Global Warming: Monthly Temperature Anomalies'}
                         titleStyle= {{ textAlignment: Browser.isDevice ? 'Near' : 'Center' }}
-                        tooltip={{ enable: false}}
                         width={Browser.isDevice ? '100%' : '80%'}>
                         <Inject services={[LineSeries, DateTime, Zoom, Crosshair, Tooltip, ScrollBar]} />
                         <SeriesCollectionDirective>
@@ -171,10 +172,13 @@ export class Zooming extends SampleBase<{}, {}> {
                         <li><b>Y</b> - Zoom the chart with respect to the vertical axis only.</li>
                     </ul>
                     <p>The <code>toolbarPosition</code> property is used to adjust the position of the zoom toolbar. In this example, the toolbar is moved 60 pixels upward from its default position. The <code>draggable</code> property is used to drag and drop the zoom toolbar to any position within the chart area</p>
-
+                    <p>The chart supports different scrollbar positions. By default, it appears next to the axis line, but you can adjust its placement using the <code>position</code> property of <code>scrollbarSettings</code>. This positioning allows better customization and flexibility in the chart's design.</p>
+                    <p>
+                        <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
+                    </p>
                     <p><b>Injecting Module</b></p>
                     <p>
-                        Chart component features are segregated into individual feature-wise modules. To use zooming, we need to inject
+                        Chart component features are segregated into individual feature-wise modules. To use zooming, we need to inject 
                         <code>Zoom</code> module using <code>Chart.Inject(Zoom)</code> method.
                     </p>
                     <p>

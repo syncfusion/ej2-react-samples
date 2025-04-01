@@ -86,8 +86,7 @@ const CardTemplate = () => {
                                                                     )}
                                                                 </td>
                                                             )}
-                                                        {(props.Category == "Delivered" ||
-                                                            props.Category == "Served") && (
+                                                        {(props.Category == "Delivered") && (
                                                                 <td className="card-content">
                                                                     <table>
                                                                       <tbody>
@@ -133,8 +132,8 @@ const CardTemplate = () => {
                                                                         Ready to Serve
                                                                     </div>
                                                                 )}
-                                                                {(props.Category == "Delivered" ||
-                                                                    props.Category == "Served") && (
+                                                                {(props.Category == "Delivered"
+                                                                   ) && (
                                                                         <div className="e-deliveredText e-tooltip-text">
                                                                             Delivered
                                                                         </div>
@@ -173,7 +172,6 @@ const CardTemplate = () => {
             "Order",
             "Ready to Serve",
             "Delivered",
-            "Served",
         ];
         const [state, setState] = React.useState(extend({}, {}, props, true));
         const onChange = (args: any): void => {
@@ -295,7 +293,7 @@ const CardTemplate = () => {
                             />
                             <ColumnDirective
                                 headerText="Delivered"
-                                keyField="Delivered,Served"
+                                keyField="Delivered"
                             />
                         </ColumnsDirective>
                     </KanbanComponent>

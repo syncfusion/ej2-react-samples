@@ -11,19 +11,19 @@ import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import { EmitType } from '@syncfusion/ej2-base';
-
+import { loadChartTheme } from './theme-color';
 let series1: Object[] = [
-    { Period : 1947, Rupees : 4.76 },
-    { Period : 1967, Rupees : 7.50 },
-    { Period : 1974, Rupees : 8.10 },
-    { Period : 1989, Rupees : 16.64 },
-    { Period : 1990, Rupees : 17.32},
-    { Period : 2000, Rupees : 43.56 },
-    { Period : 2007, Rupees : 39.27 },
-    { Period : 2013, Rupees : 56.57 },
-    { Period : 2019, Rupees : 71.74 },
-    { Period : 2020, Rupees : 76.67 },
-    { Period : 2021, Rupees : 72.75},
+    { Period: 1947, Rupees: 4.76 },
+    { Period: 1967, Rupees: 7.50 },
+    { Period: 1974, Rupees: 8.10 },
+    { Period: 1989, Rupees: 16.64 },
+    { Period: 1990, Rupees: 17.32 },
+    { Period: 2000, Rupees: 43.56 },
+    { Period: 2007, Rupees: 39.27 },
+    { Period: 2013, Rupees: 56.57 },
+    { Period: 2019, Rupees: 71.74 },
+    { Period: 2020, Rupees: 76.67 },
+    { Period: 2021, Rupees: 72.75 },
 ];
 
 let powerData: object[] = [
@@ -55,25 +55,23 @@ const Trend = () => {
     useEffect(() => {
         updateSampleSection();
     }, [])
-    
+
     const onChartLoad = (args: ILoadedEventArgs): void => {
         document.getElementById('charts').setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
     return (
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
-            <div className='control-section '>               
-                <ChartComponent id='charts' style={{ textAlign: "center" }} load={load.bind(this)} primaryXAxis={{ valueType: 'Category', edgeLabelPlacement: 'Shift', majorGridLines: { width: 0 }, majorTickLines: {width: 0}, lineStyle:{ width: 1} }} primaryYAxis={{ minimum: 0 , maximum: 80, interval: 10, labelFormat: "₹{value}", title: 'Rupees against Dollars', minorTickLines: {width: 0}, lineStyle: { width: 0 }, majorTickLines: { width: 0 } }} chartArea={{ border: { width: 0 } }} tooltip= {{ enable: true }} width= {Browser.isDevice ? '100%' : '75%'} title='USD to INR Rates' loaded={onChartLoad.bind(this)}>
-                    <Inject services={[Category,  ScatterSeries, SplineSeries, LineSeries, Tooltip, Trendlines, Category, Legend]} />
+            <div className='control-section '>
+                <ChartComponent id='charts' style={{ textAlign: "center" }} load={load.bind(this)} primaryXAxis={{ valueType: 'Category', edgeLabelPlacement: 'Shift', majorGridLines: { width: 0 }, majorTickLines: { width: 0 }, lineStyle: { width: 1 } }} primaryYAxis={{ minimum: 0, maximum: 80, interval: 10, labelFormat: "₹{value}", title: 'Rupees against Dollars', minorTickLines: { width: 0 }, lineStyle: { width: 0 }, majorTickLines: { width: 0 } }} chartArea={{ border: { width: 0 }, margin: { bottom: 12 } }} tooltip={{ enable: true, showNearestTooltip: true, enableHighlight: true }} width={Browser.isDevice ? '100%' : '75%'} title='USD to INR Rates' loaded={onChartLoad.bind(this)}>
+                    <Inject services={[Category, ScatterSeries, SplineSeries, LineSeries, Tooltip, Trendlines, Category, Legend]} />
                     <SeriesCollectionDirective>
-                        <SeriesDirective dataSource={series1} xName='Period' yName='Rupees' name='Rupees' type='Spline' marker={{ visible: true , isFilled: true, height: 7, width: 7}}>
+                        <SeriesDirective dataSource={series1} xName='Period' yName='Rupees' name='Rupees' type='Spline' marker={{ visible: true, isFilled: true, height: 7, width: 7 }}>
                             <TrendlinesDirective>
-                                <TrendlineDirective type='Linear' width={3}  name='Trends' fill='#C64A75' />
+                                <TrendlineDirective type='Linear' width={3} name='Trends' fill='#C64A75' />
                             </TrendlinesDirective>
                         </SeriesDirective>
                     </SeriesCollectionDirective>
@@ -94,6 +92,9 @@ const Trend = () => {
                     <li>Moving Average</li>
                     <li>Forecasting</li>
                 </ul>
+                <p>
+                    <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
+                </p>
                 <p><b>Injecting Module</b></p>
                 <p>
                     Chart component features are segregated into individual feature-wise modules. To use Trend Line series, we need to inject <code>Trendlines</code> module into <code>services</code>.

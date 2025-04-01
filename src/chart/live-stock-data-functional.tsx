@@ -7,6 +7,7 @@ import * as ReactDOM from "react-dom";
 import { ChartComponent, SeriesCollectionDirective, AnnotationsDirective, AnnotationDirective, CandleSeries, Category, Tooltip, ILoadedEventArgs, DateTime, Zoom, Logarithmic, ColumnSeries, Crosshair, StripLine,  ChartTheme, SeriesDirective, Inject, Legend, IAxisRangeCalculatedEventArgs, Series, IPointRenderEventArgs, ChartAnnotation } from '@syncfusion/ej2-react-charts';
 import { updateSampleSection } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
+import { loadChartTheme } from './theme-color';
 
 let value: number = 180;
 let getData = (): { series: Candlestick[] } => {
@@ -70,10 +71,7 @@ const LiveStock = () => {
     };
     const load = (args: ILoadedEventArgs): void => {
 
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
 
         clearIntervalFn();
         intervalId = setInterval(function () {

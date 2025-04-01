@@ -3,12 +3,31 @@ import * as React from 'react';
 import { useEffect } from "react";
 import { RatingComponent } from '@syncfusion/ej2-react-inputs';
 import { updateSampleSection } from '../common/sample-base';
+import { Browser } from '@syncfusion/ej2-base';
 import './tooltip.css';
 
 const Tooltip = () => {
     useEffect(() => {
         updateSampleSection();
-    }, [])
+
+        const hideTooltipOnScroll = () => {
+            const tooltipElement = document.querySelector('.e-rating-tooltip');
+            if (tooltipElement && Browser.isDevice) {
+                (tooltipElement as HTMLElement).style.display = 'none';
+            }
+        };
+
+        const rightPane = document.getElementById('right-pane');
+        if (rightPane) {
+            rightPane.addEventListener('scroll', hideTooltipOnScroll);
+        }
+
+        return () => {
+            if (rightPane) {
+                rightPane.removeEventListener('scroll', hideTooltipOnScroll);
+            }
+        };
+    }, []);
 
     return (
         <div className='control-pane'>

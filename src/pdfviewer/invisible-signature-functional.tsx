@@ -30,7 +30,7 @@ function InvisibleDigitalSignature() {
     let msgWarning=  "The document has been digitally signed and at least one signature has problem ";
     let msgError="The document has been digitally signed, but it has been modified since it was signed and at least one signature is invalid";
     let  msgSuccess="The document has been digitally signed and all the signatures are valid";
-    let  documentData  :any;
+    let documentData: any;
     // Specifies whether the document has a digital signature or not.
     let  hasDigitalSignature: boolean = false;
     return (<div>
@@ -53,12 +53,13 @@ function InvisibleDigitalSignature() {
                 {/* Render the PDF Viewer */}
                 <PdfViewerComponent id="container" ref={(scope) => { viewer = scope; }} enableToolbar={false} enableNavigationToolbar={false}
                     documentLoad={documentLoaded}
-                    serviceUrl='https://services.syncfusion.com/react/production/api/pdfviewer'
-                    documentPath="InvisibleDigitalSignature.pdf"
+                    enableAnnotationToolbar={false}
+                    documentPath="https://cdn.syncfusion.com/content/pdf/InvisibleDigitalSignature.pdf"
+                    resourceUrl='https://cdn.syncfusion.com/ej2/27.2.2/dist/ej2-pdfviewer-lib'
                     addSignature={addSignature}
                     style={{ 'display': 'block', 'height': '640px' }}>
                     <Inject services={[Magnification,FormFields,FormDesigner, Navigation, LinkAnnotation, BookmarkView,
-                        ThumbnailView, Print, TextSelection, Annotation, TextSearch,PageOrganizer]} />
+                        ThumbnailView, Print, Annotation, TextSearch,PageOrganizer]} />
                 </PdfViewerComponent>
                 <input type="file" id="fileUpload" accept=".pdf" onChange={readFile.bind(this)} style={{ 'display': 'block', 'visibility': 'hidden', 'width': '0', 'height': '0' }} />
             </div>
@@ -111,26 +112,37 @@ function InvisibleDigitalSignature() {
                 document.getElementById('fileUpload').click();
                 break;
             case 'pdfviewer_sign':
-                viewer.serverActionSettings.download = 'AddSignature';
-                let data;
-                let base64data;
-                viewer.saveAsBlob().then((value) => {
-                    data = value;
+                var url = "https://services.syncfusion.com/react/production/api/pdfviewer/AddSignature";
+                viewer.saveAsBlob().then(function (value) {
                     var reader = new FileReader();
-                    reader.readAsDataURL(data);
-                    reader.onload = () => {
-                        base64data = reader.result;
-                        documentData = base64data;
-                        viewer.load(base64data, null);
-                        downloadVisiblity = false;
-                        buttonVisiblity = true;
-                        toolbar.items[1].disabled = true;
-                        toolbar.items[2].disabled = false;
-                        viewer.fileName = fileName;
-				        viewer.downloadFileName = fileName;
+                    reader.readAsDataURL(value);
+                    reader.onload = (e) => {
+                        var base64String = e.target ? e.target.result : null;
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('POST', url, true);
+                        xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
+                        var requestData = JSON.stringify({ base64String: base64String });
+                        xhr.onload = () => {
+                            if (xhr.status === 200) {
+                                documentData = xhr.responseText;
+                                viewer.load(xhr.responseText, null);
+                                toolbar.items[1].disabled = true;
+                                toolbar.items[2].disabled = false;
+                                viewer.fileName = fileName;
+                                viewer.downloadFileName = fileName;
+                            }
+                            else {
+                                console.error('Error in AddSignature API:', xhr.statusText);
+                            }
+                        };
+                        xhr.onerror = function () {
+                            console.error('Error reading Blob as Base64.', xhr.statusText);
+                        };
+                        xhr.send(requestData);
                     };
+                }).catch(function (error) {
+                    console.error('Error saving Blob:', error);
                 });
-                viewer.serverActionSettings.download = 'Download';
                 break;
             //Downloads the PDF document being loaded in the PDFViewer.
             case 'download':

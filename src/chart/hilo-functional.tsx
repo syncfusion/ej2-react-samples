@@ -8,6 +8,7 @@ import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, Hil
 import { updateSampleSection } from '../common/sample-base';
 import { chartValues } from './financial-data';
 import { Browser } from '@syncfusion/ej2-base';
+import { loadChartTheme } from './theme-color';
 const SAMPLE_CSS = `
     .control-fluid {
         padding: 0px !important;
@@ -22,9 +23,7 @@ const Hilo = () => {
         chart.setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
     return (
         <div className='control-pane'>

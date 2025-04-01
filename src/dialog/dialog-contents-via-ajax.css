@@ -10,10 +10,12 @@
     }
     .tailwind .ajaxcontent .e-dialog .e-dlg-header >img.img1,
     .tailwind-dark .ajaxcontent .e-dialog .e-dlg-header >img.img1,
+    .tailwind3 .ajaxcontent .e-dialog .e-dlg-header >img.img1,
+    .tailwind3-dark .ajaxcontent .e-dialog .e-dlg-header >img.img1,
     .bootstrap5 .ajaxcontent .e-dialog .e-dlg-header >img.img1,
     .bootstrap5-dark .ajaxcontent .e-dialog .e-dlg-header >img.img1,
-    .bootstrap5.3 .ajaxcontent .e-dialog .e-dlg-header >img.img1,
-    .bootstrap5.3-dark .ajaxcontent .e-dialog .e-dlg-header >img.img1,
+    .bootstrap5\.3 .ajaxcontent .e-dialog .e-dlg-header >img.img1,
+    .bootstrap5\.3-dark .ajaxcontent .e-dialog .e-dlg-header >img.img1,
     .bootstrap4 .ajaxcontent .e-dialog .e-dlg-header >img.img1 {
         margin-top: 0px;
     }
@@ -43,10 +45,12 @@
 
     .tailwind .ajaxcontent .e-dlg-header-content,
     .tailwind-dark .ajaxcontent .e-dlg-header-content,
+    .tailwind3 .ajaxcontent .e-dlg-header-content,
+    .tailwind3-dark .ajaxcontent .e-dlg-header-content,
     .bootstrap5 .ajaxcontent .e-dlg-header-content,
     .bootstrap5-dark .ajaxcontent .e-dlg-header-content,
-    .bootstrap5.3 .ajaxcontent .e-dlg-header-content,
-    .bootstrap5.3-dark .ajaxcontent .e-dlg-header-content {
+    .bootstrap5\.3 .ajaxcontent .e-dlg-header-content,
+    .bootstrap5\.3-dark .ajaxcontent .e-dlg-header-content {
        min-height: 50px; 
     }
 

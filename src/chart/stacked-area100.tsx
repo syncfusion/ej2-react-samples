@@ -45,7 +45,7 @@ export class StackedArea100 extends SampleBase<{}, {}> {
             primaryYAxis={{ title: 'Amount of sales in €', majorGridLines: { width: 0 }, rangePadding: 'None', interval: 20 }}
             title="Sales by Payment Mode"
             loaded={this.onChartLoad.bind(this)}
-            tooltip={{ enable: true }}
+            tooltip={{ enable: true, enableHighlight: true, showNearestTooltip: true }}
           >
             <Inject services={[StackingAreaSeries, DateTime, Tooltip, Legend, Highlight]} />
             <SeriesCollectionDirective>
@@ -67,6 +67,9 @@ export class StackedArea100 extends SampleBase<{}, {}> {
                 <div id="description">
                     <p>
                     In this example, you can see how to render and configure the 100% stacked area chart. This chart visualizes data with y-values stacked, ensuring that the cumulative proportion of each stacked element always totals 100%.
+                    </p>
+                    <p>
+                        <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
                     </p>
                     <p><b>Injecting Module</b></p>
                     <p>

@@ -7,6 +7,7 @@ import * as ReactDOM from "react-dom";
 import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Category, Inject, ColumnSeries, LineSeries, DataEditing, Legend, Tooltip, ILoadedEventArgs, ChartTheme } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import { loadChartTheme } from './theme-color';
 export let data1: any[] = [
     { x: 2005, y: 21 }, { x: 2006, y: 24 },
     { x: 2007, y: 36 }, { x: 2008, y: 38 },
@@ -36,15 +37,13 @@ const DataEdit = () => {
         chart.setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args)
     };
     return (
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
-                <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', labelFormat: 'y', labelPlacement: 'BetweenTicks', majorGridLines: { width: 0 }, edgeLabelPlacement: 'Shift', majorTickLines: { width : 0}, minorTickLines: { width : 0} }} load={load.bind(this)} primaryYAxis={{ rangePadding: 'None', minimum: 0, maximum: 100, interval: 20, title: 'Production(Billion in kWh)', labelFormat: '{value}B', lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 } }} chartArea={{ border: { width: 0 } }} width={Browser.isDevice ? '100%' : '75%'} title='Electricity - Production' loaded={onChartLoad.bind(this)}>
+                <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', labelFormat: 'y', labelPlacement: 'BetweenTicks', majorGridLines: { width: 0 }, edgeLabelPlacement: 'Shift', majorTickLines: { width : 0}, minorTickLines: { width : 0} }} load={load.bind(this)} primaryYAxis={{ rangePadding: 'None', minimum: 0, maximum: 100, interval: 20, title: 'Production(Billion in kWh)', labelFormat: '{value}B', lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 } }} chartArea={{ border: { width: 0 }, margin: { bottom: 12 } }} width={Browser.isDevice ? '100%' : '75%'} title='Electricity - Production' loaded={onChartLoad.bind(this)}>
                     <Inject services={[LineSeries, ColumnSeries, Category, DataEditing, Legend]} />
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={data1} dragSettings={{ enable: true }} xName='x' yName='y' name='Renewable' width={2} marker={{ visible: true, width: 7, height: 7 }} type='Column' />

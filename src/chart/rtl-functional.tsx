@@ -9,6 +9,7 @@ import { PropertyPane } from '../common/property-pane';
 import { EmitType } from '@syncfusion/ej2-base';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import { loadChartTheme } from './theme-color';
 export let data1 = [
     { x: 2016, y: 1000 },
     { x: 2017, y: 1170 },
@@ -40,9 +41,7 @@ const RTL = () => {
         chart.setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
     const labelRender = (args: IAxisLabelRenderEventArgs): void => {
         if (args.axis.orientation === 'Horizontal') {
@@ -53,7 +52,7 @@ const RTL = () => {
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
-                <ChartComponent id="charts" style={{ textAlign: 'center' }} load={load.bind(this)} enableRtl={true} primaryXAxis={{ valueType: 'Double', majorGridLines: { width: 0 }, minimum: 2015, maximum: 2020, interval: 1, majorTickLines: {width : 0}, minorTickLines: {width: 0} }} primaryYAxis={{ valueType: 'Double', minimum: 0, maximum: 1200, interval: 200, labelFormat: '{value}B', lineStyle: { width: 0 } }} chartArea={{ border: { width: 0 } }} tooltip={{ enable: true }} width={Browser.isDevice ? '100%' : '75%'} title="Company Performance" legendSettings={{ visible:true , enableHighlight: true}} loaded={onChartLoad.bind(this)} axisLabelRender={labelRender.bind(this)}>
+                <ChartComponent id="charts" style={{ textAlign: 'center' }} load={load.bind(this)} enableRtl={true} primaryXAxis={{ valueType: 'Double', majorGridLines: { width: 0 }, minimum: 2015, maximum: 2020, interval: 1, majorTickLines: {width : 0}, minorTickLines: {width: 0} }} primaryYAxis={{ valueType: 'Double', minimum: 0, maximum: 1200, interval: 200, labelFormat: '{value}B', lineStyle: { width: 0 }, majorTickLines: { width: 0 } }} chartArea={{ border: { width: 0 }, margin: { bottom: 12 } }} tooltip={{ enable: true, enableHighlight: true }} width={Browser.isDevice ? '100%' : '75%'} title="Company Performance" legendSettings={{ visible:true , enableHighlight: true}} loaded={onChartLoad.bind(this)} axisLabelRender={labelRender.bind(this)}>
                     <Inject services={[ColumnSeries, Legend, Tooltip, Category, Highlight, DataLabel]} />
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={data1} columnSpacing= {0.1} xName="x" yName="y" name="Sales" type="Column" ></SeriesDirective>

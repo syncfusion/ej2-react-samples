@@ -64,7 +64,7 @@ function MentionIntegration() {
             <div className='control-section' id="rte">
                 <div className='rte-control-section'>
                     <RichTextEditorComponent id="mention_integration" placeholder="Type @ and tag the name" actionBegin={actionBegineHandler.bind(this)}  >
-                        <p>Hello <a href="mailto:maria@gmail.com" title="maria@gmail.com">@Maria</a>, </p>
+                        <p>Hello <span contentEditable={false} className='e-mention-chip'><a href="mailto:maria@gmail.com" title="maria@gmail.com">@Maria</a></span>, </p>
                         <p>Welcome to Mention demo, it easily integrates any editable element like input, textarea or any contenteditable supported element.</p>
                         <Inject services={[HtmlEditor, Toolbar, Image, Link, QuickToolbar, PasteCleanup, Table, Video, Audio]} />
                     </RichTextEditorComponent>

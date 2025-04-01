@@ -52,17 +52,16 @@ const Search = () => {
                 width="200"
               ></ColumnDirective>
               <ColumnDirective
-                field="startDate"
-                headerText="Start Date"
-                width="90"
-                format="yMd"
-                textAlign="Right"
-              />
-              <ColumnDirective
                 field="duration"
                 headerText="Duration"
                 width="80"
                 textAlign="Right"
+              />
+              <ColumnDirective
+                field="priority"
+                headerText="Priority"
+                width="100"
+                textAlign="Left"
               />
               <ColumnDirective
                 field="progress"

@@ -372,7 +372,7 @@ function FIFAStatistics() {
         </TooltipComponent>
       </div>
       <div id='action-description'>
-        <p>In this demo, the Syncfusion<sup>®</sup> DataGrid displays comprehensive FIFA World Cup records and statistics, covering the entire history of the tournament from 1930 to 2022.
+        <p>In this demo, the Syncfusion DataGrid displays comprehensive FIFA World Cup records and statistics, covering the entire history of the tournament from 1930 to 2022.
           The FIFA World Cup statistics and data utilized in this application are sourced from
           <code><a target="_blank" className="code"
             href="https://en.wikipedia.org/wiki/FIFA_World_Cup_records_and_statistics">Wikipedia

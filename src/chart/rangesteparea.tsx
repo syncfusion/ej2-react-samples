@@ -36,7 +36,7 @@ export class RangeStepArea extends SampleBase<{}, {}> {
                         interval: 5,
                         majorTickLines: { width: 0 } }}
                         chartArea={{ border: { width: 0 } }}
-                        tooltip={{ enable: true, format:'Temperature : <b>${point.low} - ${point.high}</b>', header: '<b>${point.x}</b>', shared: false }}
+                        tooltip={{ enable: true, format:'Temperature : <b>${point.low} - ${point.high}</b>', header: '<b>${point.x}</b>', shared: false, showNearestTooltip: true }}
                         width={Browser.isDevice ? '100%' : '75%'}
                         title='Temperature Variation by Month'
                         loaded={this.onChartLoad.bind(this)}>
@@ -54,7 +54,7 @@ export class RangeStepArea extends SampleBase<{}, {}> {
                  <div id="description">
                     <p> In this example, you can see how to render and configure a range step area type chart. You can use <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/border/" aria-label="Navigate to the Border property reference for React Chart Series">border</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/seriesModel/#fill" aria-label="Navigate to the Fill property reference for React Chart Series">fill</a> properties to customize the range step area. Both <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/marker/" aria-label="Navigate to the documentation for Data markers in React Chart component">markers</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/dataLabel/" aria-label="Navigate to the documentation for DataLabel in React Chart component">dataLabels</a> are used to represent data points and their values.</p>
                     <p>
-                        The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/tooltip/" aria-label="Navigate to the documentation for Tooltip in React Chart component">tooltip</a> is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.
+                        <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
                     </p>
                     <p><b>Injecting Module</b></p>
                     <p>

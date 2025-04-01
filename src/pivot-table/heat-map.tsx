@@ -67,7 +67,7 @@ export class HeatMap extends SampleBase<{}, {}> {
       return (
          <div className='control-pane'>
             <div className='control-section'>
-               <PivotViewComponent id='PivotView-Heatmap' dataSourceSettings={this.dataSourceSettings} width={'100%'} height={'500'} gridSettings={{ rowHeight: 36, columnWidth: 120 }}
+               <PivotViewComponent id='PivotView-Heatmap' dataSourceSettings={this.dataSourceSettings} width={'100%'} height={'500'} gridSettings={{ rowHeight: 35, columnWidth: 120 }}
                   cellTemplate={this.cellTemplate.bind(this)} enginePopulated={this.enginePopulated.bind(this)} aggregateCellInfo={this.aggregateCellInfo.bind(this)}>
                </PivotViewComponent>
             </div>

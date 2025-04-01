@@ -7,6 +7,7 @@ import * as ReactDOM from "react-dom";
 import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, LineSeries, DateTime, Legend, DataLabel, ILoadedEventArgs, ChartTheme } from '@syncfusion/ej2-react-charts';
 import { updateSampleSection } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
+import { loadChartTheme } from './theme-color';
 export let data1: any[] = [
     { x: new Date(2016, 3, 1), y: 6.3 },
     { x: new Date(2016, 4, 1), y: 13.3 }, { x: new Date(2016, 5, 1), y: 18.0 },
@@ -33,15 +34,13 @@ const DateTimeAxis = () => {
         chart.setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
     return (
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
-                <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'DateTime', intervalType: 'Days', labelFormat: 'MMM d', edgeLabelPlacement: 'Shift', majorGridLines: { width: 0 } }} load={load.bind(this)} primaryYAxis={{ minimum: -20, maximum: 30, interval: 10, edgeLabelPlacement: 'Shift', labelFormat: '{value}°C', lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 } }} chartArea={{ border: { width: 0 } }} width={Browser.isDevice ? '100%' : '75%'} tooltip={{enable: false, shared: true}} title='Alaska Weather Statistics - 2016' loaded={onChartLoad.bind(this)}>
+                <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'DateTime', intervalType: 'Days', labelFormat: 'MMM d', edgeLabelPlacement: 'Shift', majorGridLines: { width: 0 } }} load={load.bind(this)} primaryYAxis={{ minimum: -20, maximum: 30, interval: 10, edgeLabelPlacement: 'Shift', labelFormat: '{value}°C', lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 } }} chartArea={{ border: { width: 0 }, margin: { bottom: 12 } }} width={Browser.isDevice ? '100%' : '75%'} tooltip={{enable: false}} title='Alaska Weather Statistics - 2016' loaded={onChartLoad.bind(this)}>
                     <Inject services={[LineSeries, DateTime, Legend, DataLabel]} />
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={data1} xName='x' yName='y' name='Warmest' type='Line' marker={{ visible: true, height: 8, width: 8, shape: 'Pentagon', isFilled : true, dataLabel: { visible: true, position: 'Top' } }} width={2}>

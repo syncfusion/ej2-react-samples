@@ -73,7 +73,7 @@ const TreeContextMenu = () => {
             <ColumnDirective
               field="taskName"
               headerText="Task Name"
-              width="200"
+              width="180"
               validationRules={validationRule}
             ></ColumnDirective>
             <ColumnDirective
@@ -99,7 +99,8 @@ const TreeContextMenu = () => {
             <ColumnDirective
               field="duration"
               headerText="Duration"
-              width="120"
+              width="130"
+              minWidth="120"
               editType="numericedit"
               textAlign="Right"
               validationRules={validationRule2}
@@ -116,7 +117,7 @@ const TreeContextMenu = () => {
             <ColumnDirective
               field="priority"
               headerText="Priority"
-              width="110"
+              width="120"
             />
           </ColumnsDirective>
           <Inject

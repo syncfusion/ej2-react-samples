@@ -43,12 +43,14 @@ const Template = () => {
           <div className="content-wrapper">
             <div id='mention_template'>
               <table>
-                <tr>
-                  <td>
-                    <label className="template-size">Compose your content</label>
-                    <div id="templateMention" placeholder="Begin writing here..!"></div>
-                  </td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <td>
+                      <label className="template-size">Compose your content</label>
+                      <div id="templateMention" placeholder="Begin writing here..!"></div>
+                    </td>
+                  </tr>
+                </tbody>
               </table>
 
               <MentionComponent dataSource={emailData} target={templateTarget} fields={templateFields} itemTemplate={itemTemplate} displayTemplate={displayTemplate} noRecordsTemplate={"No item related to the search"} popupWidth={250} popupHeight={200}></MentionComponent>

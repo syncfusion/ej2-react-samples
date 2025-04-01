@@ -18,7 +18,8 @@ const WorkingTimeRange = () => {
   let workStartTime1 = useRef<NumericTextBoxComponent>(null);
   let workEndTime1 = useRef<NumericTextBoxComponent>(null);
   let dropselectObj = useRef<DropDownListComponent>(null);
-  let workEndTime = useRef<NumericTextBoxComponent>(null); let isTimeUpdated: boolean = false;
+  let workEndTime = useRef<NumericTextBoxComponent>(null);
+  let isTimeUpdated: boolean = false;
   let workDays: { [key: string]: Object }[] = [
     { id: 'Monday', day: 'Monday' },
     { id: 'Tuesday', day: 'Tuesday' },
@@ -69,10 +70,10 @@ const WorkingTimeRange = () => {
     let workingTime: any = [];
     let weekWorkingTime = ganttInstance.current.weekWorkingTime;
     let isUpdated = false;
-    for (let i = 0; i < weekWorkingTime.length; i++) {
+    for(let i = 0; i < weekWorkingTime.length; i++) {
       workingTime.push({ dayOfWeek: weekWorkingTime[i].dayOfWeek, timeRange: weekWorkingTime[i].timeRange });
     }
-    for(let i=0;i<workingTime.length;i++) {
+    for(let i = 0; i < workingTime.length; i++) {
         if(workingTime[i].dayOfWeek === selectedDay) {
             workingTime[i].dayOfWeek= workingTime[i].dayOfWeek;
             workingTime[i].timeRange = [{ from: workStartTime1.current.value, to: workEndTime1.current.value }]
@@ -120,12 +121,12 @@ const WorkingTimeRange = () => {
               </colgroup>
               <tbody>
               <tr>
-              <td colSpan={2}>
+                <td colSpan={2}>
                   <label htmlFor='Time range'>Time Range for all days</label>
                 </td>
               </tr>
               <tr>
-              <td style={{ paddingBottom: '10px' }}>
+                <td style={{ paddingBottom: '10px' }}>
                   <div id='workStartTime' style={{marginLeft: '10px', marginTop:"10px"}}>Work Start Time</div>
                 </td>
                 <td>
@@ -145,27 +146,27 @@ const WorkingTimeRange = () => {
                 </td>
               </tr>
               <tr>
-              <td colSpan={2}>
+                <td colSpan={2}>
                   <div>
                     <ButtonComponent onClick={update.bind(this)}> Update for all days</ButtonComponent>
                   </div>
                 </td>
               </tr>
-              <br></br>
-              <tr>
-              <td colSpan={2}>
+
+              <tr style={{ height: '30px' }}>
+                <td colSpan={2}>
                   <label htmlFor='Time range'>Time Range for each day</label>
                 </td>
               </tr>
               <tr>
-              <td style={{ paddingBottom: '10px' }}>
+                <td style={{ paddingBottom: '10px' }}>
                   <div>
                     <div id="WorkWeek">Working Days</div>
                   </div>
                 </td>
                 <td>
                   <div style={{ paddingTop: '0px', paddingLeft: '0px' }}>
-                  <DropDownListComponent ref={dropselectObj} id="WorkWeek" style={{ padding: '2px' }} value={defaultValue}
+                    <DropDownListComponent ref={dropselectObj} id="WorkWeek" style={{ padding: '2px' }} value={defaultValue}
                       dataSource={workDays} width='100%' popupHeight='350px' fields={{ text: 'day', value: 'id' }}
                       select={select.bind(this)}>
                     </DropDownListComponent>
@@ -184,7 +185,7 @@ const WorkingTimeRange = () => {
               </tr>
               <tr>
                 <td style={{ paddingBottom: '10px' }}>
-                <div id='workEnd' style={{marginLeft: '10px', marginTop:"10px"}}>Work End Time</div>
+                  <div id='workEnd' style={{marginLeft: '10px', marginTop:"10px"}}>Work End Time</div>
                 </td>
                 <td>
                   <div>
@@ -193,7 +194,7 @@ const WorkingTimeRange = () => {
                 </td>
               </tr>
               <tr>
-              <td colSpan={2}>
+                <td colSpan={2}>
                   <div>
                     <ButtonComponent onClick={perform.bind(this)}> Update for each day</ButtonComponent>
                   </div>
@@ -213,12 +214,12 @@ const WorkingTimeRange = () => {
           In this example, you can see how to render a Gantt chart with the provided data source and customizable working hours in a day. You can split the working hours in a day to one or more range. So, you can also provide the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#dayworkingtime">
           dayworkingtime</a> property value as array of object collection. Gantt chart also supports different <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#durationunit">
           durationUnit</a> values as follows:
-          <ul>
+        </p>
+        <ul>
           <li><code>day</code></li>
           <li><code>hour</code></li>
           <li><code>minute</code></li>
-          </ul>
-        </p>
+        </ul>
         <p>You can also set different working time range for different working days using <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#weekworkingtime">
         weekWorkingTime</a> property. The weekWorkingTime property enables you to specify different working hours for each day of the week in your Gantt chart.
         By configuring this property, you can ensure that tasks are only scheduled during defined working periods, avoiding non-working hours.</p>

@@ -9,7 +9,7 @@ import {
 } from '@syncfusion/ej2-react-progressbar';
 import { EmitType } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
-
+import { loadProgressBarTheme } from './theme-colors';
 
 const SAMPLE_CSS = `
 #control-container {
@@ -50,17 +50,11 @@ export class ProgressBarProgressSegment extends SampleBase<{}, {}> {
     private circularSeg: ProgressBarComponent;
     private content: string = '<div id="point1" style="font-size:24px;font-weight:bold;color:#0078D6"><span></span></div>';
     private load: EmitType<ILoadedEventArgs> = (args: ILoadedEventArgs) => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.progressBar.theme = (selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast') as ProgressTheme;
+        loadProgressBarTheme(args);
     }
 
     private progressLoad: EmitType<ILoadedEventArgs> = (args: ILoadedEventArgs) => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.progressBar.theme = (selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast') as ProgressTheme;
+        let selectedTheme: string = loadProgressBarTheme(args);
         switch (selectedTheme) {
             case 'material':
                 args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#e91e63"><span></span></div>';

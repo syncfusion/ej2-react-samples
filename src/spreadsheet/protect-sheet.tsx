@@ -14,7 +14,6 @@ export class ProtectSheet extends SampleBase<{}, {}> {
     public boldCenter: CellStyleModel = { fontWeight: 'bold', textAlign: 'center' };
 
     public onCreated(): void {
-        this.spreadsheet.cellFormat({ fontWeight: 'bold' }, 'EMI Schedule!A1:F1');
         this.spreadsheet.numberFormat('$#,##0.00', 'EMI Schedule!C2:F13');
     }
     public beforeCellRender(args: CellRenderEventArgs): void {
@@ -97,6 +96,18 @@ export class ProtectSheet extends SampleBase<{}, {}> {
                                 <RangesDirective>
                                     <RangeDirective dataSource={protectSheetData} showFieldAsHeader={true}></RangeDirective>
                                 </RangesDirective>
+                                <RowsDirective>
+                            <RowDirective>
+                                <CellsDirective>
+                                    <CellDirective style={this.boldCenter}></CellDirective>
+                                    <CellDirective style={this.boldCenter}></CellDirective>
+                                    <CellDirective style={this.boldCenter}></CellDirective>
+                                    <CellDirective style={this.boldCenter}></CellDirective>
+                                    <CellDirective style={this.boldCenter}></CellDirective>
+                                    <CellDirective style={this.boldCenter}></CellDirective>
+                                </CellsDirective>
+                            </RowDirective>
+                        </RowsDirective>
                                 <ColumnsDirective>
                                     <ColumnDirective index={1} width={110}></ColumnDirective>
                                     <ColumnDirective width={85}></ColumnDirective>

@@ -11,10 +11,12 @@
 
 .tailwind .target-element .e-dialog .e-dlg-header-content,
 .tailwind-dark .target-element .e-dialog .e-dlg-header-content,
+.tailwind3 .target-element .e-dialog .e-dlg-header-content,
+.tailwind3-dark .target-element .e-dialog .e-dlg-header-content,
 .bootstrap5 .target-element .e-dialog .e-dlg-header-content,
 .bootstrap5-dark .target-element .e-dialog .e-dlg-header-content,
-.bootstrap5.3 .target-element .e-dialog .e-dlg-header-content,
-.bootstrap5.3-dark .target-element .e-dialog .e-dlg-header-content,
+.bootstrap5\.3 .target-element .e-dialog .e-dlg-header-content,
+.bootstrap5\.3-dark .target-element .e-dialog .e-dlg-header-content,
 .material .target-element .e-dialog .e-dlg-header-content,
 .material3 .target-element .e-dialog .e-dlg-header-content {
     background-color: #3f51b5;
@@ -142,8 +144,9 @@
 .fabric-dark .dialogContent .dialogText,
 .bootstrap-dark .dialogContent .dialogText,
 .bootstrap5-dark .dialogContent .dialogText,
-.bootstrap5.3-dark .dialogContent .dialogText,
+.bootstrap5\.3-dark .dialogContent .dialogText,
 .tailwind-dark .dialogContent .dialogText,
+.tailwind3-dark .dialogContent .dialogText,
 .fluent-dark .dialogContent .dialogText,
 .fluent2-dark .dialogContent .dialogText,
 .fluent2-highcontrast .dialogContent .dialogText {
@@ -213,6 +216,10 @@
 .tailwind .target-element .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:focus,
 .tailwind-dark .target-element .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:hover,
 .tailwind-dark .target-element .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:focus,
+.tailwind3 .target-element .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:hover,
+.tailwind3 .target-element .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:focus,
+.tailwind3-dark .target-element .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:hover,
+.tailwind3-dark .target-element .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:focus,
 .bootstrap5 .target-element .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:hover,
 .bootstrap5 .target-element .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:focus,
 .bootstrap5-dark .target-element .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:hover,

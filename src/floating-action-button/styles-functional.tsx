@@ -9,7 +9,7 @@ const Styles = () => {
     useEffect(() => {
         updateSampleSection();
     }, [])
-    return (<div className='control-pane'>
+    return (<div className='control-pane fab-control-pane'>
         <div className="control-section">
             <div className="fab-appearence-container">
                 <div className="row">

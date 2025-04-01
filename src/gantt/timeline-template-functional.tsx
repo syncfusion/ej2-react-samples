@@ -151,11 +151,13 @@ const TimelineTemplate = () => {
         <div id="description">
           <p>
             In this demo, the timelineTemplate property enables the customization of timeline cells with any HTML content, allowing for enhanced visual appeal and personalized functionality.
-            <p>The template contains these context properties to design the timeline cells.</p>
+          </p>
+          <p>The template contains these context properties to design the timeline cells:</p>
+          <ul>
             <li><code>date</code>: Defines the date of timeline date.</li>
             <li><code>value</code>: Defines the date value to display in the timeline.</li>
             <li><code>tier</code>: Defines the tier of timeline.</li>
-          </p>
+          </ul>
         </div>
       </div>
   )

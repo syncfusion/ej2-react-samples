@@ -31,7 +31,8 @@ const Reveal = () => {
                                     <img className="img-responsive" src="./src/card/images/Tile_4.png" alt="Force.com Succinctly" />
                                     <div id="card_revealed" style={{ minHeight: '177px' }} className={class1} >
                                         <div className="e-card-content" style={{ lineHeight: '2.75em' }}>
-                                            <table style={{ width: '100%', tableLayout: 'fixed' }}>
+                                        <table style={{ width: '100%', tableLayout: 'fixed' }}>
+                                            <tbody>
                                                 <tr>
                                                     <td>
                                                         <div style={{ textAlign: 'left', fontWeight: 500 }}> Author </div>
@@ -59,18 +60,21 @@ const Reveal = () => {
                                                 <tr>
                                                     <td>
                                                         <div className="e-card-actions">
-                                                            <button id="showcarddata" onClick={reveal} className="e-btn e-outline e-primary">Know More</button>
+                                                            <button id="showcarddata" className="e-btn e-outline e-primary">
+                                                                Know More
+                                                            </button>
                                                         </div>
                                                     </td>
                                                     <td style={{ textAlign: 'right' }}>
                                                         <div className="e-card-actions">
-                                                            <button className="e-card-btn" id="showcarddata_icon" onClick={reveal} title="Click to see more...">
+                                                            <button className="e-card-btn" id="showcarddata_icon" title="Click to see more...">
                                                                 <span className="e-btn-icon e-icons e-reveal-icon e-icon-right" style={{ margin: '0px' }}></span>
                                                             </button>
                                                         </div>
                                                     </td>
                                                 </tr>
-                                            </table>
+                                            </tbody>
+                                        </table>
                                         </div>
                                     </div>
                                     <div id="card_reveal" style={{ minHeight: '154px' }} className={class2}>
@@ -103,7 +107,10 @@ const Reveal = () => {
             <div id="description">
                 <p>
                     Cards in this sample have a hidden content within the DOM which is available behind the visible element.
-                    <p> More information about Card can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/card/getting-started/"> documentation</a> section.</p>
+                </p>
+                <p>
+                    More information about Card can be found in this 
+                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/card/getting-started/"> documentation</a> section.
                 </p>
             </div>
         </div>

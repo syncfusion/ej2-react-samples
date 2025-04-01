@@ -14,7 +14,7 @@ import {
   ColorPickerComponent,
   ColorPickerEventArgs
 } from "@syncfusion/ej2-react-inputs";
-import { CheckBoxComponent } from "@syncfusion/ej2-react-buttons";
+import { CheckBoxComponent, ButtonComponent } from "@syncfusion/ej2-react-buttons";
 import { DropDownList, ChangeEventArgs } from '@syncfusion/ej2-dropdowns';
 import { CheckBoxChangeEventArgs } from "@syncfusion/ej2-grids";
 
@@ -268,7 +268,15 @@ export class DataMatrix extends SampleBase<{}, {}> {
                 </div>
             </div>
         </div>
-          
+        <div className="row sb-child-row">
+              <div className="col-xs-6 top barcode-panel-left">
+                  <ButtonComponent id="downloadBtn1"
+                  onClick={()=>{
+                    barcodeInstance.exportImage("DataMatrix", "PNG");
+                  }}
+                  >Download</ButtonComponent>
+              </div>
+        </div>
         </div>
         <div id="action-description">
           <p>

@@ -46,8 +46,8 @@
 .bootstrap4 .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
 .bootstrap5 .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
 .bootstrap5-dark .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
-.bootstrap5\.3 .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
-.bootstrap5\.3-dark .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
+.bootstrap5_3 .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
+.bootstrap5_3-dark .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
 .fluent2 .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
 .fluent2-dark .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
 .fluent2-highcontrast .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text {
@@ -120,8 +120,8 @@
 
 .bootstrap5-dark .timeline-resource.e-schedule .e-resource-cells .template-wrap > div,
 .bootstrap5-dark .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text > div,
-.bootstrap5\.3-dark .timeline-resource.e-schedule .e-resource-cells .template-wrap > div,
-.bootstrap5\.3-dark .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text > div {
+.bootstrap5_3-dark .timeline-resource.e-schedule .e-resource-cells .template-wrap > div,
+.bootstrap5_3-dark .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text > div {
     border-color: #444c54;
 }
 
@@ -137,8 +137,8 @@
 .bootstrap4.e-bigger .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
 .bootstrap5.e-bigger .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
 .bootstrap5-dark.e-bigger .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
-.bootstrap5\.3.e-bigger .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
-.bootstrap5\.3-dark.e-bigger .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
+.bootstrap5_3.e-bigger .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
+.bootstrap5_3-dark.e-bigger .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
 .fluent2.e-bigger .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
 .fluent2-dark.e-bigger .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
 .fluent2-highcontrast.e-bigger .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text {
@@ -246,7 +246,7 @@
     opacity: 0.8;
 }
 
-@media (max-width: 550px) {
+@media (max-width: 768px) {
     .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td {
         width: 100px;
     }

@@ -7,7 +7,7 @@ import { CircularChart3D, PieSeries3D, CircularChartDataLabel3D, CircularChartLe
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 export let data1 = [{ x: 'Tesla', y: 137429 }, { x: 'Aion', y: 80308 }, { x: 'Wuling', y: 76418 }, { x: 'Changan', y: 52849 }, { x: 'Geely', y: 47234 }, { x: 'Nio', y: 31041 }, { x: 'Neta', y: 22449 }, { x: 'BMW', y: 18733 }];
-
+import { loadCircular3DChartTheme } from './theme-color';
 const SAMPLE_CSS = `
     .control-fluid {
         padding: 0px !important;
@@ -24,9 +24,7 @@ const DonutSeries = () => {
         chart.setAttribute('title', '');
     };
     const load = (args) => {
-        let selectedTheme = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast');
+        loadCircular3DChartTheme(args);
     };
     return (<div className='control-pane'>
         <style>{SAMPLE_CSS}</style>

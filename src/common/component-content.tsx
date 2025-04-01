@@ -108,7 +108,7 @@ function changeTab(args: any): void {
             let elementList = demoSection.getElementsByClassName('e-control e-lib');
             for (let i = 0; i < elementList.length; i++) {
                 let instance = (elementList[i] as any).ej2_instances;
-                if (instance && instance[0] && typeof instance[0].refresh === 'function' && controlName !== 'Rich Text Editor') {
+                if (instance && instance[0] && typeof instance[0].refresh === 'function' && !['Rich Text Editor', 'Chat UI', 'AI AssistView'].includes(controlName)) {
                     instance[0].refresh();
                 }
                 if (instance && instance[0] && instance[0].getModuleName() !== 'DashboardLayout')

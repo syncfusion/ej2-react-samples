@@ -34,6 +34,7 @@ export class HiloOpenClose extends SampleBase<{}, {}> {
                     <ChartComponent id='charts' load={this.load.bind(this)} 
                         style={{ textAlign: "center" }}
                         ref={chart => this.chart1 = chart}
+                        loaded={this.loaded.bind(this)}
                         primaryXAxis={{
                             valueType: 'DateTime',
                             crosshairTooltip: { enable: true },
@@ -95,6 +96,11 @@ export class HiloOpenClose extends SampleBase<{}, {}> {
             </div>
         )
     }
+
+    public loaded (args: ILoadedEventArgs): void {
+        let chart: Element = document.getElementById('charts');
+        chart.setAttribute('title', '');
+    };
        
     public load(args: ILoadedEventArgs): void {
         args.chart.primaryXAxis.zoomFactor = zoomFactor;

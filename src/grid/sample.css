@@ -204,9 +204,9 @@ td.e-rowcell .statustxt.e-nonavailablecolor {
 #gridheadersample .e-icon-calender, #gridheadersample .e-icon-userlogin, #gridheadersample .e-location, #gridheadersample .e-description, #gridheadersample .e-mail, #gridheadersample .e-phone {
     margin-right: 5px;
 }
-.highcontrast .e-grid td.e-rowcell.e-selectionbackground.e-active .e-icons,
-.fluent2-highcontrast .e-grid .e-row:hover:not(.e-editedrow) .e-icons,
-.fluent2-highcontrast .e-grid td.e-rowcell.e-selectionbackground.e-active .e-icons {
+.highcontrast .e-grid td.e-rowcell.e-selectionbackground.e-active .e-location.e-icons,
+.fluent2-highcontrast .e-grid .e-row:hover:not(.e-editedrow) .e-location.e-icons,
+.fluent2-highcontrast .e-grid td.e-rowcell.e-selectionbackground.e-active .e-location.e-icons {
     color: black;
 }
 

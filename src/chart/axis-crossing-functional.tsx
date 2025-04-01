@@ -10,7 +10,7 @@ import { EmitType, Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
-
+import { loadChartTheme } from './theme-color';
 export let data1: any[] = [{ x: -6, y: 2 }, { x: -3, y: -4 }, { x: 1.5, y: 3.5 }, { x: 6, y: 4.5 }];
 export let data2: any[] = [
     { x: -6, y: 2 }, { x: -5, y: 0 }, { x: -4.511, y: -0.977 }, { x: -3, y: -4 }, { x: -1.348, y: -1.247 },
@@ -28,6 +28,7 @@ const SAMPLE_CSS = `
 const AxisCrossing = () => {
     useEffect(() => {
         updateSampleSection();
+       
     }, [])
     let chartInstance = useRef<ChartComponent>(null);
     let dropElement = useRef<DropDownListComponent>(null);
@@ -42,9 +43,7 @@ const AxisCrossing = () => {
         chart.setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
     const change = (): void => {
         if (dropElement.current.value === 'X') {
@@ -77,7 +76,7 @@ const AxisCrossing = () => {
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-md-8'>
-                    <ChartComponent id='charts' ref={chartInstance} style={{ textAlign: "center" }} primaryXAxis={{ minimum: -8, maximum: 8, interval: 2, valueType: 'Double', lineStyle: { width: 2 }, minorTickLines: { width: 0 }, majorTickLines: { width: 0 }, crossesAt: 0, minorTicksPerInterval: 3 }} chartArea={{ border: { width: 0 } }} primaryYAxis={{ minimum: -8, maximum: 8, interval: 2, lineStyle: { width: 2 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 }, crossesAt: 0, minorTicksPerInterval: 3 }} legendSettings = {{ visible: true, enableHighlight: true }} load={load.bind(this)} title="Spline Interpolation" tooltip={{ enable: true }} loaded={onChartLoad.bind(this)}>
+                    <ChartComponent id='charts' ref={chartInstance} style={{ textAlign: "center" }} primaryXAxis={{ minimum: -8, maximum: 8, interval: 2, valueType: 'Double', lineStyle: { width: 2 }, minorTickLines: { width: 0 }, majorTickLines: { width: 0 }, crossesAt: 0, minorTicksPerInterval: 3 }} chartArea={{ border: { width: 0 }, margin: { bottom: 12 } }} primaryYAxis={{ minimum: -8, maximum: 8, interval: 2, lineStyle: { width: 2 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 }, crossesAt: 0, minorTicksPerInterval: 3 }} legendSettings = {{ visible: true, enableHighlight: true }} load={load.bind(this)} title="Spline Interpolation" tooltip={{ enable: true, enableHighlight: true }} loaded={onChartLoad.bind(this)}>
                         <Inject services={[LineSeries, ScatterSeries, Highlight, SplineSeries, Tooltip, Legend]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} xName='x' yName='y' name="Linear Interpolation" type='Line' width={2} enableTooltip={false} fill='Blue' />

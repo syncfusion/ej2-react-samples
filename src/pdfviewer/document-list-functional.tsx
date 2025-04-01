@@ -158,9 +158,7 @@ function destroyed (): void{
           <div className="e-message render-mode-info">
             <span className="e-msg-icon render-mode-info-icon" title="Turn OFF to render the PDF Viewer as server-backed"></span>
           </div>
-          <div>
-            <SwitchComponent cssClass="buttonSwitch" id="checked" change={change} checked={true}></SwitchComponent>
-          </div>
+          <SwitchComponent cssClass="buttonSwitch" id="checked" change={change} checked={true}></SwitchComponent>
         </div>        
           <GridComponent ref={gridInstance} dataSource={gridData} commandClick={buttonClick} destroyed={destroyed}>
             <ColumnsDirective>

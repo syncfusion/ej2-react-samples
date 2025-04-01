@@ -46,7 +46,7 @@ export class PolarArea extends SampleBase<{}, {}> {
                 <style>{SAMPLE_CSS}</style>
                 <div className='control-section row'>
                     <div className='col-md-8'>
-                        <ChartComponent id='charts' ref={chart => this.chartInstance = chart} primaryXAxis={{ valueType: 'Category', labelPlacement: 'OnTicks', interval: 1, coefficient: Browser.isDevice ? 80 : 100 }} primaryYAxis={{ title: 'Revenue in Millions', labelFormat: '{value}M' }} legendSettings= {{ visible: true, enableHighlight: true }} tooltip={{enable: true}} load={this.load.bind(this)} title="Average Sales Comparison" loaded={this.onChartLoad.bind(this)}>
+                        <ChartComponent id='charts' ref={chart => this.chartInstance = chart} primaryXAxis={{ valueType: 'Category', labelPlacement: 'OnTicks', interval: 1, coefficient: Browser.isDevice ? 80 : 100 }} primaryYAxis={{ title: 'Revenue in Millions', labelFormat: '{value}M' }} legendSettings= {{ visible: true, enableHighlight: true }} tooltip={{ enable: true, enableHighlight: true }} load={this.load.bind(this)} title="Average Sales Comparison" loaded={this.onChartLoad.bind(this)}>
                             <Inject services={[AreaSeries, Legend, Category, PolarSeries, RadarSeries, Highlight, Tooltip]} />
                             <SeriesCollectionDirective>
                                 <SeriesDirective dataSource={data1} xName='x' yName='y' name='Product A' width={2} opacity={0.5} type='Polar' drawType='Area' border={{ color: 'transparent' }} />

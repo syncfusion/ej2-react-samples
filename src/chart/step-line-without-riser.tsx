@@ -104,13 +104,13 @@ export class StepLineWithoutRiser extends SampleBase<{}, {}> {
                         }}
                         width={Browser.isDevice ? '100%' : '75%'}
                         chartArea={{ border: { width: 0 } }}
-                        tooltip={{ enable: true, shared: true }}
+                        tooltip={{ enable: true, showNearestTooltip: true }}
                         legendSettings={{ visible: false }}
                         title='Sales of Product Over Time'>
                         <Inject services={[StepAreaSeries, DateTime, Tooltip, Highlight, Legend]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} xName='x' yName='y' type='StepArea' name='Product Sales'
-                                opacity={0.1} border={{ width: 2.5 }} noRisers={true} step='Center' marker={{ allowHighlight: false }}>
+                                opacity={0.1} border={{ width: 2.5 }} noRisers={true} step='Center'>
                             </SeriesDirective>
                         </SeriesCollectionDirective>
                     </ChartComponent>
@@ -126,6 +126,9 @@ export class StepLineWithoutRiser extends SampleBase<{}, {}> {
                         In this example, you can see how to render and configure a step area chart without vertical risers. The
                         <code>noRisers</code> feature allows the series to appear as a continuous flow without showing vertical lines
                         between points. This approach can be useful for highlighting trends without the distraction of risers.
+                    </p>
+                    <p>
+                        <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
                     </p>
                     <p style={{ fontWeight: 500 }}><b>Injecting Module</b></p>
                     <p>

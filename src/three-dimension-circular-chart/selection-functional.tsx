@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { CircularChart3D, PieSeries3D, CircularChartDataLabel3D, CircularChartLegend3D, CircularChartTooltip3D, CircularChartHighlight3D, CircularChartSelection3D, CircularChart3DLoadedEventArgs, CircularChart3DTheme, CircularChart3DComponent, CircularChart3DSeriesCollectionDirective, CircularChart3DSeriesDirective, Inject } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import { loadCircular3DChartTheme } from './theme-color';
 export let data1 = [
     { 'x': 'Chrome', y: 62.92 },
     { 'x': 'Internet Explorer', y: 6.12 },
@@ -30,9 +31,7 @@ const Selection = () => {
         chart.setAttribute('title', '');
     };
     const load = (args) => {
-        let selectedTheme = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast');
+        loadCircular3DChartTheme(args);
     };
     return (<div className='control-pane'>
         <style>{SAMPLE_CSS}</style>

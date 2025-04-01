@@ -1,27 +1,36 @@
 /**
- * Sample for Bar series
+ * Sample for the Bar Series
  */
 import * as React from "react";
 import { useEffect } from 'react';
-import * as ReactDOM from "react-dom";
-import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, DataLabel, BarSeries, Category, Legend, Tooltip, ILoadedEventArgs, ChartTheme, Highlight } from '@syncfusion/ej2-react-charts';
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, DataLabel, BarSeries, Category, Legend, Tooltip, Highlight, ILoadedEventArgs } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
-export let data1: any[] = [
-    { x: 'Japan', y: 1.71 }, { x: 'France', y: 1.82 },
-    { x: 'India', y: 6.68 }, { x: 'Germany', y: 2.22 }, { x: 'Italy', y: 1.50 }, { x: 'Canada', y: 3.05 }
+import { loadChartTheme } from './theme-color';
+
+export let appleData: Object[] = [
+    { year: '2021', count: 237 },
+    { year: '2022', count: 226.4 },
+    { year: '2023', count: 234.6 }
 ];
-export let data2: any[] = [
-    { x: 'Japan', y: 6.02 }, { x: 'France', y: 3.19 },
-    { x: 'India', y: 3.28 }, { x: 'Germany', y: 4.56 }, { x: 'Italy', y: 2.40 }, { x: 'Canada', y: 2.04 }
+
+export let xiaomiData: Object[] = [
+    { year: '2021', count: 190 },
+    { year: '2022', count: 153.1 },
+    { year: '2023', count: 145.9 }
 ];
+
+export let oppoData: Object[] = [
+    { year: '2021', count: 143 },
+    { year: '2022', count: 103.3 },
+    { year: '2023', count: 103.1 }
+];
+
 const SAMPLE_CSS = `
     .control-fluid {
         padding: 0px !important;
     }`;
-/**
- * Bar sample
- */
+
 const Bar = () => {
     useEffect(() => {
         updateSampleSection();
@@ -32,26 +41,27 @@ const Bar = () => {
         chart.setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
     return (
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
                 <div>
-                    <ChartComponent id='charts' style={{ textAlign: "center" }} legendSettings={{ enableHighlight: true }} primaryXAxis={{ valueType: 'Category', majorGridLines: { width: 0 } }} primaryYAxis={{ labelFormat: '{value}%', title: 'GDP (In Percentage)', edgeLabelPlacement: 'Shift', majorTickLines: { width: 0 }, lineStyle: { width: 0 } }} chartArea={{ border: { width: 0 } }} load={load.bind(this)} width={Browser.isDevice ? '100%' : '75%'} title='GDP by Country in 2017' loaded={onChartLoad.bind(this)} tooltip={{ enable: true }}>
+                    <ChartComponent id='charts' style={{ textAlign: "center" }} legendSettings={{ enableHighlight: true, shapeWidth: 9, shapeHeight: 9 }} primaryXAxis={{ valueType: 'Category', majorGridLines: { width: 0 }, majorTickLines: { width: 0 } }} primaryYAxis={{ labelFormat: '{value}M', title: 'Units Sold (in Millions)', maximum: 300, edgeLabelPlacement: 'Shift', majorTickLines: { width: 0 }, lineStyle: { width: 0 } }} chartArea={{ border: { width: 0 }, margin: { bottom: 12 } }} load={load.bind(this)} width={Browser.isDevice ? '100%' : '75%'} title='Global Smartphone Sales Trends by Brand (2021-2023)' subTitle='Source: wikipedia.org' loaded={onChartLoad.bind(this)} tooltip={{ enable: true, enableHighlight: true, header: '<b>${series.name}</b>', format: '${point.x} : <b>${point.y}</b>' }}>
                         <Inject services={[BarSeries, DataLabel, Category, Legend, Tooltip, Highlight]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={data1} xName='x' yName='y' type='Bar' columnSpacing={0.1} name='GDP' width={2} />
-                            <SeriesDirective dataSource={data2} xName='x' yName='y' type='Bar' columnSpacing={0.1} name="Share in World's GDP" width={2} />
+                            <SeriesDirective dataSource={appleData} xName='year' yName='count' type='Bar' columnSpacing={0.3} name="Apple" cornerRadius={{ bottomRight: 4, topRight: 4 }} legendShape='Rectangle' />
+                            <SeriesDirective dataSource={xiaomiData} xName='year' yName='count' type='Bar' columnSpacing={0.3} name='Xiaomi' cornerRadius={{ bottomRight: 4, topRight: 4 }} legendShape='Rectangle' />
+                            <SeriesDirective dataSource={oppoData} xName='year' yName='count' type='Bar' columnSpacing={0.3} name='Oppo' cornerRadius={{ bottomRight: 4, topRight: 4 }} legendShape='Rectangle' />
                         </SeriesCollectionDirective>
                     </ChartComponent>
                 </div>
             </div>
             <div id="action-description">
-                <p>This React bar chart example visualizes GDP data by country for the year 2017 with a default bar series.</p>
+                <p>
+                    This example demonstrates the global smartphone sales trends by brand from 2021 to 2023 using a bar chart. The data is visualized with bars representing unit sales for different brands, highlighting the comparative performance of each brand over the years.
+                </p>
             </div>
             <div id="description">
                 <p>In this example, you can see how to render and configure the bar chart. The bar chart is similar to the column chart, but the orientation of the y-axis is horizontal rather than vertical.</p>

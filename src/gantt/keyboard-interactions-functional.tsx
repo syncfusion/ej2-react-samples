@@ -289,119 +289,124 @@ const KeyboardInteraction = () => {
           <code>Selection</code> module using the <code>Gantt.Inject(Selection)</code> method.To use a toolbar, inject
           the <code>Toolbar</code> module using the <code>Gantt.Inject(Toolbar)</code> method.To use a edit, inject the
           <code>Edit</code> module using the <code>Gantt.Inject(Edit)</code> method.To use markers, inject the
-          <code>DayMarkers</code> module using the <code>Gantt.Inject(DayMarkers)</code> method.</p>
-        <p>
-          <table>
-            <tr>
-              <td><b>Keys</b></td>
-              <td><b>Description</b></td>
-            </tr>
-            <tr>
-              <td><code>Alt + J</code></td>
-              <td>Focus Gantt Component</td>
-            </tr>
-            <tr>
-                <td><code>Tab / Shift + Tab</code></td>
-                <td>Focus the next or previous element</td>
-            </tr>
-            <tr>
-              <td><code>Home</code></td>
-              <td>First Row Selection</td>
-            </tr>
-            <tr>
-              <td><code>End</code></td>
-              <td>Last Row Selection</td>
-            </tr>
-            <tr>
-              <td><code>DownArrow</code></td>
-              <td>Move Row Selection Down</td>
-            </tr>
-            <tr>
-              <td><code>UpArrow</code></td>
-              <td>Move Row Selection Up</td>
-            </tr>
-            <tr>
-              <td><code>LeftArrow</code></td>
-              <td>Move Cell Selection Left</td>
-            </tr>
-            <tr>
-                <td><code>RightArrow</code></td>
-                <td>Move Cell Selection Right</td>
-            </tr>
-            <tr>
-              <td><code>Ctrl + UpArrow</code></td>
-              <td>Collapse All</td>
-            </tr>
-            <tr>
-              <td><code>Ctrl + DownArrow</code></td>
-              <td>Expand All</td>
-            </tr>
-            <tr>
-              <td><code>Ctrl + Shift + UpArrow</code></td>
-              <td>Collapse Row</td>
-            </tr>
-            <tr>
-              <td><code>Ctrl + Shift + DownArrow</code></td>
-              <td>Expand Row</td>
-            </tr>
-            <tr>
-              <td><code>Enter</code></td>
-              <td>Save Request</td>
-            </tr>
-            <tr>
-              <td><code>Esc</code></td>
-              <td>Cancel Request</td>
-            </tr>
-            <tr>
-              <td><code>Insert</code></td>
-              <td>Add Record</td>
-            </tr>
-            <tr>
-              <td><code>Ctrl + Insert</code></td>
-              <td>Add Record By Dialog</td>
-            </tr>
-            <tr>
-              <td><code>Ctrl + F2</code></td>
-              <td>Edit Record By Dialog</td>
-            </tr>
-            <tr>
-              <td><code>Delete</code></td>
-              <td>Delete Row</td>
-            </tr>
-            <tr>
-              <td><code>Ctrl + Shift + F</code></td>
-              <td>Focus Search Textbox</td>
-            </tr>
-            <tr>
-              <td><code>Shift + F5</code></td>
-              <td>Focus Task</td>
-            </tr>
-            <tr>
-              <td><code>Shift + DownArrow</code></td>
-              <td>Move Cell Selection Down</td>
-            </tr>
-            <tr>
-                <td><code>Shift + UpArrow</code></td>
-                <td>Move Cell Selection Up</td>
-            </tr>
-            <tr>
-                <td><code>Shift + LeftArrow</code></td>
-                <td>Move Cell Selection Left</td>
-            </tr>
-            <tr>
-                <td><code>Shift + RightArrow</code></td>
-                <td>Move Cell Selection Right</td>
-            </tr>
-            <tr>
-                <td><code>Ctrl + Z</code></td>
-                <td>Undo Last Action</td>
-            </tr>
-            <tr>
-              <td><code>Ctrl + Y</code></td>
-              <td>Redo Last Action</td>
-            </tr>
-          </table>
+          <code>DayMarkers</code> module using the <code>Gantt.Inject(DayMarkers)</code> method.
         </p>
+        <div>
+          <table>
+            <thead>
+              <tr>
+                <th><b>Keys</b></th>
+                <th><b>Description</b></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>Alt + J</code></td>
+                <td>Focus Gantt Component</td>
+              </tr>
+              <tr>
+                  <td><code>Tab / Shift + Tab</code></td>
+                  <td>Focus the next or previous element</td>
+              </tr>
+              <tr>
+                <td><code>Home</code></td>
+                <td>First Row Selection</td>
+              </tr>
+              <tr>
+                <td><code>End</code></td>
+                <td>Last Row Selection</td>
+              </tr>
+              <tr>
+                <td><code>DownArrow</code></td>
+                <td>Move Row Selection Down</td>
+              </tr>
+              <tr>
+                <td><code>UpArrow</code></td>
+                <td>Move Row Selection Up</td>
+              </tr>
+              <tr>
+                <td><code>LeftArrow</code></td>
+                <td>Move Cell Selection Left</td>
+              </tr>
+              <tr>
+                  <td><code>RightArrow</code></td>
+                  <td>Move Cell Selection Right</td>
+              </tr>
+              <tr>
+                <td><code>Ctrl + UpArrow</code></td>
+                <td>Collapse All</td>
+              </tr>
+              <tr>
+                <td><code>Ctrl + DownArrow</code></td>
+                <td>Expand All</td>
+              </tr>
+              <tr>
+                <td><code>Ctrl + Shift + UpArrow</code></td>
+                <td>Collapse Row</td>
+              </tr>
+              <tr>
+                <td><code>Ctrl + Shift + DownArrow</code></td>
+                <td>Expand Row</td>
+              </tr>
+              <tr>
+                <td><code>Enter</code></td>
+                <td>Save Request</td>
+              </tr>
+              <tr>
+                <td><code>Esc</code></td>
+                <td>Cancel Request</td>
+              </tr>
+              <tr>
+                <td><code>Insert</code></td>
+                <td>Add Record</td>
+              </tr>
+              <tr>
+                <td><code>Ctrl + Insert</code></td>
+                <td>Add Record By Dialog</td>
+              </tr>
+              <tr>
+                <td><code>Ctrl + F2</code></td>
+                <td>Edit Record By Dialog</td>
+              </tr>
+              <tr>
+                <td><code>Delete</code></td>
+                <td>Delete Row</td>
+              </tr>
+              <tr>
+                <td><code>Ctrl + Shift + F</code></td>
+                <td>Focus Search Textbox</td>
+              </tr>
+              <tr>
+                <td><code>Shift + F5</code></td>
+                <td>Focus Task</td>
+              </tr>
+              <tr>
+                <td><code>Shift + DownArrow</code></td>
+                <td>Move Cell Selection Down</td>
+              </tr>
+              <tr>
+                  <td><code>Shift + UpArrow</code></td>
+                  <td>Move Cell Selection Up</td>
+              </tr>
+              <tr>
+                  <td><code>Shift + LeftArrow</code></td>
+                  <td>Move Cell Selection Left</td>
+              </tr>
+              <tr>
+                  <td><code>Shift + RightArrow</code></td>
+                  <td>Move Cell Selection Right</td>
+              </tr>
+              <tr>
+                  <td><code>Ctrl + Z</code></td>
+                  <td>Undo Last Action</td>
+              </tr>
+              <tr>
+                <td><code>Ctrl + Y</code></td>
+                <td>Redo Last Action</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   )

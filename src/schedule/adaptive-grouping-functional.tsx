@@ -11,6 +11,7 @@ import * as dataSource from './datasource.json';
  *  Schedule adaptive grouping sample
  */
 
+
 const AdaptiveGrouping = () => {
     useEffect(() => {
         updateSampleSection();

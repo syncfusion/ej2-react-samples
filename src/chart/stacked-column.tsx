@@ -3,37 +3,56 @@
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import {
-    ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject,
-    Legend, Category, StackingColumnSeries, Tooltip, ILoadedEventArgs, ChartTheme, IAxisLabelRenderEventArgs, Highlight
-} from '@syncfusion/ej2-react-charts';
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, Legend, Category, StackingColumnSeries, Tooltip, Highlight, DataLabel, ILoadedEventArgs, ILegendClickEventArgs } from '@syncfusion/ej2-react-charts';
+import { loadChartTheme } from './theme-color';
 import { SampleBase } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
 
-export let data1: any[] = [
-    { x: '2013', y: 9628912 },
-    { x: '2014', y: 9609326 },
-    { x: '2015', y: 7485587 },
-    { x: '2016', y: 7793066 },
-    { x: '2017', y: 6856880 }];
-export let data2: any[] = [
-    { x: '2013', y: 4298390 },
-    { x: '2014', y: 4513769 },
-    { x: '2015', y: 4543838 },
-    { x: '2016', y: 4999266 },
-    { x: '2017', y: 5235842 }];
-export let data3: any[] = [
-    { x: '2013', y: 2842133 },
-    { x: '2014', y: 3016710 },
-    { x: '2015', y: 3034081 },
-    { x: '2016', y: 2945295 },
-    { x: '2017', y: 3302336 }];
-export let data4: any[] = [
-    { x: '2013', y: 2006366  },
-    { x: '2014', y: 2165566  },
-    { x: '2015', y: 2279503  },
-    { x: '2016', y: 2359756  },
-    { x: '2017', y: 2505741  }];
+export let data1: Object[] = Browser.isDevice ?
+    [
+        { x: '2021', y: 24.3 },
+        { x: '2022', y: 26.3 },
+        { x: '2023', y: 25.4 },
+        { x: '2024', y: 25 }
+    ] :
+    [
+        { x: '2019', y: 28.5 },
+        { x: '2020', y: 27.5 },
+        { x: '2021', y: 24.3 },
+        { x: '2022', y: 26.3 },
+        { x: '2023', y: 25.4 },
+        { x: '2024', y: 25 }
+    ];
+export let data2: Object[] = Browser.isDevice ?
+    [
+        { x: '2021', y: 26.7 },
+        { x: '2022', y: 30.8 },
+        { x: '2023', y: 27.4 },
+        { x: '2024', y: 31 }
+    ] :
+    [
+        { x: '2019', y: 26.9 },
+        { x: '2020', y: 29.3 },
+        { x: '2021', y: 26.7 },
+        { x: '2022', y: 30.8 },
+        { x: '2023', y: 27.4 },
+        { x: '2024', y: 31 }
+    ];
+export let data3: Object[] = Browser.isDevice ?
+    [
+        { x: '2021', y: 17.5 },
+        { x: '2022', y: 14.5 },
+        { x: '2023', y: 12.1 },
+        { x: '2024', y: 14.4 }
+    ] :
+    [
+        { x: '2019', y: 19.9 },
+        { x: '2020', y: 14.6 },
+        { x: '2021', y: 17.5 },
+        { x: '2022', y: 14.5 },
+        { x: '2023', y: 12.1 },
+        { x: '2024', y: 14.4 }
+    ];
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -44,72 +63,35 @@ export class StackedColumn extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <style>
-                    {SAMPLE_CSS}
-                </style>
+                <style>{SAMPLE_CSS}</style>
                 <div className='control-section'>
-                    <ChartComponent id='charts' style={{ textAlign: "center" }}  legendSettings={{ enableHighlight :true }}
-                        primaryXAxis={{
-                            majorGridLines: { width: 0 },
-                            minorGridLines: { width: 0 },
-                            majorTickLines: { width: 0 },
-                            minorTickLines: { width: 0 },
-                            interval: 1,
-                            lineStyle: { width: 0 },
-                            labelIntersectAction: 'Rotate45',
-                            valueType: 'Category'
-                        }}
-                        primaryYAxis={{
-                            title: 'Vehicles Production (In Millions)',
-                            lineStyle: { width: 0 },               
-                            majorTickLines: { width: 0 },
-                            majorGridLines: { width: 1 },
-                            minorGridLines: { width: 1 },
-                            minorTickLines: { width: 0 },
-                            labelFormat: '{value}',
-                        }}
-                        width={Browser.isDevice ? '100%' : '75%'}
-                        chartArea={{ border: { width: 0 } }}
-                        load={this.load.bind(this)}
-                        title='Motor Vehicle Production by Manufacturer' loaded={this.onChartLoad.bind(this)}
-                        tooltip={{ enable: true }}
-                        axisLabelRender={this.axisLabelRender.bind(this)}>
-                        <Inject services={[StackingColumnSeries, Category, Legend, Tooltip, Highlight]} />
+                    <ChartComponent id='charts' style={{ textAlign: "center" }} legendSettings={{ enableHighlight: true, shapeWidth: 9, shapeHeight: 9 }} primaryXAxis={{ majorGridLines: { width: 0 }, minorGridLines: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 }, interval: 1, lineStyle: { width: 0 }, labelIntersectAction: 'Rotate45', valueType: 'Category' }} primaryYAxis={{ title: 'Production (60KG Bags)', lineStyle: { width: 0 }, majorTickLines: { width: 0 }, majorGridLines: { width: 1 }, minorGridLines: { width: 1 }, minorTickLines: { width: 0 }, labelFormat: '{value}M', interval: 20 }} width={Browser.isDevice ? '100%' : '75%'} chartArea={{ border: { width: 0 }, margin: { bottom: 12 } }} load={this.load.bind(this)} title='Global Cotton Production by Country (2018–2023)' subTitle='Source: fas.usda.gov' loaded={this.onChartLoad.bind(this)} tooltip={{ enable: true, enableHighlight: true, header: '<b>${point.x}</b>', format: '${series.name} : <b>${point.y}</b>' }} legendClick={this.onLegendClick.bind(this)} stackLabels={{ visible: true, format: '{value}M', font: { size: Browser.isDevice ? '10px' : '12px' } }}>
+                        <Inject services={[StackingColumnSeries, Category, Legend, Tooltip, Highlight, DataLabel]} />
                         <SeriesCollectionDirective>
-                        <SeriesDirective dataSource={data1} xName='x' yName='y' name='General Motors' columnWidth={0.6} border={{width:1,color:"white"}} type='StackingColumn'>
-                            </SeriesDirective>
-                            <SeriesDirective dataSource={data2} xName='x' yName='y' name='Honda' columnWidth={0.6} border={{width:1,color:"white"}} type='StackingColumn'>
-                            </SeriesDirective>
-                            <SeriesDirective dataSource={data3} xName='x' yName='y' name='Suzuki' columnWidth={0.6} border={{width:1,color:"white"}} type='StackingColumn'>
-                            </SeriesDirective>
-                            <SeriesDirective dataSource={data4} xName='x' yName='y' name='BMW' columnWidth={0.6} border={{width:1,color:"white"}} type='StackingColumn'>
-                            </SeriesDirective>
+                            <SeriesDirective dataSource={data1} xName='x' yName='y' name='India' columnWidth={0.4} border={{ width: 1, color: "white" }} type='StackingColumn' marker={{ dataLabel: { visible: true, font: { size: Browser.isDevice ? '10px' : '12px' } } }} legendShape='Rectangle' />
+                            <SeriesDirective dataSource={data2} xName='x' yName='y' name='China' columnWidth={0.4} border={{ width: 1, color: "white" }} type='StackingColumn' marker={{ dataLabel: { visible: true, font: { size: Browser.isDevice ? '10px' : '12px' } } }} legendShape='Rectangle' />
+                            <SeriesDirective dataSource={data3} xName='x' yName='y' name='United States' columnWidth={0.4} border={{ width: 1, color: "white" }} type='StackingColumn' cornerRadius={{ topLeft: 4, topRight: 4 }} marker={{ dataLabel: { visible: true, font: { size: Browser.isDevice ? '10px' : '12px' } } }} legendShape='Rectangle' />
                         </SeriesCollectionDirective>
                     </ChartComponent>
-                    <div style={{ float: 'right', marginRight: '10px' }}>Source: &nbsp;
-                         <a href="https://www.cyberagent.co.jp/en/newsinfo/press/detail/id=12026" target="_blank">www.cyberagent.co.jp</a>
-                    </div>
                 </div>
                 <div id="action-description">
-                <p>
-                This React stacked column chart example visualizes motor vehicle production by manufacturer with a default stacked column series. The legend in the sample shows more information about those series.
-            </p>
+                    <p>
+                        This stacked column chart visualizes global cotton production trends over the years, with data points enhanced by data labels.
+                    </p>
                 </div>
                 <div id="description">
                     <p>
-                    In this example, you can see how to render and configure the stacked column chart. The stacked column chart stacks points in the series vertically. You can also use the <code>StackingGroup</code> property to group stacked collections based on category.
+                        In this example, you can see how to render and configure a stacked column chart. The stacked column chart stacks points in the series vertically. You can also use the <code>stackingGroup</code> property to group stacked collections based on category. This chart displays data labels for individual points and the total value on top of each stack.
                     </p>
                     <p>
-                    <code>Tooltips</code> are enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.
+                        <code>Tooltips</code> are enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.
                     </p>
                     <p><b>Injecting Module</b></p>
                     <p>
-                        Chart component features are segregated into individual feature-wise modules. To use stacking column series, we need to inject
-                          <code>StackingColumnSeries</code> module into <code>services</code>.
+                        Chart component features are segregated into individual feature-wise modules. To use stacking column series, we need to inject <code>StackingColumnSeries</code> module into <code>services</code>.
                     </p>
                     <p>
-                        More information on the stacked column series can be found in this &nbsp;
-                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/stack-column" aria-label="Navigate to the documentation for Stacked Column Chart in React Chart component">documentation section</a>.
+                        More information on the stacked column series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/stack-column" aria-label="Navigate to the documentation for Stacked Column Chart in React Chart component">documentation section</a>.
                     </p>
                 </div>
             </div>
@@ -118,19 +100,68 @@ export class StackedColumn extends SampleBase<{}, {}> {
     public onChartLoad(args: ILoadedEventArgs): void {
         let chart: Element = document.getElementById('charts');
         chart.setAttribute('title', '');
-
     };
-        
+
     public load(args: ILoadedEventArgs): void {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
 
-    public axisLabelRender(args: IAxisLabelRenderEventArgs) : void {
-        {
-            args.text = args.text.replace("0000000","0M").replace("000000", "M");
-        };
-    }
-        
+    public onLegendClick (args: ILegendClickEventArgs): void {
+        if (args.series.index === 0) {
+            if (args.chart.series[2].visible) {
+                args.chart.series[2].cornerRadius.topLeft = 4;
+                args.chart.series[2].cornerRadius.topRight = 4;
+                args.chart.series[0].cornerRadius.topLeft = 0;
+                args.chart.series[0].cornerRadius.topRight = 0;
+            } else if (args.chart.series[1].visible) {
+                args.chart.series[1].cornerRadius.topLeft = 4;
+                args.chart.series[1].cornerRadius.topRight = 4;
+                args.chart.series[0].cornerRadius.topLeft = 0;
+                args.chart.series[0].cornerRadius.topRight = 0;
+            } else {
+                args.chart.series[0].cornerRadius.topLeft = 4;
+                args.chart.series[0].cornerRadius.topRight = 4;
+            }
+        }
+        if (args.series.index === 1) {
+            if (args.chart.series[2].visible) {
+                args.chart.series[2].cornerRadius.topLeft = 4;
+                args.chart.series[2].cornerRadius.topRight = 4;
+                args.chart.series[1].cornerRadius.topLeft = 0;
+                args.chart.series[1].cornerRadius.topRight = 0;
+            } else if (args.series.visible && args.chart.series[0].visible) {
+                args.chart.series[0].cornerRadius.topLeft = 4;
+                args.chart.series[0].cornerRadius.topRight = 4;
+                args.chart.series[1].cornerRadius.topLeft = 0;
+                args.chart.series[1].cornerRadius.topRight = 0;
+            } else {
+                args.chart.series[1].cornerRadius.topLeft = 4;
+                args.chart.series[1].cornerRadius.topRight = 4;
+                args.chart.series[0].cornerRadius.topLeft = 0;
+                args.chart.series[0].cornerRadius.topRight = 0;
+            }
+        }
+
+        if (args.series.index === 2) {
+            if (!args.series.visible) {
+                args.chart.series[2].cornerRadius.topLeft = 4;
+                args.chart.series[2].cornerRadius.topRight = 4;
+                args.chart.series[1].cornerRadius.topLeft = 0;
+                args.chart.series[1].cornerRadius.topRight = 0;
+                args.chart.series[0].cornerRadius.topLeft = 0;
+                args.chart.series[0].cornerRadius.topRight = 0;
+            } else if (args.chart.series[1].visible) {
+                args.chart.series[1].cornerRadius.topLeft = 4;
+                args.chart.series[1].cornerRadius.topRight = 4;
+                args.chart.series[2].cornerRadius.topLeft = 0;
+                args.chart.series[2].cornerRadius.topRight = 0;
+            } else if (args.series.visible && args.chart.series[0].visible) {
+                args.chart.series[0].cornerRadius.topLeft = 4;
+                args.chart.series[0].cornerRadius.topRight = 4;
+                args.chart.series[2].cornerRadius.topLeft = 0;
+                args.chart.series[2].cornerRadius.topRight = 0;
+            }
+        }
+    };
+
 }

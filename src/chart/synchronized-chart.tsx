@@ -94,7 +94,7 @@ export class SynchronizedChart extends SampleBase<{}, {}>{
                                 chartMouseUp={this.chartMouseUp.bind(this)}
                                 load={this.load.bind(this)}
                                 titleStyle={{ textAlignment: 'Near' }}
-                                tooltip={{ enable: true, fadeOutDuration: Browser.isDevice ? 2500 : 1000, shared: true, header:'', format: '<b>€${point.y}</b><br>${point.x} 2023', enableMarker: false }}
+                                tooltip={{ enable: true, fadeOutDuration: Browser.isDevice ? 2500 : 1000, showNearestTooltip: true, header:'', format: '<b>€${point.y}</b><br>${point.x} 2023', enableMarker: false, enableHighlight: true }}
                                 crosshair={{ enable: true, lineType: 'Vertical', dashArray: '2,2' }}
                                 title="US to Euro">
                                 <Inject services={[AreaSeries, SplineAreaSeries, LineSeries, SplineSeries, DataLabel, DateTime, Tooltip, Zoom, Highlight, Legend, Selection, Crosshair]} />
@@ -143,7 +143,7 @@ export class SynchronizedChart extends SampleBase<{}, {}>{
                                 chartMouseUp={this.chartobjMouseUp.bind(this)}
                                 load={this.load.bind(this)}
                                 titleStyle={{ textAlignment: 'Near' }}
-                                tooltip={{ enable: true, fadeOutDuration: Browser.isDevice ? 2500 : 1000, shared: true, header:'', format: '<b>¥${point.y}</b><br>${point.x} 2023', enableMarker: false }}
+                                tooltip={{ enable: true, fadeOutDuration: Browser.isDevice ? 2500 : 1000, showNearestTooltip: true, header:'', format: '<b>¥${point.y}</b><br>${point.x} 2023', enableMarker: false, enableHighlight: true }}
                                 crosshair={{ enable: true, lineType: 'Vertical', dashArray: '2,2' }}
                                 title="US to Yen">
                                 <Inject services={[AreaSeries, SplineAreaSeries, LineSeries, SplineSeries, DataLabel, DateTime, Tooltip, Zoom, Highlight, Legend, Selection, Crosshair]} />
@@ -194,7 +194,7 @@ export class SynchronizedChart extends SampleBase<{}, {}>{
                                 chartMouseUp={this.chart3MouseUp.bind(this)}
                                 load={this.load.bind(this)}
                                 titleStyle={{ textAlignment: 'Near' }}
-                                tooltip={{ enable: true, fadeOutDuration: Browser.isDevice ? 2500 : 1000, shared: true, header:'', format: '<b>$${point.y}</b><br>${point.x} 2023', enableMarker: false }}
+                                tooltip={{ enable: true, fadeOutDuration: Browser.isDevice ? 2500 : 1000, showNearestTooltip: true, header:'', format: '<b>$${point.y}</b><br>${point.x} 2023', enableMarker: false }}
                                 crosshair={{ enable: true, lineType: 'Vertical', dashArray: '2,2' }}
                                 title="US to SGD">
                                 <Inject services={[AreaSeries, SplineAreaSeries, LineSeries, SplineSeries, DataLabel, DateTime, Tooltip, Zoom, Highlight, Legend, Selection, Crosshair]} />
@@ -243,7 +243,7 @@ export class SynchronizedChart extends SampleBase<{}, {}>{
                                 chartMouseUp={this.chart4MouseUp.bind(this)}
                                 load={this.load.bind(this)}
                                 titleStyle={{ textAlignment: 'Near' }}
-                                tooltip={{ enable: true, fadeOutDuration: Browser.isDevice ? 2500 : 1000, shared: true, header:'', format: '<b>₹${point.y}</b><br>${point.x} 2023', enableMarker: false }}
+                                tooltip={{ enable: true, fadeOutDuration: Browser.isDevice ? 2500 : 1000, showNearestTooltip: true, header:'', format: '<b>₹${point.y}</b><br>${point.x} 2023', enableMarker: false }}
                                 crosshair={{ enable: true, lineType: 'Vertical', dashArray: '2,2' }}
                                 title="US to INR">
                                 <Inject services={[AreaSeries, SplineAreaSeries, LineSeries, SplineSeries, DataLabel, DateTime, Tooltip, Zoom, Highlight, Legend, Selection, Crosshair]} />
@@ -263,6 +263,9 @@ export class SynchronizedChart extends SampleBase<{}, {}>{
                 <div id="description">
                     <p>
                         This demo showcases the synchronization of multiple charts, with crosshair, tooltip, and zooming functionalities synchronized across the charts. Hover over or zoom in on one chart to observe the corresponding impact on the other charts as well.
+                    </p>
+                    <p>
+                        <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
                     </p>
                     <p><b>Injecting Module</b></p>
                     <p>

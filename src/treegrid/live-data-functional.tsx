@@ -21,10 +21,13 @@ function LiveStream() {
     let timerID: any;
     let initial: boolean = true;
 
-    const load = function (this: TreeGridComponent, args: LoadEventArgs) {
+    const load = () => {
+        document.getElementById('update1')?.click();
+    }
+
+    const created = function (this: TreeGridComponent, args: LoadEventArgs) {
         this.grid.on('data-ready', () => {
             if (initial) {
-                document.getElementById('update1')?.click();
                 initial = false;
                 (feedDelayInput as NumericTextBoxComponent).element.addEventListener('keypress', (e: any) => {
                     if (e && e.key === 'Enter' && (feedDelayInput as any).element.parentElement.classList.contains('e-input-focus')) {
@@ -206,6 +209,7 @@ function LiveStream() {
                     allowSelection={false}
                     queryCellInfo={queryCellInfo}
                     load={load}
+                    created={created}
                 >
                     <ColumnsDirective>
                         <ColumnDirective

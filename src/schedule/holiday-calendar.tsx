@@ -68,20 +68,18 @@ export class HolidayCalendar extends SampleBase<{}, {}> {
 
   private onActionBegin(args: ActionEventArgs): void {
     const { requestType, data } = args;
-    let isHolidayDateRange = false;
-    if (requestType === 'eventCreate') {
-      const eventData = (data as any[])[0];
-      isHolidayDateRange =
-        !this.holidayEventCollection &&
+    const isCreateOrChange = requestType === 'eventCreate' || requestType === 'eventChange';
+    if (isCreateOrChange) {
+      const eventData = requestType === 'eventCreate' ? (data as any[])[0] : (data as any);
+      const adjustedEndTime = eventData.IsAllDay
+        ? new Date(eventData.EndTime.setMinutes(eventData.EndTime.getMinutes() - 1))
+        : eventData.EndTime;
+      const isHolidayDateRange = !this.holidayEventCollection &&
         !eventData.RecurrenceRule &&
-        this.isEventWithinHolidayRange(eventData.StartTime, eventData.EndTime);
-    } else if (requestType === 'eventChange') {
-      isHolidayDateRange =
-        !this.holidayEventCollection &&
-        this.isEventWithinHolidayRange((data as any).StartTime, (data as any).EndTime);
+        this.isEventWithinHolidayRange(eventData.StartTime, adjustedEndTime);
+      args.cancel = isHolidayDateRange;
+      this.showToastForAction(requestType, isHolidayDateRange);
     }
-    args.cancel = isHolidayDateRange;
-    this.showToastForAction(requestType, isHolidayDateRange);
   };
 
   private onEventRender(args: EventRenderedArgs): void {

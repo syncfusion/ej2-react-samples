@@ -7,7 +7,7 @@ import * as ReactDOM from "react-dom";
 import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, LineSeries, DateTime, Legend, ILoadedEventArgs, ChartTheme, Tooltip, Crosshair, Highlight } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
-
+import { loadChartTheme } from './theme-color';
 const SAMPLE_CSS = `
     .control-fluid {
         padding: 0px !important;
@@ -23,9 +23,7 @@ const LocalData = () => {
         chart.setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
     const GetLocalData = (): any => {
         let series1: Object[] = [];
@@ -56,7 +54,7 @@ const LocalData = () => {
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
-                <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ skeleton: 'y', majorGridLines: { width: 0 }, valueType: 'DateTime', edgeLabelPlacement: 'Shift' }} load={load.bind(this)} primaryYAxis={{ title: 'Price', labelFormat: '${value}', rangePadding: 'None', lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 } }} crosshair={{ enable: true, line: { color: 'rgba(204,214,235,0.25)', width: Browser.isDevice ? 50 : 20 }, lineType: 'Vertical' }} legendSettings={{ visible: true, enableHighlight: true }} chartArea={{ border: { width: 0 } }} tooltip={{ enable: true, shared: true }} width={Browser.isDevice ? '100%' : '75%'} title='Stock Price Analysis' loaded={onChartLoad.bind(this)}>
+                <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ skeleton: 'y', majorGridLines: { width: 0 }, valueType: 'DateTime', edgeLabelPlacement: 'Shift' }} load={load.bind(this)} primaryYAxis={{ title: 'Price', labelFormat: '${value}', rangePadding: 'None', lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 } }} crosshair={{ enable: true, line: { color: 'rgba(204,214,235,0.25)', width: Browser.isDevice ? 50 : 20 }, lineType: 'Vertical' }} legendSettings={{ visible: true, enableHighlight: true }} chartArea={{ border: { width: 0 }, margin: { bottom: 12 } }} tooltip={{ enable: true, shared: true }} width={Browser.isDevice ? '100%' : '75%'} title='Stock Price Analysis' loaded={onChartLoad.bind(this)}>
                     <Inject services={[LineSeries, DateTime, Legend, Crosshair, Highlight, Tooltip]} />
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={data1} xName='x' yName='y' width={2} name='Product X' animation={{ enable: true }} type='Line' />

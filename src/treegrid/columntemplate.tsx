@@ -9,13 +9,13 @@ import { RowDataBoundEventArgs, getObject } from '@syncfusion/ej2-grids';
 export class ColumnTemplate extends SampleBase<{}, {}> {
 
   private sparklineInstance: SparklineComponent;
-// custom code start
+
   public load(args: ISparklineLoadedEventArgs): void {
     let theme: string = location.hash.split('/')[1];
     theme = theme ? theme : 'Material';
     args.sparkline.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)) as SparklineTheme;
   }
-// custom code end
+
   public rowDataBound(args: RowDataBoundEventArgs): void {
     let data: string = getObject('EmployeeID', args.data);
             let spkline: HTMLElement = args.row.querySelector('#spkline' + data);

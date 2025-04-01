@@ -28,16 +28,16 @@ export class TreeContextMenu extends SampleBase<{}, {}> {
             <ColumnsDirective>
               <ColumnDirective field='taskID' headerText='Task ID' width='80' textAlign='Right' validationRules={this.validationRule}
                 isPrimaryKey={true}></ColumnDirective>
-              <ColumnDirective field='taskName' headerText='Task Name' width='200' validationRules={this.validationRule}></ColumnDirective>
+              <ColumnDirective field='taskName' headerText='Task Name' width='180' validationRules={this.validationRule}></ColumnDirective>
               <ColumnDirective field='startDate' headerText='Start Date' width='130' textAlign='Right'
                 editType='datepickeredit' type='date' format='yMd' validationRules={this.validationRule1} />
               <ColumnDirective field='endDate' headerText='End Date' width='130' textAlign='Right'
                 editType='datepickeredit' type='date' format='yMd' validationRules={this.validationRule1} />
-              <ColumnDirective field='duration' headerText='Duration' width='120' editType='numericedit' textAlign='Right'
+              <ColumnDirective field='duration' headerText='Duration' width='130' minWidth='120' editType='numericedit' textAlign='Right'
                 validationRules={this.validationRule2} edit={this.editparams2} />
               <ColumnDirective field='progress' headerText='Progress' width='120' textAlign='Right' editType='dropdownedit' 
                 edit={this.editparams} />
-              <ColumnDirective field='priority' headerText='Priority' width='110' />
+              <ColumnDirective field='priority' headerText='Priority' width='120' />
             </ColumnsDirective>
             <Inject services={[Page, Edit, Toolbar, ContextMenu, Sort, Resize, ExcelExport, PdfExport, RowDD]}/>
           </TreeGridComponent>

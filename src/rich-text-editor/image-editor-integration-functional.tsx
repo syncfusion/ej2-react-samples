@@ -60,14 +60,12 @@ function ImageEditorIntegration() {
       rteObj.formatter.enableUndo(rteObj);
       dispose();
       dialogObj.hide();
-      imageELement.crossOrigin = null;
     }
   
     function onCancel() {
       dispose();
       dialogObj.hide();
       isLoaded = true;
-      imageELement.crossOrigin = null;
     }
     function dispose() {
       const imageEditorInstance = getComponent(document.getElementById('image-editor'), 'image-editor') as ImageEditor;
@@ -75,11 +73,14 @@ function ImageEditorIntegration() {
         imageEditorInstance.destroy();
       }
     }
+    function open() {
+      imageEditorObj.update();
+      imageEditorObj.open(dataURL);
+    }
     function onClose() {
       dispose();
       dialogObj.hide();
       isLoaded = true;
-      imageELement.crossOrigin = null;
     }
     function onToolbarClick(args) {
       if (args.item.tooltipText === 'Image Editor') {
@@ -106,17 +107,13 @@ function ImageEditorIntegration() {
         imageELement.onload = function () {
           ctx.drawImage(imageELe, 0, 0, canvas.width, canvas.height);
           dataURL = canvas.toDataURL();
-          if (!isLoded) {
-            imageEditorObj = new ImageEditor({
-              height: '450px',
-              created: function () {
-                imageEditorObj.open(dataURL);
-              },
-            });
-            imageEditorObj.appendTo('#image-editor');
-            isLoded = true;
-          }
         };
+        if (!isLoaded) {
+          imageEditorObj = new ImageEditor({
+            height: '450px'
+          });
+          imageEditorObj.appendTo('#image-editor');
+        }
       }
     }
     const quickToolbarSettings = {
@@ -156,7 +153,7 @@ function ImageEditorIntegration() {
                 <img
                     id="img1"
                     style={{ height: 335 }}
-                    src="./src/rich-text-editor/images/bridge.png"
+                    src="https://ej2.syncfusion.com/angular/demos/assets/image-editor/images/default.png"
                     aria-label="Bridge"
                 ></img>
                 </p>
@@ -173,6 +170,7 @@ function ImageEditorIntegration() {
                 dialogObj = scope;
                 }}
                 buttons={dlgButtons}
+                open={open}
                 beforeOpen={OnBeforeOpen}
                 header={header}
                 visible={false}

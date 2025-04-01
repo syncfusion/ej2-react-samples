@@ -2,62 +2,71 @@
  * Sample for Spline series
  */
 import * as React from "react";
-import * as ReactDOM from "react-dom";
-import {
-    ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, AnnotationsDirective, AnnotationDirective, ChartAnnotation,
-    Legend, Category, SplineSeries, Tooltip, ILoadedEventArgs, ChartTheme, IAnimationCompleteEventArgs, Highlight
-} from '@syncfusion/ej2-react-charts';
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, AnnotationsDirective, AnnotationDirective, ChartAnnotation, ILoadedEventArgs, Legend, Category, SplineSeries, Tooltip, Crosshair, Highlight } from '@syncfusion/ej2-react-charts';
+import { loadChartTheme } from './theme-color';
 import { SampleBase } from '../common/sample-base';
-import { Browser, EmitType } from '@syncfusion/ej2-base';
+import { Browser } from '@syncfusion/ej2-base';
 
-export let data1: any[] = [
-    { x: 'Sun', y: 15 }, { x: 'Mon', y: 22 },
-    { x: 'Tue', y: 32 },
-    { x: 'Wed', y: 31 },
-    { x: 'Thu', y: 29 }, { x: 'Fri', y: 24 },
-    { x: 'Sat', y: 18 },
+export let minimumData: Object[] = [
+    { x: 'Jan', y: 22.75 },
+    { x: 'Feb', y: 29.71 },
+    { x: 'Mar', y: 33.53 },
+    { x: 'Apr', y: 41.22 },
+    { x: 'May', y: 49.87 },
+    { x: 'Jun', y: 59.02 },
+    { x: 'Jul', y: 62.94 },
+    { x: 'Aug', y: 61.27 },
+    { x: 'Sep', y: 55.36 },
+    { x: 'Oct', y: 44.76 },
+    { x: 'Nov', y: 34.79 },
+    { x: 'Dec', y: 28.04 }
 ];
-export let data2: any[] = [
-    { x: 'Sun', y: 10 }, { x: 'Mon', y: 18 },
-    { x: 'Tue', y: 28 },
-    { x: 'Wed', y: 28 },
-    { x: 'Thu', y: 26 }, { x: 'Fri', y: 20 },
-    { x: 'Sat', y: 15 }
+export let averageData: Object[] = [
+    { x: 'Jan', y: 31.89 },
+    { x: 'Feb', y: 40.82 },
+    { x: 'Mar', y: 44.96 },
+    { x: 'Apr', y: 53.64 },
+    { x: 'May', y: 62.28 },
+    { x: 'Jun', y: 71.80 },
+    { x: 'Jul', y: 75.69 },
+    { x: 'Aug', y: 73.99 },
+    { x: 'Sep', y: 68.61 },
+    { x: 'Oct', y: 58.95 },
+    { x: 'Nov', y: 45.18 },
+    { x: 'Dec', y: 38.21 }
 ];
-export let data3: any[] = [
-    { x: 'Sun', y: 2 }, { x: 'Mon', y: 12 },
-    { x: 'Tue', y: 22 },
-    { x: 'Wed', y: 23 },
-    { x: 'Thu', y: 19 }, { x: 'Fri', y: 13 },
-    { x: 'Sat', y: 8 },
+export let maximumData: Object[] = [
+    { x: 'Jan', y: 41.02 },
+    { x: 'Feb', y: 51.93 },
+    { x: 'Mar', y: 56.39 },
+    { x: 'Apr', y: 66.06 },
+    { x: 'May', y: 74.64 },
+    { x: 'Jun', y: 84.58 },
+    { x: 'Jul', y: 88.43 },
+    { x: 'Aug', y: 86.72 },
+    { x: 'Sep', y: 81.86 },
+    { x: 'Oct', y: 73.13 },
+    { x: 'Nov', y: 55.54 },
+    { x: 'Dec', y: 48.36 }
 ];
+
 const SAMPLE_CSS = `
     .control-fluid {
-		padding: 0px !important;
-    }
-    #charts_Series_0_Point_2_Symbol {
-        -webkit-animation: opac 1s ease-out infinite;
-        animation: opac 1s ease-out infinite;
-    }
-
-    #charts_Series_2_Point_0_Symbol {
-        -webkit-animation: opac 1s ease-out infinite;
-        animation: opac 1s ease-in-out infinite;
+        padding: 0px !important;
     }
 
     @keyframes opac {
         0% {
             stroke-opacity: 1;
-            strokeWidth: 0px;
+            stroke-width: 0px;
         }
         100% {
             stroke-opacity: 0;
-            strokeWidth: 10px;
+            stroke-width: 10px;
         }
     }`;
 
 export class Spline extends SampleBase<{}, {}> {
-    private chartInstance: ChartComponent;
     render() {
         return (
             <div className='control-pane'>
@@ -65,67 +74,40 @@ export class Spline extends SampleBase<{}, {}> {
                     {SAMPLE_CSS}
                 </style>
                 <div className='control-section'>
-                    <ChartComponent id='charts' style={{ textAlign: "center" }} ref={charts => this.chartInstance = charts}
-                        primaryXAxis={{
-                            valueType: 'Category', interval: 1, majorGridLines: { width: 0 }, labelIntersectAction: 'Rotate90'
-                        }}
-                        width={Browser.isDevice ? '100%' : '75%'}
-                        legendSettings={{enableHighlight: true}}
-                        chartArea={{ border: { width: 0 } }}
-                        load={this.load.bind(this)}
-                        primaryYAxis={{
-                            labelFormat: '{value}°C', lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 }
-                        }}
-                        tooltip={{ enable: true }}
-                        title='NC Weather Report - 2016' loaded={this.onChartLoad.bind(this)}
-                        animationComplete={this.animationComplete.bind(this)}>
-                        <Inject services={[SplineSeries, Legend, Category, Tooltip, ChartAnnotation, Highlight]} />
+                    <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', interval: 1, majorGridLines: { width: 0 }, labelIntersectAction: 'Rotate90', majorTickLines: { width: 0 }, minorTickLines: { width: 0 } }} width={Browser.isDevice ? '100%' : '75%'} legendSettings={{ enableHighlight: true }} chartArea={{ border: { width: 0 }, margin: { bottom: 12 } }} primaryYAxis={{ labelFormat: '{value}°F', minimum: 0, interval: 20, title: 'Temperature (°F)', lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 } }} tooltip={{ enable: true, shared: true, showNearestTooltip: true, header: '<b>${point.x}<b>', format: '${series.name} : <b>${point.y}</b>' }} title='2024 US Temperature Trends with Hottest Coldest and Average Records' subTitle='Source: ncei.noaa.gov' crosshair={{ enable: true, lineType: 'Vertical', highlightCategory: true }} load={this.load.bind(this)} loaded={this.onChartLoad.bind(this)} height='500px'>
+                        <Inject services={[SplineSeries, Legend, Category, Tooltip, ChartAnnotation, Crosshair, Highlight]} />
                         <AnnotationsDirective>
-                            <AnnotationDirective content='<div id="chart_cloud"><img src="src/chart/images/cloud.png" alt="Cloud Picture" style={{width: "41px"; height: "41px"}} /></div>' x='Sun' y={2} coordinateUnits='Point' verticalAlignment='Top'>
-                            </AnnotationDirective>
-                            <AnnotationDirective content='<div id="chart_cloud"><img src="src/chart/images/sunny.png" alt="Sunny Picture" style={{width: "41px"; height: "41px"}}/></div>' x='Tue' y={33} coordinateUnits='Point' verticalAlignment='Top'>
-                            </AnnotationDirective>
+                            <AnnotationDirective content='<div id="chart_cloud"><img src="src/chart/images/cloud.png" alt="Cloud Picture" style="width: 41px; height: 41px"/></div>' x='Jan' y={22.75} coordinateUnits='Point' verticalAlignment='Middle' />
+                            <AnnotationDirective content='<div id="chart_cloud"><img src="src/chart/images/sunny.png" alt="Sunny Picture" style="width: 41px; height: 41px"/></div>' x='Jul' y={88.43} coordinateUnits='Point' verticalAlignment='Middle' />
                         </AnnotationsDirective>
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={data1} xName='x' yName='y' width={2} name='Max Temp'
-                                type='Spline'
-                                marker={{ visible: true, width: 7, height: 7, isFilled: true }}>
+                            <SeriesDirective dataSource={maximumData} xName='x' yName='y' name='Max Temp' width={2} type='Spline' marker={{ visible: true, width: 7, height: 7, isFilled: true }}>
                             </SeriesDirective>
-                            <SeriesDirective dataSource={data2} xName='x' yName='y' width={2} name='Avg Temp'
-                                type='Spline'
-                                marker={{ visible: true, width: 7, height: 7, isFilled: true }}>
+                            <SeriesDirective dataSource={averageData} xName='x' yName='y' name='Avg Temp' width={2} type='Spline' marker={{ visible: true, width: 7, height: 7, isFilled: true }}>
                             </SeriesDirective>
-                            <SeriesDirective dataSource={data3} xName='x' yName='y' width={2} name='Min Temp'
-                                type='Spline'
-                                marker={{ visible: true, width: 7, height: 7, isFilled: true }}>
+                            <SeriesDirective dataSource={minimumData} xName='x' yName='y' name='Min Temp' width={2} type='Spline' marker={{ visible: true, width: 7, height: 7, isFilled: true }}>
                             </SeriesDirective>
                         </SeriesCollectionDirective>
                     </ChartComponent>
-                    <div style={{ float: 'right', marginRight: '10px' }}>Source: &nbsp;
-                         <a href="http://www.worldweatheronline.com/mooresville-weather/north-carolina/us.aspx" target="_blank" aria-label="Navigate to the documentation for world weather online">www.worldweatheronline.com</a>
-                    </div>
                 </div>
                 <div id="action-description">
                     <p>
-                    This React Spline Chart example represents the North Carolina  weather report for the year 2016 with default spline series in the chart.
-            </p>
+                        This React Spline Chart example visualizes the average monthly high and low temperatures across the contiguous U.S. for 2024.
+                    </p>
                 </div>
                 <div id="description">
                     <p>
-                    In this example, you can see how to render and configure a spline chart.The Spline chart uses a curved line to connect points in a data series.
-                       <code>Markers</code> are used to represent individual data and its value.
+                        In this example, you can see how to render and configure a spline chart. The spline chart uses a smooth, curved line to connect points in a data series. <code>Markers</code> represent individual data points with different shapes, while the <code>crosshair</code> enhances data tracking by highlighting the category.
                     </p>
                     <p>
-                    <code>Tooltips</code> are enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+                        <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
                     </p>
                     <p><b>Injecting Module</b></p>
                     <p>
-                        Chart component features are segregated into individual feature-wise modules. To use spline series, we need to inject
-                        <code>SplineSeries</code> module into <code>services</code>.
+                        Chart component features are segregated into individual feature-wise modules. To use spline series, we need to inject <code>SplineSeries</code> module into <code>services</code>.
                     </p>
                     <p>
-                    More information on the spline series can be found in this &nbsp;
-                         <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/spline" aria-label="Navigate to the documentation for Spline Chart in React Chart component">documentation section</a>.
+                        More information on the spline series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/spline" aria-label="Navigate to the documentation for Spline Chart in React Chart component">documentation section</a>.
                     </p>
                 </div>
             </div>
@@ -135,16 +117,9 @@ export class Spline extends SampleBase<{}, {}> {
         let chart: Element = document.getElementById('charts');
         chart.setAttribute('title', '');
     };
-    public animationComplete(args: IAnimationCompleteEventArgs): void {
-        this.chartInstance.removeSvg();
-        this.chartInstance.animateSeries = false;
-        this.chartInstance['renderElements']();
-    };
-        
+
     public load(args: ILoadedEventArgs): void {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
-        
+
 }

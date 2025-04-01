@@ -10,9 +10,10 @@ export class EditType extends SampleBase<{}, {}> {
   newRowPosition: 'Above' };
   public editparams: any = { params: { popupHeight: '300px' } };
   public validationRule: Object = { required: true};
-  public validationRule1: Object = { date: true};
+  public validationRule1: Object = { date: ['M/d/y hh:mm a', 'Please enter a valid date']};
   public validationRule2: Object = { required: true, number: true};
   public editparams2: any = { params: { format: 'n' } };
+  public editparams3: any = { params: { format: 'M/d/y hh:mm a' } };
   public pageSettings: Object = { pageCount: 5};
   public format: any = {type:'dateTime',format:'M/d/y hh:mm a'};
   render() {
@@ -26,7 +27,7 @@ export class EditType extends SampleBase<{}, {}> {
                 isPrimaryKey={true}></ColumnDirective>
               <ColumnDirective field='taskName' headerText='Task Name' width='150' validationRules={this.validationRule}></ColumnDirective>
               <ColumnDirective field='startDate' headerText='Start Date' width='170' textAlign='Right'
-                editType='datetimepickeredit' format={this.format} validationRules={this.validationRule1} />
+                editType='datetimepickeredit' format={this.format} edit={this.editparams3} validationRules={this.validationRule1} />
               <ColumnDirective field='duration' headerText='Duration' width='150' editType='numericedit' textAlign='Right'
                 validationRules={this.validationRule2} edit={this.editparams2} />
               <ColumnDirective field='progress' headerText='Progress' width='150' textAlign='Right' editType='dropdownedit' 

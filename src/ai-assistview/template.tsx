@@ -3,7 +3,7 @@ import * as React from 'react';
 import { AIAssistViewComponent, PromptRequestEventArgs, ToolbarSettingsModel } from '@syncfusion/ej2-react-interactive-chat';
 import { SampleBase } from '../common/sample-base';
 import './template.css';
-import { CarouselComponent } from '@syncfusion/ej2-react-navigations';
+import { CarouselComponent, CarouselButtonVisibility } from '@syncfusion/ej2-react-navigations';
 import { DropDownButton } from '@syncfusion/ej2-react-splitbuttons';
 import * as data from './promptResponseData.json';
 
@@ -17,8 +17,8 @@ export class Template extends SampleBase<{}, {}> {
   templateAiAssistView: AIAssistViewComponent;
   assistViewCarousel: CarouselComponent;
 
-  buttonVisible: 'Visible';
-  dataSource: [
+  buttonVisible: CarouselButtonVisibility = 'Visible';
+  dataSource = [
     { imagePath: 'src/ai-assistview/images/moscow.jpg', title:'Moscow', suggestion: 'How do I prioritize tasks effectively?'  },
     { imagePath: 'src/ai-assistview/images/bridge.jpg', title:'Bridge', suggestion: 'How do I set daily goals in my work day?'  },
     { imagePath: 'src/ai-assistview/images/london.jpg', title:'London', suggestion: 'Steps to publish a e-book with marketing strategy'  },
@@ -86,17 +86,24 @@ export class Template extends SampleBase<{}, {}> {
     ]
   };
 
+  handleAction= (e) => {
+    var target = e.target as any;
+    var prompt = '';
+    if (target.tagName === 'IMG') {
+        prompt = target.nextElementSibling.textContent;
+    } else if (target.className === 'e-card-header') {
+        prompt = target.textContent;
+    }
+    if (prompt) { this.templateAiAssistView.executePrompt(prompt); }
+  }
+
   created = () => {
     setTimeout(() => {
       this.assistViewCarousel.element.addEventListener('click', (e) => {
-        var target = e.target as any;
-        var prompt = '';
-        if (target.tagName === 'IMG') {
-            prompt = target.nextElementSibling.textContent;
-        } else if (target.className === 'e-card-header') {
-            prompt = target.textContent;
-        }
-        if (prompt) { this.templateAiAssistView.executePrompt(prompt); }
+        this.handleAction(e);
+      });
+      this.assistViewCarousel.element.addEventListener('touchstart', (e) => {
+        this.handleAction(e);
       });
     });
 

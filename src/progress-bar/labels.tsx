@@ -7,6 +7,7 @@ import { ProgressBarComponent, ILoadedEventArgs, ProgressTheme } from '@syncfusi
 import { EmitType } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
+import { loadProgressBarTheme } from './theme-colors';
 
 const SAMPLE_CSS = `
 #control-container {
@@ -38,11 +39,8 @@ export class ProgressBarLabels extends SampleBase<{}, {}> {
     private linearThree: ProgressBarComponent;
     private linearFour: ProgressBarComponent;
     private progressLoad: EmitType<ILoadedEventArgs> = (args: ILoadedEventArgs) => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.progressBar.theme = (selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast') as ProgressTheme;
-        if (args.progressBar.theme === 'Material') {
+        let theme: string = loadProgressBarTheme(args);
+        if (theme === 'Material') {
             args.progressBar.trackColor = '#EAEAEA';
         }
     }

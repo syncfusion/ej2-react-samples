@@ -92,7 +92,7 @@
 }
 
 .bootstrap5-dark #unplanned-events-toolbar,
-.bootstrap5\.3-dark #unplanned-events-toolbar {
+.bootstrap5_3-dark #unplanned-events-toolbar {
     background-color: #282d31;
 }
 
@@ -147,7 +147,7 @@
 }
 
 .bootstrap5-dark .e-exit-full-screen,
-.bootstrap5\.3-dark .e-exit-full-screen {
+.bootstrap5_3-dark .e-exit-full-screen {
     background-color: #282d31;
 }
   
@@ -227,4 +227,8 @@
 
 .event-calendar-control-section .e-sidebar {
     z-index: 1 !important;
+}
+
+.e-bigger .e-schedule-dialog.e-device .custom-field-row {
+    padding-top: 8px;
 }

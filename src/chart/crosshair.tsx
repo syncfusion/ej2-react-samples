@@ -284,11 +284,11 @@ export class CrosshairChart extends SampleBase<{}, {}> {
                         }}
                         tooltip={{
                             enable: true,
-                            shared: true,
                             location: { x: 70, y:52 },
                             format: '<b>${point.x}</b> <br>Stock Price : <b>${point.y}</b>',
                             header: '',
-                            enableMarker: false
+                            enableMarker: false,
+                            showNearestTooltip: true
                         }}
                         chartArea={{border:{width: 0}}}
                         width={Browser.isDevice ? '100%' : '75%'}
@@ -449,6 +449,9 @@ export class CrosshairChart extends SampleBase<{}, {}> {
                     </p>
                     <p>
                         The <code>snapToData</code> property snaps the crosshair to the nearest data point instead of following the exact mouse position, providing a more precise focus on data points.
+                    </p>
+                    <p>
+                        <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
                     </p>
                     <p><b>Injecting Module</b></p>
                     <p>

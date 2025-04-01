@@ -125,7 +125,7 @@
         padding: 1% 5%;
     }
 
-    /* The screen of the mac os */
+     /* The screen of the mac os */
     .e-adaptive-demo .e-mac-safari .e-pager .e-mfirst,
     .e-adaptive-demo .e-mac-safari .e-pager .e-mprev,
     .e-adaptive-demo .e-mac-safari .e-pager .e-mnext,
@@ -150,7 +150,6 @@
         text-align: right;
         width: 10%;
     }
-
     .e-adaptive-demo .e-pager .e-mnext {
         margin: 0 4px;
         text-align: left;

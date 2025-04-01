@@ -32,14 +32,162 @@ export class Redaction extends SampleBase<{}, {}> {
         'drop-area-wrap'
     )[0];
     public allowedExtensions: string = '.png, .jpg, .jpeg';
+    public url: string = "https://ej2services.syncfusion.com/react/development/api/pdfviewer/Redaction";
+    constructor(props: {}) {
+        super(props)
+        this.uploadObj = React.createRef();
+    }
 
     componentDidMount(): void {
         viewer = (document.getElementById('container') as any).ej2_instances[0];
     }
+    //To update page number when page has been changed
+    onPageChange = () => {
+        this.currentPageNumber = viewer.currentPageNumber.toString();
+        (document.getElementById('e-pv-redact-sb-currentPage') as HTMLSpanElement).textContent = this.viewer.currentPageNumber.toString() + ' ';
+        this.updatePageNavigation.bind(this);
+    }
+    
+    //Updating the total number of pages while loading
+    documentLoaded = () => {
+        this.viewer = (document.getElementById('container') as any).ej2_instances[0];
+        var pageCount = document.getElementById('e-pv-redact-sb-totalPage');
+        pageCount.textContent = '/ ' + viewer.pageCount;
+        (document.getElementById('e-pv-redact-sb-currentPage')).textContent = this.viewer.currentPageNumber.toString();
+        this.updatePageNavigation();
+        this.updateRedaction();
+    }
 
+    //To update page number when the previous and next button is clicked
+    updatePageNavigation = () => {
+        if (this.viewer.currentPageNumber === 1) {
+            this.toolbar.enableItems(document.getElementById('previousPage').parentElement, false);
+            this.toolbar.enableItems(document.getElementById('nextPage').parentElement, true);
+        } else if (viewer.currentPageNumber === viewer.pageCount) {
+            this.toolbar.enableItems(document.getElementById('previousPage').parentElement, true);
+            this.toolbar.enableItems(document.getElementById('nextPage').parentElement, false);
+        } else {
+            this.toolbar.enableItems(document.getElementById('previousPage').parentElement, true);
+            this.toolbar.enableItems(document.getElementById('nextPage').parentElement, true);
+        }
+    }
+
+    //To update the redaction count
+    updateRedaction = () => {
+        if (this.redactionCount <= 0) {
+            this.toolbar.enableItems(document.getElementById('redacticon').parentElement, false);
+        }
+        else {
+            this.toolbar.enableItems(document.getElementById('redacticon').parentElement, true);
+        }
+    }
+
+    //Updating the number of redaction while the annotation has been added
+    annotationAdd = (e: AnnotationAddEventArgs) => {
+        var pdfAnnotationList = new Array();
+        pdfAnnotationList = this.viewer.annotationCollection;
+        var selectedAnnotationIndex = pdfAnnotationList.findIndex(item => item.annotationId == e.annotationId);
+        if (selectedAnnotationIndex != -1) {
+            this.annotation = pdfAnnotationList[selectedAnnotationIndex];
+        }
+        if (this.annotation.author == "Redaction" || this.annotation.customStampName == "Image" || this.annotation.author == "Pattern" || this.annotation.author == "Text") {
+            this.redactionCount = this.redactionCount + 1;
+            this.updateRedaction();
+        }
+
+    }
+
+    //Updating the number of redaction while the annotation has been removed
+    annotationRemove = () => {
+        if (this.annotation.author == "Redaction" || this.annotation.customStampName == "Image" || this.annotation.author == "Pattern" || this.annotation.author == "Text") {
+            this.redactionCount = this.redactionCount - 1;
+            this.updateRedaction();
+        }
+    }
+    downloadDocument = (blobUrl: string) => {
+        const Url:any = URL || webkitURL;
+        blobUrl = Url.createObjectURL(blobUrl);
+        viewer.fileName = this.fileName;
+        const anchorElement:HTMLElement = document.createElement('a');
+        if (anchorElement.click) {
+            (anchorElement as HTMLAnchorElement).href = blobUrl;
+            (anchorElement as HTMLAnchorElement).target = '_parent';
+            if ('download' in anchorElement) {
+                const downloadFileName = viewer.fileName || 'downloadedFile.pdf';
+                if (downloadFileName) {
+                    if (downloadFileName.endsWith('.pdf')) {
+                        (anchorElement as HTMLAnchorElement).download = downloadFileName;
+                    }
+                    else {
+                        const splitPdf:string = downloadFileName.split('.pdf')[0] + '.pdf';
+                        (anchorElement as HTMLAnchorElement).download = splitPdf;
+                    }
+                }
+                else {
+                    (anchorElement as HTMLAnchorElement).download = 'Default.pdf';
+                }
+            }
+            (document.body || document.documentElement).appendChild(anchorElement);
+            anchorElement.click();
+        }
+        else {
+            if (window.top === window &&
+                blobUrl.split('#')[0] === window.location.href.split('#')[0]) {
+                const padCharacter:string = blobUrl.indexOf('?') === -1 ? '?' : '&';
+                blobUrl = blobUrl.replace(/#|$/, padCharacter + '$&');
+            }
+            window.open(blobUrl, '_parent');
+        }
+    }
+    //To download the redacted pdf
+    download = () => {
+        let _this = this;
+        viewer.saveAsBlob().then(function (value) {
+            let reader = new FileReader();
+            reader.readAsDataURL(value);
+            reader.onload = function (e) {
+                const base64String = e.target?.result as string;
+                const xhr:XMLHttpRequest = new XMLHttpRequest();
+                xhr.open('POST', _this.url, true);
+                xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
+                const requestData = JSON.stringify({ base64String: base64String });
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        const blobUrl = _this.createBlobUrl(xhr.responseText.split('base64,')[1], 'application/pdf');
+                        _this.downloadDocument(blobUrl);
+                    }
+                    else {
+                        console.error('Download failed:', xhr.statusText);
+                    }
+                };
+                xhr.onerror = function () {
+                    console.error('An error occurred during the download:', xhr.statusText);
+                };
+                xhr.send(requestData);
+            };
+        }).catch(function (error) {
+            console.error('Error saving Blob:', error);
+        });
+    }
+
+    createBlobUrl = (base64String: string, contentType: string) => {
+        const sliceSize:number = 512;
+        const byteCharacters:string = atob(base64String);
+        const byteArrays:any = [];
+        for (let offset:number = 0; offset < byteCharacters.length; offset += sliceSize) {
+            const slice:string = byteCharacters.slice(offset, offset + sliceSize);
+            const byteNumbers:any = new Array(slice.length);
+            for (let i:number = 0; i < slice.length; i++) {
+                byteNumbers[parseInt(i.toString(), 10)] = slice.charCodeAt(i);
+            }
+            const byteArray:any = new Uint8Array(byteNumbers);
+            byteArrays.push(byteArray);
+        }
+        const blob:any = new Blob(byteArrays, { type: contentType });
+        return blob;
+    }
     render() {
         let data: string[] = ['10%', '25%', '50%', '75%', '100%', '200%', '400%'];
-        let url = "https://ej2services.syncfusion.com/react/development/api/pdfviewer/Redaction";
         function template() {
             return (
                 <div>
@@ -48,6 +196,7 @@ export class Redaction extends SampleBase<{}, {}> {
             </div>
             );
         }
+        
         const clickHandler = function (args: ClickEventArgs) {
             switch (args.item.id) {
                 case 'pdfviewer_open':
@@ -68,7 +217,7 @@ export class Redaction extends SampleBase<{}, {}> {
                     }
                 case 'image_annot':
                     {
-                        this.dialogInstance.current.show();
+                        this.dialogInstance.show();
                         break;
                     }
 
@@ -109,7 +258,8 @@ export class Redaction extends SampleBase<{}, {}> {
 
                 case 'redacticon':
                     {
-                        if (this.redactionCount > 0) {                         
+                        if (this.redactionCount > 0) {
+                            let _this = this;                         
                             viewer.saveAsBlob().then(function (value) {
                                 var data = value;
                                 var reader = new FileReader();
@@ -117,7 +267,7 @@ export class Redaction extends SampleBase<{}, {}> {
                                 reader.onload = function (e) {
                                     var base64String = e.target?.result;
                                     var xhr = new XMLHttpRequest();
-                                    xhr.open('POST', url, true);
+                                    xhr.open('POST', _this.url, true);
                                     xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
                                     var requestData = JSON.stringify({ base64String: base64String });
                                     xhr.onload = function () {
@@ -135,155 +285,12 @@ export class Redaction extends SampleBase<{}, {}> {
                                 };
                             });
                             this.redactionCount = 0;
-                            updateRedaction();
+                            this.updateRedaction();
                         }
                         break;
                     }
             }
         }
-        //Updating the total number of pages while loading
-        const documentLoaded = function (args: any) {
-            this.toolbar = (document.getElementById('e-pv-redact-sb-toolbar-secondary') as any).ej2_instances[0];
-            this.primaryToolbar = (document.getElementById('e-pv-redact-sb-toolbar') as any).ej2_instances[0];
-            viewer = (document.getElementById('container') as any).ej2_instances[0];
-            var pageCount = document.getElementById('totalPage');
-            pageCount.textContent = '/ ' + viewer.pageCount;
-            (document.getElementById('e-pv-redact-sb-currentPage') as HTMLSpanElement).textContent = this.viewer.currentPageNumber.toString();
-            updatePageNavigation.bind(this);
-            updateRedaction.bind(this);
-        }
-
-        //To update page number when page has been changed
-        const onPageChange = function (args: any) {
-            this.currentPageNumber = viewer.currentPageNumber.toString();
-            (document.getElementById('e-pv-redact-sb-currentPage') as HTMLSpanElement).textContent = this.viewer.currentPageNumber.toString() + ' ';
-            updatePageNavigation.bind(this);
-        }
-        //To update page number when the previous and next button is clicked
-        const updatePageNavigation = function () {
-            if (this.viewer.currentPageNumber === 1) {
-                this.toolbar.items[0].disabled=true;
-                this.toolbar.items[2].disabled=false;
-            } else if (viewer.currentPageNumber === viewer.pageCount) {
-                this.toolbar.items[0].disabled=false;
-                this.toolbar.items[2].disabled=true;
-            } else {
-                this.toolbar.items[0].disabled=false;
-                this.toolbar.items[2].disabled=false;
-            }
-        }
-
-        //To update the redaction count
-        const updateRedaction = function () {
-            if (this.redactionCount <= 0) {
-                this.toolbar.enableItems(document.getElementById('redacticon').parentElement, false);
-            }
-            else {
-                this.toolbar.enableItems(document.getElementById('redacticon').parentElement, true);
-            }
-        }
-        //Updating the number of redaction while the annotation has been added
-        const annotationAdd = (e: AnnotationAddEventArgs): void => {
-            var pdfAnnotationList = new Array();
-            pdfAnnotationList = this.viewer.annotationCollection;
-            var selectedAnnotationIndex = pdfAnnotationList.findIndex(item => item.annotationId == e.annotationId);
-            if (selectedAnnotationIndex != -1) {
-                this.annotation = pdfAnnotationList[selectedAnnotationIndex];
-            }
-            if (this.annotation.author == "Redaction" || this.annotation.customStampName == "Image" || this.annotation.author == "Pattern" || this.annotation.author == "Text") {
-                this.redactionCount = this.redactionCount + 1;
-                updateRedaction.bind(this);
-            }
-
-        }
-
-        //Updating the number of redaction while the annotation has been removed
-        const annotationRemove = (e: AnnotationRemoveEventArgs): void => {
-            if (this.annotation.author == "Redaction" || this.annotation.customStampName == "Image" || this.annotation.author == "Pattern" || this.annotation.author == "Text") {
-                this.redactionCount = this.redactionCount - 1;
-                updateRedaction.bind(this);
-            }
-        }
-        //To download the redacted pdf
-        const download = function () {
-            viewer.saveAsBlob().then(function (value) {
-            let reader = new FileReader();
-            reader.readAsDataURL(value);
-            reader.onload = function (e) {
-                const base64String = e.target?.result as string;
-                const xhr:XMLHttpRequest = new XMLHttpRequest();
-                xhr.open('POST', url, true);
-                xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
-                const requestData = JSON.stringify({ base64String: base64String });
-                xhr.onload = function () {
-                    if (xhr.status === 200) {
-                        const blobUrl = createBlobUrl(xhr.responseText.split('base64,')[1], 'application/pdf');
-                        downloadDocument(blobUrl);
-                    }
-                    else {
-                        console.error('Download failed:', xhr.statusText);
-                    }
-                };
-                xhr.onerror = function () {
-                    console.error('An error occurred during the download:', xhr.statusText);
-                };
-                xhr.send(requestData);
-            };
-        }).catch(function (error) {
-            console.error('Error saving Blob:', error);
-        });
-    }
-    function createBlobUrl(base64String: string, contentType: string):any {
-        const sliceSize:number = 512;
-        const byteCharacters:string = atob(base64String);
-        const byteArrays:any = [];
-        for (let offset:number = 0; offset < byteCharacters.length; offset += sliceSize) {
-            const slice:string = byteCharacters.slice(offset, offset + sliceSize);
-            const byteNumbers:any = new Array(slice.length);
-            for (let i:number = 0; i < slice.length; i++) {
-                byteNumbers[parseInt(i.toString(), 10)] = slice.charCodeAt(i);
-            }
-            const byteArray:any = new Uint8Array(byteNumbers);
-            byteArrays.push(byteArray);
-        }
-        const blob:any = new Blob(byteArrays, { type: contentType });
-        return blob;
-    }
-    function downloadDocument(blobUrl: string):void {
-        const Url:any = URL || webkitURL;
-        blobUrl = Url.createObjectURL(blobUrl);
-        viewer.fileName = this.fileName;
-        const anchorElement:HTMLElement = document.createElement('a');
-        if (anchorElement.click) {
-            (anchorElement as HTMLAnchorElement).href = blobUrl;
-            (anchorElement as HTMLAnchorElement).target = '_parent';
-            if ('download' in anchorElement) {
-                const downloadFileName = viewer.fileName || 'downloadedFile.pdf';
-                if (downloadFileName) {
-                    if (downloadFileName.endsWith('.pdf')) {
-                        (anchorElement as HTMLAnchorElement).download = downloadFileName;
-                    }
-                    else {
-                        const splitPdf:string = downloadFileName.split('.pdf')[0] + '.pdf';
-                        (anchorElement as HTMLAnchorElement).download = splitPdf;
-                    }
-                }
-                else {
-                    (anchorElement as HTMLAnchorElement).download = 'Default.pdf';
-                }
-            }
-            (document.body || document.documentElement).appendChild(anchorElement);
-            anchorElement.click();
-        }
-        else {
-            if (window.top === window &&
-                blobUrl.split('#')[0] === window.location.href.split('#')[0]) {
-                const padCharacter:string = blobUrl.indexOf('?') === -1 ? '?' : '&';
-                blobUrl = blobUrl.replace(/#|$/, padCharacter + '$&');
-            }
-            window.open(blobUrl, '_parent');
-        }
-    }
 
         //To get the header in upload image dialog box
         const header = () => {
@@ -295,7 +302,7 @@ export class Redaction extends SampleBase<{}, {}> {
         }
         //When the cancel button is clicked
         const CloseDialog = function () {
-            this.dialogInstance.current.hide();
+            this.dialogInstance.hide();
         }
 
         //To get the footer content in upload image dialog box
@@ -314,7 +321,7 @@ export class Redaction extends SampleBase<{}, {}> {
                     <div id='e-pv-redact-sb-defaultfileupload'>
                         <div className="drop-area-wrap" id='e-pv-redact-sb-drop-area-wrap'>
                             <div>
-                                <UploaderComponent id='fileUpload' type='file' ref={(scope) => { this.uploadObj.current = scope }} asyncSettings={this.asyncSettings} change={onFileChange.bind(this)} dropArea={this.dropAreaRef as any} allowedExtensions={this.allowedExtensions}></UploaderComponent>
+                                <UploaderComponent id='fileupload' type='file' ref={(scope) => { this.uploadObj.current = scope }} asyncSettings={this.asyncSettings} change={onFileChange.bind(this)} dropArea={this.dropAreaRef as any} allowedExtensions={this.allowedExtensions}></UploaderComponent>
                             </div>
                             <div>(Only JPG and PNG images will be accepted)</div>
                         </div>
@@ -353,6 +360,7 @@ export class Redaction extends SampleBase<{}, {}> {
             let imageElement = document.getElementById('imageView') as any;
             let imageElementContainer = document.getElementById('imageContainer');
             let reader = new FileReader();
+            let _this = this;
             reader.onload = function (e) {
                 let base64String = e.target ? e.target.result : null;
                 imageSrc = base64String;
@@ -362,14 +370,14 @@ export class Redaction extends SampleBase<{}, {}> {
                     'image-container image-container-selected';
                 (imageElement).style.display = 'block';
                 // Bind click event to the image element
-                imageElement.addEventListener('click', handleImageClick);
+                imageElement.addEventListener('click', handleImageClick.bind(_this));
             };
             reader.readAsDataURL(file);
         }
 
         const handleImageClick = function () {
             customStampSource = imageSrc;
-            this.dialogInstance.current.hide();
+            this.dialogInstance.hide();
             addImage();
         }
 
@@ -402,12 +410,12 @@ export class Redaction extends SampleBase<{}, {}> {
                     <AppBarComponent colorMode="Primary">
                         <span className="regular">Redaction</span>
                         <div className="e-appbar-spacer"></div>
-                        <ButtonComponent cssClass='e-inherit ' iconCss='e-icons e-download e-btn-icon e-icon-left' id='download_pdf' onClick={download}>Download</ButtonComponent>
+                        <ButtonComponent cssClass='e-inherit ' iconCss='e-icons e-download e-btn-icon e-icon-left' id='download_pdf' onClick={this.download}>Download</ButtonComponent>
                     </AppBarComponent>
 
                 </div>
                 <div className='primaryToolbar' id='toolbar_default'>
-                    <ToolbarComponent ref={(scope) => { this.toolbar = scope; }} clicked={clickHandler.bind(this)} id='e-pv-redact-sb-toolbar'>
+                    <ToolbarComponent ref={(scope) => { this.primaryToolbar = scope; }} clicked={clickHandler.bind(this)} id='e-pv-redact-sb-toolbar'>
                         <ItemsDirective>
                             <ItemDirective prefixIcon='e-icon e-folder' tooltipText='Open' cssClass='e-pv-redact-sb-open-container' id='pdfviewer_open' text='Open'></ItemDirective>
                             <ItemDirective type='Separator'></ItemDirective>
@@ -435,13 +443,13 @@ export class Redaction extends SampleBase<{}, {}> {
                 </div>
 
                 <div id="targetDialog" className="dialog-element">
-                    <DialogComponent header={header as any} footerTemplate={footerTemplate as any} content={contentTemplate as any} showCloseIcon={true} target="#targetDialog" width={'437px'} height={'255px'} ref={(scope) => { this.dialogInstance = scope; }} id='e-pv-redact-sb-dialog'></DialogComponent>
+                    <DialogComponent header={header as any} footerTemplate={footerTemplate as any} content={contentTemplate as any} showCloseIcon={true} target="#targetDialog" width={'437px'} height={'255px'} visible={false} isModal={true} ref={(scope) => { this.dialogInstance = scope; }} id='e-pv-redact-sb-dialog'></DialogComponent>
                 </div>
                 {/* Render the PDF Viewer */}
                 <PdfViewerComponent ref={(scope) => { this.viewer = scope; }} id="container" documentPath="https://cdn.syncfusion.com/content/pdf/programmatical-annotations.pdf" resourceUrl="https://cdn.syncfusion.com/ej2/27.1.55/dist/ej2-pdfviewer-lib"
                     style={{ 'height': '640px' }}
                     enableToolbar={false} enableNavigationToolbar={false} enableAnnotationToolbar={false} enableCommentPanel={false}
-                    documentLoad={documentLoaded} pageChange={onPageChange} annotationAdd={annotationAdd} annotationRemove={annotationRemove}>
+                    documentLoad={this.documentLoaded} pageChange={this.onPageChange} annotationAdd={this.annotationAdd} annotationRemove={this.annotationRemove}>
                     <Inject services={[Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner, PageOrganizer]} />
                 </PdfViewerComponent>
                 <input type="file" id="fileUpload" accept=".pdf" onChange={this.readFile.bind(this)} style={{ 'display': 'block', 'visibility': 'hidden', 'width': '0', 'height': '0' }} />

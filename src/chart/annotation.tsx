@@ -315,7 +315,7 @@ export class Annotation extends SampleBase<{}, {}> {
                     {SAMPLE_CSS}
                 </style>
                 <div className='control-section'>
-                <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ title: 'Distance', labelFormat: 'N2', majorGridLines: {width : 0}, minimum: 0.00, maximum: 4.00 }} chartArea={{ border: { width: 0 } }} primaryYAxis={{ title: 'Speed (KM/H)', lineStyle: { width: 0 }, minimum: 50, maximum: 400, majorTickLines: { width: 0 } }} load={this.load.bind(this)} width={Browser.isDevice ? '100%' : '75%'} animationComplete={this.onChartLoad.bind(this)} axisLabelRender={this.axisLabelRender.bind(this)} selectionMode='Cluster' tooltip={{ enable : true, shared: true, header: " ", enableMarker: false, format: "Distance: ${point.x} KM <br> ${point.y} KM/H", fill: "white", border:{color:"rgb(247, 206, 105)", width: 2},textStyle:{color:"black"} }} selectedDataIndexes={[{ series: 0, point: 0 }]} legendSettings={{ visible: true, toggleVisibility: false }} title="Speed Data Plot for Interlagos Circuit">
+                <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ title: 'Distance', labelFormat: 'N2', majorGridLines: {width : 0}, minimum: 0.00, maximum: 4.00 }} chartArea={{ border: { width: 0 } }} primaryYAxis={{ title: 'Speed (KM/H)', lineStyle: { width: 0 }, minimum: 50, maximum: 400, majorTickLines: { width: 0 } }} load={this.load.bind(this)} width={Browser.isDevice ? '100%' : '75%'} animationComplete={this.onChartLoad.bind(this)} axisLabelRender={this.axisLabelRender.bind(this)} selectionMode='Cluster' tooltip={{ enable : true, showNearestTooltip: true, header: " ", enableMarker: false, format: "Distance: ${point.x} KM <br> ${point.y} KM/H", fill: "white", border:{color:"rgb(247, 206, 105)", width: 2},textStyle:{color:"black"} }} selectedDataIndexes={[{ series: 0, point: 0 }]} legendSettings={{ visible: true, toggleVisibility: false }} title="Speed Data Plot for Interlagos Circuit">
                     <Inject services={[StackingColumnSeries, Category, Legend,Tooltip, Selection, ChartAnnotation, AreaSeries]} />
                     <AnnotationsDirective>
                         <AnnotationDirective content= '<div class="first-box-bottom" > Senna S </div>' x='0.360' y='80' coordinateUnits='Point' />
@@ -365,6 +365,9 @@ export class Annotation extends SampleBase<{}, {}> {
                         In this example, you can see how to render and configure annotation feature in chart. We have used a pie chart to depict the sales for each year using annotation support,
                         while selecting a particular year from the StackedColumn series, the respective data's are showed in pie. An annotation can hold any html element as its content, here we have added the Pie chart as its content.
                    </p>
+                    <p>
+                        <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
+                    </p>
                     <p><b>Injecting Module</b></p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To use annotation feature in chart, we need to inject

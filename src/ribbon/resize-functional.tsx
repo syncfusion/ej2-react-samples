@@ -350,7 +350,7 @@ const Resize = () => {
                             <Inject services={[RibbonFileMenu, RibbonColorPicker]} />
                         </RibbonComponent>
                         <div id="ribbonPlaceHolder">
-                            <div style={{ width: '100%', height: '40px' }}>
+                            <div style={{ width: '100%', height: '40px' }} className='ribbonSliderWrapper'>
                                 <p className='ribbonResizeDisplayText'>Resize Ribbon</p>
                                 <div id='ribbonSlider' style={{ width: '200px', margin: '0 15px' }}>
                                     <SliderComponent id='slider' ref={sliderRef} min={350} change={onChange.bind(this)} created={onCreated.bind(this)} />

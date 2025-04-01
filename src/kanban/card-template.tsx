@@ -44,7 +44,7 @@ export class CardTemplate extends SampleBase<{}, {}> {
                     />
                     <ColumnDirective
                       headerText="Delivered"
-                      keyField="Delivered,Served"
+                      keyField="Delivered"
                     />
                   </ColumnsDirective>
                 </KanbanComponent>
@@ -82,7 +82,7 @@ export class CardTemplate extends SampleBase<{}, {}> {
                                                         {props.Category == 'Menu' && <div className="e-description e-tooltip-text" >{props.Description}</div>}
                                                         {props.Category != 'Menu' && < div className="e-description e-tooltip-text">{props.OrderID}</div>}
                                                     </td>}
-                                                    {(props.Category == 'Delivered' || props.Category == 'Served') && <td className="card-content">
+                                                    {(props.Category == 'Delivered') && <td className="card-content">
                                                     <table>
                                                       <tbody>
                                                         <tr>
@@ -109,7 +109,7 @@ export class CardTemplate extends SampleBase<{}, {}> {
                                                     {props.Category != 'Menu' && < td className="card-content">
                                                         {props.Category == 'Order' && < div className="e-preparingText e-tooltip-text">Preparing</div>}
                                                         {props.Category === 'Ready to Serve' && <div className="e-readyText e-tooltip-text">Ready to Serve</div>}
-                                                        {(props.Category == 'Delivered' || props.Category == 'Served') && < div className="e-deliveredText e-tooltip-text">Delivered</div>}
+                                                        {(props.Category == 'Delivered') && < div className="e-deliveredText e-tooltip-text">Delivered</div>}
                                                         {props.Category == 'Order' && <div className="e-time e-tooltip-text">
                                                             <div className="e-icons e-clock"></div>
                                                             <div className="e-mins">15 mins</div>
@@ -134,7 +134,7 @@ export class CardTemplate extends SampleBase<{}, {}> {
     }
 }
 export class KanbanDialogFormTemplate extends React.Component<{},{}> {
-  public categoryData: string[]=['Menu','Order','Ready to Serve','Delivered','Served']
+  public categoryData: string[]=['Menu','Order','Ready to Serve','Delivered']
     constructor(props) {
       super(props);
       this.state = extend({}, {}, props, true);

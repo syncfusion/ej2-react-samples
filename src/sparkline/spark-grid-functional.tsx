@@ -11,6 +11,7 @@
  import { GridComponent, ColumnsDirective, ColumnDirective, TextAlign } from '@syncfusion/ej2-react-grids';
  import { orderdata } from './data-source';
  import { updateSampleSection } from '../common/sample-base';
+ import { loadSparkLineTheme } from './theme-color';
  enableRipple(true);
  const SAMPLE_CSS = `
      .control-fluid {
@@ -27,9 +28,7 @@
     }, [])
      let sparklineInstance: SparklineComponent;
      function load(args: ISparklineLoadedEventArgs): void {
-         let theme: string = location.hash.split('/')[1];
-         theme = theme ? theme : 'Fluent2';
-         args.sparkline.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as SparklineTheme;
+        loadSparkLineTheme(args);
      }
  
      let lineData: Object[] = [

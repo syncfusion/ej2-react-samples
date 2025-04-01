@@ -76,7 +76,9 @@ export class HorizontalWaterfall extends SampleBase<{}, {}> {
                             minimum: 0, maximum: 150, interval: 25,
                             labelFormat: '{value}K',
                             edgeLabelPlacement: 'Shift',
-                            majorGridLines: { width: 1 },  
+                            majorGridLines: { width: 0 },
+                            majorTickLines: { width: 0 },
+                            lineStyle: { width: 0 }
                         }}
                         tooltip={{
                             enable: true,

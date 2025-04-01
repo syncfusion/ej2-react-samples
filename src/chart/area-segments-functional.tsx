@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, Tooltip, ILoadedEventArgs, ChartTheme, AnnotationsDirective, AnnotationDirective, DateTime, MultiColoredAreaSeries, ChartAnnotation, SegmentsDirective, SegmentDirective } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import { loadChartTheme } from './theme-color';
 export let dataValues = [];
 [150, 71.5, 106.4, 100.25, 70.0, 106.0, 85.6, 78.5, 76.4, 86.1, 155.6, 160.4,].map((value, index) => {
     dataValues.push({ XValue: new Date(2016, index, 1), YValue: value });
@@ -73,15 +74,13 @@ const AreaMultiColored = () => {
         chart.setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
     return (
         <div className="control-pane">
             <style>{SAMPLE_CSS}</style>
             <div className="control-section">
-                <ChartComponent id="charts" style={{ textAlign: 'center' }} primaryXAxis={{ valueType: 'DateTime',  majorTickLines: {width : 0}, minorTickLines: {width: 0}, labelFormat: 'MMM', intervalType: 'Months',   majorGridLines: { width: 0 }, interval: 1, labelRotation: Browser.isDevice ? -45 : 0, labelIntersectAction: Browser.isDevice? 'None' : 'Trim' }} primaryYAxis={{ labelFormat: '${value}K', rangePadding: 'None', minimum: 0, maximum: 200, interval: 50, lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 } }} tooltip={{ enable: true, shared: true, header: '<b>Revenue</b>', format: '${point.x} : <b>${point.y}</b>' }} legendSettings={{ visible: false }} chartArea={{ border: { width: 0 } }} load={load.bind(this)} width={Browser.isDevice ? '100%' : '75%'} title="US Season Retail Sales Growth" loaded={onChartLoad.bind(this)}>
+                <ChartComponent id="charts" style={{ textAlign: 'center' }} primaryXAxis={{ valueType: 'DateTime',  majorTickLines: {width : 0}, minorTickLines: {width: 0}, labelFormat: 'MMM', intervalType: 'Months',   majorGridLines: { width: 0 }, interval: 1, labelRotation: Browser.isDevice ? -45 : 0, labelIntersectAction: Browser.isDevice? 'None' : 'Trim' }} primaryYAxis={{ labelFormat: '${value}K', rangePadding: 'None', minimum: 0, maximum: 200, interval: 50, lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 } }} tooltip={{ enable: true, header: '<b>Revenue</b>', format: '${point.x} : <b>${point.y}</b>', showNearestTooltip: true }} legendSettings={{ visible: false }} chartArea={{ border: { width: 0 } }} load={load.bind(this)} width={Browser.isDevice ? '100%' : '75%'} title="US Season Retail Sales Growth" loaded={onChartLoad.bind(this)}>
                     <Inject services={[MultiColoredAreaSeries, DateTime, Tooltip, ChartAnnotation,]} />
                     <AnnotationsDirective>
                         <AnnotationDirective content={content} region="Series" x="18%" y="43%"></AnnotationDirective>
@@ -124,7 +123,7 @@ const AreaMultiColored = () => {
                     Points within the range can be configured with <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/chartSegment/#color" aria-label="Navigate to the color property reference for React Chart component">color</a> property in chart segment.
                 </p>
                 <p>
-                    The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/tooltip/" aria-label="Navigate to the tooltip property reference for React Chart component">tooltip</a> is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+                    <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
                 </p>
                 <p><b>Injecting Module</b></p>
                 <p>

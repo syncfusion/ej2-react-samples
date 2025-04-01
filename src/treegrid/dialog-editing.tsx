@@ -4,18 +4,31 @@ import { TreeGridComponent, ColumnsDirective, ColumnDirective, Page, Inject, Edi
 import { sampleData } from './data';
 import { SampleBase } from '../common/sample-base';
 
+  {/* custom code start */}
+  const editDialog_height = `
+  #_gridcontrol_dialogEdit_wrapper.e-dialog.e-edit-dialog {
+    max-height: 589px !important;
+  } `;
+  {/* custom code end */}
+
 export class Dialog extends SampleBase<{}, {}> {
   public toolbarOptions: any = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
   public editSettings: any = { allowEditing: true, allowAdding: true, allowDeleting: true, mode:'Dialog' };
   public editparams: any = { params: { popupHeight: '300px' } };
   public validationRule: Object = { required: true};
-  public validationRule1: Object = { date: true};
+  public validationRule1: Object = { date: ['M/d/yyyy', 'Please enter a valid date'] };
+  public editparams3: any = { params: { format:'M/d/yyyy',}};
   public validationRule2: Object = { required: true, number: true};
   public editparams2: any = { params: { format: 'n' } };
   public pageSettings: Object = { pageCount: 8};
   render() {
     return (
       <div className='control-pane'>
+        {/* custom code start */}
+        <style>
+            {editDialog_height}
+          </style>
+         {/* custom code end */}
         <div className='control-section'>
           <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' height='350' allowPaging={true}
             editSettings={this.editSettings} pageSettings={this.pageSettings} toolbar={this.toolbarOptions}>
@@ -24,7 +37,7 @@ export class Dialog extends SampleBase<{}, {}> {
                 isPrimaryKey={true}></ColumnDirective>
               <ColumnDirective field='taskName' headerText='Task Name' width='150' validationRules={this.validationRule}></ColumnDirective>
               <ColumnDirective field='startDate' headerText='Start Date' width='110' textAlign='Right'
-                editType='datepickeredit' format='yMd' validationRules={this.validationRule1} />
+                editType='datepickeredit' format='yMd' edit={this.editparams3} validationRules={this.validationRule1} />
               <ColumnDirective field='endDate' headerText='End Date' width='130' textAlign='Right'
                 editType='datepickeredit' format='yMd' />
               <ColumnDirective field='duration' headerText='Duration' width='90' editType='numericedit' textAlign='Right'

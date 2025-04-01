@@ -3,26 +3,23 @@
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import {
-    ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject,
-    RangeColumnSeries, Category, Tooltip, ILoadedEventArgs, Legend, ChartTheme, DataLabel
-} from '@syncfusion/ej2-react-charts';
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ILoadedEventArgs, RangeColumnSeries, Category, Tooltip, Legend, DataLabel } from '@syncfusion/ej2-react-charts';
 import { SampleBase } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
+import { loadChartTheme } from './theme-color';
 
-export let data: any[] = [
-    { x: 'Jan', low: 28, high: 72, text:'January'},
-    { x: 'Feb', low: 25, high: 75, text:'February' }, 
-    { x: 'Mar', low: 18, high: 65, text:'March' },
-    { x: 'Apr', low: 22, high: 69, text:'April' },
-    { x: 'May', low: 56, high: 87, text:'May' }, 
-    { x: 'Jun', low: 48, high: 75, text:'June' },
-    { x: 'Jul', low: 40, high: 78, text:'July' },
-    { x: 'Aug', low: 35, high: 73, text:'August' }, 
-    { x: 'Sep', low: 43, high: 64, text:'September' }, 
-    { x: 'Oct', low: 38, high: 77, text:'October' }, 
-    { x: 'Nov', low: 28, high: 54, text:'November' }, 
-    { x: 'Dec', low: 29, high: 56, text:'December' }
+export let rangeBarData: Object[] = [
+    { country: 'Solomon Islands', low: 44, high: 134 },
+    { country: 'Tonga', low: 52, high: 131 },
+    { country: 'Trinidad and Tobago', low: 36, high: 151 },
+    { country: 'Samoa', low: 49, high: 131 },
+    { country: 'Saint Lucia', low: 39, high: 148 },
+    { country: 'Georgia', low: 68, high: 122 },
+    { country: 'Peru', low: 56, high: 141 },
+    { country: 'Grenada', low: 41, high: 147 },
+    { country: 'Dominica', low: 46, high: 143 },
+    { country: 'Ukraine', low: 64, high: 148 },
+    { country: 'Colombia', low: 64, high: 134 }
 ];
 
 
@@ -35,56 +32,33 @@ export class RangeBar extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <style>
-                    {SAMPLE_CSS}
-                </style>
+                <style>{SAMPLE_CSS}</style>
                 <div className='control-section'>
-                    <ChartComponent id='charts' style={{ textAlign: "center" }}
-                        primaryXAxis={{ valueType: 'Category', majorGridLines: { width: 0 }, majorTickLines: {width: 0} }}
-                        primaryYAxis={{ labelFormat: '{value}˚F', edgeLabelPlacement: 'Shift', lineStyle: { width: 0 }, majorTickLines: { width: 0 },title:'Temperature (In Fahrenheit)'}}
-                        title='Temperature Variation' loaded={this.onChartLoad.bind(this)}
-                        load={this.load.bind(this)}
-                        legendSettings={{visible:false}}
-                        isTransposed={true}
-                        chartArea={{ border: { width: 0 } }}
-                        width={Browser.isDevice ? '100%' : '75%'}
-                        tooltip={{
-                            enable: true,
-                            header : "<b>${point.tooltip}</b>", format :"Temperature : <b>${point.low} - ${point.high}</b>"
-                        }}>
+                    <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', majorGridLines: { width: 0 }, majorTickLines: { width: 0 }, lineStyle: { width: 0 } }} primaryYAxis={{ labelFormat: '{value}', minimum: 0, maximum: 200, interval: 20, edgeLabelPlacement: 'Shift', lineStyle: { width: 0 }, majorTickLines: { width: 0 }, title: 'Growth in Visa-Free Destinations', labelRotation: Browser.isDevice ? -45 : 0 }} title='Global Passport Rankings: Growth in Visa-Free Access (2006–2024)' subTitle='Source: wikipedia.org' loaded={this.onChartLoad.bind(this)} load={this.load.bind(this)} isTransposed={true} chartArea={{ border: { width: 0 } }} width={Browser.isDevice ? '100%' : '75%'} tooltip={{ enable: true, format: '${point.x}: <b>${point.low} - ${point.high}</b>' }}>
                         <Inject services={[RangeColumnSeries, Tooltip, Category, Legend, DataLabel]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={data} marker={{
-                                     dataLabel: {
-                                        visible: true,
-                                        position: 'Outer',
-                                    }
-                                }} name='California' xName='x' low='low' columnSpacing={0.1} high='high' tooltipMappingName='text' type='RangeColumn'>
-                            </SeriesDirective>
+                            <SeriesDirective dataSource={rangeBarData} marker={{ dataLabel: { visible: true, position: 'Outer' } }} xName='country' low='low' high='high' type='RangeColumn' cornerRadius={{ topLeft: 4, topRight: 4, bottomLeft: 4, bottomRight: 4 }} columnSpacing={0.4} />
                         </SeriesCollectionDirective>
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                <p>
-                This sample shows the maximum and minimum temperatures for several months with the default range column series inverted. The tooltip shows the information for each data point.
-            </p>
+                    <p>
+                        This sample visually represents changes in visa-free access for various countries using an inverted Range Column chart. It highlights the countries that have experienced the most significant increases and decreases over the past decade.
+                    </p>
                 </div>
                 <div id="description">
                     <p>
-                    In this example, you can see how to render and configure the range column chart in an inverted manner. You can use <code>IsTransposed</code> property to invert your chart.
+                        In this example, you can see how to render and configure the range column chart in an inverted manner. You can use <code>isTransposed</code> property to invert your chart.
                     </p>
                     <p>
                         <code>Tooltips</code> are enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
                     </p>
-
                     <p><b>Injecting Module</b></p>
                     <p>
-                        chart component features are segregated into individual feature-wise modules. To use range column series, we need to Injecting
-                        <code>RangeColumnSeries</code> module into <code>services</code>.
+                        chart component features are segregated into individual feature-wise modules. To use range column series, we need to Injecting <code>RangeColumnSeries</code> module into <code>services</code>.
                     </p>
                     <p>
-                        More information on the range column series can be found in this &nbsp;
-                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/range-column" aria-label="Navigate to the documentation for Range Column in React Chart component">documentation section</a>.
+                        More information on the range column series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/range-column" aria-label="Navigate to the documentation for Range Column in React Chart component">documentation section</a>.
                     </p>
                 </div>
             </div>
@@ -94,11 +68,9 @@ export class RangeBar extends SampleBase<{}, {}> {
         let chart: Element = document.getElementById('charts');
         chart.setAttribute('title', '');
     };
-        
+
     public load(args: ILoadedEventArgs): void {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
-        
+
 }

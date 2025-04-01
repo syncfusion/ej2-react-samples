@@ -13,11 +13,12 @@ import { PropertyPane } from '../common/property-pane';
 import { EmitType, Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import { chartData } from './stock-data';
-
+import { borderColor, loadRangeNavigatorTheme, themes } from './theme-color';
 export let zoomFactor: number;
 export let zoomPosition: number;
 export let stockData: Object[] = [];
 export let startDate: Date = new Date(2012, 4, 2);
+
 for (let i: number = 0; i <= 250; i++) {
     stockData.push(chartData[i]);
     if (i > 45 && 50 > i) {
@@ -32,11 +33,8 @@ for (let i: number = 0; i <= 250; i++) {
         (stockData[i] as Points).open = null;
     }
 }
-export let themes : string[] = ['bootstrap5', 'bootstrap5dark', 'tailwind', 'tailwinddark', 'material', 'materialdark', 'bootstrap4', 'bootstrap', 'bootstrapdark', 'fabric', 'fabricdark', 'highcontrast', 'fluent', 'fluentdark', 'material3', 'material3dark', 'fluent2', 'fluent2highcontrast', 'fluent2dark', 'tailwind3', 'tailwind3dark'];
-export let borderColor : string[] = ['#FD7E14', '#FD7E14', '#5A61F6', '#8B5CF6', '#00bdae', '#9ECB08', '#a16ee5', '#a16ee5', '#a16ee5', '#4472c4', '#4472c4', '#79ECE4', '#1AC9E6', '#1AC9E6', '#6355C7', '#4EAAFF', '#6200EE', '#9BB449', '#9BB449', '#2F4074', '#8029F1'];
-export let regionColor: string[] = ['rgba(99, 85, 199, 0.3)', 'rgba(143, 128, 244, 0.3)', 'rgba(90, 97, 246, 0.3)', 'rgba(139, 92, 246, 0.3)', 'rgba(0, 189, 174, 0.3)',
-    'rgba(158, 203, 8, 0.3)', 'rgba(161, 110, 229, 0.3)', 'rgba(161, 110, 229, 0.3)', 'rgba(161, 110, 229, 0.3)', 'rgba(68, 114, 196, 0.3)',
-    'rgba(68, 114, 196, 0.3)', 'rgba(121, 236, 228, 0.3)', 'rgba(26, 201, 230, 0.3)', 'rgba(26, 201, 230, 0.3)', 'rgba(99, 85, 199, 0.3)', 'rgba(78, 170, 255, 0.3)', 'rgba(98, 0, 238, 0.3)', 'rgba(155, 180, 73, 0.3)', 'rgba(155, 180, 73, 0.3)','rgba(47, 64, 116, 0.3)', 'rgba(128, 41, 241, 0.3)'];
+
+
 const SAMPLE_CSS = `
      .control-fluid {
          padding: 0px;
@@ -327,15 +325,11 @@ function EmptyData() {
 
 
     function rangeLoad(args: IRangeLoadedEventArgs): void {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
-        let rangeTheme: string = args.rangeNavigator.theme;
+        let selectedTheme: string = loadRangeNavigatorTheme(args, true); 
         args.rangeNavigator.series[0].type = "Area";
         args.rangeNavigator.series[0].fill = 'url(#' + selectedTheme.toLowerCase() + '-gradient-chart)';
         args.rangeNavigator.series[0].border.width = 2;
-        args.rangeNavigator.series[0].border.color = borderColor[themes.indexOf(rangeTheme.toLowerCase())];
+        args.rangeNavigator.series[0].border.color = borderColor[themes.indexOf(args.rangeNavigator.theme.toLowerCase())];
     };
 
     function changed(args: IChangedEventArgs): void {
@@ -350,14 +344,11 @@ function EmptyData() {
     };
 
     function chartLoad(args: ILoadedEventArgs): void {
+        let selectedTheme: String = loadRangeNavigatorTheme(args, true); 
         args.chart.primaryXAxis.zoomFactor = zoomFactor;
         args.chart.primaryXAxis.zoomPosition = zoomPosition;
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
-        let chartTheme: string = args.chart.theme;
         args.chart.series[0].fill = 'url(#' + selectedTheme.toLowerCase() + '-gradient-chart)';
-        args.chart.series[0].border.color = borderColor[themes.indexOf(chartTheme.toLowerCase())];
+        args.chart.series[0].border.color = borderColor[themes.indexOf(args.chart.theme.toLowerCase())];
         chartRendered = true;
     };
 

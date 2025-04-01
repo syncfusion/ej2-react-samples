@@ -12,6 +12,7 @@ import {
 } from '@syncfusion/ej2-react-charts';
 import { PropertyPane } from '../common/property-pane';
 import { updateSampleSection } from '../common/sample-base';
+import { loadSmithChartTheme } from './theme-color';
 // custom code start
 const SAMPLE_CSS = `
      .control-fluid {
@@ -105,10 +106,7 @@ function Customization() {
     function load(args: ISmithchartLoadedEventArgs): void {
         args.smithchart.title.text = 'Impedance Transmission';
         args.smithchart.title.visible = true;
-        let theme: string = location.hash.split('/')[1];
-        theme = theme ? theme : 'Fluent2';
-        args.smithchart.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).
-            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as SmithchartTheme;
+        loadSmithChartTheme(args);
     }
 
 

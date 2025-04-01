@@ -8,7 +8,7 @@ import { updateSampleSection } from '../common/sample-base';
 import { Browser} from '@syncfusion/ej2-base';
 import { PropertyPane } from '../common/property-pane';
 import { AccumulationChartComponent, AccumulationSeriesCollectionDirective, AccumulationSeriesDirective, AccumulationDataLabel, PieSeries, Inject, IAccLoadedEventArgs, AccumulationTheme, AccumulationAnnotationsDirective, AccumulationAnnotationDirective, ChartAnnotation, AccumulationAnnotation, AccumulationTooltip } from '@syncfusion/ej2-react-charts';
-
+import { loadAccumulationChartTheme } from './theme-color';
 export let data1: any[] = [
     { x: 'Chrome', y: 100, text: 'Chrome (100M)<br>40%', tooltipMappingName: '40%'},
     { x: 'UC Browser', y: 40, text: 'UC Browser (40M)<br>16%', tooltipMappingName: '16%' },
@@ -34,9 +34,7 @@ const SemiPie = () => {
         document.getElementById('pie-chart').setAttribute('title', '');
     };
     const load = (args: IAccLoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as AccumulationTheme;
+        loadAccumulationChartTheme(args);
     };
     return (
         <div className='control-pane'>

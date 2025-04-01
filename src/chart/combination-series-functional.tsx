@@ -7,6 +7,7 @@ import * as ReactDOM from "react-dom";
 import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ChartTheme, Legend, StackingColumnSeries, LineSeries, Tooltip, ILoadedEventArgs, Category, ColumnSeries, Highlight } from '@syncfusion/ej2-react-charts';
 import { updateSampleSection } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
+import { loadChartTheme } from './theme-color';
 export let data: any[] = [
     { x: '2005', y: 1.2, y1: 0.5, y2: 0.7, y3: -0.8, y4: 1.5},
     { x: '2006', y: 1, y1: 0.5, y2: 1.4, y3: 0, y4: 2.3 },
@@ -34,15 +35,13 @@ const CombinationSeries = () => {
         chart.setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
     return (
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
-                <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ interval: Browser.isDevice ? 2 : 1, labelIntersectAction: 'Rotate45', valueType: 'Category', majorGridLines: { width: 0 }, minorGridLines: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 }, lineStyle: { width: 0 } }} load={load.bind(this)} primaryYAxis={{ title: 'Growth (in Billion)', minimum: -3, maximum: 3, interval: 1, lineStyle: { width: 0 }, majorTickLines: { width: 0 }, majorGridLines: { width: 1 }, minorGridLines: { width: 1 }, minorTickLines: { width: 0 }, labelFormat: '{value}B' }} chartArea={{ border: { width: 0 } }} title='Annual Growth GDP in France' loaded={onChartLoad.bind(this)} tooltip={{ enable: true }} width={Browser.isDevice ? '100%' : '75%'} legendSettings={{ visible: true, enableHighlight: true }}>
+                <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ interval: Browser.isDevice ? 2 : 1, labelIntersectAction: 'Rotate45', valueType: 'Category', majorGridLines: { width: 0 }, minorGridLines: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 }, lineStyle: { width: 0 } }} load={load.bind(this)} primaryYAxis={{ title: 'Growth (in Billion)', minimum: -3, maximum: 3, interval: 1, lineStyle: { width: 0 }, majorTickLines: { width: 0 }, majorGridLines: { width: 1 }, minorGridLines: { width: 1 }, minorTickLines: { width: 0 }, labelFormat: '{value}B' }} chartArea={{ border: { width: 0 }, margin: { bottom: 12 } }} title='Annual Growth GDP in France' loaded={onChartLoad.bind(this)} tooltip={{ enable: true, enableHighlight: true }} width={Browser.isDevice ? '100%' : '75%'} legendSettings={{ visible: true, enableHighlight: true }}>
                     <Inject services={[StackingColumnSeries, LineSeries, Category, ColumnSeries, Tooltip, Legend, Highlight]} />
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={data} xName='x' yName='y' name='Private Consumption' type='StackingColumn' />
@@ -52,9 +51,6 @@ const CombinationSeries = () => {
                         <SeriesDirective dataSource={data} xName='x' yName='y4' name='GDP' type='Line' width={2} opacity={0.6} marker={{ visible: true, width: 7, height: 7 }} />
                     </SeriesCollectionDirective>
                 </ChartComponent>
-                <div style={{ float: 'right', marginRight: '10px' }}>Source: &nbsp;
-                    <a href="http://perspectives.pictet.com/2016/01/29/growth-accelerated-markedly-in-france-and-spain-in-2015/" target="_blank" aria-label="Navigate to the documentation for perspectives pictet">perspectives.pictet.com</a>
-                </div>
             </div>
             <div id="action-description">
                 <p>This sample illustrates a combination of line and stacked column series. Tooltip shows the information about the data point.</p>

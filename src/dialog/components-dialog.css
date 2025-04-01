@@ -64,7 +64,8 @@
 .fabric-dark #defaultDialog #formId {
     background: #201f1f;
 }
-.tailwind-dark #defaultDialog #formId {
+.tailwind-dark #defaultDialog #formId,
+.tailwind3-dark #defaultDialog #formId {
     background: #1f2937;
 }
 .fluent-dark #defaultDialog #formId,
@@ -77,8 +78,9 @@
 .bootstrap-dark #defaultDialog .form-title,
 .fabric-dark #defaultDialog .form-title,
 .tailwind-dark #defaultDialog .form-title,
+.tailwind3-dark #defaultDialog .form-title,
 .bootstrap5-dark #defaultDialog .form-title,
-.bootstrap5.3-dark #defaultDialog .form-title,
+.bootstrap5\.3-dark #defaultDialog .form-title,
 .fluent2-dark #defaultDialog .form-title,
 .fluent2-highcontrast #defaultDialog .form-title,
 .fluent-dark #defaultDialog .form-title {

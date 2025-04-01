@@ -21,7 +21,7 @@ export const ProgressBarSampleOrder: Object = [
         'name': 'Angle',
         'order': '01',
         'category': 'Progress Bar',
-        'description': 'This demo for Essential<sup>®</sup> JS2 Progress Bar control shows the customizing options for angle in circular progress bar.'
+        'description': 'This demo for Essential JS2 Progress Bar control shows the customizing options for angle in circular progress bar.'
     },
     {
         'path': 'progress-bar/custom-content',
@@ -29,7 +29,7 @@ export const ProgressBarSampleOrder: Object = [
         'name': 'Custom Contents',
         'order': '01',
         'category': 'Progress Bar',
-        'description': 'This demo for Essential<sup>®</sup> JS2 Progress Bar control shows the progress bar with custom content with the help of annotation.'
+        'description': 'This demo for Essential JS2 Progress Bar control shows the progress bar with custom content with the help of annotation.'
     },
     {
         'path': 'progress-bar/labels',
@@ -37,7 +37,7 @@ export const ProgressBarSampleOrder: Object = [
         'name': 'Labels',
         'order': '01',
         'category': 'Progress Bar',
-        'description': 'This demo for Essential<sup>®</sup> JS2 Progress Bar control shows the linear progress bar with different labels format with help of textRender event.'
+        'description': 'This demo for Essential JS2 Progress Bar control shows the linear progress bar with different labels format with help of textRender event.'
     },
     {
         'path': 'progress-bar/radius',
@@ -45,7 +45,7 @@ export const ProgressBarSampleOrder: Object = [
         'name': 'Radius',
         'order': '01',
         'category': 'Progress Bar',
-        'description': 'This demo for Essential<sup>®</sup> JS2 Progress Bar control shows the customizing options for radius, inner-radius, pie progress, track and progress thickness.'
+        'description': 'This demo for Essential JS2 Progress Bar control shows the customizing options for radius, inner-radius, pie progress, track and progress thickness.'
     },
     {
         'path': 'progress-bar/tool-tip',
@@ -53,7 +53,7 @@ export const ProgressBarSampleOrder: Object = [
         'name': 'Tooltip',
         'order': '01',
         'category': 'Progress Bar',
-        'description': 'This demo for Essential<sup>®</sup> JS2 Progress Bar control shows the linear progress bar with tooltip showing the progress.'
+        'description': 'This demo for Essential JS2 Progress Bar control shows the linear progress bar with tooltip showing the progress.'
     },
     {
         'path': 'progress-bar/stripes',

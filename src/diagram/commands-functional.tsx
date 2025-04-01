@@ -11,7 +11,8 @@ import {
     BpmnDiagrams,
     NodeConstraints,
     NodeModel,
-    IHistoryChangeArgs
+    IHistoryChangeArgs,
+    FlipDirection
 } from '@syncfusion/ej2-react-diagrams';
 import { updateSampleSection } from "../common/sample-base";
 import { ToolbarComponent } from '@syncfusion/ej2-react-navigations';
@@ -240,10 +241,10 @@ function CommandsSample() {
 
     // Flip selected objects.
     function flipObjects(flipType: any) {
-        const flipDirection = flipType === 'Flip Horizontal' ? 'Horizontal' : 'Vertical';
+        const flipDirection = flipType === 'Flip Horizontal' ? FlipDirection.Horizontal : FlipDirection.Vertical;
 
         for (const selectedObject of diagramInstance.selectedItems.nodes) {
-            selectedObject.flip = flipDirection;
+            selectedObject.flip ^= flipDirection;
         }
 
         diagramInstance.dataBind();

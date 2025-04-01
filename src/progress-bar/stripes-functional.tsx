@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { ProgressBarComponent, ILoadedEventArgs, ProgressTheme, AnimationModel } from '@syncfusion/ej2-react-progressbar';
 import { EmitType } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import { loadProgressBarTheme } from './theme-colors';
 
 const SAMPLE_CSS = `
  #control-container {
@@ -40,14 +41,11 @@ const ProgressBarStripes = () => {
     const progressThickness: number = 20;
     const trackThickness: number = 20;
     const progressLoad: EmitType<ILoadedEventArgs> = (args: ILoadedEventArgs) => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.progressBar.theme = (selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ProgressTheme;
-        if (args.progressBar.theme === 'Material') {
+        let theme: string = loadProgressBarTheme(args);
+        if (theme === 'Material') {
             args.progressBar.trackColor = '#eee';
         }
-        if (selectedTheme === 'highcontrast') {
+        if (theme === 'HighContrast') {
             args.progressBar.trackColor = '#969696';
         }
     }

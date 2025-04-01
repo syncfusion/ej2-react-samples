@@ -7,9 +7,9 @@ import * as ReactDOM from "react-dom";
 import { EmitType } from '@syncfusion/ej2-base';
 import { DataManager, Query } from '@syncfusion/ej2-data';
 import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, IPointRenderEventArgs, ChartTheme, Legend, Category, ColumnSeries, Tooltip, IAxisLabelRenderEventArgs, ILoadedEventArgs, DataLabel } from '@syncfusion/ej2-react-charts';
-import { pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, pointBootstrap5Colors, pointMaterial3Colors, pointMaterial3DarkColors, fluent2Colors, fluent2HighContrastColors, pointTailwind3Colors, pointTailwind3DarkColors } from './theme-color';
 import { updateSampleSection } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
+import { loadChartTheme, pointRenderEvent } from './theme-color';
 export let dataManager = new DataManager({
     url: 'https://services.syncfusion.com/react/production/api/orders'
 });
@@ -55,53 +55,7 @@ const RemoteData = () => {
     let waitingpopref = useRef<HTMLDivElement>(null)
     let loaded: number = 1;
     const pointRender = (args: IPointRenderEventArgs) => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        if (selectedTheme && selectedTheme.indexOf('fabric') > -1) {
-            args.fill = pointFabricColors[args.point.index % 10];;
-        } else if (selectedTheme === 'material-dark') {
-            args.fill = pointMaterialDarkColors[args.point.index % 10];;
-        } else if (selectedTheme === 'material') {
-            args.fill = pointMaterialColors[args.point.index % 10];
-        } else if (selectedTheme === 'bootstrap5-dark') {
-            args.fill = pointBootstrap5DarkColors[args.point.index % 10];
-        } else if (selectedTheme === 'bootstrap5') {
-            args.fill = pointBootstrap5Colors[args.point.index % 10];
-        } else if (selectedTheme === 'bootstrap') {
-            args.fill = pointBootstrapColors[args.point.index % 10];
-        } else if (selectedTheme === 'bootstrap4') {
-            args.fill = pointBootstrapColors[args.point.index % 10];
-        } else if (selectedTheme === 'bootstrap-dark') {
-            args.fill = pointBootstrapColors[args.point.index % 10];
-        } else if (selectedTheme === 'highcontrast') {
-            args.fill = pointHighContrastColors[args.point.index % 10];
-        } else if (selectedTheme === 'fluent-dark') {
-            args.fill = pointFluentDarkColors[args.point.index % 10];
-        } else if (selectedTheme === 'fluent') {
-            args.fill = pointFluentColors[args.point.index % 10];
-        } else if (selectedTheme === 'tailwind-dark') {
-            args.fill = pointTailwindDarkColors[args.point.index % 10];
-        } else if (selectedTheme === 'tailwind') {
-            args.fill = pointTailwindColors[args.point.index % 10];
-        } else if (selectedTheme === 'material3-dark') {
-            args.fill = pointMaterial3DarkColors[args.point.index % 10];
-        } else if (selectedTheme === 'material3') {
-            args.fill = pointMaterial3Colors[args.point.index % 10];
-        } else if (selectedTheme === 'fluent2') {
-            args.fill = fluent2Colors[args.point.index % 10];
-        } else if (selectedTheme === 'fluent2-highcontrast' || selectedTheme === 'fluent2-dark') {
-            args.fill = fluent2HighContrastColors[args.point.index % 10];
-        }
-        else if (selectedTheme === 'tailwind') {
-            args.fill = pointTailwindColors[args.point.index % 10];
-        } else if (selectedTheme === 'tailwind-dark') {
-            args.fill = pointTailwindDarkColors[args.point.index % 10];
-        } 
-        else if (selectedTheme === 'tailwind3') {
-            args.fill = pointTailwind3Colors[args.point.index % 10];
-        } else if (selectedTheme === 'tailwind3-dark') {
-            args.fill = pointTailwind3DarkColors[args.point.index % 10];
-        }
+        pointRenderEvent(args);
     }
     const onChartLoad = (args: ILoadedEventArgs): void => {
         waitingpopref.current.style.display = 'none';
@@ -126,9 +80,7 @@ const RemoteData = () => {
         let height: number = args.chart.element.offsetHeight;
         waitingpopref.current.style.top = (height ? height : 300 / 2 - 25) + 'px';
         waitingpopref.current.style.left = (width / 2 - 25) + 'px';
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
     return (
         <div className='control-pane'>
@@ -137,7 +89,7 @@ const RemoteData = () => {
                 <div id="waitingpopup" ref={waitingpopref} className="waitingpopup" style={{ display: 'none', top: '0 px', left: '0 px' }}>
                     <span id="gif" className="image"></span>
                 </div>
-                <ChartComponent id='charts' style={{ textAlign: "center" }} load={load.bind(this)} primaryXAxis={{ rangePadding: 'Additional', valueType: 'Category', majorGridLines: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: {width: 0} }} primaryYAxis={{ majorGridLines: { width: 1 }, majorTickLines: { width: 0 }, lineStyle: { width: 0 }, title: 'Freight rate in U.S. dollars' }} width={Browser.isDevice ? '100%' : '75%'} chartArea={{ border: { width: 0 } }} axisLabelRender={axisLabelRender.bind(this)} pointRender={pointRender.bind(this)} tooltipRender={tooltipRender.bind(this)} title="Container freight rate" loaded={onChartLoad.bind(this)} legendSettings={{ visible: false }} tooltip={{ enable: true, header: "<b>Freight rate</b>"}}>
+                <ChartComponent id='charts' style={{ textAlign: "center" }} load={load.bind(this)} primaryXAxis={{ rangePadding: 'Additional', valueType: 'Category', majorGridLines: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: {width: 0} }} primaryYAxis={{ majorGridLines: { width: 1 }, majorTickLines: { width: 0 }, lineStyle: { width: 0 }, title: 'Freight rate in U.S. dollars' }} width={Browser.isDevice ? '100%' : '75%'} chartArea={{ border: { width: 0 } }} axisLabelRender={axisLabelRender.bind(this)} pointRender={pointRender.bind(this)} tooltipRender={tooltipRender.bind(this)} title="Container freight rate" loaded={onChartLoad.bind(this)} legendSettings={{ visible: false }} tooltip={{ enable: true, header: "<b>Freight rate</b>" }}>
                     <Inject services={[ColumnSeries, Legend, Category, Tooltip, DataLabel]} />
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={dataManager} xName='CustomerID' type='Column' yName='Freight' name='Story Point' query={query} animation={{ enable: false }} marker={{ dataLabel: { visible: true, position: 'Top',format: "{value}K", font: { fontWeight: '600', color: '#ffffff' },} }} />

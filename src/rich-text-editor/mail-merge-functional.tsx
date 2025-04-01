@@ -118,6 +118,7 @@ function MailMerge() {
         if (args.item.text != null) {
             const value = textToValueMap[args.item.text];
             const trimmedValue = value.trim();
+            rteObj.formatter.editorManager.nodeSelection.restore();
             rteObj.executeCommand(
                 'insertHTML',
                 `<span contenteditable="false" class="e-mention-chip"><span>{{${trimmedValue}}}</span></span>&nbsp;`,

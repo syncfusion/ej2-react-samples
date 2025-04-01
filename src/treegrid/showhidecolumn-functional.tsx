@@ -8,7 +8,6 @@ import { sampleData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 
-// custom code start
 const SAMPLE_CSS = `
 .fluent2 .btn,
 .fluent2-dark .btn,
@@ -20,7 +19,6 @@ const SAMPLE_CSS = `
   padding-left:5px;
   }
   }`;
-// custom code end
 
 const ShowHideColumn = () => {
   useEffect(() => {

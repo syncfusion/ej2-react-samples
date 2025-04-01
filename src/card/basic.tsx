@@ -64,13 +64,14 @@ export class Basic extends SampleBase<{}, {}> {
                 </p>
             </div>
             <div id="description">
-                <p>
-                    The card is a small content display area in which specific structure of the content can be shown. This sample demonstrates
-                    the defined structure and predefined classes for adding basic cards with header, and content elements.
-                    <p>More information about Card can be found in this
-                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/card/getting-started/">
-                            documentation</a> section.</p>
-                    </p>
+            <p>
+                The card is a small content display area in which specific structure of the content can be shown. This sample demonstrates
+                the defined structure and predefined classes for adding basic cards with header, and content elements.
+            </p>
+            <p>
+                More information about Card can be found in this
+                <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/card/getting-started/"> documentation</a> section.
+            </p>
             </div>
             </div>
         );

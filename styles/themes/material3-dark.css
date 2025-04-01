@@ -77,6 +77,9 @@
 .material3-dark #sb-content {
     border-radius: 12px;
 }
+.material3-dark .sb-download-btn  {
+    font-weight: 400;
+}
 
 body.material3-dark,
 .material3-dark #sb-header-text,
@@ -416,4 +419,10 @@ body.material3-dark,
 
 .material3-dark #sb-nextjs-btn.e-link:hover {
     color: #846ebb;
+}
+
+@media (max-width: 550px) {
+    .material3-dark .sb-mobile-setting {
+        padding-top: 2px;
+    }
 }

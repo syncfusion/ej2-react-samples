@@ -4,6 +4,7 @@ import * as ReactDOM from "react-dom";
 import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, DateTime, StepAreaSeries, Tooltip, ILoadedEventArgs, ChartTheme, Highlight, Legend } from '@syncfusion/ej2-react-charts';
 import { updateSampleSection } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
+import { loadChartTheme } from './theme-color';
 /**
  * StepLine Series
  */
@@ -64,9 +65,7 @@ const StepLineWithoutRiser = () => {
         chart.setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
 
     return (
@@ -97,7 +96,7 @@ const StepLineWithoutRiser = () => {
                     load={load.bind(this)}
                     width={Browser.isDevice ? '100%' : '75%'}
                     chartArea={{ border: { width: 0 } }}
-                    tooltip={{ enable: true, shared: true }}
+                    tooltip={{ enable: true, showNearestTooltip: true }}
                     title='Sales of Product Over Time'
                     legendSettings={{ visible: false }}
                     loaded={onChartLoad.bind(this)}>
@@ -112,7 +111,6 @@ const StepLineWithoutRiser = () => {
                             border={{ width: 2.5 }}
                             noRisers={true}
                             step='Center'
-                            marker={{ allowHighlight: false }}
                         />
                     </SeriesCollectionDirective>
                 </ChartComponent>
@@ -128,6 +126,9 @@ const StepLineWithoutRiser = () => {
                     In this example, you can see how to render and configure a step area chart without vertical risers. The
                     <code>noRisers</code> feature allows the series to appear as a continuous flow without showing vertical lines
                     between points. This approach can be useful for highlighting trends without the distraction of risers.
+                </p>
+                <p>
+                    <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
                 </p>
                 <p style={{ fontWeight: 500 }}><b>Injecting Module</b></p>
                 <p>

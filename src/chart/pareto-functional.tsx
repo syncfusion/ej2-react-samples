@@ -7,6 +7,7 @@ import * as ReactDOM from "react-dom";
 import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ILoadedEventArgs, Category, ColumnSeries, Legend, Tooltip, ChartTheme, ParetoSeries, LineSeries, Highlight } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import { loadChartTheme } from './theme-color';
 const SAMPLE_CSS = `
     .control-fluid {
         padding: 0px !important;
@@ -26,10 +27,8 @@ const ParetoChart = () => {
         chart.setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
-        if (selectedTheme === 'material3') {
+        let selectedTheme: string = loadChartTheme(args);
+        if (selectedTheme === 'Material3') {
             args.chart.series[0].paretoOptions.fill = '#F7523F';
             args.chart.series[0].paretoOptions.marker.fill = '#F7523F';
         }
@@ -42,7 +41,7 @@ const ParetoChart = () => {
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
-                <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ interval: 1, valueType: 'Category', majorGridLines: { width: 0 }, labelIntersectAction: Browser.isDevice ? 'None' : 'Rotate45', labelRotation: Browser.isDevice ? -45 : 0, minorGridLines: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 }, lineStyle: { width: 0 }, }} primaryYAxis={{ title: 'Frequency of Occurence', minimum: 0, maximum: 25, interval: 5, lineStyle: { width: 0 }, majorTickLines: { width: 0 }, majorGridLines: { width: 1 }, minorGridLines: { width: 1 }, minorTickLines: { width: 0 } }} chartArea={{ border: { width: 0 } }} load={load.bind(this)} title='Defects in Shirts' loaded={onChartLoad.bind(this)} legendSettings={{ visible: true, enableHighlight: true }} width={Browser.isDevice ? '100%' : '75%'} tooltip={{ enable: true, shared: true, format: '${series.name} : <b>${point.y}</b>' }}>
+                <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ interval: 1, valueType: 'Category', majorGridLines: { width: 0 }, labelIntersectAction: Browser.isDevice ? 'None' : 'Rotate45', labelRotation: Browser.isDevice ? -45 : 0, minorGridLines: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 }, lineStyle: { width: 0 }, }} primaryYAxis={{ title: 'Frequency of Occurence', minimum: 0, maximum: 25, interval: 5, lineStyle: { width: 0 }, majorTickLines: { width: 0 }, majorGridLines: { width: 1 }, minorGridLines: { width: 1 }, minorTickLines: { width: 0 } }} chartArea={{ border: { width: 0 }, margin: { bottom: 12 } }} load={load.bind(this)} title='Defects in Shirts' loaded={onChartLoad.bind(this)} legendSettings={{ visible: true, enableHighlight: true }} width={Browser.isDevice ? '100%' : '75%'} tooltip={{ enable: true, shared: true, format: '${series.name} : <b>${point.y}</b>' }}>
                     <Inject services={[Category, ColumnSeries, Legend, LineSeries, Tooltip, ParetoSeries, Highlight]} />
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={data1} xName='x' yName='y' name='Defect' type='Pareto' width={2} opacity= {0.75} columnWidth= {0.4} cornerRadius= {{ topLeft: Browser.isDevice? 4 : 6, topRight: Browser.isDevice ? 4 : 6 }} paretoOptions={{ marker: { visible: true, isFilled: true, width: 7, height: 7 }, dashArray: '3,2', width: 2 }} />

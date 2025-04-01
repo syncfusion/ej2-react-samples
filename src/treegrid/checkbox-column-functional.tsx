@@ -5,7 +5,6 @@ import { TreeGridComponent, ColumnsDirective, ColumnDirective } from '@syncfusio
 import { sampleData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
-// custom code start
 const SAMPLE_CSS = `
 .e-bigger.bootstrap5 .e-treegrid .e-hierarchycheckbox .e-frame, 
 .e-bigger.bootstrap5-dark .e-treegrid .e-hierarchycheckbox .e-frame {
@@ -16,7 +15,7 @@ const SAMPLE_CSS = `
   height: 18px;
   width: 18px;
 }`;
-// custom code end
+
 const CheckboxColumn = () => {
   useEffect(() => {
     updateSampleSection();

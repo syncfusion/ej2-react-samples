@@ -225,132 +225,117 @@ const Timeline = () => {
           </GanttComponent>
         </div>
         <div className='col-lg-4 property-section'>
-          <PropertyPane title='Properties'>
-            <table id="property" className="property-panel-table" title="Properties" style={{ width: '100%' }}>
+        <PropertyPane title="Properties">
+          <table id="property" className="property-panel-table" title="Properties" style={{ width: '100%' }}>
+            <colgroup>
+              <col style={{ width: '30%' }} />
+              <col style={{ width: '70%' }} />
+            </colgroup>
             <tbody>
-                <colgroup>
-                  <col style={{ width: '30%' }} />
-                  <col style={{ width: '70%' }} />
-                </colgroup>
               <tr>
-                <td style={{ width: '30%' }}>
+                <td>
                   <div>Unit width</div>
                 </td>
-                <td style={{ width: '70%' }}>
+                <td>
                   <div>
-                    <NumericTextBoxComponent ref={timelineUnitSize} format='n' value={33} min={10} change={unitWidth.bind(this)}></NumericTextBoxComponent>
+                    <NumericTextBoxComponent ref={timelineUnitSize} format="n" value={33} min={10} change={unitWidth.bind(this)} />
                   </div>
                 </td>
               </tr>
-              <tr></tr>
               <tr>
-                <td style={{ width: '30%' }}>
+                <td>
                   <div><b>Top tier</b></div>
                 </td>
-                <td style={{ width: '70%' }}>
+                <td>
                   <div>
-                    <CheckBoxComponent ref={topTierCheckbox} id="topTierCheck" onClick={topTierCick.bind(this)} className="checkbox" checked={true} ></CheckBoxComponent>
+                    <CheckBoxComponent ref={topTierCheckbox} id="topTierCheck" onClick={topTierCick.bind(this)} className="checkbox" checked />
                   </div>
                 </td>
               </tr>
               <tr>
-                <td style={{ width: '30%' }}>
+                <td>
                   <div>Count</div>
                 </td>
-                <td style={{ width: '70%' }}>
+                <td>
                   <div>
-                    <NumericTextBoxComponent ref={topTierCount} id="count" format='n' min={1} max={50} value={1} className="form-control" change={topTierCountchange.bind(this)}></NumericTextBoxComponent>
+                    <NumericTextBoxComponent ref={topTierCount} id="count" format="n" min={1} max={50} value={1} className="form-control" change={topTierCountchange.bind(this)} />
                   </div>
                 </td>
               </tr>
-
               <tr>
-                <td style={{ width: '30%' }}>
-                  <div>
-                    Unit
-                  </div>
+                <td>
+                  <div>Unit</div>
                 </td>
-                <td style={{ width: '70%' }}>
+                <td>
                   <div>
-                    <DropDownListComponent ref={topTierUnit} id='unit' tabIndex={1} dataSource={unit} fields={unitField}
-                      value='Week' change={topUnitChange.bind(this)}></DropDownListComponent>
+                    <DropDownListComponent ref={topTierUnit} id="unit" tabIndex={1} dataSource={unit} fields={unitField} value="Week" change={topUnitChange.bind(this)} />
                   </div>
                 </td>
               </tr>
-
               <tr>
-                <td style={{ width: '30%' }}>
-                  <div>
-                    Format
-                  </div>
+                <td>
+                  <div>Format</div>
                 </td>
-                <td style={{ width: '70%' }}>
+                <td>
                   <div>
-                    <DropDownListComponent ref={topTierformat} id='topformat' tabIndex={1} dataSource={weekformat}
-                      fields={formatField} value='MMM dd, yyyy' change={topFormatChange.bind(this)}></DropDownListComponent>
+                    <DropDownListComponent ref={topTierformat} id="topformat" tabIndex={1} dataSource={weekformat} fields={formatField} value="MMM dd, yyyy" change={topFormatChange.bind(this)} />
                   </div>
                 </td>
               </tr>
-
               <tr>
-                <td style={{ width: '30%' }}>
+                <td>
                   <div><b>Bottom tier</b></div>
                 </td>
-                <td style={{ width: '70%' }}>
+                <td>
                   <div>
-                    <CheckBoxComponent ref={bottomTierCheckbox} id="bottomTierCheck" onClick={bottomTierCick.bind(this)} className="checkbox" checked={true} ></CheckBoxComponent>
+                    <CheckBoxComponent ref={bottomTierCheckbox} id="bottomTierCheck" onClick={bottomTierCick.bind(this)} className="checkbox" checked />
                   </div>
                 </td>
               </tr>
               <tr>
-                <td style={{ width: '30%' }}>
+                <td>
                   <div>Count</div>
                 </td>
-                <td style={{ width: '70%' }}>
+                <td>
                   <div>
-                    <NumericTextBoxComponent ref={bottomTierCount} id="count" format='n' min={1} max={50} value={1} className="form-control" change={bottomTierCountchange.bind(this)}></NumericTextBoxComponent>
+                    <NumericTextBoxComponent ref={bottomTierCount} id="count" format="n" min={1} max={50} value={1} className="form-control" change={bottomTierCountchange.bind(this)} />
                   </div>
                 </td>
               </tr>
               <tr>
-                <td style={{ width: '30%' }}>
-                  <div>
-                    Unit
-                  </div>
+                <td>
+                  <div>Unit</div>
                 </td>
-                <td style={{ width: '70%' }}>
+                <td>
                   <div>
-                    <DropDownListComponent ref={bottomTierUnit} id='unit' tabIndex={1} dataSource={unit} fields={unitField}
-                      value='Day' change={bottomUnitChange.bind(this)}></DropDownListComponent>
+                    <DropDownListComponent ref={bottomTierUnit} id="unit" tabIndex={1} dataSource={unit} fields={unitField} value="Day" change={bottomUnitChange.bind(this)} />
                   </div>
                 </td>
               </tr>
               <tr>
-                <td style={{ width: '30%' }}>
-                  <div>
-                    Format
-                  </div>
+                <td>
+                  <div>Format</div>
                 </td>
-                <td style={{ width: '70%' }}>
+                <td>
                   <div>
-                    <DropDownListComponent ref={bottomTierformat} id='btFormat' tabIndex={1} dataSource={dayformat}
-                      fields={formatField} value='' change={bottomFormatChange.bind(this)}></DropDownListComponent>
+                    <DropDownListComponent ref={bottomTierformat} id="btFormat" tabIndex={1} dataSource={dayformat} fields={formatField} value="" change={bottomFormatChange.bind(this)} />
                   </div>
                 </td>
               </tr>
               <tr>
-                <td style={{width: '30%' }}>
+                <td>
                   <div>Enable multitaskbar</div>
                 </td>
-                <td style={{width: '70%' }}>
+                <td>
                   <div>
-                    <CheckBoxComponent ref={multitaskbarcheckbox} id="multitaskbarCheck" onClick={multitaskbarCheck.bind(this)} className="checkbox" checked={false} ></CheckBoxComponent>
+                    <CheckBoxComponent ref={multitaskbarcheckbox} id="multitaskbarCheck" onClick={multitaskbarCheck.bind(this)} className="checkbox" checked={false} />
                   </div>
                 </td>
               </tr>
-              </tbody>
-            </table>
-          </PropertyPane>
+            </tbody>
+          </table>
+        </PropertyPane>
+
         </div>
       </div>
       <div id="action-description">

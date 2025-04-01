@@ -7,6 +7,7 @@ import * as ReactDOM from "react-dom";
 import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, SplineAreaSeries, DateTime, Legend, Zoom, ILoadedEventArgs, ChartTheme, ScrollBar, LineSeries, Crosshair, Tooltip } from '@syncfusion/ej2-react-charts';
 import { updateSampleSection } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
+import { loadChartTheme } from './theme-color';
 const SAMPLE_CSS = `
 #control-container {
     padding: 0px !important;
@@ -136,10 +137,7 @@ const Zooming = () => {
         chart.setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
     let series1: Object[] = [];
     let point1: Object;
@@ -155,12 +153,14 @@ const Zooming = () => {
             <div className='control-section'>
                 <ChartComponent id='charts'
                     style={{ textAlign: "center" }}
-                    primaryXAxis={{ valueType: 'DateTime', majorGridLines: { width: 0 }, majorTickLines: { width: 0 }, scrollbarSettings: { enableZoom: false } }}
-                    primaryYAxis={{ title: 'Temperature', labelFormat: '{value}°C', majorTickLines: { width: 0 }, lineStyle: { width: 0 }, enableScrollbarOnZooming: false }}
+                    primaryXAxis={{ valueType: 'DateTime', majorGridLines: { width: 0 }, majorTickLines: { width: 0 }, scrollbarSettings: { enableZoom: false, position: 'Bottom' } }}
+                    primaryYAxis={{ title: 'Temperature Anomaly (°C)', labelFormat: '{value}°C', majorTickLines: { width: 0 }, lineStyle: { width: 0 }, enableScrollbarOnZooming: false }}
                     chartArea={{ border: { width: 0 } }}
                     zoomSettings={{ enableSelectionZooming: true, enableMouseWheelZooming: true, enableDeferredZooming: false, enableScrollbar: true, enablePinchZooming: true, enableAnimation: true,  mode: 'X', showToolbar : true, toolbarPosition:{y: -60, draggable: true}}}
-                    load={load}
+                    load={load.bind(this)}
+                    loaded={onChartLoad.bind(this)}
                     margin = {{top: 20}}
+                    tooltip={{ enable: true, showNearestTooltip: true, header: '<b>${point.x}</b>', format: 'Temperature: <b>${point.y}</b>', enableHighlight: true }}
                     title={Browser.isDevice ? 'Monthly Temperature Anomalies' : 'Global Warming: Monthly Temperature Anomalies'}
                     titleStyle= {{ textAlignment: Browser.isDevice ? 'Near' : 'Center' }}
                     width={Browser.isDevice ? '100%' : '80%'}>
@@ -171,7 +171,9 @@ const Zooming = () => {
                 </ChartComponent>
             </div>
             <div id="action-description">
-                    <p>This sample demonstrates the zooming and panning features of the charts.</p>
+                    <p>
+                        This sample demonstrates the zooming and panning features of the chart, allowing users to explore data interactively.
+                    </p>
                 </div>
                 <div id="description">
                     <p>The chart component supports four types of zooming, which can be configured using the <a target="_blank" href="https://ej2.syncfusion.com/documentation/api/chart/zoomSettingsModel/#enableselectionzooming" aria-label="Navigate to the enableSelectionZooming property reference for TypeScript Chart ZoomSettings">enableSelectionZooming</a>, <a target="_blank" href="https://ej2.syncfusion.com/documentation/api/chart/zoomSettingsModel/#enablepinchzooming" aria-label="Navigate to the enablePinchZooming property reference for TypeScript Chart ZoomSettings">enablePinchZooming</a>, <a target="_blank" href="https://ej2.syncfusion.com/documentation/api/chart/zoomSettingsModel/#enablemousewheelzooming" aria-label="Navigate to the enableMouseWheelZooming property reference for TypeScript Chart ZoomSettings">enableMouseWheelZooming</a>, and <a target="_blank" href="https://ej2.syncfusion.com/documentation/api/chart/zoomSettingsModel/#enabledeferredzooming" aria-label="Navigate to the enableDeferredZooming property reference for TypeScript Chart ZoomSettings">enableDeferredZooming</a> properties. This sample demonstrates the following zooming and panning behaviors:
@@ -190,10 +192,13 @@ const Zooming = () => {
                         <li><b>Y</b> - Zoom the chart with respect to the vertical axis only.</li>
                     </ul>
                     <p>The <code>toolbarPosition</code> property is used to adjust the position of the zoom toolbar. In this example, the toolbar is moved 60 pixels upward from its default position. The <code>draggable</code> property is used to drag and drop the zoom toolbar to any position within the chart area</p>
-
+                    <p>The chart supports different scrollbar positions. By default, it appears next to the axis line, but you can adjust its placement using the <code>position</code> property of <code>scrollbarSettings</code>. This positioning allows better customization and flexibility in the chart's design.</p>
+                    <p>
+                        <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
+                    </p>
                     <p><b>Injecting Module</b></p>
                     <p>
-                        Chart component features are segregated into individual feature-wise modules. To use zooming, we need to inject
+                        Chart component features are segregated into individual feature-wise modules. To use zooming, we need to inject 
                         <code>Zoom</code> module using <code>Chart.Inject(Zoom)</code> method.
                     </p>
                     <p>

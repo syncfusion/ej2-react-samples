@@ -113,6 +113,7 @@ export class MailMerge extends SampleBase<{}, {}>  {
         if (args.item.text != null) {
             const value = this.textToValueMap[args.item.text];
             const trimmedValue = value.trim();
+            this.rteObj.formatter.editorManager.nodeSelection.restore();
             this.rteObj!.executeCommand(
                 'insertHTML',
                 `<span contenteditable="false" class="e-mention-chip"><span>{{${trimmedValue}}}</span></span>&nbsp;`,

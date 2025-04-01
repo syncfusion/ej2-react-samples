@@ -16,17 +16,20 @@ import './virtualization.css';
 const UiVirtualization = () => {
    useEffect(() => {
        updateSampleSection();
+       const element = document.getElementById('ui-list');
+       liElementRef.current = element;
+       createSpinner({ target: element });
    }, [])
 
    const [time, setTime] = useState("0 ms");
     const mobile: string = Browser.isDevice ? "ui-mobile" : "";
    let listviewInstance = useRef<ListViewComponent>(null);
+   const liElementRef = React.useRef<HTMLElement>(null);
    let commonData: { [key: string]: string | object }[] = [];
    let dataSource: { [key: string]: { [key: string]: string | object }[] } = {};
    let startTime: Date;
    let endTime: Date;
-   let liElement: HTMLElement;
-   commonData = [
+   commonData = React.useMemo(() => [
        { name: 'Nancy', icon: 'N', id: '0', },
        { name: 'Andrew', icon: 'A', id: '1' },
        { name: 'Janet', icon: 'J', id: '2' },
@@ -37,21 +40,27 @@ const UiVirtualization = () => {
        { name: 'Michael', icon: 'M', id: '7' },
        { name: 'Albert', imgUrl: './src/listview/images/albert.png', id: '8' },
        { name: 'Nolan', icon: 'N', id: '9' }
-   ];
+    ], []);
 
-   [[1010, 'data1'], [5010, 'data5'], [10010, 'data10'], [25010, 'data25']].forEach((ds: string[] | number[]) => {
-       let data: { [key: string]: string | object }[] = commonData.slice();
-       let index: number;
-       let spyIndex: number;
-       for (let i: number = 10; i <= (ds[0] as number); i++) {
-           while (index === spyIndex) {
-               index = parseInt((Math.random() * 10).toString(), 10);
-           }
-           data.push({ name: data[index].name, icon: data[index].icon, imgUrl: data[index].imgUrl, id: i.toString() });
-           spyIndex = index;
-       }
-       dataSource[ds[1]] = data;
-   });
+    dataSource = React.useMemo(() => {
+        const ds: { [key: string]: any[] } = {};
+        // Add type assertion for the array
+        ([[1010, 'data1'], [5010, 'data5'], [10010, 'data10'], [25010, 'data25']] as [number, string][])
+            .forEach(([count, key]) => {
+                let data = [...commonData];
+                let index: number;
+                let spyIndex: number;
+                for (let i = 10; i <= count; i++) {
+                    while (index === spyIndex) {
+                        index = Math.floor(Math.random() * 10);
+                    }
+                    data.push({ ...commonData[index], id: i.toString() });
+                    spyIndex = index;
+                }
+                ds[key] = data;
+            });
+        return ds;
+    }, [commonData]);
    // Set customized list template
     function template(data: any) {
         return (
@@ -75,9 +84,6 @@ const UiVirtualization = () => {
    let fields: Object = { text: 'name' };
 
    const onActionComplete = () => {
-       createSpinner({
-           target: liElement
-       });
        endTime = new Date();
        setTime(endTime.getTime() - startTime.getTime() + " ms");
    }
@@ -86,15 +92,15 @@ const UiVirtualization = () => {
        startTime = new Date();
    }
 
-   const onChange = (e: ChangeEventArgs) => {
-       showSpinner(liElement);
-       startTime = new Date();
-       listviewInstance.current.dataSource = dataSource['data' + e.value];
-       listviewInstance.current.dataBind();
-       endTime = new Date();
-       setTime(endTime.getTime() - startTime.getTime() + " ms");
-       hideSpinner(liElement);
-   }
+   const onChange = React.useCallback((e: ChangeEventArgs) => {
+        showSpinner(liElementRef.current);
+        const start = Date.now();
+        const newData = dataSource[`data${e.value}`];
+        listviewInstance.current.dataSource = newData;
+        listviewInstance.current.dataBind();
+        setTime(`${Date.now() - start} ms`);
+        hideSpinner(liElementRef.current);
+    }, [dataSource]);
    return (
        <div className='control-pane'>
            <div className='ui-control-section control-section'>

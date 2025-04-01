@@ -107,7 +107,7 @@ function PivotToolbar() {
 
     function queryCellInfo(args): any {
         if (args.cell && args.cell.classList.contains('e-valuescontent') && args.data && args.data[0].hasChild) {
-            let pivotValues: any; let colIndex: number = Number(args.cell.getAttribute('data-colindex'));
+            let pivotValues: any; let colIndex: number = Number(args.cell.getAttribute('aria-colindex')) - 1;
             if (!isNaN(colIndex)) {
                 pivotValues = pivotObj.pivotValues[args.data[colIndex].rowIndex][args.data[colIndex].colIndex];
             }
@@ -132,14 +132,14 @@ function PivotToolbar() {
             let cellValue: Element = select('.e-cellvalue', args.targetCell);
             cellValue.classList.add('e-hyperlinkcell');
             cellValue.addEventListener('click', hyperlinkCellClick.bind(pivotObj));
-            args.targetCell.insertBefore(imgElement, cellValue);
+            args.targetCell.firstElementChild.insertBefore(imgElement, cellValue);
         }
         return '';
     }
 
     function hyperlinkCellClick(args: MouseEvent) {
-        let cell: Element = (args.target as Element).parentElement;
-        let pivotValue: IAxisSet = pivotObj.pivotValues[Number(cell.getAttribute('index'))][Number(cell.getAttribute('data-colindex'))] as IAxisSet;
+        let cell: Element = (args.target as Element).closest('.e-rowsheader');
+        let pivotValue: IAxisSet = pivotObj.pivotValues[Number(cell.getAttribute('index'))][Number(cell.getAttribute('aria-colindex')) - 1] as IAxisSet;
         let link: string = UniversityData[pivotValue.index[0]].link as string;
         window.open(link, '_blank');
     }

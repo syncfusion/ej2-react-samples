@@ -12,6 +12,10 @@
   padding-left: 3px;
 }
 
+.schedule-views-config.e-schedule .e-month-view .e-appointment .e-appointment-details :first-child {
+  flex: auto;
+}
+
 .schedule-views-config.e-schedule .e-agenda-view .e-appointment .location {
   font-size: 12px;
 }

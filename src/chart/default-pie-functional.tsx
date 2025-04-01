@@ -8,6 +8,7 @@ import { updateSampleSection } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
 import { PropertyPane } from '../common/property-pane';
 import { AccumulationChartComponent, AccumulationSeriesCollectionDirective, AccumulationSeriesDirective, Inject, AccumulationLegend, PieSeries, AccumulationTooltip, IAccLoadedEventArgs, AccumulationTheme, AccumulationDataLabel } from '@syncfusion/ej2-react-charts';
+import { loadAccumulationChartTheme } from './theme-color';
 export let data1: any[] = Browser.isDevice ? 
 [   { 'x': 'Chrome', y: 59.28, text: 'Chrome: 59.28%' },
     { 'x': 'Safari', y: 4.73, text: Browser.isDevice ? 'Safari <br> 4.73%'  : 'Safari: 4.73%' },
@@ -40,9 +41,7 @@ const Pie = () => {
         document.getElementById('pie-chart').setAttribute('title', '');
     };
     const load = (args: IAccLoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/light/i, "Light").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as AccumulationTheme;
+        loadAccumulationChartTheme(args);
     };
     return (
         <div className='control-pane'>

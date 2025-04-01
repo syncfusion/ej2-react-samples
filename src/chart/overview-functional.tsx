@@ -8,6 +8,7 @@ import {
   Inject, AccumulationLegend, PieSeries, AccumulationTooltip, ColumnSeries, SeriesCollectionDirective, SeriesDirective,
   AccumulationDataLabel, ChartComponent, Legend, Category, Tooltip,Highlight, DataLabel, SplineAreaSeries, IAxisLabelRenderEventArgs, ChartAnnotation, AnnotationsDirective, AnnotationDirective, ILegendRenderEventArgs, ILoadedEventArgs, ChartTheme, IAccLoadedEventArgs, AccumulationTheme, IAccPointRenderEventArgs,
 } from '@syncfusion/ej2-react-charts';
+import { accPointRender, loadAccumulationChartTheme, loadChartTheme } from './theme-color';
 import { updateSampleSection } from '../common/sample-base';
 const SAMPLE_CSS = `
 .e-dashboardlayout {
@@ -62,23 +63,23 @@ function OverView() {
       <div className="template" >
         <ChartComponent style={{ "height": "100%", "width": "100%", }} primaryXAxis={{ valueType: 'Category',  majorGridLines: { width: 0 },labelStyle:{size:'11px'} }}  load={load.bind(this)} primaryYAxis={{
           minimum:0, maximum:100, majorTickLines: { width: 0 }, labelFormat: '{value}%', lineStyle: { width: 0 }, labelStyle:{size:'11px'}, titleStyle:{size:'13px'} ,
-        }} tooltip={{ enable: false }} legendSettings={{ padding:5, shapeHeight:8, shapeWidth:8}} chartArea={{ border: { width: 0 } }}  >
-          <Inject services={[ColumnSeries, Legend, Tooltip, Category, DataLabel]}></Inject>
+        }} tooltip={{ enable: false }} legendSettings={{ padding:5, shapeHeight:8, shapeWidth:8, enableHighlight: true}} chartArea={{ border: { width: 0 }, margin: { bottom: 12 } }}  >
+          <Inject services={[ColumnSeries, Legend, Tooltip, Category, DataLabel, Highlight]}></Inject>
           <SeriesCollectionDirective>
             <SeriesDirective type="Column" dataSource={[
-              { Period: '2017', Percentage: 60 },
-              { Period: '2018', Percentage: 56 },
-              { Period: '2019', Percentage: 71 },
-              { Period: '2020', Percentage: 85 },
-              { Period: '2021', Percentage: 73 },]}
-              name="Online" xName="Period" yName="Percentage" fill='#2485FA' marker={{ dataLabel: { visible: true, position: 'Middle', font: { color: 'white' } } }}></SeriesDirective>
+              { Period: '2020', Percentage: 60 },
+              { Period: '2021', Percentage: 56 },
+              { Period: '2022', Percentage: 71 },
+              { Period: '2023', Percentage: 85 },
+              { Period: '2024', Percentage: 73 },]}
+              name="Online" xName="Period" yName="Percentage" fill='#2485FA' marker={{ dataLabel: { visible: true, position: 'Middle', font: { color: 'white' } } }} cornerRadius={{ topLeft: 4, topRight: 4 }}></SeriesDirective>
             <SeriesDirective type="Column" dataSource={[
-              { Period: '2017', Percentage: 40 },
-              { Period: '2018', Percentage: 44 },
-              { Period: '2019', Percentage: 29 },
-              { Period: '2020', Percentage: 15 },
-              { Period: '2021', Percentage: 27 },]}
-              name="Retail" xName="Period" yName="Percentage" fill='#FEC200' marker={{ dataLabel: { visible: true, position: 'Middle', font: { color: 'white' } } }}></SeriesDirective>
+              { Period: '2020', Percentage: 40 },
+              { Period: '2021', Percentage: 44 },
+              { Period: '2022', Percentage: 29 },
+              { Period: '2023', Percentage: 15 },
+              { Period: '2024', Percentage: 27 },]}
+              name="Retail" xName="Period" yName="Percentage" fill='#FEC200' marker={{ dataLabel: { visible: true, position: 'Middle', font: { color: 'white' } } }} cornerRadius={{ topLeft: 4, topRight: 4 }}></SeriesDirective>
           </SeriesCollectionDirective>
         </ChartComponent>
       </div>
@@ -94,7 +95,7 @@ function OverView() {
             majorTickLines: { width: 0 },
             minimum: 0, maximum: 12000,  edgeLabelPlacement: 'Shift', labelFormat: '${value}', lineStyle: { width: 0 },labelStyle:{size:'11px'},titleStyle:{size:'13px'}
           }} 
-          legendSettings={{enableHighlight:true }} tooltip={{ enable: true , shared: true, enableMarker:false,  enableHighlight: true}} chartArea={{ border: { width: 0 } }}  >
+          legendSettings={{enableHighlight:true }} tooltip={{ enable: true, enableHighlight: true, showNearestTooltip: true, enableMarker:false }} chartArea={{ border: { width: 0 }, margin: { bottom: 12 } }}  >
           <Inject services={[SplineAreaSeries, Legend, Tooltip, Category, ChartAnnotation, Highlight]}></Inject>
           <SeriesCollectionDirective>
             <SeriesDirective type="SplineArea" dataSource={[{ period : 'Jan', percentage : 3600   }, { period: 'Feb', percentage: 6200  },
@@ -118,7 +119,7 @@ function OverView() {
     return (
       <div className="template" >
         <AccumulationChartComponent style={{ "height": "100%", "width": "100%" }}
-        legendSettings={{ visible:false }} load={accumulationload.bind(this)} tooltip={{ enable: true , format:"${point.tooltip}"}} pointRender={onPointRender.bind(this)} enableSmartLabels={false}  enableBorderOnMouseMove={false}>
+        legendSettings={{ visible:false }} load={accumulationload.bind(this)} tooltip={{ enable: true , format:"${point.tooltip}", enableHighlight: true}} pointRender={onPointRender.bind(this)} enableSmartLabels={false}  enableBorderOnMouseMove={false}>
           <Inject services={[PieSeries, AccumulationTooltip, AccumulationDataLabel, AccumulationLegend, PieSeries, AccumulationTooltip, AccumulationDataLabel]}></Inject>
           <AccumulationSeriesCollectionDirective>
 
@@ -149,8 +150,8 @@ function OverView() {
      
           <PanelsDirective>
             <PanelDirective sizeX={Browser.isDevice ? 1: 5} sizeY={Browser.isDevice ? 1 : 2} row={0} col={0} content={columnTemplate.bind(this) as any} header='<div class="title" id="header1";>Sales - Yearly Performance</div>'></PanelDirective>
-            <PanelDirective sizeX={Browser.isDevice ? 1 : 3} sizeY={Browser.isDevice ? 1 : 2} row={0} col={ Browser.isDevice ? 1 : 5} content={pieTemplate.bind(this) as any} header='<div  class="title" id="header2";>Product Wise Sales - 2021</div>'></PanelDirective>
-            <PanelDirective sizeX={Browser.isDevice ? 2 : 8} sizeY={Browser.isDevice ? 1 : 3} row={Browser.isDevice ? 1 : 4} col={0} content={splineTemplate.bind(this) as any} header='<div  class="title" id="header3";>Monthly Sales for 2021</div>'></PanelDirective>
+            <PanelDirective sizeX={Browser.isDevice ? 1 : 3} sizeY={Browser.isDevice ? 1 : 2} row={0} col={ Browser.isDevice ? 1 : 5} content={pieTemplate.bind(this) as any} header='<div  class="title" id="header2";>Product Wise Sales - 2024</div>'></PanelDirective>
+            <PanelDirective sizeX={Browser.isDevice ? 2 : 8} sizeY={Browser.isDevice ? 1 : 3} row={Browser.isDevice ? 1 : 4} col={0} content={splineTemplate.bind(this) as any} header='<div  class="title" id="header3";>Monthly Sales for 2024</div>'></PanelDirective>
           </PanelsDirective>
         </DashboardLayoutComponent>
       </div>
@@ -160,6 +161,9 @@ function OverView() {
                 <div id="description">
                     <p>
                     The React Chart is a well-crafted charting component to visualize data.In this example, you will see how to render and configure line, column, and pie charts with different features such as highlight, legend, tooltip, and annotation . The Chart uses <code>SfDataManager</code>, which supports both RESTful JSON data services binding and IEnumerable binding. 
+                    </p>
+                    <p>
+                        <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
                     </p>
                     <p>
                     More information on the React Chart types can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/line" aria-label="Navigate to the documentation for Line Chart in React Chart component">documentation section</a>.
@@ -180,108 +184,15 @@ function OverView() {
     </div>
     );
   function load(args: ILoadedEventArgs): void {
-    let selectedTheme: string = location.hash.split('/')[1];
-    selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-    args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+    loadChartTheme(args);
     args.chart.series[0].fill = 'url(#' + 'gradient-chart)';
     args.chart.series[1].fill = 'url(#' + 'gradient-chart1)'; 
 };
 function accumulationload(args: IAccLoadedEventArgs): void {
-  let selectedTheme: string = location.hash.split('/')[1];
-  selectedTheme = selectedTheme ? selectedTheme : 'Material';
-  args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-  replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as AccumulationTheme;
+  loadAccumulationChartTheme(args);
 };
 function onPointRender(args: IAccPointRenderEventArgs): void {
-    let selectedTheme: string = location.hash.split('/')[1];
-    let layoutColor: string;
-    selectedTheme = selectedTheme ? selectedTheme : 'Material';
-
-    if (selectedTheme.indexOf('dark') > -1) {
-
-      if (selectedTheme.indexOf('material') > -1) {
-
-        args.border.color = '#303030';
-        layoutColor= '#303030' ;
-      }
-
-      else if (selectedTheme.indexOf('bootstrap5') > -1) {
-
-        args.border.color = '#212529';
-        layoutColor= '#212529' ;
-      }
-
-      else if (selectedTheme.indexOf('bootstrap') > -1) {
-
-        args.border.color = '#1A1A1A';
-        layoutColor= '#1A1A1A' ;
-      }
-      else if (selectedTheme.indexOf('fabric') > -1) {
-
-        args.border.color = '#201f1f';
-        layoutColor= '#201f1f' ;
-
-      }
-
-      else if (selectedTheme.indexOf('fluent') > -1) {
-
-        args.border.color = '#252423';
-        layoutColor= '#252423' ;
-
-      }
-
-      else if (selectedTheme.indexOf('bootstrap') > -1) {
-
-        args.border.color = '#1A1A1A';
-        layoutColor= '#1A1A1A' ;
-
-      }
-      else if (selectedTheme.indexOf('tailwind') > -1) {
-
-        args.border.color = '#1F2937';
-        layoutColor= '#1F2937' ;
-      }
-
-      else {
-
-        args.border.color = '#222222';
-        layoutColor= '#222222' ;
-      }
-
-    }
-
-    else if (selectedTheme.indexOf('highcontrast') > -1) {
-
-      args.border.color = '#000000';
-      layoutColor= '#000000' ;
-    }
-
-    else {
-
-      args.border.color = '#FFFFFF';
-     layoutColor= '#FFFFFF' ;
-    }
-    if(selectedTheme.indexOf('highcontrast') > -1 || selectedTheme.indexOf('dark') > -1)
-    {
-      let element =  document.querySelector('#header1') as HTMLElement 
-      element.style.color='#F3F2F1';
-      let element1 =  document.querySelector('#header2') as HTMLElement 
-      element1.style.color='#F3F2F1';
-      let element2 =  document.querySelector('#header3') as HTMLElement 
-      element2.style.color='#F3F2F1';
-    }
-    let element =  document.querySelector('#layout_0template') as HTMLElement 
-    element.style.background=layoutColor;
-    let elementBody =  document.querySelector('#layout_0_body') as HTMLElement 
-    elementBody.style.background=layoutColor;
-    let element1 =  document.querySelector('#layout_1template') as HTMLElement 
-    element1.style.background=layoutColor;
-    let elementBody1 =  document.querySelector('#layout_1_body') as HTMLElement 
-    elementBody1.style.background=layoutColor;
-    let element2 =  document.querySelector('#layout_2template') as HTMLElement 
-    element2.style.background=layoutColor;
-    let elementBody2 =  document.querySelector('#layout_2_body') as HTMLElement 
-    elementBody2.style.background=layoutColor;
-};
+  accPointRender(args);
+}
 }
 export default OverView;

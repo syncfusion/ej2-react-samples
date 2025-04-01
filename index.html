@@ -393,7 +393,7 @@
                     <div class="sb-footer">
                         <div class="sb-footer-left">
                             <div class="sb-footer-links">
-                                <a href="http://ej2.syncfusion.com/react/documentation" target="_blank" aria-label="Documentation - Opens in a new window">
+                                <a href="http://ej2.syncfusion.com/react/documentation/introduction" target="_blank" aria-label="Documentation - Opens in a new window">
                                     <div class="sb-footer-link">Documentation</div>
                                 </a>
                                 <a href="https://www.syncfusion.com/forums/react-js2" target="_blank" aria-label="Forum - Opens in a new window">
@@ -445,6 +445,12 @@
         </div>
 
     </div>
+    <script>
+        // Hide the "FREE TRIAL" button on localhost
+        if (window.location.hostname === "localhost") {
+            document.getElementById('download-now').style.display = 'none';
+        }
+    </script>
     <script id="template" type="text/x-template">
         <a href="${link}" target="_blank">${name}</a>
     </script>

@@ -5,6 +5,7 @@
  import { ProgressBarComponent, ILoadedEventArgs, ProgressTheme, Inject } from '@syncfusion/ej2-react-progressbar';
  import { EmitType } from '@syncfusion/ej2-base';
  import { SampleBase } from '../common/sample-base';
+ import { loadProgressBarTheme } from './theme-colors';
  
  const SAMPLE_CSS = `
        #control-container {
@@ -42,17 +43,14 @@
     private linearFour: ProgressBarComponent;
     private linearFive: ProgressBarComponent;
     private progressLoad: EmitType<ILoadedEventArgs> = (args: ILoadedEventArgs) => {
-         let div: HTMLCollection = document.getElementsByClassName('progressbar-label');
-         let selectedTheme: string = location.hash.split('/')[1];
-         selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-         args.progressBar.theme = (selectedTheme.charAt(0).toUpperCase() +
-             selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast') as ProgressTheme;
-         if (args.progressBar.theme === 'HighContrast' || args.progressBar.theme === 'Bootstrap5Dark' || args.progressBar.theme === 'BootstrapDark' || args.progressBar.theme === 'FabricDark'
-             || args.progressBar.theme === 'TailwindDark' || args.progressBar.theme === 'Tailwind3Dark' || args.progressBar.theme === 'MaterialDark' || args.progressBar.theme === 'FluentDark' || args.progressBar.theme === 'Material3Dark') {
-             for (let i = 0; i < div.length; i++) {
-                 div[i].setAttribute('style', 'color:white');
-             }
-         }
+        let div: HTMLCollection = document.getElementsByClassName('progressbar-label');
+        let selectedTheme: string = loadProgressBarTheme(args);
+        if (selectedTheme === 'HighContrast' || selectedTheme === 'Bootstrap5Dark' || selectedTheme === 'BootstrapDark' || selectedTheme === 'FabricDark'
+            || selectedTheme === 'TailwindDark' || selectedTheme === 'Tailwind3Dark' || selectedTheme === 'MaterialDark' || selectedTheme === 'FluentDark' || selectedTheme === 'Material3Dark') {
+            for (let i = 0; i < div.length; i++) {
+                div[i].setAttribute('style', 'color:white');
+            }
+        }
      }
      private replayClick(): void {
          this.linearOne.refresh();

@@ -7,8 +7,8 @@ import { ChartTheme, Chart, AreaSeries, LineSeries, DateTime, DataLabel, Tooltip
 import { updateSampleSection } from '../common/sample-base';
 import { synchronizedData } from './financial-data';
 import { Browser } from '@syncfusion/ej2/base';
-
-
+import { loadChartTheme } from './theme-color';
+import { keyBootstrap4Colors, pointBootstrap5Colors, pointBootstrap5DarkColors, pointBootstrapColors, pointFabricColors, pointFluent2Colors, pointFluent2DarkColors, pointFluentColors, pointFluentDarkColors, pointHighContrastColors, pointMaterial3Colors, pointMaterial3DarkColors, pointMaterialColors, pointMaterialDarkColors, pointTailwind3Colors, pointTailwind3DarkColors, pointTailwindColors, pointTailwindDarkColors } from './theme-color';
 let SAMPLE_CSS = `
 #control-container {
     padding: 1px !important;
@@ -51,88 +51,66 @@ let SynchronizedChart = () => {
     let legendCount: number = 0;
     let load = (args: ILoadedEventArgs): void => {
         args.chart.primaryXAxis.labelRotation = Browser.isDevice ? -45 : 0;
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
         let themeColor: string[] = [];
-        let materialColors: string[] = ['#00bdae', '#404041', '#357cd2', '#e56590'];
-        let materialDarkColors: string[] = ['#9ECB08', '#56AEFF', '#C57AFF', '#61EAA9'];
-        let fabricColors: string[] = ['#4472c4', '#ed7d31', '#ffc000', '#70ad47'];
-        let bootstrapColors: string[] = ['#a16ee5', '#f7ce69', '#55a5c2', '#7ddf1e'];
-        let highContrastColors: string[] = ['#79ECE4', '#E98272', '#DFE6B6', '#C6E773'];
-        let bootstrap4Colors: string[] = ['#a16ee5', '#f7ce69', '#55a5c2', '#7ddf1e'];
-        let bootstrap5Colors: string[] = ['#FD7E14', '#6610F2', '#6F42C1', '#D63384'];
-        let bootstrap5DarkColors: string[] = ['#FD7E14', '#6610F2', '#6F42C1', '#D63384'];
-        let fluentColors: string[] = ['#1AC9E6', '#DA4CB2', '#EDBB40', '#AF4BCF'];
-        let fabricdarkColors: string[] = ['#4472c4', '#ed7d31', '#ffc000', '#70ad47'];
-        let material3Colors: string[] = ['#6355C7', '#00AEE0', '#FFB400', '#F7523F'];
-        let material3DarkColors: string[] = ['#4EAAFF', '#FA4EAB', '#FFF500', '#17EA58'];
-        let fluent2Colors: string[] = ['#6200EE', '#09AF74', '#0076E5', '#CB3587'];
-        let fluent2HighContrastColors: string[] = ['#9BB449', '#2A72D5', '#43B786', '#3F579A'];
-        let tailwindColors: string[] = ['#5A61F6', '#65A30D', '#334155', '#14B8A6'];
-        let tailwindDarkColors: string[] = ['#8B5CF6', '#22D3EE', '#F87171', '#4ADE80'];
-        let tailwind3Colors: string[] = ['#2F4074', '#03B4B4', '#0D72DE', '#FF5733'];
-        let tailwind3DarkColors: string[] = ['#8029F1', '#1ABC9C', '#0D72DE', '#FF5733'];
-        // check the theme
         if (args.chart.theme === 'MaterialDark') {
-            themeColor = materialDarkColors;
+            themeColor = pointMaterialDarkColors;
         }
         else if (args.chart.theme === 'Material') {
-            themeColor = materialColors;
+            themeColor = pointMaterialColors;
         }
         else if (args.chart.theme === "Fabric") {
-            themeColor = fabricColors;
+            themeColor = pointFabricColors;
         }
         else if (args.chart.theme === "FabricDark") {
-            themeColor = fabricdarkColors;
+            themeColor = pointFabricColors;
         }
         else if (args.chart.theme === 'Bootstrap5Dark') {
-            themeColor = bootstrap5DarkColors;
+            themeColor = pointBootstrap5DarkColors;
         }
         else if (args.chart.theme === 'Bootstrap5') {
-            themeColor = bootstrap5Colors;
+            themeColor = pointBootstrap5Colors;
         }
         else if (args.chart.theme === "Bootstrap4") {
-            themeColor = bootstrap4Colors;
+            themeColor = keyBootstrap4Colors;
         }
         else if (args.chart.theme === 'TailwindDark') {
-            themeColor = tailwindDarkColors;
+            themeColor = pointTailwindDarkColors;
         }
         else if (args.chart.theme === 'Tailwind') {
-            themeColor = tailwindColors;
+            themeColor = pointTailwindColors;
         }
         else if (args.chart.theme === "HighContrast") {
-            themeColor = highContrastColors;
+            themeColor = pointHighContrastColors;
         }
         else if (args.chart.theme === 'FluentDark') {
-            themeColor = fluentColors;
+            themeColor = pointFluentDarkColors;
         }
         else if (args.chart.theme === 'Bootstrap') {
-            themeColor = bootstrapColors;
+            themeColor = pointBootstrapColors;
         }
         else if (args.chart.theme === 'BootstrapDark') {
-            themeColor = bootstrapColors;
+            themeColor = pointBootstrapColors;
         }
         else if (args.chart.theme === 'Material3') {
-            themeColor = material3Colors;
+            themeColor = pointMaterial3Colors;
         }
         else if (args.chart.theme === 'Material3Dark') {
-            themeColor = material3DarkColors;
+            themeColor = pointMaterial3DarkColors;
         }
         else if (args.chart.theme === 'Fluent2') {
-            themeColor = fluent2Colors;
+            themeColor = pointFluent2Colors;
         }
         else if (args.chart.theme === 'Fluent2HighContrast' || args.chart.theme === 'Fluent2Dark') {
-            themeColor = fluent2HighContrastColors;
-        }
-        else if (args.chart.theme === 'Tailwind3Dark') {
-            themeColor = tailwind3DarkColors;
+            themeColor = pointFluent2DarkColors;
+        } else if (args.chart.theme === 'Tailwind3Dark') {
+            themeColor = pointTailwind3DarkColors;
         }
         else if (args.chart.theme === 'Tailwind3') {
-            themeColor = tailwind3Colors;
+            themeColor = pointTailwind3Colors;
         }
         else {
-            themeColor = fluentColors;
+            themeColor = pointFluentColors;
         }
         // check the container
         if (args.chart.element.id === 'container1') {
@@ -352,7 +330,7 @@ let SynchronizedChart = () => {
                             load={load.bind(this)}
                             loaded={onChartLoad.bind(this)}
                             titleStyle={{ textAlignment: 'Near' }}
-                            tooltip={{ enable: true, fadeOutDuration: Browser.isDevice ? 2500 : 1000, shared: true, header:'', format: '<b>€${point.y}</b><br>${point.x} 2023', enableMarker: false }}
+                            tooltip={{ enable: true, fadeOutDuration: Browser.isDevice ? 2500 : 1000, showNearestTooltip: true, header:'', format: '<b>€${point.y}</b><br>${point.x} 2023', enableMarker: false, enableHighlight: true }}
                             crosshair={{ enable: true, lineType: 'Vertical', dashArray: '2,2' }}
                             title="US to Euro">
                             <Inject services={[AreaSeries, LineSeries, DataLabel, DateTime, Tooltip, Zoom, Highlight, Legend, Selection, Crosshair]} />
@@ -403,7 +381,7 @@ let SynchronizedChart = () => {
                             load={load.bind(this)}
                             loaded={onChartLoad2.bind(this)}
                             titleStyle={{ textAlignment: 'Near' }}
-                            tooltip={{ enable: true, fadeOutDuration: Browser.isDevice ? 2500 : 1000, shared: true, header:'', format: '<b>¥${point.y}</b><br>${point.x} 2023', enableMarker: false }}
+                            tooltip={{ enable: true, fadeOutDuration: Browser.isDevice ? 2500 : 1000, showNearestTooltip: true, header:'', format: '<b>¥${point.y}</b><br>${point.x} 2023', enableMarker: false, enableHighlight: true }}
                             crosshair={{ enable: true, lineType: 'Vertical', dashArray: '2,2' }}
                             title="US to Yen">
                             <Inject services={[AreaSeries, LineSeries, DataLabel, DateTime, Tooltip, Zoom, Highlight, Legend, Selection, Crosshair]} />
@@ -455,7 +433,7 @@ let SynchronizedChart = () => {
                             load={load.bind(this)}
                             loaded={onChartLoad3.bind(this)}
                             titleStyle={{ textAlignment: 'Near' }}
-                            tooltip={{ enable: true, fadeOutDuration: Browser.isDevice ? 2500 : 1000, shared: true, header:'', format: '<b>$${point.y}</b><br>${point.x} 2023', enableMarker: false }}
+                            tooltip={{ enable: true, fadeOutDuration: Browser.isDevice ? 2500 : 1000, showNearestTooltip: true, header:'', format: '<b>$${point.y}</b><br>${point.x} 2023', enableMarker: false }}
                             crosshair={{ enable: true, lineType: 'Vertical', dashArray: '2,2' }}
                             title="US to SGD">
                             <Inject services={[AreaSeries, LineSeries, DataLabel, DateTime, Tooltip, Zoom, Highlight, Legend, Selection, Crosshair]} />
@@ -505,7 +483,7 @@ let SynchronizedChart = () => {
                             load={load.bind(this)}
                             loaded={onChartLoad4.bind(this)}
                             titleStyle={{ textAlignment: 'Near' }}
-                            tooltip={{ enable: true, fadeOutDuration: Browser.isDevice ? 2500 : 1000, shared: true, header:'', format: '<b>₹${point.y}</b><br>${point.x} 2023', enableMarker: false }}
+                            tooltip={{ enable: true, fadeOutDuration: Browser.isDevice ? 2500 : 1000, showNearestTooltip: true, header:'', format: '<b>₹${point.y}</b><br>${point.x} 2023', enableMarker: false }}
                             crosshair={{ enable: true, lineType: 'Vertical', dashArray: '2,2' }}
                             title="US to INR">
                             <Inject services={[AreaSeries, LineSeries, DataLabel, DateTime, Tooltip, Zoom, Highlight, Legend, Selection, Crosshair]} />
@@ -525,6 +503,9 @@ let SynchronizedChart = () => {
             <div id="description">
                 <p>
                     This demo showcases the synchronization of multiple charts, with crosshair, tooltip, and zooming functionalities synchronized across the charts. Hover over or zoom in on one chart to observe the corresponding impact on the other charts as well.
+                </p>
+                <p>
+                    <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
                 </p>
                 <p><b>Injecting Module</b></p>
                 <p>

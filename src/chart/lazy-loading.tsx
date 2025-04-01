@@ -133,6 +133,7 @@ export class LazyLoading extends SampleBase<{}, {}> {
                                 edgeLabelPlacement: 'Shift',
                                 skeleton: 'yMMM',
                                 skeletonType: 'Date',
+                                majorGridLines: { width: 0 },
                                 scrollbarSettings: {
                                     range: {
                                         minimum: new Date(2009, 0, 1),
@@ -146,10 +147,12 @@ export class LazyLoading extends SampleBase<{}, {}> {
                             }}
                             primaryYAxis={{
                                 title: 'Server Load',
-                                labelFormat: '{value}MB'
+                                labelFormat: '{value}MB',
+                                majorTickLines: { width: 0 },
+                                lineStyle: { width: 0 }
                             }}
                             chartArea={{ border: { width: 0 } }}
-                            tooltip={{ enable: true ,shared:true, header : '<b>${point.x}</b>', format : 'Server load : <b>${point.y}</b>'}}
+                            tooltip={{ enable: true, showNearestTooltip: true, header : '<b>${point.x}</b>', format : 'Server load : <b>${point.y}</b>', enableHighlight: true }}
                             legendSettings={{ visible: true }}
                             scrollEnd={this.scrollEnd.bind(this)}
                             load={this.load.bind(this)}
@@ -226,6 +229,9 @@ export class LazyLoading extends SampleBase<{}, {}> {
                 <div id="description">
                     <p>
                         In this example, you can see how to load data for the chart on demand. The chart will fire the <code>scrollEnd</code> event, and in that event, we can update the chart with the required data based on the point length and axis range. The scrollbar in the chart can be customized using the <code>height</code>, <code>trackColor</code>, <code>trackRadius</code>, <code>scrollbarRadius</code>, <code>scrollbarColor</code>, <code>enableZoom</code>, and <code>gripColor</code> properties in <code>scrollbarSettings</code>.
+                    </p>
+                    <p>
+                        <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
                     </p>
                     <p><b>Injecting Module</b></p>
                     <p>

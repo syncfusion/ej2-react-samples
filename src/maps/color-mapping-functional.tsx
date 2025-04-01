@@ -36,7 +36,7 @@ const SAMPLE_CSS = `
         color:#ffffff;
         font-weight: 500;
     }
-    .tailwind .opacityCheckbox, .tailwind-dark .opacityCheckbox, .fabric .opacityCheckbox, .fabric-dark .opacityCheckbox{
+    .fabric .opacityCheckbox, .fabric-dark .opacityCheckbox{
         margin-top: -7px;
     }
     .colorOpacityCheckBox {

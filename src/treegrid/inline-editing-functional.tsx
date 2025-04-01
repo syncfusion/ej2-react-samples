@@ -38,9 +38,10 @@ const Editing = () => {
     newRowPosition: "Below",
   };
   const validationRule: Object = { required: true };
-  const validationRule1: Object = { date: true };
+  const validationRule1: Object = { date: ['M/d/yyyy', 'Please enter a valid date']};
   const validationRule2: Object = { required: true, number: true };
   const editparams2: any = { params: { format: "n" } };
+  const editparams3: any = { params: { format: 'M/d/yyyy' } };
   const pageSettings: Object = { pageCount: 5 };
   const editing: { [key: string]: Object }[] = [
     { id: "CellEditing", name: "Cell Editing" },
@@ -113,6 +114,7 @@ const Editing = () => {
                 textAlign="Right"
                 editType="datepickeredit"
                 format="yMd"
+                edit={editparams3}
                 validationRules={validationRule1}
               />
               <ColumnDirective

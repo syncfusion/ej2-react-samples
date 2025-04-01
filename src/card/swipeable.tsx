@@ -158,7 +158,8 @@ export class Swipeable extends SampleBase<{}, {}> {
                         </div>
                     </div>
                     <div id='source_link'>Source: &nbsp;
-                        <table>
+                    <table>
+                        <tbody>
                             <tr>
                                 <td>
                                     <a href="https://wikitravel.org/en/Malaysia" target='_blank'>https://wikitravel.org/en/Malaysia</a>
@@ -179,7 +180,8 @@ export class Swipeable extends SampleBase<{}, {}> {
                                     <a href="https://wikitravel.org/en/New_York_City" target='_blank'>https://wikitravel.org/en/New_York_City</a>
                                 </td>
                             </tr>
-                        </table>
+                        </tbody>
+                    </table>
                     </div>
                 </div>
                 <div id="action-description">
@@ -191,11 +193,12 @@ export class Swipeable extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>
-                        The sample illustrates stacked collection of card overlapping each other, which can be bound to swipe actions to move cards
-        one after the other. CSS animation is used to achieve swiping on every left or right swipe.
-        <p>More information about Card can be found in this
-            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/card/getting-started/">
-                                documentation</a> section. </p>
+                        The sample illustrates a stacked collection of cards overlapping each other, which can be bound to swipe actions to move cards
+                        one after the other. CSS animation is used to achieve swiping on every left or right swipe.
+                    </p>
+                    <p>
+                        More information about Card can be found in this 
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/card/getting-started/">documentation</a> section.
                     </p>
                 </div>
             </div>

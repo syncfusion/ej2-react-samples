@@ -14,7 +14,7 @@ const ClipboardSchedule = () => {
   const scheduleObj = useRef<ScheduleComponent>(null);
   const menuObj = useRef<ContextMenuComponent>(null);
   let selectedTarget: Element;
-  let targetElement: HTMLElement
+  let targetElement: HTMLElement;
   const data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).scheduleData, null, true) as Record<string, any>[];
 
   const menuItems: MenuItemModel[] = [
@@ -70,7 +70,7 @@ const ClipboardSchedule = () => {
           <div className='schedule-container'>
             <ScheduleComponent width='100%' height='550px' ref={scheduleObj}
               selectedDate={new Date(2021, 0, 10)} eventSettings={{ dataSource: data }}
-              allowClipboard={true}  showQuickInfo={false}>
+              allowClipboard={true} showQuickInfo={false}>
               <ViewsDirective>
                 <ViewDirective option='Week' />
                 <ViewDirective option='Day' />

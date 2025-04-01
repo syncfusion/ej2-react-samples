@@ -7,6 +7,7 @@ import * as ReactDOM from "react-dom";
 import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ColumnSeries, Category, Highlight, DataLabel, Tooltip, ILoadedEventArgs, Legend, ChartTheme, RangeColorSettingsDirective, RangeColorSettingDirective } from '@syncfusion/ej2-react-charts';
 import { updateSampleSection } from '../common/sample-base';
 import { Browser, EmitType } from '@syncfusion/ej2-base';
+import { loadChartTheme } from './theme-color';
 export let data: any[] = [
     { x: "Jan", y: 6 },
     { x: "Feb", y: 8.9 },
@@ -37,15 +38,13 @@ const RangeColorMapping = () => {
         chart.setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
     return (
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
-                <ChartComponent id='charts' style={{ textAlign: "center" }} highlightMode='Point' highlightPattern='DiagonalForward' primaryXAxis={{ valueType: 'Category', majorGridLines: { width: 0 },  majorTickLines: {width : 0}, minorTickLines: {width: 0} }} primaryYAxis={{ lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 }, labelFormat: '{value}°C' }} title="USA CLIMATE - WEATHER BY MONTH" loaded={onChartLoad.bind(this)} load={load.bind(this)} chartArea={{ border: { width: 0 } }} width={Browser.isDevice ? '100%' : '75%'} legendSettings={{ mode: 'Range', visible: true, toggleVisibility: false }}>
+                <ChartComponent id='charts' style={{ textAlign: "center" }} highlightMode='Point' highlightPattern='DiagonalForward' primaryXAxis={{ valueType: 'Category', majorGridLines: { width: 0 },  majorTickLines: {width : 0}, minorTickLines: {width: 0} }} primaryYAxis={{ lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 }, labelFormat: '{value}°C' }} title="USA CLIMATE - WEATHER BY MONTH" loaded={onChartLoad.bind(this)} load={load.bind(this)} chartArea={{ border: { width: 0 }, margin: { bottom: 12 } }} width={Browser.isDevice ? '100%' : '75%'} legendSettings={{ mode: 'Range', visible: true, toggleVisibility: false }}>
                     <Inject services={[ColumnSeries, Highlight, DataLabel, Tooltip, Category, Legend]} />
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={data} name='USA' xName='x' yName='y' type='Column' animation={{ enable: false }} cornerRadius={{ topLeft: 10, topRight: 10 }} marker={{ dataLabel: { visible: true, position: "Outer" } }} />

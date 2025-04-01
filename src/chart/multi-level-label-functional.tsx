@@ -7,56 +7,9 @@ import * as ReactDOM from "react-dom";
 import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Tooltip, DataLabel, IPointRenderEventArgs, MultiLevelLabel, ILoadedEventArgs, Category, ColumnSeries, Inject, ChartTheme } from '@syncfusion/ej2-react-charts';
 import { EmitType, Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import { loadChartTheme, pointRenderEvent } from './theme-color';
 import { fabricColors, bootstrapColors, materialColors, highContrastColors, fluentColors, fluentDarkColors, bubbleFabricColors, bubbleMaterialDarkColors, bubbleMaterialColors, bubbleBootstrap5DarkColors, bubbleBootstrapColors, bubbleHighContrastColors, bubbleFluentDarkColors, bubbleFluentColors, bubbleTailwindDarkColors, bubbleTailwindColors, pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, bubbleBootstrap5Colors, pointBootstrap5Colors, pointMaterial3DarkColors, pointMaterial3Colors, fluent2Colors, fluent2HighContrastColors, pointTailwind3Colors, pointTailwind3DarkColors } from './theme-color';
-export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEventArgs): void => {
-    let selectedTheme: string = location.hash.split('/')[1];
-    selectedTheme = selectedTheme ? selectedTheme : 'Material';
-    if (selectedTheme && selectedTheme.indexOf('fabric') > -1) {
-        args.fill = pointFabricColors[args.point.index % 10];;
-    } else if (selectedTheme === 'material-dark') {
-        args.fill = pointMaterialDarkColors[args.point.index % 10];;
-    } else if (selectedTheme === 'material') {
-        args.fill = pointMaterialColors[args.point.index % 10];
-    } else if (selectedTheme === 'bootstrap5-dark') {
-        args.fill = pointBootstrap5DarkColors[args.point.index % pointBootstrap5DarkColors.length];
-    } else if (selectedTheme === 'bootstrap5') {
-        args.fill = pointBootstrap5Colors[args.point.index % pointBootstrap5Colors.length];
-    } else if (selectedTheme === 'bootstrap') {
-        args.fill = pointBootstrapColors[args.point.index % pointBootstrapColors.length];
-    } else if (selectedTheme === 'bootstrap4') {
-        args.fill = pointBootstrapColors[args.point.index % pointBootstrapColors.length];
-    } else if (selectedTheme === 'bootstrap-dark') {
-        args.fill = pointBootstrapColors[args.point.index % pointBootstrapColors.length];
-    } else if (selectedTheme === 'highcontrast') {
-        args.fill = pointHighContrastColors[args.point.index % 10];
-    } else if (selectedTheme === 'fluent-dark') {
-        args.fill = pointFluentDarkColors[args.point.index % 10];
-    } else if (selectedTheme === 'fluent') {
-        args.fill = pointFluentColors[args.point.index % 10];
-    } else if (selectedTheme === 'tailwind-dark') {
-        args.fill = pointTailwindDarkColors[args.point.index % 10];
-    } else if (selectedTheme === 'tailwind') {
-        args.fill = pointTailwindColors[args.point.index % 10];
-    } else if (selectedTheme === 'material3-dark') {
-        args.fill = pointMaterial3DarkColors[args.point.index % 10];
-    } else if (selectedTheme === 'material3') {
-        args.fill = pointMaterial3Colors[args.point.index % 10];
-    } else if (selectedTheme === 'fluent2') {
-        args.fill = fluent2Colors[args.point.index % 10];
-    }
-    else if (selectedTheme === 'tailwind') {
-        args.fill = pointTailwindColors[args.point.index % 10];
-    } else if (selectedTheme === 'tailwind-dark') {
-        args.fill = pointTailwindDarkColors[args.point.index % 10];
-    } else if (selectedTheme === 'fluent2-highcontrast' || selectedTheme === 'fluent2-dark') {
-        args.fill = fluent2HighContrastColors[args.point.index % 10];
-    }
-    else if (selectedTheme === 'tailwind3') {
-        args.fill = pointTailwind3Colors[args.point.index % 10];
-    } else if (selectedTheme === 'tailwind3-dark') {
-        args.fill = pointTailwind3DarkColors[args.point.index % 10];
-    }
-};
+
 export let data1: any[] = [{ x: 'Grapes', y: 28 }, { x: 'Apples', y: 87 },
 { x: 'Pears', y: 42 }, { x: 'Grapes', y: 13 },
 { x: 'Apples', y: 13 }, { x: 'Pears', y: 10 },
@@ -76,10 +29,11 @@ const Multilevellabels = () => {
         chart.setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
+    const pointRender = (args: IPointRenderEventArgs): void => {
+        pointRenderEvent(args);
+    }
     return (
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>

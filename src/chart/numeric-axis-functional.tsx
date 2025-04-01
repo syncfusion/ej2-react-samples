@@ -7,6 +7,7 @@ import * as ReactDOM from "react-dom";
 import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ColumnSeries, DataLabel, ILoadedEventArgs, Tooltip, Legend, ChartTheme, Highlight } from '@syncfusion/ej2-react-charts';
 import { Browser, EmitType } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import { loadChartTheme } from './theme-color';
 export let data1: any[] = [
     { x: 16, y: 2 }, { x: 17, y: 14 },
     { x: 18, y: 7 }, { x: 19, y: 7 },
@@ -32,10 +33,8 @@ const Numeric = () => {
         chart.setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
-        if (selectedTheme === 'highcontrast') {
+        let selectedTheme: string = loadChartTheme(args);
+        if (selectedTheme === 'HighContrast') {
             args.chart.series[0].fill = '#57BCFF';
             args.chart.series[1].fill = '#E58184';
         }
@@ -44,7 +43,7 @@ const Numeric = () => {
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
-                <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ minimum: 15, maximum: 21, interval: 1, majorGridLines: { width: 0 } }} load={load.bind(this)} primaryYAxis={{ majorGridLines: { width: 0 }, majorTickLines: { width: 0 }, lineStyle: { width: 0 }, labelStyle: { color: 'transparent' } }} legendSettings={{ visible: true, enableHighlight: true }} width={Browser.isDevice ? '100%' : '75%'} chartArea={{ border: { width: 0 } }} title='England vs West Indies' loaded={onChartLoad.bind(this)} tooltip={{ enable: true, format: '${point.x}th Over : <b>${point.y} Runs</b>' }}>
+                <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ minimum: 15, maximum: 21, interval: 1, majorGridLines: { width: 0 } }} load={load.bind(this)} primaryYAxis={{ majorGridLines: { width: 0 }, majorTickLines: { width: 0 }, lineStyle: { width: 0 }, labelStyle: { color: 'transparent' } }} legendSettings={{ visible: true, enableHighlight: true }} width={Browser.isDevice ? '100%' : '75%'} chartArea={{ border: { width: 0 }, margin: { bottom: 12 } }} title='England vs West Indies' loaded={onChartLoad.bind(this)} tooltip={{ enable: true, format: '${point.x}th Over : <b>${point.y} Runs</b>', enableHighlight: true }}>
                     <Inject services={[ColumnSeries, Legend, Tooltip, DataLabel, Highlight ]} />
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={data1} xName='x' yName='y' fill='#1e90ff' marker={{ dataLabel: { visible: true, position: 'Top', font: { fontWeight: '600' } } }} name='England' type='Column' width={2} columnSpacing= {0.1} />

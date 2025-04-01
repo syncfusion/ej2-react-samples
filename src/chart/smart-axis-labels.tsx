@@ -129,7 +129,7 @@ export class SmartAxisLabels extends SampleBase<{}, {}> {
                             title="Internet Users in Millions"
                             loaded={this.onChartLoad.bind(this)}
                             legendSettings={{ visible: false }}
-                            tooltip={{ enable: true, enableHighlight: true}}>
+                            tooltip={{ enable: true }}>
                             <Inject services={[Category, Category, ColumnSeries, Tooltip, DataLabel]} />
                             <SeriesCollectionDirective>
                                 <SeriesDirective dataSource={data1} xName='x' yName='y' name="Users" type='Column' marker={{ dataLabel: { visible: true, position: Browser.isDevice ? 'Outer' : 'Top',format: "{value}M", font: { fontWeight: '600', color: Browser.isDevice ? '#404041' : '#ffffff' } } }}>

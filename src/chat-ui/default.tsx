@@ -86,6 +86,7 @@ export class Default extends SampleBase<{}, {}> {
               userTyping={(args) => this.handleUserTyping(args, this.chatUser2Ref)}
               headerToolbar={user1ToolbarSettings}
               messageSend={(args) => this.handleMessageSend(args, 'user1')}
+              ref={chatUI => (this.chatUser1Ref = chatUI)}
             />
             <ChatUIComponent
               headerText='Reena'
@@ -96,6 +97,7 @@ export class Default extends SampleBase<{}, {}> {
               userTyping={(args) => this.handleUserTyping(args, this.chatUser1Ref)}
               headerToolbar={user2ToolbarSettings}
               messageSend={(args) => this.handleMessageSend(args, 'user2')}
+              ref={chatUI => (this.chatUser2Ref = chatUI)}
             />
             </div>
         </div>

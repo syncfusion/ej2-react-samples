@@ -20,9 +20,10 @@ const EditType = () => {
   };
   const editparams: any = { params: { popupHeight: "300px" } };
   const validationRule: Object = { required: true };
-  const validationRule1: Object = { date: true };
+  const validationRule1: Object = { date: ['M/d/y hh:mm a', 'Please enter a valid date']};
   const validationRule2: Object = { required: true, number: true };
   const editparams2: any = { params: { format: "n" } };
+  const editparams3: any = { params: { format: 'M/d/y hh:mm a' } };
   const pageSettings: Object = { pageCount: 5 };
   const format: any = { type: "dateTime", format: "M/d/y hh:mm a" };
   return (
@@ -58,6 +59,7 @@ const EditType = () => {
               width="170"
               textAlign="Right"
               editType="datetimepickeredit"
+              edit={editparams3}
               format={format}
               validationRules={validationRule1}
             />

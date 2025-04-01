@@ -63,9 +63,9 @@
     color: #fff;
 }
 
-.tailwind .e-list-parent.e-ul,
-.tailwind-dark .e-list-parent.e-ul,
-.tailwind3 .e-list-parent.e-ul,
-.tailwind3-dark .e-list-parent.e-ul {
+.tailwind .e-splitter .e-list-parent.e-ul,
+.tailwind-dark .e-splitter .e-list-parent.e-ul,
+.tailwind3 .e-splitter .e-list-parent.e-ul,
+.tailwind3-dark .e-splitter .e-list-parent.e-ul {
     overflow: hidden;
 } 

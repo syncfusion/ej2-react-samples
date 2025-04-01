@@ -36,19 +36,7 @@ export class UiVirtualization extends SampleBase<{}, {}> {
             { name: 'Nolan', icon: 'N', id: '9', altText: "" }
         ];
 
-        [[1010, 'data1'], [5010, 'data5'], [10010, 'data10'], [25010, 'data25']].forEach((ds: string[] | number[]) => {
-            let data: { [key: string]: string | object }[] = this.commonData.slice();
-            let index: number;
-            let spyIndex: number;
-            for (let i: number = 10; i <= (ds[0] as number); i++) {
-                while (index === spyIndex) {
-                    index = parseInt((Math.random() * 10).toString(), 10);
-                }
-                data.push({ name: data[index].name, icon: data[index].icon, imgUrl: data[index].imgUrl, id: i.toString() });
-                spyIndex = index;
-            }
-            this.dataSource[ds[1]] = data;
-        });
+        this.dataSource = this.createDataSource();
     }
     // Set customized list template
     public template(data: any) {
@@ -59,6 +47,40 @@ export class UiVirtualization extends SampleBase<{}, {}> {
                 <span className="e-list-content">{data.name}</span>
             </div>
         );
+    }
+
+    private createDataSource() {
+        const source: { [key: string]: Array<{ [key: string]: string | object }> } = {};
+        
+        ([[1010, 'data1'], [5010, 'data5'], [10010, 'data10'], [25010, 'data25']] as [number, string][])
+            .forEach(([count, key]) => {
+                let data = [...this.commonData];
+                let index: number;
+                let spyIndex: number;
+                
+                for (let i = 10; i <= count; i++) {
+                    while (index === spyIndex) {
+                        index = Math.floor(Math.random() * 10);
+                    }
+                    data.push({ 
+                        ...this.commonData[index], 
+                        id: i.toString() 
+                    });
+                    spyIndex = index;
+                }
+                source[key] = data;
+            });
+        
+        return source;
+    }
+
+    componentDidMount() {
+        // Set element reference once when component mounts
+        this.liElement = document.getElementById('ui-list');
+        createSpinner({ target: this.liElement });
+        if (Browser.isDevice) {
+            this.liElement.classList.add('ui-mobile');
+        }
     }
 
     // Set dropdown list data
@@ -74,13 +96,6 @@ export class UiVirtualization extends SampleBase<{}, {}> {
     public fields: Object = { text: 'name' };
 
     public onActionComplete() {
-        this.liElement = document.getElementById('ui-list');
-        if (Browser.isDevice) {
-            this.liElement.classList.add('ui-mobile');
-        }
-        createSpinner({
-            target: this.liElement
-        });
         this.endTime = new Date();
         document.getElementById('time').innerText = (this.endTime.getTime() - this.startTime.getTime()) + ' ms';
     }
@@ -91,11 +106,10 @@ export class UiVirtualization extends SampleBase<{}, {}> {
 
     public onChange(e: ChangeEventArgs) {
         showSpinner(this.liElement);
-        this.startTime = new Date();
-        this.listviewInstance.dataSource = this.dataSource['data' + e.value];
+        const start = Date.now();
+        this.listviewInstance.dataSource = this.dataSource[`data${e.value}`];
         this.listviewInstance.dataBind();
-        this.endTime = new Date();
-        document.getElementById('time').innerText = (this.endTime.getTime() - this.startTime.getTime()) + ' ms';
+        document.getElementById('time').innerText = `${Date.now() - start} ms`;
         hideSpinner(this.liElement);
     }
 

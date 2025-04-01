@@ -62,9 +62,10 @@ export class RTL extends SampleBase<{}, {}> {
               interval: 200,
               labelFormat:'{value}B',
               lineStyle: { width: 0 },
+              majorTickLines: { width: 0 }
             }}
             chartArea={{ border: { width: 0 } }}
-            tooltip={{ enable: true }}
+            tooltip={{ enable: true, enableHighlight: true }}
             width={Browser.isDevice ? '100%' : '75%'}
             title="Company Performance"
             loaded={this.onChartLoad.bind(this)}

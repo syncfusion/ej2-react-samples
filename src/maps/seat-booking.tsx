@@ -183,12 +183,12 @@ export class SeatBookingMaps extends SampleBase<{}, {}> {
     };
     
     private clearseats(): void {
-        if (seatInfo != null) {
-            seatInfo.innerHTML = '';
-            let selected: HTMLCollection = document.getElementsByClassName('ShapeselectionMapStyle');
-            for (let i: number = 0, length: number = selected.length; i < length; i++) {
-                selected[0].setAttribute('class', '');
+        if (seatInfo != null && seatInfo.innerHTML !== '') {
+            let seats: any[] = seatInfo.innerText.split('-')[1].trim().split(',').map(num => Number(num.trim()));
+            for (let i: number = 0, length: number = seats.length; i < length; i++) {
+                this.mapInstance.shapeSelection(0, 'seatno', seats[i], false);
             }
+            seatInfo.innerHTML = '';
         }
     }
 }

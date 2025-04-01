@@ -8,6 +8,7 @@ import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, Cha
 import { EmitType } from '@syncfusion/ej2-base';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import { loadChartTheme, pointRenderEvent } from './theme-color';
 const SAMPLE_CSS = `
     .control-fluid {
         padding: 0px !important;
@@ -23,33 +24,6 @@ const data3: Object[] = [
 ];
 import { fabricColors, materialColors, bootstrapColors, highContrastColors, fluent2Colors, fluent2HighContrastColors, pointTailwindColors, pointTailwindDarkColors, pointTailwind3Colors, pointTailwind3DarkColors } from './theme-color';
 
-export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEventArgs): void => {
-    let selectedTheme: string = location.hash.split('/')[1];
-    selectedTheme = selectedTheme ? selectedTheme : 'material';
-    if (selectedTheme && selectedTheme.indexOf('fabric') > -1) {
-        args.fill = fabricColors[args.point.index % 10];
-    } else if (selectedTheme === 'material') {
-        args.fill = materialColors[args.point.index % 10];
-    } else if (selectedTheme === 'highcontrast') {
-        args.fill = highContrastColors[args.point.index % 10];
-    } else if (selectedTheme === 'fluent2') {
-        args.fill = fluent2Colors[args.point.index % 10];
-    } else if (selectedTheme === 'fluent2-highcontrast' || selectedTheme === 'fluent2-dark') {
-        args.fill = fluent2HighContrastColors[args.point.index % 10];
-    } 
-    else if (selectedTheme === 'tailwind') {
-        args.fill = pointTailwindColors[args.point.index % 10];
-    } else if (selectedTheme === 'tailwind-dark') {
-        args.fill = pointTailwindDarkColors[args.point.index % 10];
-    }
-    else if (selectedTheme === 'tailwind3') {
-        args.fill = pointTailwind3Colors[args.point.index % 10];
-    } else if (selectedTheme === 'tailwind3-dark') {
-        args.fill = pointTailwind3DarkColors[args.point.index % 10];
-    } else {
-        args.fill = bootstrapColors[args.point.index % 10];
-    }
-}; 
 
 const UpdateDataSource = () => {
     let[intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
@@ -59,11 +33,15 @@ const UpdateDataSource = () => {
             clearIntervalFn();
         };
     }, [])
-
+    const pointRender = (args: IPointRenderEventArgs): void => {
+        pointRenderEvent(args);
+    }
+    const loaded = (args: ILoadedEventArgs): void => {
+        let chart: Element = document.getElementById('UpdateData');
+        chart.setAttribute('title', '');
+    };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
         clearIntervalFn();
         intervalId = setInterval(function () {
             var container = document.getElementById('UpdateData');
@@ -110,7 +88,7 @@ const UpdateDataSource = () => {
                 <ChartComponent id='UpdateData' style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', labelStyle: { size: Browser.isDevice ? '11px' : '12px' }, majorGridLines: { width: 0 }, labelIntersectAction: 'Rotate90' }} primaryYAxis={{
                     title: 'Sales (in percentage)', labelFormat: '{value}%', interval: 5, lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minimum: 0, maximum: 100
                 }}
-                    chartArea={{ border: { width: 0 } }} load={load.bind(this)} width={Browser.isDevice ? '100%' : '75%'} title='Sales by product' pointRender={pointRender} axisRangeCalculated={axisRangeCalculated.bind(this)} >
+                    chartArea={{ border: { width: 0 } }} load={load.bind(this)} loaded={loaded.bind(this)} width={Browser.isDevice ? '100%' : '75%'} title='Sales by product' pointRender={pointRender} axisRangeCalculated={axisRangeCalculated.bind(this)} >
                     <Inject services={[ColumnSeries, DataLabel, Category]} />
                     <SeriesCollectionDirective >
                         <SeriesDirective dataSource={data3} xName='x' yName='y' type='Column' cornerRadius={{ topLeft: Browser.isDevice ? 10 : 15, topRight: Browser.isDevice ? 10 : 15 }} columnWidth={0.5} marker={marker}>

@@ -753,9 +753,7 @@ export class CustomToolbar extends SampleBase<{}, {}> {
           <div className="e-message render-mode-info">
             <span className="e-msg-icon render-mode-info-icon" title="Turn OFF to render the PDF Viewer as server-backed"></span>
           </div>
-          <div>
-            <SwitchComponent cssClass="buttonSwitch" id="checked" change={this.change} checked={true}></SwitchComponent>
-          </div>
+          <SwitchComponent cssClass="buttonSwitch" id="checked" change={this.change} checked={true}></SwitchComponent>
         </div>
         <div>
           <div className='e-pdf-toolbar'>
@@ -847,12 +845,7 @@ export class CustomToolbar extends SampleBase<{}, {}> {
                   <span
                     className="e-input-group-icon e-input-search-group-icon e-icons e-search"
                     id="container_search_box-icon"
-                    onClick={this.initiateTextSearch}></span>
-                  <span
-                    className="e-input-group-icon e-input-search-group-icon e-icons e-close"
-                    id="container_close_search_box-icon"
-                    style={{ display: 'none', top: '6px' }}
-                    onClick={this.clearTextSearch}></span>
+                    onClick={this.searchClickHandler}></span>
                 </div>
                 <button
                   className="e-btn e-icon-btn e-pv-search-btn e-icons e-chevron-left"
@@ -993,20 +986,19 @@ export class CustomToolbar extends SampleBase<{}, {}> {
   public initiateTextSearch() {
     const textsearchPrevElement = document.getElementById('container_prev_occurrence') as HTMLButtonElement;
     const textsearchNextElement = document.getElementById('container_next_occurrence') as HTMLButtonElement;
-    const textsearchcloseElement = document.getElementById('container_close_search_box-icon') as HTMLElement;
     const textsearchElement = document.getElementById('container_search_box-icon') as HTMLElement;
-    if (textsearchPrevElement && textsearchNextElement && textsearchcloseElement && textsearchElement) {
+    if (textsearchPrevElement && textsearchNextElement && textsearchElement) {
       textsearchPrevElement.disabled = false;
       textsearchNextElement.disabled = false;
-      textsearchcloseElement.style.display = 'block';
-      textsearchElement.style.display = 'none';
+      textsearchElement.classList.add('e-close');
+      textsearchElement.classList.remove('e-search');
       textsearchPrevElement.addEventListener("click", this.previousTextSearch);
       textsearchNextElement.addEventListener("click", this.nextTextSearch);
       if (this.searchText !== (document.getElementById('container_search_input') as HTMLInputElement).value || this.prevMatchCase !== this.matchCase) {
-        viewer.textSearchModule.cancelTextSearch();
+        viewer.textSearch.cancelTextSearch();
         this.searchText = (document.getElementById('container_search_input') as HTMLInputElement).value;
-        viewer.textSearchModule.searchText(this.searchText, this.matchCase);
         this.searchActive = true;
+        viewer.textSearch.searchText(this.searchText, this.matchCase);
         this.prevMatchCase = this.matchCase;
       }
       else {
@@ -1014,24 +1006,41 @@ export class CustomToolbar extends SampleBase<{}, {}> {
       }
     }
   }
-  public clearTextSearch() {
-    const textsearchcloseElement = document.getElementById('container_close_search_box-icon') as HTMLElement;
-    const textsearchElement = document.getElementById('container_search_box-icon') as HTMLElement;
-    textsearchcloseElement.style.display = 'none';
-    textsearchElement.style.display = 'block';
-    viewer.textSearchModule.cancelTextSearch();
-    const searchTextElement = document.getElementById('container_search_input') as HTMLInputElement;
-    searchTextElement.value = '';
-  }
-  
   public inputChange(): void {
     viewer.textSearchModule.clearAllOccurrences();
     this.searchActive = false;
     if((document.getElementById('container_search_input') as HTMLInputElement).value == '') {
-      const textsearchcloseElement = document.getElementById('container_close_search_box-icon') as HTMLElement;
-      const textsearchElement = document.getElementById('container_search_box-icon') as HTMLElement;
-      textsearchcloseElement.style.display = 'none';
-      textsearchElement.style.display = 'block';
+      this.updateSearchInputIcon(true);
+      viewer.textSearch.cancelTextSearch();
+      this.searchText = '';
+    }
+  }
+  public searchClickHandler(): void {
+    var searchBtn = document.getElementById('container_search_box-icon');
+    if (searchBtn.classList.contains('e-search')) {
+      viewer.textSearch.cancelTextSearch();
+      this.initiateTextSearch();
+      this.updateSearchInputIcon(false);
+      this.searchText = '';
+    }
+    else if (searchBtn.classList.contains('e-close')) {
+      var searchInput = document.getElementById('container_search_input') as HTMLInputElement;
+      this.updateSearchInputIcon(true);
+      searchInput.value = '';
+      searchInput.focus();
+      viewer.textSearch.cancelTextSearch();
+      this.searchText = '';
+    }
+  }
+  public updateSearchInputIcon(isEnable: Boolean) {
+    var searchBtn = document.getElementById('container_search_box-icon');
+    if (isEnable) {
+      searchBtn.classList.add('e-search');
+      searchBtn.classList.remove('e-close');
+    }
+    else {
+      searchBtn.classList.add('e-close');
+      searchBtn.classList.remove('e-search');
     }
   }
   public nextTextSearch() {

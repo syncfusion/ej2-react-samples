@@ -17,7 +17,6 @@ function ProtectSheet() {
     const boldCenter: CellStyleModel = { fontWeight: 'bold', textAlign: 'center' };
 
     function onCreated(): void {
-        spreadsheet.cellFormat({ fontWeight: 'bold' }, 'EMI Schedule!A1:F1');
         spreadsheet.numberFormat('$#,##0.00', 'EMI Schedule!C2:F13');
     }
     function beforeCellRender(args: CellRenderEventArgs): void {
@@ -99,6 +98,18 @@ function ProtectSheet() {
                             <RangesDirective>
                                 <RangeDirective dataSource={protectSheetData} showFieldAsHeader={true}></RangeDirective>
                             </RangesDirective>
+                            <RowsDirective>
+                                <RowDirective>
+                                    <CellsDirective>
+                                        <CellDirective style={boldCenter}></CellDirective>
+                                        <CellDirective style={boldCenter}></CellDirective>
+                                        <CellDirective style={boldCenter}></CellDirective>
+                                        <CellDirective style={boldCenter}></CellDirective>
+                                        <CellDirective style={boldCenter}></CellDirective>
+                                        <CellDirective style={boldCenter}></CellDirective>
+                                    </CellsDirective>
+                                </RowDirective>
+                            </RowsDirective>
                             <ColumnsDirective>
                                 <ColumnDirective index={1} width={110}></ColumnDirective>
                                 <ColumnDirective width={85}></ColumnDirective>

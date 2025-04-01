@@ -40,12 +40,14 @@ export class Template extends SampleBase<{}, {}> {
             <div className="content-wrapper">
               <div id='mention_template'>
                 <table>
-                   <tr>
-                      <td>
-                          <label className="template-size">Compose your content</label>
-                          <div id="templateMention" placeholder="Type @ and tag user"></div>
-                      </td>
-                  </tr>
+                  <tbody>
+                    <tr>
+                        <td>
+                            <label className="template-size">Compose your content</label>
+                            <div id="templateMention" placeholder="Type @ and tag user"></div>
+                        </td>
+                    </tr>
+                  </tbody>
                 </table>
 
                 <MentionComponent dataSource={this.emailData} target={this.templateTarget} fields={this.templateFields} itemTemplate={this.itemTemplate} displayTemplate={this.displayTemplate} noRecordsTemplate={"No item related to the search"} popupWidth={250} popupHeight={200}></MentionComponent>

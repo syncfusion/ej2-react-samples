@@ -60,7 +60,7 @@ const themesToRedirect: string[] = ['material', 'material-dark', 'bootstrap4', '
  */
 export let selectedTheme: string = location.hash.split('/')[1] || localStorage.getItem('ej2-theme') || 'tailwind3';
 localStorage.removeItem('ej2-theme');
-const themeCollection: string[] = ['material3', 'bootstrap5', 'fluent2', 'tailwind3', 'tailwind', 'fluent2-highcontrast', 'highcontrast', 'fluent'];
+const themeCollection: string[] = ['material3', 'bootstrap5', 'fluent2', 'tailwind3', 'fluent2-highcontrast', 'highcontrast', 'tailwind', 'fluent'];
 let themeList: HTMLElement = document.getElementById('themelist');
 
 /**
@@ -200,7 +200,7 @@ export function setSbLink(): void {
        ele.href = sb === 'aspnetcore' ? 'https://ej2.syncfusion.com/aspnetcore/' : 'https://ej2.syncfusion.com/aspnetmvc/';
 
     } else if (sb === 'nextjs') {
-      ele.href = 'https://ej2.syncfusion.com/nextjs/demos/';
+      ele.href = 'https://ej2.syncfusion.com/nextjs/demos/' + sample[1];
     }
     else if (sb === 'blazor') {
         ele.href = 'https://blazor.syncfusion.com/demos/';

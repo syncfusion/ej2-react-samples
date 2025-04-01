@@ -119,6 +119,7 @@ export class Template extends SampleBase<{}, {}> {
                                 messageTemplate={this.messageTemplate}
                                 timeBreakTemplate={this.timeBreakTemplate}
                                 messageSend={() => this.handleMessageSend()}
+                                ref={chatUI => (this.chatUiInst = chatUI)}
                             />
                     </div>
                 </div>

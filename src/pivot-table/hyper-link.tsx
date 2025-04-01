@@ -69,7 +69,7 @@ export class HyperLink extends SampleBase<{}, {}> {
         if ((args.currentCell.querySelector('.e-headercelldiv') && !(args.data as IAxisSet).indexObject) ||
             args.currentCell.className.indexOf('e-cellvalue') > -1) {
             cell += 'Value Header ';
-        } else if (args.currentCell.className.indexOf('e-rowsheader') > -1) {
+        } else if (args.currentCell.parentElement.className.indexOf('e-rowsheader') > -1 || args.currentCell.className.indexOf('e-rowsheader') > -1) {
             cell += 'Row Header ';
         } else if (args.currentCell.className.indexOf('e-columnsheader') > -1 ||
             args.currentCell.className.indexOf('e-pivotcell-container') > -1) {
@@ -227,9 +227,11 @@ export class HyperLink extends SampleBase<{}, {}> {
                                 <tbody>
                                     <tr style={{ height: "50px" }}>
                                         <td>
-                                            Fields:
+                                            <div>
+                                                Show Hyperlink:
+                                            </div>
                                         </td>
-                                        <td style={{ paddingBottom: '16px' }}>
+                                        <td>
                                             <div>
                                                 <DropDownListComponent ref={(scope) => { optionsdll = scope; }} index={3} width={'100%'} id="fields"
                                                     change={this.onOptionChange.bind(this)} dataSource={options} fields={measureFields}></DropDownListComponent>
@@ -244,9 +246,11 @@ export class HyperLink extends SampleBase<{}, {}> {
                                     </tr>
                                     <tr className="measurecls" style={{ height: "50px", display: "none" }}>
                                         <td>
-                                            Measures:
+                                            <div>
+                                                Measures:
+                                            </div>
                                         </td>
-                                        <td style={{ paddingBottom: '16px' }}>
+                                        <td>
                                             <div>
                                                 <DropDownListComponent ref={(scope) => { measuresddl = scope; }} index={0} width={'100%'} id="measures"
                                                     dataSource={measures} fields={measureFields}></DropDownListComponent>
@@ -255,9 +259,11 @@ export class HyperLink extends SampleBase<{}, {}> {
                                     </tr>
                                     <tr className="conditioncls" style={{ height: "50px", display: "none" }}>
                                         <td>
-                                            Condition:
+                                            <div>
+                                                Condition:
+                                            </div>
                                         </td>
-                                        <td style={{ paddingBottom: '16px' }}>
+                                        <td>
                                             <div className='conditionscls'>
                                                 <DropDownListComponent ref={(scope) => { operatorddl = scope; }} value={'NotEquals'} width={'100%'} id="conditions"
                                                     change={this.onOperatorChange.bind(this)} dataSource={operators}></DropDownListComponent>
@@ -266,9 +272,11 @@ export class HyperLink extends SampleBase<{}, {}> {
                                     </tr>
                                     <tr className="input1cls" style={{ height: "50px", display: "none" }}>
                                         <td>
-                                            Value 1:
+                                            <div>
+                                                Value 1:
+                                            </div>
                                         </td>
-                                        <td style={{ paddingBottom: '16px' }}>
+                                        <td>
                                             <div className="value1cls">
                                                 <NumericTextBoxComponent id="value1" ref={(scope) => { valueInput1 = scope; }} value={0}
                                                     width={'100%'} placeholder='Example: 400'>
@@ -278,9 +286,11 @@ export class HyperLink extends SampleBase<{}, {}> {
                                     </tr>
                                     <tr className="input2cls" style={{ height: "50px", display: "none" }}>
                                         <td>
-                                            Value 2:
+                                            <div>
+                                                Value 2:
+                                            </div>
                                         </td>
-                                        <td style={{ paddingBottom: '16px' }}>
+                                        <td>
                                             <div className="value2cls">
                                                 <NumericTextBoxComponent id="value2" ref={(scope) => { valueInput2 = scope; }} value={0}
                                                     width={'100%'} placeholder='Example: 4000'>
@@ -299,7 +309,7 @@ export class HyperLink extends SampleBase<{}, {}> {
                                             <div>Header Text:
                                             </div>
                                         </td>
-                                        <td style={{ paddingBottom: '16px' }}>
+                                        <td>
                                             <div className="textcls">
                                                 <MaskedTextBoxComponent id="text" ref={(scope) => { textInput = scope; }} value={''}
                                                     width={'100%'} placeholder='Example: "FY 2015.In Stock"'>

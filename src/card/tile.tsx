@@ -217,15 +217,14 @@ export class Tile extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>
-                        Card is a small container in which user can show defined content in specific structure and it is flexible and extensible.
-                    This sample demonstrates to render the
-                    <code>Card</code> Using
-                    <a target="_blank" href="https://ej2.syncfusion.com/documentation/common/template-engine/"> Template Engine</a> and it can be filtered based on
-                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/data/getting-started/">
-                            data Manager</a>.
-                    <p> More information about Card can be found in this
-                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/card/getting-started/">
-                                documentation</a> section. </p>
+                        Card is a small container in which user can show defined content in a specific structure, and it is flexible and extensible.
+                        This sample demonstrates how to render the <code>Card</code> using
+                        <a target="_blank" href="https://ej2.syncfusion.com/documentation/common/template-engine/"> Template Engine</a> and it can be filtered based on
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/data/getting-started/">data Manager</a>.
+                    </p>
+                    <p>
+                        More information about Card can be found in this
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/card/getting-started/">documentation</a> section.
                     </p>
                 </div>
             </div>

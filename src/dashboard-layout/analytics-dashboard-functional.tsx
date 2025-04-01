@@ -275,7 +275,7 @@ const SEODashboard = () => {
                                         <PanelDirective sizeX={2} sizeY={2} row={1} col={0} content={pie.bind(this) as any} header="<div>Active Visitors</div>"></PanelDirective>
                                         <PanelDirective sizeX={2} sizeY={2} row={1} col={2} content={map.bind(this) as any} header="<div>Regional Map</div>"></PanelDirective>
                                         <PanelDirective sizeX={2} sizeY={2} row={1} col={4} content={colChart.bind(this) as any} header="<div>Visitors by Type</div>"></PanelDirective>
-                                        <PanelDirective sizeX={2} sizeY={2} row={3} col={0} content={pieChart.bind(this) as any} header="<div>Useage Statistics</div>"></PanelDirective>
+                                        <PanelDirective sizeX={2} sizeY={2} row={3} col={0} content={pieChart.bind(this) as any} header="<div>Usage Statistics</div>"></PanelDirective>
                                         <PanelDirective sizeX={4} sizeY={2} row={3} col={2} content={visitorsChart.bind(this) as any} header="<div>Traffic History</div>"></PanelDirective>
                                     </PanelsDirective>
                                 </DashboardLayoutComponent>

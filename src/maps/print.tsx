@@ -37,10 +37,6 @@ const SAMPLE_CSS = `
     content: '\\e743';
 }
 
-.e-view.tailwind .e-play-icon::before, .e-view.tailwind-dark .e-play-icon::before {
-    content: '\\e76c';
-}
-
 .e-view.highcontrast .e-play-icon::before {
     content: '\\ebf9';
 }

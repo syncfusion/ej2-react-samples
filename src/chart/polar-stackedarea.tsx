@@ -58,7 +58,7 @@ export class PolarStackedArea extends SampleBase<{}, {}> {
                                 coefficient: Browser.isDevice ? 80 : 100
                             }}
                             load={this.load.bind(this)}
-                            tooltip={{enable: true, header: "", format: "<b>${point.x}</b><br>GDP: <b>${point.y}USD</b>"}}
+                            tooltip={{ enable: true, header: "", format: "<b>${point.x}</b><br>GDP: <b>${point.y}USD</b>", enableHighlight: true }}
                             title="GDP, Current Prices (in Billions)" loaded={this.onChartLoad.bind(this)}>
                             <Inject services={[StackingAreaSeries, Legend, Category, PolarSeries, RadarSeries, Tooltip]} />
                             <SeriesCollectionDirective>

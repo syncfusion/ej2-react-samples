@@ -28,7 +28,7 @@ export class ImageEditorIntegration extends SampleBase<{}, {}> {
       buttonModel: { content: 'Save', isPrimary: true },
       click: this.onInsert.bind(this),
     },
-    { buttonModel: { content: 'Cancel' }, click: this.onCancel },
+    { buttonModel: { content: 'Cancel' }, click: this.onCancel.bind(this) },
   ];
   private toolbar = ['Undo', 'Redo', 'Crop', 'Annotate', 'ZoomIn', 'ZoomOut',
   'Reset', 'Pan', 'Finetune', 'Filter', 'Pen', 'Line', 'Rectangle', 'Ellipse', 'Arrow',
@@ -58,13 +58,11 @@ export class ImageEditorIntegration extends SampleBase<{}, {}> {
     this.rteObj.formatter.enableUndo(this.rteObj);
     this.dispose();
     this.dialogObj.hide();
-    this.imageELement.crossOrigin = null;
   }
   public onCancel(): void {
     this.dispose();
     this.dialogObj.hide();
     this.isLoaded = true;
-    this.imageELement.crossOrigin = null;
   }
   private quickToolbarSettings = {
     image: [
@@ -100,12 +98,15 @@ export class ImageEditorIntegration extends SampleBase<{}, {}> {
         imageEditorInstance.destroy();
     }
   }
-public onClose():void {
-  this.dispose();
-  this.dialogObj.hide();
-  this.isLoaded = true;
-  this.imageELement.crossOrigin = null;
-}
+  public onClose():void {
+    this.dispose();
+    this.dialogObj.hide();
+    this.isLoaded = true;
+  }
+  public open(): void {
+    this.imageEditorObj.update();
+    this.imageEditorObj.open(this.dataURL);
+  }
   public OnBeforeOpen(): void {
     this.dispose();
     this.isLoaded = false;
@@ -120,19 +121,17 @@ public onClose():void {
       canvas.width = this.imageELement.offsetWidth;
       var imageELe = this.imageELement;
       var isLoded = this.isLoaded;
+      var proxy = this;
       this.imageELement.onload = function () {
         ctx.drawImage(imageELe, 0, 0, canvas.width, canvas.height);
-        this.dataURL = canvas.toDataURL();
-        if (!isLoded) {
-          this.imageEditorObj = new ImageEditor({
-            height: '450px',
-            created: function() {
-                this.imageEditorObj.open(this.dataURL);
-            }
+        proxy.dataURL = canvas.toDataURL();
+      }
+      if (!isLoded) {
+        this.imageEditorObj = new ImageEditor({
+          height: '450px'
         });
         this.imageEditorObj.appendTo('#image-editor');
         isLoded = true;
-        }
       };
     }
   }
@@ -152,7 +151,7 @@ public onClose():void {
                 <img
                     id="img1"
                     style={{ height: 335 }}
-                    src="./src/rich-text-editor/images/bridge.png"
+                    src="https://ej2.syncfusion.com/angular/demos/assets/image-editor/images/default.png"
                     aria-label="Bridge"
                 ></img>
                 </p>
@@ -167,6 +166,7 @@ public onClose():void {
                 id="ImageEditorDialog"
                 ref={(dialog) => { this.dialogObj = dialog }}
                 buttons={this.dlgButtons}
+                open={this.open.bind(this)}
                 beforeOpen={this.OnBeforeOpen.bind(this)}
                 header={this.header}
                 visible={false}

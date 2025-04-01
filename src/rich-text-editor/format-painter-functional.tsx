@@ -28,33 +28,7 @@ function FormatPainterRTE(){
                     <div className='rte-control-section'>
                         <RichTextEditorComponent id="formatPainterRTE" ref={(richtexteditor) => { formatPainterRTE = richtexteditor }}
                             toolbarSettings={toolbarSettings}>
-                                <h3>Format Painter</h3>
-                                <p>A Format Painter is a Rich Text Editor feature allowing users to quickly{' '}
-                                    <span style={{backgroundColor: 'rgb(198, 140, 83)'}}><strong>copy</strong></span>{' '}
-                                    and{' '} 
-                                    <span style={{backgroundColor: 'rgb(198, 140, 83)'}}><strong>paste</strong></span>{' '}
-                                    formatting from one text to another. With a rich text editor, utilize the format painter as follows:
-                                </p>
-                                <ul>
-                                    <li>
-                                        Select the text whose format you want to copy.
-                                    </li>
-                                    <li>
-                                        Click on the <strong><em>Format Painter</em></strong> button in the toolbar. It may look like a paintbrush icon.
-                                    </li>
-                                    <li>
-                                        The cursor will change to a <strong>paintbrush</strong> icon. Click and drag the cursor over the text you want to apply the copied format.
-                                    </li>
-                                    <li>
-                                        Release the mouse button to apply the format.
-                                    </li>
-                                </ul>
-                                <p>
-                                    Using the format painter in a rich text editor can save you time when formatting a large document, You can quickly 
-                                    copy and apply formatting
-                                    to <span style={{backgroundColor: 'rgb(198, 140, 83)'}}><strong>multiple sections</strong></span>. 
-                                    It's a helpful tool for anyone who works with text editing regularly, such as writers, editors, and content creators.
-                                </p>
+                            <h3>Format Painter in Rich Text Editor</h3><p>The <strong data-start="50" data-end="68">Format Painter</strong> allows you to quickly copy and apply text formatting within the editor, saving time and ensuring consistency.</p><h5>How to Use Format Painter?</h5><ul><li><strong>Select the text</strong> with the formatting you want to copy.</li><li>Click the <strong>Format Painter</strong> button (paintbrush icon) in the toolbar.</li><li>The cursor changes to a <strong>paintbrush</strong> icon.</li><li><strong>Click and drag</strong> over the text where you want to apply the copied format.</li><li>Release the mouse button, and the formatting will be applied.</li></ul><h5>Why Use Format Painter?</h5><ul><li><strong>Saves time</strong> when formatting large documents.</li><li><strong>Ensures consistency</strong> in text styles. </li><li><strong>Easy to use</strong> for writers, editors, and content creators.</li></ul>
                             <Inject services={[HtmlEditor, Toolbar, FormatPainter, QuickToolbar, Image, Link, Table, PasteCleanup, Audio, Video]} />
                         </RichTextEditorComponent>
                     </div>

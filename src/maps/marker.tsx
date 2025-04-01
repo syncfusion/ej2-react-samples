@@ -22,9 +22,6 @@ const SAMPLE_CSS = `
     }
     tr {
         height: 50px;
-    }
-    .tailwind tr, .tailwind-dark tr {
-        height: 70px;
     }`;
 
 export class MarkerMaps extends SampleBase<{}, {}> {

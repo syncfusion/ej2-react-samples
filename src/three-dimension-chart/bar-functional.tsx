@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { Chart3DComponent, Chart3DSeriesCollectionDirective, Chart3DSeriesDirective, Inject, BarSeries3D, Chart3DLoadedEventArgs, ChartTheme, Category3D, Legend3D, Tooltip3D, Highlight3D } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import { load3DChartTheme } from './theme-color';
 export let data1: any[] = [
     { x: 'Japan', y: 1.71 }, { x: 'France', y: 1.82 },
     { x: 'India', y: 6.68 }, { x: 'Germany', y: 2.22 }, { x: 'Italy', y: 1.50 }, { x: 'Canada', y: 3.05 }
@@ -31,9 +32,7 @@ const Bar = () => {
         chart.setAttribute('title', '');
     };
     const load = (args: Chart3DLoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        load3DChartTheme(args);
     };
     return (
         <div className='control-pane'>

@@ -27,7 +27,7 @@ const DragAndDrop = () => {
                 <p>In this sample, the <a href="https://ej2.syncfusion.com/react/documentation/api/file-manager/#allowdraganddrop" target="_blank"> allowDragAndDrop </a> property enables users to move files or folders from one folder to another. Additionally, it supports file upload by dragging and dropping files from Windows Explorer and Mac onto the File Manager component.</p>
                 <p>
                     <b>Note: </b>File Manager's upload functionality is restricted in the online demos for security reasons. If you need to test upload functionality, please install 
-                    <a target="_blank" href="https://www.syncfusion.com/downloads"> Syncfusion<sup>®</sup> Essential Studio<sup>®</sup> </a>on your machine and run the demo.
+                    <a target="_blank" href="https://www.syncfusion.com/downloads"> Syncfusion Essential Studio </a>on your machine and run the demo.
                 </p>
             </div>
         </div>

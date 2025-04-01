@@ -58,7 +58,7 @@ export  class OverView extends SampleBase<{}, {}> {
       <div className="template" >
         <ChartComponent style={{ "height": "100%", "width": "100%", }} primaryXAxis={{ valueType: 'Category',  majorGridLines: { width: 0 },labelStyle:{size:'11px'} }}  load={this.load.bind(this)} primaryYAxis={{
           minimum:0, maximum:100, interval:20,majorTickLines: { width: 0 }, labelFormat: '{value}%', lineStyle: { width: 0 }, labelStyle:{size:'11px'}, titleStyle:{size:'13px'} ,
-        }} tooltip={{ enable: true ,  enableHighlight: true}} legendSettings={{ padding:5, shapeHeight:8, shapeWidth:8}} chartArea={{ border: { width: 0 } }}  >
+        }} tooltip={{ enable: true , enableHighlight: true }} legendSettings={{ padding:5, shapeHeight:8, shapeWidth:8}} chartArea={{ border: { width: 0 } }}  >
           <Inject services={[ColumnSeries, Legend, Tooltip, Category, DataLabel]}></Inject>
           <SeriesCollectionDirective>
             <SeriesDirective type="Column" dataSource={[
@@ -91,7 +91,7 @@ export  class OverView extends SampleBase<{}, {}> {
             majorTickLines: { width: 0 },
             minimum: 0, maximum: 12000, interval: 2000, edgeLabelPlacement: 'Shift', labelFormat: '${value}', lineStyle: { width: 0 },labelStyle:{size:'11px'},titleStyle:{size:'13px'}
           }} 
-          legendSettings={{enableHighlight:true }} tooltip={{ enable: true , shared: true, enableMarker:false}} chartArea={{ border: { width: 0 } }}  >
+          legendSettings={{enableHighlight:true }} tooltip={{ enable: true , enableHighlight: true, showNearestTooltip: true, enableMarker:false }} chartArea={{ border: { width: 0 } }}  >
           <Inject services={[SplineAreaSeries, Legend, Tooltip, Category, ChartAnnotation, Highlight]}></Inject>
           <SeriesCollectionDirective>
             <SeriesDirective type="SplineArea" dataSource={[{ period : 'Jan', percentage : 3600   }, { period: 'Feb', percentage: 6200  },
@@ -115,7 +115,7 @@ export  class OverView extends SampleBase<{}, {}> {
     return (
       <div className="template" >
         <AccumulationChartComponent style={{ "height": "100%", "width": "100%" }}
-        legendSettings={{ visible:false }} load={this.accumulationload.bind(this)} tooltip={{ enable: true , format:"${point.tooltip}"}} pointRender={this.onPointRender.bind(this)} enableSmartLabels={true}  enableBorderOnMouseMove={false}>
+        legendSettings={{ visible:false }} load={this.accumulationload.bind(this)} tooltip={{ enable: true , format:"${point.tooltip}", enableHighlight: true}} pointRender={this.onPointRender.bind(this)} enableSmartLabels={true}  enableBorderOnMouseMove={false}>
           <Inject services={[PieSeries, AccumulationTooltip, AccumulationDataLabel, AccumulationLegend, PieSeries, AccumulationTooltip, AccumulationDataLabel]}></Inject>
           <AccumulationSeriesCollectionDirective>
 
@@ -162,6 +162,9 @@ export  class OverView extends SampleBase<{}, {}> {
                 <div id="description">
                     <p>
                     The React Chart is a well-crafted charting component to visualize data.In this example, you will see how to render and configure line, column, and pie charts with different features such as highlight, legend, tooltip, and annotation . The Chart uses <code>SfDataManager</code>, which supports both RESTful JSON data services binding and IEnumerable binding. 
+                    </p>
+                    <p>
+                        <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
                     </p>
                     <p>
                     More information on the React Chart types can be found in this &nbsp;

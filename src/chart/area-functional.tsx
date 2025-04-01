@@ -6,6 +6,8 @@ import { useEffect } from 'react';
 import { ChartComponent, SeriesCollectionDirective, Highlight, ILoadedEventArgs, ChartTheme, SeriesDirective, ChartAnnotation, AnnotationsDirective, AnnotationDirective, Inject, DateTime, AreaSeries, Legend } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import { loadChartTheme } from './theme-color';
+
 export let OTHERS = [
     { x: new Date(1988, 0, 1), y: -0.16 }, { x: new Date(1989, 0, 1), y: -0.17 }, { x: new Date(1990, 0, 1), y: -0.08 },
     { x: new Date(1992, 0, 1), y: 0.08 }, { x: new Date(1996, 0, 1), y: 0.161 }, { x: new Date(1998, 0, 1), y: 0.48 },
@@ -73,9 +75,7 @@ const Area = () => {
         chart.setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
 
     return (

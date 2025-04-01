@@ -14,6 +14,7 @@ import {
 } from '@syncfusion/ej2-react-charts';
 import { updateSampleSection } from '../common/sample-base';
 import { datetimeCategoryData  } from './stock-data';
+import { loadStockChartTheme } from './theme-color';
 
 
 function DatetimeCategoryAxis() {
@@ -77,10 +78,7 @@ function DatetimeCategoryAxis() {
         }
     }
     function load(args: IStockChartEventArgs): void {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadStockChartTheme(args);
     }
 }
 export default DatetimeCategoryAxis;

@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
 import { AccumulationChartComponent, AccumulationSeriesCollectionDirective, AccumulationSeriesDirective, indexFinder, Index, Inject, AccumulationDataLabel, AccumulationTooltip, PieSeries, IAccLoadedEventArgs, IAccTextRenderEventArgs, IMouseEventArgs, AccumulationAnnotation, AccumulationTheme, AccumulationChart } from '@syncfusion/ej2-react-charts';
+import { loadAccumulationChartTheme } from './theme-color';
 const SAMPLE_CSS = `
     #category:hover {
         cursor: pointer;
@@ -125,13 +126,12 @@ const Drilldown = () => {
         setVisibility('hidden');
     }
     const onChartLoad = (args: IAccLoadedEventArgs): void => {
-        document.getElementById('pie-chart').setAttribute('title', '');
+        let chart: Element = document.getElementById('pie-chart');
+        chart.setAttribute('title', '');
     };
     const load = (args: IAccLoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as AccumulationTheme;
-        if (selectedTheme === 'highcontrast' || selectedTheme.indexOf('dark') > -1) {
+       let selectedTheme: string = loadAccumulationChartTheme(args);
+        if (selectedTheme === 'HighContrast' || selectedTheme.indexOf('Dark') > -1) {
             args.accumulation.series[0].dataLabel.font.color = "white";
             if (args.accumulation.annotations[0] && !isparent) {
                 args.accumulation.annotations[0].content = '<div id= "white" style="cursor:pointer;padding:3px;width:30px; height:30px;"><img src="./src/chart/images/white.png" id="back" alt="White Icon"/><div>';

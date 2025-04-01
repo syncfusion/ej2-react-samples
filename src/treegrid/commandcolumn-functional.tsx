@@ -14,12 +14,14 @@ const Command = () => {
     allowAdding: true,
     allowDeleting: true,
     mode: "Row",
+    allowEditOnDblClick: false
   };
   const taskIDRule: Object = { required: true, number: true };
   const taskNameRule: Object = { required: true };
-  const dateRule: Object = { date: true };
+  const dateRule: Object = { date: ['M/d/yyyy', 'Please enter a valid date']};
   const durationRule: Object = { number: true, min: 0 };
   const editparams2: any = { params: { format: "n" } };
+  const editparams3: any = { params: { format: 'M/d/yyyy' } };
   const commands: any = [
     {
       type: "Edit",
@@ -70,6 +72,7 @@ const Command = () => {
               textAlign="Right"
               editType="datepickeredit"
               format="yMd"
+              edit={editparams3}
               validationRules={dateRule}
               type="date"
             />

@@ -11,56 +11,57 @@ import { Browser } from '@syncfusion/ej2-base';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { EmitType } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
+import { loadProgressBarTheme } from './theme-colors';
 
 
 const SAMPLE_CSS = `
     .control-fluid {
-		padding: 0px !important;
-    }
-    #control-container {
-        padding: 0px !important;
-    }
-    .annotaion-pro {
-            font-family: Roboto-Regular;
-            font-size: 20px;
-            color: #1B1C1A;
-            letter-spacing: 0.01px;
-        }
-        .progress-bar-parent {
-            margin-top: 8%;
-            text-align: center;
-        }
-        .progress-text {
-            display: inline-flex;
-            margin: auto;
-        }
-        .progress-text-align {
-            font-family: Roboto-Regular;
-            font-size: 12px;
-            color: #3D3E3C;
-            letter-spacing: 0;
-            margin: auto;
-        }
+         padding: 0px !important;
+     }
+     #control-container {
+         padding: 0px !important;
+     }
+     .annotaion-pro {
+             font-family: Roboto-Regular;
+             font-size: 20px;
+             color: #1B1C1A;
+             letter-spacing: 0.01px;
+         }
+         .progress-bar-parent {
+             margin-top: 8%;
+             text-align: center;
+         }
+         .progress-text {
+             display: inline-flex;
+             margin: auto;
+         }
+         .progress-text-align {
+             font-family: Roboto-Regular;
+             font-size: 12px;
+             color: #3D3E3C;
+             letter-spacing: 0;
+             margin: auto;
+         }
 
-        #control-container {
-            padding: 0px !important;
-        }
+         #control-container {
+             padding: 0px !important;
+         }
 
-        .progress-container-align {
-            text-align: center;
-        }
+         .progress-container-align {
+             text-align: center;
+         }
 
-        .reload-btn {
-            text-align: center;
-        }
+         .reload-btn {
+             text-align: center;
+         }
 
-        #reLoad {
-            border-radius: 4px;
-            text-transform: capitalize;
-            margin-top: 3%;
-        }
+         #reLoad {
+             border-radius: 4px;
+             text-transform: capitalize;
+             margin-top: 3%;
+         }
 
-    `;
+     `;
 
 export class ProgressBarSemiCircular extends SampleBase<{}, {}> {
     private annotationColors: string[] = ['#e91e63', '#0078D6', '#317ab9', '#007bff', '#4F46E5', '#FFD939', '#9A9A9A', '#22D3EE', '#0D6EFD', '#6750A4', '#D0BCFF', '#0F6CBD', '#1AEBFF', '#115EA3', '#6366F1'];
@@ -101,48 +102,58 @@ export class ProgressBarSemiCircular extends SampleBase<{}, {}> {
     }
 
     private progressLoad: EmitType<ILoadedEventArgs> = (args: ILoadedEventArgs) => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.progressBar.theme = (selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast') as ProgressTheme;
+        let selectedTheme: string = loadProgressBarTheme(args);
         switch (selectedTheme) {
-            case 'material':
+            case 'Material':
                 args.progressBar.annotations[0].content = this.annotationElementContent(this.annotationColors[0], args.progressBar.element.id);
                 break;
-            case 'fabric':
+            case 'Fabric':
                 args.progressBar.annotations[0].content = this.annotationElementContent(this.annotationColors[1], args.progressBar.element.id);
                 break;
-            case 'bootstrap':
+            case 'Bootstrap':
                 args.progressBar.annotations[0].content = this.annotationElementContent(this.annotationColors[2], args.progressBar.element.id);
                 break;
-            case 'bootstrap4':
+            case 'Bootstrap4':
                 args.progressBar.annotations[0].content = this.annotationElementContent(this.annotationColors[3], args.progressBar.element.id);
                 break;
-            case 'bootstrap-dark':
-            case 'fabric-dark':
-            case 'material-dark':
+            case 'Tailwind':
+            case 'Tailwind3':
+                args.progressBar.annotations[0].content = this.annotationElementContent(this.annotationColors[4], args.progressBar.element.id);
+                break;
+            case 'BootstrapDark':
+            case 'FabricDark':
+            case 'MaterialDark':
                 args.progressBar.annotations[0].content = this.annotationElementContent(this.annotationColors[6], args.progressBar.element.id);
                 break;
-            case 'bootstrap5':
-            case 'bootstrap5-dark':
+            case 'Bootstrap5':
+            case 'Bootstrap5Dark':
             case 'fluent':
-            case 'fluent-dark':
+            case 'FluentDark':
                 args.progressBar.annotations[0].content = this.annotationElementContent(this.annotationColors[8], args.progressBar.element.id);
                 break;
-            case 'tailwind-dark':
+            case 'TailwindDark':
                 args.progressBar.annotations[0].content = this.annotationElementContent(this.annotationColors[7], args.progressBar.element.id);
                 break;
-            case 'tailwind3-dark':
+            case 'Tailwind3Dark':
                 args.progressBar.annotations[0].content = this.annotationElementContent(this.annotationColors[14], args.progressBar.element.id);
                 break;
-            case 'material3':
+            case 'Material3':
                 args.progressBar.annotations[0].content = this.annotationElementContent(this.annotationColors[9], args.progressBar.element.id);
                 break;
-            case 'material3-dark':
+            case 'Material3Dark':
                 args.progressBar.annotations[0].content = this.annotationElementContent(this.annotationColors[10], args.progressBar.element.id);
                 break;
+            case "Fluent2":
+                args.progressBar.annotations[0].content = this.annotationElementContent(this.annotationColors[11], args.progressBar.element.id);
+                break;
+            case "Fluent2HighContrast":
+                args.progressBar.annotations[0].content = this.annotationElementContent(this.annotationColors[12], args.progressBar.element.id);
+                break;
+            case "Fluent2Dark":
+                args.progressBar.annotations[0].content = this.annotationElementContent(this.annotationColors[13], args.progressBar.element.id);
+                break;
             default:
-                args.progressBar.annotations[0].content = this.annotationElementContent(this.annotationColors[4], args.progressBar.element.id);
+                args.progressBar.annotations[0].content = this.annotationElementContent(this.annotationColors[5], args.progressBar.element.id);
                 break;
         }
     }

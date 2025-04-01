@@ -24,12 +24,14 @@ export class Default extends SampleBase<{}, {}> {
             <div className="content-wrapper">
               <div id='mention_default'>
                 <table>
+                  <tbody>
                     <tr>
                         <td>
                             <label className="default-size">Comments</label>
                             <div id="commentsMention" placeholder="Type @ and tag user" ></div>
                         </td>
                     </tr>
+                  </tbody>
                 </table>
 
                 <MentionComponent dataSource={this.emailData} target={this.commentTarget} fields={this.commentFields}></MentionComponent>

@@ -19,7 +19,7 @@ export class API extends SampleBase<{}, {}> {
     };
 
     handleMultiSelectChange = (args, action) => {
-        const user: UserModel = { user: args.itemData, avatarBgColor: '#bacbe4' };
+        const user: UserModel = { user: args.itemData, avatarBgColor: '#87cefa' };
         if (['Laura', 'Charlie'].includes(args.itemData)) {
             user.avatarBgColor = args.itemData === 'Charlie' ? '#e6cdde' : '#dec287';
             user.avatarUrl = `./src/chat-ui/images/${args.itemData.toLowerCase()}.png`;
@@ -48,6 +48,7 @@ export class API extends SampleBase<{}, {}> {
                             headerText="Design Community"
                             showTimeBreak={true}
                             timeStampFormat="MM/dd hh:mm a"
+                            ref={chatUI => (this.chatUiInst = chatUI)}
                         />
                     </div>
                 </div>

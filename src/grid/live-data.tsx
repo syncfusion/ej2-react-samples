@@ -39,9 +39,8 @@ export class LiveStream extends SampleBase<{}, {}> {
     public initial: boolean = true;
 
     public destroyClear(args: object): void {
-        if (this.timerID) {
-            clearInterval(this.timerID);
-            this.timerID = undefined;
+        if (this.clearButton && this.clearButton.element) {
+            this.clearButton.element.click();
         }
     }
 

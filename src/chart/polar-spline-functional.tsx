@@ -9,6 +9,7 @@ import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { PropertyPane } from '../common/property-pane';
 import { EmitType, Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import { loadChartTheme } from './theme-color';
 export function GetSplineData(): any {
     let cardData: Object[] = [];
     let biDirData: Object[] = [];
@@ -55,9 +56,7 @@ const PolarSpline = () => {
         document.getElementById('charts').setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
     const change = (): void => {
         chartInstance.current.series[0].type = dropElement.current.value as ChartSeriesType;
@@ -77,7 +76,7 @@ const PolarSpline = () => {
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-md-8'>
-                    <ChartComponent id='charts' ref={chartInstance} primaryXAxis={{ minimum: -180, maximum: 180, interval: 30, labelFormat: '{value}°', coefficient: Browser.isDevice ? 80 : 100 }} legendSettings={{ enableHighlight :true }} load={load.bind(this)} title='Microphone Types Polar Patterns' loaded={onChartLoad.bind(this)} tooltip={{ enable: true }}>
+                    <ChartComponent id='charts' ref={chartInstance} primaryXAxis={{ minimum: -180, maximum: 180, interval: 30, labelFormat: '{value}°', coefficient: Browser.isDevice ? 80 : 100 }} legendSettings={{ enableHighlight :true }} load={load.bind(this)} title='Microphone Types Polar Patterns' loaded={onChartLoad.bind(this)} tooltip={{ enable: true, enableHighlight: true }}>
                         <Inject services={[SplineSeries, Legend, Tooltip, Category, PolarSeries, RadarSeries, Highlight]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} xName='x' yName='y' name='Cardioid (unidirectional)' type={type} drawType='Spline' dashArray='5 5 2' width={2} isClosed={false} />

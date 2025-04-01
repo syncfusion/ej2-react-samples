@@ -1,4 +1,5 @@
-
+import { Chart3DLoadedEventArgs, Chart3DPointRenderEventArgs, ChartTheme } from "@syncfusion/ej2-react-charts";
+import { EmitType } from '@syncfusion/ej2-base';
 
 
 export let pointMaterialColors: string[] = ["#00bdae", "#404041", "#357cd2", "#e56590", "#f8b883", "#70ad47", "#dd8abd", "#7f84e8", "#7bb4eb",
@@ -43,3 +44,53 @@ export let pointFluent2DarkColors: string[] = ["#9BB449", "#2A72D5", "#43B786", 
     "#0B6A0B", "#C19C00"];
 export let pointFluent2HighContrastColors: string[] = ["#9BB449", "#2A72D5", "#43B786", "#3F579A", "#584EC6", "#E85F9C", "#6E7A89", "#EA6266",
     "#0B6A0B", "#C19C00"];
+
+    export let pointRenderEvent: EmitType<Chart3DPointRenderEventArgs> = (args: Chart3DPointRenderEventArgs): void => {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        if (selectedTheme && selectedTheme.indexOf('fabric') > -1) {
+            args.fill = pointFabricColors[args.point.index % 10];
+        } else if (selectedTheme === 'material-dark') {
+            args.fill = pointMaterialDarkColors[args.point.index % 10];
+        } else if (selectedTheme === 'material') {
+            args.fill = pointMaterialColors[args.point.index % 10];
+        } else if (selectedTheme === 'bootstrap5-dark') {
+            args.fill = pointBootstrap5DarkColors[args.point.index % 10];
+        } else if (selectedTheme === 'bootstrap5') {
+            args.fill = pointBootstrap5Colors[args.point.index % 10];
+        } else if (selectedTheme === 'bootstrap') {
+            args.fill = pointBootstrapColors[args.point.index % 10];
+        } else if (selectedTheme === 'bootstrap4') {
+            args.fill = pointBootstrapColors[args.point.index % 10];
+        } else if (selectedTheme === 'bootstrap-dark') {
+            args.fill = pointBootstrapColors[args.point.index % 10];
+        } else if (selectedTheme === 'highcontrast') {
+            args.fill = pointHighContrastColors[args.point.index % 10];
+        } else if (selectedTheme === 'fluent-dark') {
+            args.fill = pointFluentDarkColors[args.point.index % 10];
+        } else if (selectedTheme === 'fluent') {
+            args.fill = pointFluentColors[args.point.index % 10];
+        } else if (selectedTheme === 'tailwind-dark') {
+            args.fill = pointTailwindDarkColors[args.point.index % 10];
+        } else if (selectedTheme === 'tailwind') {
+            args.fill = pointTailwindColors[args.point.index % 10];
+        } else if (selectedTheme === 'material3') {
+            args.fill = pointMaterial3Colors[args.point.index % 10];
+        } else if (selectedTheme === 'material3-dark') {
+            args.fill = pointMaterial3DarkColors[args.point.index % 10];
+        } else if (selectedTheme === 'fluent2') {
+            args.fill = pointFluent2Colors[args.point.index % 10];
+        } else if (selectedTheme === 'fluent2-highcontrast' || selectedTheme === 'fluent2-dark') {
+            args.fill = pointFluent2HighContrastColors[args.point.index % 10];
+        } else if (selectedTheme === 'tailwind3-dark') {
+            args.fill = pointTailwind3DarkColors[args.point.index % 10];
+        } else if (selectedTheme === 'tailwind3') {
+            args.fill = pointTailwind3Colors[args.point.index % 10];
+        }
+    };
+    
+    export let load3DChartTheme: EmitType<Chart3DLoadedEventArgs> = (args: Chart3DLoadedEventArgs): void => {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Tailwind3';
+        args.chart.theme = <ChartTheme>(selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast');
+    };

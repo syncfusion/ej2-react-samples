@@ -9,6 +9,7 @@ import { PropertyPane } from '../common/property-pane';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { updateSampleSection } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
+import { loadChartTheme } from './theme-color';
 export let data1: any[] = [
     { x: 'Rice', y: 80 }, { x: 'Wheat', y: null }, { x: 'Oil', y: 70 },
     { x: 'Corn', y: 60 }, { x: 'Gram', y: null },
@@ -65,9 +66,7 @@ const EmptyPoint = () => {
         document.getElementById('charts').setAttribute('title', '');
     };
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/light/i, "Light").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;          
+        loadChartTheme(args);
     };
    
     return (
@@ -75,7 +74,7 @@ const EmptyPoint = () => {
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-md-8'>
-                    <ChartComponent id='charts' ref={chartInstance} primaryXAxis={{ valueType: 'Category', interval: 1, labelIntersectAction: Browser.isDevice ? 'None' : 'Rotate45', labelRotation: Browser.isDevice ? -45: 0, majorTickLines: {width : 0}, title:'Product', minorTickLines: {width: 0} }} chartArea={{ border: { width: 0 } }} primaryYAxis={{ title: 'Profit' , minimum: 0, maximum: 100, interval: 20, labelFormat: '{value}%' }} load={load.bind(this)} legendSettings={{ visible: false }} title="Annual Product-Wise Profit Analysis" loaded={onChartLoad.bind(this)} tooltip={{ enable: true, header: '' }}>
+                    <ChartComponent id='charts' ref={chartInstance} primaryXAxis={{ valueType: 'Category', interval: 1, labelIntersectAction: Browser.isDevice ? 'None' : 'Rotate45', labelRotation: Browser.isDevice ? -45: 0, majorTickLines: {width : 0}, title:'Product', minorTickLines: {width: 0}, majorGridLines: { width: 0 } }} chartArea={{ border: { width: 0 } }} primaryYAxis={{ title: 'Profit' , minimum: 0, maximum: 100, interval: 20, labelFormat: '{value}%', majorTickLines: { width: 0 }, lineStyle: { width: 0 } }} load={load.bind(this)} legendSettings={{ visible: false }} title="Annual Product-Wise Profit Analysis" loaded={onChartLoad.bind(this)} tooltip={{ enable: true, header: '' }}>
                         <Inject services={[ColumnSeries, Category, Legend, Tooltip, SplineSeries, SplineAreaSeries]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} xName='x' yName='y' width={2} name='Profit' type={chartType} marker={{ visible: isVisible, height: 10, width: 10 }} emptyPointSettings={{ fill: '#e6e6e6', mode: emptyPointMode }} />

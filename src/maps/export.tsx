@@ -38,10 +38,6 @@ const SAMPLE_CSS = `
     content: '\\e780';
 }
 
-.e-view.tailwind-dark .e-play-icon::before, .e-view.tailwind .e-play-icon::before {
-    content: '\\e7bf';
-}
-
 .e-view.highcontrast .e-play-icon::before {
     content: '\\e710';
 }

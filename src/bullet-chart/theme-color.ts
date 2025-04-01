@@ -18,3 +18,12 @@ export let defaultColors: string[] = ['#7f84e8', '#dd8abd', '#70ad47', '#f8b883'
 export let fluent2Colors: string[] = ["#6200EE", "#09AF74", "#0076E5", "#CB3587", "#E7910F", "#0364DE", "#66CD15", "#F3A93C", "#107C10", "#C19C00"];
 export let fluent2DarkColors: string[] = ["#9BB449", "#2A72D5", "#43B786", "#3F579A", "#584EC6", "#E85F9C", "#6E7A89", "#EA6266", "#0B6A0B", "#C19C00"];
 export let fluent2HighContrastColors: string[] = ["#9BB449", "#2A72D5", "#43B786", "#3F579A", "#584EC6", "#E85F9C", "#6E7A89", "#EA6266", "#0B6A0B", "#C19C00"];
+
+import { IBulletLoadedEventArgs, ChartTheme } from '@syncfusion/ej2-react-charts';
+
+export let loadBulletChartTheme = (args: IBulletLoadedEventArgs): void => {
+    let selectedTheme: string = location.hash.split('/')[1];
+    selectedTheme = selectedTheme ? selectedTheme : 'Tailwind3';
+    args.bulletChart.theme = <ChartTheme>(selectedTheme.charAt(0).toUpperCase() +
+    selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/light/i, 'Light').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast');
+};

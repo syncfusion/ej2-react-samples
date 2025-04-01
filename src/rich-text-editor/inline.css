@@ -6,6 +6,6 @@
 #rteInline .content-wrapper {
     width: auto;
     margin: 0;
-    height: 400px;
+    min-height: 400px;
     overflow: auto;
 }

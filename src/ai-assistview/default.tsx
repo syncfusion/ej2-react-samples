@@ -29,7 +29,7 @@ export class Default extends SampleBase<{}, {}> {
 
   assistInstance: AIAssistViewComponent;
 
-  bannerTemplate: `<div class="banner-content">
+  bannerTemplate: string = `<div class="banner-content">
     <div class="e-icons e-assistview-icon"></div>
     <h3>AI Assistance</h3>
     <i>To get started, provide input or choose a suggestion.</i>
@@ -50,7 +50,7 @@ export class Default extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className="control-section">
             <div className="default-aiassistview"> 
-                <AIAssistViewComponent id="aiAssistView" bannerTemplate={this.bannerTemplate} promptSuggestions={this.suggestion} promptRequest={this.promptRequest} ref={aiassistView => (this.assistInstance = aiassistView)}></AIAssistViewComponent>
+                <AIAssistViewComponent id="aiAssistView" toolbarSettings={this.assistViewToolbarSettings} bannerTemplate={this.bannerTemplate} promptSuggestions={this.suggestion} promptRequest={this.promptRequest} ref={aiassistView => (this.assistInstance = aiassistView)}></AIAssistViewComponent>
             </div>
         </div>
 

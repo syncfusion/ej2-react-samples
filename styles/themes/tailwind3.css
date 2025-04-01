@@ -8,9 +8,9 @@
 }
 
 /*Hide property pane */
-@media (max-width: 480px) {
-    .tailwind3 .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item>.e-tab-wrap {
-        height: 70px;
+@media (max-width: 550px) {
+    .tailwind3 .sb-mobile-setting {
+        padding-top: 2px;
     }
 }
 

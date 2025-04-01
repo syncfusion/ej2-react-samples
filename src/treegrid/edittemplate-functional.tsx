@@ -24,7 +24,8 @@ const EditTemplate = () => {
   };
   const taskIDRule: Object = { required: true, number: true };
   const priorityRule: Object = { required: true };
-  const dateRule: Object = { date: true };
+  const dateRule: Object = { date: ['M/d/yyyy', 'Please enter a valid date']};
+  const editparams3: any = { params: { format:'M/d/yyyy'} };
   const durationRule: Object = { number: true, min: 0 };
   const editparams2: any = { params: { format: "n" } };
   let elem: HTMLElement;
@@ -87,6 +88,7 @@ const EditTemplate = () => {
               textAlign="Right"
               editType="datepickeredit"
               format="yMd"
+              edit={editparams3}
               validationRules={dateRule}
               type="date"
             />

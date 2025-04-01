@@ -21,6 +21,10 @@ const SAMPLE_CSS = `
     background:#E94430;
     position: relative;
   }
+  .pulse-container {
+    width: 20px;
+    height: 20px;
+  }
   .pulse-css:before, .pulse-css:after {
     content: '';
     width: 20px;
@@ -60,7 +64,7 @@ const SAMPLE_CSS = `
   }
   
     `;
-let marketTemp: string = '<div id="template"> <div class="pulse-container"><div class="pulse-box"><div class="pulse-css"></div></div></div></div>'
+let marketTemp: string = '<div> <div class="pulse-container"><div class="pulse-box"><div class="pulse-css"></div></div></div></div>'
 export class EarthquakeMaps extends SampleBase<{}, {}> {
     private mapInstance: MapsComponent;
     render() {
@@ -86,8 +90,8 @@ export class EarthquakeMaps extends SampleBase<{}, {}> {
                                 }
                             }}
                             centerPosition={{
-                                latitude: 1.5053645409602877,
-                                longitude: 105.14038085937499
+                                latitude:  0.720, 
+                                longitude: 99.867
                             }}
                         >
                             <Inject services={[Zoom, Marker]} />
@@ -108,7 +112,7 @@ export class EarthquakeMaps extends SampleBase<{}, {}> {
                                             animationDuration={0}
                                             template = {marketTemp}
                                             dataSource={[{
-                                                latitude: 1.625758360412755, longitude: 106.5693359375
+                                                latitude:  0.720, longitude: 99.867
                                             }]}
                                         >
                                         </MarkerDirective>

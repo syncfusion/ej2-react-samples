@@ -6,7 +6,6 @@ import { sampleData } from './data';
 import { SampleBase } from '../common/sample-base';
 import './adaptive.css';
 
-// custom code start
 const SAMPLE_CSS = `
 .e-bigger.e-responsive-dialog .e-dlg-content {
   padding: 16px;
@@ -91,7 +90,7 @@ const SAMPLE_CSS = `
     border-bottom-width: 60px;
     box-shadow: -1px 2px white, -2px -2px white, 2px -2px white, 2px 1px white;
 }`;
-// custom code end
+
 export class Adaptive extends SampleBase<{}, {}> {
   public treegridobj: TreeGridComponent;
   public toolbarOptions: any = ['Add', 'Edit', 'Delete', 'Update', 'Cancel', 'Search'];

@@ -39,7 +39,7 @@ const Keyboard = () => {
             <div id="description">
                 <p>To provide users with the ability to navigate, select, and interact with popup data in a MultiColumn ComboBox using keyboard shortcuts for improved accessibility.</p>
                 <p>Keyboards Actions :</p>
-                <p><ul>
+                <ul>
                     <li><code>Enter</code>-  Select the focused item and close the popup.</li>
                     <li><code>Esc</code>- Close the popup.</li>
                     <li><code>Alt + Down Arrow</code>- Open the popup.</li>
@@ -50,7 +50,7 @@ const Keyboard = () => {
                     <li><code>End</code>- Select the last item.</li>
                     <li><code>Tab</code>- Select the focused item, close the popup, and move to the next focusable element.</li>
                     <li><code>Shift + Tab</code>- Select the focused item, close the popup, and move to the previous focusable element.</li>
-                </ul></p>
+                </ul>
             </div>
         </div>
     );

@@ -13,7 +13,8 @@ export class EditTemplate extends SampleBase<{}, {}> {
   newRowPosition: 'Below' };
   public taskIDRule: Object = { required: true, number: true};
   public priorityRule: Object = { required: true};
-  public dateRule: Object = { date: true};
+  public dateRule: Object = { date: ['M/d/yyyy', 'Please enter a valid date']};
+  public editparams3: any = { params: { format:'M/d/yyyy'} };
   public durationRule: Object = { number: true, min: 0};
   public editparams2: any = { params: { format: 'n' } };
   public elem: HTMLElement;
@@ -51,7 +52,7 @@ export class EditTemplate extends SampleBase<{}, {}> {
                 isPrimaryKey={true}></ColumnDirective>
               <ColumnDirective field='taskName' headerText='Task Name' width='200' edit={this.editTemplate}></ColumnDirective>
               <ColumnDirective field='startDate' headerText='Start Date' width='140' textAlign='Right'
-                editType='datepickeredit' format='yMd' validationRules={this.dateRule} type='date' />
+                editType='datepickeredit' format='yMd' edit={this.editparams3} validationRules={this.dateRule} type='date' />
               <ColumnDirective field='duration' headerText='Duration' width='140' editType='numericedit' textAlign='Right'
                 validationRules={this.durationRule} edit={this.editparams2} />
               <ColumnDirective field='progress' headerText='Progress' width='150' textAlign='Right' editType='numericedit' 

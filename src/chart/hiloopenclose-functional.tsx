@@ -8,6 +8,7 @@ import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, Hil
 import { updateSampleSection } from '../common/sample-base';
 import { chartValues } from './financial-data';
 import { Browser } from '@syncfusion/ej2-base';
+import { loadChartTheme } from './theme-color';
 export let zoomFactor : number;
 export let zoomPosition :number;
 const SAMPLE_CSS = `
@@ -18,21 +19,21 @@ const HiloOpenClose = () => {
     useEffect(() => {
         updateSampleSection();
     }, [])
-    
+    const loaded = (args: ILoadedEventArgs): void => {
+        let chart: Element = document.getElementById('charts');
+        chart.setAttribute('title', '');
+    };
     const load = (args: ILoadedEventArgs): void => {
         args.chart.primaryXAxis.zoomFactor = zoomFactor;
         args.chart.primaryXAxis.zoomPosition = zoomPosition;
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     }; 
     return (
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
                 <div className="row">
-                    <ChartComponent id='charts' load={load.bind(this)} style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'DateTime', crosshairTooltip: { enable: true }, majorGridLines: { width: 0 } }} primaryYAxis={{ title: 'Price', labelFormat: 'n0', lineStyle: { width: 0 }, minimum: 40, maximum: 140, interval: 20, majorTickLines: { width: 0 } }} chartArea={{ border: { width: 0 } }} tooltip={{ enable: true, shared: true, header: "", format: "<b>Apple Inc.(AAPL)</b> <br> High : <b>${point.high}</b> <br> Low : <b>${point.low}</b> <br> Open : <b>${point.open}</b> <br> Close : <b>${point.close}</b>" }} width={Browser.isDevice ? '100%' : '75%'} legendSettings={{ visible: false }} crosshair={{ enable: true, lineType: 'Vertical' }} title="AAPL Historical">
+                    <ChartComponent id='charts' load={load.bind(this)} loaded={loaded.bind(this)} style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'DateTime', crosshairTooltip: { enable: true }, majorGridLines: { width: 0 } }} primaryYAxis={{ title: 'Price', labelFormat: 'n0', lineStyle: { width: 0 }, minimum: 40, maximum: 140, interval: 20, majorTickLines: { width: 0 } }} chartArea={{ border: { width: 0 } }} tooltip={{ enable: true, shared: true, header: "", format: "<b>Apple Inc.(AAPL)</b> <br> High : <b>${point.high}</b> <br> Low : <b>${point.low}</b> <br> Open : <b>${point.open}</b> <br> Close : <b>${point.close}</b>" }} width={Browser.isDevice ? '100%' : '75%'} legendSettings={{ visible: false }} crosshair={{ enable: true, lineType: 'Vertical' }} title="AAPL Historical">
                         <Inject services={[HiloOpenCloseSeries, Category, Tooltip, DateTime, Zoom, Logarithmic, Crosshair]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective type='HiloOpenClose' dataSource={chartValues} animation={{ enable: true }} bearFillColor='#2ecd71' bullFillColor='#e74c3d' xName='period' low='low' high='high' open='open' close='close' name='Apple Inc' />

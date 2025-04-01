@@ -3,6 +3,8 @@ import * as React from 'react';
 import { GridComponent, ColumnsDirective, ColumnDirective, Page, Inject } from '@syncfusion/ej2-react-grids';
 import { DataManager, WebApiAdaptor, Query, DataOptions } from '@syncfusion/ej2-data';
 import { updateSampleSection } from '../common/sample-base';
+import { SwitchComponent } from '@syncfusion/ej2-react-buttons';
+import './remote-data.css';
 
 function RemoteDataBinding() {
     React.useEffect(() => {
@@ -11,9 +13,20 @@ function RemoteDataBinding() {
     const hostUrl = 'https://services.syncfusion.com/react/production/';
     const data = new DataManager({ url: hostUrl + 'api/Orders', adaptor: new WebApiAdaptor });
     let gridInstance: GridComponent;
+    const onChanged = (args: any) =>  {
+        gridInstance.dataSource = new DataManager({ url: hostUrl + 'api/Orders', adaptor: new WebApiAdaptor, enableCache: args.checked });
+    }
     return (
         <div className='control-pane'>
             <div className='control-section'>
+                <div style={{ display: 'flex' }}>
+                    <div id="export-cache-container">
+                        <label htmlFor="unchecked"> Enable Cache </label>
+                        <div>
+                            <SwitchComponent id="unchecked" checked={false} change={onChanged.bind(this)}></SwitchComponent>
+                        </div>
+                    </div>
+                </div>
                 <GridComponent id="Grid" dataSource={data} ref={grid => gridInstance = grid} allowPaging={true} >
                     <ColumnsDirective>
                         <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right'></ColumnDirective>
@@ -63,7 +76,10 @@ function RemoteDataBinding() {
                         href="https://ej2.syncfusion.com/react/documentation/api/grid#datasource">
                         dataSource
                     </a></code> property.</p>
-
+                   <p>The <code>DataManager</code> provides an option to avoid sending requests for previously visited pages by enabling the <code>enableCache</code> property.
+                    When this property is enabled, the DataManager does not send a request to the server when revisiting a page. 
+                    However, the cache will be reset if any data action, such as sorting or filtering, is performed.
+                    </p>
                 <p>
                     More information on the data binding can be found in this
                     <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/grid/data-binding.html#remote-data">documentation section</a>.

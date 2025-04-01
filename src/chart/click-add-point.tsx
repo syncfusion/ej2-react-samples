@@ -34,8 +34,8 @@ export class ClickAddPoint extends SampleBase<{}, {}> {
                         }} primaryYAxis={{
                             title: 'Value', interval: 20, lineStyle: { width: 0 }, majorTickLines: { width: 0 }
                         }} chartMouseClick={this.chartMouseClick.bind(this)}  axisRangeCalculated={this.axisRangeCalculated.bind(this)}
-                        tooltip={{ enable: true }}
-                        chartArea={{ border: { width: 0 } }} load={this.load.bind(this)} width={Browser.isDevice ? '100%' : '70%'} title='User supplied data' >
+                        tooltip={{ enable: true, enableHighlight: true }}
+                        chartArea={{ border: { width: 0 } }} load={this.load.bind(this)} loaded={this.loaded.bind(this)} width={Browser.isDevice ? '100%' : '70%'} title='User supplied data' >
                         <Inject services={[LineSeries, DataLabel, Tooltip]} />
                         <SeriesCollectionDirective >
                             <SeriesDirective dataSource={chartData} xName='x' yName='y' type='Line' width={3} marker={{ visible: true, isFilled: true, border: { width: 2, color: 'White' }, width: 13, height: 13 }}>
@@ -97,6 +97,11 @@ export class ClickAddPoint extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+    };
+
+    public loaded (args: ILoadedEventArgs): void {
+        let chart: Element = document.getElementById('AddPoint');
+        chart.setAttribute('title', '');
     };
 
 }

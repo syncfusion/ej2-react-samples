@@ -7,7 +7,7 @@ import './styles.css';
 export class Styles extends SampleBase<{}, {}> {
 
     render() {
-        return (<div className='control-pane'>
+        return (<div className='control-pane fab-control-pane'>
             <div className="control-section">
                 <div className="fab-appearence-container">
                     <div className="row">

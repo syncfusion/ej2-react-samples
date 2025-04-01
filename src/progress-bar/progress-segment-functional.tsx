@@ -10,6 +10,7 @@ import {
 } from '@syncfusion/ej2-react-progressbar';
 import { EmitType } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import { loadProgressBarTheme } from './theme-colors';
 
 
 const SAMPLE_CSS = `
@@ -58,64 +59,58 @@ const ProgressBarProgressSegment = () => {
         duration: 2000,
     };
     const load: EmitType<ILoadedEventArgs> = (args: ILoadedEventArgs) => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.progressBar.theme = (selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ProgressTheme;
+        loadProgressBarTheme(args);
     }
 
     const progressLoad: EmitType<ILoadedEventArgs> = (args: ILoadedEventArgs) => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.progressBar.theme = (selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ProgressTheme;
-        switch (selectedTheme) {
-            case 'material':
+        loadProgressBarTheme(args);
+        switch (args.progressBar.theme) {
+            case 'Material':
                 args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#e91e63"><span></span></div>';
                 break;
-            case 'fabric':
+            case 'Fabric':
                 args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#0078D6"><span></span></div>';
                 break;
-            case 'bootstrap':
+            case 'Bootstrap':
                 args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#317ab9"><span></span></div>';
                 break;
-            case 'bootstrap4':
+            case 'Bootstrap4':
                 args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#007bff"><span></span></div>';
                 break;
-            case 'tailwind':
-            case 'tailwind3':
+            case 'Tailwind':
+            case 'Tailwind3':
                 args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#4F46E5"><span></span></div>';
                 break;
-            case 'bootstrap-dark':
-            case 'fabric-dark':
-            case 'material-dark':
+            case 'BootstrapDark':
+            case 'FabricDark':
+            case 'MaterialDark':
                 args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#9A9A9A"><span></span></div>';
                 break;
-            case 'bootstrap5':
-            case 'bootstrap5-dark':
-            case 'fluent':
-            case 'fluent-dark':
+            case 'Bootstrap5':
+            case 'Bootstrap5Dark':
+            case 'Fluent':
+            case 'FluentDark':
                 args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#0D6EFD"><span></span></div>';
                 break;
-            case 'tailwind-dark':
+            case 'TailwindDark':
                 args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#22D3EE"><span></span></div>';
                 break;
-            case 'tailwind3-dark':
+            case 'Tailwind3Dark':
                 args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#6366F1"><span></span></div>';
                 break;
-            case 'material3':
+            case 'Material3':
                 args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#6750A4"><span></span></div>';
                 break;
-            case 'material3-dark':
+            case 'Material3Dark':
                 args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#D0BCFF"><span></span></div>';
                 break;
-            case "fluent2":
+            case "Fluent2":
                 args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#0F6CBD"><span></span></div>';
                 break;
-            case "fluent2-dark":
+            case "Fluent2Dark":
                 args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#115EA3"><span></span></div>';
                 break;
-            case "fluent2-highcontrast":
+            case "Fluent2HighContrast":
                 args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#1AEBFF"><span></span></div>';
                 break; 
             default:

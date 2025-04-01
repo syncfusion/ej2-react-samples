@@ -75,7 +75,7 @@ export class AreaMultiColored extends SampleBase<{}, {}> {
             style={{ textAlign: 'center' }}
             primaryXAxis={{ valueType: 'DateTime', labelFormat: 'MMM', intervalType: 'Months', edgeLabelPlacement: 'Shift', majorGridLines: { width: 0 } }}
             primaryYAxis={{ labelFormat: '${value}K', rangePadding: 'None', minimum: 0, maximum: 200, interval: 50, lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 } }}
-            tooltip={{ enable: true, shared: true, format: '${point.x} : <b>${point.y}</b>' }}
+            tooltip={{ enable: true, format: '${point.x} : <b>${point.y}</b>', showNearestTooltip: true }}
             legendSettings={{ visible: false }}
             chartArea={{ border: { width: 0 } }}
             load={this.load.bind(this)}
@@ -126,9 +126,9 @@ export class AreaMultiColored extends SampleBase<{}, {}> {
                     In this example, you can see how to render and configure the points in a particular range by using <code>MultiColoredArea</code> series. 
                     Points within the range can be configured with <code>color</code> property in ChartSegment.
                    </p>
-                   <p>
-                   Tooltips are enabled in this example, to see the tooltip in action, hover a point or tap a point in touch enabled devices.
-                   </p>
+                    <p>
+                        <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
+                    </p>
                     <p><b>Injecting Module</b></p>
                     <p>
                     Chart component features are segregated into individual feature-wise modules. To use area series, we need to inject

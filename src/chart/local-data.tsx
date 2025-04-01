@@ -103,6 +103,9 @@ export class LocalData extends SampleBase<{}, {}> {
                     </p>
                     <p>In this demo, the array of JavaScript objects is assigned as the data source to the Chart.</p>
                     <p>
+                        <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
+                    </p>
+                    <p>
                         More information about the local data binding can be found in this  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/working-with-data/#local-data" aria-label="Navigate to the documentation for Local Data in React Chart component">documentation section</a>.
                    </p>
                 </div>

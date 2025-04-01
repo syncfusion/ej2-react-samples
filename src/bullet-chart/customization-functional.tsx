@@ -9,6 +9,7 @@ import { IBulletLoadedEventArgs, ChartTheme } from '@syncfusion/ej2-charts';
 import { updateSampleSection } from '../common/sample-base';
 import { ColorPickerComponent, ColorPickerEventArgs } from '@syncfusion/ej2-react-inputs';
 import { CheckBoxComponent, ChangeEventArgs } from '@syncfusion/ej2-react-buttons';
+import { loadBulletChartTheme } from './theme-color';
 
 const SAMPLE_CSS = `
       .control-fluid {
@@ -148,11 +149,7 @@ function BulletChartCustomization() {
         </ div>
     )
     function bulletLoad(args: IBulletLoadedEventArgs): void {
-        let chart: Element = document.getElementById('customization');
-        chart.setAttribute('title', '');
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.bulletChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/light/i, 'Light').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadBulletChartTheme(args);
     }
 }
 export default BulletChartCustomization;

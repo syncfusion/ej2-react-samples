@@ -12,9 +12,10 @@ export class Batch extends SampleBase<{}, {}> {
   public toolbarOptions: any = ['Add', 'Delete', 'Update', 'Cancel'];
   public editSettings: any = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Batch', newRowPosition: 'Below' };
   public validationRule: Object = { required: true};
-  public validationRule1: Object = { date: true};
+  public validationRule1: Object = { date: ['M/d/yyyy', 'Please enter a valid date'] };
   public validationRule2: Object = { required: true, number: true};
   public editparams2: any = { params: { format: 'n' } };
+  public editparams3: any = { params: {format:'M/d/yyyy'}};
   render() {
     return (
         <div className='control-pane'>
@@ -27,7 +28,7 @@ export class Batch extends SampleBase<{}, {}> {
                 isPrimaryKey={true}></ColumnDirective>
               <ColumnDirective field='taskName' headerText='Task Name' width='220' validationRules={this.validationRule}></ColumnDirective>
               <ColumnDirective field='startDate' headerText='Start Date' width='160' textAlign='Right'
-                editType='datepickeredit' format='yMd' validationRules={this.validationRule1} />
+                editType='datepickeredit' format='yMd' edit={this.editparams3} validationRules={this.validationRule1} />
               <ColumnDirective field='duration' headerText='Duration' width='140' editType='numericedit' textAlign='Right'
                 validationRules={this.validationRule2} edit={this.editparams2} />
             </ColumnsDirective>

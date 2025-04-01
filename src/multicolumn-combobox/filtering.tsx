@@ -15,7 +15,7 @@ export class Filter extends SampleBase<{}, {}> {
 
     fields: { text: 'Name', value: 'Experience' };
      mccbDropdownListData: string[] = ['StartsWith','EndsWith','Contains'];
-     filterType: string = '';
+     filterType: string = 'StartsWith';
      change = (args: ChangeEventArgs) => {
         this.setState({ filterType: args.value });
     };

@@ -2,9 +2,29 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { RatingComponent } from '@syncfusion/ej2-react-inputs';
 import { SampleBase } from '../common/sample-base';
+import { Browser } from '@syncfusion/ej2-base';
 import './label.css';
 
 export class Label extends SampleBase<{}, {}> {
+    componentDidMount() {
+        if (document.getElementById('right-pane')) {
+            document.getElementById('right-pane')?.addEventListener('scroll', this.hideTooltipOnScroll);
+        }
+    }
+
+    componentWillUnmount() {
+        if (document.getElementById('right-pane')) {
+            document.getElementById('right-pane')?.removeEventListener('scroll', this.hideTooltipOnScroll);
+        }
+    }
+
+    hideTooltipOnScroll = () => {
+        const tooltipElement = document.querySelector('.e-rating-tooltip');
+        if (tooltipElement && Browser.isDevice) {
+            (tooltipElement as HTMLElement).style.display = 'none';
+        }
+    }
+
     render() {
         return (
           <div className='control-pane'>
@@ -32,7 +52,7 @@ export class Label extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                        This sample demonstrates label support, including label positioning and templates, in the Angular Rating component. 
+                        This sample demonstrates label support, including label positioning and templates, in the Angular Rating component.
                     </p>
                 </div>
                 <div id="description">
@@ -40,7 +60,7 @@ export class Label extends SampleBase<{}, {}> {
                         You can show or hide labels by setting the <code>showLabel</code> property. The <code>labelPosition</code> property provides several built-in positions and the appearance of labels can be customized using the <code>labelTemplate</code> property.
                     </p>
                 </div>
-            </div> 
+            </div>
         )
     }
 }

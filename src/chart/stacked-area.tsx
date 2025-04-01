@@ -56,7 +56,7 @@ export class StackedArea extends SampleBase<{}, {}> {
             legendSettings={{enableHighlight: true}}
             title="Amount of Sales by Payment Method"
             loaded={this.onChartLoad.bind(this)}
-            tooltip={{ enable: true }}
+            tooltip={{ enable: true, enableHighlight: true, showNearestTooltip: true }}
           >
             <Inject
               services={[StackingAreaSeries, Legend, DateTime, Tooltip, Highlight]}
@@ -80,6 +80,9 @@ export class StackedArea extends SampleBase<{}, {}> {
         <div id="description">
           <p>
             In this example, you can see how to render and configure the stacked area chart. This chart visualizes data with y-values stacked one over another in a series order. It shows the relationship between individual values to the total sum of points.
+          </p>
+          <p>
+            <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
           </p>
           <p><b>Injecting Module</b></p>
           <p>

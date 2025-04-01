@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, Legend, DateTime, Logarithmic, Tooltip, WaterfallSeries, DataLabel, Category, Crosshair, Zoom, ILoadedEventArgs, ChartTheme, ILegendRenderEventArgs, IPointRenderEventArgs, ITooltipRenderEventArgs } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
-
+import { loadChartTheme } from './theme-color';
 export let data: object[] = [
     { x: 'JAN', y: 55 },
     { x: 'MAR', y: 42 },
@@ -31,9 +31,7 @@ const HorizontalWaterfall = () => {
     };
 
     const load = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
+        loadChartTheme(args);
     };
 
     const legendRender = (args: ILegendRenderEventArgs): void => {
@@ -72,7 +70,9 @@ const HorizontalWaterfall = () => {
                         minimum: 0, maximum: 150, interval: 25,
                         labelFormat: '{value}K',
                         edgeLabelPlacement: 'Shift',
-                        majorGridLines: { width: 1 },  
+                        majorGridLines: { width: 0 },
+                        majorTickLines: { width: 0 },
+                        lineStyle: { width: 0 }
                     }}
                     tooltip={{
                         enable: true,
@@ -85,6 +85,7 @@ const HorizontalWaterfall = () => {
                     loaded={onChartLoad.bind(this)}
                     legendRender={legendRender}
                     isTransposed={true}
+                    chartArea={{ border: { width: 0 }, margin: { bottom: 12 } }}
                 >
                     <Inject services={[WaterfallSeries, Category, Tooltip, DateTime, Zoom, Logarithmic, Crosshair, Legend, DataLabel]} />
                     <SeriesCollectionDirective>

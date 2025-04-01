@@ -34,7 +34,7 @@ export class LogAxis extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <style>{SAMPLE_CSS}</style>
                 <div className='control-section'>
-                    <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ labelFormat: 'y', valueType: 'DateTime', edgeLabelPlacement: 'Shift' }} load={this.load.bind(this)} primaryYAxis={{ valueType: 'Logarithmic', edgeLabelPlacement: 'Shift', minorTicksPerInterval: 5, majorGridLines: { width: 1.5 }, minorTickLines: { width: 0, height: 4 }, minimum: 0, maximum: 100000, interval: 1, labelFormat: '${value}' }} legendSettings={{ visible: false }} width={Browser.isDevice ? '100%' : '75%'} title='Product X Growth [1995-2005]' loaded={this.onChartLoad.bind(this)} tooltip={{ enable: true, header: '' }}>
+                    <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ labelFormat: 'y', valueType: 'DateTime', edgeLabelPlacement: 'Shift', majorGridLines: { width: 0 } }} load={this.load.bind(this)} primaryYAxis={{ valueType: 'Logarithmic', edgeLabelPlacement: 'Shift', minorTicksPerInterval: 5, majorGridLines: { width: 1.5 }, minorTickLines: { width: 0, height: 4 }, minimum: 0, maximum: 100000, interval: 1, labelFormat: '${value}', majorTickLines: { width: 0 }, lineStyle: { width: 0 } }} legendSettings={{ visible: false }} width={Browser.isDevice ? '100%' : '75%'} title='Product X Growth [1995-2005]' loaded={this.onChartLoad.bind(this)} tooltip={{ enable: true, header: '', showNearestTooltip: true, enableHighlight: true }} chartArea={{ border: { width: 0 } }}>
                         <Inject services={[LineSeries, DateTime, Logarithmic, Legend, Tooltip]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data} xName='x' name='Product X' yName='y' type='Line' width={2} marker={{ visible: true, height: 7, width: 7, isFilled: true }} />
@@ -49,7 +49,9 @@ export class LogAxis extends SampleBase<{}, {}> {
                         Logarithmic axis uses logarithmic scale and it is very useful in visualizing when the data has values with both lower order of magnitude (eg: 10^-6) and higher order of magnitude (eg: 10^6).
                         To render Logarithmic axis, set <code>valueType</code> in axis to <b>Logarithmic</b>.
                     </p>
-                    <p>Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
+                    <p>
+                        <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
+                    </p>
                     <p><b>Injecting Module</b></p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To use Logarithmic axis, we need to inject

@@ -46,9 +46,11 @@ export class FilterMenu extends SampleBase<{}, {}> {
                     <style>
                         {SAMPLE_CSS}
                     </style>
-                    <div style={{ padding: '14px' }}>
-                        <DropDownListComponent id="ddlelement" dataSource={this.filterType} fields={this.fields} change={this.onChange.bind(this)} index={0} popupHeight="150px" width="200px" />
-                        <CheckBoxComponent ref={checkBox => this.checkBoxInstance = checkBox} disabled={true} label='Enable OnDemand: ' labelPosition='Before' change={this.checkboxOnChange.bind(this)}></CheckBoxComponent>
+                    <div>
+                        <div style={{ padding: '14px', display: 'inline-block' }}>
+                            <DropDownListComponent id="ddlelement" dataSource={this.filterType} fields={this.fields} change={this.onChange.bind(this)} index={0} popupHeight="150px" width="200px" />
+                        </div>
+                            <CheckBoxComponent ref={checkBox => this.checkBoxInstance = checkBox} disabled={true} label='Enable OnDemand: ' labelPosition='Before' change={this.checkboxOnChange.bind(this)}></CheckBoxComponent>
                     </div>
                     <GridComponent dataSource={this.data} query={this.query} allowSorting={true} allowPaging={true} ref={grid => this.gridInstance = grid} pageSettings={{ pageSize: 10, pageCount: 5 }} allowFiltering={true} filterSettings={this.filterSettings}>
                         <ColumnsDirective>
@@ -86,6 +88,7 @@ export class FilterMenu extends SampleBase<{}, {}> {
                     <p>In this demo, the filter menu is enabled by default. You can switch to other filter types using the dropdown.</p>
                     <p>Additionally, we have an on-demand data fetch functionality and UI for the checkbox/Excel filter type. It can be enabled by setting the <code><a target="_blank" className="code"
                         href="">filterSettings-&gt;enableInfiniteScrolling</a></code> property to true. In this demo, on-demand data fetch is not enabled by default. To enable the on-demand data fetch for the checkbox/Excel filter type, the Enable OnDemand option must be checked after selecting the checkBox/Excel filter type using the dropdown menu.</p>
+                    <p>The Grid now supports improved <code>in</code> and <code>not in</code> filter operators, allowing users to filter multiple values within the same column. When the menu filter is enabled, a Syncfusion MultiSelect Dropdown component with checkboxes appears to select the <code>in</code> or <code>not in</code> operators.</p>
                     <p>More information on the filter configuration can be found in this
                         <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/grid/#filtersettings"> documentation section</a>.
                     </p>

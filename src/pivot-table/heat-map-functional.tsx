@@ -71,7 +71,7 @@ function HeatMap() {
    return (
       <div className='control-pane'>
          <div className='control-section'>
-            <PivotViewComponent id='PivotView-Heatmap' dataSourceSettings={dataSourceSettings} width={'100%'} height={'500'} gridSettings={{ rowHeight: 36, columnWidth: 120 }}
+            <PivotViewComponent id='PivotView-Heatmap' dataSourceSettings={dataSourceSettings} width={'100%'} height={'500'} gridSettings={{ rowHeight: 35, columnWidth: 120 }}
                cellTemplate={cellTemplate.bind(this)} enginePopulated={enginePopulated.bind(this)} aggregateCellInfo={aggregateCellInfo.bind(this)}>
             </PivotViewComponent>
          </div>

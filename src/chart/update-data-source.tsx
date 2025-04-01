@@ -61,7 +61,7 @@ export class UpdateDataSource extends SampleBase<{}, {}> {
                     <ChartComponent id='UpdateData' style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', labelStyle: { size: Browser.isDevice ? '11px' : '12px' }, majorGridLines: { width: 0 } }} primaryYAxis={{
                         title: 'Sales in percentage', labelFormat: '{value}%', interval: 10,  lineStyle: { width: 0 }, majorTickLines: { width: 0 }
                     }}
-                        chartArea={{ border: { width: 0 } }} load={this.load.bind(this)} width={Browser.isDevice ? '100%' : '75%'} title='Sales by product' pointRender = {pointRender} axisRangeCalculated= {this.axisRangeCalculated.bind(this)} >
+                        chartArea={{ border: { width: 0 } }} load={this.load.bind(this)} loaded={this.onChartLoad.bind(this)} width={Browser.isDevice ? '100%' : '75%'} title='Sales by product' pointRender = {pointRender} axisRangeCalculated= {this.axisRangeCalculated.bind(this)} >
                         <Inject services={[ColumnSeries, DataLabel, Category]} />
                         <SeriesCollectionDirective >
                             <SeriesDirective dataSource={data} xName='x' yName='y' type='Column' cornerRadius={{ topLeft: Browser.isDevice ? 10 : 15, topRight: Browser.isDevice ? 10 : 15 }} columnWidth= {0.5}  marker={this.marker}>
@@ -93,7 +93,7 @@ export class UpdateDataSource extends SampleBase<{}, {}> {
     }
     public marker: MarkerSettingsModel =  {visible: false, dataLabel: {visible: true, position: 'Top', format: '{value}%', font: { color: '#ffffff' }}};
     public onChartLoad(args: ILoadedEventArgs): void {
-        let chart: Element = document.getElementById('charts');
+        let chart: Element = document.getElementById('UpdateData');
         chart.setAttribute('title', '');
     };
     public load(args: ILoadedEventArgs): void {

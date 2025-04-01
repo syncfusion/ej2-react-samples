@@ -58,7 +58,8 @@ export class Reveal extends SampleBase<{}, {}> {
                                         <img className="img-responsive" src="./src/card/images/Tile_4.png" alt="Force.com Succinctly" />
                                         <div id="card_revealed" style={{ minHeight: '177px' }} >
                                             <div className="e-card-content" style={{ lineHeight: '2.75em' }}>
-                                                <table style={{ width: '100%', tableLayout: 'fixed' }}>
+                                            <table style={{ width: '100%', tableLayout: 'fixed' }}>
+                                                <tbody>
                                                     <tr>
                                                         <td>
                                                             <div style={{ textAlign: 'left', fontWeight: 500 }}> Author </div>
@@ -99,7 +100,8 @@ export class Reveal extends SampleBase<{}, {}> {
                                                             </div>
                                                         </td>
                                                     </tr>
-                                                </table>
+                                                </tbody>
+                                            </table>
                                             </div>
                                         </div>
                                         <div id="card_reveal" style={{ minHeight: '154px' }}>
@@ -133,9 +135,10 @@ export class Reveal extends SampleBase<{}, {}> {
                 <div id="description">
                     <p>
                         Cards in this sample have a hidden content within the DOM which is available behind the visible element.
-        <p> More information about Card can be found in this
-            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/card/getting-started/">
-                                documentation</a> section. </p>
+                    </p>
+                    <p>
+                        More information about Card can be found in this 
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/card/getting-started/"> documentation</a> section.
                     </p>
                 </div>
             </div>

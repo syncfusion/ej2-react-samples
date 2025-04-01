@@ -30,7 +30,8 @@ export class CustomContextMenu extends SampleBase<{}, {}> {
       items.item(i).setAttribute('style','display: none;');
     }
     if (elem.closest('.e-row')) {
-      if ( isNullOrUndefined(uid) ||isNullOrUndefined(getValue('hasChildRecords', this.treegridObj.grid.getRowObjectFromUID(uid).data))) {
+      if ( isNullOrUndefined(uid) ||isNullOrUndefined(getValue('hasChildRecords', this.treegridObj.grid.getRowObjectFromUID(uid).data)) ||
+      !getValue('hasChildRecords', this.treegridObj.grid.getRowObjectFromUID(uid).data)) {
         args.cancel = true;
       } else {
         let flag: boolean = getValue('expanded', this.treegridObj.grid.getRowObjectFromUID(uid).data);

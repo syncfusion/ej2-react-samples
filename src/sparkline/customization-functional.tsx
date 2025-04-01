@@ -9,6 +9,7 @@ import { CheckBoxComponent, ChangeEventArgs } from "@syncfusion/ej2-react-button
 import { SparklineComponent, SparklineTheme, VisibleType, ISparklineLoadedEventArgs, SparklineTooltip, Inject } from '@syncfusion/ej2-react-charts';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { updateSampleSection } from '../common/sample-base';
+import { loadSparkLineTheme } from './theme-color';
 const SAMPLE_CSS = `
      .control-fluid {
          padding: 0px !important;
@@ -296,9 +297,7 @@ function Customization() {
     }
 
     function load(args: ISparklineLoadedEventArgs): void {
-        let theme: string = location.hash.split('/')[1];
-        theme = theme ? theme : 'Fluent2';
-        args.sparkline.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as SparklineTheme;
+        loadSparkLineTheme(args);
     }
 
 

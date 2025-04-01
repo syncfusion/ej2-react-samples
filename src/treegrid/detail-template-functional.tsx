@@ -11,6 +11,14 @@ let instance: Internationalization = new Internationalization();
 interface DateFormat extends Window {
     format?: Function;
 }
+const textcolor_CSS = `
+ .tailwind3-dark #TreeGrid .e-description,
+.fluent2-dark #TreeGrid .e-description,
+.bootstrap5\.3-dark #TreeGrid .e-description,
+.material3-dark #TreeGrid .e-description,
+.fluent2-highcontrast #TreeGrid .e-description  {
+    color: #fff;
+}`;
 const DetailTemplate = () => {
     useEffect(() => {
         updateSampleSection();
@@ -58,6 +66,9 @@ const DetailTemplate = () => {
     const template: any = detailtemplate;
     return (
         <div className="control-pane">
+            <style>
+                {textcolor_CSS}
+            </style>
             <div className="control-section">
                 <TreeGridComponent
                     dataSource={textdata}

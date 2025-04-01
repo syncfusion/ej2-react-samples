@@ -7,6 +7,7 @@ import * as ReactDOM from "react-dom";
 import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, LineSeries, DataLabel, Legend, ILoadedEventArgs,ColumnSeries, ChartTheme, Category, ITextRenderEventArgs } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from "../common/sample-base";
+import { loadChartTheme } from './theme-color'
 let data1: Object[] = [
     { sports: "Tennis", boys: 50, girls: 38 },
     { sports: "Badminton", boys: 30, girls: 40 },
@@ -21,7 +22,7 @@ let data2: Object[] = [
     { sports: "Football", boys: 60, girls: 21 },
     { sports: "Hockey", boys: 15, girls: 8 },
 ];
-let theme: ChartTheme;
+let theme: String;
 let materialMan: string = '<div style="background-color:#00bdae;border-radius: 3px;">' +
     '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" alt="Male Icon"/>' +
     '<div style="color:white; font-family:Roboto; font-style: medium; font-size:14px; float: right;'
@@ -265,10 +266,7 @@ const DataLabelTemplate = () => {
         }
     };
     const loadPre = (args: ILoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
-        theme = args.chart.theme;
+        theme = loadChartTheme(args);
     };
     const loaded = (args: ILoadedEventArgs): void => {
         let chart: Element = document.getElementById('charts');
@@ -278,7 +276,7 @@ const DataLabelTemplate = () => {
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
-                <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', edgeLabelPlacement: 'Shift', majorGridLines: { width: 0 }, labelIntersectAction: 'Rotate45', majorTickLines: {width : 0}, minorTickLines: {width : 0} }} primaryYAxis={{ minimum: 0, maximum: 70, lineStyle:{width:0}, majorGridLines:{ color:'#eaeaea', width:1} }} titleStyle={{ fontStyle: 'medium', size: '14px' }} chartArea={{ border: { width: 0 } }} width={Browser.isDevice ? '100%' : '75%'} title='Athletes in Popular School' load={loadPre.bind(this)} loaded={loaded.bind(this)} textRender={textRender.bind(this)}>
+                <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', edgeLabelPlacement: 'Shift', majorGridLines: { width: 0 }, labelIntersectAction: 'Rotate45', majorTickLines: {width : 0}, minorTickLines: {width : 0} }} primaryYAxis={{ minimum: 0, maximum: 70, lineStyle:{width:0}, majorGridLines:{ color:'#eaeaea', width:1}, majorTickLines: { width: 0 } }} titleStyle={{ fontStyle: 'medium', size: '14px' }} chartArea={{ border: { width: 0 }, margin: { bottom: 12 } }} width={Browser.isDevice ? '100%' : '75%'} title='Athletes in Popular School' load={loadPre.bind(this)} loaded={loaded.bind(this)} textRender={textRender.bind(this)}>
                     <Inject services={[LineSeries, DataLabel, Category, Legend, ColumnSeries]} />
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={data1} xName='sports' yName='boys' name='Boys' type='Column' columnWidth={0.75} columnSpacing={0.5} marker={{ visible: false, shape: 'Circle', dataLabel: { visible: true, position: 'Outer', margin: { top: 70 }, template: materialMan  } }} width={2} />
