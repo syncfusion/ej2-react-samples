@@ -9,7 +9,7 @@ import { ToolbarSettingsModel, ActionBeginEventArgs, FileManager, FileManagerSet
 import { createElement } from '@syncfusion/ej2-base';
 import { MentionComponent } from '@syncfusion/ej2-react-dropdowns';
 import { updateSampleSection } from '../common/sample-base';
-import * as CodeMirror from 'codemirror';
+import CodeMirror from 'codemirror';
 import { Editor as ICodeMirror } from 'codemirror';
 import 'codemirror/mode/javascript/javascript';
 import 'codemirror/mode/css/css.js';

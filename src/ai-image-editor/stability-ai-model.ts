@@ -1,4 +1,4 @@
-import FormData from 'form-data';
+import FormData = require('form-data');
 
 // Search and Replace
 export async function StabilityAiModel(file: File, prompt: string, searchPrompt: string) {

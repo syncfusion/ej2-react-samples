@@ -8,7 +8,7 @@ import { RichTextEditorComponent, Toolbar, Inject, Image, Link, HtmlEditor } fro
 import { QuickToolbar, Table, ToolbarSettingsModel, ToolbarType, Count, PasteCleanup, EmojiPicker, Audio ,Video, FormatPainter } from '@syncfusion/ej2-react-richtexteditor';
 import { createElement, Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
-import * as CodeMirror from 'codemirror';
+import CodeMirror from 'codemirror';
 import 'codemirror/mode/javascript/javascript';
 import 'codemirror/mode/css/css.js';
 import 'codemirror/mode/htmlmixed/htmlmixed.js';
