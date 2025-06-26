@@ -5,8 +5,9 @@ import { TextBoxComponent, TextAreaComponent } from "@syncfusion/ej2-react-input
 import { RadioButtonComponent } from "@syncfusion/ej2-react-buttons";
 import { ComboBoxComponent } from "@syncfusion/ej2-react-dropdowns";
 import './default.css';
+import { serverAIRequest } from '../common/ai-service';
 
-function Default() {
+function DefaultSmartPaste() {
     React.useEffect(() => {
         let copyContent: HTMLElement = document.getElementById('bug-report-text') as HTMLElement;
         copyContent.innerHTML = bugReports[0];
@@ -27,16 +28,6 @@ function Default() {
         `Hello, When I selected the category option on the landing page and chose the electronics category, the images were missing on the product page. The placeholders are there, but no actual images are loading. This happens on all browsers. I reported this on July 3rd. It's not urgent, but it does affect the user experience. Regards, L Mike Johnson`
     ];
 
-    const serverAIRequest = async (options: ChatOptions) => {
-        let output: string = '';
-        try {
-            output = await (window as any).getAzureChatAIRequest(options) as string;
-        } catch (error) {
-            console.error("Error:", error);
-        }
-        return output;
-    };
-
     const onCopyClickHandler = async () => {
         let copyContent: HTMLElement = document.getElementById('bug-report-text') as HTMLElement;
         await navigator.clipboard.writeText(copyContent.innerHTML);
@@ -55,15 +46,16 @@ function Default() {
         <>
             <div className='control-pane'>
                 <div className='control-section'>
-                    <form className="form-container container bug-form-container" style={{
+                    <form className="ai-form-container container bug-form-container" style={{
                         maxWidth: "900px",
-                        lineHeight: "35px", backgroundColor: "#f3f4f6"
+                        lineHeight: "35px"
                     }}>
+                        <div style={{ textAlign: 'center', fontWeight: 700 }}><span>Bug Report Form</span></div>
                         <div className="single-row-group">
                             <label htmlFor="bug-name" className="e-form-label">Bug Name</label>
                             <TextBoxComponent id="bug-name" placeholder="What's the bug ?" floatLabelType="Never" />
                         </div>
-                        <div className="row-group">
+                        <div className="ai-row-group">
                             <div>
                                 <label htmlFor="reporter-name" className="e-form-label">Reporter</label>
                                 <TextBoxComponent id="reporter-name" placeholder="Who is the reporter ?" floatLabelType="Never" />
@@ -73,17 +65,17 @@ function Default() {
                                 <TextBoxComponent id="submitted-date" placeholder="When it is reported ?" floatLabelType="Never" />
                             </div>
                         </div>
-                        <div className="form-group">
+                        <div className="ai-form-group">
                             <label htmlFor="bug-description" className="e-form-label">Bug Description</label>
                             <TextAreaComponent id="bug-description" placeholder="Describe a little about the bug." rows={2} floatLabelType="Never" />
                         </div>
-                        <div className="row-group">
+                        <div className="ai-row-group">
                             <div style={{ display: "flex", flexDirection: "column" }}>
                                 <label htmlFor="reproduce-steps" className="e-form-label">Reproduce Steps</label>
                                 <TextAreaComponent id="reproduce-steps" placeholder="Enter the repro steps here.." cols={30} rows={4} floatLabelType="Never" />
                             </div>
-                            <div>
-                                <label className="form-label">Bug Priority</label>
+                            <div id="bug-priority">
+                                <label className="ai-form-label">Bug Priority</label>
                                 <div className="row">
                                     <RadioButtonComponent id="radio1" label="Low" name="bug-priority" value="low" />
                                 </div>
@@ -96,44 +88,41 @@ function Default() {
                             </div>
                         </div>
                         <div>
-                            <label htmlFor="browser" className="form-label">Select the browser</label>
+                            <label htmlFor="browser" className="ai-form-label">Select the browser</label>
                             <ComboBoxComponent id="browser" popupHeight='230px' dataSource={['Chrome', 'Firefox', 'Safari']} placeholder='Choose the browser' />
                         </div>
-                        <div className="form-footer">
+                        <div className="ai-form-footer">
                             <ButtonComponent type="reset" id="reset" content="Reset" iconCss="e-icons e-reset" className="form-button" />
-                            <SmartPasteButtonComponent type="button" id="smart-paste" className="form-button"
+                            <SmartPasteButtonComponent type="button" id="smart-paste" className="form-button e-btn e-primary"
                                 content={'Smart Paste'}
                                 iconCss={"e-icons e-paste"}
                                 aiAssistHandler={serverAIRequest} />
                         </div>
                     </form>
-                    <div className="col-lg-4 property-section">
+                    <div className="col-lg-8 property-section" style={{ marginTop: "20px", marginLeft: "16%" }}>
                         <div className="property-panel-section">
                             <div className="property-panel-content">
-                                <h4> Choose a preset below </h4>
-                                <div className="chip-container">
-                                    <ChipListComponent id="chip-choice" aria-label="choiceChips"
-                                        ref={chip => chipList = chip as ChipListComponent}
-                                        chips={bugPresets} selection={'Single'}
-                                        selectedChips={[0]}
-                                        click={chipsClickHandler}
-                                    ></ChipListComponent>
+                                <div className="e-card">
+                                    <div className="e-card-content">
+                                        <h4> Choose a preset below </h4>
+                                        <div className="chip-container">
+                                            <ChipListComponent id="chip-choice" aria-label="choiceChips"
+                                                ref={chip => chipList = chip as ChipListComponent}
+                                                chips={bugPresets} selection={'Single'}
+                                                selectedChips={[0]}
+                                                click={chipsClickHandler}
+                                            ></ChipListComponent>
+                                        </div>
+                                        <div id="bug-report-text"></div>
+                                        <ButtonComponent id="copy-btn" ref={button => copyButton = button as ButtonComponent}
+                                            content='Copy'
+                                            iconCss="e-icons e-copy"
+                                            onClick={onCopyClickHandler}
+                                        ></ButtonComponent>
+                                    </div>
                                 </div>
-                                <div id="bug-report-text"></div>
-                                <ButtonComponent id="copy-btn" ref={button => copyButton = button as ButtonComponent}
-                                    content='Copy'
-                                    iconCss="e-icons e-copy"
-                                    onClick={onCopyClickHandler}
-                                ></ButtonComponent>
                             </div>
                         </div>
-                    </div>
-                    <div id="action-description">
-                        <p>This example demonstrates how the <code>SmartPasteButton</code> component can automatically fill out forms using data from the user's clipboard.</p>
-                        <p>To explore this and more Syncfusion React Smart AI integrations locally, check out our <a target='_blank' href='https://github.com/syncfusion/smart-ai-samples/tree/master/react/ej2-react-ai-samples' aria-label="Navigate to explore the syncfusion React AI Demos repository">GitHub repository</a>.</p>
-                    </div>
-                    <div id='description'>
-                        <p>In this example, clicking the Smart Paste button retrieves data from the clipboard and automatically fills in the form fields. This streamlines the data entry process by removing the need for manual input.</p>
                     </div>
                 </div>
             </div>
@@ -141,4 +130,4 @@ function Default() {
     );
 }
 
-export default Default;
+export default DefaultSmartPaste;

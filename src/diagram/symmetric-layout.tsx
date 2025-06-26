@@ -45,7 +45,7 @@ export class SymmetricLayout extends SampleBase<{}, {}> {
         return (
             <div className="control-pane">
                 <div className="col-lg-8 control-section">
-                    <div className="content-wrapper">
+                    <div >
                         {/* Initialization and configuration of the Diagram component */}
                         <DiagramComponent
                             id="diagram"

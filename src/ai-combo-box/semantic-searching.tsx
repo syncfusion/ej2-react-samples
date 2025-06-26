@@ -1,8 +1,15 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
+import { updateAISampleSection } from '../common/sample-base';
+/* custom code start*/
+import AIToast from '../common/ai-toast';
+/* custom code end*/
 
 export class ComboBoxSemanticSearch extends SampleBase<{}, {}> {
+     componentDidMount() {
+          updateAISampleSection(); 
+    }
 
     render() {
         return (
@@ -38,6 +45,7 @@ export class ComboBoxSemanticSearch extends SampleBase<{}, {}> {
                         intuitive and effective.
                     </p>
                 </div>
+                <AIToast/>
             </div>
         )
     }

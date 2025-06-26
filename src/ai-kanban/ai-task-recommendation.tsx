@@ -9,8 +9,10 @@ import { ProgressButtonComponent } from "@syncfusion/ej2-react-splitbuttons";
 import { NumericTextBoxComponent, TextAreaComponent, TextBoxComponent } from "@syncfusion/ej2-react-inputs";
 import { ToastComponent } from "@syncfusion/ej2-react-notifications";
 import { kanbanStyles } from './datasource';
+import { OpenAiModelKanban } from '../common/ai-service';
 
-function SmartRecommendation() {
+
+function AiSmartRecommendation() {
     let smartSuggestion: object[] = [];
     let projectDetailsDialog: DialogComponent;
     let goToBacklogBoardView: ButtonComponent;
@@ -65,13 +67,11 @@ function SmartRecommendation() {
                 var description = `Generate ${taskCount} task recommendations for ${projectDetails}. Each task should include the following fields: Id (like example: ID should be in project name simple 4char word - 1), Title, Status, Description, Assignee, StoryPoints, Color and Due Date, formatted according to the dataset. Assign each task to the Assignee: empty string, set the Status to 'Open', and use black for the Color. Use the dataset provided below to create your recommendations. IMPORTANT: Return the data strictly in JSON format with all the required fields. Only the JSON data is needed, no additional text.Return only the JSON array format without any explanations.`;
                 let result: any = getResponseFromOpenAI(description);
                 result.then((result: any) => {
-                    try {
-                        const jsonArrayPattern = /\[.*?\]/;
-                        result = result.match(jsonArrayPattern);
-                        if (result && result[0]) {
-                            let data = result[0].replace("```json", "").replace("```", "").replace("\r", "").replace("\n", "").replace("\t", "").trim();
-                            let modifiedData = JSON.parse(data);
-                            smartSuggestion = modifiedData !== null ? smartSuggestion.concat(modifiedData) : smartSuggestion;
+                    try {              
+                        let data = result.replace(/```json/gi, '').replace(/```/g, '').trim();
+                        let modifiedData = JSON.parse(data);
+                        if (Array.isArray(modifiedData)) {
+                            smartSuggestion = smartSuggestion.concat(modifiedData);
                             backlogKanbanObj.dataSource = smartSuggestion;
                             backlogKanbanObj.dataBind();
                             backlogKanbanObj.refresh();
@@ -80,12 +80,10 @@ function SmartRecommendation() {
                             toast.content = "An error occurred during the AI process, Please try again."
                             toast.show();
                         }
-
                     } catch {
                         toast.content = "An error occurred during the AI process, Please try again."
                         toast.show();
                     }
-
                 });
             }
         } catch {
@@ -95,8 +93,8 @@ function SmartRecommendation() {
     }
 
     async function getResponseFromOpenAI(promptQuery: string): Promise<string> {
-        const content = await (window as any).OpenAiModelKanban(promptQuery);
-        return content ? content as string : '';
+        const content = await OpenAiModelKanban(promptQuery);
+        return content ? content as any : '';
     }
 
     function generateTasksClick(taskCount: number, projectDetails: string): void {
@@ -138,7 +136,7 @@ function SmartRecommendation() {
                 <div className="e-card-content">
                     <div className="e-text e-tooltip-text">${data.Description}</div>
                 </div>
-                <div className="e-card-footer">
+                <div className="e-card-footer" style={{ padding: '7px 14px' }}>
                     <div className="e-card-tag e-tooltip-text">${data.StoryPoints}</div>
                 </div>
             </div>
@@ -204,7 +202,7 @@ function SmartRecommendation() {
                 <style>
                     {kanbanStyles}
                 </style>
-                <div className="row row-large" id="homecontainer">
+                <div className="rows row-large" id="homecontainer">
                     <div className="col-12 text-center my-3">
                         <h3>AI Smart Task Suggestion</h3>
                     </div>
@@ -251,7 +249,7 @@ function SmartRecommendation() {
                         </div>
                     </div>
                 </div>
-                <div className="row" id="toast-kanban-observable" style={{ height: '100%', display: 'none' }}>
+                <div className="rows" id="toast-kanban-observable" style={{ height: '100%', display: 'none', boxShadow: 'none', border: 'none', marginTop: '5px', paddingTop: '5px' }}>
                     <div className="col-12 text-center my-3" id="customcontainer">
                         <h3>Kanban Board</h3>
                     </div>
@@ -378,4 +376,4 @@ function SmartRecommendation() {
     )
 }
 
-export default SmartRecommendation
+export default AiSmartRecommendation;

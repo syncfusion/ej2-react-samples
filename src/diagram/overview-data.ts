@@ -427,68 +427,68 @@ export let data: object[] = [
         'RatingColor': '#D46E89', 'ReportingPerson': 83
     },
     {
-        'Id': 34, 'Name': 'Matti Kenna', 'Designation': 'Project Trainee',
+        'Id': 85, 'Name': 'Matti Kenna', 'Designation': 'Project Trainee',
         'ImageUrl': 'src/diagram/employees/image15.png', 'IsExpand': 'None',
         'RatingColor': '#93B85A', 'ReportingPerson': 84
     },
     {
-        'Id': 35, 'Name': 'Zbyszek Yang', 'Designation': 'Project Trainee',
+        'Id': 86, 'Name': 'Zbyszek Yang', 'Designation': 'Project Trainee',
         'ImageUrl': 'src/diagram/employees/image21.png', 'IsExpand': 'None',
         'RatingColor': '#93B85A', 'ReportingPerson': 84
     },
     {
-        'Id': 85, 'Name': 'Nancy', 'Designation': 'Project Lead',
+        'Id': 87, 'Name': 'Nancy', 'Designation': 'Project Lead',
         'ImageUrl': 'src/diagram/employees/image17.png', 'IsExpand': 'None',
         'RatingColor': '#93B85A', 'ReportingPerson': 74
     },
     {
-        'Id': 86, 'Name': 'Robert King', 'Designation': 'Senior S/w Engg',
+        'Id': 88, 'Name': 'Robert King', 'Designation': 'Senior S/w Engg',
         'ImageUrl': 'src/diagram/employees/image23.png', 'IsExpand': 'true',
         'RatingColor': '#D46E89', 'ReportingPerson': 85
     },
     {
-        'Id': 87, 'Name': 'Laura Callahan', 'Designation': 'CSR',
+        'Id': 89, 'Name': 'Laura Callahan', 'Designation': 'CSR',
         'ImageUrl': 'src/diagram/employees/image20.png', 'IsExpand': 'false',
         'RatingColor': '#D46E89', 'ReportingPerson': 88
     },
     {
-        'Id': 88, 'Name': 'Anne', 'Designation': 'CSR',
+        'Id': 90, 'Name': 'Anne', 'Designation': 'CSR',
         'ImageUrl': 'src/diagram/employees/image24.png', 'IsExpand': 'false',
         'RatingColor': '#68C2DE', 'ReportingPerson': 86
     },
     {
-        'Id': 89, 'Name': 'Georg Pipps', 'Designation': 'Senior S/w Engg',
+        'Id': 91, 'Name': 'Georg Pipps', 'Designation': 'Senior S/w Engg',
         'ImageUrl': 'src/diagram/employees/image26.png', 'IsExpand': 'None',
         'RatingColor': '#EBB92E', 'ReportingPerson': 'parent'
     },
     {
-        'Id': 30, 'Name': 'Isabel Castro', 'Designation': 'Project Trainee',
+        'Id': 92, 'Name': 'Isabel Castro', 'Designation': 'Project Trainee',
         'ImageUrl': 'src/diagram/employees/image27.png', 'IsExpand': 'None',
         'RatingColor': '#D46E89', 'ReportingPerson': 89
     },
     {
-        'Id': 34, 'Name': 'Nardo Batista', 'Designation': 'Project Trainee',
+        'Id': 93, 'Name': 'Nardo Batista', 'Designation': 'Project Trainee',
         'ImageUrl': 'src/diagram/employees/image28.png', 'IsExpand': 'None',
         'RatingColor': '#EBB92E', 'ReportingPerson': 88
     },
     {
-        'Id': 90, 'Name': 'Rene Phillips', 'Designation': 'Project Trainee',
+        'Id': 94, 'Name': 'Rene Phillips', 'Designation': 'Project Trainee',
         'ImageUrl': 'src/diagram/employees/image22.png', 'IsExpand': 'false',
         'RatingColor': '#68C2DE', 'ReportingPerson': 89
     },
     {
-        'Id': 91, 'Name': 'Lúcia Carvalho', 'Designation': 'Project Trainee',
+        'Id': 95, 'Name': 'Lúcia Carvalho', 'Designation': 'Project Trainee',
         'ImageUrl': 'src/diagram/employees/image25.png', 'IsExpand': 'None',
         'RatingColor': '#93B85A', 'ReportingPerson': 89
     },
     {
-        'Id': 92, 'Name': 'Horst Kloss', 'Designation': 'Project Trainee',
+        'Id': 96, 'Name': 'Horst Kloss', 'Designation': 'Project Trainee',
         'ImageUrl': 'src/diagram/employees/image29.png', 'IsExpand': 'None',
         'RatingColor': '#D46E89', 'ReportingPerson': 89
     },
     {
-        'Id': 93, 'Name': 'Simon Roel', 'Designation': 'Project Lead',
+        'Id': 97, 'Name': 'Simon Roel', 'Designation': 'Project Lead',
         'ImageUrl': 'src/diagram/employees/image28.png', 'IsExpand': 'true',
-        'RatingColor': '#93B85A', 'ReportingPerson': 98
+        'RatingColor': '#93B85A', 'ReportingPerson': 89
     },
 ];

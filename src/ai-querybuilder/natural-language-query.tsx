@@ -1,14 +1,23 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
+import AiNLQuerying from './ai-natural-language-query';
+/* custom code start*/
+import AIToast from '../common/ai-toast';
+/* custom code end*/
+import { updateAISampleSection } from '../common/sample-base';
 
 export class NaturalLanguageQuery extends SampleBase<{}, {}> {
+     componentDidMount() {
+          updateAISampleSection(); 
+    }
 
     render() {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <img src={'src/ai-querybuilder/images/natural-languagequery.gif'} width='100%' height='100%'></img>
+                    <AiNLQuerying />
+
                 </div>
                 <div id="action-description">
                     <p>
@@ -28,6 +37,7 @@ export class NaturalLanguageQuery extends SampleBase<{}, {}> {
                         retrieval, allowing users to obtain insights without needing to understand complex query syntax.
                     </p>
                 </div>
+             <AIToast/>   
             </div>
         )
     }

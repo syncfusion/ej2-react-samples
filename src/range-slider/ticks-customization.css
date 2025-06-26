@@ -45,6 +45,7 @@
     background-image: none;
     visibility: visible;
     font-family: 'e-customized-icons';
+    margin: 0px;
 }
 
 @font-face {
@@ -173,11 +174,20 @@
     line-height: 2.5;
 }
 
-.fluent2 #ticks_slider .e-scale, .tailwind3 #ticks_slider .e-scale,.tailwind3-dark #ticks_slider .e-scale,
+.fluent2 #ticks_slider .e-scale,.tailwind3-dark #ticks_slider .e-scale,
 .fluent2-dark #ticks_slider .e-scale,
 .fluent2-highcontrast #ticks_slider .e-scale {
     font-size: 14px;
 }
+
+.tailwind3 #ticks_slider .e-scale{
+    font-size: 10px;
+}
+.tailwind3 #ticks_slider .e-scale .e-tick.e-custom::before{
+    line-height: 2.3;
+}
+
+
 
 .fluent2.e-bigger #ticks_slider .e-scale,
 .fluent2-dark.e-bigger #ticks_slider .e-scale,

@@ -10,7 +10,7 @@ import {
 } from '@syncfusion/ej2-react-charts';
 import {
     EmaIndicator, RsiIndicator, BollingerBands, TmaIndicator, MomentumIndicator, SmaIndicator, AtrIndicator,
-    AccumulationDistributionIndicator, MacdIndicator, StochasticIndicator ,Export
+    AccumulationDistributionIndicator, MacdIndicator, StochasticIndicator ,Export, LastValueLabel
 } from '@syncfusion/ej2-react-charts';
 import { SampleBase } from '../common/sample-base';
 import { aapl } from './stock-data';
@@ -31,11 +31,10 @@ export class Spline extends SampleBase<{}, {}> {
                 <div className='control-section'>
                     <StockChartComponent id='stockchartspline'
                         primaryXAxis={{
-                            valueType: 'DateTime', majorGridLines: { width: 0 },crosshairTooltip: { enable: true }
+                            valueType: 'DateTime', maximum: new Date(2015, 3, 30), majorGridLines: { width: 0 },crosshairTooltip: { enable: true }
                         }}
                         primaryYAxis={{
-                            lineStyle: { color: 'transparent' },
-                            majorTickLines: { color: 'transparent', width: 0 }
+                            lineStyle: { color: 'transparent' }, majorTickLines: { color: 'transparent', height: 17, width: 10 }, labelPosition: 'Outside', tickPosition: 'Outside'
                         }}
                         load={this.load.bind(this)}
                         indicatorType={[]}
@@ -47,9 +46,9 @@ export class Spline extends SampleBase<{}, {}> {
                     >
                         <Inject services={[DateTime, Tooltip, RangeTooltip, Crosshair, LineSeries, SplineSeries, CandleSeries, HiloOpenCloseSeries, HiloSeries, RangeAreaSeries, Trendlines,
                         EmaIndicator, RsiIndicator, BollingerBands, TmaIndicator, MomentumIndicator, SmaIndicator, AtrIndicator, Export,
-                        AccumulationDistributionIndicator, MacdIndicator, StochasticIndicator]} />
+                        AccumulationDistributionIndicator, MacdIndicator, StochasticIndicator, LastValueLabel]} />
                         <StockChartSeriesCollectionDirective>
-                            <StockChartSeriesDirective dataSource={aapl} xName='x' yName='high' type='Spline'>
+                            <StockChartSeriesDirective dataSource={aapl} xName='x' yName='high' type='Spline' lastValueLabel={{enable: true, lineWidth: 0.5}}>
                             </StockChartSeriesDirective>
                         </StockChartSeriesCollectionDirective>
                     </StockChartComponent>
@@ -59,7 +58,7 @@ export class Spline extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure stock chart to visualize the stock data with spline series. Use series <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/stock-chart/stockSeries/#type" aria-label="Navigate to the type property reference for React Stock Chart component">type</a> as <b>Spline</b> to render a spline series.
+                        This example shows how to render and configure a stock chart to visualize stock data with a last value label using the <code>lastValueLabel</code> option. A spline series is used by setting the series <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/stock-chart/stockSeries/#type" aria-label="Navigate to the type property reference for React Stock Chart component">type</a> to <b>Spline</b>.
                     </p>
                     <p>
                         <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover the chart or tap on it in touch enabled devices.

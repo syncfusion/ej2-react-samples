@@ -21,7 +21,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="referrer" content="never"/>
     <title>Demos, Examples of Syncfusion React UI Components</title>
-    <link rel="manifest" href="./manifest.webmanifest">
     <link href="src/common/lib/content/roboto.css" rel="stylesheet">
     <link href="src/common/lib/content/bootstrap.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"></link>
@@ -48,12 +47,64 @@
 </head>
 
 <body class='e-view'>
+    <div
+    class="promo-banner"
+    role="banner"
+    style="
+        background-color:#075193;
+        position: relative;
+        z-index: 1001;
+        padding: 8px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;">
+    <svg
+        class="promo-icon"
+        role="presentation"
+        xmlns="http://www.w3.org/2000/svg"
+        color="#61dafb"
+        width="16px"
+        height="16px"
+        viewBox="-11.5 -10.23174 23 20.46348"
+        style="margin-right: 8px;">
+        <title>React Logo</title>
+        <circle cx="0" cy="0" r="2.05" fill="currentcolor" />
+        <g stroke="currentcolor" stroke-width="1" fill="none">
+        <ellipse rx="11" ry="4.2" />
+        <ellipse rx="11" ry="4.2" transform="rotate(60)" />
+        <ellipse rx="11" ry="4.2" transform="rotate(120)" />
+        </g>
+    </svg>
+    <span
+        class="promo-text"
+        style="
+        color:#ffff;
+        font-family: 'Segoe UI';
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 16px;
+        display: inline;">
+        15+ Modern Pure React UI components for 2X faster development
+        <a
+        href="https://react.syncfusion.com/getting-started/introduction"
+        class="promo-link"
+        style="
+            color: #FFBF2A;
+            font-weight: bold;
+            text-decoration: none;
+            margin-left: 4px;">
+        Explore demos →
+        </a>
+    </span>
+    </div>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8WD8WN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <div hidden id="sync-analytics" data-queue="EJ2 - React - Demos"></div>
+
     <aside id='left-sidebar' role="complementary" aria-labelledby="sb-toggle-left">
-        <div class='sb-left-pane e-view'>
+        <div class='sb-left-pane e-view e-banner-top'>
                 <div class="sb-left-pane-header">
                     <div class="sb-header-top">
                         <div class="sb-ej2">
@@ -88,10 +139,14 @@
             <div class="sb-mobile-right-pane-close sb-icons"></div>
         </div>
     </aside>
-    <div class="sample-browser e-view">
+   
+    <div class="sample-browser e-view e-banner-top">
         <div class="sb-mobile-overlay sb-hide"></div>
-        
-        <div id='sample-header' class="sb-header e-view" role="banner">
+        <div class="sb-token-header sb-hide" role="banner">
+            <div class="banner-message"></div>
+            <div class="close-button" role="button">×</div>
+        </div>
+        <div id='sample-header' class="sb-header e-view e-banner-top" role="banner">
             <div class='sb-header-left sb-left sb-table'>
                 <div class='sb-header-item sb-table-cell'>
                     <div id="sb-toggle-left" role="button" tabindex="0" class="sb-slide-nav sb-icons toggle-active sb-icon-Hamburger" aria-label="Toggle all controls navigation" aria-controls="left-sidebar" title='toggle left pane'></div>
@@ -332,8 +387,8 @@
                 </div>
             </div>
         </div>
-        <div class="sb-content e-view">
-            <div class='sb-right-pane e-view' id='right-pane'>
+        <div class="sb-content e-view e-banner-top">
+            <div class='sb-right-pane e-view e-banner-top' id='right-pane'>
                 <div class="sb-content-overlay">
                     <div class="sb-loading">
                         <svg class="circular" height="40" width="40">
@@ -416,14 +471,14 @@
                     </div>
                 </div>
             </div>
-            <div class="sb-body-overlay e-view">
+            <div class="sb-body-overlay e-view e-banner-top">
                 <div class="sb-loading">
                     <svg class="circular" height="40" width="40">
                         <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="6" stroke-miterlimit="10" />
                     </svg>
                 </div>
             </div>
-            <div class="e-search-overlay sb-hide">
+            <div class="e-search-overlay e-banner-top sb-hide">
                 <div class='sb-search-input' id='search-input-wrapper' data-value=''>
                     <input type='text' class="e-icons" id='search-input' onkeyup='this.parentElement.setAttribute("data-value",this.value)' class='e-icons' placeholder="Search here..." />
                     <span class='e-icons sb-reset-icon'></span> 

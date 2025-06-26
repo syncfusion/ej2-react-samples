@@ -3,8 +3,8 @@
  */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { RichTextEditorComponent, Toolbar, Inject, Image, Table, Link, HtmlEditor, QuickToolbar, IFrameSettingsModel, Audio, Video, EmojiPicker, PasteCleanup } from '@syncfusion/ej2-react-richtexteditor';
-import { ToolbarSettingsModel, FileManager, FileManagerSettingsModel } from '@syncfusion/ej2-react-richtexteditor';
+import { RichTextEditorComponent, Toolbar, Inject, Image, Table, Link, HtmlEditor, QuickToolbar, IFrameSettingsModel, Audio, Video, EmojiPicker, PasteCleanup, CodeBlock, ImportExport } from '@syncfusion/ej2-react-richtexteditor';
+import { ToolbarSettingsModel, FileManager, FileManagerSettingsModel, ExportWordModel, ExportPdfModel, ImportWordModel } from '@syncfusion/ej2-react-richtexteditor';
 import { SampleBase } from '../common/sample-base';
 import { addClass, removeClass, Browser } from '@syncfusion/ej2-base';
 import './iframe.css';
@@ -20,13 +20,12 @@ export class IFrame extends SampleBase<{}, {}> {
   };
 
   // Rich Text Editor items list
-  private items: string[] = ['Bold', 'Italic', 'Underline', 'StrikeThrough', 'InlineCode', 'SuperScript', 'SubScript', '|',
-    'FontName', 'FontSize', 'FontColor', 'BackgroundColor', '|',
-    'LowerCase', 'UpperCase', '|',
-    'Formats', 'Alignments', 'Blockquote', '|', 'NumberFormatList', 'BulletFormatList', '|',
-    'Outdent', 'Indent', '|', 'CreateLink', 'Image', 'FileManager', 'Video', 'Audio', 'CreateTable', '|', 'ClearFormat',
-    '|', 'EmojiPicker', 'Print', '|',
-    'SourceCode', 'FullScreen', '|', 'Undo', 'Redo'
+  private items: string[] = ['Undo', 'Redo', '|', 'ImportWord', 'ExportWord', 'ExportPdf', '|',
+                'Bold', 'Italic', 'Underline', 'StrikeThrough', 'InlineCode', '|', 'CreateLink', 'Image', 'CreateTable', 'CodeBlock',
+                'HorizontalLine', 'Blockquote', '|', 'BulletFormatList', 'NumberFormatList', '|', 'Formats', 'Alignments', '|', 'Outdent', 'Indent', '|',
+                'FontColor', 'BackgroundColor', 'FontName', 'FontSize', '|', 'LowerCase', 'UpperCase', '|', 'SuperScript', 'SubScript', '|',
+                'EmojiPicker', 'FileManager', 'Video', 'Audio', '|', 'FormatPainter', 'ClearFormat',
+                '|', 'Print', 'FullScreen', '|', 'SourceCode'
   ];
 
   private fileManagerSettings: FileManagerSettingsModel = {
@@ -44,6 +43,33 @@ export class IFrame extends SampleBase<{}, {}> {
   private toolbarSettings: ToolbarSettingsModel = {
     items: this.items
   };
+
+  private importWord: ImportWordModel = {
+    serviceUrl: 'https://services.syncfusion.com/react/production/api/RichTextEditor/ImportFromWord',
+      };
+  private exportWord: ExportWordModel = {
+    serviceUrl: 'https://services.syncfusion.com/react/production/api/RichTextEditor/ExportToDocx',
+          fileName: 'RichTextEditor.docx',
+          stylesheet: `
+          .e-rte-content {
+              font-size: 1em;
+              font-weight: 400;
+              margin: 0;
+          }
+      `
+      };
+  
+      private exportPdf: ExportPdfModel = {
+        serviceUrl: 'https://services.syncfusion.com/react/production/api/RichTextEditor/ExportToPdf',
+          fileName: 'RichTextEditor.pdf',
+          stylesheet: `
+          .e-rte-content{
+              font-size: 1em;
+              font-weight: 400;
+              margin: 0;
+          }
+      `
+      };
   public handleFullScreen(e: any): void {
     let sbCntEle: HTMLElement = document.querySelector('.sb-content.e-view');
     let sbHdrEle: HTMLElement = document.querySelector('.sb-header.e-view');
@@ -86,7 +112,7 @@ export class IFrame extends SampleBase<{}, {}> {
           <div className="content-wrapper">
             <RichTextEditorComponent id="iframeRTE" ref={(richtexteditor) => { this.rteObj = richtexteditor }}
               height={'500px'} actionBegin={this.handleFullScreen.bind(this)} actionComplete={this.actionCompleteHandler.bind(this)} toolbarSettings={this.toolbarSettings}
-              iframeSettings={this.iframeSetting} fileManagerSettings={this.fileManagerSettings}>
+              iframeSettings={this.iframeSetting} fileManagerSettings={this.fileManagerSettings} importWord={this.importWord} exportPdf={this.exportPdf} exportWord={this.exportWord}>
               <p>The Rich Text Editor component is a WYSIWYG ("what you see is what you get") editor that provides the best user experience to create and update the content.
                 Users can format their content using standard toolbar commands.</p>
 
@@ -124,7 +150,7 @@ export class IFrame extends SampleBase<{}, {}> {
                   <p>Creates bulleted and numbered lists.</p>
                 </li>
               </ul>
-              <Inject services={[Toolbar, Image, Link, HtmlEditor, Table, QuickToolbar, FileManager, Audio, Video, EmojiPicker, PasteCleanup]} />
+              <Inject services={[Toolbar, Image, Link, HtmlEditor, Table, QuickToolbar, FileManager, Audio, Video, EmojiPicker, PasteCleanup, CodeBlock, ImportExport]} />
             </RichTextEditorComponent>
           </div>
         </div>
@@ -136,7 +162,7 @@ export class IFrame extends SampleBase<{}, {}> {
           <p>The Rich Text Editor is WYSIWYG ("what you see is what you get") editor that is used to create and edit content, and return valid HTML markup. The editor provides a standard toolbar to format content using its commands. The toolbar contains commands to align the text, insert link, insert image,
             insert list, undo/redo the operation, HTML view, and more.</p>
           <p><b>Injecting Module</b></p>
-          <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, Count, HtmlEditor, QuickToolbar, Table, Audio, Video, FormatPainter, EmojiPicker, PasteCleanup</code> modules into the services.</p>
+          <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, Count, HtmlEditor, QuickToolbar, Table, Audio, Video, FormatPainter, EmojiPicker, PasteCleanup, CodeBlock</code> modules into the services.</p>
         </div>
       </div>
     );

@@ -1,8 +1,15 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
+import { updateAISampleSection } from '../common/sample-base';
+/* custom code start*/
+import AIToast from '../common/ai-toast';
+/* custom code end*/
 
 export class SmartResourceAllocation extends SampleBase<{}, {}> {
+     componentDidMount() {
+          updateAISampleSection(); 
+    }
 
     render() {
         return (
@@ -30,6 +37,7 @@ export class SmartResourceAllocation extends SampleBase<{}, {}> {
                         providing clear visual feedback on the resource adjustments.
                     </p>
                 </div>
+                <AIToast/>
             </div>
         )
     }

@@ -1,9 +1,11 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { IDataOptions, PivotViewComponent, VirtualScroll, Inject, FieldList, GroupingBar } from '@syncfusion/ej2-react-pivotview';
+import { IDataOptions, PivotViewComponent, VirtualScroll, Inject, FieldList, GroupingBar, Toolbar, PDFExport, ExcelExport, ToolbarArgs, BeforeExportEventArgs, ToolbarItems } from '@syncfusion/ej2-react-pivotview';
 import { SampleBase } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
 import './server-side-engine.css';
+import { ItemModel, Menu } from '@syncfusion/ej2-navigations';
+import { ExcelExportProperties, PdfExportProperties } from '@syncfusion/ej2-grids';
 
 /**
  * PivotView Server Side Engine Sample.
@@ -14,19 +16,21 @@ export class ServerSideEngine extends SampleBase<{}, {}> {
 
     private pivotObj: PivotViewComponent;
 
+    private toolbarOptions: ToolbarItems[] = ['Export', 'FieldList'];
+
     private dataSourceSettings: IDataOptions = {
-        url: 'https://services.syncfusion.com/react/production/api/pivot/post',
+        url: 'https://ej2services.syncfusion.com/react/release/api/pivot/post',
         mode: 'Server',
         expandAll: false,
         enableSorting: true,
-        columns: [
-            { name: 'Year', caption: 'Production Year' },
+        columns: [ { name: 'Year', caption: 'Production Year' },
         ],
         values: [
             { name: 'Sold', caption: 'Units Sold' },
             { name: 'Price', caption: 'Sold Amount' }
         ],
-        rows: [{ name: 'ProductID', caption: 'Product ID' }],
+        rows: [{ name: 'ProductID', caption: 'Product ID' }, {name: 'Country'}],
+        drilledMembers: [{ name: 'ProductID', items: ['PRO-10001', 'PRO-10002', 'PRO-10003'] }],
         formatSettings: [{ name: 'Price', format: 'C0' }, { name: 'Sold', format: 'N0' }],
         filters: []
     };
@@ -35,6 +39,142 @@ export class ServerSideEngine extends SampleBase<{}, {}> {
         if (Browser.isDevice && this.pivotObj && this.pivotObj.enableRtl) {
             (document as any).querySelector('.control-section').classList.add('e-rtl');
         }
+        if (document.querySelector('#grid_menu .e-menu-item') == null) {
+            var menuItems = [
+                {
+                    iconCss: 'e-toolbar-grid e-icons',
+                    items: [
+                        { text: 'Compact Layout', id: 'Compact' },
+                        { text: 'Tabular Layout', id: 'Tabular' },
+                    ],
+                },
+            ];
+            new Menu(
+                { items: menuItems, select: this.gridToolbarClicked.bind(this) },
+                '#grid_menu'
+            );
+        }
+    }
+
+    gridToolbarClicked(args: any): void {
+        if (this.pivotObj && this.pivotObj.gridSettings && this.pivotObj.gridSettings.layout !== args.item.id) {
+            this.pivotObj.setProperties({
+                gridSettings: {
+                    layout: args.item.id
+                },
+                displayOption: {
+                    view: 'Both', primary: 'Table'
+                },
+            }, true);
+            this.pivotObj.refresh();
+        }
+    }
+
+    getExcelExportProperties(excelExportProperties: ExcelExportProperties): void {
+        excelExportProperties.header = {
+            headerRows: 7,
+            rows: [
+                {
+                    index: 1,
+                    cells: [
+                        { index: 1, colSpan: 13, value: 'INVOICE', style: { fontColor: '#C25050', fontSize: 25, hAlign: 'Center', bold: true } }
+                    ]
+                },
+                {
+                    index: 3,
+                    cells: [
+                        { index: 1, colSpan: 3, value: 'Adventure Traders', style: { fontColor: '#C67878', fontSize: 15, bold: true } },
+                        { index: 10, colSpan: 2, value: 'INVOICE NUMBER', style: { fontColor: '#C67878', bold: true } },
+                        { index: 12, colSpan: 2, value: 'DATE', style: { fontColor: '#C67878', bold: true } }
+                    ]
+                },
+                {
+                    index: 4,
+                    cells: [
+                        { index: 1, colSpan: 3, value: '2501 Aerial Center Parkway' },
+                        { index: 10, colSpan: 2, value: 2034 },
+                        { index: 12, colSpan: 2, value: new Date() }
+                    ]
+                },
+                {
+                    index: 5,
+                    cells: [
+                        { index: 1, colSpan: 3, value: 'Tel +1 888.936.8638 Fax +1 919.573.0306' },
+                        { index: 10, colSpan: 2, value: 'CUSTOMER ID', style: { fontColor: '#C67878', bold: true } },
+                        { index: 12, colSpan: 2, value: 'TERMS', style: { fontColor: '#C67878', bold: true } }
+                    ]
+                },
+                {
+                    index: 6,
+                    cells: [
+                        { index: 10, colSpan: 2, value: 564 },
+                        { index: 12, colSpan: 2, value: 'Net 30 days' }
+                    ]
+                }
+            ]
+        };
+        excelExportProperties.footer = {
+            footerRows: 3,
+            rows: [
+                {
+                    index: 2,
+                    cells: [
+                        { colSpan: 13, value: 'Thank you for your business!', style: { fontColor: '#C67878', hAlign: 'Center', bold: true } }
+                    ]
+                },
+                {
+                    index: 3,
+                    cells: [
+                        { colSpan: 13, value: '!Visit Again!', style: { fontColor: '#C67878', hAlign: 'Center', bold: true } }
+                    ]
+                }
+            ]
+        };
+    }
+    
+    getPdfExportProperties(pdfExportProperties: PdfExportProperties): void {
+        pdfExportProperties.header = {
+            fromTop: 0,
+            height: 130,
+            contents: [
+                {
+                    type: 'Text',
+                    value: 'INVOICE',
+                    position: { x: 250, y: 50 },
+                    style: { textBrushColor: '#C25050', fontSize: 19 },
+                },
+            ],
+        };
+        pdfExportProperties.footer = {
+            fromBottom: 0,
+            height: 130,
+            contents: [
+                {
+                    type: 'Text',
+                    value: 'Thank you for your business!',
+                    position: { x: 250, y: 50 },
+                    style: { textBrushColor: '#C67878', fontSize: 13 },
+                },
+            ],
+        };
+    }
+
+    beforeToolbarRender(args: ToolbarArgs): void {
+        args.customToolbar.splice(2, 0, {
+            template: '<ul id="grid_menu"></ul>',
+            id: 'custom_toolbar'
+        });
+        args.customToolbar.splice(1, 0, {
+            type: 'Separator'
+        });
+    }
+
+    beforeExport(args: BeforeExportEventArgs) {
+        if (args.excelExportProperties) {
+            this.getExcelExportProperties(args.excelExportProperties);
+        } else if (args.pdfExportProperties) {
+            this.getPdfExportProperties(args.pdfExportProperties);
+        }
     }
 
     render() {
@@ -42,13 +182,16 @@ export class ServerSideEngine extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section'>
                     <PivotViewComponent id='PivotView' ref={d => this.pivotObj = d} dataSourceSettings={this.dataSourceSettings} showFieldList={true} showGroupingBar={true}
-                        width={'100%'} height={'450'} dataBound={this.onDataBound} enableVirtualization={true} allowDataCompression={true}>
-                        <Inject services={[VirtualScroll, FieldList, GroupingBar]} />
+                        width={'100%'} height={'450'} dataBound={this.onDataBound} enableVirtualization={true} allowDataCompression={true} showToolbar={true}
+                        allowPdfExport={true} allowExcelExport={true} gridSettings={{ columnWidth: Browser.isDevice ? 100 : 120, layout: 'Tabular' }} toolbarRender={this.beforeToolbarRender.bind(this)}
+                        toolbar={this.toolbarOptions} beforeExport={this.beforeExport.bind(this)}>
+                        <Inject services={[VirtualScroll, FieldList, GroupingBar, Toolbar, PDFExport, ExcelExport]} />
                     </PivotViewComponent>
                 </div>
                 <div id="action-description">
-                    <p>This sample demonstrates how to use a server-side pivot engine to obtain, process and return the summarized data
-                        via a remote service and display it in the pivot table.</p>
+                    <p>This sample shows how to use a server-side pivot engine to fetch and display summarized data in the Pivot Table.
+                        It includes export options for Excel, CSV, and PDF with headers and footers, and a layout switcher to toggle
+                        between Compact and Tabular views at runtime.</p>
                 </div>
                 <div id="description">
                     <p>
@@ -73,6 +216,14 @@ export class ServerSideEngine extends SampleBase<{}, {}> {
                             enableVirtualization</a> property
                         and an external server engine. This would improve pivot table rendering performance when working with large
                         amounts of data.
+                    </p>
+                    <p>
+                        The built-in toolbar includes export options for Excel, CSV, and PDF documents. These export features support
+                        adding headers and footers, enabling enriched document formatting and presentation.
+                    </p>
+                    <p>
+                        Additionally, a custom toolbar menu is provided to switch between <strong>Compact</strong> and
+                        <strong>Tabular</strong> layouts at runtime, offering flexibility in how the summarized data is displayed.
                     </p>
                     <br />
                     <p>

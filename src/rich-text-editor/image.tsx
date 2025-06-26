@@ -25,7 +25,7 @@ export class ImageSample extends SampleBase<{}, {}> {
         { text: 'Base64', value: 'Base64' }
     ];
 
-    private image: (string | IToolbarItems)[] = ['Replace', 'Align', 'Caption', 'Remove', 'InsertLink', 'OpenImageLink', '-',
+    private image: (string | IToolbarItems)[] = ['Replace', 'Align', 'Caption', 'Remove', 'InsertLink', 'OpenImageLink', '|',
         'EditImageLink', 'RemoveImageLink', 'Display', 'AltText', 'Dimension',
         {
             tooltipText: 'Rotate Left',
@@ -82,7 +82,7 @@ export class ImageSample extends SampleBase<{}, {}> {
                         <div className='rte-control-section'>
                             <RichTextEditorComponent id="imageRTE" ref={(richtexteditor) => { this.rteObj = richtexteditor }}
                                 toolbarClick={this.onToolbarClick.bind(this)} quickToolbarSettings={this.quickToolbarSettings}>
-                                    <h2>Insert Image in Rich Text Editor!<br /></h2><p>You can insert and edit images within this editor. Click inside the editor and use the <strong>image tool</strong> to add an image.</p><h5>What You Can Do</h5><li><strong>Insert Images:</strong> Upload images from local storage or provide an image URL.</li><li><strong>Resize &amp; Drag:</strong> Easily adjust image dimensions and reposition them within the content.</li><li><strong>Align Images:</strong> Set images to align <strong>left, center, or right</strong>.</li><li><strong>Caption Support:</strong> Add captions to describe your images.</li><li><strong>Replace &amp; Remove:</strong> Change or delete images as needed.</li><h5>Try It Out!</h5><p><img id="rteImageID" style={{width: '300px', height: '300px',transform: 'rotate(0deg)'}} alt="Editor Features Overview" src="https://cdn.syncfusion.com/ej2/richtexteditor-resources/RTE-Portrait.png" className="e-rte-image e-imginline" /></p>
+                                    <h2>Insert Image in Rich Text Editor!<br /></h2><p>You can insert and edit images within this editor. Click inside the editor and use the <strong>image tool</strong> to add an image.</p><h5>What You Can Do</h5><ul><li><strong>Insert Images:</strong> Upload images from local storage or provide an image URL.</li><li><strong>Resize &amp; Drag:</strong> Easily adjust image dimensions and reposition them within the content.</li><li><strong>Align Images:</strong> Set images to align <strong>left, center, or right</strong>.</li><li><strong>Caption Support:</strong> Add captions to describe your images.</li><li><strong>Replace &amp; Remove:</strong> Change or delete images as needed.</li></ul><h5>Try It Out!</h5><p><img id="rteImageID" style={{width: '300px', height: '300px',transform: 'rotate(0deg)'}} alt="Editor Features Overview" src="https://cdn.syncfusion.com/ej2/richtexteditor-resources/RTE-Portrait.png" className="e-rte-image e-imginline" /></p>
                                 <Inject services={[HtmlEditor, Toolbar, Image, Link, QuickToolbar, PasteCleanup, Table, Video, Audio]} />
                             </RichTextEditorComponent>
                         </div>

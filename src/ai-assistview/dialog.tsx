@@ -8,14 +8,13 @@ import { FabComponent } from '@syncfusion/ej2-react-buttons';
 import { PaneDirective, PanesDirective, SplitterComponent } from '@syncfusion/ej2-react-layouts';
 import * as data from './promptResponseData.json';
 
-export class Dialog extends SampleBase<{}, {dialogVisibility: boolean, content: string}> {
+export class Dialog extends SampleBase<{}, {dialogVisibility: boolean}> {
 
   assistInstance: AIAssistViewComponent;
   constructor(props: {}) {
     super(props);
     this.state = {
-      dialogVisibility: false,
-      content: ''
+      dialogVisibility: false
     };
   }
   promptsData: PromptModel[] = [
@@ -73,11 +72,9 @@ export class Dialog extends SampleBase<{}, {dialogVisibility: boolean, content: 
           <i><mark>(Open AI Assist, generate a response, and click 'Copy' from the toolbar item to get it updated here.)</mark></i>
           Discuss strategies for conducting productive meetings with stakeholders. <br />
           Highlight the significance of setting clear agendas, defining outcomes, and maintaining open communication. <br />
-          {this.state.content}
         </div>
       </div>
     );
-
   };
 
   toolbarItemClicked = (args) => {
@@ -89,9 +86,9 @@ export class Dialog extends SampleBase<{}, {dialogVisibility: boolean, content: 
       var response = this.assistInstance.prompts[args.dataIndex].response;
       if (targetElem) {
         this.setState({
-          content: targetElem.innerText + response + '<br />',
           dialogVisibility: false
         });
+        targetElem.innerHTML += response + '<br />';
       }
     }
   };

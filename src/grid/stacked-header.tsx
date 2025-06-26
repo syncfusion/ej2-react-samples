@@ -65,7 +65,7 @@ export class StackedHeader extends SampleBase<{}, {}> {
         }
     
         const fields = { dataSource: treeData, id: 'id', parentID: 'pid', text: 'name', hasChildren: 'hasChild' };
-        const enableRTL = this.gridInstance.enableRtl ? true : false;
+        const enableRTL = this.gridInstance && this.gridInstance.enableRtl ? true : false;
 
         React.useEffect (() => {
             if (this.treeObj) {
@@ -83,8 +83,8 @@ export class StackedHeader extends SampleBase<{}, {}> {
     public FooterTemplate(): any {
         return (
             <div id="columnChooserFooter">
-                <ButtonComponent onClick={this.columnChooserSubmit}>Apply</ButtonComponent>
-                <ButtonComponent onClick={this.columnChooserClose}>Close</ButtonComponent>
+                <ButtonComponent onClick={this.columnChooserSubmit.bind(this)}>Apply</ButtonComponent>
+                <ButtonComponent onClick={this.columnChooserClose.bind(this)}>Close</ButtonComponent>
             </div>
         );
     }
@@ -129,7 +129,7 @@ export class StackedHeader extends SampleBase<{}, {}> {
         return (
         <div className="Mapimage">
             <img
-            src="https://ej2.syncfusion.com/react/demos/src/grid/images/Map.png"
+            src="src/grid/images/Map.png"
             className="e-image"
             alt=""
             />{' '}
@@ -179,33 +179,33 @@ export class StackedHeader extends SampleBase<{}, {}> {
     public customeridRule: Object = { required: true, minLength: 5};
     public orderidRules: Object = { required: true, number: true };
     public freightRules: Object = { required: true, min: 0 };
-    public columnChooserSettings: ColumnChooserSettingsModel = { template: this.Template, headerTemplate: this.HeaderTemplate, footerTemplate: this.FooterTemplate }
+    public columnChooserSettings: ColumnChooserSettingsModel = { template: this.Template.bind(this), headerTemplate: this.HeaderTemplate.bind(this), footerTemplate: this.FooterTemplate.bind(this) }
     render() {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <GridComponent dataSource={stackedHeaderData} allowPaging={true} allowResizing={true} enableHover={false} clipMode="EllipsisWithTooltip" allowSorting={true} allowMultiSorting={true} editSettings={this.editSettings} allowFiltering={true} filterSettings={this.filterSettings} toolbar={this.toolbar} showColumnChooser={true} queryCellInfo={this.queryCellInfo} columnChooserSettings={this.columnChooserSettings}>
+                    <GridComponent dataSource={stackedHeaderData} ref={(grid) => { this.gridInstance = grid }} allowPaging={true} allowResizing={true} enableHover={false} clipMode="EllipsisWithTooltip" allowSorting={true} allowMultiSorting={true} editSettings={this.editSettings} allowFiltering={true} filterSettings={this.filterSettings} toolbar={this.toolbar} showColumnChooser={true} queryCellInfo={this.queryCellInfo.bind(this)} columnChooserSettings={this.columnChooserSettings}>
                     <ColumnsDirective>
-                        <ColumnDirective field='CustomerID' headerText='Customer ID' width='160' minWidth='100' textAlign='Right' validationRules={this.orderidRules} isPrimaryKey={true} showInColumnChooser={false}></ColumnDirective>
-                        <ColumnDirective field='CustomerName' headerText='Name' width='100' minWidth='100'></ColumnDirective>
+                        <ColumnDirective field='CustomerID' headerText='Customer ID' width='160' minWidth='115' textAlign='Right' validationRules={this.orderidRules} isPrimaryKey={true} showInColumnChooser={false}></ColumnDirective>
+                        <ColumnDirective field='CustomerName' headerText='Name' width='150' minWidth='120'></ColumnDirective>
                         <ColumnDirective columns={
                             [
                                 { field: 'OrderID', headerText: 'ID', textAlign: 'Right', width: 90, minWidth: 90 },
-                                { field: 'OrderDate', headerText: 'Date', textAlign: 'Right', width: 110, minWidth: 100, format: 'yMd', editType: 'datepickeredit' }
+                                { field: 'OrderDate', headerText: 'Date', textAlign: 'Right', width: 110, minWidth: 105, format: 'yMd', editType: 'datepickeredit' }
                             ]}
                             headerText='Order Details'
                             textAlign='Center'/>
                         <ColumnDirective columns={
                             [
-                                { field: 'ShipCountry', headerText: 'Country', textAlign: 'Left', width: 115, minWidth: 100, editType: 'dropdownedit', template: this.locationtemplate, validationRules: { required: true } },
-                                { field: 'Freight', headerText: 'Charges', textAlign: 'Right', width: 130, minWidth: 100, format: 'C2', editType: 'numericedit', validationRules: { required: true, number: true } },
+                                { field: 'ShipCountry', headerText: 'Country', textAlign: 'Left', width: 150, minWidth: 120, editType: 'dropdownedit', template: this.locationtemplate.bind(this), validationRules: { required: true } },
+                                { field: 'Freight', headerText: 'Charges', textAlign: 'Right', width: 130, minWidth: 115, format: 'C2', editType: 'numericedit', validationRules: { required: true, number: true } },
                             ]}
                             headerText='Shipping Details'
                             textAlign='Center'/>
                         <ColumnDirective columns={
                             [
-                                { field: 'Status', headerText: 'Status', textAlign: 'Center', width: 110, minWidth: 100, editType: 'dropdownedit', validationRules: { required: true, } },
-                                { field: 'Feedback', headerText: 'Feedback', allowResizing: false, textAlign: 'Center', width: 130, minWidth: 100, template: this.feedbackTemplate, editType: 'numericedit', validationRules: { required: true, min: 0, max: 5 },}
+                                { field: 'Status', headerText: 'Status', textAlign: 'Center', width: 150, minWidth: 120, editType: 'dropdownedit', validationRules: { required: true, } },
+                                { field: 'Feedback', headerText: 'Feedback', allowResizing: false, textAlign: 'Center', width: 130, minWidth: 115, template: this.feedbackTemplate.bind(this), editType: 'numericedit', validationRules: { required: true, min: 0, max: 5 },}
                             ]}
                             headerText='Delivery Status'
                             textAlign='Center'/>

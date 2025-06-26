@@ -50,7 +50,7 @@ const SAMPLE_CSS = `
         content: '\\ebf9';
     }
  
-    .e-view.bootstrap5 .e-print-icon::before, .e-view.bootstrap5-dark .e-print-icon::before {
+    .e-view.bootstrap5_3 .e-print-icon::before, .e-view.bootstrap5_3-dark .e-print-icon::before {
         content: '\\e75d';
     }
  
@@ -83,7 +83,7 @@ const SAMPLE_CSS = `
         content: '\\e710';
     }
  
-    .e-view.bootstrap5 .e-export-icon::before, .e-view.bootstrap5-dark .e-export-icon::before {
+    .e-view.bootstrap5_3 .e-export-icon::before, .e-view.bootstrap5_3-dark .e-export-icon::before {
             content: '\\e728';
     }
     .e-view.fluent .e-export-icon::before, .e-view.fluent-dark .e-export-icon::before {

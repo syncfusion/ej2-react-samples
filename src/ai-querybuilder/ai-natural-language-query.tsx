@@ -9,10 +9,11 @@ import { Query, Predicate } from '@syncfusion/ej2-data';
 import { createSpinner, showSpinner, hideSpinner } from '@syncfusion/ej2-popups';
 import { useEffect } from 'react';
 import './nl-querying.css';
+import { serverAIRequest } from '../common/ai-service';
 
 enableRipple(true);
 
-function NLQuerying() {
+function AiNLQuerying() {
     useEffect(() => {
         createSpinner({
             target: document.getElementById('grid') as HTMLElement
@@ -60,29 +61,36 @@ function NLQuerying() {
     function clicked() {
         showSpinner(document.getElementById('grid') as HTMLElement);
         let textArea = "write SQL query to " + (document.querySelector('#text-area') as any).value + " from the single table without changing the given values";
-        let aiOutput = (window as any).getAzureTextAIRequest(textArea);
+        let aiOutput = serverAIRequest({ messages: [{ role: 'user', content: textArea }] });
         aiOutput.then((result) => {
-            let val: string = (result as any).split("```sql")[1].split("WHERE ")[1].split(";\n")[0];
-            val = val.replace("\n", "");
-            qryBldrObj.setRulesFromSql(val);
-            let predicate: Predicate = qryBldrObj.getPredicate(qryBldrObj.getValidRules());
-            let query: Query;
-            if (isNullOrUndefined(predicate)) {
-                query = new Query();
+            if (result) {
+                if (result?.indexOf("```sql") !== -1) {
+                    result = (result as any).split("```sql")[1]
+                }
+                let val: string = (result as any).split("WHERE ")[1].split(";\n")[0];
+                val = val.replace("\n", "");
+                qryBldrObj.setRulesFromSql(val);
+                let predicate: Predicate = qryBldrObj.getPredicate(qryBldrObj.getValidRules());
+                let query: Query;
+                if (isNullOrUndefined(predicate)) {
+                    query = new Query();
+                } else {
+                    query = new Query().where(predicate);
+                }
+                gridInstance.query = query;
+                gridInstance.refresh();
+                hideSpinner(document.getElementById('grid') as HTMLElement);
             } else {
-                query = new Query().where(predicate);
+                hideSpinner(document.getElementById('grid') as HTMLElement);
             }
-            gridInstance.query = query;
-            gridInstance.refresh();
-            hideSpinner(document.getElementById('grid') as HTMLElement);
         });
     }
 
     return (
         <div className='control-pane'>
             <div className='control-section'>
-                <div id="wrapper">
-                    <TabComponent id="tab">
+                <div id="ai-wrapper">
+                    <TabComponent id="ai-tab">
                         <TabItemsDirective>
                             <TabItemDirective header={headerText[0]} content={'#prompt-ui'} />
                             <TabItemDirective header={headerText[1]} content={'#querybuilder-ui'} />
@@ -90,7 +98,7 @@ function NLQuerying() {
                     </TabComponent>
                     <div id="prompt-ui">
                         <div id="customTbarDialog">
-                            <span className="e-text">Instruct AI</span>
+                            <span className="ai-e-text">Query</span>
                             <textarea id="text-area" aria-label="ai assistant query box" placeholder="find all users who lives in los angeles and have over 1000 credits"></textarea>
                         </div>
                     </div>
@@ -103,10 +111,10 @@ function NLQuerying() {
                         </div>
                     </div>
                     <div className="e-custom-elem">
-                        <ButtonComponent id="submit" iconCss={'e-icons e-reset'} onClick={clicked} isPrimary={true}>Generate Query</ButtonComponent>
+                        <ButtonComponent id="submit" iconCss={'e-icons e-play'} onClick={clicked} isPrimary={true}>Run Query</ButtonComponent>
                     </div>
                     <div className="e-custom-elem">
-                        <span className="e-text">Results from your AI generated Query</span>
+                        <span className="ai-e-text">Results from your AI generated Query</span>
                         <GridComponent style={{ marginTop: "10px" }} id="grid" ref={grid => gridInstance = grid as GridComponent}
                             dataSource={users}
                             allowPaging={true}
@@ -130,4 +138,4 @@ function NLQuerying() {
     );
 }
 
-export default NLQuerying;
+export default AiNLQuerying;

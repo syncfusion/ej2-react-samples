@@ -1,14 +1,22 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
+import AISmartRichTextEditor from './ai-assistant';
+/* custom code start*/
+import AIToast from '../common/ai-toast';
+/* custom code end*/
+import { updateAISampleSection } from '../common/sample-base';
 
 export class AIAssistant extends SampleBase<{}, {}> {
+     componentDidMount() {
+          updateAISampleSection(); 
+    }
 
     render() {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <img src={'src/ai-rich-text-editor/images/ai-assistant.gif'} width='100%' height='100%'></img>
+                    <AISmartRichTextEditor />
                 </div>
                 <div id="action-description">
                     <p>
@@ -40,6 +48,7 @@ export class AIAssistant extends SampleBase<{}, {}> {
                         </li>
                     </ul>
                 </div>
+             <AIToast/>    
             </div>
         )
     }

@@ -24,7 +24,7 @@ export const DateRangePickerSampleOrder: Object = [
         ]
     },
     {
-        'path': 'daterangepicker/date-format', 'component': 'Format', 'name': 'Format', 'description': 'This example demonstrates how to change the date time format in the input field based on the format in a React DateRangePicker', 'order': '01', 'category': 'DateRangePicker', 'api': '{"DateRangePicker": [ "format", "value" ]}',
+        'path': 'daterangepicker/date-format', 'component': 'Format', 'type': 'update', 'name': 'Format', 'description': 'This example demonstrates how to change the date time format in the input field based on the format in a React DateRangePicker', 'order': '01', 'category': 'DateRangePicker', 'api': '{"DateRangePicker": [ "format", "value" ]}',
         'sourceFiles': [
             { 'displayName': 'date-format.tsx', 'path': 'src/daterangepicker/date-format.tsx' },
             { 'displayName': 'date-format.jsx', 'path': 'src/daterangepicker/date-format.jsx' },

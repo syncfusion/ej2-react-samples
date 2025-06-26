@@ -74,7 +74,7 @@ const GridLines = () => {
                 </td>
               </tr>
               <tr>
-                <td style={{ width: '100%' }}>
+                <td style={{ width: '50%', padding: '10px 10px 10px 0px' }}>
                   <div>
                     <DropDownListComponent id='gridLines' dataSource={linesData} fields={{ text: 'type', value: 'id' }}
                       value='Both' change={changeLine.bind(this)}></DropDownListComponent>

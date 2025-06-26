@@ -1,6 +1,653 @@
 /**
  * TreeGrid DataSource
  */
+ export let employeeData:object[] = [
+    {
+        ID: 'EMP001',
+        Employee: 'Steven Buchanan',
+        FullName: 'StevenBuchanan',
+        Email: 'stevenbuchanan@abc.com',
+        Department: 'Director',
+        JobTitle: 'CEO',
+        Location: 'USA',
+        JoinDate: new Date('2010-04-23'),
+        Salary: 300000,
+        Status: 'Available',
+        Contact: '1234567890',
+        LeaveCount: 12,
+        LeaveAvailability: { casual: 2, earned: 5, sick: 12 },
+        ProjectDetails: '',
+        ProjectStatus: 'In Progress',
+        Experience: 20,
+        WorkMode: 'Work From Home',
+        Children: [
+            {
+                ID: 'EMP002',
+                Employee: 'Romey Wilson',
+                FullName: 'RomeyWilson',
+                Email: 'romeywilson@abc.com',
+                Department: 'Development',
+                JobTitle: 'Manager',
+                Location: 'USA',
+                JoinDate: new Date('2018-04-23'),
+                Salary: 150000,
+                Status: 'Available',
+                Contact: '9876543210',
+                LeaveCount: 4,
+                LeaveAvailability: { casual: 10, earned: 11, sick: 11 },
+                ProjectDetails: 'Inventory Management',
+                ProjectStatus: 'Pending',
+                Experience: 10,
+                WorkMode: 'Work From Home',
+                Children: [
+                    {
+                        ID: 'EMP003',
+                        Employee: 'Robert King',
+                        FullName: 'RobertKing',
+                        Email: 'robertking@abc.com',
+                        Department: 'Development',
+                        JobTitle: 'Team Lead',
+                        Location: 'Germany',
+                        JoinDate: new Date('2018-04-23'),
+                        Salary: 100000,
+                        Status: 'Leave',
+                        Contact: '5551112233',
+                        LeaveCount: 1,
+                        LeaveAvailability: { casual: 12, earned: 11, sick: 12 },
+                        ProjectDetails: 'Inventory Management',
+                        ProjectStatus: 'In Progress',
+                        Experience: 7,
+                        WorkMode: 'Work From Home',
+                        Children: [
+                            {
+                                ID: 'EMP004',
+                                Employee: 'Andrew Fuller',
+                                FullName: 'AndrewFuller',
+                                Email: 'andrewfuller@abc.com',
+                                Department: 'Development',
+                                JobTitle: 'Employee',
+                                Location: 'Canada',
+                                JoinDate: new Date('2018-04-23'),
+                                Salary: 60000,
+                                Status: 'Available',
+                                Contact: '5551112233',
+                                LeaveCount: 1,
+                                LeaveAvailability: { casual: 12, earned: 11, sick: 12 },
+                                ProjectDetails: 'Inventory Management',
+                                ProjectStatus: 'In Progress',
+                                Experience: 2,
+                                WorkMode: 'Work From Home',
+                            },
+                            {
+                                ID: 'EMP005',
+                                Employee: 'Anne Dodsworth',
+                                FullName: 'AnneDodsworth',
+                                Email: 'annedodsworth@abc.com',
+                                Department: 'Development',
+                                JobTitle: 'Employee',
+                                Location: 'Egypt',
+                                JoinDate: new Date('2018-04-23'),
+                                Salary: 70000,
+                                Status: 'Available',
+                                Contact: '5551112233',
+                                LeaveCount: 12,
+                                LeaveAvailability: { casual: 8, earned: 4, sick: 12 },
+                                ProjectDetails: 'Inventory Management',
+                                ProjectStatus: 'In Progress',
+                                Experience: 2,
+                                WorkMode: 'Work From Home',
+                            },
+                            {
+                                ID: 'EMP006',
+                                Employee: 'Davey Hanks',
+                                FullName: 'DaveyHanks',
+                                Email: 'daveyhanks@abc.com',
+                                Department: 'Development',
+                                JobTitle: 'Employee',
+                                Location: 'Greece',
+                                JoinDate: new Date('2019-07-12'),
+                                Salary: 76000,
+                                Status: 'Available',
+                                Contact: '5552223344',
+                                LeaveCount: 5,
+                                LeaveAvailability: { casual: 11, earned: 8, sick: 12 },
+                                ProjectDetails: 'Support Ticket System',
+                                ProjectStatus: 'In Progress',
+                                Experience: 5,
+                                WorkMode: 'Work From Home',
+                            },
+                            {
+                                ID: 'EMP007',
+                                Employee: 'Jason Gills',
+                                FullName: 'JasonGills',
+                                Email: 'jasongills@abc.com',
+                                Department: 'Development',
+                                JobTitle: 'Employee',
+                                Location: 'USA',
+                                JoinDate: new Date('2020-01-30'),
+                                Salary: 72000,
+                                Status: 'Busy',
+                                Contact: '5553334455',
+                                LeaveCount: 7,
+                                LeaveAvailability: { casual: 9, earned: 8, sick: 12 },
+                                ProjectDetails: 'Support Ticket System',
+                                ProjectStatus: 'In Progress',
+                                Experience: 4,
+                                WorkMode: 'Hybrid',
+                            },
+                            {
+                                ID: 'EMP008',
+                                Employee: 'Laura Callahan',
+                                FullName: 'LauraCallahan',
+                                Email: 'lauracallahan@abc.com',
+                                Department: 'Development',
+                                JobTitle: 'Employee',
+                                Location: 'Canada',
+                                JoinDate: new Date('2017-10-05'),
+                                Salary: 78000,
+                                Status: 'Available',
+                                Contact: '5554445566',
+                                LeaveCount: 1,
+                                LeaveAvailability: { casual: 11, earned: 12, sick: 12 },
+                                ProjectDetails: 'Support Ticket System',
+                                ProjectStatus: 'Completed',
+                                Experience: 3,
+                                WorkMode: 'Hybrid',
+                            },
+                            {
+                                ID: 'EMP009',
+                                Employee: 'Jade Lynch',
+                                FullName: 'JadeLynch',
+                                Email: 'jadelynch@abc.com',
+                                Department: 'Development',
+                                JobTitle: 'Employee',
+                                Location: 'USA',
+                                JoinDate: new Date('2021-08-18'),
+                                Salary: 71000,
+                                Status: 'Available',
+                                Contact: '5556667788',
+                                LeaveCount: 20,
+                                LeaveAvailability: { casual: 4, earned: 11, sick: 1 },
+                                ProjectDetails: 'Support Ticket System',
+                                ProjectStatus: 'In Progress',
+                                Experience: 2,
+                                WorkMode: 'Hybrid',
+                            },
+                        ],
+                    },
+                ],
+            },
+            {
+                ID: 'EMP010',
+                Employee: 'David William',
+                FullName: 'DavidWilliam',
+                Email: 'davidwilliam@abc.com',
+                Department: 'UI/UX',
+                JobTitle: 'Manager',
+                Location: 'Greece',
+                JoinDate: new Date('2018-04-23'),
+                Salary: 170000,
+                Status: 'Leave',
+                Contact: '5551112233',
+                LeaveCount: 1,
+                LeaveAvailability: { casual: 12, earned: 11, sick: 12 },
+                ProjectDetails: 'Chat Bot',
+                ProjectStatus: 'Pending',
+                Experience: 12,
+                WorkMode: 'Work From Office',
+                Children: [
+                    {
+                        ID: 'EMP011',
+                        Employee: 'Janet Leverling',
+                        FullName: 'JanetLeverling',
+                        Email: 'janetleverling@abc.com',
+                        Department: 'UI/UX',
+                        JobTitle: 'Team Lead',
+                        Location: 'USA',
+                        JoinDate: new Date('2018-04-23'),
+                        Salary: 120000,
+                        Status: 'Available',
+                        Contact: '5551112233',
+                        LeaveCount: 4,
+                        LeaveAvailability: { casual: 11, earned: 10, sick: 11 },
+                        ProjectDetails: 'Chat Bot',
+                        ProjectStatus: 'In Progress',
+                        Experience: 7,
+                        WorkMode: 'Work From Office',
+                        Children: [
+                            {
+                                ID: 'EMP012',
+                                Employee: 'Aria Jose',
+                                FullName: 'AriaJose',
+                                Email: 'ariajose@abc.com',
+                                Department: 'UI/UX',
+                                JobTitle: 'Employee',
+                                Location: 'Greece',
+                                JoinDate: new Date('2018-04-23'),
+                                Salary: 80000,
+                                Status: 'Leave',
+                                Contact: '5551112233',
+                                LeaveCount: 9,
+                                LeaveAvailability: { casual: 3, earned: 12, sick: 12 },
+                                ProjectDetails: 'Chat Bot',
+                                ProjectStatus: 'Completed',
+                                Experience: 1,
+                                WorkMode: 'Work From Office',
+                            },
+                            {
+                                ID: 'EMP013',
+                                Employee: 'Margaret Peacock',
+                                FullName: 'MargaretPeacock',
+                                Email: 'margaretpeacock@abc.com',
+                                Department: 'UI/UX',
+                                JobTitle: 'Employee',
+                                Location: 'Germany',
+                                JoinDate: new Date('2018-04-23'),
+                                Salary: 75000,
+                                Status: 'Available',
+                                Contact: '5551112233',
+                                LeaveCount: 9,
+                                LeaveAvailability: { casual: 5, earned: 10, sick: 12 },
+                                ProjectDetails: 'Chat Bot',
+                                ProjectStatus: 'Completed',
+                                Experience: 3,
+                                WorkMode: 'Work From Office',
+                            },
+                            {
+                                ID: 'EMP014',
+                                Employee: 'George Miller',
+                                FullName: 'GeorgeMiller',
+                                Email: 'georgemiller@abc.com',
+                                Department: 'UI/UX',
+                                JobTitle: 'Employee',
+                                Location: 'Egypt',
+                                JoinDate: new Date('2020-02-10'),
+                                Salary: 69000,
+                                Status: 'Busy',
+                                Contact: '5557778899',
+                                LeaveCount: 18,
+                                LeaveAvailability: { casual: 12, earned: 6, sick: 0 },
+                                ProjectDetails: 'Dashboard UI',
+                                ProjectStatus: 'In Progress',
+                                Experience: 3,
+                                WorkMode: 'Work From Office',
+                            },
+                            {
+                                ID: 'EMP015',
+                                Employee: 'Ken Adams',
+                                FullName: 'KenAdams',
+                                Email: 'kenadams@abc.com',
+                                Department: 'UI/UX',
+                                JobTitle: 'Employee',
+                                Location: 'Canada',
+                                JoinDate: new Date('2016-06-15'),
+                                Salary: 85000,
+                                Status: 'Available',
+                                Contact: '5558889900',
+                                LeaveCount: 6,
+                                LeaveAvailability: { casual: 9, earned: 10, sick: 11 },
+                                ProjectDetails: 'Dashboard UI',
+                                ProjectStatus: 'Completed',
+                                Experience: 4,
+                                WorkMode: 'Work From Office',
+                            },
+                            {
+                                ID: 'EMP016',
+                                Employee: 'Nancy Davolio',
+                                FullName: 'NancyDavolio',
+                                Email: 'nancydavolio@abc.com',
+                                Department: 'UI/UX',
+                                JobTitle: 'Employee',
+                                Location: 'USA',
+                                JoinDate: new Date('2018-12-03'),
+                                Salary: 74000,
+                                Status: 'Available',
+                                Contact: '5559990011',
+                                LeaveCount: 2,
+                                LeaveAvailability: { casual: 12, earned: 10, sick: 12 },
+                                ProjectDetails: 'Dashboard UI',
+                                ProjectStatus: 'In Progress',
+                                Experience: 5,
+                                WorkMode: 'Work From Office',
+                            },
+                            {
+                                ID: 'EMP017',
+                                Employee: 'Merlyn Lawrance',
+                                FullName: 'MerlynLawrance',
+                                Email: 'merlynlawrance@abc.com',
+                                Department: 'UI/UX',
+                                JobTitle: 'Employee',
+                                Location: 'USA',
+                                JoinDate: new Date('2021-03-14'),
+                                Salary: 70000,
+                                Status: 'Busy',
+                                Contact: '5551122334',
+                                LeaveCount: 15,
+                                LeaveAvailability: { casual: 6, earned: 8, sick: 7 },
+                                ProjectDetails: 'Dashboard UI',
+                                ProjectStatus: 'In Progress',
+                                Experience: 2,
+                                WorkMode: 'Work From office',
+                            },
+                        ],
+                    },
+                ],
+            },
+            {
+                ID: 'EMP018',
+                Employee: 'Michael Suyama',
+                FullName: 'MichaelSuyama',
+                Email: 'michaelsuyama@abc.com',
+                Department: 'Documentation',
+                JobTitle: 'Manager',
+                Location: 'Canada',
+                JoinDate: new Date('2018-04-23'),
+                Salary: 160000,
+                Status: 'Available',
+                Contact: '5551112233',
+                LeaveCount: 10,
+                LeaveAvailability: { casual: 7, earned: 11, sick: 8 },
+                ProjectDetails: 'Documentation Review',
+                ProjectStatus: 'Completed',
+                Experience: 13,
+                WorkMode: 'Work From Home',
+                Children: [
+                    {
+                        ID: 'EMP019',
+                        Employee: 'Linda Belton',
+                        FullName: 'LindaBelton',
+                        Email: 'lindabelton@abc.com',
+                        Department: 'Documentation',
+                        JobTitle: 'Team Lead',
+                        Location: 'Egypt',
+                        JoinDate: new Date('2018-04-23'),
+                        Salary: 110000,
+                        Status: 'Available',
+                        Contact: '5551112233',
+                        LeaveCount: 6,
+                        LeaveAvailability: { casual: 6, earned: 12, sick: 12 },
+                        ProjectDetails: 'Blazor Documentation',
+                        ProjectStatus: 'Completed',
+                        Experience: 8,
+                        WorkMode: 'Work From Home',
+                        Children: [
+                            {
+                                ID: 'EMP020',
+                                Employee: 'Henry Williams',
+                                FullName: 'HenryWilliams',
+                                Email: 'henrywilliams@abc.com',
+                                Department: 'Documentation',
+                                JobTitle: 'Employee',
+                                Location: 'Greece',
+                                JoinDate: new Date('2018-04-23'),
+                                Salary: 85000,
+                                Status: 'Available',
+                                Contact: '5551112233',
+                                LeaveCount: 7,
+                                LeaveAvailability: { casual: 6, earned: 11, sick: 12 },
+                                ProjectDetails: 'Blazor Documentation',
+                                ProjectStatus: 'Completed',
+                                Experience: 3,
+                                WorkMode: 'Work From Home',
+                            },
+                            {
+                                ID: 'EMP021',
+                                Employee: 'Olivia Adams',
+                                FullName: 'OliviaAdams',
+                                Email: 'oliviaadams@abc.com',
+                                Department: 'Documentation',
+                                JobTitle: 'Employee',
+                                Location: 'USA',
+                                JoinDate: new Date('2018-04-23'),
+                                Salary: 60000,
+                                Status: 'Leave',
+                                Contact: '5551112233',
+                                LeaveCount: 14,
+                                LeaveAvailability: { casual: 12, earned: 3, sick: 7 },
+                                ProjectDetails: 'Blazor Documentation',
+                                ProjectStatus: 'Completed',
+                                Experience: 2,
+                                WorkMode: 'Work From Home',
+                            },
+                            {
+                                ID: 'EMP022',
+                                Employee: 'Yvonne McKay',
+                                FullName: 'YvonneMcKay',
+                                Email: 'yvonnemcKay@abc.com',
+                                Department: 'Documentation',
+                                JobTitle: 'Employee',
+                                Location: 'Greece',
+                                JoinDate: new Date('2019-11-09'),
+                                Salary: 79000,
+                                Status: 'Available',
+                                Contact: '5553344556',
+                                LeaveCount: 3,
+                                LeaveAvailability: { casual: 10, earned: 11, sick: 12 },
+                                ProjectDetails: 'Typescript Documentation',
+                                ProjectStatus: 'Completed',
+                                Experience: 4,
+                                WorkMode: 'Hybrid',
+                            },
+                            {
+                                ID: 'EMP023',
+                                Employee: 'Tedd Lawson',
+                                FullName: 'TeddLawson',
+                                Email: 'teddlawson@abc.com',
+                                Department: 'Documentation',
+                                JobTitle: 'Employee',
+                                Location: 'USA',
+                                JoinDate: new Date('2015-09-21'),
+                                Salary: 88000,
+                                Status: 'Available',
+                                Contact: '5554455667',
+                                LeaveCount: 0,
+                                LeaveAvailability: { casual: 12, earned: 12, sick: 12 },
+                                ProjectDetails: 'React Documentation',
+                                ProjectStatus: 'Completed',
+                                Experience: 1,
+                                WorkMode: 'Hybrid',
+                            },
+                            {
+                                ID: 'EMP024',
+                                Employee: 'Bobby Knight',
+                                FullName: 'BobbyKnight',
+                                Email: 'bobbyknight@abc.com',
+                                Department: 'Documentation',
+                                JobTitle: 'Employee',
+                                Location: 'Germany',
+                                JoinDate: new Date('2020-05-05'),
+                                Salary: 75000,
+                                Status: 'Busy',
+                                Contact: '5555566778',
+                                LeaveCount: 9,
+                                LeaveAvailability: { casual: 9, earned: 6, sick: 12 },
+                                ProjectDetails: 'Release Notes',
+                                ProjectStatus: 'Completed',
+                                Experience: 2,
+                                WorkMode: 'Hybrid',
+                            },
+                            {
+                                ID: 'EMP025',
+                                Employee: 'Scarlet Portman',
+                                FullName: 'ScarletPortman',
+                                Email: 'scarletportman@abc.com',
+                                Department: 'Documentation',
+                                JobTitle: 'Employee',
+                                Location: 'Egypt',
+                                JoinDate: new Date('2018-01-20'),
+                                Salary: 71000,
+                                Status: 'Available',
+                                Contact: '5556677889',
+                                LeaveCount: 14,
+                                LeaveAvailability: { casual: 7, earned: 3, sick: 12 },
+                                ProjectDetails: 'Release Notes',
+                                ProjectStatus: 'Completed',
+                                Experience: 3,
+                                WorkMode: 'Hybrid',
+                            },
+                        ],
+                    },
+                ],
+            },
+            {
+                ID: 'EMP026',
+                Employee: 'Isabella Johnson',
+                FullName: 'IsabellaJohnson',
+                Email: 'isabellajohnson@abc.com',
+                Department: 'Network',
+                JobTitle: 'Manager',
+                Location: 'Canada',
+                JoinDate: new Date('2018-04-23'),
+                Salary: 140000,
+                Status: 'Available',
+                Contact: '5551112233',
+                LeaveCount: 2,
+                LeaveAvailability: { casual: 12, earned: 10, sick: 12 },
+                ProjectDetails: 'Intruder detection system',
+                ProjectStatus: 'Completed',
+                Experience: 15,
+                WorkMode: 'Work From Office',
+                Children: [
+                    {
+                        ID: 'EMP027',
+                        Employee: 'Nathan Drake',
+                        FullName: 'NathanDrake',
+                        Email: 'nathandrake@abc.com',
+                        Department: 'Network',
+                        JobTitle: 'Team Lead',
+                        Location: 'Germany',
+                        JoinDate: new Date('2018-04-23'),
+                        Salary: 105000,
+                        Status: 'Leave',
+                        Contact: '5551112233',
+                        LeaveCount: 10,
+                        LeaveAvailability: { casual: 11, earned: 7, sick: 8 },
+                        ProjectDetails: 'Intruder detection system',
+                        ProjectStatus: 'Completed',
+                        Experience: 7,
+                        WorkMode: 'Work From Office',
+                        Children: [
+                            {
+                                ID: 'EMP028',
+                                Employee: 'Sherly Hathaway',
+                                FullName: 'SherlyHathaway',
+                                Email: 'sherlyhathaway@abc.com',
+                                Department: 'Network',
+                                JobTitle: 'Employee',
+                                Location: 'Canada',
+                                JoinDate: new Date('2018-04-23'),
+                                Salary: 70000,
+                                Status: 'Available',
+                                Contact: '5551112233',
+                                LeaveCount: 0,
+                                LeaveAvailability: { casual: 12, earned: 12, sick: 12 },
+                                ProjectDetails: 'Intruder detection system',
+                                ProjectStatus: 'Completed',
+                                Experience: 1,
+                                WorkMode: 'Work From Office',
+                            },
+                            {
+                                ID: 'EMP029',
+                                Employee: 'Neil Kepler',
+                                FullName: 'NeilKepler',
+                                Email: 'neilkepler@abc.com',
+                                Department: 'Network',
+                                JobTitle: 'Employee',
+                                Location: 'Greece',
+                                JoinDate: new Date('2018-04-23'),
+                                Salary: 80000,
+                                Status: 'Available',
+                                Contact: '5551112233',
+                                LeaveCount: 5,
+                                LeaveAvailability: { casual: 12, earned: 7, sick: 12 },
+                                ProjectDetails: 'Firewall Configuration',
+                                ProjectStatus: 'Completed',
+                                Experience: 2,
+                                WorkMode: 'Work From Office',
+                            },
+                            {
+                                ID: 'EMP030',
+                                Employee: 'Ivy walker',
+                                FullName: 'Ivywalker',
+                                Email: 'ivywalker@abc.com',
+                                Department: 'Network',
+                                JobTitle: 'Employee',
+                                Location: 'USA',
+                                JoinDate: new Date('2022-02-11'),
+                                Salary: 67000,
+                                Status: 'Busy',
+                                Contact: '5557788990',
+                                LeaveCount: 3,
+                                LeaveAvailability: { casual: 12, earned: 12, sick: 9 },
+                                ProjectDetails: 'Firewall Configuration',
+                                ProjectStatus: 'In Progress',
+                                Experience: 1,
+                                WorkMode: 'Work From Office',
+                            },
+                            {
+                                ID: 'EMP031',
+                                Employee: 'Richard Roe',
+                                FullName: 'RichardRoe',
+                                Email: 'richardroe@abc.com',
+                                Department: 'Network',
+                                JobTitle: 'Employee',
+                                Location: 'Canada',
+                                JoinDate: new Date('2020-08-25'),
+                                Salary: 76000,
+                                Status: 'Available',
+                                Contact: '5558899001',
+                                LeaveCount: 1,
+                                LeaveAvailability: { casual: 12, earned: 11, sick: 12 },
+                                ProjectDetails: 'Firewall Configuration',
+                                ProjectStatus: 'Completed',
+                                Experience: 2,
+                                WorkMode: 'Work From Office',
+                            },
+                            {
+                                ID: 'EMP032',
+                                Employee: 'Chris Mathew',
+                                FullName: 'ChrisMathew',
+                                Email: 'chrismathew@abc.com',
+                                Department: 'Network',
+                                JobTitle: 'Employee',
+                                Location: 'Greece',
+                                JoinDate: new Date('2021-12-07'),
+                                Salary: 73000,
+                                Status: 'Busy',
+                                Contact: '5559900112',
+                                LeaveCount: 8,
+                                LeaveAvailability: { casual: 4, earned: 12, sick: 12 },
+                                ProjectDetails: 'Network Topology Mapping',
+                                ProjectStatus: 'In Progress',
+                                Experience: 3,
+                                WorkMode: 'Work From Office',
+                            },
+                            {
+                                ID: 'EMP033',
+                                Employee: 'Sara Callagen',
+                                FullName: 'SaraCallagen',
+                                Email: 'saracallagen@abc.com',
+                                Department: 'Network',
+                                JobTitle: 'Employee',
+                                Location: 'Germany',
+                                JoinDate: new Date('2017-03-16'),
+                                Salary: 80000,
+                                Status: 'Available',
+                                Contact: '5550011223',
+                                LeaveCount: 7,
+                                LeaveAvailability: { casual: 6, earned: 11, sick: 12 },
+                                ProjectDetails: 'Network Topology Mapping',
+                                ProjectStatus: 'Completed',
+                                Experience: 1,
+                                WorkMode: 'Work From Office',
+                            },
+                        ],
+                    },
+                ],
+            },
+        ],
+    },
+];
 
 export let summaryData: Object[] = [
     {
@@ -16,7 +663,7 @@ export let summaryData: Object[] = [
             { ID: '1.3', Name: 'Herrings', category: 'Frozen seafood', units: '488', unitPrice: '11.45', price: 5587.6 },
             { ID: '1.4', Name: 'Preserved Olives', category: 'Edible', units: '125', unitPrice: '19.56', price: 2445 },
             { ID: '1.5', Name: 'Sweet corn Frozen', category: 'Edible', units: '223', unitPrice: '12.34', price: 2751.82 }
-         ]
+        ]
     },
     {
         ID: '2',
@@ -47,7 +694,7 @@ export let summaryData: Object[] = [
         ]
     }
 ];
-export let sampleData: Object[] =  [
+export let sampleData: Object[] = [
     {
         taskID: 1,
         taskName: 'Planning',
@@ -58,14 +705,22 @@ export let sampleData: Object[] =  [
         priority: 'Normal',
         approved: false,
         subtasks: [
-            { taskID: 2, taskName: 'Plan timeline', startDate: new Date('02/03/2017'),
-                endDate: new Date('02/07/2017'), duration: 5, progress: 100, priority: 'Normal', approved: false },
-            { taskID: 3, taskName: 'Plan budget', startDate: new Date('02/03/2017'),
-                endDate: new Date('02/07/2017'), duration: 5, progress: 100, priority: 'Low', approved: true },
-            { taskID: 4, taskName: 'Allocate resources', startDate: new Date('02/03/2017'),
-                endDate: new Date('02/07/2017'), duration: 5, progress: 100, priority: 'Critical', approved: false },
-            { taskID: 5, taskName: 'Planning complete', startDate: new Date('02/07/2017'),
-                endDate: new Date('02/07/2017'), duration: 0, progress: 0, priority: 'Low', approved: true }
+            {
+                taskID: 2, taskName: 'Plan timeline', startDate: new Date('02/03/2017'),
+                endDate: new Date('02/07/2017'), duration: 5, progress: 100, priority: 'Normal', approved: false
+            },
+            {
+                taskID: 3, taskName: 'Plan budget', startDate: new Date('02/03/2017'),
+                endDate: new Date('02/07/2017'), duration: 5, progress: 100, priority: 'Low', approved: true
+            },
+            {
+                taskID: 4, taskName: 'Allocate resources', startDate: new Date('02/03/2017'),
+                endDate: new Date('02/07/2017'), duration: 5, progress: 100, priority: 'Critical', approved: false
+            },
+            {
+                taskID: 5, taskName: 'Planning complete', startDate: new Date('02/07/2017'),
+                endDate: new Date('02/07/2017'), duration: 0, progress: 0, priority: 'Low', approved: true
+            }
         ]
     },
     {
@@ -78,16 +733,26 @@ export let sampleData: Object[] =  [
         priority: 'High',
         approved: false,
         subtasks: [
-            { taskID: 7, taskName: 'Software Specification', startDate: new Date('02/10/2017'),
-                endDate: new Date('02/12/2017'), duration: 3, progress: 60, priority: 'Normal', approved: false },
-            { taskID: 8, taskName: 'Develop prototype', startDate: new Date('02/10/2017'),
-                endDate: new Date('02/12/2017'), duration: 3, progress: 100, priority: 'Critical', approved: false },
-            { taskID: 9, taskName: 'Get approval from customer', startDate: new Date('02/13/2017'),
-                endDate: new Date('02/14/2017'), duration: 2, progress: 100, priority: 'Low', approved: true },
-            { taskID: 10, taskName: 'Design Documentation', startDate: new Date('02/13/2017'),
-                endDate: new Date('02/14/2017'), duration: 2, progress: 100, priority: 'High', approved: true },
-            { taskID: 11, taskName: 'Design complete', startDate: new Date('02/14/2017'),
-                endDate: new Date('02/14/2017'), duration: 0, progress: 0, priority: 'Normal', approved: true }
+            {
+                taskID: 7, taskName: 'Software Specification', startDate: new Date('02/10/2017'),
+                endDate: new Date('02/12/2017'), duration: 3, progress: 60, priority: 'Normal', approved: false
+            },
+            {
+                taskID: 8, taskName: 'Develop prototype', startDate: new Date('02/10/2017'),
+                endDate: new Date('02/12/2017'), duration: 3, progress: 100, priority: 'Critical', approved: false
+            },
+            {
+                taskID: 9, taskName: 'Get approval from customer', startDate: new Date('02/13/2017'),
+                endDate: new Date('02/14/2017'), duration: 2, progress: 100, priority: 'Low', approved: true
+            },
+            {
+                taskID: 10, taskName: 'Design Documentation', startDate: new Date('02/13/2017'),
+                endDate: new Date('02/14/2017'), duration: 2, progress: 100, priority: 'High', approved: true
+            },
+            {
+                taskID: 11, taskName: 'Design complete', startDate: new Date('02/14/2017'),
+                endDate: new Date('02/14/2017'), duration: 0, progress: 0, priority: 'Normal', approved: true
+            }
         ]
     },
     {
@@ -119,18 +784,30 @@ export let sampleData: Object[] =  [
                     progress: 10,
                     approved: false,
                     subtasks: [
-                        { taskID: 15, taskName: 'Development Task 1', startDate: new Date('02/17/2017'),
-                            endDate: new Date('02/19/2017'), duration: 3, progress: '50', priority: 'High', approved: false },
-                        { taskID: 16, taskName: 'Development Task 2', startDate: new Date('02/17/2017'),
-                            endDate: new Date('02/19/2017'), duration: 3, progress: '50', priority: 'Low', approved: true },
-                        { taskID: 17, taskName: 'Testing', startDate: new Date('02/20/2017'),
-                            endDate: new Date('02/21/2017'), duration: 2, progress: '0', priority: 'Normal', approved: true },
-                        { taskID: 18, taskName: 'Bug fix', startDate: new Date('02/24/2017'),
-                            endDate: new Date('02/25/2017'), duration: 2, progress: '0', priority: 'Critical', approved: false },
-                        { taskID: 19, taskName: 'Customer review meeting', startDate: new Date('02/26/2017'),
-                            endDate: new Date('02/27/2017'), duration: 2, progress: '0', priority: 'High', approved: false },
-                        { taskID: 20, taskName: 'Phase 1 complete', startDate: new Date('02/27/2017'),
-                            endDate: new Date('02/27/2017'), duration: 0, progress: '50', priority: 'Low', approved: true }
+                        {
+                            taskID: 15, taskName: 'Development Task 1', startDate: new Date('02/17/2017'),
+                            endDate: new Date('02/19/2017'), duration: 3, progress: '50', priority: 'High', approved: false
+                        },
+                        {
+                            taskID: 16, taskName: 'Development Task 2', startDate: new Date('02/17/2017'),
+                            endDate: new Date('02/19/2017'), duration: 3, progress: '50', priority: 'Low', approved: true
+                        },
+                        {
+                            taskID: 17, taskName: 'Testing', startDate: new Date('02/20/2017'),
+                            endDate: new Date('02/21/2017'), duration: 2, progress: '0', priority: 'Normal', approved: true
+                        },
+                        {
+                            taskID: 18, taskName: 'Bug fix', startDate: new Date('02/24/2017'),
+                            endDate: new Date('02/25/2017'), duration: 2, progress: '0', priority: 'Critical', approved: false
+                        },
+                        {
+                            taskID: 19, taskName: 'Customer review meeting', startDate: new Date('02/26/2017'),
+                            endDate: new Date('02/27/2017'), duration: 2, progress: '0', priority: 'High', approved: false
+                        },
+                        {
+                            taskID: 20, taskName: 'Phase 1 complete', startDate: new Date('02/27/2017'),
+                            endDate: new Date('02/27/2017'), duration: 0, progress: '50', priority: 'Low', approved: true
+                        }
 
                     ]
                 }]
@@ -154,18 +831,30 @@ export let sampleData: Object[] =  [
                     duration: 12,
                     progress: 90,
                     subtasks: [
-                        { taskID: 23, taskName: 'Development Task 1', startDate: new Date('02/17/2017'),
-                            endDate: new Date('02/20/2017'), duration: 4, progress: '50', priority: 'Normal', approved: true },
-                        { taskID: 24, taskName: 'Development Task 2', startDate: new Date('02/17/2017'),
-                            endDate: new Date('02/20/2017'), duration: 4, progress: '50', priority: 'Critical', approved: true },
-                        { taskID: 25, taskName: 'Testing', startDate: new Date('02/21/2017'),
-                            endDate: new Date('02/24/2017'), duration: 2, progress: '0', priority: 'High', approved: false },
-                        { taskID: 26, taskName: 'Bug fix', startDate: new Date('02/25/2017'),
-                            endDate: new Date('02/26/2017'), duration: 2, progress: '0', priority: 'Low', approved: false },
-                        { taskID: 27, taskName: 'Customer review meeting', startDate: new Date('02/27/2017'),
-                            endDate: new Date('02/28/2017'), duration: 2, progress: '0', priority: 'Critical', approved: true },
-                        { taskID: 28, taskName: 'Phase 2 complete', startDate: new Date('02/28/2017'),
-                            endDate: new Date('02/28/2017'), duration: 0, progress: '50', priority: 'Normal', approved: false }
+                        {
+                            taskID: 23, taskName: 'Development Task 1', startDate: new Date('02/17/2017'),
+                            endDate: new Date('02/20/2017'), duration: 4, progress: '50', priority: 'Normal', approved: true
+                        },
+                        {
+                            taskID: 24, taskName: 'Development Task 2', startDate: new Date('02/17/2017'),
+                            endDate: new Date('02/20/2017'), duration: 4, progress: '50', priority: 'Critical', approved: true
+                        },
+                        {
+                            taskID: 25, taskName: 'Testing', startDate: new Date('02/21/2017'),
+                            endDate: new Date('02/24/2017'), duration: 2, progress: '0', priority: 'High', approved: false
+                        },
+                        {
+                            taskID: 26, taskName: 'Bug fix', startDate: new Date('02/25/2017'),
+                            endDate: new Date('02/26/2017'), duration: 2, progress: '0', priority: 'Low', approved: false
+                        },
+                        {
+                            taskID: 27, taskName: 'Customer review meeting', startDate: new Date('02/27/2017'),
+                            endDate: new Date('02/28/2017'), duration: 2, progress: '0', priority: 'Critical', approved: true
+                        },
+                        {
+                            taskID: 28, taskName: 'Phase 2 complete', startDate: new Date('02/28/2017'),
+                            endDate: new Date('02/28/2017'), duration: 0, progress: '50', priority: 'Normal', approved: false
+                        }
 
                     ]
                 }]
@@ -190,25 +879,37 @@ export let sampleData: Object[] =  [
                     duration: 11,
                     progress: 60,
                     subtasks: [
-                        { taskID: 31, taskName: 'Development Task 1', startDate: new Date('02/17/2017'),
-                            endDate: new Date('02/19/2017'), duration: 3, progress: '50', priority: 'Low', approved: true },
-                        { taskID: 32, taskName: 'Development Task 2', startDate: new Date('02/17/2017'),
-                            endDate: new Date('02/19/2017'), duration: 3, progress: '50', priority: 'Normal', approved: false },
-                        { taskID: 33, taskName: 'Testing', startDate: new Date('02/20/2017'),
-                            endDate: new Date('02/21/2017'), duration: 2, progress: '0', priority: 'Critical', approved: true },
-                        { taskID: 34, taskName: 'Bug fix', startDate: new Date('02/24/2017'),
-                            endDate: new Date('02/25/2017'), duration: 2, progress: '0', priority: 'High', approved: false },
-                        { taskID: 35, taskName: 'Customer review meeting', startDate: new Date('02/26/2017'),
-                            endDate: new Date('02/27/2017'), duration: 2, progress: '0', priority: 'Normal', approved: true },
-                        { taskID: 36, taskName: 'Phase 3 complete', startDate: new Date('02/27/2017'),
-                            endDate: new Date('02/27/2017'), duration: 0, progress: '50', priority: 'Critical', approved: false },
+                        {
+                            taskID: 31, taskName: 'Development Task 1', startDate: new Date('02/17/2017'),
+                            endDate: new Date('02/19/2017'), duration: 3, progress: '50', priority: 'Low', approved: true
+                        },
+                        {
+                            taskID: 32, taskName: 'Development Task 2', startDate: new Date('02/17/2017'),
+                            endDate: new Date('02/19/2017'), duration: 3, progress: '50', priority: 'Normal', approved: false
+                        },
+                        {
+                            taskID: 33, taskName: 'Testing', startDate: new Date('02/20/2017'),
+                            endDate: new Date('02/21/2017'), duration: 2, progress: '0', priority: 'Critical', approved: true
+                        },
+                        {
+                            taskID: 34, taskName: 'Bug fix', startDate: new Date('02/24/2017'),
+                            endDate: new Date('02/25/2017'), duration: 2, progress: '0', priority: 'High', approved: false
+                        },
+                        {
+                            taskID: 35, taskName: 'Customer review meeting', startDate: new Date('02/26/2017'),
+                            endDate: new Date('02/27/2017'), duration: 2, progress: '0', priority: 'Normal', approved: true
+                        },
+                        {
+                            taskID: 36, taskName: 'Phase 3 complete', startDate: new Date('02/27/2017'),
+                            endDate: new Date('02/27/2017'), duration: 0, progress: '50', priority: 'Critical', approved: false
+                        },
                     ]
                 }]
             }
         ]
     }
 ];
-export let frozenSampleData: Object[] =  [
+export let frozenSampleData: Object[] = [
     {
         taskID: 1,
         taskName: 'Planning',
@@ -221,18 +922,26 @@ export let frozenSampleData: Object[] =  [
         designation: 'Vice President',
         employeeID: 1,
         subtasks: [
-            { taskID: 2, taskName: 'Plan timeline', startDate: new Date('02/03/2017'),
+            {
+                taskID: 2, taskName: 'Plan timeline', startDate: new Date('02/03/2017'),
                 endDate: new Date('02/07/2017'), duration: 5, progress: 100, priority: 'Normal', approved: false, designation: 'Chief Executive Officer',
-                employeeID: 2 },
-            { taskID: 3, taskName: 'Plan budget', startDate: new Date('02/03/2017'),
-                endDate: new Date('02/07/2017'), duration: 5, progress: 100, priority: 'Low', approved: true,designation: 'Chief Executive Officer',
-                employeeID: 3  },
-            { taskID: 4, taskName: 'Allocate resources', startDate: new Date('02/03/2017'),
-                endDate: new Date('02/07/2017'), duration: 5, progress: 100, priority: 'Critical', approved: false ,designation: 'Chief Executive Officer',
-                employeeID: 4 },
-            { taskID: 5, taskName: 'Planning complete', startDate: new Date('02/07/2017'),
-                endDate: new Date('02/07/2017'), duration: 0, progress: 0, priority: 'Low', approved: true ,designation: 'Chief Executive Officer',
-                employeeID: 5 }
+                employeeID: 2
+            },
+            {
+                taskID: 3, taskName: 'Plan budget', startDate: new Date('02/03/2017'),
+                endDate: new Date('02/07/2017'), duration: 5, progress: 100, priority: 'Low', approved: true, designation: 'Chief Executive Officer',
+                employeeID: 3
+            },
+            {
+                taskID: 4, taskName: 'Allocate resources', startDate: new Date('02/03/2017'),
+                endDate: new Date('02/07/2017'), duration: 5, progress: 100, priority: 'Critical', approved: false, designation: 'Chief Executive Officer',
+                employeeID: 4
+            },
+            {
+                taskID: 5, taskName: 'Planning complete', startDate: new Date('02/07/2017'),
+                endDate: new Date('02/07/2017'), duration: 0, progress: 0, priority: 'Low', approved: true, designation: 'Chief Executive Officer',
+                employeeID: 5
+            }
         ]
     },
     {
@@ -244,24 +953,34 @@ export let frozenSampleData: Object[] =  [
         progress: 86,
         priority: 'High',
         approved: false,
-		designation: 'Vice President',
-        employeeID: 6, 
+        designation: 'Vice President',
+        employeeID: 6,
         subtasks: [
-            { taskID: 7, taskName: 'Software Specification', startDate: new Date('02/10/2017'),
+            {
+                taskID: 7, taskName: 'Software Specification', startDate: new Date('02/10/2017'),
                 endDate: new Date('02/12/2017'), duration: 3, progress: 60, priority: 'Normal', approved: false, designation: 'Sales Representative',
-                employeeID: 7 },
-            { taskID: 8, taskName: 'Develop prototype', startDate: new Date('02/10/2017'),
-                endDate: new Date('02/12/2017'), duration: 3, progress: 100, priority: 'Critical', approved: false,designation: 'Sales Representative',
-                employeeID: 8  },
-            { taskID: 9, taskName: 'Get approval from customer', startDate: new Date('02/13/2017'),
-                endDate: new Date('02/14/2017'), duration: 2, progress: 100, priority: 'Low', approved: true ,designation: 'Sales Representative',
-                employeeID: 9 },
-            { taskID: 10, taskName: 'Design Documentation', startDate: new Date('02/13/2017'),
-                endDate: new Date('02/14/2017'), duration: 2, progress: 100, priority: 'High', approved: true,designation: 'Sales Representative',
-                employeeID: 10  },
-            { taskID: 11, taskName: 'Design complete', startDate: new Date('02/14/2017'),
-                endDate: new Date('02/14/2017'), duration: 0, progress: 0, priority: 'Normal', approved: true ,designation: 'Sales Representative',
-                employeeID: 11 }
+                employeeID: 7
+            },
+            {
+                taskID: 8, taskName: 'Develop prototype', startDate: new Date('02/10/2017'),
+                endDate: new Date('02/12/2017'), duration: 3, progress: 100, priority: 'Critical', approved: false, designation: 'Sales Representative',
+                employeeID: 8
+            },
+            {
+                taskID: 9, taskName: 'Get approval from customer', startDate: new Date('02/13/2017'),
+                endDate: new Date('02/14/2017'), duration: 2, progress: 100, priority: 'Low', approved: true, designation: 'Sales Representative',
+                employeeID: 9
+            },
+            {
+                taskID: 10, taskName: 'Design Documentation', startDate: new Date('02/13/2017'),
+                endDate: new Date('02/14/2017'), duration: 2, progress: 100, priority: 'High', approved: true, designation: 'Sales Representative',
+                employeeID: 10
+            },
+            {
+                taskID: 11, taskName: 'Design complete', startDate: new Date('02/14/2017'),
+                endDate: new Date('02/14/2017'), duration: 0, progress: 0, priority: 'Normal', approved: true, designation: 'Sales Representative',
+                employeeID: 11
+            }
         ]
     },
     {
@@ -273,8 +992,8 @@ export let frozenSampleData: Object[] =  [
         approved: false,
         duration: 11,
         progress: 66,
-		designation: 'Vice President',
-        employeeID: 12 ,
+        designation: 'Vice President',
+        employeeID: 12,
         subtasks: [
             {
                 taskID: 13,
@@ -285,7 +1004,7 @@ export let frozenSampleData: Object[] =  [
                 approved: false,
                 progress: 50,
                 duration: 11,
-				designation: 'Sales Representative',
+                designation: 'Sales Representative',
                 employeeID: 13,
                 subtasks: [{
                     taskID: 14,
@@ -296,27 +1015,39 @@ export let frozenSampleData: Object[] =  [
                     duration: 11,
                     progress: 10,
                     approved: false,
-					designation: 'Sales Representative',
-					employeeID: 14 ,
+                    designation: 'Sales Representative',
+                    employeeID: 14,
                     subtasks: [
-                        { taskID: 15, taskName: 'Development Task 1', startDate: new Date('02/17/2017'),
+                        {
+                            taskID: 15, taskName: 'Development Task 1', startDate: new Date('02/17/2017'),
                             endDate: new Date('02/19/2017'), duration: 3, progress: '50', priority: 'High', approved: false, designation: 'Sales Representative',
-                employeeID: 15  },
-                        { taskID: 16, taskName: 'Development Task 2', startDate: new Date('02/17/2017'),
+                            employeeID: 15
+                        },
+                        {
+                            taskID: 16, taskName: 'Development Task 2', startDate: new Date('02/17/2017'),
                             endDate: new Date('02/19/2017'), duration: 3, progress: '50', priority: 'Low', approved: true, designation: 'Sales Representative',
-                employeeID: 16  },
-                        { taskID: 17, taskName: 'Testing', startDate: new Date('02/20/2017'),
+                            employeeID: 16
+                        },
+                        {
+                            taskID: 17, taskName: 'Testing', startDate: new Date('02/20/2017'),
                             endDate: new Date('02/21/2017'), duration: 2, progress: '0', priority: 'Normal', approved: true, designation: 'Sales Representative',
-                employeeID: 17  },
-                        { taskID: 18, taskName: 'Bug fix', startDate: new Date('02/24/2017'),
+                            employeeID: 17
+                        },
+                        {
+                            taskID: 18, taskName: 'Bug fix', startDate: new Date('02/24/2017'),
                             endDate: new Date('02/25/2017'), duration: 2, progress: '0', priority: 'Critical', approved: false, designation: 'Sales Representative',
-                employeeID: 18  },
-                        { taskID: 19, taskName: 'Customer review meeting', startDate: new Date('02/26/2017'),
+                            employeeID: 18
+                        },
+                        {
+                            taskID: 19, taskName: 'Customer review meeting', startDate: new Date('02/26/2017'),
                             endDate: new Date('02/27/2017'), duration: 2, progress: '0', priority: 'High', approved: false, designation: 'Sales Representative',
-                employeeID: 19  },
-                        { taskID: 20, taskName: 'Phase 1 complete', startDate: new Date('02/27/2017'),
+                            employeeID: 19
+                        },
+                        {
+                            taskID: 20, taskName: 'Phase 1 complete', startDate: new Date('02/27/2017'),
                             endDate: new Date('02/27/2017'), duration: 0, progress: '50', priority: 'Low', approved: true, designation: 'Sales Representative',
-                employeeID: 20  }
+                            employeeID: 20
+                        }
 
                     ]
                 }]
@@ -330,8 +1061,8 @@ export let frozenSampleData: Object[] =  [
                 approved: false,
                 duration: 12,
                 progress: 60,
-				designation: 'Sales Representative',
-                employeeID: 21 ,
+                designation: 'Sales Representative',
+                employeeID: 21,
                 subtasks: [{
                     taskID: 22,
                     taskName: 'Implementation Module 2',
@@ -341,27 +1072,39 @@ export let frozenSampleData: Object[] =  [
                     approved: false,
                     duration: 12,
                     progress: 90,
-					designation: 'Sales Representative',
-					employeeID: 22 ,
+                    designation: 'Sales Representative',
+                    employeeID: 22,
                     subtasks: [
-                        { taskID: 23, taskName: 'Development Task 1', startDate: new Date('02/17/2017'),
+                        {
+                            taskID: 23, taskName: 'Development Task 1', startDate: new Date('02/17/2017'),
                             endDate: new Date('02/20/2017'), duration: 4, progress: '50', priority: 'Normal', approved: true, designation: 'Sales Representative',
-                employeeID: 23  },
-                        { taskID: 24, taskName: 'Development Task 2', startDate: new Date('02/17/2017'),
+                            employeeID: 23
+                        },
+                        {
+                            taskID: 24, taskName: 'Development Task 2', startDate: new Date('02/17/2017'),
                             endDate: new Date('02/20/2017'), duration: 4, progress: '50', priority: 'Critical', approved: true, designation: 'Sales Representative',
-                employeeID: 24  },
-                        { taskID: 25, taskName: 'Testing', startDate: new Date('02/21/2017'),
+                            employeeID: 24
+                        },
+                        {
+                            taskID: 25, taskName: 'Testing', startDate: new Date('02/21/2017'),
                             endDate: new Date('02/24/2017'), duration: 2, progress: '0', priority: 'High', approved: false, designation: 'Sales Representative',
-                employeeID: 25  },
-                        { taskID: 26, taskName: 'Bug fix', startDate: new Date('02/25/2017'),
+                            employeeID: 25
+                        },
+                        {
+                            taskID: 26, taskName: 'Bug fix', startDate: new Date('02/25/2017'),
                             endDate: new Date('02/26/2017'), duration: 2, progress: '0', priority: 'Low', approved: false, designation: 'Sales Representative',
-                employeeID: 26  },
-                        { taskID: 27, taskName: 'Customer review meeting', startDate: new Date('02/27/2017'),
+                            employeeID: 26
+                        },
+                        {
+                            taskID: 27, taskName: 'Customer review meeting', startDate: new Date('02/27/2017'),
                             endDate: new Date('02/28/2017'), duration: 2, progress: '0', priority: 'Critical', approved: true, designation: 'Sales Representative',
-                employeeID: 27  },
-                        { taskID: 28, taskName: 'Phase 2 complete', startDate: new Date('02/28/2017'),
+                            employeeID: 27
+                        },
+                        {
+                            taskID: 28, taskName: 'Phase 2 complete', startDate: new Date('02/28/2017'),
                             endDate: new Date('02/28/2017'), duration: 0, progress: '50', priority: 'Normal', approved: false, designation: 'Sales Representative',
-                employeeID: 28  }
+                            employeeID: 28
+                        }
 
                     ]
                 }]
@@ -376,8 +1119,8 @@ export let frozenSampleData: Object[] =  [
                 approved: false,
                 duration: 11,
                 progress: 30,
-				designation: 'Sales Representative',
-                employeeID: 29 ,
+                designation: 'Sales Representative',
+                employeeID: 29,
                 subtasks: [{
                     taskID: 30,
                     taskName: 'Implementation Module 3',
@@ -387,27 +1130,39 @@ export let frozenSampleData: Object[] =  [
                     approved: false,
                     duration: 11,
                     progress: 60,
-					designation: 'Sales Representative',
-					employeeID: 30, 
+                    designation: 'Sales Representative',
+                    employeeID: 30,
                     subtasks: [
-                        { taskID: 31, taskName: 'Development Task 1', startDate: new Date('02/17/2017'),
+                        {
+                            taskID: 31, taskName: 'Development Task 1', startDate: new Date('02/17/2017'),
                             endDate: new Date('02/19/2017'), duration: 3, progress: '50', priority: 'Low', approved: true, designation: 'Sales Representative',
-                employeeID: 31  },
-                        { taskID: 32, taskName: 'Development Task 2', startDate: new Date('02/17/2017'),
+                            employeeID: 31
+                        },
+                        {
+                            taskID: 32, taskName: 'Development Task 2', startDate: new Date('02/17/2017'),
                             endDate: new Date('02/19/2017'), duration: 3, progress: '50', priority: 'Normal', approved: false, designation: 'Sales Representative',
-                employeeID: 32  },
-                        { taskID: 33, taskName: 'Testing', startDate: new Date('02/20/2017'),
+                            employeeID: 32
+                        },
+                        {
+                            taskID: 33, taskName: 'Testing', startDate: new Date('02/20/2017'),
                             endDate: new Date('02/21/2017'), duration: 2, progress: '0', priority: 'Critical', approved: true, designation: 'Sales Representative',
-                employeeID: 33  },
-                        { taskID: 34, taskName: 'Bug fix', startDate: new Date('02/24/2017'),
+                            employeeID: 33
+                        },
+                        {
+                            taskID: 34, taskName: 'Bug fix', startDate: new Date('02/24/2017'),
                             endDate: new Date('02/25/2017'), duration: 2, progress: '0', priority: 'High', approved: false, designation: 'Sales Representative',
-                employeeID: 34  },
-                        { taskID: 35, taskName: 'Customer review meeting', startDate: new Date('02/26/2017'),
+                            employeeID: 34
+                        },
+                        {
+                            taskID: 35, taskName: 'Customer review meeting', startDate: new Date('02/26/2017'),
                             endDate: new Date('02/27/2017'), duration: 2, progress: '0', priority: 'Normal', approved: true, designation: 'Sales Representative',
-                employeeID: 35  },
-                        { taskID: 36, taskName: 'Phase 3 complete', startDate: new Date('02/27/2017'),
+                            employeeID: 35
+                        },
+                        {
+                            taskID: 36, taskName: 'Phase 3 complete', startDate: new Date('02/27/2017'),
                             endDate: new Date('02/27/2017'), duration: 0, progress: '50', priority: 'Critical', approved: false, designation: 'Sales Representative',
-                employeeID: 36  },
+                            employeeID: 36
+                        },
                     ]
                 }]
             }
@@ -416,7 +1171,7 @@ export let frozenSampleData: Object[] =  [
 ];
 
 
-export let dragData: Object[] =  [
+export let dragData: Object[] = [
     {
         taskID: 1,
         taskName: 'Planning',
@@ -427,14 +1182,22 @@ export let dragData: Object[] =  [
         priority: 'Normal',
         approved: false,
         subtasks: [
-            { taskID: 2, taskName: 'Plan timeline', startDate: new Date('02/03/2017'),
-                endDate: new Date('02/07/2017'), duration: 5, progress: 100, priority: 'Normal', approved: false },
-            { taskID: 3, taskName: 'Plan budget', startDate: new Date('02/03/2017'),
-                endDate: new Date('02/07/2017'), duration: 5, progress: 100, priority: 'Low', approved: true },
-            { taskID: 4, taskName: 'Allocate resources', startDate: new Date('02/03/2017'),
-                endDate: new Date('02/07/2017'), duration: 5, progress: 100, priority: 'Critical', approved: false },
-            { taskID: 5, taskName: 'Planning complete', startDate: new Date('02/07/2017'),
-                endDate: new Date('02/07/2017'), duration: 0, progress: 0, priority: 'Low', approved: true }
+            {
+                taskID: 2, taskName: 'Plan timeline', startDate: new Date('02/03/2017'),
+                endDate: new Date('02/07/2017'), duration: 5, progress: 100, priority: 'Normal', approved: false
+            },
+            {
+                taskID: 3, taskName: 'Plan budget', startDate: new Date('02/03/2017'),
+                endDate: new Date('02/07/2017'), duration: 5, progress: 100, priority: 'Low', approved: true
+            },
+            {
+                taskID: 4, taskName: 'Allocate resources', startDate: new Date('02/03/2017'),
+                endDate: new Date('02/07/2017'), duration: 5, progress: 100, priority: 'Critical', approved: false
+            },
+            {
+                taskID: 5, taskName: 'Planning complete', startDate: new Date('02/07/2017'),
+                endDate: new Date('02/07/2017'), duration: 0, progress: 0, priority: 'Low', approved: true
+            }
         ]
     },
     {
@@ -447,16 +1210,26 @@ export let dragData: Object[] =  [
         priority: 'High',
         approved: false,
         subtasks: [
-            { taskID: 7, taskName: 'Software Specification', startDate: new Date('02/10/2017'),
-                endDate: new Date('02/12/2017'), duration: 3, progress: 60, priority: 'Normal', approved: false },
-            { taskID: 8, taskName: 'Develop prototype', startDate: new Date('02/10/2017'),
-                endDate: new Date('02/12/2017'), duration: 3, progress: 100, priority: 'Critical', approved: false },
-            { taskID: 9, taskName: 'Get approval from customer', startDate: new Date('02/13/2017'),
-                endDate: new Date('02/14/2017'), duration: 2, progress: 100, priority: 'Low', approved: true },
-            { taskID: 10, taskName: 'Design Documentation', startDate: new Date('02/13/2017'),
-                endDate: new Date('02/14/2017'), duration: 2, progress: 100, priority: 'High', approved: true },
-            { taskID: 11, taskName: 'Design complete', startDate: new Date('02/14/2017'),
-                endDate: new Date('02/14/2017'), duration: 0, progress: 0, priority: 'Normal', approved: true }
+            {
+                taskID: 7, taskName: 'Software Specification', startDate: new Date('02/10/2017'),
+                endDate: new Date('02/12/2017'), duration: 3, progress: 60, priority: 'Normal', approved: false
+            },
+            {
+                taskID: 8, taskName: 'Develop prototype', startDate: new Date('02/10/2017'),
+                endDate: new Date('02/12/2017'), duration: 3, progress: 100, priority: 'Critical', approved: false
+            },
+            {
+                taskID: 9, taskName: 'Get approval from customer', startDate: new Date('02/13/2017'),
+                endDate: new Date('02/14/2017'), duration: 2, progress: 100, priority: 'Low', approved: true
+            },
+            {
+                taskID: 10, taskName: 'Design Documentation', startDate: new Date('02/13/2017'),
+                endDate: new Date('02/14/2017'), duration: 2, progress: 100, priority: 'High', approved: true
+            },
+            {
+                taskID: 11, taskName: 'Design complete', startDate: new Date('02/14/2017'),
+                endDate: new Date('02/14/2017'), duration: 0, progress: 0, priority: 'Normal', approved: true
+            }
         ]
     },
     {
@@ -488,18 +1261,30 @@ export let dragData: Object[] =  [
                     progress: 10,
                     approved: false,
                     subtasks: [
-                        { taskID: 15, taskName: 'Development Task 1', startDate: new Date('02/17/2017'),
-                            endDate: new Date('02/19/2017'), duration: 3, progress: '50', priority: 'High', approved: false },
-                        { taskID: 16, taskName: 'Development Task 2', startDate: new Date('02/17/2017'),
-                            endDate: new Date('02/19/2017'), duration: 3, progress: '50', priority: 'Low', approved: true },
-                        { taskID: 17, taskName: 'Testing', startDate: new Date('02/20/2017'),
-                            endDate: new Date('02/21/2017'), duration: 2, progress: '0', priority: 'Normal', approved: true },
-                        { taskID: 18, taskName: 'Bug fix', startDate: new Date('02/24/2017'),
-                            endDate: new Date('02/25/2017'), duration: 2, progress: '0', priority: 'Critical', approved: false },
-                        { taskID: 19, taskName: 'Customer review meeting', startDate: new Date('02/26/2017'),
-                            endDate: new Date('02/27/2017'), duration: 2, progress: '0', priority: 'High', approved: false },
-                        { taskID: 20, taskName: 'Phase 1 complete', startDate: new Date('02/27/2017'),
-                            endDate: new Date('02/27/2017'), duration: 0, progress: '50', priority: 'Low', approved: true }
+                        {
+                            taskID: 15, taskName: 'Development Task 1', startDate: new Date('02/17/2017'),
+                            endDate: new Date('02/19/2017'), duration: 3, progress: '50', priority: 'High', approved: false
+                        },
+                        {
+                            taskID: 16, taskName: 'Development Task 2', startDate: new Date('02/17/2017'),
+                            endDate: new Date('02/19/2017'), duration: 3, progress: '50', priority: 'Low', approved: true
+                        },
+                        {
+                            taskID: 17, taskName: 'Testing', startDate: new Date('02/20/2017'),
+                            endDate: new Date('02/21/2017'), duration: 2, progress: '0', priority: 'Normal', approved: true
+                        },
+                        {
+                            taskID: 18, taskName: 'Bug fix', startDate: new Date('02/24/2017'),
+                            endDate: new Date('02/25/2017'), duration: 2, progress: '0', priority: 'Critical', approved: false
+                        },
+                        {
+                            taskID: 19, taskName: 'Customer review meeting', startDate: new Date('02/26/2017'),
+                            endDate: new Date('02/27/2017'), duration: 2, progress: '0', priority: 'High', approved: false
+                        },
+                        {
+                            taskID: 20, taskName: 'Phase 1 complete', startDate: new Date('02/27/2017'),
+                            endDate: new Date('02/27/2017'), duration: 0, progress: '50', priority: 'Low', approved: true
+                        }
 
                     ]
                 }]
@@ -523,18 +1308,30 @@ export let dragData: Object[] =  [
                     duration: 12,
                     progress: 90,
                     subtasks: [
-                        { taskID: 23, taskName: 'Development Task 1', startDate: new Date('02/17/2017'),
-                            endDate: new Date('02/20/2017'), duration: 4, progress: '50', priority: 'Normal', approved: true },
-                        { taskID: 24, taskName: 'Development Task 2', startDate: new Date('02/17/2017'),
-                            endDate: new Date('02/20/2017'), duration: 4, progress: '50', priority: 'Critical', approved: true },
-                        { taskID: 25, taskName: 'Testing', startDate: new Date('02/21/2017'),
-                            endDate: new Date('02/24/2017'), duration: 2, progress: '0', priority: 'High', approved: false },
-                        { taskID: 26, taskName: 'Bug fix', startDate: new Date('02/25/2017'),
-                            endDate: new Date('02/26/2017'), duration: 2, progress: '0', priority: 'Low', approved: false },
-                        { taskID: 27, taskName: 'Customer review meeting', startDate: new Date('02/27/2017'),
-                            endDate: new Date('02/28/2017'), duration: 2, progress: '0', priority: 'Critical', approved: true },
-                        { taskID: 28, taskName: 'Phase 2 complete', startDate: new Date('02/28/2017'),
-                            endDate: new Date('02/28/2017'), duration: 0, progress: '50', priority: 'Normal', approved: false }
+                        {
+                            taskID: 23, taskName: 'Development Task 1', startDate: new Date('02/17/2017'),
+                            endDate: new Date('02/20/2017'), duration: 4, progress: '50', priority: 'Normal', approved: true
+                        },
+                        {
+                            taskID: 24, taskName: 'Development Task 2', startDate: new Date('02/17/2017'),
+                            endDate: new Date('02/20/2017'), duration: 4, progress: '50', priority: 'Critical', approved: true
+                        },
+                        {
+                            taskID: 25, taskName: 'Testing', startDate: new Date('02/21/2017'),
+                            endDate: new Date('02/24/2017'), duration: 2, progress: '0', priority: 'High', approved: false
+                        },
+                        {
+                            taskID: 26, taskName: 'Bug fix', startDate: new Date('02/25/2017'),
+                            endDate: new Date('02/26/2017'), duration: 2, progress: '0', priority: 'Low', approved: false
+                        },
+                        {
+                            taskID: 27, taskName: 'Customer review meeting', startDate: new Date('02/27/2017'),
+                            endDate: new Date('02/28/2017'), duration: 2, progress: '0', priority: 'Critical', approved: true
+                        },
+                        {
+                            taskID: 28, taskName: 'Phase 2 complete', startDate: new Date('02/28/2017'),
+                            endDate: new Date('02/28/2017'), duration: 0, progress: '50', priority: 'Normal', approved: false
+                        }
 
                     ]
                 }]
@@ -559,18 +1356,30 @@ export let dragData: Object[] =  [
                     duration: 11,
                     progress: 60,
                     subtasks: [
-                        { taskID: 31, taskName: 'Development Task 1', startDate: new Date('02/17/2017'),
-                            endDate: new Date('02/19/2017'), duration: 3, progress: '50', priority: 'Low', approved: true },
-                        { taskID: 32, taskName: 'Development Task 2', startDate: new Date('02/17/2017'),
-                            endDate: new Date('02/19/2017'), duration: 3, progress: '50', priority: 'Normal', approved: false },
-                        { taskID: 33, taskName: 'Testing', startDate: new Date('02/20/2017'),
-                            endDate: new Date('02/21/2017'), duration: 2, progress: '0', priority: 'Critical', approved: true },
-                        { taskID: 34, taskName: 'Bug fix', startDate: new Date('02/24/2017'),
-                            endDate: new Date('02/25/2017'), duration: 2, progress: '0', priority: 'High', approved: false },
-                        { taskID: 35, taskName: 'Customer review meeting', startDate: new Date('02/26/2017'),
-                            endDate: new Date('02/27/2017'), duration: 2, progress: '0', priority: 'Normal', approved: true },
-                        { taskID: 36, taskName: 'Phase 3 complete', startDate: new Date('02/27/2017'),
-                            endDate: new Date('02/27/2017'), duration: 0, progress: '50', priority: 'Critical', approved: false },
+                        {
+                            taskID: 31, taskName: 'Development Task 1', startDate: new Date('02/17/2017'),
+                            endDate: new Date('02/19/2017'), duration: 3, progress: '50', priority: 'Low', approved: true
+                        },
+                        {
+                            taskID: 32, taskName: 'Development Task 2', startDate: new Date('02/17/2017'),
+                            endDate: new Date('02/19/2017'), duration: 3, progress: '50', priority: 'Normal', approved: false
+                        },
+                        {
+                            taskID: 33, taskName: 'Testing', startDate: new Date('02/20/2017'),
+                            endDate: new Date('02/21/2017'), duration: 2, progress: '0', priority: 'Critical', approved: true
+                        },
+                        {
+                            taskID: 34, taskName: 'Bug fix', startDate: new Date('02/24/2017'),
+                            endDate: new Date('02/25/2017'), duration: 2, progress: '0', priority: 'High', approved: false
+                        },
+                        {
+                            taskID: 35, taskName: 'Customer review meeting', startDate: new Date('02/26/2017'),
+                            endDate: new Date('02/27/2017'), duration: 2, progress: '0', priority: 'Normal', approved: true
+                        },
+                        {
+                            taskID: 36, taskName: 'Phase 3 complete', startDate: new Date('02/27/2017'),
+                            endDate: new Date('02/27/2017'), duration: 0, progress: '50', priority: 'Critical', approved: false
+                        },
                     ]
                 }]
             }
@@ -590,16 +1399,26 @@ export let textWrapData: Object[] = [
         priority: 'High',
         approved: false,
         subtasks: [
-            { taskID: 2, taskName: 'Specification of Software', startDate: new Date('02/10/2017'),
-                endDate: new Date('02/12/2017'), duration: 3, progress: 60, priority: 'Normal', approved: false },
-            { taskID: 3, taskName: 'Develop prototype', startDate: new Date('02/10/2017'),
-                endDate: new Date('02/12/2017'), duration: 3, progress: 100, priority: 'Critical', approved: false },
-            { taskID: 4, taskName: 'Get approval from customer', startDate: new Date('02/13/2017'),
-                endDate: new Date('02/14/2017'), duration: 2, progress: 100, approved: true, priority: 'Normal' },
-            { taskID: 5, taskName: 'Design Document', startDate: new Date('02/13/2017'),
-                endDate: new Date('02/14/2017'), duration: 2, progress: 100, approved: true, priority: 'Critical' },
-            { taskID: 6, taskName: 'Design complete', startDate: new Date('02/14/2017'),
-                endDate: new Date('02/14/2017'), duration: 0, progress: 0, priority: 'Normal', approved: true }
+            {
+                taskID: 2, taskName: 'Specification of Software', startDate: new Date('02/10/2017'),
+                endDate: new Date('02/12/2017'), duration: 3, progress: 60, priority: 'Normal', approved: false
+            },
+            {
+                taskID: 3, taskName: 'Develop prototype', startDate: new Date('02/10/2017'),
+                endDate: new Date('02/12/2017'), duration: 3, progress: 100, priority: 'Critical', approved: false
+            },
+            {
+                taskID: 4, taskName: 'Get approval from customer', startDate: new Date('02/13/2017'),
+                endDate: new Date('02/14/2017'), duration: 2, progress: 100, approved: true, priority: 'Normal'
+            },
+            {
+                taskID: 5, taskName: 'Design Document', startDate: new Date('02/13/2017'),
+                endDate: new Date('02/14/2017'), duration: 2, progress: 100, approved: true, priority: 'Critical'
+            },
+            {
+                taskID: 6, taskName: 'Design complete', startDate: new Date('02/14/2017'),
+                endDate: new Date('02/14/2017'), duration: 0, progress: 0, priority: 'Normal', approved: true
+            }
         ]
     },
     {
@@ -631,16 +1450,26 @@ export let textWrapData: Object[] = [
                     progress: 96,
                     approved: false,
                     subtasks: [
-                        { taskID: 10, taskName: 'Development', startDate: new Date('02/17/2017'),
-                            endDate: new Date('02/19/2017'), duration: 3, progress: '50', priority: 'High', approved: false },
-                        { taskID: 12, taskName: 'Testing', startDate: new Date('02/20/2017'),
-                            endDate: new Date('02/21/2017'), duration: 2, progress: '0', priority: 'Normal', approved: true },
-                        { taskID: 13, taskName: 'Bug fix', startDate: new Date('02/24/2017'),
-                            endDate: new Date('02/25/2017'), duration: 2, progress: '0', priority: 'Critical', approved: false },
-                        { taskID: 14, taskName: 'Get approval from customer', startDate: new Date('02/26/2017'),
-                            endDate: new Date('02/27/2017'), duration: 2, progress: '0', priority: 'High', approved: false },
-                        { taskID: 15, taskName: 'Completed', startDate: new Date('02/27/2017'),
-                            endDate: new Date('02/27/2017'), duration: 0, progress: '0', priority: 'Low', approved: true }
+                        {
+                            taskID: 10, taskName: 'Development', startDate: new Date('02/17/2017'),
+                            endDate: new Date('02/19/2017'), duration: 3, progress: '50', priority: 'High', approved: false
+                        },
+                        {
+                            taskID: 12, taskName: 'Testing', startDate: new Date('02/20/2017'),
+                            endDate: new Date('02/21/2017'), duration: 2, progress: '0', priority: 'Normal', approved: true
+                        },
+                        {
+                            taskID: 13, taskName: 'Bug fix', startDate: new Date('02/24/2017'),
+                            endDate: new Date('02/25/2017'), duration: 2, progress: '0', priority: 'Critical', approved: false
+                        },
+                        {
+                            taskID: 14, taskName: 'Get approval from customer', startDate: new Date('02/26/2017'),
+                            endDate: new Date('02/27/2017'), duration: 2, progress: '0', priority: 'High', approved: false
+                        },
+                        {
+                            taskID: 15, taskName: 'Completed', startDate: new Date('02/27/2017'),
+                            endDate: new Date('02/27/2017'), duration: 0, progress: '0', priority: 'Low', approved: true
+                        }
 
                     ]
                 }]
@@ -665,16 +1494,26 @@ export let textWrapData: Object[] = [
                     duration: 12,
                     progress: 56,
                     subtasks: [
-                        { taskID: 18, taskName: 'Development', startDate: new Date('02/17/2017'),
-                            endDate: new Date('02/20/2017'), duration: 4, progress: '50', priority: 'Normal', approved: true },
-                        { taskID: 20, taskName: 'Testing', startDate: new Date('02/21/2017'),
-                            endDate: new Date('02/24/2017'), duration: 2, progress: '0', priority: 'High', approved: false },
-                        { taskID: 21, taskName: 'Bug fix', startDate: new Date('02/25/2017'),
-                            endDate: new Date('02/26/2017'), duration: 2, progress: '0', priority: 'Low', approved: false },
-                        { taskID: 22, taskName: 'Get approval from customer', startDate: new Date('02/27/2017'),
-                            endDate: new Date('02/28/2017'), duration: 2, progress: '0', priority: 'Critical', approved: true },
-                        { taskID: 23, taskName: 'Completed', startDate: new Date('02/28/2017'),
-                            endDate: new Date('02/28/2017'), duration: 0, progress: '0', priority: 'Normal', approved: false }
+                        {
+                            taskID: 18, taskName: 'Development', startDate: new Date('02/17/2017'),
+                            endDate: new Date('02/20/2017'), duration: 4, progress: '50', priority: 'Normal', approved: true
+                        },
+                        {
+                            taskID: 20, taskName: 'Testing', startDate: new Date('02/21/2017'),
+                            endDate: new Date('02/24/2017'), duration: 2, progress: '0', priority: 'High', approved: false
+                        },
+                        {
+                            taskID: 21, taskName: 'Bug fix', startDate: new Date('02/25/2017'),
+                            endDate: new Date('02/26/2017'), duration: 2, progress: '0', priority: 'Low', approved: false
+                        },
+                        {
+                            taskID: 22, taskName: 'Get approval from customer', startDate: new Date('02/27/2017'),
+                            endDate: new Date('02/28/2017'), duration: 2, progress: '0', priority: 'Critical', approved: true
+                        },
+                        {
+                            taskID: 23, taskName: 'Completed', startDate: new Date('02/28/2017'),
+                            endDate: new Date('02/28/2017'), duration: 0, progress: '0', priority: 'Normal', approved: false
+                        }
 
                     ]
                 }]
@@ -699,16 +1538,26 @@ export let textWrapData: Object[] = [
                     progress: 56,
                     duration: 11,
                     subtasks: [
-                        { taskID: 26, taskName: 'Development', startDate: new Date('02/17/2017'),
-                            endDate: new Date('02/19/2017'), duration: 3, progress: '50', priority: 'Low', approved: true },
-                        { taskID: 28, taskName: 'Testing', startDate: new Date('02/20/2017'),
-                            endDate: new Date('02/21/2017'), duration: 2, progress: '0', priority: 'Critical', approved: true },
-                        { taskID: 29, taskName: 'Bug fix', startDate: new Date('02/24/2017'),
-                            endDate: new Date('02/25/2017'), duration: 2, progress: '0', priority: 'High', approved: false },
-                        { taskID: 30, taskName: 'Customer review meeting', startDate: new Date('02/26/2017'),
-                            endDate: new Date('02/27/2017'), duration: 2, progress: '0', priority: 'Normal', approved: true },
-                        { taskID: 31, taskName: 'Completed', startDate: new Date('02/27/2017'),
-                            endDate: new Date('02/27/2017'), duration: 0, progress: '0', priority: 'Critical', approved: false },
+                        {
+                            taskID: 26, taskName: 'Development', startDate: new Date('02/17/2017'),
+                            endDate: new Date('02/19/2017'), duration: 3, progress: '50', priority: 'Low', approved: true
+                        },
+                        {
+                            taskID: 28, taskName: 'Testing', startDate: new Date('02/20/2017'),
+                            endDate: new Date('02/21/2017'), duration: 2, progress: '0', priority: 'Critical', approved: true
+                        },
+                        {
+                            taskID: 29, taskName: 'Bug fix', startDate: new Date('02/24/2017'),
+                            endDate: new Date('02/25/2017'), duration: 2, progress: '0', priority: 'High', approved: false
+                        },
+                        {
+                            taskID: 30, taskName: 'Customer review meeting', startDate: new Date('02/26/2017'),
+                            endDate: new Date('02/27/2017'), duration: 2, progress: '0', priority: 'Normal', approved: true
+                        },
+                        {
+                            taskID: 31, taskName: 'Completed', startDate: new Date('02/27/2017'),
+                            endDate: new Date('02/27/2017'), duration: 0, progress: '0', priority: 'Critical', approved: false
+                        },
                     ]
                 }]
             }
@@ -761,39 +1610,39 @@ export let textdata: Object[] = [{
                     'Contact': '(71) 555-4848',
                     'DOB': new Date('9/20/1980')
                 },
-            {
-                'Name': 'Anne Dodsworth',
-                'FullName': 'AnneDodsworth',
-                'Designation': 'Sales Representative',
-                'EmployeeID': '5',
-                'EmpID': 'EMP091',
-                'Address': '4726 - 11th Ave. N.E., Seattle',
-                'Country': 'USA',
-                'Contact': '(206) 555-1189',
-                'DOB': new Date('10/19/1989')
-            },
-            {
-                'Name': 'Michael Suyama',
-                'FullName': 'MichaelSuyama',
-                'Designation': 'Sales Representative',
-                'EmployeeID': '6',
-                'EmpID': 'EMP110',
-                'Address': 'Coventry House Miner Rd., London',
-                'Country': 'UK',
-                'Contact': '(71) 555-3636',
-                'DOB': new Date('11/02/1987')
-            },
-            {
-                'Name': 'Janet Leverling',
-                'FullName': 'JanetLeverling',
-                'Designation': 'Sales Coordinator',
-                'EmployeeID': '7',
-                'EmpID': 'EMP131',
-                'Address': 'Edgeham Hollow Winchester Way, London',
-                'Country': 'UK',
-                'Contact': '(71) 555-3636',
-                'DOB': new Date('11/06/1990')
-            },
+                {
+                    'Name': 'Anne Dodsworth',
+                    'FullName': 'AnneDodsworth',
+                    'Designation': 'Sales Representative',
+                    'EmployeeID': '5',
+                    'EmpID': 'EMP091',
+                    'Address': '4726 - 11th Ave. N.E., Seattle',
+                    'Country': 'USA',
+                    'Contact': '(206) 555-1189',
+                    'DOB': new Date('10/19/1989')
+                },
+                {
+                    'Name': 'Michael Suyama',
+                    'FullName': 'MichaelSuyama',
+                    'Designation': 'Sales Representative',
+                    'EmployeeID': '6',
+                    'EmpID': 'EMP110',
+                    'Address': 'Coventry House Miner Rd., London',
+                    'Country': 'UK',
+                    'Contact': '(71) 555-3636',
+                    'DOB': new Date('11/02/1987')
+                },
+                {
+                    'Name': 'Janet Leverling',
+                    'FullName': 'JanetLeverling',
+                    'Designation': 'Sales Coordinator',
+                    'EmployeeID': '7',
+                    'EmpID': 'EMP131',
+                    'Address': 'Edgeham Hollow Winchester Way, London',
+                    'Country': 'UK',
+                    'Contact': '(71) 555-3636',
+                    'DOB': new Date('11/06/1990')
+                },
             ]
 
         },
@@ -808,50 +1657,50 @@ export let textdata: Object[] = [{
             'Contact': '(71) 555-3690',
             'DOB': new Date('02/02/1980'),
             'Children': [
-            {
-                'Name': 'Margaret Peacock',
-                'FullName': 'MargaretPeacock',
-                'Designation': 'Sales Representative',
-                'EmployeeID': '9',
-                'EmpID': 'EMP213',
-                'Address': '4726 - 11th Ave. N.E., California',
-                'Country': 'USA',
-                'Contact': '(206) 555-1989',
-                'DOB': new Date('01/21/1986')
-            },
-            {
-                'Name': 'Laura Callahan',
-                'FullName': 'LauraCallahan',
-                'Designation': 'Sales Coordinator',
-                'EmployeeID': '10',
-                'EmpID': 'EMP201',
-                'Address': 'Coventry House Miner Rd., London',
-                'Country': 'UK',
-                'Contact': '(71) 555-2222',
-                'DOB': new Date( '12/01/1990')
-            },
-            {
-                'Name': 'Steven Buchanan',
-                'FullName': 'StevenBuchanan',
-                'Designation': 'Sales Representative',
-                'EmployeeID': '11',
-                'EmpID': 'EMP197',
-                'Address': '200 Lincoln Ave, Salinas, CA 93901',
-                'Country': 'USA',
-                'Contact': '(831) 758-7408',
-                'DOB': new Date('03/23/1987')
-            },
-            {
-                'Name': 'Tedd Lawson',
-                'FullName': 'TeddLawson',
-                'Designation': 'Sales Representative',
-                'EmployeeID': '12',
-                'EmpID': 'EMP167',
-                'Address': '200 Lincoln Ave, Salinas, CA 93901',
-                'Country': 'USA',
-                'Contact': '(831) 758-7368 ',
-                'DOB': new Date('08/09/1989')
-            },
+                {
+                    'Name': 'Margaret Peacock',
+                    'FullName': 'MargaretPeacock',
+                    'Designation': 'Sales Representative',
+                    'EmployeeID': '9',
+                    'EmpID': 'EMP213',
+                    'Address': '4726 - 11th Ave. N.E., California',
+                    'Country': 'USA',
+                    'Contact': '(206) 555-1989',
+                    'DOB': new Date('01/21/1986')
+                },
+                {
+                    'Name': 'Laura Callahan',
+                    'FullName': 'LauraCallahan',
+                    'Designation': 'Sales Coordinator',
+                    'EmployeeID': '10',
+                    'EmpID': 'EMP201',
+                    'Address': 'Coventry House Miner Rd., London',
+                    'Country': 'UK',
+                    'Contact': '(71) 555-2222',
+                    'DOB': new Date('12/01/1990')
+                },
+                {
+                    'Name': 'Steven Buchanan',
+                    'FullName': 'StevenBuchanan',
+                    'Designation': 'Sales Representative',
+                    'EmployeeID': '11',
+                    'EmpID': 'EMP197',
+                    'Address': '200 Lincoln Ave, Salinas, CA 93901',
+                    'Country': 'USA',
+                    'Contact': '(831) 758-7408',
+                    'DOB': new Date('03/23/1987')
+                },
+                {
+                    'Name': 'Tedd Lawson',
+                    'FullName': 'TeddLawson',
+                    'Designation': 'Sales Representative',
+                    'EmployeeID': '12',
+                    'EmpID': 'EMP167',
+                    'Address': '200 Lincoln Ave, Salinas, CA 93901',
+                    'Country': 'USA',
+                    'Contact': '(831) 758-7368 ',
+                    'DOB': new Date('08/09/1989')
+                },
             ]
         }]
     }]
@@ -867,77 +1716,105 @@ export let headerData: Object[] = [
         duration: 5,
         progress: '100',
         subtasks: [
-            { taskID: 2, taskName: 'Plan timeline', startDate: new Date('02/03/2017'),
-                endDate: new Date('02/07/2017'), duration: 5, progress: '100', resourceId: '2' },
-            { taskID: 3, taskName: 'Plan budget', startDate: new Date('02/03/2017'),
-                endDate: new Date('02/07/2017'), duration: 5, progress: '100', resourceId: '1' },
-            { taskID: 4, taskName: 'Allocate resources', startDate: new Date('02/03/2017'),
-                endDate: new Date('02/07/2017'), duration: 5, progress: '100', resourceId: '1' },
-            { taskID: 5, taskName: 'Planning complete', startDate: new Date('02/07/2017'),
-                endDate: new Date('02/07/2017'), duration: 0, progress: '100', resourceId: '7' }
+            {
+                taskID: 2, taskName: 'Plan timeline', startDate: new Date('02/03/2017'),
+                endDate: new Date('02/07/2017'), duration: 5, progress: '100', resourceId: '2'
+            },
+            {
+                taskID: 3, taskName: 'Plan budget', startDate: new Date('02/03/2017'),
+                endDate: new Date('02/07/2017'), duration: 5, progress: '100', resourceId: '1'
+            },
+            {
+                taskID: 4, taskName: 'Allocate resources', startDate: new Date('02/03/2017'),
+                endDate: new Date('02/07/2017'), duration: 5, progress: '100', resourceId: '1'
+            },
+            {
+                taskID: 5, taskName: 'Planning complete', startDate: new Date('02/07/2017'),
+                endDate: new Date('02/07/2017'), duration: 0, progress: '100', resourceId: '7'
+            }
         ]
     },
-     {
-         taskID: 6,
-         taskName: 'Design',
-         startDate: new Date('02/10/2017'),
-         endDate: new Date('02/14/2017'),
-         resourceId: '1',
-         progress: '60',
-         duration: 3,
-         subtasks: [
-             { taskID: 7, taskName: 'Software Specification', startDate: new Date('02/10/2017'),
-                endDate: new Date('02/12/2017'), duration: 3, progress: '60', predecessor: '6FS', resourceId: '2' },
-             { taskID: 8, taskName: 'Develop prototype', startDate: new Date('02/10/2017'),
-                endDate: new Date('02/12/2017'), duration: 3, progress: '100', predecessor: '6FS', resourceId: '3' },
-             { taskID: 9, taskName: 'Get approval from customer', startDate: new Date('02/13/2017'),
-                endDate: new Date('02/14/2017'), duration: 2, progress: '100', predecessor: '9FS', resourceId: '1' },
-             { taskID: 10, taskName: 'Design complete', startDate: new Date('02/14/2017'),
-                endDate: new Date('02/14/2017'), duration: 0, progress: '100', resourceId: '9' }
-         ]
-     },
-     {
-         taskID: 11,
-         taskName: 'Implementation Phase',
-         startDate: new Date('02/17/2017'),
-         endDate: new Date('02/27/2017'),
-         resourceId: '5',
-         progress: '80',
-         duration: 5,
-         subtasks: [
-             {
-                 taskID: 12,
-                 taskName: 'Phase',
-                 startDate: new Date('02/17/2017'),
-                 endDate: new Date('02/27/2017'),
-                 resourceId: '7',
-                 duration: 5,
-                 progress: '50',
-                 subtasks: [{
-                     taskID: 13,
-                     taskName: 'Implementation Module',
-                     resourceId: '3',
-                     progress: '50',
-                     duration: 3,
-                     startDate: new Date('02/17/2017'),
-                     endDate: new Date('02/27/2017'),
-                     subtasks: [
-                        { taskID: 14, taskName: 'Development Task 1', startDate: new Date('02/17/2017'),
-                            endDate: new Date('02/19/2017'), duration: 3, progress: '50', predecessor: '11FS', resourceId: '3' },
-                        { taskID: 15, taskName: 'Development Task 2', startDate: new Date('02/17/2017'),
-                            endDate: new Date('02/19/2017'), duration: 3, progress: '50', predecessor: '11FS', resourceId: '3' },
-                        { taskID: 16, taskName: 'Testing', startDate: new Date('02/20/2017'),
-                            endDate: new Date('02/21/2017'), duration: 2, progress: '0', predecessor: '15FS,16FS', resourceId: '4' },
-                        { taskID: 17, taskName: 'Bug fix', startDate: new Date('02/24/2017'),
-                            endDate: new Date('02/25/2017'), duration: 2, progress: '0', predecessor: '17FS', resourceId: '4' },
-                        { taskID: 18, taskName: 'Customer review meeting', startDate: new Date('02/26/2017'),
-                            endDate: new Date('02/27/2017'), duration: 2, progress: '0', predecessor: '18FS', resourceId: '1' },
-                        { taskID: 19, taskName: 'Phase complete', startDate: new Date('02/27/2017'),
-                            endDate: new Date('02/27/2017'), duration: 0, predecessor: '19FS', progress: '0', resourceId: '9' }
-                     ]
-                 }]
-             }
-         ]
+    {
+        taskID: 6,
+        taskName: 'Design',
+        startDate: new Date('02/10/2017'),
+        endDate: new Date('02/14/2017'),
+        resourceId: '1',
+        progress: '60',
+        duration: 3,
+        subtasks: [
+            {
+                taskID: 7, taskName: 'Software Specification', startDate: new Date('02/10/2017'),
+                endDate: new Date('02/12/2017'), duration: 3, progress: '60', predecessor: '6FS', resourceId: '2'
+            },
+            {
+                taskID: 8, taskName: 'Develop prototype', startDate: new Date('02/10/2017'),
+                endDate: new Date('02/12/2017'), duration: 3, progress: '100', predecessor: '6FS', resourceId: '3'
+            },
+            {
+                taskID: 9, taskName: 'Get approval from customer', startDate: new Date('02/13/2017'),
+                endDate: new Date('02/14/2017'), duration: 2, progress: '100', predecessor: '9FS', resourceId: '1'
+            },
+            {
+                taskID: 10, taskName: 'Design complete', startDate: new Date('02/14/2017'),
+                endDate: new Date('02/14/2017'), duration: 0, progress: '100', resourceId: '9'
+            }
+        ]
+    },
+    {
+        taskID: 11,
+        taskName: 'Implementation Phase',
+        startDate: new Date('02/17/2017'),
+        endDate: new Date('02/27/2017'),
+        resourceId: '5',
+        progress: '80',
+        duration: 5,
+        subtasks: [
+            {
+                taskID: 12,
+                taskName: 'Phase',
+                startDate: new Date('02/17/2017'),
+                endDate: new Date('02/27/2017'),
+                resourceId: '7',
+                duration: 5,
+                progress: '50',
+                subtasks: [{
+                    taskID: 13,
+                    taskName: 'Implementation Module',
+                    resourceId: '3',
+                    progress: '50',
+                    duration: 3,
+                    startDate: new Date('02/17/2017'),
+                    endDate: new Date('02/27/2017'),
+                    subtasks: [
+                        {
+                            taskID: 14, taskName: 'Development Task 1', startDate: new Date('02/17/2017'),
+                            endDate: new Date('02/19/2017'), duration: 3, progress: '50', predecessor: '11FS', resourceId: '3'
+                        },
+                        {
+                            taskID: 15, taskName: 'Development Task 2', startDate: new Date('02/17/2017'),
+                            endDate: new Date('02/19/2017'), duration: 3, progress: '50', predecessor: '11FS', resourceId: '3'
+                        },
+                        {
+                            taskID: 16, taskName: 'Testing', startDate: new Date('02/20/2017'),
+                            endDate: new Date('02/21/2017'), duration: 2, progress: '0', predecessor: '15FS,16FS', resourceId: '4'
+                        },
+                        {
+                            taskID: 17, taskName: 'Bug fix', startDate: new Date('02/24/2017'),
+                            endDate: new Date('02/25/2017'), duration: 2, progress: '0', predecessor: '17FS', resourceId: '4'
+                        },
+                        {
+                            taskID: 18, taskName: 'Customer review meeting', startDate: new Date('02/26/2017'),
+                            endDate: new Date('02/27/2017'), duration: 2, progress: '0', predecessor: '18FS', resourceId: '1'
+                        },
+                        {
+                            taskID: 19, taskName: 'Phase complete', startDate: new Date('02/27/2017'),
+                            endDate: new Date('02/27/2017'), duration: 0, predecessor: '19FS', progress: '0', resourceId: '9'
+                        }
+                    ]
+                }]
+            }
+        ]
     }
 ];
 
@@ -952,18 +1829,28 @@ export let stackedData: Object[] = [
         price: 65565,
         shipMentCategory: 'Seafood',
         subtasks: [
-            { orderID: '1.1', orderName: 'Mackerel', shipMentCategory: 'Frozen seafood', units: '35',
-                orderDate: new Date('03/03/2017'), shippedDate: new Date('03/10/2017'), unitPrice: '12.56', price: 439.6},
-            { orderID: '1.2', orderName: 'Yellowfin Tuna', shipMentCategory: 'Frozen seafood', units: '324',
-                orderDate: new Date('05/03/2017'), shippedDate: new Date('05/10/2017'), unitPrice: '28.26', price: 9156.24 },
-            { orderID: '1.3', orderName: 'Herrings', shipMentCategory: 'Frozen seafood', units: '48',
-                orderDate: new Date('05/08/2017'), shippedDate: new Date('05/15/2017'), unitPrice: '11.35', price: 544.8 },
-            { orderID: '1.4', orderName: 'Preserved Olives', shipMentCategory: 'Edible', units: '125',
-               orderDate: new Date('06/10/2017'), shippedDate: new Date('06/17/2017'), unitPrice: '29.23', price: 3653.75},
-            { orderID: '1.5', orderName: 'Sweet corn Frozen', shipMentCategory: 'Edible', units: '223',
-                orderDate: new Date('07/12/2017'), shippedDate: new Date('07/19/2017'), unitPrice: '47.17', price: 10518.91 }
+            {
+                orderID: '1.1', orderName: 'Mackerel', shipMentCategory: 'Frozen seafood', units: '35',
+                orderDate: new Date('03/03/2017'), shippedDate: new Date('03/10/2017'), unitPrice: '12.56', price: 439.6
+            },
+            {
+                orderID: '1.2', orderName: 'Yellowfin Tuna', shipMentCategory: 'Frozen seafood', units: '324',
+                orderDate: new Date('05/03/2017'), shippedDate: new Date('05/10/2017'), unitPrice: '28.26', price: 9156.24
+            },
+            {
+                orderID: '1.3', orderName: 'Herrings', shipMentCategory: 'Frozen seafood', units: '48',
+                orderDate: new Date('05/08/2017'), shippedDate: new Date('05/15/2017'), unitPrice: '11.35', price: 544.8
+            },
+            {
+                orderID: '1.4', orderName: 'Preserved Olives', shipMentCategory: 'Edible', units: '125',
+                orderDate: new Date('06/10/2017'), shippedDate: new Date('06/17/2017'), unitPrice: '29.23', price: 3653.75
+            },
+            {
+                orderID: '1.5', orderName: 'Sweet corn Frozen', shipMentCategory: 'Edible', units: '223',
+                orderDate: new Date('07/12/2017'), shippedDate: new Date('07/19/2017'), unitPrice: '47.17', price: 10518.91
+            }
 
-         ]
+        ]
     },
     {
         orderID: '2',
@@ -975,16 +1862,26 @@ export let stackedData: Object[] = [
         price: 113626.8,
         shipMentCategory: 'Seafood',
         subtasks: [
-            { orderID: '2.1', orderName: 'Tilapias', shipMentCategory: 'Frozen Seafood',
-            orderDate: new Date('02/05/2018'), shippedDate: new Date('02/12/2018'), units: '278', unitPrice: '15.25', price: 4239.5 },
-            { orderID: '2.2', orderName: 'White Shrimp', shipMentCategory: 'Frozen seafood', units: '560',
-            orderDate: new Date('05/22/2018'), shippedDate: new Date('05/29/2018'), unitPrice: '72.45', price: 36225 },
-            { orderID: '2.3', orderName: 'Fresh Cheese', shipMentCategory: 'Dairy', units: '323', unitPrice: 12.45,
-            orderDate: new Date('06/08/2018'), shippedDate: new Date('06/15/2018'), price: 4021.35 },
-            { orderID: '2.4', orderName: 'Blue Veined Cheese', shipMentCategory: 'Dairy', units: '370', unitPrice: 15.36,
-            orderDate: new Date('07/10/2018'), shippedDate: new Date('07/17/2018'), price: 5683.2 },
-            { orderID: '2.5', orderName: 'Butter', shipMentCategory: 'Dairy', units: '413', unitPrice: '19.35',
-            orderDate: new Date('09/18/2018'), shippedDate: new Date('09/25/2018'), price: 7991.55}
+            {
+                orderID: '2.1', orderName: 'Tilapias', shipMentCategory: 'Frozen Seafood',
+                orderDate: new Date('02/05/2018'), shippedDate: new Date('02/12/2018'), units: '278', unitPrice: '15.25', price: 4239.5
+            },
+            {
+                orderID: '2.2', orderName: 'White Shrimp', shipMentCategory: 'Frozen seafood', units: '560',
+                orderDate: new Date('05/22/2018'), shippedDate: new Date('05/29/2018'), unitPrice: '72.45', price: 36225
+            },
+            {
+                orderID: '2.3', orderName: 'Fresh Cheese', shipMentCategory: 'Dairy', units: '323', unitPrice: 12.45,
+                orderDate: new Date('06/08/2018'), shippedDate: new Date('06/15/2018'), price: 4021.35
+            },
+            {
+                orderID: '2.4', orderName: 'Blue Veined Cheese', shipMentCategory: 'Dairy', units: '370', unitPrice: 15.36,
+                orderDate: new Date('07/10/2018'), shippedDate: new Date('07/17/2018'), price: 5683.2
+            },
+            {
+                orderID: '2.5', orderName: 'Butter', shipMentCategory: 'Dairy', units: '413', unitPrice: '19.35',
+                orderDate: new Date('09/18/2018'), shippedDate: new Date('09/25/2018'), price: 7991.55
+            }
         ]
     },
     {
@@ -997,47 +1894,83 @@ export let stackedData: Object[] = [
         price: 37340.8,
         shipMentCategory: 'Seafood',
         subtasks: [
-            { orderID: '3.1', orderName: 'Lead glassware', shipMentCategory: 'Solid crystals',
-                orderDate: new Date('02/07/2018'), shippedDate: new Date('02/14/2018'), units: '542', unitPrice: '46.45', price: 25175.9 },
-            { orderID: '3.2', orderName: 'Pharmaceutical', shipMentCategory: 'Solid crystals',
-                orderDate: new Date('04/19/2018'), shippedDate: new Date('04/26/2018'), units: '324', unitPrice: '11.56', price: 3745.44 },
-            { orderID: '3.3', orderName: 'Glass beads', shipMentCategory: 'Solid crystals', units: '254',
-                orderDate: new Date('05/22/2018'), shippedDate: new Date('03/22/2018'), unitPrice: '16.25', price: 4127.5 }
+            {
+                orderID: '3.1', orderName: 'Lead glassware', shipMentCategory: 'Solid crystals',
+                orderDate: new Date('02/07/2018'), shippedDate: new Date('02/14/2018'), units: '542', unitPrice: '46.45', price: 25175.9
+            },
+            {
+                orderID: '3.2', orderName: 'Pharmaceutical', shipMentCategory: 'Solid crystals',
+                orderDate: new Date('04/19/2018'), shippedDate: new Date('04/26/2018'), units: '324', unitPrice: '11.56', price: 3745.44
+            },
+            {
+                orderID: '3.3', orderName: 'Glass beads', shipMentCategory: 'Solid crystals', units: '254',
+                orderDate: new Date('05/22/2018'), shippedDate: new Date('03/22/2018'), unitPrice: '16.25', price: 4127.5
+            }
         ]
     }
 ];
 
 export let projectData: Object[] = [
-    { 'TaskID': 1, 'TaskName': 'Parent Task 1', 'StartDate': new Date('02/23/2017'), 'Duration': 3, 'Priority' : 'Normal',
-    'EndDate': new Date('02/27/2017'), 'Progress': '40' },
-    { 'TaskID': 2, 'TaskName': 'Child Task 1', 'StartDate': new Date('02/23/2017'), 'Duration': 4, 'Priority' : 'Low',
-    'EndDate': new Date('02/27/2017'), 'Progress': '40', 'parentID': 1 },
-    { 'TaskID': 3, 'TaskName': 'Child Task 2', 'StartDate': new Date('02/23/2017'), 'Duration': 2, 'Priority' : 'Normal',
-    'EndDate': new Date('02/27/2017'), 'Progress': '40', 'parentID': 1 },
-    { 'TaskID': 4, 'TaskName': 'Child Task 3', 'StartDate': new Date('02/23/2017'), 'Duration': 2, 'Priority' : 'Low',
-    'EndDate': new Date('02/27/2017'), 'Progress': '40', 'parentID': 1 },
-    { 'TaskID': 5, 'TaskName': 'Parent Task 2', 'StartDate': new Date('03/14/2017'), 'Duration': 6, 'Priority' : 'Normal',
-    'EndDate': new Date('03/18/2017'), 'Progress': '40' },
-    { 'TaskID': 6, 'TaskName': 'Child Task 1', 'StartDate': new Date('03/02/2017'), 'Duration': 11, 'Priority' : 'High',
-    'EndDate': new Date('03/06/2017'), 'Progress': '40', 'parentID': 5 },
-    { 'TaskID': 7, 'TaskName': 'Child Task 2', 'StartDate': new Date('03/02/2017'), 'Duration': 7, 'Priority' : 'Critical',
-    'EndDate': new Date('03/06/2017'), 'Progress': '40', 'parentID': 5 },
-    { 'TaskID': 8, 'TaskName': 'Child Task 3', 'StartDate': new Date('03/02/2017'), 'Duration': 10, 'Priority' : 'Breaker',
-    'EndDate': new Date('03/06/2017'), 'Progress': '40', 'parentID': 5 },
-    { 'TaskID': 9, 'TaskName': 'Child Task 4', 'StartDate': new Date('03/02/2017'), 'Duration': 15, 'Priority' : 'High',
-    'EndDate': new Date('03/06/2017'), 'Progress': '40', 'parentID': 5 },
-    { 'TaskID': 10, 'TaskName': 'Parent Task 3', 'StartDate': new Date('03/09/2017'), 'Duration': 17, 'Priority' : 'Breaker',
-    'EndDate': new Date('03/13/2017'), 'Progress': '40' },
-    { 'TaskID': 11, 'TaskName': 'Child Task 1', 'StartDate': new Date('03/9/2017'), 'Duration': 0, 'Priority' : 'Low',
-    'EndDate': new Date('03/13/2017'), 'Progress': '40', 'parentID': 10 },
-    { 'TaskID': 12, 'TaskName': 'Child Task 2', 'StartDate': new Date('03/9/2017'), 'Duration': 10, 'Priority' : 'Breaker',
-    'EndDate': new Date('03/13/2017'), 'Progress': '40', 'parentID': 10 },
-    { 'TaskID': 13, 'TaskName': 'Child Task 3', 'StartDate': new Date('03/9/2017'), 'Duration': 11, 'Priority' : 'Normal',
-    'EndDate': new Date('03/13/2017'), 'Progress': '40', 'parentID': 10 },
-    { 'TaskID': 14, 'TaskName': 'Child Task 4', 'StartDate': new Date('03/9/2017'), 'Duration': 1, 'Priority' : 'Normal',
-    'EndDate': new Date('03/13/2017'), 'Progress': '40', 'parentID': 10 },
-    { 'TaskID': 15, 'TaskName': 'Child Task 5', 'StartDate': new Date('03/9/2017'), 'Duration': 14, 'Priority' : 'Critical',
-    'EndDate': new Date('03/13/2017'), 'Progress': '40', 'parentID': 10 }
+    {
+        'TaskID': 1, 'TaskName': 'Parent Task 1', 'StartDate': new Date('02/23/2017'), 'Duration': 3, 'Priority': 'Normal',
+        'EndDate': new Date('02/27/2017'), 'Progress': '40'
+    },
+    {
+        'TaskID': 2, 'TaskName': 'Child Task 1', 'StartDate': new Date('02/23/2017'), 'Duration': 4, 'Priority': 'Low',
+        'EndDate': new Date('02/27/2017'), 'Progress': '40', 'parentID': 1
+    },
+    {
+        'TaskID': 3, 'TaskName': 'Child Task 2', 'StartDate': new Date('02/23/2017'), 'Duration': 2, 'Priority': 'Normal',
+        'EndDate': new Date('02/27/2017'), 'Progress': '40', 'parentID': 1
+    },
+    {
+        'TaskID': 4, 'TaskName': 'Child Task 3', 'StartDate': new Date('02/23/2017'), 'Duration': 2, 'Priority': 'Low',
+        'EndDate': new Date('02/27/2017'), 'Progress': '40', 'parentID': 1
+    },
+    {
+        'TaskID': 5, 'TaskName': 'Parent Task 2', 'StartDate': new Date('03/14/2017'), 'Duration': 6, 'Priority': 'Normal',
+        'EndDate': new Date('03/18/2017'), 'Progress': '40'
+    },
+    {
+        'TaskID': 6, 'TaskName': 'Child Task 1', 'StartDate': new Date('03/02/2017'), 'Duration': 11, 'Priority': 'High',
+        'EndDate': new Date('03/06/2017'), 'Progress': '40', 'parentID': 5
+    },
+    {
+        'TaskID': 7, 'TaskName': 'Child Task 2', 'StartDate': new Date('03/02/2017'), 'Duration': 7, 'Priority': 'Critical',
+        'EndDate': new Date('03/06/2017'), 'Progress': '40', 'parentID': 5
+    },
+    {
+        'TaskID': 8, 'TaskName': 'Child Task 3', 'StartDate': new Date('03/02/2017'), 'Duration': 10, 'Priority': 'Breaker',
+        'EndDate': new Date('03/06/2017'), 'Progress': '40', 'parentID': 5
+    },
+    {
+        'TaskID': 9, 'TaskName': 'Child Task 4', 'StartDate': new Date('03/02/2017'), 'Duration': 15, 'Priority': 'High',
+        'EndDate': new Date('03/06/2017'), 'Progress': '40', 'parentID': 5
+    },
+    {
+        'TaskID': 10, 'TaskName': 'Parent Task 3', 'StartDate': new Date('03/09/2017'), 'Duration': 17, 'Priority': 'Breaker',
+        'EndDate': new Date('03/13/2017'), 'Progress': '40'
+    },
+    {
+        'TaskID': 11, 'TaskName': 'Child Task 1', 'StartDate': new Date('03/9/2017'), 'Duration': 0, 'Priority': 'Low',
+        'EndDate': new Date('03/13/2017'), 'Progress': '40', 'parentID': 10
+    },
+    {
+        'TaskID': 12, 'TaskName': 'Child Task 2', 'StartDate': new Date('03/9/2017'), 'Duration': 10, 'Priority': 'Breaker',
+        'EndDate': new Date('03/13/2017'), 'Progress': '40', 'parentID': 10
+    },
+    {
+        'TaskID': 13, 'TaskName': 'Child Task 3', 'StartDate': new Date('03/9/2017'), 'Duration': 11, 'Priority': 'Normal',
+        'EndDate': new Date('03/13/2017'), 'Progress': '40', 'parentID': 10
+    },
+    {
+        'TaskID': 14, 'TaskName': 'Child Task 4', 'StartDate': new Date('03/9/2017'), 'Duration': 1, 'Priority': 'Normal',
+        'EndDate': new Date('03/13/2017'), 'Progress': '40', 'parentID': 10
+    },
+    {
+        'TaskID': 15, 'TaskName': 'Child Task 5', 'StartDate': new Date('03/9/2017'), 'Duration': 14, 'Priority': 'Critical',
+        'EndDate': new Date('03/13/2017'), 'Progress': '40', 'parentID': 10
+    }
 ];
 
 
@@ -1052,17 +1985,27 @@ export let formatData: Object[] = [
         price: '133.66',
         Category: 'seafood',
         subtasks: [
-            { orderID: '1.1', orderName: 'Mackerel', Category: 'Frozen seafood', units: '235',
-            orderDate: new Date('02/03/2017'), shippedDate: new Date('05/13/2019'), unitPrice: '12', price: '28.20' },
-            { orderID: '1.2', orderName: 'Yellowfin Tuna', Category: 'Frozen seafood', units: '324',
-            orderDate: new Date('05/03/2017'), shippedDate: new Date('05/22/2019'), unitPrice: '8', price: '25.92' },
-            { orderID: '1.3', orderName: 'Herrings', Category: 'Frozen seafood', units: '488',
-            orderDate: new Date('10/03/2017'), shippedDate: new Date('10/14/2019'), unitPrice: '11', price: '52.68' },
-            { orderID: '1.4', orderName: 'Preserved Olives', Category: 'Edible', units: '125',
-            orderDate: new Date('08/03/2017'), shippedDate: new Date('08/03/2019'), unitPrice: '9', price: '11.25' },
-            { orderID: '1.5', orderName: 'Sweet corn Frozen', Category: 'Edible', units: '223',
-            orderDate: new Date('09/03/2017'), shippedDate: new Date('09/03/2019'), unitPrice: '7', price: '15.61' }
-         ]
+            {
+                orderID: '1.1', orderName: 'Mackerel', Category: 'Frozen seafood', units: '235',
+                orderDate: new Date('02/03/2017'), shippedDate: new Date('05/13/2019'), unitPrice: '12', price: '28.20'
+            },
+            {
+                orderID: '1.2', orderName: 'Yellowfin Tuna', Category: 'Frozen seafood', units: '324',
+                orderDate: new Date('05/03/2017'), shippedDate: new Date('05/22/2019'), unitPrice: '8', price: '25.92'
+            },
+            {
+                orderID: '1.3', orderName: 'Herrings', Category: 'Frozen seafood', units: '488',
+                orderDate: new Date('10/03/2017'), shippedDate: new Date('10/14/2019'), unitPrice: '11', price: '52.68'
+            },
+            {
+                orderID: '1.4', orderName: 'Preserved Olives', Category: 'Edible', units: '125',
+                orderDate: new Date('08/03/2017'), shippedDate: new Date('08/03/2019'), unitPrice: '9', price: '11.25'
+            },
+            {
+                orderID: '1.5', orderName: 'Sweet corn Frozen', Category: 'Edible', units: '223',
+                orderDate: new Date('09/03/2017'), shippedDate: new Date('09/03/2019'), unitPrice: '7', price: '15.61'
+            }
+        ]
     },
     {
         orderID: '2',
@@ -1074,16 +2017,26 @@ export let formatData: Object[] = [
         price: '212.33',
         Category: 'seafood',
         subtasks: [
-            { orderID: '2.1', orderName: 'Tilapias', Category: 'Frozen seafood',
-            orderDate: new Date('03/05/2017'), shippedDate: new Date('03/15/2019'), units: '278', unitPrice: '15', price: '41.70' },
-            { orderID: '2.2', orderName: 'White Shrimp', Category: 'Frozen seafood', units: '560',
-            orderDate: new Date('07/05/2017'), shippedDate: new Date('03/15/2019'), unitPrice: '7', price: '39.20' },
-            { orderID: '2.3', orderName: 'Fresh Cheese', Category: 'Dairy', units: '323', unitPrice: '12',
-            orderDate: new Date('09/03/2017'), shippedDate: new Date('09/19/2019'), price: '38.76' },
-            { orderID: '2.4', orderName: 'Blue Veined Cheese', Category: 'Dairy', units: '370', unitPrice: '15',
-            orderDate: new Date('11/03/2017'), shippedDate: new Date('11/13/2019'), price: '55.50' },
-            { orderID: '2.5', orderName: 'Butter', Category: 'Dairy', units: '413', unitPrice: '9',
-            orderDate: new Date('12/23/2017'), shippedDate: new Date('12/23/2019'), price: '37.17' }
+            {
+                orderID: '2.1', orderName: 'Tilapias', Category: 'Frozen seafood',
+                orderDate: new Date('03/05/2017'), shippedDate: new Date('03/15/2019'), units: '278', unitPrice: '15', price: '41.70'
+            },
+            {
+                orderID: '2.2', orderName: 'White Shrimp', Category: 'Frozen seafood', units: '560',
+                orderDate: new Date('07/05/2017'), shippedDate: new Date('03/15/2019'), unitPrice: '7', price: '39.20'
+            },
+            {
+                orderID: '2.3', orderName: 'Fresh Cheese', Category: 'Dairy', units: '323', unitPrice: '12',
+                orderDate: new Date('09/03/2017'), shippedDate: new Date('09/19/2019'), price: '38.76'
+            },
+            {
+                orderID: '2.4', orderName: 'Blue Veined Cheese', Category: 'Dairy', units: '370', unitPrice: '15',
+                orderDate: new Date('11/03/2017'), shippedDate: new Date('11/13/2019'), price: '55.50'
+            },
+            {
+                orderID: '2.5', orderName: 'Butter', Category: 'Dairy', units: '413', unitPrice: '9',
+                orderDate: new Date('12/23/2017'), shippedDate: new Date('12/23/2019'), price: '37.17'
+            }
         ]
     },
     {
@@ -1096,22 +2049,28 @@ export let formatData: Object[] = [
         price: '108.80',
         Category: 'seafood',
         subtasks: [
-            { orderID: '3.1', orderName: 'Lead glassware', Category: 'Solid crystals',
-            orderDate: new Date('08/03/2017'), shippedDate: new Date('03/18/2019'), units: '542', unitPrice: '6', price: '32.52' },
-            { orderID: '3.2', orderName: 'Pharmaceutical Glassware', Category: 'Solid crystals',
-            orderDate: new Date('03/10/2017'), shippedDate: new Date('03/20/2019'), units: '324', unitPrice: '11', price: '35.64' },
-            { orderID: '3.3', orderName: 'Glass beads', Category: 'Solid crystals', units: '254',
-            orderDate: new Date('03/02/2017'), shippedDate: new Date('03/22/2019'), unitPrice: '16', price: '40.64' }
+            {
+                orderID: '3.1', orderName: 'Lead glassware', Category: 'Solid crystals',
+                orderDate: new Date('08/03/2017'), shippedDate: new Date('03/18/2019'), units: '542', unitPrice: '6', price: '32.52'
+            },
+            {
+                orderID: '3.2', orderName: 'Pharmaceutical Glassware', Category: 'Solid crystals',
+                orderDate: new Date('03/10/2017'), shippedDate: new Date('03/20/2019'), units: '324', unitPrice: '11', price: '35.64'
+            },
+            {
+                orderID: '3.3', orderName: 'Glass beads', Category: 'Solid crystals', units: '254',
+                orderDate: new Date('03/02/2017'), shippedDate: new Date('03/22/2019'), unitPrice: '16', price: '40.64'
+            }
         ]
     }
 
 ];
 
-export  let lockRowDropDownData: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
-13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
-31, 32, 33, 34, 35, 36];
+export let lockRowDropDownData: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
+    13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
+    31, 32, 33, 34, 35, 36];
 
-export let lineData: Object[] =  [
+export let lineData: Object[] = [
     [0, 6, 4, 1, 3, 2, 5],
     [5, 4, 6, 3, 1, 2, 0],
     [6, 4, 0, 3, 2, 5, 1],
@@ -1135,7 +2094,7 @@ export let lineData: Object[] =  [
     [1, 3, 4, 2, 5, 0, 6]
 ];
 
-export let columnData: Object[] =  [
+export let columnData: Object[] = [
     [0, 6, -4, 1, -3, 2, 5],
     [5, -4, 6, 3, -1, 2, 0],
     [6, 4, 0, 3, -2, 5, 1],
@@ -1170,17 +2129,27 @@ export let sortData: Object[] = [
         price: 134,
         Category: 'Seafoods',
         subtasks: [
-            { orderID: '1.1', orderName: 'Mackerel', Category: 'Frozen seafood', units: '235',
-            orderDate: new Date('03/03/2017'), shippedDate: new Date('03/10/2017'), unitPrice: '12.35', price: 28 },
-            { orderID: '1.2', orderName: 'Yellowfin Tuna', Category: 'Frozen seafood', units: '324',
-            orderDate: new Date('04/05/2017'), shippedDate: new Date('04/12/2017'), unitPrice: '18.56', price: 25 },
-            { orderID: '1.3', orderName: 'Herrings', Category: 'Frozen seafood', units: '488',
-            orderDate: new Date('05/08/2017'), shippedDate: new Date('05/15/2017'), unitPrice: '11.45', price: 52 },
-            { orderID: '1.4', orderName: 'Preserved Olives', Category: 'Edible', units: '125',
-            orderDate: new Date('06/10/2017'), shippedDate: new Date('06/17/2017'), unitPrice: '19.26', price: 11 },
-            { orderID: '1.5', orderName: 'Sweet corn Frozen', Category: 'Edible', units: '223',
-            orderDate: new Date('07/12/2017'), shippedDate: new Date('07/19/2019'), unitPrice: '17.54', price: 15 }
-         ]
+            {
+                orderID: '1.1', orderName: 'Mackerel', Category: 'Frozen seafood', units: '235',
+                orderDate: new Date('03/03/2017'), shippedDate: new Date('03/10/2017'), unitPrice: '12.35', price: 28
+            },
+            {
+                orderID: '1.2', orderName: 'Yellowfin Tuna', Category: 'Frozen seafood', units: '324',
+                orderDate: new Date('04/05/2017'), shippedDate: new Date('04/12/2017'), unitPrice: '18.56', price: 25
+            },
+            {
+                orderID: '1.3', orderName: 'Herrings', Category: 'Frozen seafood', units: '488',
+                orderDate: new Date('05/08/2017'), shippedDate: new Date('05/15/2017'), unitPrice: '11.45', price: 52
+            },
+            {
+                orderID: '1.4', orderName: 'Preserved Olives', Category: 'Edible', units: '125',
+                orderDate: new Date('06/10/2017'), shippedDate: new Date('06/17/2017'), unitPrice: '19.26', price: 11
+            },
+            {
+                orderID: '1.5', orderName: 'Sweet corn Frozen', Category: 'Edible', units: '223',
+                orderDate: new Date('07/12/2017'), shippedDate: new Date('07/19/2019'), unitPrice: '17.54', price: 15
+            }
+        ]
     },
     {
         orderID: '2',
@@ -1192,16 +2161,26 @@ export let sortData: Object[] = [
         price: 212,
         Category: 'products',
         subtasks: [
-            { orderID: '2.1', orderName: 'Tilapias', Category: 'Frozen seafood',
-            orderDate: new Date('02/05/2018'), shippedDate: new Date('02/12/2018'), units: '278', unitPrice: '15.26', price: 41 },
-            { orderID: '2.2', orderName: 'White Shrimp', Category: 'Frozen seafood', units: '560',
-            orderDate: new Date('05/22/2018'), shippedDate: new Date('05/29/2018'), unitPrice: '17.26', price: 39 },
-            { orderID: '2.3', orderName: 'Fresh Cheese', Category: 'Dairy', units: '323', unitPrice: '12.67',
-            orderDate: new Date('06/08/2018'), shippedDate: new Date('06/15/2018'), price: 38 },
-            { orderID: '2.4', orderName: 'Blue Veined Cheese', Category: 'Dairy', units: '370', unitPrice: '15.25',
-            orderDate: new Date('07/10/2018'), shippedDate: new Date('07/17/2018'), price: 55 },
-            { orderID: '2.5', orderName: 'Butter', Category: 'Dairy', units: '413', unitPrice: '19.25',
-            orderDate: new Date('09/18/2018'), shippedDate: new Date('09/25/2018'), price: 37.17 }
+            {
+                orderID: '2.1', orderName: 'Tilapias', Category: 'Frozen seafood',
+                orderDate: new Date('02/05/2018'), shippedDate: new Date('02/12/2018'), units: '278', unitPrice: '15.26', price: 41
+            },
+            {
+                orderID: '2.2', orderName: 'White Shrimp', Category: 'Frozen seafood', units: '560',
+                orderDate: new Date('05/22/2018'), shippedDate: new Date('05/29/2018'), unitPrice: '17.26', price: 39
+            },
+            {
+                orderID: '2.3', orderName: 'Fresh Cheese', Category: 'Dairy', units: '323', unitPrice: '12.67',
+                orderDate: new Date('06/08/2018'), shippedDate: new Date('06/15/2018'), price: 38
+            },
+            {
+                orderID: '2.4', orderName: 'Blue Veined Cheese', Category: 'Dairy', units: '370', unitPrice: '15.25',
+                orderDate: new Date('07/10/2018'), shippedDate: new Date('07/17/2018'), price: 55
+            },
+            {
+                orderID: '2.5', orderName: 'Butter', Category: 'Dairy', units: '413', unitPrice: '19.25',
+                orderDate: new Date('09/18/2018'), shippedDate: new Date('09/25/2018'), price: 37.17
+            }
         ]
     },
     {
@@ -1214,12 +2193,18 @@ export let sortData: Object[] = [
         price: 109,
         Category: 'Crystals',
         subtasks: [
-            { orderID: '3.1', orderName: 'Lead glassware', Category: 'Solid crystals',
-            orderDate: new Date('02/07/2018'), shippedDate: new Date('02/14/2018'), units: '542', unitPrice: '16.45', price: 32 },
-            { orderID: '3.2', orderName: 'Pharmaceutical Glassware', Category: 'Solid crystals',
-            orderDate: new Date('04/19/2018'), shippedDate: new Date('04/26/2018'), units: '324', unitPrice: '11.45', price: 35 },
-            { orderID: '3.3', orderName: 'Glass beads', Category: 'Solid crystals', units: '254',
-            orderDate: new Date('05/22/2018'), shippedDate: new Date('03/22/2018'), unitPrice: '16.23', price: 40 }
+            {
+                orderID: '3.1', orderName: 'Lead glassware', Category: 'Solid crystals',
+                orderDate: new Date('02/07/2018'), shippedDate: new Date('02/14/2018'), units: '542', unitPrice: '16.45', price: 32
+            },
+            {
+                orderID: '3.2', orderName: 'Pharmaceutical Glassware', Category: 'Solid crystals',
+                orderDate: new Date('04/19/2018'), shippedDate: new Date('04/26/2018'), units: '324', unitPrice: '11.45', price: 35
+            },
+            {
+                orderID: '3.3', orderName: 'Glass beads', Category: 'Solid crystals', units: '254',
+                orderDate: new Date('05/22/2018'), shippedDate: new Date('03/22/2018'), unitPrice: '16.23', price: 40
+            }
         ]
     }
 
@@ -1294,44 +2279,44 @@ export let summaryRowData: Object[] = [{
             'TotalCosts': 231,
             'UnitWeight': 65,
         }],
-    },
-    {
-        'FreightID': 'EJ9456KN',
-        'FreightName': 'Sun technologies inc',
-        'TotalUnits': 33,
-        'TotalCosts': 229,
-        'UnitWeight': 192,
-        'children': [
-            {
-                'FreightID': 'GH2367OP',
-                'FreightName': 'Haier Group',
-                'TotalUnits': 78,
-                'TotalCosts': 678,
-                'UnitWeight': 23,
-            },
-            {
-                'FreightID': 'GH4309TH',
-                'FreightName': 'Panda Electronics',
-                'TotalUnits': 90,
-                'TotalCosts': 790,
-                'UnitWeight': 48,
-            },
-            {
-                'FreightID': 'GH3494SD',
-                'FreightName': 'Jiangsu Etern',
-                'TotalUnits': 36,
-                'TotalCosts': 435,
-                'UnitWeight': 56,
-            },
-            {
-                'FreightID': 'GH3213FR',
-                'FreightName': 'Zhejiang Fuchunjiang',
-                'TotalUnits': 12,
-                'TotalCosts': 278,
-                'UnitWeight': 65,
-            }],
+},
+{
+    'FreightID': 'EJ9456KN',
+    'FreightName': 'Sun technologies inc',
+    'TotalUnits': 33,
+    'TotalCosts': 229,
+    'UnitWeight': 192,
+    'children': [
+        {
+            'FreightID': 'GH2367OP',
+            'FreightName': 'Haier Group',
+            'TotalUnits': 78,
+            'TotalCosts': 678,
+            'UnitWeight': 23,
+        },
+        {
+            'FreightID': 'GH4309TH',
+            'FreightName': 'Panda Electronics',
+            'TotalUnits': 90,
+            'TotalCosts': 790,
+            'UnitWeight': 48,
+        },
+        {
+            'FreightID': 'GH3494SD',
+            'FreightName': 'Jiangsu Etern',
+            'TotalUnits': 36,
+            'TotalCosts': 435,
+            'UnitWeight': 56,
+        },
+        {
+            'FreightID': 'GH3213FR',
+            'FreightName': 'Zhejiang Fuchunjiang',
+            'TotalUnits': 12,
+            'TotalCosts': 278,
+            'UnitWeight': 65,
+        }],
 
-        }
+}
 ];
 
 export let getSparkData: Function = (type: string, count: number) => {
@@ -1343,24 +2328,24 @@ export let getSparkData: Function = (type: string, count: number) => {
 };
 
 export let virtualData: any[] = [];
-    export function dataSource(): void {
-        let parent: number = -1;
-        let crew: string = 'Crew';
-        let parentId: number ;
-        let names: string[] = ['VINET', 'TOMSP', 'HANAR', 'VICTE', 'SUPRD', 'HANAR', 'CHOPS', 'RICSU', 'WELLI', 'HILAA', 'ERNSH', 'CENTC',
+export function dataSource(): void {
+    let parent: number = -1;
+    let crew: string = 'Crew';
+    let parentId: number;
+    let names: string[] = ['VINET', 'TOMSP', 'HANAR', 'VICTE', 'SUPRD', 'HANAR', 'CHOPS', 'RICSU', 'WELLI', 'HILAA', 'ERNSH', 'CENTC',
         'OTTIK', 'QUEDE', 'RATTC', 'ERNSH', 'FOLKO', 'BLONP', 'WARTH', 'FRANK', 'GROSR', 'WHITC', 'WARTH', 'SPLIR', 'RATTC', 'QUICK', 'VINET',
         'MAGAA', 'TORTU', 'MORGK', 'BERGS', 'LEHMS', 'BERGS', 'ROMEY', 'ROMEY', 'LILAS', 'LEHMS', 'QUICK', 'QUICK', 'RICAR', 'REGGC', 'BSBEV',
         'COMMI', 'QUEDE', 'TRADH', 'TORTU', 'RATTC', 'VINET', 'LILAS', 'BLONP', 'HUNGO', 'RICAR', 'MAGAA', 'WANDK', 'SUPRD', 'GODOS', 'TORTU',
         'OLDWO', 'ROMEY', 'LONEP', 'ANATR', 'HUNGO', 'THEBI', 'DUMON', 'WANDK', 'QUICK', 'RATTC', 'ISLAT', 'RATTC', 'LONEP', 'ISLAT', 'TORTU',
         'WARTH', 'ISLAT', 'PERIC', 'KOENE', 'SAVEA', 'KOENE', 'BOLID', 'FOLKO', 'FURIB', 'SPLIR', 'LILAS', 'BONAP', 'MEREP', 'WARTH', 'VICTE',
         'HUNGO', 'PRINI', 'FRANK', 'OLDWO', 'MEREP', 'BONAP', 'SIMOB', 'FRANK', 'LEHMS', 'WHITC', 'QUICK', 'RATTC', 'FAMIA'];
-        for (let i: number = 0; i < 50000; i++) {        
-            if (i % 5 === 0) {
-                parent = i;
-            }
-            if (i % 5 !== 0) {
-                let num:number = isNaN((virtualData.length % parent)- 1) ?  0 : (virtualData.length % parent) - 1;
-                virtualData[num][crew].push({
+    for (let i: number = 0; i < 50000; i++) {
+        if (i % 5 === 0) {
+            parent = i;
+        }
+        if (i % 5 !== 0) {
+            let num: number = isNaN((virtualData.length % parent) - 1) ? 0 : (virtualData.length % parent) - 1;
+            virtualData[num][crew].push({
                 'TaskID': i + 1,
                 'FIELD1': names[i % 100],
                 'FIELD2': 1967 + (i % 10),
@@ -1393,9 +2378,9 @@ export let virtualData: any[] = [];
                 'FIELD29': (i % 2 == 0) ? 1000 + 112 : (i % 5 == 0) ? 1000 + 153 : 1000 + 412,
                 'FIELD30': (i % 2 == 0) ? 210 + 23 : (i % 5 == 0) ? 210 + 12 : 210 + 621,
                 'FIELD31': (i % 2 == 0) ? 300 + 533 : (i % 5 == 0) ? 300 + 321 : 300 + 699,
-                });
-            } else {
-                virtualData.push({
+            });
+        } else {
+            virtualData.push({
                 'TaskID': i + 1,
                 'Crew': [],
                 'FIELD1': names[i % 100],
@@ -1428,12 +2413,12 @@ export let virtualData: any[] = [];
                 'FIELD28': (i % 3 == 0) ? 395 + (i + 2) : (i % 4 == 0) ? 395 + (i + 4) : 395 + (i + 13),
                 'FIELD29': (i % 3 == 0) ? 89 + (i + 2) : (i % 4 == 0) ? 94 + (i + 1) : 23 + (i + 7),
                 'FIELD30': (i % 3 == 0) ? 300 + (i + 2) : (i % 4 == 0) ? 300 + (i + 1) : 300 + (i + 12),
-                });
-            }
+            });
         }
     }
+}
 
-export let treesampleData: Object[] =  [
+export let treesampleData: Object[] = [
     {
         taskID: 1,
         taskName: 'Planning',
@@ -1806,76 +2791,116 @@ export let countries: Object[] = [
         name: 'USA', capital: 'Washington, D.C.', area: 9147590, population: 327892000, gdp: 2.2,
         timezone: 'UTC -5 to -10', rating: 5, unemployment: 3.9, coordinates: '37.0902° N, 95.7129° W',
         states: [
-            { name: 'Washington, D.C.', area: 184827, population: 693972, gdp: 4.7,
-            timezone: 'UTC -5', unemployment: 4.3, coordinates: '38.9072° N, 77.0369° W' },
-            { name: 'New York', area: 783.8, capital: 'Albany', population: 8175133, gdp: 1.9,
-            timezone: 'UTC -5', unemployment: 3.9, coordinates: '40.7128° N, 74.0060° W' },
-            { name: 'New Mexico', area: 315194, capital: 'Santa Fe', population: 2088070, gdp: 0.1,
-            timezone: 'UTC -7', unemployment: 4.7, coordinates: '34.5199° N, 105.8701° W' },
-            { name: 'Alaska', area: 1717856, capital: 'Juneau', population: 297832, gdp: -0.5,
-            timezone: 'UTC -9', unemployment: 6.3, coordinates: '64.2008° N, 149.4937° W' }
+            {
+                name: 'Washington, D.C.', area: 184827, population: 693972, gdp: 4.7,
+                timezone: 'UTC -5', unemployment: 4.3, coordinates: '38.9072° N, 77.0369° W'
+            },
+            {
+                name: 'New York', area: 783.8, capital: 'Albany', population: 8175133, gdp: 1.9,
+                timezone: 'UTC -5', unemployment: 3.9, coordinates: '40.7128° N, 74.0060° W'
+            },
+            {
+                name: 'New Mexico', area: 315194, capital: 'Santa Fe', population: 2088070, gdp: 0.1,
+                timezone: 'UTC -7', unemployment: 4.7, coordinates: '34.5199° N, 105.8701° W'
+            },
+            {
+                name: 'Alaska', area: 1717856, capital: 'Juneau', population: 297832, gdp: -0.5,
+                timezone: 'UTC -9', unemployment: 6.3, coordinates: '64.2008° N, 149.4937° W'
+            }
         ]
     },
     {
         name: 'Greece', capital: 'Athens', area: 131957, population: 10783625, gdp: 1.5,
         timezone: 'UTC +2.0', rating: 3, unemployment: 20.8, coordinates: '39.0742° N, 21.8243° E',
         states: [
-            { name: 'Athens', area: 2929, population: 664046, gdp: 1,
-            timezone: 'UTC +2.0', unemployment: 7.7, coordinates: '37.9838° N, 23.7275° E' },
-            { name: 'Arcadia', capital: 'Tripoli', area: 28.83, population: 58799, gdp: 2.5,
-            timezone: 'UTC +2.0', unemployment: 3.0, coordinates: '34.1397° N, 118.0353° W' },
-            { name: 'Argolis', capital: 'Nafplio', area: 2154, population: 97044, gdp: 2.1,
-            timezone: 'UTC +2.0', unemployment: 6.2, coordinates: '37.6525° N, 22.8582° E' }
+            {
+                name: 'Athens', area: 2929, population: 664046, gdp: 1,
+                timezone: 'UTC +2.0', unemployment: 7.7, coordinates: '37.9838° N, 23.7275° E'
+            },
+            {
+                name: 'Arcadia', capital: 'Tripoli', area: 28.83, population: 58799, gdp: 2.5,
+                timezone: 'UTC +2.0', unemployment: 3.0, coordinates: '34.1397° N, 118.0353° W'
+            },
+            {
+                name: 'Argolis', capital: 'Nafplio', area: 2154, population: 97044, gdp: 2.1,
+                timezone: 'UTC +2.0', unemployment: 6.2, coordinates: '37.6525° N, 22.8582° E'
+            }
         ]
     },
     {
         name: 'Germany', capital: 'Berlin', area: 357386, population: 82293457, gdp: 2.2,
         timezone: 'UTC +1.0', rating: 5, unemployment: 3.3, coordinates: '51.1657° N, 10.4515° E',
         states: [
-            { name: 'Berlin', area: 891.8, population: 3539234, gdp: 4.1,
-            timezone: 'UTC +1.0', unemployment: 7.7, coordinates: '52.5200° N, 13.4050° E' },
-            { name: 'Bavaria', capital: 'Munich', area: 70550, population: 12997204, gdp: 3.1,
-            timezone: 'UTC +1.0', unemployment: 2.7, coordinates: '48.7904° N, 11.4979° E' },
-            { name: 'Saxony', capital: 'Dresden', area: 18416, population: 4081308, gdp: 3.8,
-            timezone: 'UTC +1.0', unemployment: 6.2, coordinates: '51.1045° N, 13.2017° E' }
+            {
+                name: 'Berlin', area: 891.8, population: 3539234, gdp: 4.1,
+                timezone: 'UTC +1.0', unemployment: 7.7, coordinates: '52.5200° N, 13.4050° E'
+            },
+            {
+                name: 'Bavaria', capital: 'Munich', area: 70550, population: 12997204, gdp: 3.1,
+                timezone: 'UTC +1.0', unemployment: 2.7, coordinates: '48.7904° N, 11.4979° E'
+            },
+            {
+                name: 'Saxony', capital: 'Dresden', area: 18416, population: 4081308, gdp: 3.8,
+                timezone: 'UTC +1.0', unemployment: 6.2, coordinates: '51.1045° N, 13.2017° E'
+            }
         ]
     },
     {
         name: 'Bangladesh', capital: 'Dhaka', area: 147570, population: 185584811, gdp: 7.3,
         timezone: 'UTC +6.0', rating: 3, unemployment: 4.3, coordinates: '23.6850° N, 90.3563° E',
         states: [
-            { name: 'Dhaka', area: 306.4, population: 10356500, gdp: 7.28,
-            timezone: 'UTC +6.0', unemployment: 7.4, coordinates: '23.8103° N, 90.4125° E' },
-            { name: 'Barisal', capital: 'Barisal', area: 16.37, population: 202242, gdp: 6.3,
-            timezone: 'UTC +6.0', unemployment: 5, coordinates: '22.7010° N, 90.3535° E' },
-            { name: 'Chittagong', capital: 'Chittagong', area: 168.1, population: 3920222, gdp: 6.3,
-            timezone: 'UTC +6.0', unemployment: 4.7, coordinates: '22.3569° N, 91.7832° E' }
+            {
+                name: 'Dhaka', area: 306.4, population: 10356500, gdp: 7.28,
+                timezone: 'UTC +6.0', unemployment: 7.4, coordinates: '23.8103° N, 90.4125° E'
+            },
+            {
+                name: 'Barisal', capital: 'Barisal', area: 16.37, population: 202242, gdp: 6.3,
+                timezone: 'UTC +6.0', unemployment: 5, coordinates: '22.7010° N, 90.3535° E'
+            },
+            {
+                name: 'Chittagong', capital: 'Chittagong', area: 168.1, population: 3920222, gdp: 6.3,
+                timezone: 'UTC +6.0', unemployment: 4.7, coordinates: '22.3569° N, 91.7832° E'
+            }
         ]
     },
     {
         name: 'Egypt', capital: 'Cairo', area: 1001449, population: 99375741, gdp: 4.2,
         timezone: 'UTC +2.0', rating: 3, unemployment: 9.9, coordinates: '26.8206° N, 30.8025° E',
         states: [
-            { name: 'Cairo', area: 528, population: 7734614, gdp: 3.7,
-            timezone: 'UTC +2.0', unemployment: 11.3, coordinates: '30.0444° N, 31.2357° E' },
-            { name: 'Alexandria', capital: 'Bacos', area: 46.42, population: 3811516, gdp: 4.2,
-            timezone: 'UTC +2.0', unemployment: 5.3, coordinates: '31.2001° N, 29.9187° E' },
-            { name: 'Giza', capital: 'Giza', area: 1580, population: 2443203, gdp: 4.1,
-            timezone: 'UTC +2.0', unemployment: 4.7, coordinates: '30.0131° N, 31.2089° E' }
+            {
+                name: 'Cairo', area: 528, population: 7734614, gdp: 3.7,
+                timezone: 'UTC +2.0', unemployment: 11.3, coordinates: '30.0444° N, 31.2357° E'
+            },
+            {
+                name: 'Alexandria', capital: 'Bacos', area: 46.42, population: 3811516, gdp: 4.2,
+                timezone: 'UTC +2.0', unemployment: 5.3, coordinates: '31.2001° N, 29.9187° E'
+            },
+            {
+                name: 'Giza', capital: 'Giza', area: 1580, population: 2443203, gdp: 4.1,
+                timezone: 'UTC +2.0', unemployment: 4.7, coordinates: '30.0131° N, 31.2089° E'
+            }
         ]
     },
     {
         name: 'Canada', capital: 'Ottawa', area: 9984670, population: 36953765, gdp: 3.0,
         timezone: 'UTC -3.3 to -8', rating: 5, unemployment: 5.8, coordinates: '56.1304° N, 106.3468° W',
         states: [
-            { name: 'Ontario', capital: 'Toronto', area: 908607, population: 14374084, gdp: 2.8,
-            timezone: 'UTC -5', unemployment: 5.9, coordinates: '51.2538° N, 85.3232° W' },
-            { name: 'Quebec', capital: 'Quebec', area: 1542056, population: 8455402, gdp: 1.9,
-            timezone: 'UTC -4 to -5', unemployment: 5.6, coordinates: '46.8139° N, 71.2080° W' },
-            { name: 'Alberta', capital: 'Edmonton', area: 661848, population: 4334025, gdp: 1.6,
-            timezone: 'UTC -7', unemployment: 7.8, coordinates: '53.9333° N, 116.5765° W' },
-            { name: 'Manitoba', capital: 'Winnipeg', area: 647797, population: 1348809, gdp: 2.9,
-            timezone: 'UTC -6', unemployment: 6, coordinates: '53.7609° N, 98.8139° W' }
+            {
+                name: 'Ontario', capital: 'Toronto', area: 908607, population: 14374084, gdp: 2.8,
+                timezone: 'UTC -5', unemployment: 5.9, coordinates: '51.2538° N, 85.3232° W'
+            },
+            {
+                name: 'Quebec', capital: 'Quebec', area: 1542056, population: 8455402, gdp: 1.9,
+                timezone: 'UTC -4 to -5', unemployment: 5.6, coordinates: '46.8139° N, 71.2080° W'
+            },
+            {
+                name: 'Alberta', capital: 'Edmonton', area: 661848, population: 4334025, gdp: 1.6,
+                timezone: 'UTC -7', unemployment: 7.8, coordinates: '53.9333° N, 116.5765° W'
+            },
+            {
+                name: 'Manitoba', capital: 'Winnipeg', area: 647797, population: 1348809, gdp: 2.9,
+                timezone: 'UTC -6', unemployment: 6, coordinates: '53.7609° N, 98.8139° W'
+            }
         ]
     }
 ];
@@ -3864,4 +4889,985 @@ export let getTradeData: object[] = [
             }
         ]
     },
+];
+
+export let foodMenu: Object[] = [
+    {
+        FoodCategory: 'Salads',
+        FoodName: 'Salads',
+        FoodType: 'Veg',
+        newPrice: 0,
+        originalPrice: 0,
+        Image: '',
+        FoodId: 1,
+        CategoryId: null,
+        Rating: 0,
+        TotalReviews: 0,
+        FoodDescription: '',
+        IsBestseller: false,
+        vegCount: 2,
+        nonvegCount: 4,
+        ingredients: [],
+    },
+    {
+        FoodCategory: 'Salads',
+        FoodName: 'House Salad',
+        FoodType: 'Veg',
+        newPrice: 7.99,
+        originalPrice: 9.99,
+        Image: 'src/treegrid/images/house-salad.png',
+        FoodId: 2,
+        CategoryId: 1,
+        Rating: 4.5,
+        TotalReviews: 120,
+        FoodDescription:  "This refreshing house salad features crisp lettuce, juicy cherry tomatoes, crunchy cucumbers, and shredded carrots, served with a light vinaigrette.",
+        IsBestseller: true,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Lettuce", "Cherry tomatoes", "Cucumbers", "Carrots", "Vinaigrette"]
+    },
+    {
+        FoodCategory: 'Salads',
+        FoodName: 'Cranberry Chicken Salad',
+        FoodType: 'Non-veg',
+        newPrice: 13.99,
+        originalPrice: 0,
+        Image: 'src/treegrid/images/cranberry-chicken-salad.png',
+        FoodId: 3,
+        CategoryId: 1,
+        Rating: 4.6,
+        TotalReviews: 110,
+        FoodDescription: "This flavorful salad combines tender grilled chicken breast with fresh mixed greens, sweet dried cranberries, and a tangy dressing.",
+       IsBestseller: true,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Chicken breast", "Mixed greens", "Dried cranberries", "Dressing"]
+    },
+    {
+        FoodCategory: 'Salads',
+        FoodName: 'Chili Chicken Steamed',
+        FoodType: 'Non-veg',
+        newPrice: 12.49,
+        originalPrice: 14.49,
+        Image: 'src/treegrid/images/chili-chicken-steamed.png',
+        FoodId: 4,
+        CategoryId: 1,
+        Rating: 4.4,
+        TotalReviews: 90,
+        FoodDescription: "This spicy salad features steamed chicken tossed with vibrant green chilies, aromatic garlic, and a savory sauce.",
+        IsBestseller: false,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Chicken", "Green chilies", "Garlic", "Sauce"]
+    },
+    {
+        FoodCategory: 'Salads',
+        FoodName: 'Spinach Salad',
+        FoodType: 'Veg',
+        newPrice: 8.99,
+        originalPrice: 0,
+        Image: 'src/treegrid/images/spinach-salad.png',
+        FoodId: 5,
+        CategoryId: 1,
+        Rating: 4.3,
+        TotalReviews: 80,
+        FoodDescription: "This nutritious salad combines fresh baby spinach, sweet cherry tomatoes, and crunchy walnuts, drizzled with a balsamic dressing.",
+        IsBestseller: false,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Baby spinach", "Cherry tomatoes", "Walnuts", "Balsamic dressing"]
+    },
+    {
+        FoodCategory: 'Salads',
+        FoodName: 'Caesar Salad',
+        FoodType: 'Non-veg',
+        newPrice: 10.99,
+        originalPrice: 12.99,
+        Image: 'src/treegrid/images/caesar-salad.png',
+        FoodId: 6,
+        CategoryId: 1,
+        Rating: 4.7,
+        TotalReviews: 140,
+        FoodDescription: "This classic Caesar salad features crisp romaine lettuce, shaved Parmesan cheese, crunchy croutons, and a creamy Caesar dressing, with optional anchovies.",
+        IsBestseller: true,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Romaine lettuce", "Parmesan cheese", "Croutons", "Caesar dressing", "Anchovies"]
+    },
+    {
+        FoodCategory: 'Salads',
+        FoodName: 'Blue Chicken Salad',
+        FoodType: 'Non-veg',
+        newPrice: 12.99,
+        originalPrice: 14.99,
+        Image: 'src/treegrid/images/blue-chicken-salad.png',
+        FoodId: 7,
+        CategoryId: 1,
+        Rating: 4.2,
+        TotalReviews: 60,
+        FoodDescription:  "This hearty salad includes juicy grilled chicken, creamy blue cheese, and fresh mixed greens, topped with a zesty vinaigrette.",
+        IsBestseller: false,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Chicken", "Blue cheese", "Mixed greens", "Vinaigrette"]
+    },
+
+    // Pizza Category
+    {
+        FoodCategory: 'Pizza',
+        FoodName: 'Pizza',
+        FoodType: 'Veg',
+        newPrice: 0,
+        originalPrice: 0,
+        Image: '',
+        FoodId: 8,
+        CategoryId: null,
+        Rating: 0,
+        TotalReviews: 0,
+        FoodDescription: '',
+        IsBestseller: false,
+        vegCount: 3,
+        nonvegCount: 3,
+        ingredients: [],
+    },
+    {
+        FoodCategory: 'Pizza',
+        FoodName: 'Veggie Pizza',
+        FoodType: 'Veg',
+        newPrice: 14.99,
+        originalPrice: 0,
+        Image: 'src/treegrid/images/veggie-pizza.png',
+        FoodId: 9,
+        CategoryId: 8,
+        Rating: 4.6,
+        TotalReviews: 100,
+        FoodDescription:"This delicious veggie pizza is topped with colorful bell peppers, sweet onions, black olives, and melted mozzarella cheese on a tomato sauce base.",
+        IsBestseller: true,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Bell peppers", "Onions", "Black olives", "Mozzarella cheese", "Tomato sauce"]
+    },
+    {
+        FoodCategory: 'Pizza',
+        FoodName: 'Margherita Pizza',
+        FoodType: 'Veg',
+        newPrice: 13.99,
+        originalPrice: 0,
+        Image: 'src/treegrid/images/margherita-pizza.png',
+        FoodId: 10,
+        CategoryId: 8,
+        Rating: 4.7,
+        TotalReviews: 120,
+        FoodDescription: "This classic Margherita pizza features fresh mozzarella cheese, rich tomato sauce, and fragrant basil leaves on a crispy crust.",
+        IsBestseller: true,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Mozzarella cheese", "Tomato sauce", "Basil", "Crust"]
+    },
+    {
+        FoodCategory: 'Pizza',
+        FoodName: 'Quattro Formaggi Pizza',
+        FoodType: 'Veg',
+        newPrice: 15.99,
+        originalPrice: 18.99,
+        Image: 'src/treegrid/images/quattro-formaggi.png',
+        FoodId: 11,
+        CategoryId: 8,
+        Rating: 4.8,
+        TotalReviews: 80,
+        FoodDescription: "This rich Quattro Formaggi pizza combines mozzarella, cheddar, Parmesan, and blue cheese on a tomato sauce base for a cheesy delight.",
+        IsBestseller: false,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Mozzarella cheese", "Cheddar cheese", "Parmesan cheese", "Blue cheese", "Tomato sauce"]
+    },
+    {
+        FoodCategory: 'Pizza',
+        FoodName: 'Capricciosa Pizza',
+        FoodType: 'Non-veg',
+        newPrice: 16.99,
+        originalPrice: 0,
+        Image: 'src/treegrid/images/capricciosa-pizza.png',
+        FoodId: 12,
+        CategoryId: 8,
+        Rating: 4.5,
+        TotalReviews: 60,
+        FoodDescription: "This savory Capricciosa pizza is topped with savory ham, earthy mushrooms, tender artichokes, and black olives on a mozzarella base.",
+        IsBestseller: false,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Ham", "Mushrooms", "Artichokes", "Black olives", "Mozzarella cheese"]
+    },
+    {
+        FoodCategory: 'Pizza',
+        FoodName: 'Pepperoni Pizza',
+        FoodType: 'Non-veg',
+        newPrice: 15.99,
+        originalPrice: 0,
+        Image: 'src/treegrid/images/pepperoni-pizza.png',
+        FoodId: 13,
+        CategoryId: 8,
+        Rating: 4.9,
+        TotalReviews: 140,
+        FoodDescription: "This classic pepperoni pizza features spicy pepperoni slices and melted mozzarella cheese on a rich tomato sauce base.",
+        IsBestseller: true,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Pepperoni", "Mozzarella cheese", "Tomato sauce"]
+    },
+    {
+        FoodCategory: 'Pizza',
+        FoodName: 'BBQ Chicken Pizza',
+        FoodType: 'Non-veg',
+        newPrice: 16.49,
+        originalPrice: 19.49,
+        Image: 'src/treegrid/images/BBQ-chicken-pizza.png',
+        FoodId: 14,
+        CategoryId: 8,
+        Rating: 4.8,
+        TotalReviews: 110,
+        FoodDescription: "This flavorful BBQ chicken pizza is topped with tender BBQ chicken, sweet onions, and melted mozzarella cheese on a smoky BBQ sauce base.",
+        IsBestseller: false,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Chicken", "Onions", "Mozzarella cheese", "BBQ sauce"]
+    },
+
+    // Burger Category
+    {
+        FoodCategory: 'Burger',
+        FoodName: 'Burger',
+        FoodType: 'Veg',
+        newPrice: 0,
+        originalPrice: 0,
+        Image: '',
+        FoodId: 15,
+        CategoryId: null,
+        Rating: 0,
+        TotalReviews: 0,
+        FoodDescription: '',
+        IsBestseller: false,
+        vegCount: 2,
+        nonvegCount: 7,
+        ingredients: [],
+    },
+    {
+        FoodCategory: 'Burger',
+        FoodName: 'Cheeseburger',
+        FoodType: 'Non-veg',
+        newPrice: 8.99,
+        originalPrice: 10.99,
+        Image: 'src/treegrid/images/cheeseburger.png',
+        FoodId: 16,
+        CategoryId: 15,
+        Rating: 4.5,
+        TotalReviews: 90,
+        FoodDescription: "This juicy cheeseburger features a grilled beef patty topped with melted cheese, crisp lettuce, and fresh tomato, served on a soft bun.",
+        IsBestseller: true,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Beef patty", "Cheese", "Lettuce", "Tomato", "Bun"]
+    },
+    {
+        FoodCategory: 'Burger',
+        FoodName: 'Smash Burger',
+        FoodType: 'Non-veg',
+        newPrice: 9.99,
+        originalPrice: 0,
+        Image: 'src/treegrid/images/smash-burger.png',
+        FoodId: 17,
+        CategoryId: 15,
+        Rating: 4.6,
+        TotalReviews: 80,
+        FoodDescription: "This smash burger includes two thin, crispy beef patties topped with melted cheese and tangy pickles, served on a toasted bun.",
+        IsBestseller: false,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Beef patties", "Cheese", "Pickles", "Bun"]
+    },
+    {
+        FoodCategory: 'Burger',
+        FoodName: 'Butter Burger',
+        FoodType: 'Non-veg',
+        newPrice: 8.99,
+        originalPrice: 10.99,
+        Image: 'src/treegrid/images/butter-burger.png',
+        FoodId: 18,
+        CategoryId: 15,
+        Rating: 4.4,
+        TotalReviews: 70,
+        FoodDescription: "This indulgent butter burger features a juicy beef patty with a rich buttery glaze, crisp lettuce, and a soft bun.",
+        IsBestseller: false,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients:  ["Beef patty", "Butter", "Lettuce", "Bun"]
+    },
+    {
+        FoodCategory: 'Burger',
+        FoodName: 'Chili Burger',
+        FoodType: 'Non-veg',
+        newPrice: 9.49,
+        originalPrice: 11.49,
+        Image: 'src/treegrid/images/chili-burger.png',
+        FoodId: 19,
+        CategoryId: 15,
+        Rating: 4.3,
+        TotalReviews: 60,
+        FoodDescription: "This spicy chili burger features a beef patty topped with spicy chili, jalapeños, and melted cheese, served on a toasted bun.",
+        IsBestseller: false,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Beef patty", "Chili", "Jalapeños", "Cheese", "Bun"]
+    },
+    {
+        FoodCategory: 'Burger',
+        FoodName: 'Veggie Burger',
+        FoodType: 'Veg',
+        newPrice: 7.99,
+        originalPrice: 0,
+        Image: 'src/treegrid/images/veggie-burger.png',
+        FoodId: 20,
+        CategoryId: 15,
+        Rating: 4.2,
+        TotalReviews: 50,
+        FoodDescription: "This hearty veggie burger features a savory vegetable patty with crisp lettuce and fresh tomato, served on a soft bun.",
+        IsBestseller: false,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Vegetable patty", "Lettuce", "Tomato", "Bun"]
+    },
+    {
+        FoodCategory: 'Burger',
+        FoodName: 'Black Bean Burger',
+        FoodType: 'Veg',
+        newPrice: 8.49,
+        originalPrice: 0,
+        Image: 'src/treegrid/images/black-bean-burger.png',
+        FoodId: 21,
+        CategoryId: 15,
+        Rating: 4.1,
+        TotalReviews: 40,
+        FoodDescription: "This flavorful black bean burger features a spiced black bean patty with fresh greens and tomato, served on a toasted bun.",
+        IsBestseller: false,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients:  ["Black bean patty", "Greens", "Tomato", "Bun"]
+    },
+    {
+        FoodCategory: 'Burger',
+        FoodName: 'Mushroom Burger',
+        FoodType: 'Veg',
+        newPrice: 8.99,
+        originalPrice: 10.99,
+        Image: 'src/treegrid/images/mushroom-burger.png',
+        FoodId: 22,
+        CategoryId: 15,
+        Rating: 4.3,
+        TotalReviews: 30,
+        FoodDescription:"This savory mushroom burger features a hearty mushroom patty topped with melted Swiss cheese and crisp lettuce, served on a bun.",
+        IsBestseller: false,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Mushroom patty", "Swiss cheese", "Lettuce", "Bun"]
+    },
+    {
+        FoodCategory: 'Burger',
+        FoodName: 'Salmon Burger',
+        FoodType: 'Non-veg',
+        newPrice: 11.99,
+        originalPrice: 0,
+        Image: 'src/treegrid/images/salmon-burger.png',
+        FoodId: 23,
+        CategoryId: 15,
+        Rating: 4.5,
+        TotalReviews: 20,
+        FoodDescription: "This delicious salmon burger features a tender salmon patty with crisp lettuce and fresh tomato, served on a soft bun.",
+        IsBestseller: false,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Salmon patty", "Lettuce", "Tomato", "Bun"]
+    },
+    {
+        FoodCategory: 'Burger',
+        FoodName: 'Chicken Burger',
+        FoodType: 'Non-veg',
+        newPrice: 9.99,
+        originalPrice: 11.99,
+        Image: 'src/treegrid/images/chicken-burger.png',
+        FoodId: 24,
+        CategoryId: 15,
+        Rating: 4.6,
+        TotalReviews: 60,
+        FoodDescription:"This juicy chicken burger features a grilled chicken fillet with crisp lettuce, served on a toasted bun with a light mayo spread.",
+        IsBestseller: true,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Chicken fillet", "Lettuce", "Bun", "Mayonnaise"]
+    },
+
+    // Hot Dogs Category
+    {
+        FoodCategory: 'Hot Dogs',
+        FoodName: 'Hot Dogs',
+        FoodType: 'Veg',
+        newPrice: 0,
+        originalPrice: 0,
+        Image: '',
+        FoodId: 25,
+        CategoryId: null,
+        Rating: 0,
+        TotalReviews: 0,
+        FoodDescription: '',
+        IsBestseller: false,
+        vegCount: 1,
+        nonvegCount: 5,
+        ingredients: [],
+    },
+    {
+        FoodCategory: 'Hot Dogs',
+        FoodName: 'Classic Hot Dog',
+        FoodType: 'Non-veg',
+        newPrice: 5.99,
+        originalPrice: 7.99,
+        Image: 'src/treegrid/images/classic-hotdog.png',
+        FoodId: 26,
+        CategoryId: 25,
+        Rating: 4.6,
+        TotalReviews: 60,
+        FoodDescription: "This classic hot dog features a juicy sausage served in a soft bun with mustard and ketchup.",
+        IsBestseller: true,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Sausage", "Bun", "Mustard", "Ketchup"]
+    },
+    {
+        FoodCategory: 'Hot Dogs',
+        FoodName: 'Onion Dog',
+        FoodType: 'Non-veg',
+        newPrice: 6.49,
+        originalPrice: 0,
+        Image: 'src/treegrid/images/onion-dog.png',
+        FoodId: 27,
+        CategoryId: 25,
+        Rating: 4.6,
+        TotalReviews: 60,
+        FoodDescription:"This savory onion dog features a juicy sausage topped with sweet caramelized onions, served in a soft bun.",
+        IsBestseller: true,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients:  ["Sausage", "Caramelized onions", "Bun"]
+    },
+    {
+        FoodCategory: 'Hot Dogs',
+        FoodName: 'Bacon Dog',
+        FoodType: 'Non-veg',
+        newPrice: 7.49,
+        originalPrice: 9.49,
+        Image: 'src/treegrid/images/bacon-dog.png',
+        FoodId: 28,
+        CategoryId: 25,
+        Rating: 4.6,
+        TotalReviews: 60,
+        FoodDescription: "This indulgent bacon dog features a juicy sausage wrapped in crispy bacon, served in a toasted bun.",
+        IsBestseller: true,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients:  ["Sausage", "Bacon", "Bun"]
+    },
+    {
+        FoodCategory: 'Hot Dogs',
+        FoodName: 'BBQ Veggie Dog',
+        FoodType: 'Veg',
+        newPrice: 6.99,
+        originalPrice: 0,
+        Image: 'src/treegrid/images/bbq-veggie-dog.png',
+        FoodId: 29,
+        CategoryId: 25,
+        Rating: 4.6,
+        TotalReviews: 60,
+        FoodDescription: "This flavorful BBQ veggie dog features a savory veggie sausage topped with smoky BBQ sauce, served in a soft bun.",
+        IsBestseller: true,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Veggie sausage", "BBQ sauce", "Bun"]
+    },
+    {
+        FoodCategory: 'Hot Dogs',
+        FoodName: 'Cheese Hot Dog',
+        FoodType: 'Non-veg',
+        newPrice: 6.99,
+        originalPrice: 8.99,
+        Image: 'src/treegrid/images/cheese-hotdog.png',
+        FoodId: 30,
+        CategoryId: 25,
+        Rating: 4.6,
+        TotalReviews: 60,
+        FoodDescription: "This cheesy hot dog features a juicy sausage topped with melted cheese, served in a toasted bun.",
+        IsBestseller: true,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients:  ["Sausage", "Cheese", "Bun"]
+    },
+    {
+        FoodCategory: 'Hot Dogs',
+        FoodName: 'Chili Dog',
+        FoodType: 'Non-veg',
+        newPrice: 7.49,
+        originalPrice: 9.49,
+        Image: 'src/treegrid/images/chili-dog.png',
+        FoodId: 31,
+        CategoryId: 25,
+        Rating: 4.6,
+        TotalReviews: 60,
+        FoodDescription: "This spicy chili dog features a juicy sausage topped with hearty chili, served in a soft bun.",
+        IsBestseller: true,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients:["Sausage", "Chili", "Bun"]
+    },
+    {
+        FoodCategory: 'Chowmein',
+        FoodName: 'Chowmein',
+        FoodType: 'Veg',
+        newPrice: 0,
+        originalPrice: 0,
+        Image: '',
+        FoodId: 32,
+        CategoryId: null,
+        Rating: 0,
+        TotalReviews: 0,
+        FoodDescription: '',
+        IsBestseller: false,
+        vegCount: 0,
+        nonvegCount: 11,
+        ingredients: [],
+    },
+    {
+        FoodCategory: 'Chowmein',
+        FoodName: 'Manchurian Chicken Chowmein',
+        FoodType: 'Non-veg',
+        newPrice: 12.99,
+        originalPrice: 0,
+        Image: 'src/treegrid/images/manchurian-chowmein.png',
+        FoodId: 33,
+        CategoryId: 32,
+        Rating: 4.4,
+        TotalReviews: 60,
+        FoodDescription: "This flavorful Manchurian chicken chowmein features stir-fried noodles with tender chicken and fresh vegetables in a savory Manchurian sauce.",
+        IsBestseller: false,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Noodles", "Chicken", "Vegetables", "Manchurian sauce"]
+    },
+    {
+        FoodCategory: 'Chowmein',
+        FoodName: 'Fish Chowmein',
+        FoodType: 'Non-veg',
+        newPrice: 13.49,
+        originalPrice: 0,
+        Image: 'src/treegrid/images/fish-chowmein.png',
+        FoodId: 34,
+        CategoryId: 32,
+        Rating: 4.3,
+        TotalReviews: 55,
+        FoodDescription: "This delicious fish chowmein features stir-fried noodles with flaky fish and fresh vegetables in a light soy-based sauce.",
+        IsBestseller: false,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients:["Noodles", "Fish", "Vegetables", "Soy sauce"]
+    },
+    {
+        FoodCategory: 'Chowmein',
+        FoodName: 'Paneer and Chicken Chowmein',
+        FoodType: 'Non-veg',
+        newPrice: 13.99,
+        originalPrice: 0,
+        Image: 'src/treegrid/images/paneer-chicken-chowmein.png',
+        FoodId: 35,
+        CategoryId: 32,
+        Rating: 4.2,
+        TotalReviews: 40,
+        FoodDescription: "This hearty chowmein features stir-fried noodles with tender paneer, juicy chicken, and fresh vegetables in a savory sauce.",
+        IsBestseller: false,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Noodles", "Paneer", "Chicken", "Vegetables", "Sauce"]
+    },
+    {
+        FoodCategory: 'Chowmein',
+        FoodName: 'Egg Chowmein',
+        FoodType: 'Non-veg',
+        newPrice: 11.99,
+        originalPrice: 0,
+        Image: 'src/treegrid/images/egg-chowmein.png',
+        FoodId: 36,
+        CategoryId: 32,
+        Rating: 4.5,
+        TotalReviews: 50,
+        FoodDescription: "This savory egg chowmein features stir-fried noodles with scrambled eggs and fresh vegetables in a light soy sauce.",
+        IsBestseller: false,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Noodles", "Eggs", "Vegetables", "Soy sauce"]
+    },
+    {
+        FoodCategory: 'Chowmein',
+        FoodName: 'Chicken Chowmein',
+        FoodType: 'Non-veg',
+        newPrice: 12.99,
+        originalPrice: 14.99,
+        Image: 'src/treegrid/images/chicken-chowmein.png',
+        FoodId: 37,
+        CategoryId: 32,
+        Rating: 4.6,
+        TotalReviews: 70,
+        FoodDescription: "This classic chicken chowmein features stir-fried noodles with tender chicken and fresh vegetables in a savory soy-based sauce.",
+        IsBestseller: false,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients:["Noodles", "Chicken", "Vegetables", "Soy sauce"]
+    },
+    {
+        FoodCategory: 'Chowmein',
+        FoodName: 'Chilli Garlic Chicken Chowmein',
+        FoodType: 'Non-veg',
+        newPrice: 13.49,
+        originalPrice: 15.49,
+        Image: 'src/treegrid/images/chilli-garlic-chowmein.png',
+        FoodId: 38,
+        CategoryId: 32,
+        Rating: 4.3,
+        TotalReviews: 45,
+        FoodDescription: "This spicy chili garlic chicken chowmein features stir-fried noodles with tender chicken, aromatic garlic, and fiery chilies in a savory sauce.",
+        IsBestseller: false,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Noodles", "Chicken", "Garlic", "Chilies", "Sauce"]
+    },
+    {
+        FoodCategory: 'Chowmein',
+        FoodName: 'Tandoori Chicken Chowmein',
+        FoodType: 'Non-veg',
+        newPrice: 13.99,
+        originalPrice: 0,
+        Image: 'src/treegrid/images/tandoori-chowmein.png',
+        FoodId: 39,
+        CategoryId: 32,
+        Rating: 4.2,
+        TotalReviews: 35,
+        FoodDescription: "This aromatic tandoori chicken chowmein features stir-fried noodles with flavorful tandoori chicken and a hint of spices.",
+        IsBestseller: false,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Noodles", "Tandoori chicken", "Spices"]
+    },
+    {
+        FoodCategory: 'Chowmein',
+        FoodName: 'Sichuan Chicken Chowmein',
+        FoodType: 'Non-veg',
+        newPrice: 13.49,
+        originalPrice: 15.49,
+        Image: 'src/treegrid/images/sichuan-chicken-chowmein.png',
+        FoodId: 40,
+        CategoryId: 32,
+        Rating: 4.1,
+        TotalReviews: 30,
+        FoodDescription:"This fiery Sichuan chicken chowmein features stir-fried noodles with tender chicken and spicy Sichuan sauce.",
+        IsBestseller: false,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Noodles", "Chicken", "Sichuan sauce"]
+    },
+    {
+        FoodCategory: 'Chowmein',
+        FoodName: 'Shrimp Chowmein',
+        FoodType: 'Non-veg',
+        newPrice: 14.99,
+        originalPrice: 16.99,
+        Image: 'src/treegrid/images/shrimp-chowmein.png',
+        FoodId: 41,
+        CategoryId: 32,
+        Rating: 4.5,
+        TotalReviews: 25,
+        FoodDescription: "This delicious shrimp chowmein features stir-fried noodles with succulent shrimp and fresh vegetables in a light soy-based sauce.",
+        IsBestseller: false,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Noodles", "Shrimp", "Vegetables", "Soy sauce"]
+    },
+    {
+        FoodCategory: 'Chowmein',
+        FoodName: 'Hakka Mutton Chowmein',
+        FoodType: 'Non-veg',
+        newPrice: 13.99,
+        originalPrice: 15.99,
+        Image: 'src/treegrid/images/hakka-mutton-chowmein.png',
+        FoodId: 42,
+        CategoryId: 32,
+        Rating: 4.3,
+        TotalReviews: 40,
+        FoodDescription: "This savory Hakka mutton chowmein features stir-fried noodles with tender mutton and a blend of Hakka spices.",
+        IsBestseller: false,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Noodles", "Mutton", "Hakka spices"]
+    },
+    {
+        FoodCategory: 'Chowmein',
+        FoodName: 'Tandoori Prawn Chowmein',
+        FoodType: 'Non-veg',
+        newPrice: 14.99,
+        originalPrice: 16.99,
+        Image: 'src/treegrid/images/tandoori-prawn-chowmein.png',
+        FoodId: 43,
+        CategoryId: 32,
+        Rating: 4.2,
+        TotalReviews: 35,
+        FoodDescription: "This aromatic tandoori prawn chowmein features stir-fried noodles with flavorful tandoori prawns and a hint of spices.",
+        IsBestseller: false,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Noodles", "Tandoori prawns", "Spices"]
+    },
+
+    {
+        FoodCategory: 'Sides',
+        FoodName: 'Sides',
+        FoodType: 'Veg',
+        newPrice: 0,
+        originalPrice: 0,
+        Image: '',
+        FoodId: 44,
+        CategoryId: null,
+        Rating: 0,
+        TotalReviews: 0,
+        FoodDescription: '',
+        IsBestseller: false,
+        vegCount: 6,
+        nonvegCount: 0,
+        ingredients: [],
+    },
+    {
+        FoodCategory: 'Sides',
+        FoodName: 'French Fries',
+        FoodType: 'Veg',
+        newPrice: 3.99,
+        originalPrice: 4.99,
+        Image: 'src/treegrid/images/french-fries.png',
+        FoodId: 45,
+        CategoryId: 44,
+        Rating: 4.5,
+        TotalReviews: 40,
+        FoodDescription: "These classic French fries are crispy golden potatoes seasoned with salt and fried in oil.",
+        IsBestseller: true,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Potatoes", "Salt", "Oil"]
+    },
+    {
+        FoodCategory: 'Sides',
+        FoodName: 'Grilled Asparagus',
+        FoodType: 'Veg',
+        newPrice: 5.49,
+        originalPrice: 6.49,
+        Image: 'src/treegrid/images/grilled-asparagus.png',
+        FoodId: 46,
+        CategoryId: 44,
+        Rating: 4.7,
+        TotalReviews: 25,
+        FoodDescription: "This side dish features fresh asparagus grilled with olive oil and a pinch of salt for a smoky flavor.",
+        IsBestseller: false,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Asparagus", "Olive oil", "Salt"]
+    },
+    {
+        FoodCategory: 'Sides',
+        FoodName: 'Sweet Potato Fries',
+        FoodType: 'Veg',
+        newPrice: 4.99,
+        originalPrice: 5.99,
+        Image: 'src/treegrid/images/sweet-potato-fries.png',
+        FoodId: 47,
+        CategoryId: 44,
+        Rating: 4.6,
+        TotalReviews: 35,
+        FoodDescription: "These sweet potato fries are crispy, sweet, and lightly salted, fried to perfection in oil.",
+        IsBestseller: true,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Sweet potatoes", "Salt", "Oil"]
+    },
+    {
+        FoodCategory: 'Sides',
+        FoodName: 'Twice Baked Beans',
+        FoodType: 'Veg',
+        newPrice: 6.49,
+        originalPrice: 7.49,
+        Image: 'src/treegrid/images/twice-baked-beans.png',
+        FoodId: 48,
+        CategoryId: 44,
+        Rating: 4.4,
+        TotalReviews: 30,
+        FoodDescription: "These twice-baked beans are slow-cooked with a blend of aromatic spices and fresh herbs for a rich flavor.",
+        IsBestseller: false,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Beans", "Spices", "Herbs"]
+    },
+    {
+        FoodCategory: 'Sides',
+        FoodName: 'Chipotle Mashed Potatoes',
+        FoodType: 'Veg',
+        newPrice: 5.99,
+        originalPrice: 0,
+        Image: 'src/treegrid/images/chipotle-mashed-potatoes.png',
+        FoodId: 49,
+        CategoryId: 44,
+        Rating: 4.8,
+        TotalReviews: 50,
+        FoodDescription: "These creamy mashed potatoes are infused with smoky chipotle and rich cream for a bold, flavorful side.",
+        IsBestseller: false,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ['Potatoes', 'Chipotle', 'Cream'],
+    },
+    {
+        FoodCategory: 'Sides',
+        FoodName: 'Collard Greens',
+        FoodType: 'Veg',
+        newPrice: 5.49,
+        originalPrice: 0,
+        Image: 'src/treegrid/images/collard-greens.png',
+        FoodId: 50,
+        CategoryId: 44,
+        Rating: 4.5,
+        TotalReviews: 25,
+        FoodDescription: "These collard greens are slow-cooked with onions and garlic for a tender, flavorful side dish.",
+        IsBestseller: false,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Collard greens", "Onions", "Garlic"]
+    },
+
+    {
+        FoodCategory: 'Desserts',
+        FoodName: 'Desserts',
+        FoodType: 'Veg',
+        newPrice: 0,
+        originalPrice: 0,
+        Image: '',
+        FoodId: 51,
+        CategoryId: null,
+        Rating: 0,
+        TotalReviews: 0,
+        FoodDescription: '',
+        IsBestseller: false,
+        vegCount: 6,
+        nonvegCount: 0,
+        ingredients: [],
+    },
+
+    // {
+    //     FoodCategory: 'Desserts',
+    //     FoodName: 'Kulfi',
+    //     FoodType: 'Veg',
+    //     newPrice: 4.99,
+    //     originalPrice: 5.99,
+    //     Image: 'src/treegrid/images/kulfi.png',
+    //     FoodId: 52,
+    //     CategoryId: 51,
+    //     Rating: 4.7,
+    //     TotalReviews: 70,
+    //     FoodDescription: "This traditional Indian kulfi is a creamy frozen dessert made with rich milk and crunchy pistachios.",
+    //     IsBestseller: true,
+    //     vegCount: 0,
+    //     nonvegCount: 0,
+    //     ingredients: ["Milk", "Pistachios", "Sugar"]
+    // },
+    {
+        FoodCategory: 'Desserts',
+        FoodName: 'Chocolate Truffles',
+        FoodType: 'Veg',
+        newPrice: 5.99,
+        originalPrice: 0,
+        Image: 'src/treegrid/images/chocolate-truffles.png',
+        FoodId: 53,
+        CategoryId: 51,
+        Rating: 4.8,
+        TotalReviews: 60,
+        FoodDescription: "These decadent chocolate truffles feature rich chocolate ganache rolled in cocoa powder for a luxurious treat.",
+        IsBestseller: false,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Chocolate", "Cream", "Cocoa powder"]
+    },
+    {
+        FoodCategory: 'Desserts',
+        FoodName: 'Brownies',
+        FoodType: 'Veg',
+        newPrice: 4.99,
+        originalPrice: 5.99,
+        Image: 'src/treegrid/images/brownies.png',
+        FoodId: 54,
+        CategoryId: 51,
+        Rating: 4.6,
+        TotalReviews: 50,
+        FoodDescription: "These fudgy chocolate brownies are made with rich chocolate and flour for a chewy, indulgent dessert.",
+        IsBestseller: false,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ["Chocolate", "Flour", "Sugar"]
+    },
+    {
+        FoodCategory: 'Desserts',
+        FoodName: 'Gelato',
+        FoodType: 'Veg',
+        newPrice: 5.49,
+        originalPrice: 6.49,
+        Image: 'src/treegrid/images/gelato.png',
+        FoodId: 55,
+        CategoryId: 51,
+        Rating: 4.7,
+        TotalReviews: 40,
+        FoodDescription: "This creamy Italian-style gelato is made with rich milk and sugar for a smooth, refreshing dessert.",
+        IsBestseller: false,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients: ['Milk', 'Sugar'],
+    },
+    {
+        FoodCategory: 'Desserts',
+        FoodName: 'Sorbet',
+        FoodType: 'Veg',
+        newPrice: 4.99,
+        originalPrice: 0,
+        Image: 'src/treegrid/images/sorbet.png',
+        FoodId: 56,
+        CategoryId: 51,
+        Rating: 4.5,
+        TotalReviews: 30,
+        FoodDescription: "This refreshing fruit sorbet is made with vibrant fruit puree and sugar for a light, tangy dessert.",
+        IsBestseller: false,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients:  ["Fruit puree", "Sugar"]
+    },
+    {
+        FoodCategory: 'Desserts',
+        FoodName: 'Fruit Tart',
+        FoodType: 'Veg',
+        newPrice: 5.99,
+        originalPrice: 7.99,
+        Image: 'src/treegrid/images/fruit-tart.png',
+        FoodId: 57,
+        CategoryId: 51,
+        Rating: 4.6,
+        TotalReviews: 20,
+        FoodDescription:  "This delightful fruit tart features a crisp tart shell filled with creamy custard and topped with fresh seasonal fruits.",
+        IsBestseller: false,
+        vegCount: 0,
+        nonvegCount: 0,
+        ingredients:["Tart shell", "Custard", "Fruits"]
+    }
 ];

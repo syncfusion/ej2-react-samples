@@ -60,5 +60,6 @@ export function updateAISampleSection(): void {
     finalizeContent();
     setTimeout(() => {
         finalizeTab();
+        setIsFinalize();
     });
 }

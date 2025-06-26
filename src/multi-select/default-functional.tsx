@@ -18,7 +18,8 @@ const Default = () => {
     // set the value to select an item based on mapped value at initial rendering
     return (
         <div className='control-pane'>
-            <div id="multisection" className='control-section'>
+            <div id="container" className='control-pane'>
+                <div id="multisection" className='control-section'>
                 <div id="multidefault">
                     <div className="control-styles">
                     <label className="h4"> Default Mode</label>
@@ -39,6 +40,7 @@ const Default = () => {
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
             <div id="action-description">
                 <p>This sample demonstrates the default functionalities of the MultiSelect. Type a character in the MultiSelect element or click on this element to choose one or more items from the suggestion list.</p>

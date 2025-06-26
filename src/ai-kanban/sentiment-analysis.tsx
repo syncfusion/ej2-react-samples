@@ -1,14 +1,22 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
+import AiSentimentAnalysis from './ai-sentiment-analysis';
+/* custom code start*/
+import AIToast from '../common/ai-toast';
+/* custom code end*/
+import { updateAISampleSection } from '../common/sample-base';
 
 export class SentimentAnalysis extends SampleBase<{}, {}> {
+     componentDidMount() {
+          updateAISampleSection(); 
+    }
 
     render() {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <img src={'src/ai-kanban/images/sentiment-analysis.gif'} width='100%' height='100%'></img>
+                    <AiSentimentAnalysis />
                 </div>
                 <div id="action-description">
                     <p>This sample demonstrates the integration of AI to automatically generate emoticon expressions based on customer
@@ -27,6 +35,7 @@ export class SentimentAnalysis extends SampleBase<{}, {}> {
                         automatically generate emoticon expressions based on the customer feedback for delivered items and update them
                         in the Syncfusion React Kanban Board.</p>
                 </div>
+             <AIToast/>    
             </div>
         )
     }

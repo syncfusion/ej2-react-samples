@@ -12,6 +12,14 @@
     margin: 0;
 }
 
+.e-banner-top {
+    top: 16px;
+}
+
+.e-banner-top .e-sidebar{
+    overflow: hidden;
+}
+
 .sb-left {
     float: left;
 }
@@ -272,6 +280,29 @@ e-listview .e-icon-wrapper .e-list-text {
 
 div#sample-header {
     z-index: 1001 !important;
+}
+
+.sb-token-header {
+  height: 48px;
+  position: fixed;
+  top: 16px;
+  width: 100%;
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  text-align: center;
+  z-index: 1002;
+  display: flex;
+  align-items: center;
+}
+
+.close-button {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0px 10px;
+}
+.banner-message {
+  flex-grow: 1;
 }
 
 .sb-left-pane .e-treeview .e-list-item.e-active>.e-text-content .e-list-text {
@@ -1325,7 +1356,7 @@ propertye pane
 .sb-property-border {
     position: absolute;
     height: 100%;
-    border: 0.5px solid #D7D7D7;
+    border: 0px solid #D7D7D7;
     top: 0px;
 }
 
@@ -1469,6 +1500,30 @@ propertye pane
 /* Mobile View */
 
 @media (max-width: 550px) {
+    .sb-token-header {
+        top: 24px;
+    }
+
+    .promo-banner{
+        z-index: 100 !important;
+    }
+
+    .promo-icon{
+      width: 22px !important;
+      height: 22px !important;
+     }
+
+     .sb-right-pane.e-banner-top{
+        top: 48px;
+     }
+
+     .sb-body-overlay.e-banner-top {
+        top: 48px;
+     }
+
+     .e-search-overlay.e-banner-top{
+        top: 48px;
+     }
 
     .e-ddl.e-popup,
     #sb-setting-theme_popup {
@@ -1871,6 +1926,12 @@ propertye pane
         font-size: 18px !important;
     }
 
+}
+
+@media (max-width: 523px) {
+    .e-banner-top {
+        top: 24px;
+    }
 }
 
 
@@ -2695,4 +2756,29 @@ RTE toolbar not visible in fullscreen
 
 .fluent2-dark .e-tab .e-tab-header .e-toolbar-items .e-toolbar-item.e-active::before {
     background: #479EF5;
+}
+
+.ai-toast.e-toast {
+  width: 400px;
+}
+
+.ai-toast.e-toast-container.e-toast-top-right {
+  right: 30px;
+  top: 10px;
+}
+
+.ai-toast.e-toast-container .e-toast:hover {
+  background-color: #e8f4fd;
+}
+
+.ai-toast.e-toast-container .e-toast {
+  background-color: #e8f4fd;
+  border-radius: 6px;
+  padding: 5px;
+}
+
+@media screen and (max-width: 600px) {
+  .ai-toast.e-toast {
+  width: 95vw !important;
+} 
 }

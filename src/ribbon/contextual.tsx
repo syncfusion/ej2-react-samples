@@ -9,7 +9,7 @@ import { SampleBase } from '../common/sample-base';
 import './contextual.css';
 
 export class Contextual extends SampleBase<{}, {}> {
-    private ribbonObj: Ribbon;
+    public ribbonObj: Ribbon;
     private selectedCell: HTMLElement = null;
     private tableElement: HTMLElement = null;
     private imageElement: HTMLElement = null;
@@ -91,17 +91,17 @@ export class Contextual extends SampleBase<{}, {}> {
         }
         this.imageElement.classList[args === 'Image' ? 'add' : 'remove']('e-image-selected');
     }
-    public enablePaste() {
+    public enablePaste = () => {
         if (!this.isPasteDisabled) { return; }
         this.ribbonObj.enableItem('pastebtn');
         this.isPasteDisabled = false;
     }
 
-    public updateContent(args: string) {
+    public updateContent = (args: string) => {
         this.toastInstance.show({ content: "Last clicked item is " + args });
     }
 
-    public fileSelect(args: FileMenuEventArgs) {
+    public fileSelect = (args: FileMenuEventArgs) => {
         if (args.item.id === "newword" || args.item.id === "oldword" || args.item.id === "pdf") {
             this.updateContent("File -> Save as -> " + args.item.text);
         }
@@ -110,7 +110,7 @@ export class Contextual extends SampleBase<{}, {}> {
         }
     }
 
-    public launchClick(args: LauncherClickEventArgs) {
+    public launchClick = (args: LauncherClickEventArgs) => {
         if (args.groupId == "clipboard") {
             this.updateContent("Clipboard Launcher Icon");
         }

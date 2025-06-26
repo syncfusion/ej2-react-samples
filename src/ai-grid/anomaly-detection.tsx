@@ -1,8 +1,15 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
+import { updateAISampleSection } from '../common/sample-base';
+/* custom code start*/
+import AIToast from '../common/ai-toast';
+/* custom code end*/
 
 export class AnomalyDetection extends SampleBase<{}, {}> {
+     componentDidMount() {
+          updateAISampleSection(); 
+    }
 
     render() {
         return (
@@ -24,6 +31,7 @@ export class AnomalyDetection extends SampleBase<{}, {}> {
                         anomalies. When you press the "Detect Anomaly" button, the grid updates to display the anomaly details.
                     </p>
                 </div>
+                <AIToast/> 
             </div>
         )
     }

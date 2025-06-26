@@ -145,7 +145,7 @@ const SAMPLE_CSS = `#diagramEventsControlSection .sb-mobile-palette {
     color: #388e3c;
   }
 
-  hr {
+  .diagram-event hr {
     margin: 1px 10px 1px 0px;
     border-top: 1px solid #eee;
   }
@@ -266,12 +266,11 @@ export class Events extends SampleBase<{}, {}> {
     // Render function to display the entire component
     render() {
         return (
-            <div className="control-pane">
+            <div className="control-pane diagram-event ">
                 <style>{SAMPLE_CSS}</style>
                 <div className="diagramEventsControl">
                 <div className="col-lg-8 control-section">
-                    <style>{SAMPLE_CSS}</style>
-                    <div id="diagramEventsControlSection" className="content-wrapper" style={{ width: "100%", background: "white" }}>
+                    <div id="diagramEventsControlSection"  style={{ width: "100%", background: "white" }}>
                         <div id="palette-space" className="sb-mobile-palette">
                             <SymbolPaletteComponent
                                 id="symbolpalette"

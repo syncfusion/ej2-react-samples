@@ -2,8 +2,9 @@
     "communityMessagedata" : [
         {
             "author": {
-                "user": "Alice",
-                "id": "admin"
+                "user": "Alice brown",
+                "id": "admin",
+                "statusIconCss": "e-icons e-user-busy"
             },
             "text": "Hey Michale, Charlie! Seen the latest posts in the Design Community? Amazing projects!",
             "timeStamp": "October 25, 2024 07:30"
@@ -12,7 +13,8 @@
             "author": {
                 "user": "Michale Suyama",
                 "id": "user1",
-                "avatarBgColor": "#87cefa"
+                "avatarBgColor": "#87cefa",
+                "statusIconCss": "e-icons e-user-online"
             },
             "text": "Hi Alice! Yes, Dana’s new UI design is incredible.",
             "timeStamp": "October 25, 2024 08:00"
@@ -22,15 +24,26 @@
                 "user": "Charlie",
                 "id": "user2",
                 "avatarUrl": "./src/chat-ui/images/charlie.png",
-                "avatarBgColor": "#e6cdde"
+                "avatarBgColor": "#e6cdde",
+                "statusIconCss": "e-icons e-user-away"
             },
             "text": "Hey! I loved Dana’s use of color. Frank’s typography guide was great too.",
             "timeStamp": "October 25, 2024 11:00"
         },
         {
             "author": {
-                "user": "Alice",
-                "id": "admin"
+                "user": "Jordan Peele",
+                "id": "user4",
+                "statusIconCss": "e-icons e-user-busy"
+            },
+            "text": "Dana’s work is so inspiring!",
+            "timeStamp": "October 25, 2024 11:30"
+        },
+        {
+            "author": {
+                "user": "Alice Brown",
+                "id": "admin",
+                "statusIconCss": "e-icons e-user-busy"
             },
             "text": "Absolutely! Any new community events planned?",
             "timeStamp": "October 26, 2024 11:00"
@@ -39,7 +52,8 @@
             "author": {
                 "user": "Michale Suyama",
                 "id": "user1",
-                "avatarBgColor": "#87cefa"
+                "avatarBgColor": "#87cefa",
+                "statusIconCss": "e-icons e-user-online"
             },
             "text": "We should organize a design challenge.",
             "timeStamp": "October 26, 2024 12:15"
@@ -49,7 +63,8 @@
                 "user": "Janet",
                 "id": "user3",
                 "avatarBgColor": "#dec287",
-                "avatarUrl": "./src/chat-ui/images/janet.png"
+                "avatarUrl": "./src/chat-ui/images/janet.png",
+                "statusIconCss": "e-icons e-user-offline"
             },
             "text": "I am excited to see the new projects.",
             "timeStamp": "October 26, 2024 12:17"
@@ -59,15 +74,17 @@
                 "user": "Charlie",
                 "id": "user2",
                 "avatarUrl": "./src/chat-ui/images/charlie.png",
-                "avatarBgColor": "#e6cdde"
+                "avatarBgColor": "#e6cdde",
+                "statusIconCss": "e-icons e-user-away"
             },
             "text": "Great idea! Let’s discuss it in the next meeting.",
             "timeStamp": "October 26, 2024 12:30"
         },
         {
             "author": {
-                "user": "Alice",
-                "id": "admin"
+                "user": "Alice Brown",
+                "id": "admin",
+                "statusIconCss": "e-icons e-user-busy"
             },
             "text": "Sounds good! This community is so inspiring."
         },
@@ -75,7 +92,8 @@
             "author": {
                 "user": "Michale Suyama",
                 "id": "user1",
-                "avatarBgColor": "#87cefa"
+                "avatarBgColor": "#87cefa",
+                "statusIconCss": "e-icons e-user-online"
             },
             "text": "Agreed! Excited to see everyone’s ideas."
         },
@@ -84,7 +102,8 @@
                 "user": "Charlie",
                 "id": "user2",
                 "avatarUrl": "./src/chat-ui/images/charlie.png",
-                "avatarBgColor": "#e6cdde"
+                "avatarBgColor": "#e6cdde",
+                "statusIconCss": "e-icons e-user-away"
             },
             "text": "I am looking forward to the design challenge."
         }

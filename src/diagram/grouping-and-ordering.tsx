@@ -135,13 +135,13 @@ let fields = { value: 'type', text: 'text' };
 // CSS styles for the sample application's layout and appearance.
 const sample_css = `
 /* For toolbar size */
-.db-toolbar-container {
+.diagram-grouping .db-toolbar-container {
     width: 100% ;
    height: 44px;
 }
 
 /* Palette Container */
-.db-palette-parent {
+.diagram-grouping .db-palette-parent {
     background-color:#fafafa;
     width: 255px!important;
     float: left;
@@ -149,7 +149,7 @@ const sample_css = `
 }
 
 /* Diagram Container */
-.db-diagram-container {
+.diagram-grouping .db-diagram-container {
     width:calc(100% - 260px);
     height: 100%;
     float: right;
@@ -193,7 +193,7 @@ export class GroupandOrder extends SampleBase<{}, {}> {
     // Renders the component UI.
     render() {
         return (
-            <div className="control-pane">
+            <div className="control-pane diagram-grouping">
                 <style>{sample_css}</style>
                 <div className="control-section">
                     <div style={{ width: '100%' }}>

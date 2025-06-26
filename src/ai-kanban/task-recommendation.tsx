@@ -1,14 +1,22 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
+import AiSmartRecommendation from './ai-task-recommendation';
+/* custom code start*/
+import AIToast from '../common/ai-toast';
+/* custom code end*/
+import { updateAISampleSection } from '../common/sample-base';
 
 export class TaskRecommendation extends SampleBase<{}, {}> {
+     componentDidMount() {
+          updateAISampleSection(); 
+    }
 
     render() {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <img src={'src/ai-kanban/images/task-recommendation.gif'} width='100%' height='100%'></img>
+                    <AiSmartRecommendation />
                 </div>
                 <div id="action-description">
                     <p>
@@ -28,6 +36,7 @@ export class TaskRecommendation extends SampleBase<{}, {}> {
                         <li>Additionally, an option is available to view the backlog items in a Grid.</li>
                     </ul>
                 </div>
+             <AIToast/>    
             </div>
         )
     }

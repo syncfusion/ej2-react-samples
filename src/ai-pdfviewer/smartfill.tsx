@@ -1,8 +1,15 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
+import { updateAISampleSection } from '../common/sample-base';
+/* custom code start*/
+import AIToast from '../common/ai-toast';
+/* custom code end*/
 
 export class SmartFill extends SampleBase<{}, {}> {
+     componentDidMount() {
+          updateAISampleSection(); 
+    }
 
     render() {
         return (
@@ -23,6 +30,7 @@ export class SmartFill extends SampleBase<{}, {}> {
                         reducing manual entry errors. However, users may need to review and adjust the filled fields as needed.
                     </p>
                 </div>
+                <AIToast/>
             </div>
         )
     }

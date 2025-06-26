@@ -29,43 +29,49 @@ const TooltipTemplate = () => {
   };
   const taskbarTooltip = (props) => {
     var src = 'src/gantt/images/' + props.ganttProperties.resourceNames + '.png';
-    return (<table>
-      {props.ganttProperties.resourceNames &&
+    return (
+    <table>
+      <tbody>
+        {props.ganttProperties.resourceNames &&
+          <tr>
+            <td rowSpan={3} style={{ padding: '3px' }}>
+              <img src={src} height='40px' />
+            </td>
+            <td style={{ padding: '3px' }}>Task done By:</td>
+            <td style={{ padding: '3px' }}>{props.ganttProperties.resourceNames}</td>
+          </tr>
+        }
         <tr>
-          <td rowSpan={3} style={{ padding: '3px' }}><img src={src} height='40px' /></td>
-          <td style={{ padding: '3px' }}>Task done By:</td>
-          <td style={{ padding: '3px' }}>{props.ganttProperties.resourceNames}</td>
+          <td style={{ padding: '3px' }}>Starts On:</td>
+          <td style={{ padding: '3px' }}>{ganttInstance.current.getFormatedDate(props.StartDate)}</td>
         </tr>
-      }
-      <tr>
-        <td style={{ padding: '3px' }}>Starts On:</td>
-        <td style={{ padding: '3px' }}>{ganttInstance.current.getFormatedDate(props.StartDate)}</td>
-      </tr>
-      <tr>
-        <td style={{ padding: '3px' }}>Ends On:</td>
-        <td style={{ padding: '3px' }}>{ganttInstance.current.getFormatedDate(props.EndDate)}</td>
-      </tr>
-    </table>);
+        <tr>
+          <td style={{ padding: '3px' }}>Ends On:</td>
+          <td style={{ padding: '3px' }}>{ganttInstance.current.getFormatedDate(props.EndDate)}</td>
+        </tr>
+      </tbody>
+    </table>
+  );
   };
   const templateTaskbar: any = taskbarTooltip;
   const baselineTooltip = (props) => {
     return (<table>
       <tbody>
         <tr>
-          <td >Planned Start Date: </td>
+          <td>Planned Start Date:</td>
           <td>{ganttInstance.current.getFormatedDate(props.BaselineStartDate)}</td>
         </tr>
         <tr>
-          <td>Planned End Date: </td>
+          <td>Planned End Date:</td>
           <td>{ganttInstance.current.getFormatedDate(props.BaselineEndDate)}</td>
         </tr>
         <tr>
-          <td>Current Start Date: </td>
+          <td>Current Start Date:</td>
           <td>{ganttInstance.current.getFormatedDate(props.StartDate)}</td>
         </tr>
         <tr>
-          <td>Current End Date: </td>
-          <td >{ganttInstance.current.getFormatedDate(props.EndDate)}</td>
+          <td>Current End Date:</td>
+          <td>{ganttInstance.current.getFormatedDate(props.EndDate)}</td>
         </tr>
       </tbody>
     </table>);
@@ -81,12 +87,8 @@ const TooltipTemplate = () => {
     const data = getTooltipData(new Date(date), endDate, tier);
 
     const themeIsDark = document.body.classList.contains('tailwind3-dark') ||
-                      document.body.classList.contains('fluent2-dark') ||
                       document.body.classList.contains('material3-dark') ||
-                      document.body.classList.contains('bootstrap5.3-dark') ||
-                      document.body.classList.contains('fluent2-highcontrast') ||
-                      document.body.classList.contains('highcontrast') ||
-                      document.body.classList.contains('fluent2-dark');
+                      document.body.classList.contains('highcontrast');
     const borderColor = themeIsDark ? 'black' : 'white';
 
     return (
@@ -192,7 +194,7 @@ const TooltipTemplate = () => {
           <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/tooltipSettings/#taskbar">tooltipSettings.taskbar</a>,  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/tooltipSettings/#timeline">tooltipSettings.timeline</a>
            and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/tooltipSettings/#baseline">tooltipSettings.baseline</a> properties.</p>
         <p>The baseline feature enables the user to view the deviation between the planned dates and the actual dates of the tasks in a project.
-          Baselines can be enabled in Gantt chart by enabling the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#renderbaseline">renderBaseline</a> property along with mapping the data source values for <code>baselineStartDate</code> and <code>baselineEndDate</code> properties.</p>
+          Baselines can be enabled in Gantt Chart by enabling the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#renderbaseline">renderBaseline</a> property along with mapping the data source values for <code>baselineStartDate</code> and <code>baselineEndDate</code> properties.</p>
 
         <p>Gantt component features are segregated into individual feature-wise modules.To use a selection, inject the
           <code>Selection</code> module using the <code>Gantt.Inject(Selection)</code> method.To use markers, inject the

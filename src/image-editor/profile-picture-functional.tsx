@@ -49,6 +49,7 @@ const ProfilePicture = () => {
     };
     const dlgResetButtonClick = (): void => {
         imageEditorInstance.current.reset();
+        imageEditorInstance.current.select("circle");
     };
     const dlgRotateButtonClick = (): void => {
         imageEditorInstance.current.rotate(-90);

@@ -310,7 +310,7 @@ function add():any {
           </div>
         </div>
       </div>
-      <div className="content-wrapper" style={{ width: '100%' }}>
+      <div  style={{ width: '100%' }}>
         <div
           id="palette-space"
           style={{
@@ -320,7 +320,7 @@ function add():any {
             overflow: 'hidden',
           }}
         >
-          <div id="tree" style={{ width: '90%' }}>
+          <div id="tree" style={{ width: '100%', height:'700px' }}>
             <TreeViewComponent
               fields={fields}
               ref={(treeview) => {
@@ -433,9 +433,11 @@ function add():any {
                     expanded: false,
                   };
                   treeObj.addNodes([item], targetNodeId, null);
-                  connector = { sourceID: targetNodeId, targetID: id };
-                  diagramInstance.add(connector);
-                  diagramInstance.doLayout();
+                  if (args.target instanceof Node && targetNodeId && id) {
+                    connector = { sourceID: targetNodeId, targetID: id };
+                    diagramInstance.add(connector);
+                    diagramInstance.doLayout();
+                  }
                   index++;
                   workingData.push(item);
                 } else {

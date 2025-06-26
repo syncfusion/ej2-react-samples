@@ -13,7 +13,7 @@ import './resize.css';
 
 export class Resize extends SampleBase<{}, {}> {
 
-    private resizeRibbonObj: Ribbon;
+    public resizeRibbonObj: Ribbon;
 
     public pasteOptions: ItemModel[] = [{ text: "Keep Source Format" }, { text: "Merge Format" }, { text: "Keep Text Only" }];
     public findOptions: ItemModel[] = [{ text: "Find", iconCss: "e-icons e-search" }, { text: "Advanced Find", iconCss: "e-icons e-search" }, { text: "Go to", iconCss: "e-icons e-arrow-right" }];
@@ -28,7 +28,7 @@ export class Resize extends SampleBase<{}, {}> {
 
     public fontSize: string[] = ["8", "9", "10", "11", "12", "14", "16", "18", "20", "22", "24", "26", "28", "36", "48", "72", "96"];
     public fontStyle: string[] = ["Algerian", "Arial", "Calibri", "Cambria", "Cambria Math", "Courier New", "Candara", "Georgia", "Impact", "Segoe Print", "Segoe Script", "Segoe UI", "Symbol", "Times New Roman", "Verdana", "Windings"];
-    public filtering(e: FilteringEventArgs) {
+    public filtering = (e: FilteringEventArgs) => {
         let query = new Query();
         query = (e.text !== "") ? query.where("Text", "contains", e.text, true) : query;
         e.updateData(this.fontStyle, query);
@@ -47,19 +47,19 @@ export class Resize extends SampleBase<{}, {}> {
 
     toastInstance: ToastComponent;
 
-    public updateContent(args: string) {
+    public updateContent = (args: string) => {
         this.toastInstance.show({ content: "Last clicked item is " + args });
     }
 
     public isPasteDisabled: boolean = true;
-    public enablePaste() { 
+    public enablePaste = () => { 
         if (!this.isPasteDisabled) { return; }
         this.resizeRibbonObj.enableItem('resize-pastebtn');
         this.isPasteDisabled = false;
     }
 
     sliderRef: SliderComponent;
-    public onCreated() {
+    public onCreated = () => {
         var container = document.getElementById('ribbonContainer');
         this.sliderRef.max = container.offsetWidth;
         this.sliderRef.value = container.offsetWidth;
@@ -79,13 +79,13 @@ export class Resize extends SampleBase<{}, {}> {
         window.removeEventListener('resize', this.onResize);
     }
 
-    public onChange(args) {
+    public onChange = (args) => {
         var container = document.getElementById('ribbonContainer');
         container.style.width = args.value + 'px';
         this.resizeRibbonObj.refreshLayout();
     }
 
-    public fileSelect(args: FileMenuEventArgs){
+    public fileSelect = (args: FileMenuEventArgs) => {
         if(args.item.id === "newword" || args.item.id === "oldword" || args.item.id === "pdf"){
             this.updateContent("File -> Save as -> " + args.item.text);
         }
@@ -94,7 +94,7 @@ export class Resize extends SampleBase<{}, {}> {
         }
       }
     
-    public launchClick(args: LauncherClickEventArgs) {
+    public launchClick = (args: LauncherClickEventArgs) => {
         if (args.groupId == "clipboard") {
             this.updateContent("Clipboard Launcher Icon");
         }

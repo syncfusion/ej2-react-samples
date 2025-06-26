@@ -10,7 +10,7 @@ import './keytip.css';
 import * as data from './dataSource/datasource.json';
 
 export class KeyTip extends SampleBase<{}, {}> {
-    private ribbonObj: Ribbon;
+    public ribbonObj: Ribbon;
 
     public pasteOptions: ItemModel[] = [{ text: "Keep Source Format" }, { text: "Merge Format" }, { text: "Keep Text Only" }];
     public findOptions: ItemModel[] = [{ text: "Find", iconCss: "e-icons e-search" }, { text: "Advanced Find", iconCss: "e-icons e-search" }, { text: "Go to", iconCss: "e-icons e-arrow-right" }];
@@ -46,11 +46,11 @@ export class KeyTip extends SampleBase<{}, {}> {
         this.isPasteDisabled = false;
     }
 
-    public updateContent(args: string) {
+    public updateContent = (args: string) => {
         this.toastInstance.show({ content: "Last clicked item is " + args });
     }
 
-    public launchClick(args: LauncherClickEventArgs) {
+    public launchClick = (args: LauncherClickEventArgs) => {
         if (args.groupId == "clipboard") {
             this.updateContent("Clipboard Launcher Icon");
         }
@@ -63,7 +63,7 @@ export class KeyTip extends SampleBase<{}, {}> {
     }
 
     public isBackstageOpened = false;
-    public handleClickInsideBackstageContent(e: any) {
+    public handleClickInsideBackstageContent = (e: any) => {
         e.stopPropagation();
         var cName: string = e.target.className;
         if (cName !== "section-title" && cName !== "home-wrapper" && cName !== "new-wrapper" && cName !== "block-wrapper" && cName !== "e-ribbon-backstage-content") {
@@ -73,12 +73,12 @@ export class KeyTip extends SampleBase<{}, {}> {
         }
     }
 
-    public backstageClickHandler() {
+    public backstageClickHandler = () => {
         this.ribbonObj.ribbonBackstageModule.hideBackstage();
         this.toastInstance.show({ content: 'Print action is selected' });
     }
 
-    public getBackstageContent(item: string): string {
+    public getBackstageContent = (item: string): string => {
         var homeContentTemplate = "<div class='home-wrapper'>{{newSection}}{{recentSection}}</div>";
         var newSection = "<div class='new-wrapper'><div class='section-title'> New </div><div class='category_container'><div class='doc_category_image'></div> <span class='doc_category_text'> New document </span></div></div>";
         var recentSection = "<div class='block-wrapper'><div class='section-title'> Recent </div>{{recentWrapper}}</div>";
@@ -125,14 +125,14 @@ export class KeyTip extends SampleBase<{}, {}> {
         { id: 'feedback', text: 'Feedback', isFooter: true, content: this.getBackstageContent('feedback'), keyTip: 'K' }
     ];
 
-    public ribbonCreated() {
+    public ribbonCreated = () => {
         if (!this.isBackstageOpened) {
             this.ribbonObj.element.querySelector('.e-ribbon-backstage').addEventListener('click', this.backstageClick.bind(this));
         }
         this.ribbonObj.ribbonKeyTipModule.showKeyTips();
     }
 
-    public backstageClick() {
+    public backstageClick = () => {
         this.isBackstageOpened = true;
         this.ribbonObj.element.querySelector('.e-ribbon-backstage-content').addEventListener('click', this.handleClickInsideBackstageContent.bind(this));
     }
@@ -143,7 +143,7 @@ export class KeyTip extends SampleBase<{}, {}> {
                 <div className='col-lg-12 control-section ribbon-keytip-section'>
                     <div className='control ribbon-sample'>
                         <div id="ribbonContainer" className='ribbon-keytip-container'>
-                            <RibbonComponent id='keytip-ribbon' ref={ribbonDefault => { this.ribbonObj = ribbonDefault }}  enableKeyTips={true} layoutSwitcherKeyTip="ZR" backStageMenu={{ text: 'File', visible: true, items: this.menuItems, backButton: { text: 'Close' } }} created={this.ribbonCreated} launcherIconClick={this.launchClick}>
+                            <RibbonComponent id='keytip-ribbon' ref={ribbonDefault => { this.ribbonObj = ribbonDefault }}  enableKeyTips={true} layoutSwitcherKeyTip="ZR" backStageMenu={{ text: 'File', visible: true, keyTip: "F", items: this.menuItems, backButton: { text: 'Close' } }} created={this.ribbonCreated} launcherIconClick={this.launchClick}>
                             <RibbonTabsDirective>
                                     <RibbonTabDirective header='Home' keyTip="H">
                                         <RibbonGroupsDirective>
@@ -244,7 +244,7 @@ export class KeyTip extends SampleBase<{}, {}> {
                                                 <RibbonCollectionsDirective>
                                                     <RibbonCollectionDirective>
                                                         <RibbonItemsDirective>
-                                                            <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Large} buttonSettings={{ iconCss: "sf-icon-editor", content: "Editor", clicked: function () { this.updateContent("Editor"); } }}>
+                                                            <RibbonItemDirective type="Button" keyTip='SU' allowedSizes={RibbonItemSize.Large} buttonSettings={{ iconCss: "sf-icon-editor", content: "Editor", clicked: function () { this.updateContent("Editor"); } }}>
                                                             </RibbonItemDirective>
                                                         </RibbonItemsDirective>
                                                     </RibbonCollectionDirective>

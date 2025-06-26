@@ -1,7 +1,7 @@
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { SpeechToTextComponent, TextAreaComponent } from '@syncfusion/ej2-react-inputs';
 import * as React from 'react';
-import './default.css';
+import './integration.css';
 import { SampleBase } from '../common/sample-base';
 import { AIAssistViewComponent, ToolbarSettingsModel } from '@syncfusion/ej2-react-interactive-chat';
 import { ToastComponent } from '@syncfusion/ej2-react-notifications';
@@ -73,7 +73,7 @@ export class Default extends SampleBase<{}, {}> {
     public toggleButtons = () => {
         const assistviewFooter = document.querySelector('#assistview-footer') as HTMLElement;
         const sendButton = document.querySelector('#assistview-sendButton');
-        const speechButton = document.querySelector('#speech-to-text');
+        const speechButton = document.querySelector('#speechToText');
         const hasText = assistviewFooter.innerText.trim() !== '';
         sendButton.classList.toggle('visible', hasText);
         speechButton.classList.toggle('visible', !hasText);

@@ -37,7 +37,7 @@ export class Radial extends SampleBase<{}, {}> {
     return (
       <div className="control-panel diagram-radialtree">
         <div className="control-section">
-        <div className="content-wrapper" style={{ width: "100%" }}>
+        <div  style={{ width: "100%" }}>
             {/* create and add ZoomIn,ZoomOut and Reset options in ToolBar. */}
             <ToolbarComponent
               id="toolbar_diagram"

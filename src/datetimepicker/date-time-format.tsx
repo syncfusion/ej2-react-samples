@@ -82,7 +82,13 @@ export class Dateformat extends SampleBase<{}, {}> {
             Format sample illustrates the support of custom date format in the DateTimePicker component by
             using the <code>format</code> property. You can also change the datetime format by selecting it from the format options in the properties
             panel.  By using the <code>timeFormat</code> property to customize the displayed time value in a time popup list.
-        </p>
+          </p>
+          <p>
+            Furthermore, this example showcases the flexible date value parsing functionality available in DateTimePicker
+            component.
+            By utilizing the <code>inputFormats</code> property, users can enter dates in various formats, which will be
+            automatically parsed and formatted according to the chosen date format.
+          </p>
         </div>
       </div>
     )

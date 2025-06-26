@@ -24,10 +24,10 @@ import { TooltipModel } from '@syncfusion/ej2-react-popups';
 const SAMPLE_CSS = `.diagram-tooltip table{
     border-collapse: separate;
 }
-.diagram-tooltip .content-wrapper {
+.diagram-tooltip #tooltipDiagramSection {
     border: 1px solid #D7D7D7;
 }
-#tooltipPropertySection .property-panel-header {
+.diagram-tooltip #tooltipPropertySection .property-panel-header {
     margin-left: 10px;
 }`;
 
@@ -220,7 +220,7 @@ function Tooltip() {
         <div className='control-pane diagram-tooltip'>
             <div className='col-lg-8 control-section'>
                 <style>{SAMPLE_CSS}</style>
-                <div id="tooltipDiagramSection" className="content-wrapper" style={{ width: "100%" }}>
+                <div id="tooltipDiagramSection"  style={{ width: "100%" }}>
                     <DiagramComponent
                         id='diagram'
                         ref={diagram => (diagramInstance = diagram)}

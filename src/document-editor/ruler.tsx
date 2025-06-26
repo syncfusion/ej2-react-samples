@@ -1,12 +1,13 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
-import { DocumentEditorContainerComponent, Toolbar } from '@syncfusion/ej2-react-documenteditor';
+import { DocumentEditorContainerComponent, Toolbar, Ribbon } from '@syncfusion/ej2-react-documenteditor';
 import { TitleBar } from './title-bar';
 import './default.component.css';
+import { SwitchComponent } from '@syncfusion/ej2-react-buttons';
 import { CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
 import { ChangeEventArgs } from '@syncfusion/ej2-buttons';
-DocumentEditorContainerComponent.Inject(Toolbar);
+DocumentEditorContainerComponent.Inject(Toolbar,Ribbon);
 
 // tslint:disable:max-line-length
 export class Ruler extends SampleBase<{}, {}> {
@@ -22,6 +23,7 @@ export class Ruler extends SampleBase<{}, {}> {
         this.container.documentEditor.resize();
         this.titleBar = new TitleBar(document.getElementById('documenteditor_titlebar'), this.container.documentEditor, true);
         this.onLoadDefault();
+        this.titleBar.showButtons(false);
     }
         // function to handle the CheckBox change event
     private onChange = (args: ChangeEventArgs) => {
@@ -34,7 +36,7 @@ export class Ruler extends SampleBase<{}, {}> {
                 <div id='documenteditor_titlebar' className="e-de-ctn-title"></div>
                 <div id="documenteditor_container_body">
                     <DocumentEditorContainerComponent id="container" ref={(scope) => { this.container = scope; }} style={{ 'display': 'block' }}
-                       height={'590px'} serviceUrl={this.hostUrl} enableToolbar={true} locale='en-US' />
+                       height={'590px'} toolbarMode={'Ribbon'} serviceUrl={this.hostUrl} enableToolbar={true} locale='en-US' />
                 </div>
             </div>
             <div className="col-lg-3 property-section">
@@ -85,5 +87,15 @@ export class Ruler extends SampleBase<{}, {}> {
         this.titleBar.updateDocumentTitle();
         this.container.documentEditor.focusIn();
         };
+    }
+
+    change = (args):void=>{
+        if (args.checked) {
+            this.container.toolbarMode = 'Ribbon';
+        }
+        else {
+            this.container.toolbarMode = 'Toolbar';
+        }
+        this.titleBar.showButtons(this.container.toolbarMode != 'Ribbon')
     }
 }

@@ -189,7 +189,7 @@ const UpdatePieDataSource = () => {
                             dataSource={updatedData}
                             xName='x'
                             yName='y'
-                            radius='75%'
+                            radius={Browser.isDevice ? '40%' : '75%'}
                             innerRadius='65%'
                             dataLabel={{ visible: true, position: 'Outside', font: { fontWeight: '600' }, connectorStyle: { type: 'Line', width: 2, length: '18' } }}
                         />

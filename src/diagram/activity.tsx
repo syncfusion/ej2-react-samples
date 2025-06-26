@@ -148,17 +148,17 @@ let connectorSymbols: ConnectorModel[] = [
 
 // CSS styles for the diagram editor's layout, enhancing mobile responsiveness
 const SAMPLE_CSS = `
-.sb-mobile-palette {
+.diagram-UML .sb-mobile-palette {
   width: 210px;
   height: 100%;
   float: left;
 }
 
-.sb-mobile-palette-bar {
+.diagram-UML .sb-mobile-palette-bar {
   display: none;
 }
 
-.sb-mobile-diagram {
+.diagram-UML .sb-mobile-diagram {
   width: calc(100% - 212px);
   height: 100%;
   float: left;
@@ -168,7 +168,7 @@ const SAMPLE_CSS = `
 
 @media (max-width: 550px) {
 
-  .sb-mobile-palette {
+  .diagram-UML .sb-mobile-palette {
       z-index: 19;
       position: absolute;
       display: none;
@@ -177,7 +177,7 @@ const SAMPLE_CSS = `
       height: 100%;
   }
 
-  .sb-mobile-palette-bar {
+  .diagram-UML .sb-mobile-palette-bar {
       display: block;
       width: 100%;
       background: #fafafa;
@@ -186,25 +186,25 @@ const SAMPLE_CSS = `
       min-height: 40px;
   }
 
-  .sb-mobile-diagram {
+  .diagram-UML .sb-mobile-diagram {
       width: 100%;
       height: 100%;
       float: left;
       left: 0px;
   }
 
-  #paletteIcon {
+  .diagram-UML #paletteIcon {
       font-size: 20px;
   }
 }
 
-.sb-mobile-palette-open {
+.diagram-UML .sb-mobile-palette-open {
   position: absolute;
   display: block;
   right: 15px;
 }
 
-.e-toggle-palette::before {
+.diagram-UML .e-toggle-palette::before {
   content: "\e700"
 }`;
 
@@ -221,7 +221,7 @@ export class UmlActivityDiagram extends SampleBase<{}, {}> {
     // Renders the UML Activity Diagram component.
     render() {
         return (
-            <div className="control-pane">
+            <div className="control-pane diagram-UML">
                 {/* Injects CSS styles for layout */}
                 <style>{SAMPLE_CSS}</style>
                 <div className="control-section">

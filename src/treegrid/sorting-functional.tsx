@@ -6,6 +6,7 @@ import { CheckBoxComponent, ChangeEventArgs } from '@syncfusion/ej2-react-button
 import { SortEventArgs } from '@syncfusion/ej2-react-grids';
 import { sortData } from './data';
 import { updateSampleSection } from '../common/sample-base';
+import { PropertyPane } from '../common/property-pane';
 
 const Sorting = () => {
   useEffect(() => {
@@ -131,6 +132,7 @@ const Sorting = () => {
           </TreeGridComponent>
         </div>
         <div className="col-md-3 property-section">
+          <PropertyPane title="Properties">
           <table
             id="property"
             title="Properties"
@@ -194,6 +196,7 @@ const Sorting = () => {
               </tr>
             </tbody>
           </table>
+        </PropertyPane>
         </div>
         <div id="action-description">
           <p>

@@ -119,6 +119,9 @@ const SAMPLE1_CSS = `
   padding-left:5px;
   }
   }
+  .Multiselectlockrow .e-delim-view.e-delim-values.e-delim-total {
+       width: 100px !important;
+}
 `;
 {/* custom code end */}
 export class LockRow extends SampleBase<{}, {}> {
@@ -199,8 +202,8 @@ export class LockRow extends SampleBase<{}, {}> {
                     <td>
                       <div style={{ paddingLeft: '10px' }}> Disable Rows </div>
                     </td>
-                    <td style={{ width: '60%' }}>
-                      <div>
+                    <td style={{ width: '100%' }}>
+                      <div className="Multiselectlockrow">
                         <MultiSelectComponent width="150px" id="lockrows" mode="CheckBox" value={this.rowValues}
                           dataSource={lockRowDropDownData} showDropDownIcon={true} popupHeight='350px'
                           select={this.select.bind(this)} removed={this.removed.bind(this)}

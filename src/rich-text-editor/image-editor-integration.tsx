@@ -70,7 +70,7 @@ export class ImageEditorIntegration extends SampleBase<{}, {}> {
       'Align',
       'Caption',
       'Remove',
-      '-',
+      '|',
       'InsertLink',
       'OpenImageLink',
       'EditImageLink',
@@ -151,7 +151,7 @@ export class ImageEditorIntegration extends SampleBase<{}, {}> {
                 <img
                     id="img1"
                     style={{ height: 335 }}
-                    src="https://ej2.syncfusion.com/angular/demos/assets/image-editor/images/default.png"
+                    src="src/rich-text-editor/images/bridge.png"
                     aria-label="Bridge"
                 ></img>
                 </p>

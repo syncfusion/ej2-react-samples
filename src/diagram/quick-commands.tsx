@@ -32,10 +32,10 @@ const SAMPLE_CSS = `.diagram-userhandle .image-pattern-style {
         background-position: center;
         float: left;
     }
-    .e-remove-selection .property-section-content {
+    .diagram-userhandle .e-remove-selection .property-section-content {
       pointer-events: none;
     }
-      .property-section .e-remove-selection {
+      .diagram-userhandle .property-section .e-remove-selection {
       cursor: not-allowed;
     }
     .diagram-userhandle .image-pattern-style:hover {
@@ -63,15 +63,15 @@ const SAMPLE_CSS = `.diagram-userhandle .image-pattern-style {
         padding-bottom: 5px;
     }
 
-   .e-checkbox-wrapper .e-label {
+   .diagram-userhandle .e-checkbox-wrapper .e-label {
         font-size: 12px;
     }
 
-   .container-fluid {
+   .diagram-userhandle .container-fluid {
         padding-left: 0px;
     }
 
-   .diagram-control-pane .col-xs-6 {
+   .diagram-userhandle .diagram-control-pane .col-xs-6 {
         padding-left: 0px;
         padding-right: 0px;
         padding-top: 5px;
@@ -267,7 +267,7 @@ export class UserHandle extends SampleBase<{}, {}> {
         <div
           className="col-lg-8 control-section"
         >
-          <div className="content-wrapper" style={{ width: "100%" }}>
+          <div  style={{ width: "100%" }}>
             <DiagramComponent
               id="diagram"
               ref={diagram => (diagramInstance = diagram)}

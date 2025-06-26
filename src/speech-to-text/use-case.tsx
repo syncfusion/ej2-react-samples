@@ -13,21 +13,25 @@ export class Default extends SampleBase<{}, {}> {
     isIndicatorVisible = false;
 
     public emptyChatTemplate = () => {
-        <div className="empty-chat">
-            <span className="e-icons e-multiple-comment"></span>
-            No transcript available. Start speaking to generate a transcript.
-        </div>
+        return (
+            <div className="empty-chat">
+                <span className="e-icons e-multiple-comment"></span>
+                No transcript available. Start speaking to generate a transcript.
+            </div>
+        );
     }
     public typingIndicatorTemplate = () => {
-        <div className="e-typing-indicator ">
-            <span className="e-user-text">Transcripting</span> 
-            <div className="e-indicator-wrapper">
-                <span className="e-indicator"></span>
-                <span className="e-indicator">
-                </span><span className="e-indicator">
-                </span>
+        return (
+            <div className="e-typing-indicator ">
+                <span className="e-user-text">Transcripting</span> 
+                <div className="e-indicator-wrapper">
+                    <span className="e-indicator"></span>
+                    <span className="e-indicator">
+                    </span><span className="e-indicator">
+                    </span>
+                </div>
             </div>
-        </div>
+        );
     }
 
     public buttonSettings = {

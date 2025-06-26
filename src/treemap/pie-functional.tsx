@@ -110,7 +110,7 @@ const Pie = () => {
                 { x: "15-64 years", y: 56.2 },
                 { x: "Above 64 years", y: 3.0 },
             ];
-            dataName = "Afica";
+            dataName = "Asia";
         } else if (count === 1) {
             dataSource = [
                 { x: "0-15 years", y: 15.5 },
@@ -124,28 +124,28 @@ const Pie = () => {
                 { x: "15-64 years", y: 67.8 },
                 { x: "Above 64 years", y: 7.1 },
             ];
-            dataName = "Europe";
+            dataName = "Africa";
         } else if (count === 3) {
             dataSource = [
                 { x: "0-15 years", y: 15.3 },
                 { x: "15-64 years", y: 68.4 },
                 { x: "Above 64 years", y: 16.3 },
             ];
-            dataName = "North America";
+            dataName = "Africa";
         } else if (count === 4) {
             dataSource = [
                 { x: "0-15 years", y: 22.8 },
                 { x: "15-64 years", y: 65.9 },
                 { x: "Above 64 years", y: 11.4 },
             ];
-            dataName = "Oceania";
+            dataName = "Europe";
         } else if (count === 5) {
             dataSource = [
                 { x: "0-15 years", y: 26.8 },
                 { x: "15-64 years", y: 66.1 },
                 { x: "Above 64 years", y: 7.1 },
             ];
-            dataName = "South America";
+            dataName = "Europe";
         } else if (count === 6) {
             dataSource = [
                 { x: "0-15 years", y: 26.8 },
@@ -166,28 +166,28 @@ const Pie = () => {
                 { x: "15-64 years", y: 66.1 },
                 { x: "Above 64 years", y: 7.1 },
             ];
-            dataName = "South America";
+            dataName = "Oceania";
         } else if (count === 9) {
             dataSource = [
                 { x: "0-15 years", y: 26.8 },
                 { x: "15-64 years", y: 66.1 },
                 { x: "Above 64 years", y: 7.1 },
             ];
-            dataName = "South America";
+            dataName = "Oceania";
         } else if (count === 10) {
             dataSource = [
                 { x: "0-15 years", y: 26.8 },
                 { x: "15-64 years", y: 66.1 },
                 { x: "Above 64 years", y: 7.1 },
             ];
-            dataName = "South America";
+            dataName = "North America";
         } else if (count === 11) {
             dataSource = [
                 { x: "0-15 years", y: 26.8 },
                 { x: "15-64 years", y: 66.1 },
                 { x: "Above 64 years", y: 7.1 },
             ];
-            dataName = "South America";
+            dataName = "North America";
         } else if (count === 12) {
             dataSource = [
                 { x: "0-15 years", y: 26.8 },

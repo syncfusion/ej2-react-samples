@@ -18,7 +18,6 @@ export const ChatUISampleOrder: Object = [
     'description':'Displays the loadon-demand supports in the ChatUI component, displaying initial set of messages and loads dynamically when the scroll hits top.',
     'order': '01',
     'category': 'Chat UI',
-    'type': 'new',
     'api':'{"ChatUIComponent":["headerText", "headerIconCss", "messages", "user", "loadOnDemand"] }',
     'sourceFiles': [
       { 'displayName': 'loadOn-demand.tsx', 'path': 'src/chat-ui/loadOn-demand.tsx' },
@@ -44,6 +43,7 @@ export const ChatUISampleOrder: Object = [
     'description':'Displays the all the API of the ChatUI component, offering a different purposes and use-cases of the property options available.',
     'order': '01',
     'category': 'Chat UI',
+    'type': 'update',
     'api':'{"ChatUIComponent":["suggestions", "headerText", "headerIconCss", "messages", "user"] }',
     'sourceFiles': [
       { 'displayName': 'api.tsx', 'path': 'src/chat-ui/api.tsx' },

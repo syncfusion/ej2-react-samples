@@ -12,11 +12,11 @@ interface DateFormat extends Window {
     format?: Function;
 }
 const textcolor_CSS = `
- .tailwind3-dark #TreeGrid .e-description,
+.tailwind3-dark #TreeGrid .e-description,
 .fluent2-dark #TreeGrid .e-description,
 .bootstrap5\.3-dark #TreeGrid .e-description,
 .material3-dark #TreeGrid .e-description,
-.fluent2-highcontrast #TreeGrid .e-description  {
+.fluent2-highcontrast #TreeGrid .e-description {
     color: #fff;
 }`;
 const DetailTemplate = () => {

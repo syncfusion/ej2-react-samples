@@ -18,35 +18,34 @@ const Drilldown = () => {
         updateSampleSection();
     }, [])
     type Visibility = 'visible' | 'hidden';
-    const [titleContent, setTitleContent] = useState<string>('Automobile Sales by Category');
+    const [titleContent, setTitleContent] = useState<string>('Automobile Sales by Region - 2023');
     const [textContent, setTextContent] = useState<string>('');
     const [isVisible, setIsVisible] = useState<boolean>(false);
     const [isEnableSmartLabels, setIsEnableSmartLables] = useState<boolean>(false);
     const [visibility, setVisibility] = useState<Visibility>('hidden');
     let data: Object[] = [
-        { x: 'SUV', y: 25 }, { x: 'Car', y: 37 }, { x: 'Pickup', y: 15 },
-        { x: 'Minivan', y: 23 }
+        { x: 'Asia-Pacific', y: 45 }, { x: 'Europe', y: 25 }, { x: 'North America', y: 20 }, {x: 'Latin America', y: 7},
+        { x: 'Middle East & Africa', y: 3 }
     ];
-    let suvs: Object = [
-        { x: 'Toyota', y: 8 }, { x: 'Ford', y: 12 }, { x: 'GM', y: 17 }, { x: 'Renault', y: 6 }, { x: 'Fiat', y: 3 },
-        { x: 'Hyundai', y: 16 }, { x: 'Honda', y: 8 }, { x: 'Maruthi', y: 10 }, { x: 'BMW', y: 20 }
+    let AsiaPacific: Object = [
+        { x: 'China', y: 66.7 }, { x: 'Japan', y: 17.8 }, { x: 'India', y: 11.1 }, { x: 'South Korea', y: 3.3 }, { x: 'Others', y: 1.1 }
     ];
-    let cars: Object = [
-        { x: 'Toyota', y: 7 }, { x: 'Chrysler', y: 12 }, { x: 'Nissan', y: 9 }, { x: 'Ford', y: 15 }, { x: 'Tata', y: 10 }, 
-        { x: 'Mahindra', y: 7 }, { x: 'Renault', y: 8 }, { x: 'Skoda', y: 5 }, { x: 'Volkswagen', y: 15 }, { x: 'Fiat', y: 3 }
+    let Europe: Object = [
+        { x: 'Germany', y: 32 }, { x: 'UK', y: 20 }, { x: 'France', y: 16 }, { x: 'Italy', y: 12 }, { x: 'Spain', y: 8 }, { x: 'Others', y: 12 }
     ];
-    let pickups: Object = [
-        { x: 'Nissan', y: 9 }, { x: 'Chrysler', y: 4 }, { x: 'Ford', y: 7 }, { x: 'Toyota', y: 20 },
-        { x: 'Suzuki', y: 13 }, { x: 'Lada', y: 12 }, { x: 'Bentley', y: 6 }, { x: 'Volvo', y: 10 }, { x: 'Audi', y: 19 }
+    let NorthAmerica: Object = [
+        { x: 'USA', y: 75 }, { x: 'Canada', y: 15 }, { x: 'Mexico', y: 10 }
     ];
-    let minivans: Object = [
-        { x: 'Hummer', y: 11 }, { x: 'Ford', y: 5 }, { x: 'GM', y: 12 }, { x: 'Chrysler', y: 3 }, { x: 'Jaguar', y: 9 },
-        { x: 'Fiat', y: 8 }, { x: 'Honda', y: 15 }, { x: 'Hyundai', y: 4 }, { x: 'Scion', y: 11 }, { x: 'Toyota', y: 17 }
+    let LatinAmerica: Object = [
+        { x: 'Brazil', y: 57.1 }, { x: 'Argentina', y: 21.4 }, { x: 'Chile', y: 14.3 }, { x: 'Others', y: 7.1 }
+    ];
+    let MiddleEastAfrica: Object = [
+        { x: 'South Africa', y: 33.3 }, { x: 'Egypt', y: 26.7 }, { x: 'UAE', y: 23.3 }, { x: 'Others', y: 16.7 }
     ];
     let dataLabel: Object = {
-        visible: true, position: 'Inside', enableRotation : false, connectorStyle: { type: 'Curve', length: '5%' }, font: { fontWeight: '600', color: 'white' }
+        visible: true, position: 'Outside', enableRotation: false, connectorStyle: { type: 'Curve', length: Browser.isDevice ? '5%' : '10%' }, font: { fontWeight: '600', color: 'black', size: Browser.isDevice ? '6px' : '12px' }
     };
-    let title: string = 'Automobile Sales by Category';
+    let title: string = 'Automobile Sales by Region -2023';
     let pie = useRef<AccumulationChartComponent>(null);
 
     const onTextRender = (args: IAccTextRenderEventArgs): void => {
@@ -58,27 +57,32 @@ const Drilldown = () => {
             isparent = false;
             switch (index.point) {
                 case 0:
-                    pie.current.series[0].dataSource = suvs;
-                    setTitleContent('Automobile Sales in the SUV Segment');
-                    setTextContent('SUV');
+                    pie.current.series[0].dataSource = AsiaPacific;
+                    setTitleContent('Automobile Sales in the Asia-Pacific region');
+                    setTextContent('Asia-Pacific');
                     break;
                 case 1:
-                    pie.current.series[0].dataSource = cars;
-                    setTitleContent('Automobile Sales in the Car Segment');
-                    setTextContent('Car');
+                    pie.current.series[0].dataSource = Europe;
+                    setTitleContent('Automobile Sales in the Europe region');
+                    setTextContent('Europe');
                     break;
                 case 2:
-                    pie.current.series[0].dataSource = pickups;
-                    setTitleContent('Automobile Sales in the Pickup Segment');
-                    setTextContent('Pickup');
+                    pie.current.series[0].dataSource = NorthAmerica;
+                    setTitleContent('Automobile Sales in the North America region');
+                    setTextContent('North America');
                     break;
                 case 3:
-                    pie.current.series[0].dataSource = minivans;
-                    setTitleContent('Automobile Sales in the Minivan Segment');
-                    setTextContent('Minivan');
+                    pie.current.series[0].dataSource = LatinAmerica;
+                    setTitleContent('Automobile Sales in the Latin America region');
+                    setTextContent('Latin America');
+                    break;
+                case 4:
+                    pie.current.series[0].dataSource = MiddleEastAfrica;
+                    setTitleContent('Automobile Sales in the Middle East & Africa region');
+                    setTextContent('Middle East & Africa');
                     break;
             }
-            if (pie.current.theme === 'HighContrast' || pie.current.theme.indexOf('Dark') > -1) {
+            if (pie.current.theme.indexOf('HighContrast') > -1 || pie.current.theme.indexOf('Dark') > -1) {
                 pie.current.annotations = [{
                     content: '<div id= "white" style="cursor:pointer;padding:3px;width:30px; height:30px;"><img src="./src/chart/images/white.png" id="back" alt="White Icon"/><div>', region: 'Series', x: '50%', y: '50%'
                 }];
@@ -88,13 +92,13 @@ const Drilldown = () => {
                     content: '<div id="back" style="cursor:pointer; padding: 3px; width: 30px; height: 30px;">' + '<img src="./src/chart/images/back.png" id="imgback" alt="Back Icon"/>', region: 'Series', x: '50%', y: '50%'
                 }];
             }
-            pie.current.series[0].innerRadius = '30%';
-            pie.current.series[0].radius = Browser.isDevice ? '90%' : '80%';
+            pie.current.series[0].innerRadius = '40%';
+            pie.current.series[0].radius = '80%';
             pie.current.series[0].explode = false;
             pie.current.series[0].animation.enable = false;
-            pie.current.series[0].dataLabel.connectorStyle.length = '20px'
+            pie.current.series[0].dataLabel.connectorStyle.length = Browser.isDevice ? '5%' : '10%';
             pie.current.series[0].dataLabel.position = Browser.isDevice ? 'Inside' : 'Outside';
-            pie.current.series[0].dataLabel.enableRotation = true;
+            pie.current.series[0].dataLabel.enableRotation = Browser.isDevice ? true : false;
             pie.current.series[0].dataLabel.font.color = '';
             setIsVisible(false);
             pie.current.visibleSeries[0].explodeIndex = null;
@@ -112,6 +116,7 @@ const Drilldown = () => {
     const hide = (target: Element): void => {
         pie.current.series[0].dataSource = data;
         pie.current.series[0].innerRadius = '0%';
+        pie.current.series[0].radius = '70%';
         pie.current.series[0].animation.enable = false;
         isparent = true;
         pie.current.series[0].explode = false;
@@ -131,7 +136,7 @@ const Drilldown = () => {
     };
     const load = (args: IAccLoadedEventArgs): void => {
        let selectedTheme: string = loadAccumulationChartTheme(args);
-        if (selectedTheme === 'HighContrast' || selectedTheme.indexOf('Dark') > -1) {
+        if (selectedTheme.indexOf('HighContrast') > -1 || selectedTheme.indexOf('Dark') > -1) {
             args.accumulation.series[0].dataLabel.font.color = "white";
             if (args.accumulation.annotations[0] && !isparent) {
                 args.accumulation.annotations[0].content = '<div id= "white" style="cursor:pointer;padding:3px;width:30px; height:30px;"><img src="./src/chart/images/white.png" id="back" alt="White Icon"/><div>';
@@ -147,15 +152,15 @@ const Drilldown = () => {
                     <p style={{ visibility: visibility, display: 'inline-block' }} id="symbol">&nbsp;&gt;&gt;&nbsp;</p>
                     <p id="text" style={{ visibility: visibility, display: 'inline-block' }}>{textContent}</p>
                 </div>
-                <AccumulationChartComponent id='pie-chart' ref={pie} title={titleContent} enableSmartLabels={isEnableSmartLabels} legendSettings={{ visible: isVisible }} enableBorderOnMouseMove={false} tooltip={{ enable: false, format: '${point.x} <br> ${point.y} %' }} chartMouseClick={onChartMouseClick.bind(this)} textRender={onTextRender.bind(this)} load={load.bind(this)} loaded={onChartLoad.bind(this)}>
+                <AccumulationChartComponent id='pie-chart' subTitle='Source: wikipedia.org' ref={pie} title={titleContent} enableSmartLabels={isEnableSmartLabels} legendSettings={{ visible: isVisible }} enableBorderOnMouseMove={false} tooltip={{ enable: false, format: '${point.x} <br> ${point.y} %' }} chartMouseClick={onChartMouseClick.bind(this)} textRender={onTextRender.bind(this)} load={load.bind(this)} loaded={onChartLoad.bind(this)}>
                     <Inject services={[AccumulationDataLabel, AccumulationTooltip, PieSeries, AccumulationAnnotation]} />
                     <AccumulationSeriesCollectionDirective>
-                        <AccumulationSeriesDirective dataSource={data} xName='x' yName='y' dataLabel={dataLabel} radius='70%' explode={false} />
+                        <AccumulationSeriesDirective dataSource={data} xName='x' yName='y' name='Automobile Sales' dataLabel={dataLabel} radius='70%' startAngle={-30} endAngle={330} borderRadius={3} border={{color:'#ffffff', width: 1}} explode={false} />
                     </AccumulationSeriesCollectionDirective>
                 </AccumulationChartComponent>
             </div>
             <div id="action-description">
-                <p>This sample demonstrates a drill down chart with a pie for automobiles sales by category. By clicking one category, you can navigate to other sub-categories where companies are differentiated.</p>
+                <p>This sample demonstrates a drill down chart with a pie for automobiles sales by region. Selecting a category navigates to its sub-categories, where sales are further broken down by country.</p>
             </div>
             <div id="description">
                 <p> 

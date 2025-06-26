@@ -5,43 +5,50 @@ import { updateSampleSection } from '../common/sample-base';
 import { MultiSelectComponent } from '@syncfusion/ej2-react-dropdowns';
 import './default.css';
 import * as data from './dataSource.json';
-
+type RecordItem = {
+  id: string;
+  text: string;
+  group?: string;
+};
 const Default = () => {
     useEffect(() => {
         updateSampleSection();
     }, [])
-    // define the array of string
-    let records: { [key: string]: Object }[] = [];
-    for (let i = 1; i <= 150; i++) {
-        let item: { [key: string]: Object } = {};
-        item.id = 'id' + i;
-        item.text = `Item ${i}`;
+
+      const [records, setRecords] = useState<RecordItem[]>([]);
+      const [value, setValue] = useState(null);
+      const [objectValue, setObjectValue] = useState("Selected value : ");
     
-        // Generate a random number between 1 and 4 to determine the group
-        const randomGroup = Math.floor(Math.random() * 4) + 1;
-        switch (randomGroup) {
+      useEffect(() => {
+        const initialRecords: RecordItem[] = [];
+        for (let i = 1; i <= 150; i++) {
+          const item: RecordItem = { id: 'id' + i, text: `Item ${i}` };
+          // Generate a random number between 1 and 4 to determine the group
+          const randomGroup = Math.floor(Math.random() * 4) + 1;
+          switch (randomGroup) {
             case 1:
-                item.group = 'Group A';
-                break;
+              item.group = 'Group A';
+              break;
             case 2:
-                item.group = 'Group B';
-                break;
+              item.group = 'Group B';
+              break;
             case 3:
-                item.group = 'Group C';
-                break;
+              item.group = 'Group C';
+              break;
             case 4:
-                item.group = 'Group D';
-                break;
+              item.group = 'Group D';
+              break;
             default:
-                break;
+              break;
+          }
+          initialRecords.push(item);
         }
-        records.push(item);
-    }
-    const [value, setValue] = useState<string[] | object[] | number[] | boolean[]>(null);
-    const [objectValue, setObjectValue] = useState<string>("Selected value : ");
-    const onChange = (args: any) => {
+        setRecords(initialRecords);
+      }, []);
+    
+      const onChange = (args) => {
         setObjectValue("Selected value : " + JSON.stringify(args.value));
-    }
+      };
     // maps the appropriate column to fields property
     const fields: { [key: string]: string } = { text: 'text', value: 'id' };
     // set the value to select an item based on mapped value at initial rendering

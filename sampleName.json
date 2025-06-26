@@ -67,6 +67,14 @@
             "datamatrix": "Data Matrix"
         }
     },
+    "block-editor": {
+        "ControlName": "Block Editor",
+        "Samples": {
+            "overview":"Overview",
+	        "api": "API",
+            "events": "Events"
+        }
+    },
     "bullet-chart": {
         "ControlName": "BulletChart",
         "Samples": {
@@ -820,7 +828,8 @@
             "esigning-pdf-forms": "eSigning PDF Forms",
             "annotations": "Annotations",
             "hand-written": "Handwritten Signature",
-            "invisible-signature": "Invisible Signature"
+            "invisible-signature": "Invisible Signature",
+            "programmatic-operations": "Programmatic Operations"
         }
     },
     "pivot-table": {
@@ -924,6 +933,7 @@
             "default":"Default Functionalities",
             "custom-views": "Custom Views",
             "streaming": "Streaming Response",
+            "attachments": "File Attachments",
             "template": "Template",
 	        "dialog": "Dialog"
         }

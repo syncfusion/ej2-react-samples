@@ -1,14 +1,22 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
+import AiSmartMindMap from './ai-text-to-mindmap';
+/* custom code start*/
+import AIToast from '../common/ai-toast';
+/* custom code end*/
+import { updateAISampleSection } from '../common/sample-base';
 
 export class smartMindMap extends SampleBase<{}, {}> {
+     componentDidMount() {
+          updateAISampleSection(); 
+    }
 
     render() {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <img src={'src/ai-diagram/images/text-to-mindmap.gif'} width='100%' alt="Showcase Text to MindMap Gif" height='100%'></img>
+                    <AiSmartMindMap />
                 </div>
                 <div id="action-description">
                     <p>This demo sample showcases the creation of a dynamic mindmap diagram using the React Diagram component with
@@ -29,6 +37,7 @@ export class smartMindMap extends SampleBase<{}, {}> {
                         user handles to further expand and customize the mindmap, creating an interactive and personalized experience.
                     </p>
                 </div>
+             <AIToast/>     
             </div>
         )
     }

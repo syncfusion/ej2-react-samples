@@ -11,7 +11,7 @@ import { SampleBase } from '../common/sample-base';
 import './simplified.css';
 
 export class Simplified extends SampleBase<{}, {}> {
-  private simplifiedRibbonObj: Ribbon;
+  public simplifiedRibbonObj: Ribbon;
   public pasteOptions: ItemModel[] = [{ text: "Keep Source Format" }, { text: "Merge Format" }, { text: "Keep Text Only" }];
   public findOptions: ItemModel[] = [{ text: "Find", iconCss: "e-icons e-search" }, { text: "Advanced Find", iconCss: "e-icons e-search" }, { text: "Go to", iconCss: "e-icons e-arrow-right" }];
   public selectOptions: ItemModel[] = [{ text: "Select All" }, { text: "Select Objects" }];
@@ -25,7 +25,7 @@ export class Simplified extends SampleBase<{}, {}> {
 
   public fontSize: string[] = ["8", "9", "10", "11", "12", "14", "16", "18", "20", "22", "24", "26", "28", "36", "48", "72", "96"];
   public fontStyle: string[] = ["Algerian", "Arial", "Calibri", "Cambria", "Cambria Math", "Courier New", "Candara", "Georgia", "Impact", "Segoe Print", "Segoe Script", "Segoe UI", "Symbol", "Times New Roman", "Verdana", "Windings"];
-  public filtering(e: FilteringEventArgs) {
+  public filtering = (e: FilteringEventArgs) => {
     let query = new Query();
     query = (e.text !== "") ? query.where("Text", "contains", e.text, true) : query;
     e.updateData(this.fontStyle, query);
@@ -45,17 +45,17 @@ export class Simplified extends SampleBase<{}, {}> {
   toastInstance: ToastComponent;
 
   public isPasteDisabled: boolean = true;
-  public enablePaste() { 
+  public enablePaste = () => { 
         if (!this.isPasteDisabled) { return; }
         this.simplifiedRibbonObj.enableItem('simplified-pastebtn');
         this.isPasteDisabled = false;
     }
 
-  public updateContent(args: string) {
+  public updateContent = (args: string) => {
     this.toastInstance.show({ content: "Last clicked item is " + args });
   }
   
-  public fileSelect(args: FileMenuEventArgs){
+  public fileSelect = (args: FileMenuEventArgs) => {
     if(args.item.id === "newword" || args.item.id === "oldword" || args.item.id === "pdf"){
         this.updateContent("File -> Save as -> " + args.item.text);
     }
@@ -64,7 +64,7 @@ export class Simplified extends SampleBase<{}, {}> {
     }
   }
 
-  public launchClick(args: LauncherClickEventArgs) {
+  public launchClick = (args: LauncherClickEventArgs) => {
     if (args.groupId == "clipboard") {
         this.updateContent("Clipboard Launcher Icon");
     }
@@ -209,7 +209,7 @@ export class Simplified extends SampleBase<{}, {}> {
                                             <RibbonCollectionsDirective>
                                                 <RibbonCollectionDirective>
                                                     <RibbonItemsDirective>
-                                                        <RibbonItemDirective id='pictureddl' type="DropDown" dropDownSettings={{ iconCss: "e-icons e-image", content: "Pictures", target: '#pictureList' }}>
+                                                        <RibbonItemDirective id='pictureddl' type="DropDown" dropDownSettings={{ iconCss: "e-icons e-image", content: "Pictures", target: '#simplified-pictureList' }}>
                                                         </RibbonItemDirective>
                                                         <RibbonItemDirective type="DropDown" dropDownSettings={{ iconCss: "sf-icon-shapes", items: this.shapeOptions, content: "Shapes", select: function (args) { this.updateContent("Shapes -> " + args.item.text); } }}>
                                                         </RibbonItemDirective>
@@ -325,7 +325,7 @@ export class Simplified extends SampleBase<{}, {}> {
                             <div className="content4"></div>
                             <ToastComponent id='toast' ref={toast => this.toastInstance = toast} position={{ X: 'Right' }} height={25} width='auto' timeOut={2000} cssClass='e-toast-info' showCloseButton={true} target="#simplified-ribbonPlaceHolder" newestOnTop={true} animation={{ show: { effect: 'FadeIn' }, hide: { effect: 'FadeOut' } }} />
                         </div>
-                        <ListViewComponent id='pictureList' dataSource={['This Device', 'Stock Images', 'Online Images']} showHeader={true} headerTitle="Insert Picture From" select={function (args) { this.updateContent("Picture -> " + args.text); }}></ListViewComponent>
+                        <ListViewComponent id='simplified-pictureList' dataSource={['This Device', 'Stock Images', 'Online Images']} showHeader={true} headerTitle="Insert Picture From" select={function (args) { this.updateContent("Picture -> " + args.text); }}></ListViewComponent>
                     </div>
                 </div>
             </div>

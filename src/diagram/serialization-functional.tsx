@@ -153,16 +153,16 @@ let connectorSymbols: ConnectorModel[] = [
 
 // CSS styles specific to this sample.
 const SAMPLE_CSS = `
-  .e-upload {
+  .diagram-serialization .e-upload {
     display: none;
   }
 
-  #palette-icon {
+  .diagram-serialization #palette-icon {
     display: none;
   }
 
   @media (max-width: 550px) {
-      #palette-icon {
+      .diagram-serialization #palette-icon {
           display: inline-flex;
       }
   }
@@ -228,7 +228,7 @@ function Serialization() {
     }
 
     return (
-        <div className="control-pane">
+        <div className="control-pane diagram-serialization">
             <style>{SAMPLE_CSS}</style>
             <div className="control-section">
                 <ToolbarComponent
@@ -358,7 +358,9 @@ function Serialization() {
                             }}
                             // event triggers after the diagram elements finished loading using loadDiagram method
                             loaded={() => {
-                                diagramInstance.select([diagramInstance.nodes[0]]);
+                                setTimeout(() => {
+                                    diagramInstance.select([diagramInstance.nodes[0]]);
+                                }, 100);
                             }}
                         />
                     </div>

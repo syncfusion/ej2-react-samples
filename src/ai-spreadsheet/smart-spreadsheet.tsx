@@ -1,9 +1,15 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
+import { updateAISampleSection } from '../common/sample-base';
+ /* custom code start*/
+import AIToast from '../common/ai-toast';
+/* custom code end*/
 
 export class SmartSpreadsheet extends SampleBase<{}, {}> {
-
+    componentDidMount() {
+          updateAISampleSection(); 
+    }
     render() {
         return (
             <div className='control-pane'>
@@ -30,6 +36,7 @@ export class SmartSpreadsheet extends SampleBase<{}, {}> {
                         </li>
                     </ul>
                 </div>
+                <AIToast/> 
             </div>
         )
     }

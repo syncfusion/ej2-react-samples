@@ -16,7 +16,7 @@ export const DateTimeOrder: Object = [
         ]
     },
     {
-        'path': 'datetimepicker/date-time-format', 'component': 'Dateformat',  'type': 'update', 'name': 'Format', 'description': 'The InputFormats feature allows users to define multiple input formats, automatically converting typed values to the display format for a seamless experience.', 'order': '01', 'category': 'DateTimePicker', 'api': '{"DateTimePicker": [ "format", "value"]}',
+        'path': 'datetimepicker/date-time-format', 'component': 'Dateformat', 'name': 'Format', 'description': 'The InputFormats feature allows users to define multiple input formats, automatically converting typed values to the display format for a seamless experience.', 'order': '01', 'category': 'DateTimePicker', 'api': '{"DateTimePicker": [ "format", "value"]}',
         'sourceFiles': [
             { 'displayName': 'date-time-format.tsx', 'path': 'src/datetimepicker/date-time-format.tsx' },
             { 'displayName': 'date-time-format.jsx', 'path': 'src/datetimepicker/date-time-format.jsx' },

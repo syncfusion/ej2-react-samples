@@ -148,7 +148,7 @@ const CustomTemplate = () => {
         uploadObj.current.dropArea = dropElement;
         uploadObj.current.dataBind();
         if (Browser.isDevice) {
-            (uploadObj.current.dropArea.querySelector('drop') as HTMLElement).style.padding = '4% 13%';
+            (uploadObj.current.dropArea.querySelector('#drop') as HTMLElement).style.padding = '4% 13%';
         }
     }
 

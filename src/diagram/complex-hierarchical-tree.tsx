@@ -27,7 +27,7 @@ import { multiParentData } from './diagram-data';
 
 const SAMPLE_CSS = `
 /* For orientation and subtree alignment in property panel*/
-.image-pattern-style {
+.diagram-complex .image-pattern-style {
     background-color: white;
     background-size: contain;
     background-repeat: no-repeat;
@@ -39,31 +39,31 @@ const SAMPLE_CSS = `
     float: left;
 }
 
-.image-pattern-style:hover {
+.diagram-complex .image-pattern-style:hover {
   border-color: gray;
   border-width: 2px;
 }
 
-.row {
+.diagram-complex .row {
     margin-left: 0px;
     margin-right: 0px;
 }
 
-.row-header {
+.diagram-complex .row-header {
     font-size: 15px;
     font-weight: 500;
 }
 
-.e-selected-style {
+.diagram-complex .e-selected-style {
     border-color: #006CE6;
     border-width: 2px;
 }
 
-.e-checkbox-wrapper .e-label {
+.diagram-complex .e-checkbox-wrapper .e-label {
     font-size: 12px;
 }
 
-.diagram-control-pane .col-xs-6 {
+.diagram-complex .diagram-control-pane .col-xs-6 {
     padding-left: 0px;
     padding-right: 0px;
 }`;
@@ -116,10 +116,10 @@ export class ComplexHierarchicalModel extends SampleBase<{}, {}> {
 
     render() {
         return (
-            <div className="control-pane diagram-control-pane">
+            <div className="control-pane diagram-control-pane diagram-complex">
                 <style>{SAMPLE_CSS}</style>
                 <div className="col-lg-8 control-section">
-                    <div className="content-wrapper" style={{ width: "100%" }}>
+                    <div  style={{ width: "100%" }}>
                         <DiagramComponent
                             id="diagram"
                             ref={diagram => (diagramInstance = diagram)}

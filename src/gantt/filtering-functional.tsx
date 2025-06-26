@@ -126,7 +126,7 @@ const Filtering = () => {
       <div id="action-description">
         <p>This sample visualizes the manned lunar mission, which landed the first human on the Moon using the Apollo 11
           spacecraft in the year 1969.
-          This sample demonstrates the Filtering feature available in Gantt chart. You can
+          This sample demonstrates the Filtering feature available in Gantt Chart. You can
           filter a particular column using filter menu available in the columns. This sample is also enabled with toolbar
           searching option, using which you can filter the Gantt content across all the columns.</p>
       </div>
@@ -145,9 +145,9 @@ const Filtering = () => {
           </ul>
         </div>
         <div>
-          Gantt chart also provides support for a set of filtering modes with the <code>hierarchyMode</code> property. The following are the types of filter modes available in Gantt chart:
+          Gantt Chart also provides support for a set of filtering modes with the <code>hierarchyMode</code> property. The following are the types of filter modes available in Gantt Chart:
           <ul>
-            <li><code>Parent</code> - This is the default filter hierarchy mode in Gantt chart. The filtered records are displayed with their parent records. If the filtered records do not have any parent record, then the filtered record alone will be displayed.</li>
+            <li><code>Parent</code> - This is the default filter hierarchy mode in Gantt Chart. The filtered records are displayed with their parent records. If the filtered records do not have any parent record, then the filtered record alone will be displayed.</li>
             <li><code>Child</code> - The filtered records are displayed with their child records. If the filtered records do not have any child record, then only the filtered records are displayed.</li>
             <li><code>Both</code> - The filtered records are displayed with both parent and child records. If the filtered records do not have any parent or child record, then only the filtered records are displayed.</li>
             <li><code>None</code> - Only the filtered records are displayed.</li>

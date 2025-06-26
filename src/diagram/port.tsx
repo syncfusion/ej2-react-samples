@@ -162,26 +162,26 @@ let shape: { [key: string]: Object }[] = [
 
 // CSS styles for the property panel.
 const sample_css = ` 
-.sb-child-row {
+.diagram-port .sb-child-row {
   margin-top: 8px;
 }
 
-.property-panel-header {
+.diagram-port .property-panel-header {
   padding-top: 15px;
   padding-bottom: 15px;
 }
 
-.property-section .e-remove-selection{
+.diagram-port .property-section .e-remove-selection{
   cursor: not-allowed;
 }
 
-.row-header {
+.diagram-port .row-header {
   font-size: 13px;
   font-weight: 500;
   padding-left: 10px
 }
 
-.e-remove-selection .property-section-content {
+.diagram-port .e-remove-selection .property-section-content {
   pointer-events: none;
 }`;
 export class Port extends SampleBase<{}, {}> {
@@ -195,7 +195,7 @@ export class Port extends SampleBase<{}, {}> {
     // Renders the diagram and property panel UI components.
     render() {
         return (
-            <div className="control-pane">
+            <div className="control-pane diagram-port">
                 <style>{sample_css}</style>
                 <div className="col-lg-8 control-section">
                     {/* Initializes and renders diagram control */}
@@ -347,7 +347,7 @@ export class Port extends SampleBase<{}, {}> {
                                                 format={"###.##"}
                                                 value={1}
                                                 step={0.5}
-                                                max={20} 
+                                                max={15} 
                                                 min={1}
                                                 change={(args: NumericChangeEventArgs) => {
                                                     applyPortStyle("strokewidth");

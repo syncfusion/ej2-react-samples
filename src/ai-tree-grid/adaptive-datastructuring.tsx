@@ -1,8 +1,15 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
+import { updateAISampleSection } from '../common/sample-base';
+ /* custom code start*/
+import AIToast from '../common/ai-toast';
+/* custom code end*/
 
 export class AdaptiveDataStructuring extends SampleBase<{}, {}> {
+    componentDidMount() {
+          updateAISampleSection(); 
+    }
 
     render() {
         return (
@@ -24,6 +31,7 @@ export class AdaptiveDataStructuring extends SampleBase<{}, {}> {
                         Utilizing a specialized AI prompt, the system scans a dataset to identify and restructure hierarchical relationships between records. The AI meticulously corrects any misassigned relationships by adjusting the <code>ParentId</code> fields, aligning them with their respective top-level <code>CategoryId</code>. The resulting dataset, now properly organized, is then bound to the Tree Grid for a coherent and accurate display.
                     </p>
                 </div>
+                <AIToast/> 
             </div>
         )
     }

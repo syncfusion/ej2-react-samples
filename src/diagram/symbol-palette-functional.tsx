@@ -177,7 +177,7 @@ function SymbolPalette() {
         className="col-lg-8 control-section"
         id="palette-space"
       >
-        <div className="content-wrapper" style={{ width: "100%" }}>
+        <div  style={{ width: "100%" }}>
           <SymbolPaletteComponent
             id="symbolpalette"
             ref={symbolpal => (palette = symbolpal)}

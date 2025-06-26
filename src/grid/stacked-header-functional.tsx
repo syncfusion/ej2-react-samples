@@ -185,26 +185,26 @@ function StackedHeader() {
             <div className='control-section'>
                 <GridComponent dataSource={stackedHeaderData} ref={(grid) => { gridInstance = grid }} allowPaging={true} allowResizing={true} enableHover={false} clipMode="EllipsisWithTooltip" allowSorting={true} allowMultiSorting={true} editSettings={editSettings} allowFiltering={true} filterSettings={filterSettings} toolbar={toolbar} queryCellInfo={queryCellInfo} showColumnChooser={true} columnChooserSettings={columnChooserSettings}>
                     <ColumnsDirective>
-                        <ColumnDirective field='CustomerID' headerText='Customer ID' width='160' minWidth='100' textAlign='Right' validationRules={orderidRules} isPrimaryKey={true} showInColumnChooser={false}></ColumnDirective>
-                        <ColumnDirective field='CustomerName' headerText='Name' width='100' minWidth='100'></ColumnDirective>
+                        <ColumnDirective field='CustomerID' headerText='Customer ID' width='160' minWidth='115' textAlign='Right' validationRules={orderidRules} isPrimaryKey={true} showInColumnChooser={false}></ColumnDirective>
+                        <ColumnDirective field='CustomerName' headerText='Name' width='150' minWidth='120'></ColumnDirective>
                         <ColumnDirective columns={
                             [
                             { field: 'OrderID', headerText: 'ID', textAlign: 'Right', width: 90, minWidth: 90 },
-                            { field: 'OrderDate', headerText: 'Date', textAlign: 'Right', width: 110, minWidth: 100, format: 'yMd', editType: 'datepickeredit' }
+                            { field: 'OrderDate', headerText: 'Date', textAlign: 'Right', width: 110, minWidth: 105, format: 'yMd', editType: 'datepickeredit' }
                             ]}
                             headerText='Order Details'
                             textAlign='Center'/>
                         <ColumnDirective columns={
                             [
-                            { field: 'ShipCountry', headerText: 'Country', textAlign: 'Left', width: 115, minWidth: 100, editType: 'dropdownedit', template: locationtemplate, validationRules: { required: true } },
-                            { field: 'Freight', headerText: 'Charges', textAlign: 'Right', width: 130, minWidth: 100, format: 'C2', editType: 'numericedit', validationRules: { required: true, number: true } },
+                            { field: 'ShipCountry', headerText: 'Country', textAlign: 'Left', width: 150, minWidth: 120, editType: 'dropdownedit', template: locationtemplate, validationRules: { required: true } },
+                            { field: 'Freight', headerText: 'Charges', textAlign: 'Right', width: 130, minWidth: 115, format: 'C2', editType: 'numericedit', validationRules: { required: true, number: true } },
                             ]}
                             headerText='Shipping Details'
                             textAlign='Center'/>
                         <ColumnDirective columns={
                             [
-                                { field: 'Status', headerText: 'Status', textAlign: 'Center', width: 110, minWidth: 100, editType: 'dropdownedit', validationRules: { required: true, } },
-                                { field: 'Feedback', headerText: 'Feedback', allowResizing: false, textAlign: 'Center', width: 130, minWidth: 100, template: feedbackTemplate, editType: 'numericedit', validationRules: { required: true, min: 0, max: 5 },}
+                                { field: 'Status', headerText: 'Status', textAlign: 'Center', width: 150, minWidth: 120, editType: 'dropdownedit', validationRules: { required: true, } },
+                                { field: 'Feedback', headerText: 'Feedback', allowResizing: false, textAlign: 'Center', width: 130, minWidth: 115, template: feedbackTemplate, editType: 'numericedit', validationRules: { required: true, min: 0, max: 5 },}
                             ]}
                             headerText='Delivery Status'
                             textAlign='Center'/>

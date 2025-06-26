@@ -21,13 +21,14 @@ function DocumentList () {
   const gridInstance = useRef<GridComponent>(null);
   const [isDialogOpen, setDialogOpen] = useState(false);
   const [isGridOpen, setGridOpen] = useState(true);
+  const [documentValue, setDocumentValue] = useState(null);
   let mode:any;
   const commands:any=[{type:'View',buttonOption:{cssClass:'e-icons e-eye e-flat',title:'View'}},
   {type:'Edit',buttonOption:{cssClass:'e-icons e-edit e-flat',title:'Edit'}}];
 
   function buttonClick (args): void {
+    setDocumentValue(args.rowData.Url);
     var viewer = (document.getElementById('container') as any).ej2_instances[0];
-    viewer.documentPath=args.rowData.Url;
     dialogInstance.current.header=args.rowData.FileName;
     if(args.commandColumn.buttonOption.title=='View'){
       mode = 'View';
@@ -130,7 +131,8 @@ function destroyed (): void{
   }
 
   function dialogOpen (): void {
-    setDialogOpen(true);    
+    setDialogOpen(true);
+    viewer.documentPath = documentValue;    
   }
 
   function documentLoaded() {

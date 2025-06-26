@@ -77,7 +77,7 @@ export class Linear extends SampleBase<{}, {}> {
                             <label className="e-btn" htmlFor="nonLinear">Non-Linear</label>
                         </div>
                     </div>
-                    <div id="linear-stepper-control">
+                    <div className="linear-stepper-control">
                         <StepperComponent ref={stepper => { this.stepperObj = stepper }} linear={true} stepChanged={this.handleStepChange.bind(this)}>
                             <StepsDirective>
                                 <StepDirective iconCss={'sf-icon-form'} label={'Project Setup'} />

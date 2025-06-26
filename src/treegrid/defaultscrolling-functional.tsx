@@ -72,29 +72,19 @@ const DefaultScrolling = () => {
             </div>
             <div id="action-description">
                 <p>
-                    This sample demonstrates the Tree Grid component with the horizontal
-                    and vertical scrollbars to view the exceeded Tree Grid content.
+                   <p>This sample demonstrates the Tree Grid component with the horizontal and vertical scrollbars to view the exceeded Tree Grid content.</p>
                 </p>
             </div>
             <div id="description">
-                <p>
-                    The Tree Grid will show scrollbar when the content exceeds the element
-                    width or height. The vertical and horizontal scrollbar will be
-                    displayed based on the following criteria.
+               <p>
+                    The Tree Grid will show scrollbars when the content exceeds the element's width or height. The vertical and horizontal scrollbars will be displayed based on the following criteria.
                 </p>
                 <ul>
-                    <li>
-                        The vertical scrollbar appears when the total height of rows present
-                        in Tree Grid exceeds its element height.
-                    </li>
-                    <li>
-                        The horizontal scrollbar appears when the sum of column`s width
-                        exceeds Tree Grid element width.
-                    </li>
+                    <li>The vertical scrollbar appears when the total height of rows in the Tree Grid exceeds its element's height.</li>
+                    <li>The horizontal scrollbar appears when the sum of the column's width exceeds the Tree Grid element's width.</li>
                 </ul>
                 <p>
-                    The Tree Grid provides a way to use a custom layout for its rows using
-                    template feature. The
+                    The
                     <code>
                         <a
                             target="_blank"
@@ -114,9 +104,7 @@ const DefaultScrolling = () => {
                             width
                         </a>
                     </code>{" "}
-                    property is used to set the Tree Grid height and width respectively.
-                    The value of these properties can be a numeric value, pixel(
-                    <code>px</code>) or percentage (<code>%</code>).
+                    properties are used to set the Tree Grid height and width, respectively. The value of these properties can be a numeric, pixel(<code>px</code>) or percentage (<code>%</code>).
                 </p>
                 <p>
                     In this demo, the{" "}
@@ -139,7 +127,7 @@ const DefaultScrolling = () => {
                             width
                         </a>
                     </code>{" "}
-                    property of the Tree Grid is set to{" "}
+                    properties of the Tree Grid are set to{" "}
                     <strong>
                         <em>400</em>
                     </strong>{" "}
@@ -147,10 +135,9 @@ const DefaultScrolling = () => {
                     <strong>
                         <em>auto</em>
                     </strong>
-                    respectively. Now, the Tree Grid will render with vertical scrollbar
-                    when the total height of rows exceeds its element height and
-                    horizontal scrollbar will appear when the total column width exceeds
-                    the element width.
+                    respectively. Now, the Tree Grid will render with a vertical scrollbar when the total height of rows
+                    exceeds its element height and horizontal scrollbar will appear when the
+                    total column width exceeds the element's width.
                 </p>
             </div>
         </div>

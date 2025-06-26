@@ -1,8 +1,15 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
+import { updateAISampleSection } from '../common/sample-base';
+/* custom code start*/
+import AIToast from '../common/ai-toast';
+/* custom code end*/
 
 export class WritingAssist extends SampleBase<{}, {}> {
+     componentDidMount() {
+          updateAISampleSection(); 
+    }
 
     render() {
         return (
@@ -34,6 +41,7 @@ export class WritingAssist extends SampleBase<{}, {}> {
                     <p><strong>Seamless Insertion:</strong> Once the content is generated, it can be effortlessly inserted into the
                         document at the cursor's position, allowing users to maintain the flow of their writing without disruption.</p>
                 </div>
+                <AIToast/>
             </div>
         )
     }

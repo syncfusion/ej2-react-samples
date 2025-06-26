@@ -2,10 +2,11 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { useEffect, useRef } from 'react';
 import { updateSampleSection } from '../common/sample-base';
-import { DocumentEditorContainerComponent, Toolbar } from '@syncfusion/ej2-react-documenteditor';
+import { DocumentEditorContainerComponent, Toolbar, Ribbon } from '@syncfusion/ej2-react-documenteditor';
 import { TitleBar } from './title-bar';
 import './default.component.css';
-DocumentEditorContainerComponent.Inject(Toolbar);
+import { SwitchComponent } from '@syncfusion/ej2-react-buttons';
+DocumentEditorContainerComponent.Inject(Toolbar,Ribbon);
 // tslint:disable:max-line-length
 const AutoShapesComponent = () => {
     useEffect(() => {
@@ -18,7 +19,7 @@ const AutoShapesComponent = () => {
     let titleBar: TitleBar;
     const onLoadDefault = (): void => {
         // tslint:disable
-        let defaultDocument: object = {"sfdt":"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"};
+        let defaultDocument: object = {"sfdt":"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"};
         // tslint:enable
         container.current.documentEditor.open(JSON.stringify(defaultDocument));
         container.current.documentEditor.documentName = "Auto Shapes";
@@ -42,17 +43,35 @@ const AutoShapesComponent = () => {
             true
         );
         onLoadDefault();
+        titleBar.showButtons(false);
     };
+    const change = (args):void=>{
+        if (args.checked) {
+            container.current.toolbarMode = 'Ribbon';
+        }
+        else {
+            container.current.toolbarMode = 'Toolbar';
+        }
+        titleBar.showButtons(container.current.toolbarMode != 'Ribbon')
+    }
     return (
         <div className="control-pane">
             <div className="control-section">
+                <div className="flex-container">
+                                  <label className="switchLabel" htmlFor="toolbarSwitch">Ribbon UI</label>
+                            <div className="e-message render-mode-info">
+                                <span className="e-msg-icon render-mode-info-icon" title="Turn OFF to switch from Ribbon to toolbar UI"></span>
+                            </div>
+                                <SwitchComponent cssClass="buttonSwitch" id="toolbarSwitch" change={change} checked={true}></SwitchComponent>
+                                </div>
                 <div id="documenteditor_titlebar" className="e-de-ctn-title"></div>
                 <div id="documenteditor_container_body">
                     <DocumentEditorContainerComponent
                         id="container"
                         ref={container}
                         style={{ display: "block" }}
-                        height={"590px"}
+                                                height={"590px"}
+                        toolbarMode= {"Ribbon"}
                         serviceUrl={hostUrl}
                         enableToolbar={true}
                         locale="en-US"
@@ -60,10 +79,10 @@ const AutoShapesComponent = () => {
                 </div>
             </div>
             <div id="action-description">
-                <p>This sample shows auto shapes preservation in Document Editor.</p>
+                <p>This sample shows the preservation of auto shapes and group shapes in Document Editor.</p>
             </div>
             <div id="description">
-                <p>With Document Editor, you can see the auto shapes from your Word Document.</p>
+                <p>With Document Editor, you can view the auto shapes and group shapes present in your Word Document.</p>
                 <p>List of shapes preserved:</p>
                 <ul>
                     <li>Lines</li>

@@ -11,7 +11,7 @@ import {
 import { SwitchComponent, ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import './pdf.component.css';
 
-export class DocumentList extends SampleBase<{}, { hideDialog: boolean }> {
+export class DocumentList extends SampleBase<{}, { hideDialog: boolean, documentValue: string }> {
   private dialogInstance: DialogComponent;
   public viewer: PdfViewerComponent;
   private gridInstance: GridComponent;
@@ -21,7 +21,8 @@ export class DocumentList extends SampleBase<{}, { hideDialog: boolean }> {
   constructor(props: {}) {
     super(props);
     this.state = {
-      hideDialog: true
+      hideDialog: true,
+      documentValue: null
     };
   }
 
@@ -40,6 +41,7 @@ export class DocumentList extends SampleBase<{}, { hideDialog: boolean }> {
 
   public dialogOpen(): void {
     this.setState({ hideDialog: false });
+    this.viewer.documentPath = this.state.documentValue;
   }
 
   public destroyed(): void{
@@ -49,8 +51,8 @@ export class DocumentList extends SampleBase<{}, { hideDialog: boolean }> {
 
   public buttonClick(args): void {
     this.dialogOpen();
+    this.setState({ documentValue: args.rowData.Url });
     var viewerContainer = (document.getElementById('container') as any).ej2_instances[0];
-    viewerContainer.documentPath = args.rowData.Url;
     if (args.commandColumn.buttonOption.title == 'View') {
       viewerContainer.textFieldSettings = {
         isReadOnly: true,

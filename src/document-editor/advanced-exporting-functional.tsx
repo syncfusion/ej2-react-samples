@@ -72,7 +72,7 @@ const AdvancedExportingView = () => {
             },
             {
                 class: 'data',
-                text: 'Syncfusion® Document Text (*.sfdt)',
+                text: 'Syncfusion Document Text (*.sfdt)',
                 id: 'sfdt',
                 category: 'Client side exporting',
             },
@@ -277,7 +277,7 @@ const AdvancedExportingView = () => {
                 <p>In this example, Document Editor provides exporting of the document as follows</p>
                 <p style={{ "display": "block" }}>Client-side exporting</p>
                 <ul>
-                <li>Syncfusion<sup>®</sup> Document Text (*.sfdt)</li>
+                <li>Syncfusion Document Text (*.sfdt)</li>
                     <li>Word Document (*.docx)</li>
                     <li>Word Template (*.dotx)</li>
                     <li>Plain Text (*.txt)</li>

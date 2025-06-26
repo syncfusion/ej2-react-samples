@@ -22,53 +22,47 @@ Diagram.Inject(ConnectorEditing);
 let diagramInstance: DiagramComponent;
 const SAMPLE_CSS = `
   /* Container for diagram and property panel */
-    .control-section {
+    .diagram-flowchartLayout .control-section {
         width: 75%;
         float: left; /* Keep the diagram section on the left */
          border-right: 1px solid #D5D5D5;
     }
-    .property-panel-header {
+    .diagram-flowchartLayout .property-panel-header {
         font-size: larger;
         margin-left: 10px;
     }
-    /* Diagram content style */
-    .content-wrapper {
-        width: 100%;
-        background: white;
-        border: 1px solid #D5D5D5;
-    }
-    .input-element {
+    .diagram-flowchartLayout .input-element {
         margin-left: 10px;
         width: 50%;
     }
 
     /* Property panel style */
-    .flow-property-section {
+    .diagram-flowchartLayout .flow-property-section {
         width: 24%; /* Adjusted to fill the remaining space */
         float: right; /* Ensure the property panel is on the right */
         padding: 10px;
     }
 
     /* Align labels and inputs within the property panel */
-    .row {
+    .diagram-flowchartLayout .row {
         margin-left: 0;
         margin-right: 0;
         padding-top: 8px;
     }
 
-    .property-panel-content .row {
+    .diagram-flowchartLayout .property-panel-content .row {
         display: flex;
         align-items: center;
         margin-bottom: 8px;
     }
 
-    .property-panel-content label {
+    .diagram-flowchartLayout .property-panel-content label {
         flex: 1;
         font-weight: normal;
         margin-left: 10px;
     }
 
-    .property-panel-content input {
+    .diagram-flowchartLayout .property-panel-content input {
         flex: 2;
         padding: 5px;
         border: 1px solid #ccc;
@@ -101,19 +95,17 @@ function FlowchartLayoutDiagram() {
         updateSampleSection();
     }, [])
     return (
-        <div>
+        <div className="diagram-flowchartLayout">
             <style>{SAMPLE_CSS}</style>
-            <div className="control-section">
+            <div className="control-section diagram-flowchartLayout">
                 <div className="control-wrapper">
-                    <div
-                        className="content-wrapper"
-                        style={{ width: '100%', background: 'white' }}
-                    >
+                    <div style={{ width: '100%', background: 'white', border: '1px solid #D5D5D5' }}>
                         <DiagramComponent
                             id="diagram"
                             ref={(diagram) => (diagramInstance = diagram)}
                             width={'100%'}
                             height={'1500px'}
+                            scrollSettings= {{ scrollLimit: 'Infinity', padding: { bottom: 50, right: 50 }}}
                             rulerSettings={{ showRulers: true }}
                             getNodeDefaults={getNodeDefaults}
                             getConnectorDefaults={getConnectorDefaults}

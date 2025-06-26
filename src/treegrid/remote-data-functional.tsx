@@ -36,7 +36,7 @@ const RemoteData = () => {
             <ColumnDirective
               field="TaskName"
               headerText="Task Name"
-              width="140"
+              width="200"
             ></ColumnDirective>
             <ColumnDirective
               field="StartDate"

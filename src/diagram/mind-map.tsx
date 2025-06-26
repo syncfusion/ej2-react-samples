@@ -58,7 +58,7 @@ export class MindMap extends SampleBase<{}, {}> {
     return (
       <div className="control-pane">
         <div className="control-section">
-        <div className="content-wrapper" style={{width: "100%"}}>
+        <div  style={{width: "100%"}}>
              {/* Syncfusion DiagramComponent for displaying the mind map */}
             <DiagramComponent
               ref={diagram => (diagramInstance = diagram)}

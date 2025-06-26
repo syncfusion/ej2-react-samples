@@ -135,7 +135,7 @@ export class MentionIntegration extends SampleBase<{}, {}> {
                             height='250px' value={this.value} formatter={this.formatter} toolbarSettings={this.toolbarSettings} >
                             <Inject services={[MarkdownEditor, Toolbar, Image, Link, Table]} />
                         </RichTextEditorComponent>
-                        <MentionComponent id='editorMention' ref={(mention: MentionComponent) => { this.mention = mention }} dataSource={this.emailData} displayTemplate={this.displayTemplate} itemTemplate={this.itemTemplate} target="#markdownRTE_editable-content" fields={{ text: 'name' }} popupWidth='250px' popupHeight='200px' sortOrder='Ascending' allowSpaces={true} suffixText='&nbsp;'></MentionComponent>
+                        <MentionComponent id='editorMention' ref={(mention: MentionComponent) => { this.mention = mention }} dataSource={this.emailData} displayTemplate={this.displayTemplate} itemTemplate={this.itemTemplate} target="#markdownRTE_editable-content" fields={{ text: 'name' }} popupWidth='250px' popupHeight='200px' sortOrder='Ascending' allowSpaces={true} ></MentionComponent>
                     </div>
                 </div>
                 <div id="action-description">

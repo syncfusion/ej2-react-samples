@@ -47,26 +47,6 @@
     width: 90px;
 }
 
-.fabric .e-kanban .e-clock::before {
-    content: '\e97f';
-}
-
-.bootstrap .e-kanban .e-clock::before {
-    content: '\e93e';
-}
-
-.bootstrap4 .e-kanban .e-clock::before {
-    content: '\e7c7';
-}
-
-.bootstrap4 .e-kanban .e-done::before {
-    content: '\e7d9';
-}
-
-.highcontrast .e-kanban .e-clock::before {
-    content: '\e97f';
-}
-
 .e-kanban .card-template-wrap {
     line-height: normal;
     font-size: 12px;

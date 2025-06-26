@@ -122,39 +122,39 @@ let handles: UserHandleModel[] = [
 
 // CSS styles for the property panel and diagram components
 const sample_css = `
-  .row {
+  .diagram-snapping .row {
     margin-left: 0px;
     margin-right: 0px;
   }
-    .db-prop-text-style {
+    .diagram-snapping .db-prop-text-style {
       font-size: 13px;
       font-weight: normal;
       font-family: 'Calibri';
       margin-top: 25px;
     }
-    .radio-text-style {
+    .diagram-snapping .radio-text-style {
       font-size: 13px;
       font-weight: normal;
       font-family: 'Calibri';
       margin-top: 10px;
     }
-    .text-content {
+    .diagram-snapping .text-content {
       margin-left: 10px;
     }
-    #properties_Container {
+    .diagram-snapping #properties_Container {
       width: 300px;
       float: left;
       height: 600px;
       margin-top: 30px;
     }
-  .row-header {
+  .diagram-snapping .row-header {
     font-size: 15px;
     font-weight: 500;
   }
-  .property-section .e-remove-selection {
+  .diagram-snapping .property-section .e-remove-selection {
     cursor: not-allowed;
   }
-  .property-panel-header {
+  .diagram-snapping .property-panel-header {
     padding-top: 15px;
     padding-bottom: 15px;
   }`;
@@ -217,10 +217,10 @@ function handleSnapToLinesChange(args: any) {
 
 
     return (
-        <div className="control-pane diagram-control-pane">
+        <div className="control-pane diagram-control-pane diagram-snapping">
             <style>{sample_css}</style>
             <div className="col-lg-8 control-section">
-                <div className="content-wrapper" style={{ width: '100%' }}>
+                <div  style={{ width: '100%' }}>
                     {/* Initializes and renders diagram control */}
                     <DiagramComponent
                         id="diagram"

@@ -63,85 +63,18 @@ const StackedLine100 = () => {
     const load = (args: ILoadedEventArgs): void => {
         loadChartTheme(args);
     };
-    const legendClick = (args: ILegendClickEventArgs) => {
-        if (args.series.index === 0) {
-            if (args.chart.series[3].visible) {
-                args.chart.series[3].width = 3;
-                args.chart.series[0].width = 2;
-            } else if (args.chart.series[2].visible) {
-                args.chart.series[2].width = 3;
-                args.chart.series[0].width = 2;
-            } else if (args.chart.series[1].visible) {
-                args.chart.series[1].width = 3;
-                args.chart.series[0].width = 2;
-            } else {
-                args.chart.series[0].width = 3;
-            }
-        }
-
-        if (args.series.index === 1) {
-            if (args.chart.series[3].visible) {
-                args.chart.series[3].width = 3;
-                args.chart.series[1].width = 2;
-            } else if (args.chart.series[2].visible) {
-                args.chart.series[2].width = 3;
-                args.chart.series[1].width = 2;
-            } else if (args.series.visible && args.chart.series[0].visible) {
-                args.chart.series[0].width = 3;
-                args.chart.series[1].width = 2;
-            } else {
-                args.chart.series[1].width = 3;
-                args.chart.series[0].width = 2;
-            }
-        }
-
-        if (args.series.index === 2) {
-            if (args.chart.series[3].visible) {
-                args.chart.series[3].width = 3;
-                args.chart.series[2].width = 2;
-            } else if (!args.series.visible) {
-                args.chart.series[2].width = 3;
-                args.chart.series[1].width = 2;
-                args.chart.series[0].width = 2;
-            } else if (args.chart.series[1].visible) {
-                args.chart.series[1].width = 3;
-                args.chart.series[2].width = 2;
-            } else if (args.series.visible && args.chart.series[0].visible) {
-                args.chart.series[0].width = 3;
-                args.chart.series[2].width = 2;
-            }
-        }
-
-        if (args.series.index === 3) {
-            if (!args.series.visible) {
-                args.chart.series[3].width = 3;
-                args.chart.series[2].width = 2;
-                args.chart.series[1].width = 2;
-                args.chart.series[0].width = 2;
-            } else if (args.chart.series[2].visible) {
-                args.chart.series[2].width = 3;
-                args.chart.series[3].width = 2;
-            } else if (args.chart.series[1].visible) {
-                args.chart.series[1].width = 3;
-                args.chart.series[3].width = 2;
-            } else if (args.series.visible && args.chart.series[0].visible) {
-                args.chart.series[0].width = 3;
-                args.chart.series[3].width = 2;
-            }
-        }
-    };
 
     return (
         <div className="control-pane">
             <style>{SAMPLE_CSS}</style>
             <div className="control-section">
-                <ChartComponent id="charts" style={{ textAlign: 'center' }} primaryXAxis={{ majorTickLines: { width: 0 }, minorTickLines: { width: 0 }, majorGridLines: { width: 0 }, lineStyle: { width: 0 }, valueType: 'Category', labelRotation: Browser.isDevice ? -45 : 0, labelIntersectAction: Browser.isDevice ? 'None' : 'Trim' }} primaryYAxis={{ title: 'Population Share (%)', lineStyle: { width: 0 }, interval: 20, minorTickLines: { width: 0 }, majorTickLines: { width: 0 }, majorGridLines: { width: 1 }, minorGridLines: { width: 1 } }} width={Browser.isDevice ? '100%' : '75%'} legendSettings={{ enableHighlight: true }} chartArea={{ border: { width: 0 }, margin: { bottom: 12 } }} load={load.bind(this)} loaded={loaded.bind(this)} legendClick={legendClick.bind(this)} title="Blood Type Distribution by Country" subTitle='Source: wikipedia.org' tooltip={{ enable: true, format: '${point.x} : <b>${point.y}% (${point.percentage}%)</b>', enableHighlight: true, showNearestTooltip: true }}>
+                <ChartComponent id="charts" style={{ textAlign: 'center' }} primaryXAxis={{ majorTickLines: { width: 0 }, minorTickLines: { width: 0 }, majorGridLines: { width: 0 }, lineStyle: { width: 0 }, valueType: 'Category', labelRotation: Browser.isDevice ? -45 : 0, labelIntersectAction: Browser.isDevice ? 'None' : 'Trim' }} primaryYAxis={{ title: 'Population Share (%)', lineStyle: { width: 0 }, interval: 20, minorTickLines: { width: 0 }, majorTickLines: { width: 0 }, majorGridLines: { width: 1 }, minorGridLines: { width: 1 } }} width={Browser.isDevice ? '100%' : '75%'} legendSettings={{ enableHighlight: true }} chartArea={{ border: { width: 0 }, margin: { bottom: 12 } }} load={load.bind(this)} loaded={loaded.bind(this)} title="Blood Type Distribution by Country" subTitle='Source: wikipedia.org' tooltip={{ enable: true, format: '${point.x} : <b>${point.y}% (${point.percentage}%)</b>', enableHighlight: true, showNearestTooltip: true }}>
                     <Inject services={[StackingLineSeries, Category, Legend, Tooltip, Highlight]} />
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={chartData1} xName="x" yName="y" name="Canada" width={2} type="StackingLine100" marker={{ visible: true, isFilled: true, shape: 'Circle', width: 7, height: 7 }}></SeriesDirective>
                         <SeriesDirective dataSource={chartData2} xName="x" yName="y" name="Algeria" width={2} type="StackingLine100" marker={{ visible: true, isFilled: true, shape: 'Diamond', width: 7, height: 7, }}></SeriesDirective>
                         <SeriesDirective dataSource={chartData3} xName="x" yName="y" name="Ireland" width={2} type="StackingLine100" marker={{ visible: true, isFilled: true, shape: 'Rectangle', width: 5, height: 5, }}></SeriesDirective>
-                        <SeriesDirective dataSource={chartData4} xName="x" yName="y" name="Armenia" width={3} type="StackingLine100" marker={{ isFilled: true, visible: true, shape: 'Triangle', width: 6, height: 6, }}></SeriesDirective>
+                        <SeriesDirective dataSource={chartData4} xName="x" yName="y" name="Armenia" width={2} type="StackingLine100" marker={{ isFilled: true, visible: true, shape: 'Triangle', width: 6, height: 6, }}></SeriesDirective>
                     </SeriesCollectionDirective>
                 </ChartComponent>
             </div>

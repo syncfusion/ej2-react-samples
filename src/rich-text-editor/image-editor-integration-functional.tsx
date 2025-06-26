@@ -122,7 +122,7 @@ function ImageEditorIntegration() {
         'Align',
         'Caption',
         'Remove',
-        '-',
+        '|',
         'InsertLink',
         'OpenImageLink',
         'EditImageLink',
@@ -153,7 +153,7 @@ function ImageEditorIntegration() {
                 <img
                     id="img1"
                     style={{ height: 335 }}
-                    src="https://ej2.syncfusion.com/angular/demos/assets/image-editor/images/default.png"
+                    src="src/rich-text-editor/images/bridge.png"
                     aria-label="Bridge"
                 ></img>
                 </p>

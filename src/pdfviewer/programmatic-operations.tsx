@@ -5,7 +5,7 @@ import * as React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import {
   PdfViewerComponent, Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView,
-  ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner, PageOrganizer, Inject, HighlightSettings, UnderlineSettings, StrikethroughSettings, LineSettings, ArrowSettings, RectangleSettings, CircleSettings, PolygonSettings, DistanceSettings, PerimeterSettings, AreaSettings, RadiusSettings, VolumeSettings, FreeTextSettings, StampSettings, DynamicStampItem, SignStampItem, StandardBusinessStampItem, CustomStampSettings, InkAnnotationSettings, StickyNotesSettings, AnnotationMoveEventArgs,
+  ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner, PageOrganizer, Inject, HighlightSettings, UnderlineSettings, StrikethroughSettings, SquigglySettings, LineSettings, ArrowSettings, RectangleSettings, CircleSettings, PolygonSettings, DistanceSettings, PerimeterSettings, AreaSettings, RadiusSettings, VolumeSettings, FreeTextSettings, StampSettings, DynamicStampItem, SignStampItem, StandardBusinessStampItem, CustomStampSettings, InkAnnotationSettings, StickyNotesSettings, AnnotationMoveEventArgs,
   LoadEventArgs,
   AnnotationSelectEventArgs,
   AllowedInteraction,
@@ -314,6 +314,7 @@ class ProgrammaticOperations extends SampleBase<{}, StateType> {
     { className: 'Highlight', Text: 'Highlight' },
     { className: 'Underline', Text: 'Underline' },
     { className: 'Strikethrough', Text: 'Strikethrough' },
+    { className: 'Squiggly', Text: 'Squiggly'},
     { className: 'Line', Text: 'Line' },
     { className: 'Arrow', Text: 'Arrow' },
     { className: 'Rectangle', Text: 'Rectangle' },
@@ -382,7 +383,7 @@ class ProgrammaticOperations extends SampleBase<{}, StateType> {
         </div>
 
         {/* Render the PDF Viewer */}
-        <PdfViewerComponent ref={(scope) => { this.viewer = scope; }} id="container" documentPath="https://cdn.syncfusion.com/content/pdf/annotations.pdf" resourceUrl="https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib" toolbarSettings={this.toolbarSettings} documentLoad={this.documentLoaded} annotationSelect={this.annotationSelectedEvent} annotationUnSelect={this.annotationUnSelectedEvent} annotationMove={this.onAnnotationMoved} annotationResize={this.onAnnotationResized} annotationRemove={this.annotationUnSelectedEvent} style={{ 'height': '640px' }}>
+        <PdfViewerComponent ref={(scope) => { this.viewer = scope; }} id="container" documentPath="https://cdn.syncfusion.com/content/pdf/annotations-v3.pdf" resourceUrl="https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib" toolbarSettings={this.toolbarSettings} documentLoad={this.documentLoaded} annotationSelect={this.annotationSelectedEvent} annotationUnSelect={this.annotationUnSelectedEvent} annotationMove={this.onAnnotationMoved} annotationResize={this.onAnnotationResized} annotationRemove={this.annotationUnSelectedEvent} style={{ 'height': '640px' }}>
           <Inject services={[Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner, PageOrganizer]} />
         </PdfViewerComponent>
       </div>
@@ -660,7 +661,7 @@ class ProgrammaticOperations extends SampleBase<{}, StateType> {
             <div style={{ padding: '12px 12px 0 12px' }}>
             <table className="e-pv-annot-inner-table e-pv-annot-bounds-list" style={{borderCollapse: "collapse"}}>
               <tbody>
-                {(this.state.annotationType === "Highlight" || this.state.annotationType === "Underline" || this.state.annotationType === "Strikethrough") &&
+                {(this.state.annotationType === "Highlight" || this.state.annotationType === "Underline" || this.state.annotationType === "Strikethrough" || this.state.annotationType === "Squiggly") &&
                   (this.state.bounds && this.state.bounds.length > 0) && (this.state.bounds.map((item, index) => {
                     return (
                       <tr key={item.id}>
@@ -1107,6 +1108,7 @@ class ProgrammaticOperations extends SampleBase<{}, StateType> {
       case 'Highlight':
       case 'Underline':
       case 'Strikethrough':
+      case 'Squiggly':
         {
           this.setState({
             showBoundsButtons: true,
@@ -1402,7 +1404,7 @@ class ProgrammaticOperations extends SampleBase<{}, StateType> {
         });
       }
       let shapeAnnotation = this.selectedAnnotation.annotationType;
-      if (((property === "x") || (property === "y") || (property === "height") || (property === "width")) && ((shapeAnnotation === "Underline") || (shapeAnnotation === "Strikethrough") || (shapeAnnotation === "Highlight"))) {
+      if (((property === "x") || (property === "y") || (property === "height") || (property === "width")) && ((shapeAnnotation === "Underline") || (shapeAnnotation === "Strikethrough") || (shapeAnnotation === "Highlight") || (shapeAnnotation === "Squiggly"))) {
         this.setState({
           showUpdateAnnotation: false
         });
@@ -1483,6 +1485,9 @@ class ProgrammaticOperations extends SampleBase<{}, StateType> {
       this.viewer.annotation.addAnnotation(this.selectedAnnotation.annotationType, currentannotationSettings);
     }
     else if (this.selectedAnnotation.annotationType === 'Strikethrough') {
+      this.viewer.annotation.addAnnotation(this.selectedAnnotation.annotationType, currentannotationSettings);
+    }
+    else if (this.selectedAnnotation.annotationType === 'Squiggly') {
       this.viewer.annotation.addAnnotation(this.selectedAnnotation.annotationType, currentannotationSettings);
     }
     else if (this.selectedAnnotation.annotationType === 'Line') {
@@ -1625,7 +1630,7 @@ class ProgrammaticOperations extends SampleBase<{}, StateType> {
     if (this.IsRGBAColor(this.selectedAnnotation.strokeColor)) {
       this.selectedAnnotation.strokeColor = this.RGBAtoHex(this.selectedAnnotation.strokeColor, "stroke");
     }
-    if (currentannotation.textMarkupAnnotationType === "Highlight" || currentannotation.textMarkupAnnotationType === "Underline" || currentannotation.textMarkupAnnotationType === "Strikethrough") {
+    if (currentannotation.textMarkupAnnotationType === "Highlight" || currentannotation.textMarkupAnnotationType === "Underline" || currentannotation.textMarkupAnnotationType === "Strikethrough" || currentannotation.textMarkupAnnotationType === "Squiggly") {
       this.selectedAnnotation.annotationType = currentannotation.textMarkupAnnotationType;
     }
     else if (currentannotation.shapeAnnotationType === "Square" && currentannotation.subject === "Rectangle") {
@@ -1692,7 +1697,7 @@ class ProgrammaticOperations extends SampleBase<{}, StateType> {
       this.selectedAnnotation.fillColor = currentannotation.fillColor;
     }
     this.selectedAnnotation.showInkAnnotationType = false;
-    if (this.selectedAnnotation.annotationType === "Highlight" || this.selectedAnnotation.annotationType === "Underline" || this.selectedAnnotation.annotationType === "Strikethrough") {
+    if (this.selectedAnnotation.annotationType === "Highlight" || this.selectedAnnotation.annotationType === "Underline" || this.selectedAnnotation.annotationType === "Strikethrough" || this.selectedAnnotation.annotationType === "Squiggly") {
       if (currentannotation.bounds[0] && currentannotation.bounds[0].X && currentannotation.bounds[0].Y && currentannotation.bounds[0].Width && currentannotation.bounds[0].Height) {
         this.selectedAnnotation.bounds = this.addUniqueId(currentannotation.bounds);
         this.selectedAnnotation.width = currentannotation.bounds[0].Width;
@@ -2113,7 +2118,7 @@ class ProgrammaticOperations extends SampleBase<{}, StateType> {
       selectedAnnotation.height = 100;
       selectedAnnotation.showFileUploader = !selectedAnnotation.annotationSelected;
     }
-    else if ((shapeAnnotation == "Highlight") || (shapeAnnotation == "Underline") || (shapeAnnotation == "Strikethrough")) {
+    else if ((shapeAnnotation == "Highlight") || (shapeAnnotation == "Underline") || (shapeAnnotation == "Strikethrough") || (shapeAnnotation == "Squiggly")) {
       selectedAnnotation.width = 100;
       selectedAnnotation.height = 14;
     }
@@ -2121,7 +2126,7 @@ class ProgrammaticOperations extends SampleBase<{}, StateType> {
       selectedAnnotation.width = 0;
       selectedAnnotation.height = 0;
     }
-    if ((shapeAnnotation == "Highlight") || (shapeAnnotation == "Underline") || (shapeAnnotation == "Strikethrough") || shapeAnnotation == "FreeText") {
+    if ((shapeAnnotation == "Highlight") || (shapeAnnotation == "Underline") || (shapeAnnotation == "Strikethrough") || (shapeAnnotation == "Squiggly") || shapeAnnotation == "FreeText") {
       selectedAnnotation.x = 10;
       selectedAnnotation.y = 10;
       if (selectedAnnotation.annotationType === 'Highlight') {
@@ -2131,6 +2136,9 @@ class ProgrammaticOperations extends SampleBase<{}, StateType> {
         selectedAnnotation.fillColor = '#00FF00FF';
       }
       else if (selectedAnnotation.annotationType === 'Strikethrough') {
+        selectedAnnotation.fillColor = '#FF0000FF';
+      }
+      else if (selectedAnnotation.annotationType === 'Squiggly') {
         selectedAnnotation.fillColor = '#FF0000FF';
       }
       else {
@@ -2275,7 +2283,7 @@ public OpenContextMenu(event: MouseEvent) {
     currentAnnotation.thickness = this.selectedAnnotation.thickness;
     currentAnnotation.strokeColor = this.selectedAnnotation.strokeColor;
     currentAnnotation.color = "";
-    if (this.selectedAnnotation.annotationType === "Highlight" || this.selectedAnnotation.annotationType === "Underline" || this.selectedAnnotation.annotationType === "Strikethrough") {
+    if (this.selectedAnnotation.annotationType === "Highlight" || this.selectedAnnotation.annotationType === "Underline" || this.selectedAnnotation.annotationType === "Strikethrough" || this.selectedAnnotation.annotationType === "Squiggly") {
       currentAnnotation.bounds = [];
       currentAnnotation.color = this.selectedAnnotation.fillColor;
       if (this.selectedAnnotation.bounds?.length === 0) {
@@ -2476,19 +2484,23 @@ public OpenContextMenu(event: MouseEvent) {
         pageCount: this.viewer.pageCount
       });
     }
-    if (e.documentName === 'annotations.pdf') {
+    if (e.documentName === 'annotations-v3.pdf') {
       this.viewer.annotation.addAnnotation("Highlight", {
-        bounds: [{ x: 97, y: 610, width: 350, height: 14 }],
+        bounds: [{ x: 97, y: 610, width: 340, height: 14 }],
         pageNumber: 1
       } as HighlightSettings);
       this.viewer.annotation.addAnnotation("Underline", {
-        bounds: [{ x: 97, y: 723, width: 353.5, height: 14 }],
+        bounds: [{ x: 97, y: 705, width: 346, height: 14 }],
         pageNumber: 1
       } as UnderlineSettings);
       this.viewer.annotation.addAnnotation("Strikethrough", {
-        bounds: [{ x: 97, y: 836, width: 376.5, height: 14 }],
+        bounds: [{ x: 97, y: 800, width: 367, height: 14 }],
         pageNumber: 1
       } as StrikethroughSettings);
+      this.viewer.annotation.addAnnotation("Squiggly", {
+        bounds: [{ x: 97, y: 895.5, width: 336, height: 14 }],
+        pageNumber: 1
+      } as SquigglySettings);
       this.viewer.annotation.addAnnotation("Line", {
         offset: { x: 200, y: 230 },
         pageNumber: 2,

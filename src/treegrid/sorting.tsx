@@ -5,6 +5,7 @@ import { CheckBoxComponent, ChangeEventArgs } from '@syncfusion/ej2-react-button
 import { SortEventArgs } from '@syncfusion/ej2-react-grids';
 import { sortData } from './data';
 import { SampleBase } from '../common/sample-base';
+import { PropertyPane } from '../common/property-pane';
 
 export class Sorting extends SampleBase<{}, {}> {
 
@@ -98,6 +99,7 @@ export class Sorting extends SampleBase<{}, {}> {
           </TreeGridComponent>
         </div>
         <div className='col-md-3 property-section'>
+          <PropertyPane title="Properties">
             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
               <tbody>
                 <tr>
@@ -146,6 +148,7 @@ export class Sorting extends SampleBase<{}, {}> {
                 </tr>
               </tbody>
             </table>
+          </PropertyPane>
         </div>
         <div id="action-description">
             <p>

@@ -13,14 +13,14 @@ import {
 } from '@syncfusion/ej2-react-charts';
 import { Browser, EmitType, getInstance } from '@syncfusion/ej2-base';
 export let data1: any[] = [
-    { 'x': 'Chrome', y: 57.28, text: '57.28%' },
-    { 'x': 'UC Browser', y: 4.37, text: '4.37%' },
-    { 'x': 'Internet Explorer', y: 6.12, text: '6.12%' },
-    { 'x': 'QQ', y: 5.96, text: '5.96%' },
-    { 'x': 'Edge', y: 7.48, text: '7.48%' },
-    { 'x': 'Others', y: 14.06, text: '18.76%' },
+    { 'x': 'China', y: 35, text: '35%' },
+    { 'x': 'India', y: 30, text: '30%' },
+    { 'x': 'USA', y: 10.7, text: '10.7%' },
+    { 'x': 'Indonesia', y: 7, text: '7%' },
+    { 'x': 'Brazil', y: 5.3, text: '5.3%' },
+    { 'x': 'Others', y: 12, text: '12%' },
 ];
-let content = Browser.isDevice ? " " : "<div style='font-Weight:600;font-size:14px'>Browser<br>Market<br>Share</div>";
+let content = Browser.isDevice ? " " : "<div style='font-Weight:600;font-size:14px'>Internet Users <br> by Country<br>2025</div>";
 const SAMPLE_CSS = `
     .control-fluid {
         padding: 0px !important;
@@ -28,16 +28,7 @@ const SAMPLE_CSS = `
         .pie-chart2 {
             align :center
         }`;
-let count: number = 0;
-let fluent2Colors: string[] = ["#6200EE", "#09AF74", "#0076E5", "#CB3587", "#E7910F", "#66CD15", "#F3A93C", "#107C10",
-    "#C19C00"];
-let labelRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEventArgs): void => {
-    let selectedTheme: string = location.hash.split('/')[1];
-    selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-    if (selectedTheme === 'fluent2') {
-        args.fill = fluent2Colors[args.point.index % 10];
-    }
-};
+
 export class Doughnut extends SampleBase<{}, {}> {
   public pie: AccumulationChartComponent;
   render() {
@@ -45,24 +36,21 @@ export class Doughnut extends SampleBase<{}, {}> {
       <div className='control-pane'>
       <style>{SAMPLE_CSS}</style>
       <div className='control-section'>
-          <AccumulationChartComponent id='pie-chart2'  title = { Browser.isDevice ? "Browser Market Share" : '' } load={this.load.bind(this)} legendSettings={{ visible: true, toggleVisibility: false, position: 'Bottom', maximumColumns: Browser.isDevice ? 2 : 3 }} enableSmartLabels={true} enableAnimation={false} center={{ x: '50%', y: '50%' }} enableBorderOnMouseMove={false} tooltip={{ enable: true, format: '<b>${point.x}</b><br>Browser Share: <b>${point.y}%</b>', header: "", enableHighlight: true }} pointRender={labelRender.bind(this)}>
+          <AccumulationChartComponent id='pie-chart2' load={this.load.bind(this)} legendSettings={{ visible: true, toggleVisibility: false, position: 'Bottom', textWrap: 'Wrap' }} enableBorderOnMouseMove={false} selectionMode='Point' tooltip={{ enable: true, format: '<b>${point.x}</b><br>Percentage: <b>${point.y}%</b>', header: "" }}>
               <Inject services={[AccumulationLegend, PieSeries, AccumulationDataLabel, AccumulationTooltip, AccumulationSelection, Selection, ChartAnnotation, AccumulationAnnotation]} />
               <AccumulationSeriesCollectionDirective>
-              <AccumulationSeriesDirective dataSource={data1} xName='x' yName='y' explode={false} explodeOffset='10%' explodeIndex={0} startAngle={30} innerRadius='50%' dataLabel={{
-                            visible: true, position: 'Inside',
-                            font: { fontWeight: '600', color: '#ffffff' }, name: 'text', connectorStyle: { length: '20px', type: 'Curve' }
-                        }} radius={Browser.isDevice ? '80%' : '85%'} />
+              <AccumulationSeriesDirective dataSource={data1} xName='x' yName='y' innerRadius='50%' borderRadius={3} border={{ width: 1, color: '#ffffff' }} dataLabel={{ visible: false }} />
               </AccumulationSeriesCollectionDirective>
               <AccumulationAnnotationsDirective>
-                  <AccumulationAnnotationDirective content={content} region="Series" x="52%" y="50%" />
+                  <AccumulationAnnotationDirective content={content} region="Series" x="50%" y="50%" />
               </AccumulationAnnotationsDirective>
           </AccumulationChartComponent>
       </div>
       <div id="action-description">
-          <p>This sample demonstrates a donut chart showcasing mobile browser usage statistics, with legends displayed at the bottom of the chart.</p>
+          <p>This sample shows statistics on internet usage by country using the donut chart with legends shown at the bottom of the chart.</p>
       </div>
       <div id="description">
-          <p> This example demonstrates how to render a donut chart with legends positioned at the bottom. The legend can be arranged in horizontal, vertical, or auto layout modes. Using the <code>maximumColumns</code> property, you can define the maximum number of columns in auto layout. Additionally, a fixed width option ensures uniform legend sizes for a polished appearance.</p>
+          <p> In this example, you can see how to render a donut chart with legends. You can use <code>Radius</code> and <code>InnerRadius</code> properties to render the donut.</p>
           <p><b>Injecting Module</b></p>
           <p>
               Accumulation Chart component features are segregated into individual feature-wise modules.To use pie chart, you need to inject <code>AccumulationLegend</code> into <code>services</code>.

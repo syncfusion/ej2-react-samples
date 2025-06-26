@@ -9,7 +9,12 @@ import { SampleBase } from '../common/sample-base';
 import './gallery.css';
 
 export class Gallery extends SampleBase<{}, {}> {
-  private ribbonObj: Ribbon;
+  public ribbonObj: Ribbon;
+
+  public gallerySelect = (args: GallerySelectEventArgs) => {
+    this.updateContent("Gallery -> " + args.currentItem.content);
+  }
+
   public gallerySettings: RibbonGallerySettingsModel = (
     {
         select: this.gallerySelect,
@@ -114,21 +119,17 @@ export class Gallery extends SampleBase<{}, {}> {
   toastInstance: ToastComponent;
 
   public isPasteDisabled: boolean = true;
-  public enablePaste() {
+  public enablePaste = () => {
     if (!this.isPasteDisabled) { return; }
     this.ribbonObj.enableItem('pastebtn');
     this.isPasteDisabled = false;
   }
 
-  public updateContent(args: string) {
+  public updateContent = (args: string) => {
     this.toastInstance.show({ content: "Last clicked item is " + args });
   }
 
-  public gallerySelect(args: GallerySelectEventArgs) {
-    this.updateContent("Gallery -> " + args.currentItem.content);
-  }
-
-  public fileSelect(args: FileMenuEventArgs){
+  public fileSelect = (args: FileMenuEventArgs) => {
     if(args.item.id === "newword" || args.item.id === "oldword" || args.item.id === "pdf"){
         this.updateContent("File -> Save as -> " + args.item.text);
     }
@@ -137,7 +138,7 @@ export class Gallery extends SampleBase<{}, {}> {
     }
   }
 
-public launchClick(args: LauncherClickEventArgs) {
+public launchClick = (args: LauncherClickEventArgs) => {
     if (args.groupId == "clipboard") {
         this.updateContent("Clipboard Launcher Icon");
     }

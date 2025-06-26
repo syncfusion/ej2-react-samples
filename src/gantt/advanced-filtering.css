@@ -96,7 +96,6 @@ font-family: 'e-icons';
     content: '\e7f7';
     font-size: 15px;
 }
-
 .highcontrast .e-quickfilter::before {
     content: '\e21c';
     font-family: 'e-icons';

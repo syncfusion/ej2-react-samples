@@ -915,3 +915,10 @@ if (!isMobile) {
   createRoot(document.getElementById('dark-light-content')).render(<ThemeChangeButton />);
   thememode.classList.add('hidden');
 }
+
+select('.close-button').addEventListener('click', () => {
+  let banner = document.querySelector('.sb-token-header');
+  if (banner) {
+    banner.classList.add('sb-hide');
+  }
+});

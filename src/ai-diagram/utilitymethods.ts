@@ -34,11 +34,11 @@ export function pushWorkingData(diagram: DiagramComponent) {
             id: node.id,
             Label: node.annotations ? node.annotations[0].content : 'Node',
             fill: node!.style.fill,
-            branch: node.addInfo.orientation,
+            branch: node.addInfo ? node.addInfo.orientation: '',
             strokeColor: node.style.strokeColor,
-            parentId: node.data.parentId,
-            level: node.addInfo.level,
-            orientation: node.addInfo!.orientation,
+            parentId: node.data ? node.data.parentId:'',
+            level: node.addInfo?.level,
+            orientation: node.addInfo?.orientation,
             hasChild: false,
         };
         workingData.push(nodeData);
@@ -371,18 +371,16 @@ export function toolbarClick(args: ClickEventArgs) {
 
 export function onClickDisable(args: boolean, node?: Node) {
     if (args === false) {
-        toolbarObj.items[6].disabled = false;
-        toolbarObj.items[8].disabled = false;
+        toolbarObj.items[4].disabled = false;
         if (((node as NodeModel).addInfo as any).level !== 0) {
-            toolbarObj.items[7].disabled = false;
+            toolbarObj.items[5].disabled = false;
         } else {
-            toolbarObj.items[7].disabled = true;
+            toolbarObj.items[5].disabled = true;
         }
     }
     else if (args === true) {
-        toolbarObj.items[6].disabled = true;
-        toolbarObj.items[7].disabled = true;
-        toolbarObj.items[8].disabled = true;
+        toolbarObj.items[4].disabled = true;
+        toolbarObj.items[5].disabled = true;
     }
 }
 

@@ -9,10 +9,8 @@
 }
 #TimelineTemplate .e-timeline-single-header-cell {
     height: 70px !important;
-}   
-#TimelineTemplate .e-header-cell-label.e-gantt-top-cell-text{
-    background-color: #fff
-}
+}  
+
 .fluent2-highcontrast .e-header-cell-label.e-gantt-top-cell-text,
 .fluent-dark .e-header-cell-label.e-gantt-top-cell-text,
 .fluent2-dark .e-header-cell-label.e-gantt-top-cell-text,
@@ -21,9 +19,9 @@
     background-color: #000;
 }
 
-.bootstrap5_3-dark .e-header-cell-label.e-gantt-top-cell-text{
+#TimelineTemplate .bootstrap5_3-dark .e-header-cell-label.e-gantt-top-cell-text{
     background-color: #000;
 }
-.tailwind3-dark .e-header-cell-label.e-gantt-top-cell-text{
+#TimelineTemplate .tailwind3-dark .e-header-cell-label.e-gantt-top-cell-text{
     background-color: #000;
 }

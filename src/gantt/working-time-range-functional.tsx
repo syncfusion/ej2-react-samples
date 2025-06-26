@@ -211,8 +211,8 @@ const WorkingTimeRange = () => {
 
       <div id="description">
         <p>
-          In this example, you can see how to render a Gantt chart with the provided data source and customizable working hours in a day. You can split the working hours in a day to one or more range. So, you can also provide the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#dayworkingtime">
-          dayworkingtime</a> property value as array of object collection. Gantt chart also supports different <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#durationunit">
+          In this example, you can see how to render a Gantt Chart with the provided data source and customizable working hours in a day. You can split the working hours in a day to one or more range. So, you can also provide the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#dayworkingtime">
+          dayworkingtime</a> property value as array of object collection. Gantt Chart also supports different <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#durationunit">
           durationUnit</a> values as follows:
         </p>
         <ul>
@@ -221,9 +221,9 @@ const WorkingTimeRange = () => {
           <li><code>minute</code></li>
         </ul>
         <p>You can also set different working time range for different working days using <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#weekworkingtime">
-        weekWorkingTime</a> property. The weekWorkingTime property enables you to specify different working hours for each day of the week in your Gantt chart.
+        weekWorkingTime</a> property. The weekWorkingTime property enables you to specify different working hours for each day of the week in your Gantt Chart.
         By configuring this property, you can ensure that tasks are only scheduled during defined working periods, avoiding non-working hours.</p>
-        <p>Given duration in dataSource will be considered with this unit. In this demo, the <code>hour</code> unit is used to render taskbars in day hour timeline mode. Gantt chart supports only 24hours format as of now. The working hours will differ between organizations. This feature will be helpful to keep track of each task and resource task status based on the working time of company.</p>
+        <p>Given duration in dataSource will be considered with this unit. In this demo, the <code>hour</code> unit is used to render taskbars in day hour timeline mode. Gantt Chart supports only 24hours format as of now. The working hours will differ between organizations. This feature will be helpful to keep track of each task and resource task status based on the working time of company.</p>
         <p>
           Gantt component features are segregated into individual feature-wise modules. To use a selection support and event markers we need to inject the
           <code>Selection</code>, <code>DayMarkers</code> modules.

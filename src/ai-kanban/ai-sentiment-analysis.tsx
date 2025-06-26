@@ -10,8 +10,9 @@ import { TextAreaComponent, TextBoxComponent } from "@syncfusion/ej2-react-input
 import { DatePickerComponent } from "@syncfusion/ej2-react-calendars";
 import { DropDownListComponent } from "@syncfusion/ej2-react-dropdowns";
 import './sentiment-analysis.css';
+import { OpenAiModelKanban } from '../common/ai-service';
 
-function SentimentAnalysis() {
+function AiSentimentAnalysis() {
     let isAiChecked = false;
     let dataSource: PizzaDataModel[] = pizzaData;
     let sentiment: ProgressButtonComponent;
@@ -257,7 +258,7 @@ function SentimentAnalysis() {
     }
 
     async function getResponseFromOpenAI(promptQuery: string): Promise<string> {
-        const content = await (window as any).OpenAiModelKanban(promptQuery);
+        const content = await OpenAiModelKanban(promptQuery);
         return content ? content as string : '';
     }
 
@@ -322,4 +323,4 @@ function SentimentAnalysis() {
     );
 }
 
-export default SentimentAnalysis;
+export default AiSentimentAnalysis;

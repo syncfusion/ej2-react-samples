@@ -329,7 +329,7 @@ function MindMap() {
   return (
     <div className="control-pane">
       <div className="control-section">
-        <div className="content-wrapper" style={{ width: "100%" }}>
+        <div  style={{ width: "100%" }}>
           <DiagramComponent
             ref={diagram => (diagramInstance = diagram)}
             id="diagram"

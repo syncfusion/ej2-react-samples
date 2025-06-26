@@ -132,38 +132,40 @@ const Default = () => {
         <div className='col-lg-4 property-section'  style={{ left: '0px' , width: '250px' }}>
           <PropertyPane title='Properties'>
             <table id="property" title="Properties" className='property-panel-table' style={{ width: '100%' }}>
-              <tr>
-                <td>
-                  <div>
-                    <CheckBoxComponent checked={true} label='AllowFiltering'
-                      change={onChange.bind(this)} ></CheckBoxComponent>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div>
-                    <CheckBoxComponent checked={true} label='AllowCustomValue'
-                      change={onChangeCustom.bind(this)} ></CheckBoxComponent>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div>
-                    <CheckBoxComponent checked={true} label='HideSelectedItem'
-                      change={onChangeHide.bind(this)} ></CheckBoxComponent>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div>
-                    <CheckBoxComponent checked={true} label='ClosePopupOnSelect'
-                      change={onChangeClose.bind(this)} ></CheckBoxComponent>
-                  </div>
-                </td>
-              </tr>
+              <tbody>
+                <tr>
+                  <td>
+                    <div>
+                      <CheckBoxComponent checked={true} label='AllowFiltering'
+                        change={onChange.bind(this)} ></CheckBoxComponent>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div>
+                      <CheckBoxComponent checked={true} label='AllowCustomValue'
+                        change={onChangeCustom.bind(this)} ></CheckBoxComponent>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div>
+                      <CheckBoxComponent checked={true} label='HideSelectedItem'
+                        change={onChangeHide.bind(this)} ></CheckBoxComponent>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div>
+                      <CheckBoxComponent checked={true} label='ClosePopupOnSelect'
+                        change={onChangeClose.bind(this)} ></CheckBoxComponent>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </PropertyPane>
         </div>

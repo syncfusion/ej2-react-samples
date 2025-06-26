@@ -54,7 +54,7 @@ const SAMPLE_CSS = `.diagram-Swimlane .sb-mobile-palette {
             height: 559px;
             float: left;
 }
- #palette-space {
+ .diagram-Swimlane #palette-space {
   border: 1px solid rgba(0, 0, 0, 0.12);
 }` ;
 

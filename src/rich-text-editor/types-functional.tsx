@@ -42,6 +42,9 @@ function Type() {
             case '3':
                 rteObj.toolbarSettings.type = ToolbarType.Scrollable;
                 break;
+            case '4':
+                rteObj.toolbarSettings.type = ToolbarType.Popup;
+                break;
         }
     }
     function onFloatChange(args: checked): void {
@@ -50,7 +53,8 @@ function Type() {
     const ddlValue: { [key: string]: Object }[] = [
         { Id: '1', Text: 'Expand' },
         { Id: '2', Text: 'MultiRow' },
-        { Id: '3', Text: 'Scrollable' }
+        { Id: '3', Text: 'Scrollable' },
+        { Id: '4', Text: 'Popup' }
     ];
     // maps the appropriate column to fields property
     const fields: FieldSettingsModel = { text: 'Text', value: 'Id' };
@@ -184,6 +188,7 @@ function Type() {
                     <li><code>Expand</code>: The toolbar hides the overflowing items in the next row. Click the expand arrow to view overflowing toolbar items</li>
                     <li><code>Multi Row</code>: The toolbar hides the overflowing items in the next row.</li>
                     <li><code>Scrollable</code>: All the elements are displayed in a single line with horizontal scrolling enabled.</li>
+                    <li><code>Popup</code>: The toolbar hides the overflowing items inside a popup menu when there is limited space. The popup menu is displayed when clicking the toolbar overflow icon.</li>
                 </ul>
                 <p><b>Injecting Module</b></p>
                 <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, Count, HtmlEditor, QuickToolbar, EmojiPicker, PasteCleanup, Audio, Video, FormatPainter, Table</code> modules into the services.</p>

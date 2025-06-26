@@ -2,7 +2,7 @@
 import * as React from "react";
 import {
     HierarchicalTree,
-    Container,
+    GroupableView,
     StackPanel,
     ImageElement,
     TextElement,
@@ -35,7 +35,7 @@ export class ZoomAndPan extends SampleBase<{}, {}> {
         return (
             <div className="control-pane">
                 <div className="col-lg-12 control-section">
-                    <div className="content-wrapper" style={{ width: "100%" }}>
+                    <div  style={{ width: "100%" }}>
                         <div>
 
                             {/* Toolbar items */}
@@ -129,7 +129,7 @@ export class ZoomAndPan extends SampleBase<{}, {}> {
                                     return connector;
                                 }}
                                 //customization of the node.
-                                setNodeTemplate={(node: Node): Container => {
+                                setNodeTemplate={(node: Node): GroupableView => {
                                     return setNodeTemplate(node);
                                 }}
                             >
@@ -167,7 +167,7 @@ export class ZoomAndPan extends SampleBase<{}, {}> {
 }
 
 //Funtion to add the Template of the Node.
-function setNodeTemplate(node: Node): Container {
+function setNodeTemplate(node: Node): GroupableView {
 
   // Create an outer content to contain image and text elements
   let content: StackPanel = new StackPanel();

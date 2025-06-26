@@ -3,7 +3,7 @@
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { ChartComponent, SeriesCollectionDirective, AnnotationsDirective, AnnotationDirective, CandleSeries, Category, Tooltip, ILoadedEventArgs, DateTime, Zoom, Logarithmic, ColumnSeries, Crosshair, StripLine, ChartTheme, SeriesDirective, Inject, IAxisRangeCalculatedEventArgs, Series, ChartAnnotation, IPointRenderEventArgs } from '@syncfusion/ej2-react-charts';
+import { ChartComponent, SeriesCollectionDirective, LastValueLabel, CandleSeries, Category, Tooltip, ILoadedEventArgs, DateTime, Zoom, Logarithmic, ColumnSeries, Crosshair, StripLine, ChartTheme, SeriesDirective, Inject, IAxisRangeCalculatedEventArgs, Series, ChartAnnotation, IPointRenderEventArgs } from '@syncfusion/ej2-react-charts';
 import { SampleBase } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
 
@@ -14,18 +14,19 @@ let getData = (): { series: Candlestick[] } => {
     for (let i: number = 0; i < 30; i++) {
         let change: number;
         if (i < 10 && !(i === 3 || i === 4 || i === 7)) {
-            change = -Math.round(Math.random() * 10);
+            change = -(Math.random() * 10);
         } 
         else if ((i >= 10 || i === 3 || i === 4 || i === 7 || i === 23 || i === 24 || i === 27) && i < 20 && !(i === 13 || i === 14 || i === 17)) {
-            change = Math.round(Math.random() * 10);
+            change = (Math.random() * 10);
         }
         else if ((i >= 20 || i === 13 || i === 14 || i === 17) && !(i === 23 || i === 24 || i === 27)) {
-            change = -Math.round(Math.random() * 10);
+            change = -(Math.random() * 10);
         } 
         else {
             change = 0;
         }
         value = value + change;
+        value += Math.random() * 0.1;
         if (value > 240) {
             value = 240;
         }
@@ -75,14 +76,10 @@ export class Candle extends SampleBase<{}, {}> {
                 <div className='control-section'>
                     <div className="row">
                         <ChartComponent id='stock' ref={chart => this.chartInstance = chart} style={{ textAlign: "center" }} load={this.load.bind(this)} primaryXAxis={{ valueType: 'DateTime', interval: 4, crosshairTooltip: { enable: true }, edgeLabelPlacement: Browser.isDevice ? 'None' : 'Shift', majorGridLines: { width: 0 } }} primaryYAxis={{ interval: 20, minimum: 120, opposedPosition: true, lineStyle: { width: 0 }, crosshairTooltip: { enable: true }, majorGridLines: { width: 1 }, majorTickLines: { width: 0 } }} width={Browser.isDevice ? '100%' : '90%'} chartArea={{ border: { width: 0 } }} title="AAPL Historical" crosshair={{ enable: true, dashArray: '5,5' }} pointRender = {this.pointRender.bind(this)}   axisRangeCalculated={this.axisRangeCalculated.bind(this)}>
-                            <Inject services={[CandleSeries, StripLine, Category, Tooltip, DateTime, Zoom, ColumnSeries, Logarithmic, Crosshair, ChartAnnotation]} />
+                            <Inject services={[CandleSeries, StripLine, Category, Tooltip, DateTime, Zoom, ColumnSeries, Logarithmic, Crosshair, ChartAnnotation, LastValueLabel]} />
                             <SeriesCollectionDirective>
-                                <SeriesDirective type='Candle' bearFillColor='#2ecd71' bullFillColor='#e74c3d' dataSource={data} columnWidth={0.4} xName='x' low='low' high='high' open='open' close='close' />
+                                <SeriesDirective type='Candle' bearFillColor='#2ecd71' bullFillColor='#e74c3d' dataSource={data} columnWidth={0.4} xName='x' low='low' high='high' open='open' close='close' lastValueLabel={{enable: true, background: 'red', dashArray: '3,2', lineWidth: 0.5, font: {size: '10px'}}} />
                             </SeriesCollectionDirective>
-                            <AnnotationsDirective>
-                                <AnnotationDirective content='<div></div>' x={new Date(2000, 5, 2, 2, 0, 1)} y={140} region="Series" coordinateUnits='Point'>
-                                </AnnotationDirective>
-                            </AnnotationsDirective>
                         </ChartComponent>
                     </div>
                 </div>
@@ -93,7 +90,7 @@ export class Candle extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the candlestick series to display data that updates every second and adds new data every five seconds. The chart demonstrates setting up a crosshair to follow the latest data and adjusting the point color based on the value.
+                        In this example, you can see how to render and configure the candlestick series to display data that updates every second and adds new data every five seconds. The chart demonstrates how to set up a last value label that follows the latest data.
                     </p>
                     <p><b>Injecting Module</b></p>
                     <p>
@@ -145,13 +142,14 @@ export class Candle extends SampleBase<{}, {}> {
                 }
             }
             else {
-                let change: number = Math.round((Math.random() < 0.49 ? 1 : -1) * Math.random() * 10);
+                let change: number = (Math.random() < 0.49 ? 1 : -1) * Math.random() * 10;
                 value += change;
                 if (value > 200) {
                     value = 200;
                 } else if (value < 160) {
                     value = 160;
                 }
+                value += Math.random() * 0.1;
                 let open = value + Math.round(Math.random() * 12);
                 let low = Math.min(value, open) - Math.round(Math.random() * 8);
                 let high = Math.max(value, open) + Math.round(Math.random() * 15);
@@ -165,23 +163,7 @@ export class Candle extends SampleBase<{}, {}> {
     };
 
     public pointRender(args: IPointRenderEventArgs): void {
-        if (args.series.chart.enableRtl) {
-            args.series.chart.annotations[0].x = 0;
-        }
-        if (pointAdded && args.series.points[args.series.points.length - 1] === args.point) {
-            const firstPoint = args.series.chart.enableRtl ? args.series.points[args.series.points.length - 1].x : args.series.points[0].x;
-            args.series.chart.annotations[0].x = new Date(Number(firstPoint)).getTime() + (args.series.chart.enableRtl ? 2000 : 1000);
-            args.series.chart.annotations[0].y = args.point.close as number;
-            args.series.chart.annotations[0].content = `<div style="width: ${args.series.chart.initialClipRect.width}px; height: 0; left: ${Browser.isDevice ? -10 : -16}px; position: absolute;">
-            <svg width="100%" height="2" style="display: block;">
-              <line x1="0" y1="1" x2="${args.series.chart.initialClipRect.width}" y2="1" 
-                style="stroke:#868180; stroke-width:0.75; stroke-dasharray:5,5;" />
-            </svg>
-          </div>
-          <div style="width: 40px; height: 18px; background-color: ${args.fill}; border: 1px solid rgba(48, 153, 245, 0.4); color: white; font-size: 11px; text-align: center; line-height: 18px; position: absolute; left: ${(args.series.chart.enableRtl ? -args.series.chart.initialClipRect : args.series.chart.initialClipRect.width - 20) }px; top: -9px;">
-            ${(args.point.close as number).toFixed(2)}
-          </div> `;
-        }
+        args.series.lastValueLabel.background = args.fill;
     }
 
 }

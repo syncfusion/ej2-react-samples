@@ -26,7 +26,7 @@ export interface EmployeeInfo {
   Name: string;
 }
 
-const SAMPLE_CSS = `.image-pattern-style {
+const SAMPLE_CSS = `.diagram-hierarchy .image-pattern-style {
         background-color: white;
         background-size: contain;
         background-repeat: no-repeat;
@@ -38,36 +38,36 @@ const SAMPLE_CSS = `.image-pattern-style {
         float: left;
     }
 
-    .image-pattern-style:hover {
+    .diagram-hierarchy .image-pattern-style:hover {
         border-color: gray;
         border-width: 2px;
     }
 
-    .property-panel-header {
+    .diagram-hierarchy .property-panel-header {
       padding-top: 15px;
       padding-bottom: 15px;
     }
 
-    .diagram-property-tab .row {
+    .diagram-hierarchy .diagram-property-tab .row {
         margin-left: 0px;
         margin-right: 0px;
     }
 
-    .diagram-property-tab .row-header {
+    .diagram-hierarchy .diagram-property-tab .row-header {
         font-size: 13px;
         font-weight: 500;
     }
 
-    .e-checkbox-wrapper .e-label {
+    .diagram-hierarchy .e-checkbox-wrapper .e-label {
         font-size: 12px;
     }
 
-    .e-selected-style {
+    .diagram-hierarchy .e-selected-style {
         border-color: #006CE6;
         border-width: 2px;
     }
 
-    .diagram-property-tab .diagram-control-pane .col-xs-6 {
+    .diagram-hierarchy .diagram-property-tab .diagram-control-pane .col-xs-6 {
         padding-left: 0px;
         padding-right: 0px;
     }`;
@@ -180,12 +180,12 @@ function HierarchicalModel() {
     diagramInstance.doLayout();
   }; 
   return (
-    <div className="control-pane diagram-control-pane">
+    <div className="diagram-hierarchy control-pane diagram-control-pane">
       <style>{SAMPLE_CSS}</style>
       <div
         className="col-lg-8 control-section"
       >
-        <div className="content-wrapper" style={{ width: "100%" }}>
+        <div  style={{ width: "100%" }}>
           <DiagramComponent
             id="diagram"
             ref={diagram => (diagramInstance = diagram)}

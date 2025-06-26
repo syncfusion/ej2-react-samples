@@ -1,26 +1,13 @@
-.content-wrapper div.row {
-    padding: 7px 0px;
-}
-
-
-.content-wrapper {
+.ai-content-wrapper {
 display: flex;
 flex-direction: column;
 align-items: center;
 gap: 10px;
 padding: 50px 0px;
-background: rgb(229 231 235);
 border-radius: 10px;
 }
 
-.content-wrapper div.row {
-padding: 7px 0px;
-}
-
-.example-label {
+.ai-example-label {
 width: 75%;
 font-weight: 700;
-}
-.e-multi-line-input{
-    min-width: 75%;
 }

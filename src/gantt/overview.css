@@ -143,3 +143,6 @@
 #Overview .e-tbar-btn-text{
     display: none;
 }
+#sidebar-gantt #sidebar {
+    overflow: auto;
+}

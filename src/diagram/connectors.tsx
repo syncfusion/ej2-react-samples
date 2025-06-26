@@ -227,7 +227,7 @@ export class Connectors extends SampleBase<{}, {}> {
       <div className="control-pane diagram-connector">
         <style>{SAMPLE_CSS}</style>
         <div className="col-lg-8 control-section">
-          <div className="content-wrapper" style={{width:"100%",background: "white"}}>
+          <div  style={{width:"100%",background: "white"}}>
             <DiagramComponent
               id="diagram"
               ref={diagram => (diagramInstance = diagram)}

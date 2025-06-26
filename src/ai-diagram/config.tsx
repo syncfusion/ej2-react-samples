@@ -24,5 +24,18 @@ export const AIDiagramSampleOrder: Object = [
             { 'displayName': 'text-to-mindmap.jsx', 'path': 'src/ai-diagram/ai-text-to-mindmap.jsx' },
             { 'displayName': 'ai-mindmap.ts', 'path': 'src/ai-diagram/ai-mindmap.ts' }
         ]
+    },
+     {
+        'path': 'ai-diagram/text-to-umlSequenceDiagram', 
+        'component': 'SmartUMLSequenceDiagram', 
+        'name': 'Text to UML Sequence Diagram', 
+        'description': 'This demo showcases the Diagram AI feature.', 
+        'order': '01',
+        'category': 'Diagram',
+        'sourceFiles': [
+            { 'displayName': 'text-to-umlSequenceDiagram.tsx', 'path': 'src/ai-diagram/ai-text-to-umlSequenceDiagram.tsx' }, 
+            { 'displayName': 'text-to-umlSequenceDiagram.jsx', 'path': 'src/ai-diagram/ai-text-to-umlSequenceDiagram.jsx' },
+            { 'displayName': 'ai-umlSequenceDiagram.ts', 'path': 'src/ai-diagram/ai-umlSequenceDiagram.ts' }
+        ]
     }
 ];

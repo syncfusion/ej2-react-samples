@@ -447,7 +447,7 @@ function ConstraintsSample() {
     <div className="col-lg-10 control-section">
     <div className="control-wrapper">
       <div
-        className="content-wrapper"
+        
         style={{ width: '100%', background: 'white' }}
       >
         <DiagramComponent

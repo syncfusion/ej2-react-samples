@@ -29,12 +29,12 @@ import {
 
 //Initializes the nodes for the diagram
 let sdlc: SdlcNodeModel[] = [
-  { id: "sdlc", addInfo : {text: "SDLC"}},
-  { id: "analysis", addInfo :{text: "Analysis"}},
-  { id: "design", addInfo :{text: "Design"}},
-  { id: "implement", addInfo :{text: "Implement"}},
-  { id: "deploy",  addInfo :{text: "Deploy"}},
-  { id: "support", addInfo :{text: "Support"}},
+  { id: "sdlc", width: 100, height: 100, addInfo : {text: "SDLC"} },
+  { id: "analysis", width: 100, height: 100, addInfo :{text: "Analysis"}},
+  { id: "design", width: 100, height: 100, addInfo :{text: "Design"}},
+  { id: "implement", width: 100, height: 100, addInfo :{text: "Implement"}},
+  { id: "deploy", width: 100, height: 100, addInfo :{text: "Deploy"}},
+  { id: "support", width: 100, height: 100, addInfo :{text: "Support"}},
 ];
 
 //arranges the nodes in a circular path
@@ -60,7 +60,7 @@ for (let i: number = 1; i < 6; i++) {
 }
 
 // CSS styles for the sample
-const SAMPLE_CSS = `.image-pattern-style {
+const SAMPLE_CSS = `.diagram-node .image-pattern-style {
         background-color: white;
         background-size: contain;
         background-repeat: no-repeat;
@@ -72,27 +72,27 @@ const SAMPLE_CSS = `.image-pattern-style {
         float: left;
     }
 
-    .image-pattern-style:hover {
+    .diagram-node .image-pattern-style:hover {
         border-color: gray;
         border-width: 2px;
     }
 
-    .row {
+    .diagram-node .row {
         margin-left: 0px;
         margin-right: 0px;
     }
 
-    .row-header {
+    .diagram-node .row-header {
         font-size: 13px;
         font-weight: 500;
     }
 
-    .e-selected-style {
+    .diagram-node .e-selected-style {
         border-color: #006CE6;
         border-width: 2px;
     }
 
-    .e-checkbox-wrapper .e-label {
+    .diagram-node .e-checkbox-wrapper .e-label {
         font-size: 12px;
     }`;
 
@@ -257,7 +257,7 @@ function GettingStartedNodes() {
         node.constraints &= ~(NodeConstraints.Resize | NodeConstraints.Rotate | NodeConstraints.Drag | NodeConstraints.Delete);
         node.constraints |= NodeConstraints.ReadOnly;
       } else {
-        node.constraints |= NodeConstraints.Default & ~(NodeConstraints.ReadOnly);
+        node.constraints = NodeConstraints.Default;
       }
     }
     diagramInstance.dataBind();
@@ -267,7 +267,7 @@ function GettingStartedNodes() {
           connector.constraints &= ~(ConnectorConstraints.DragSourceEnd | ConnectorConstraints.DragTargetEnd | ConnectorConstraints.Drag | ConnectorConstraints.Delete);
           connector.constraints |= ConnectorConstraints.ReadOnly;
         } else {
-          connector.constraints |= ConnectorConstraints.Default & ~ConnectorConstraints.ReadOnly;
+          connector.constraints = ConnectorConstraints.Default;
         }
       } 
     diagramInstance.dataBind();
@@ -275,10 +275,10 @@ function GettingStartedNodes() {
 }
    // Return the JSX structure for the component
   return (
-    <div className="control-pane">
+    <div className="control-pane diagram-node">
       <style>{SAMPLE_CSS}</style>
       <div className="col-lg-8 control-section">
-        <div className="content-wrapper" style={{ width: "100%" }}>
+        <div  style={{ width: "100%" }}>
           <DiagramComponent
             id="diagram"
             ref={diagram => (diagramInstance = diagram)}
@@ -288,9 +288,6 @@ function GettingStartedNodes() {
             connectors={connections}
             getNodeDefaults={(obj: NodeModel) => {
               //Sets the default values of a node
-              
-              obj.width = 100;
-              obj.height = 100;
               obj.shape = { type: "Basic", shape: "Ellipse" };
               obj.style = { fill: "#37909A", strokeColor: "#024249" };
               obj.annotations = [

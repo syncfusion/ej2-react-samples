@@ -143,8 +143,9 @@ let underLine: ButtonComponent;
 let templateData: DropDownListComponent;
 let propertyPanelInstance : HTMLElement;
 let appearanceInstance : HTMLElement;
+let labelConstraintsInstance: HTMLElement;
 
-const sample_css = `.diagram-property-tab .image-pattern-style {
+const sample_css = `.diagram-annotation .diagram-property-tab .image-pattern-style {
   background-color: white;
   background-size: contain;
   background-repeat: no-repeat;
@@ -156,16 +157,16 @@ const sample_css = `.diagram-property-tab .image-pattern-style {
   float: left;
 }
 
-.diagram-property-tab .image-pattern-style:hover {
+.diagram-annotation .diagram-property-tab .image-pattern-style:hover {
   border-color: gray;
   border-width: 2px;
 }
 
-.e-remove-selection .property-section-content {
+.diagram-annotation .e-remove-selection .property-section-content {
   pointer-events: none;
 }
 
-.diagram-property-tab .column-style {
+.diagram-annotation .diagram-property-tab .column-style {
   display: table;
   height: 35px;
   padding-right: 4px;
@@ -173,34 +174,34 @@ const sample_css = `.diagram-property-tab .image-pattern-style {
   width: calc((100% - 12px) / 3);
 }
 
-.diagram-property-tab .row {
+.diagram-annotation .diagram-property-tab .row {
   margin-left: 0px;
   margin-right: 0px;
   cursor: pointer;
 }
 
-.diagram-property-tab .row-header {
+.diagram-annotation .diagram-property-tab .row-header {
   font-size: 15px;
   font-weight: 500;
 }
-.property-section .e-remove-selection {
+.diagram-annotation .property-section .e-remove-selection {
   cursor: not-allowed;
 }
-.diagram-property-tab .property-panel-header {
+.diagram-annotation .diagram-property-tab .property-panel-header {
   padding-top: 15px;
   padding-bottom: 15px;
 }
 
-.diagram-property-tab .e-checkbox-wrapper .e-label {
+.diagram-annotation .diagram-property-tab .e-checkbox-wrapper .e-label {
   font-size: 12px;
 }
 
-.diagram-property-tab .e-selected-style {
+.diagram-annotation .diagram-property-tab .e-selected-style {
   border-color: #006CE6;
   border-width: 2px;
 }
 
-.diagram-control-pane .col-xs-6 {
+.diagram-annotation .diagram-control-pane .col-xs-6 {
   padding-left: 0px;
   padding-right: 0px;
   padding-top: 5px;
@@ -364,10 +365,10 @@ function GettingStartedAnnotation() {
     };
   }
   return (
-    <div className="control-pane diagram-control-pane">
+    <div className="control-pane diagram-control-pane diagram-annotation">
       <style>{sample_css}</style>
       <div className="col-lg-8 control-section">
-        <div className="content-wrapper" style={{ width: "100%" }}>
+        <div  style={{ width: "100%" }}>
           <DiagramComponent
             id="diagram"
             ref={diagram => (diagramInstance = diagram)}
@@ -386,42 +387,54 @@ function GettingStartedAnnotation() {
                 //Checks for selection of new node
                 if (arg.newValue[0]) {
                   let node: NodeModel = arg.newValue[0] as NodeModel;
-                  if (
-                    node.annotations[0].offset.x === 0 &&
-                    node.annotations[0].offset.y === 0
-                  ) {
-                    updateAnnotationPosition("left");
-                  } else if (
-                    node.annotations[0].offset.x === 1 &&
-                    node.annotations[0].offset.y === 0
-                  ) {
-                    updateAnnotationPosition("right");
-                  } else if (
-                    node.annotations[0].offset.x === 1 &&
-                    node.annotations[0].offset.y === 0
-                  ) {
-                    updateAnnotationPosition("right");
-                  } else if (
-                    node.annotations[0].offset.x === 0 &&
-                    node.annotations[0].offset.y === 1
-                  ) {
-                    updateAnnotationPosition("bottomLeft");
-                  } else if (
-                    node.annotations[0].offset.x === 1 &&
-                    node.annotations[0].offset.y === 1
-                  ) {
-                    updateAnnotationPosition("bottomRight");
-                  } else if (
-                    node.annotations[0].offset.x === 0.5 &&
-                    node.annotations[0].offset.y === 0.5
-                  ) {
-                    updateAnnotationPosition("center");
-                  } else if (
-                    node.annotations[0].offset.x === 0.5 &&
-                    node.annotations[0].offset.y === 1
-                  ) {
-                    updateAnnotationPosition("bottomCenter");
+                  if (node.annotations && node.annotations.length > 0) {
+                    if (
+                      node.annotations[0].offset.x === 0 &&
+                      node.annotations[0].offset.y === 0
+                    ) {
+                      updateAnnotationPosition("left");
+                    } else if (
+                      node.annotations[0].offset.x === 1 &&
+                      node.annotations[0].offset.y === 0
+                    ) {
+                      updateAnnotationPosition("right");
+                    } else if (
+                      node.annotations[0].offset.x === 1 &&
+                      node.annotations[0].offset.y === 0
+                    ) {
+                      updateAnnotationPosition("right");
+                    } else if (
+                      node.annotations[0].offset.x === 0 &&
+                      node.annotations[0].offset.y === 1
+                    ) {
+                      updateAnnotationPosition("bottomLeft");
+                    } else if (
+                      node.annotations[0].offset.x === 1 &&
+                      node.annotations[0].offset.y === 1
+                    ) {
+                      updateAnnotationPosition("bottomRight");
+                    } else if (
+                      node.annotations[0].offset.x === 0.5 &&
+                      node.annotations[0].offset.y === 0.5
+                    ) {
+                      updateAnnotationPosition("center");
+                    } else if (
+                      node.annotations[0].offset.x === 0.5 &&
+                      node.annotations[0].offset.y === 1
+                    ) {
+                      updateAnnotationPosition("bottomCenter");
+                    }
+                    const hasInteraction = (node.annotations[0].constraints & AnnotationConstraints.Interaction) === AnnotationConstraints.Interaction;
+                    (labelConstraintsInstance as any).disabled = false;
+                    (labelConstraintsInstance as any).checked = hasInteraction;
+                  } else {
+                    (labelConstraintsInstance as any).disabled = true;
+                    (labelConstraintsInstance as any).checked = false;
                   }
+                } else {
+                    // No node selected - disable checkbox
+                    (labelConstraintsInstance as any).disabled = true;
+                    (labelConstraintsInstance as any).checked = false;
                 }
                 enablePropertyPanel(arg);
               }
@@ -577,7 +590,7 @@ function GettingStartedAnnotation() {
                     <NumericTextBoxComponent
                       id="fontSize"
                       value={12}
-                      min={0}
+                      min={1}
                       max={50}
                       step={1}
                       format="##.##"
@@ -609,7 +622,7 @@ function GettingStartedAnnotation() {
                   </div>
                   <div className="row col-xs-8" style={{ paddingLeft: "0px", paddingTop: "8px" }}>
                     <DropDownListComponent
-                      id="template"
+                      id="diagramAnnotationTemplate"
                       fields={fields}
                       popupWidth={200}
                       width={"100%"}
@@ -631,9 +644,8 @@ function GettingStartedAnnotation() {
                       id="labelConstraints"
                       label={"Label constraints"}
                       checked={false}
-                      change={() => {
-                        changed("interaction");
-                      }}
+                      change={() => { changed("interaction"); }}
+                      ref = {labelConstraints => (labelConstraintsInstance = labelConstraints)}
                     />
                   </div>
                 </div>

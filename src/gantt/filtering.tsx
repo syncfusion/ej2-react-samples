@@ -121,7 +121,7 @@ export class Filtering extends SampleBase<{}, {}> {
         <div id="action-description">
           <p>This sample visualizes the manned lunar mission, which landed the first human on the Moon using the Apollo 11
             spacecraft in the year 1969.
-            This sample demonstrates the Filtering feature available in Gantt chart. You can
+            This sample demonstrates the Filtering feature available in Gantt Chart. You can
             filter a particular column using filter menu available in the columns. This sample is also enabled with toolbar
             searching option, using which you can filter the Gantt content across all the columns.</p>
         </div>
@@ -136,10 +136,10 @@ export class Filtering extends SampleBase<{}, {}> {
                 <li><code>Menu</code></li>
                 <li><code>Excel</code></li>
             </ul>
-            Gantt chart also provides support for a set of filtering modes with <code>hierarchyMode</code> property. The
+            Gantt Chart also provides support for a set of filtering modes with <code>hierarchyMode</code> property. The
             below are the
-            type of filter mode available in Gantt chart.
-            <li><code>Parent</code> - This is the default filter hierarchy mode in Gantt chart. The filtered records are
+            type of filter mode available in Gantt Chart.
+            <li><code>Parent</code> - This is the default filter hierarchy mode in Gantt Chart. The filtered records are
               displayed with its
               parent records, if the filtered records not have any parent record then the filtered record alone will be
               displayed.</li>

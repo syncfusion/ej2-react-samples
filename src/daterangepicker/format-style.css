@@ -10,7 +10,8 @@
 
 #format{
     padding-bottom: 15px;
-    width: 200px;
     left: 80px;
-    top: 40px;
+    top: 25px !important;
+    margin-left: 15px;
+    width: 300px !important;
 } 

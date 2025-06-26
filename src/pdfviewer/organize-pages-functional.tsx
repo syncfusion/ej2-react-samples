@@ -5,7 +5,8 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
     PdfViewerComponent, Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView,
-    ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner,PageOrganizer, Inject
+    ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner,PageOrganizer, Inject,
+    PageOrganizerSettingsModel
 } from '@syncfusion/ej2-react-pdfviewer';
 import { updateSampleSection } from '../common/sample-base';
 import { SwitchComponent } from '@syncfusion/ej2-react-buttons';
@@ -17,6 +18,7 @@ function Default() {
     }, [])
     let viewer: PdfViewerComponent;
     let isInitialLoading: boolean =  true;
+    let pageOrganizerSettings: PageOrganizerSettingsModel = { showImageZoomingSlider: true };
     return (<div>
         <div className='control-section'>
                 <div className="flex-container">
@@ -27,7 +29,8 @@ function Default() {
                  <SwitchComponent cssClass="buttonSwitch" id="checked" change={change} checked={true}></SwitchComponent>
                 </div>
             {/* Render the PDF Viewer */}
-            <PdfViewerComponent ref={(scope) => { viewer = scope; }} id="container" documentPath="https://cdn.syncfusion.com/content/pdf/pdf-succinctly.pdf" resourceUrl = "https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib" documentLoad = {documentLoaded} style={{ 'height': '640px' }}>
+            <PdfViewerComponent ref={(scope) => { viewer = scope; }} id="container" documentPath="https://cdn.syncfusion.com/content/pdf/pdf-succinctly.pdf" resourceUrl = "https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib" documentLoad = {documentLoaded} style={{ 'height': '640px' }}
+                pageOrganizerSettings={pageOrganizerSettings}>
                 <Inject services={[Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner,PageOrganizer]} />
             </PdfViewerComponent>
         </div>
@@ -48,7 +51,8 @@ function Default() {
             <li>Click the "Import Documents" icon in the toolbar to import a document. If any thumbnail is selected, the new document will be imported next to it; otherwise, it will be imported as the first thumbnail.</li>
             <li>Undo and redo actions are available at the organize pages dialog.</li>
             <li>Enjoy real-time updates as any changes made to the page organization are instantly reflected within the PDF Viewer, when you click on the <code>Save</code> button.</li>
-            <li>Utilize the <code>Save As</code> feature to preserve edits, enabling users to download the modified version of the PDF document for future reference.</li> 
+            <li>Utilize the <code>Save As</code> feature to preserve edits, enabling users to download the modified version of the PDF document for future reference.</li>
+            <li>Zoom in or out of page images using the slider opened through the page zoom icon available in the toolbar or using keyboard accessibility.</li>
         </ul>      
             <p>
                 More information on the PDF Viewer instantiation can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/pdfviewer/getting-started">

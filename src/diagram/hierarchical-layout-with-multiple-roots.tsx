@@ -53,7 +53,7 @@ export interface EmployeeInfo {
     render() {
       return (
         <div className="control-pane diagram-control-pane">
-            <div className="content-wrapper" style={{ width: "100%" }}>
+            <div  style={{ width: "100%" }}>
               <DiagramComponent
                 id="diagram"
                 ref={diagram => (diagramInstance = diagram)}

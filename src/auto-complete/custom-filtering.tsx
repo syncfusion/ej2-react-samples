@@ -4,6 +4,8 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { AutoCompleteComponent, FilteringEventArgs } from '@syncfusion/ej2-react-dropdowns';
+import { NumericTextBoxComponent, ChangeEventArgs  } from '@syncfusion/ej2-react-inputs';
+import { PropertyPane } from '../common/property-pane';
 import { SampleBase } from '../common/sample-base';
 import Fuse from 'fuse.js';
 import './custom-filtering.css';
@@ -11,6 +13,7 @@ import * as data from './dataSource.json';
 
 export class CustomFiltering extends SampleBase<{}, {}> {
 
+  private listObj: AutoCompleteComponent;
   private temp:string = 'booksData';
   private booksData: { [key: string]: Object; }[] = data[this.temp];
   // maps the appropriate column to fields property
@@ -53,12 +56,25 @@ export class CustomFiltering extends SampleBase<{}, {}> {
       }
     }
   }
+  onChange(args: ChangeEventArgs) {
+            this.listObj.debounceDelay = args.value;
+        }
   render() {
     return (
       <div id='autocustom' className='control-pane'>
         <div className='control-section'>
-          <div id='custom-filtering'>
-            <AutoCompleteComponent id="books" dataSource={this.booksData} filtering={this.onFiltering.bind(this)} fields={this.fields} placeholder="e.g. Node.js Succinctly" />
+          <div className='col-lg-8'>
+            <div id='custom-filtering' style={{paddingTop:'50px'}}>
+              <AutoCompleteComponent id="books" ref={(AutoComplete) => { this.listObj = AutoComplete }} dataSource={this.booksData} filtering={this.onFiltering.bind(this)} fields={this.fields} placeholder="e.g. Node.js Succinctly" debounceDelay={300} />
+            </div>
+          </div>
+          <div className='col-lg-4 property-section dropdown-filtering'>
+            <PropertyPane title='Properties:'>
+              <div className="property-panel-content">
+                <label className="example-label">Debounce Delay</label>
+                <NumericTextBoxComponent format='n0' value={300} min={1} change={ this.onChange.bind(this) }></NumericTextBoxComponent>
+              </div>
+            </PropertyPane>
           </div>
         </div>
 
@@ -70,6 +86,7 @@ export class CustomFiltering extends SampleBase<{}, {}> {
         <div id="description">
           <p> The AutoComplete can be customized to showcase the suggestion list by using <code>filtering</code> event.
           In that, you can use your own libraries to filter the data and update it to AutoComplete suggestion list via <code>updateData</code> method.
+          The debounce delay, in milliseconds, for filtering items in the AutoComplete component can be set using the <a href="https://ej2.syncfusion.com/react/documentation/api/auto-complete/#debouncedelay" target="_blank">debounceDelay</a> property.
           </p>
 
           <p>In this sample, used Fuse.js library for custom filtering of books data.</p>

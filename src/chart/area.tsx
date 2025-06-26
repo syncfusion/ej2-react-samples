@@ -48,13 +48,13 @@
      { x: new Date(1981, 0, 1), y: 6.77 }, { x: new Date(1982, 0, 1), y: 5.64 }, { x: new Date(1984, 0, 1), y: 4.35 },
      { x: new Date(1985, 0, 1), y: 2.5 }, { x: new Date(1989, 0, 1), y: 0.64 }, { x: new Date(1990, 0, 1), y: 0 }
  ];
- let content = '<div style="font-weight: bold; color: white; font-size: 11px;">8-TRACK</div>';
- let content1 = '<div style="font-weight: bold; color: white;font-size: 11px;">VINYL</div>';
- let content2 = '<div style="font-weight: bold; color: white;font-size: 11px;">CASSETTE</div>';
- let content3 = '<div style="font-weight: bold; color: white;font-size: 11px;">COMPACT DISC</div>';
- let content4 = '<div style="font-weight: bold; color: white;font-size: 11px;">OTHERS</div>';
- let content5 = '<div style="font-weight: bold; color: white; font-size: 9px;">DOWNLOAD</div>';
- let content6 = '<div style="font-weight: bold; color: white;font-size: 11px;">STREAMING</div>';
+ let content = Browser.isDevice ? '<div style="font-weight: bold; color: white; font-size: 7px;">8-TRACK</div>' : '<div style="font-weight: bold; color: white; font-size: 11px;">8-TRACK</div>';
+ let content1 = Browser.isDevice ? '<div style="font-weight: bold; color: white;font-size: 7px;">VINYL</div>' : '<div style="font-weight: bold; color: white;font-size: 11px;">VINYL</div>';
+ let content2 = Browser.isDevice ? '<div style="font-weight: bold; color: white;font-size: 7px;">CASSETTE</div>' : '<div style="font-weight: bold; color: white;font-size: 11px;">CASSETTE</div>';
+ let content3 = Browser.isDevice ? '<div style="font-weight: bold; color: white;font-size: 7px;">COMPACT DISC</div>' : '<div style="font-weight: bold; color: white;font-size: 11px;">COMPACT DISC</div>';
+ let content4 = Browser.isDevice ? '<div style="font-weight: bold; color: white;font-size: 7px;">OTHERS</div>' : '<div style="font-weight: bold; color: white;font-size: 11px;">OTHERS</div>';
+ let content5 = Browser.isDevice ? '<div style="font-weight: bold; color: white; font-size: 7px;">DOWNLOAD</div>' : '<div style="font-weight: bold; color: white; font-size: 11px;">DOWNLOAD</div>';
+ let content6 = Browser.isDevice ? '<div style="font-weight: bold; color: white;font-size: 7px;"></div>' : '<div style="font-weight: bold; color: white;font-size: 11px;">STREAMING</div>';
  const SAMPLE_CSS = `
       .control-fluid {
           padding: 0px !important;
@@ -80,13 +80,13 @@
                          loaded={this.onChartLoad.bind(this)}>
                          <Inject services={[AreaSeries, DateTime, ChartAnnotation, Legend, Highlight]} />
                          <AnnotationsDirective>
-                             <AnnotationDirective content={content} region="Series" x="8%" y="95%"></AnnotationDirective>
-                             <AnnotationDirective content={content1} region="Series" x="12%" y="80%"></AnnotationDirective>
-                             <AnnotationDirective content={content2} region="Series" x="35%" y="87%"></AnnotationDirective>
-                             <AnnotationDirective content={content3} region="Series" x="63%" y="70%"></AnnotationDirective>
-                             <AnnotationDirective content={content4} region="Series" x="75%" y="98%"></AnnotationDirective>
-                             <AnnotationDirective content={content5} region="Series" x="85%" y="93%"></AnnotationDirective>
-                             <AnnotationDirective content={content6} region="Series" x="93%" y="96%"></AnnotationDirective>
+                             <AnnotationDirective content={content}  region="Series" coordinateUnits='Point' x={new Date(1976, 1, 1)} y={1.5}></AnnotationDirective>
+                             <AnnotationDirective content={content1} region="Series" coordinateUnits='Point' x={new Date(1977, 1, 1)} y={5}></AnnotationDirective>
+                             <AnnotationDirective content={content2} region="Series" coordinateUnits='Point' x={new Date(1990, 1, 1)} y={3}></AnnotationDirective>
+                             <AnnotationDirective content={content3} region="Series" coordinateUnits='Point' x={new Date(2001, 1, 1)} y={10}></AnnotationDirective>
+                             <AnnotationDirective content={content4} region="Series" coordinateUnits='Point' x={new Date(2006, 1, 1)} y={0.50}></AnnotationDirective>
+                             <AnnotationDirective content={content5} region="Series" coordinateUnits='Point' x={new Date(2011, 6, 1)} y={1.8}></AnnotationDirective>
+                             <AnnotationDirective content={content6} region="Series" coordinateUnits='Point'x={new Date(2015, 1, 1)} y={Browser.isDevice ? 1.3 : 1.2}></AnnotationDirective>
                          </AnnotationsDirective>
                          <SeriesCollectionDirective>
                              <SeriesDirective dataSource={COMPACT} xName="x" yName="y" opacity={1} type="Area" width={2} border={{ width: 1.5, color: 'white' }}></SeriesDirective>

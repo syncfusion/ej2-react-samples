@@ -24,10 +24,10 @@ interface cardData {
 }
  
 let cardEle: HTMLElement; 
-let cardObj: JSON[] = cardBook as JSON[]; 
-let data: Object[] = []; 
-let multiSelectData: Object[] = []; 
-let searchData: Object[] = [];
+let cardObj: cardData[] = cardBook as cardData[];
+let data: cardData[] = [];
+let multiSelectData: cardData[] = [];
+let searchData: cardData[] = [];
 let searchValCount: number = 0; 
 let filterCategory: { [key: string]: Object; }[] = [{ Name: 'Client-Side', Code: 'client' }, { Name: 'Server-Side', Code: 'server' }, { Name: 'Front-End', Code: 'ui' }];
 let emptyData: boolean = true;
@@ -35,29 +35,38 @@ let emptyData: boolean = true;
 
 /* Initialize MultiSelect component */
 let multiselectComp: MultiSelect;
-const cardRendering = (cardObj: Object[]): void => {
-    let errorContent: HTMLElement = document.querySelector('.tile_layout .row.error') as HTMLElement;
-    if (cardObj.length > 0) {
+const rootMap = new Map<string, ReactDOM.Root>();
+
+const cardRendering = (cards: cardData[]) => {
+    const errorContent = document.querySelector('.tile_layout .row.error') as HTMLElement;
+    if (cards.length > 0) {
         errorContent.style.display = 'none';
-        cardObj.forEach((data: cardData, index) => {
-            cardEle = document.getElementById('card_sample_' + (++index));
+        cards.forEach((data, index) => {
+            const cardId = `card_sample_${index + 1}`;
+            const cardEle = document.getElementById(cardId);
             if (cardEle) {
-                const root = ReactDOM.createRoot(cardEle);
+                let root: ReactDOM.Root;
+                if (rootMap.has(cardId)) {
+                    root = rootMap.get(cardId)!;
+                } else {
+                    root = ReactDOM.createRoot(cardEle);
+                    rootMap.set(cardId, root);
+                }
                 root.render(<CardRender data={data} />);
             }
         });
     } else {
         errorContent.style.display = 'flex';
     }
-}
+};
+
 /* Funtion for Destroying Cards */
 const destroyAllCard = () => {
-    let cards = document.querySelectorAll('.card-control-section .e-card');
-    [].slice.call(cards).forEach((el) => {
-        const root = ReactDOM.createRoot(el.parentElement);
+    rootMap.forEach((root) => {
         root.unmount();
     });
-}
+    rootMap.clear();
+};
 
 const Tile = () => {
        useEffect(() => {
@@ -91,24 +100,24 @@ const Tile = () => {
     const multiSelectRemove = (e: RemoveEventArgs): void => {
         let cardDa: Object[] = searchData.length > 0 ? searchData : (multiSelectData.length > 0 ? multiSelectData : cardObj);
         if (multiselectComp.value && multiselectComp.value.length === 0 && searchValCount === 0) {
-            multiSelectData = cardDa; destroyAllCard(); cardRendering(cardObj);
+            multiSelectData = cardDa as cardData[]; destroyAllCard(); cardRendering(cardObj);
         } else if (multiselectComp.value.length === 0 && searchValCount > 0) {
             searchFilter((document.getElementById('search_Card') as HTMLInputElement).value);
         } else if (multiselectComp.value.length === 0) {
             destroyAllCard();
-            multiSelectData = cardDa;
-            cardRendering(cardDa);
+            multiSelectData = cardDa as cardData[];
+            cardRendering(cardDa as cardData[]);
         } else {
             let keywords: string[] = (e.itemData as FilterKey).Code.split(',');
             let dublicate: Object[];
             keywords.forEach((key: string): void => {
-                dublicate = new DataManager(cardObj as JSON[]).executeLocal(new Query().where('cardImage.tag', 'Contains', key, true));
+                dublicate = new DataManager(cardObj).executeLocal(new Query().where('cardImage.tag', 'Contains', key, true)) as cardData[];
                 dublicate.forEach((da: Object): void => {
                     if (cardDa.indexOf(da) !== -1) {
                         cardDa.splice(cardDa.indexOf(da), 1);
                     }
                 });
-                multiSelectData = cardDa;
+                multiSelectData = cardDa as cardData[];
             });
             destroyAllCard(); cardRendering(multiSelectData);
         }
@@ -121,13 +130,13 @@ const Tile = () => {
             multiSelectData = [];
         }
         keywords.forEach((key: string): void => {
-            dublicate = new DataManager(cardDa as JSON[]).executeLocal(new Query().where('cardImage.tag', 'Contains', key, true));
+            const dublicate = new DataManager(cardDa).executeLocal(new Query().where('cardImage.tag', 'Contains', key, true)) as cardData[];
             if (dublicate.length === 0) {
                 multiSelectData = [];
                 destroyAllCard();
                 return;
             }
-            dublicate.forEach((da: Object): void => {
+            dublicate.forEach((da): void => {
                 if (multiSelectData.indexOf(da) === -1) {
                     multiSelectData.push(da);
                 }
@@ -142,7 +151,7 @@ const Tile = () => {
         let predicate: Predicate = new Predicate('cardContent', 'Contains', key, true);
         predicate = predicate.or('cardImage.title', 'Contains', key, true).or('header_title', 'Contains', key, true).or('header_subtitle', 'Contains', key, true);
         let cardDa: Object[] = (multiSelectData.length > 0 && multiselectComp.value.length > 0) ? multiSelectData : cardObj;
-        searchData = data = new DataManager(cardDa as JSON[]).executeLocal(new Query().where(predicate));
+        searchData = data  = new DataManager(cardDa).executeLocal(new Query().where(predicate))as cardData[];
         destroyAllCard(); 
         cardRendering(data);
     }

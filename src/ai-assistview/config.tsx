@@ -30,12 +30,25 @@ export const AIAssistViewSampleOrder: Object = [
     'name': 'Streaming Response',
     'description':'Showcases the AI AssistView component in React, highlighting the streaming support how response is updated in chunks.',
     'order': '01',
-    'type': 'new',
     'category': 'AI AssistView',
     'api':'{"AIAssitView": ["promptRequest", "promptSuggestions", "bannerTemplate", "toolbarSettings"] }',
     'sourceFiles': [
       { 'displayName': 'streaming.tsx', 'path': 'src/ai-assistview/streaming.tsx' },
       { 'displayName': 'streaming.jsx', 'path': 'src/ai-assistview/streaming.jsx' },
+      { 'displayName': 'promptResponseData.json', 'path': 'src/ai-assistview/promptResponseData.json' }
+    ]
+  },
+  { 'path': 'ai-assistview/attachments',
+    'component': 'Attachments',
+    'name': 'File Attachments',
+    'type': 'new',
+    'description':'Shows the AiAssistView component integrated with attachments, demonstrating how it interacts and fits within a larger system.',
+    'order': '01',
+    'category': 'Integration',
+    'api':'{"AIAssistViewComponent":["promptRequest", "promptSuggestions", "bannerTemplate", "toolbarSettings", "attachmentSettings", "enableAttachments"] }',
+    'sourceFiles': [
+      { 'displayName': 'attachments.tsx', 'path': 'src/ai-assistview/attachments.tsx' },
+      { 'displayName': 'attachments.jsx', 'path': 'src/ai-assistview/attachments.jsx' },
       { 'displayName': 'promptResponseData.json', 'path': 'src/ai-assistview/promptResponseData.json' }
     ]
   },
@@ -65,4 +78,5 @@ export const AIAssistViewSampleOrder: Object = [
       { 'displayName': 'promptResponseData.json', 'path': 'src/ai-assistview/promptResponseData.json' }
     ]
   }
+  
 ]

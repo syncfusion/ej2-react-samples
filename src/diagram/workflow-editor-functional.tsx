@@ -4,315 +4,350 @@ import * as React from "react";
 import {
   DiagramComponent,
   ConnectorModel,
-  Node,
-  Diagram,
-  Inject,
-  NodeModel,
-  BpmnDiagrams,
-  UndoRedo,
-  NodeConstraints,
-  AnnotationConstraints,
-  BpmnShapeModel,
-  SnapConstraints, DiagramTools,
-  randomId
+  Node, Diagram,
+  NodeModel, BpmnDiagrams,
+  UndoRedo, NodeConstraints,
+  DiagramTools, UserHandleModel,
+  SymbolPalette, SymbolPaletteComponent,
 } from "@syncfusion/ej2-react-diagrams";
 import { updateSampleSection } from "../common/sample-base";
-
-// Import necessary components from Syncfusion React Navigations for toolbar
-import {
-  ItemDirective,
-  ItemsDirective,
-  ToolbarComponent,
-} from '@syncfusion/ej2-react-navigations';
+import { SwitchComponent } from '@syncfusion/ej2-react-buttons';
+import { ItemDirective, ItemsDirective, ToolbarComponent } from '@syncfusion/ej2-react-navigations';
+import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 
 // Inject necessary modules into DiagramComponent
 Diagram.Inject(UndoRedo, BpmnDiagrams);
+SymbolPalette.Inject(BpmnDiagrams);
 
 //Initializes the nodes for the diagram
 let nodes: NodeModel[] = [
   {
-    id: 'newTravelRequestRecieved',
-    width: 50,
-    height: 50,
+    id: "start",
     offsetX: 100,
-    offsetY: 245,
+    offsetY: 380,
     shape: {
-      type: 'Bpmn',
-      shape: 'Event',
-      event: { event: 'Start', trigger: 'None' },
+      type: "Bpmn",
+      shape: "Event",
+      event: { event: "Start", trigger: "None" },
     },
-    addInfo: { type: 'Bpmn' },
+    annotations: [{ content: "Start" }],
   },
   {
-    id: 'getTravelRequestDetails',
-    width: 100,
-    height: 80,
-    offsetX: 250,
-    offsetY: 245,
+    id: "liquidInput",
+    offsetX: 300,
+    offsetY: 280,
     shape: {
-      type: 'Bpmn',
-      shape: 'Activity',
-      activity: {
-        activity: 'Task',
-      },
+      type: "Bpmn",
+      shape: "Activity",
+      activity: { activity: "Task" },
     },
+    annotations: [{ content: "Liquid Input" }],
   },
   {
-    id: 'getRequesterProfile',
-    width: 100,
-    height: 80,
-    offsetX: 400,
-    offsetY: 245,
+    id: "dryInput",
+    offsetX: 300,
+    offsetY: 480,
     shape: {
-      type: 'Bpmn',
-      shape: 'Activity',
-      activity: {
-        activity: 'Task',
-      },
+      type: "Bpmn",
+      shape: "Activity",
+      activity: { activity: "Task" },
     },
+    annotations: [{ content: "Dry Input" }],
   },
   {
-    id: 'getManagerDetails',
-    width: 100,
-    height: 80,
-    offsetX: 550,
-    offsetY: 245,
-
+    id: "condensed",
+    offsetX: 500,
+    offsetY: 180,
     shape: {
-      type: 'Bpmn',
-      shape: 'Activity',
-      activity: {
-        activity: 'Task',
-      },
+      type: "Bpmn",
+      shape: "Activity",
+      activity: { activity: "Task" },
     },
+    annotations: [{ content: "Condensed" }],
   },
   {
-    id: 'setStatusAsRejected',
-    width: 100,
-    height: 80,
+    id: "cream",
+    offsetX: 500,
+    offsetY: 260,
+    shape: {
+      type: "Bpmn",
+      shape: "Activity",
+      activity: { activity: "Task" },
+    },
+    annotations: [{ content: "Cream" }],
+  },
+  {
+    id: "caneSugar",
+    offsetX: 500,
+    offsetY: 340,
+    shape: {
+      type: "Bpmn",
+      shape: "Activity",
+      activity: { activity: "Task" },
+    },
+    annotations: [{ content: "Cane Sugar" }],
+  },
+  {
+    id: "water",
+    offsetX: 500,
+    offsetY: 420,
+    shape: {
+      type: "Bpmn",
+      shape: "Activity",
+      activity: { activity: "Task" },
+    },
+    annotations: [{ content: "Water" }],
+  },
+  {
+    id: "ingredients",
+    offsetX: 500,
+    offsetY: 500,
+    shape: {
+      type: "Bpmn",
+      shape: "Activity",
+      activity: { activity: "Task" },
+    },
+    annotations: [{ content: "Ingredients" }],
+  },
+  {
+    id: "flavour",
+    offsetX: 500,
+    offsetY: 580,
+    shape: {
+      type: "Bpmn",
+      shape: "Activity",
+      activity: { activity: "Task" },
+    },
+    annotations: [{ content: "Flavour" }],
+  },
+  {
+    id: "fruitsAndNuts",
+    offsetX: 500,
+    offsetY: 660,
+    shape: {
+      type: "Bpmn",
+      shape: "Activity",
+      activity: { activity: "Task" },
+    },
+    annotations: [{ content: "Fruits and Nuts" }],
+  },
+  {
+    id: "blending",
     offsetX: 700,
-    offsetY: 245,
+    offsetY: 380,
     shape: {
-      type: 'Bpmn',
-      shape: 'Activity',
-      activity: {
-        activity: 'Task',
-      },
+      type: "Bpmn",
+      shape: "Activity",
+      activity: { activity: "Task" },
     },
+    annotations: [{ content: "Blending" }],
   },
   {
-    id: 'setStatusAsAccepted',
-    width: 100,
-    height: 80,
-    offsetX: 850,
-    offsetY: 245,
+    id: "coolingAging",
+    offsetX: 840,
+    offsetY: 380,
     shape: {
-      type: 'Bpmn',
-      shape: 'Activity',
-      activity: {
-        activity: 'Task',
-      },
+      type: "Bpmn",
+      shape: "Activity",
+      activity: { activity: "Task" },
     },
+    annotations: [{ content: "Cooling/Aging" }],
   },
   {
-    id: 'setNextApprovalStatusAsRejected',
-    width: 100,
-    height: 80,
-    offsetX: 1100,
-    offsetY: 245,
+    id: "packaging",
+    offsetX: 980,
+    offsetY: 380,
     shape: {
-      type: 'Bpmn',
-      shape: 'Activity',
-      activity: {
-        activity: 'Task',
-      },
+      type: "Bpmn",
+      shape: "Activity",
+      activity: { activity: "Task" },
     },
+    annotations: [{ content: "Packaging" }],
   },
   {
-    id: 'setNextApprovalStatusAsAccepted',
-    width: 100,
-    height: 80,
-    offsetX: 1250,
-    offsetY: 245,
-    shape: {
-      type: 'Bpmn',
-      shape: 'Activity',
-      activity: {
-        activity: 'Task',
-      },
-    },
-  },
-  {
-    id: 'initiateApprovalWithManager',
-    width: 100,
-    height: 80,
-    offsetX: 550,
-    offsetY: 445,
-    shape: {
-      type: 'Bpmn',
-      shape: 'Activity',
-      activity: {
-        activity: 'Task',
-      },
-    },
-  },
-  {
-    id: 'checkApprovalStatus',
-    width: 80,
-    height: 60,
-    offsetX: 700,
-    offsetY: 445,
-    shape: { type: 'Bpmn', shape: 'Gateway', gateway: { type: 'Exclusive' } },
-  },
-  {
-    id: 'checkIfItIsAnInternaltionalTravel',
-    width: 80,
-    height: 60,
-    offsetX: 850,
-    offsetY: 445,
-    shape: { type: 'Bpmn', shape: 'Gateway', gateway: { type: 'Exclusive' } },
-  },
-  {
-    id: 'initialteApprovalWithNextLevelManager',
-    width: 100,
-    height: 80,
-    offsetX: 1000,
-    offsetY: 445,
-    shape: {
-      type: 'Bpmn',
-      shape: 'Activity',
-      activity: {
-        activity: 'Task',
-      },
-    },
-  },
-  {
-    id: 'checkLevel2-ApprovalStatus',
-    width: 80,
-    height: 60,
+    id: "storageDistribution",
+    width: 140,
     offsetX: 1130,
-    offsetY: 445,
-    shape: { type: 'Bpmn', shape: 'Gateway', gateway: { type: 'Exclusive' } },
+    offsetY: 380,
+    shape: {
+      type: "Bpmn",
+      shape: "Activity",
+      activity: { activity: "Task" },
+    },
+    annotations: [{ content: "Storage/Distribution" }],
+  },
+  {
+    id: "end",
+    offsetX: 1260,
+    offsetY: 380,
+    shape: {
+      type: "Bpmn",
+      shape: "Event",
+      event: { event: "End", trigger: "None" },
+    },
+    annotations: [{ content: "End" }],
   },
 ];
-//Initializes the connector for the diagram
+
+//Initializes the connectors for the diagram
 let connectors: ConnectorModel[] = [
+  { id: "c1", sourceID: "start", targetID: "liquidInput" },
+  { id: "c2", sourceID: "start", targetID: "dryInput" },
+  { id: "c3", sourceID: "liquidInput", targetID: "condensed" },
+  { id: "c4", sourceID: "liquidInput", targetID: "cream" },
+  { id: "c5", sourceID: "liquidInput", targetID: "caneSugar" },
+  { id: "c6", sourceID: "liquidInput", targetID: "water" },
+  { id: "c7", sourceID: "liquidInput", targetID: "ingredients" },
+  { id: "c8", sourceID: "dryInput", targetID: "flavour" },
+  { id: "c9", sourceID: "dryInput", targetID: "fruitsAndNuts" },
+  { id: "c10", sourceID: "condensed", targetID: "blending" },
+  { id: "c11", sourceID: "cream", targetID: "blending" },
+  { id: "c12", sourceID: "caneSugar", targetID: "blending" },
+  { id: "c13", sourceID: "water", targetID: "blending" },
+  { id: "c14", sourceID: "ingredients", targetID: "blending" },
+  { id: "c15", sourceID: "flavour", targetID: "blending" },
+  { id: "c16", sourceID: "fruitsAndNuts", targetID: "blending" },
+  { id: "c17", sourceID: "blending", targetID: "coolingAging" },
+  { id: "c18", sourceID: "coolingAging", targetID: "packaging" },
+  { id: "c19", sourceID: "packaging", targetID: "storageDistribution" },
+  { id: "c20", sourceID: "storageDistribution", targetID: "end" },
+];
+
+// User handles for the diagram
+let userHandles: UserHandleModel[] = [
   {
-    id: 'newTravelRequestRecieved-getTravelRequestDetails',
-    sourceID: 'newTravelRequestRecieved',
-    targetID: 'getTravelRequestDetails',
-    addInfo: { level: 1 },
+    name: "delete",
+    pathData:
+      "M0.97,3.04 L12.78,3.04 L12.78,12.21 C12.78,12.64,12.59,13,12.2,13.3 C11.82,13.6,11.35,13.75,10.8,13.75 L2.95,13.75 C2.4,13.75,1.93,13.6,1.55,13.3 C1.16,13,0.97,12.64,0.97,12.21 Z M4.43,0 L9.32,0 L10.34,0.75 L13.75,0.75 L13.75,2.29 L0,2.29 L0,0.75 L3.41,0.75 Z",
+    tooltip: { content: "Delete Node" },
+    side: "Bottom",
+    offset: 0.5,
+    margin: { bottom: 5 },
+    disableConnectors: true,
   },
   {
-    id: 'getTravelRequestDetails-getRequesterProfile',
-    sourceID: 'getTravelRequestDetails',
-    targetID: 'getRequesterProfile',
-    addInfo: { level: 2 },
+    name: "drawConnector",
+    pathData:
+      "M6.09,0 L13.75,6.88 L6.09,13.75 L6.09,9.64 L0,9.64 L0,4.11 L6.09,4.11 Z",
+    tooltip: { content: "Draw Connector" },
+    side: "Right",
+    offset: 0.5,
+    margin: { right: 5 },
+    disableConnectors: true,
   },
   {
-    id: 'getRequesterProfile-getManagerDetails',
-    sourceID: 'getRequesterProfile',
-    targetID: 'getManagerDetails',
-    addInfo: { level: 3 },
-  },
-  {
-    id: 'getManagerDetails-initiateApprovalWithManager',
-    sourceID: 'getManagerDetails',
-    targetID: 'initiateApprovalWithManager',
-    addInfo: { level: 4 },
-  },
-  {
-    id: 'initiateApprovalWithManager-checkApprovalStatus',
-    sourceID: 'initiateApprovalWithManager',
-    targetID: 'checkApprovalStatus',
-    addInfo: { level: 5 },
-  },
-  {
-    id: 'checkApprovalStatus-setStatusAsRejected',
-    sourceID: 'checkApprovalStatus',
-    targetID: 'setStatusAsRejected',
-    addInfo: { level: 6 },
-    annotations: [{ content: 'Rejected', style: { fill: 'white' } }],
-  },
-  {
-    id: 'checkApprovalStatus-checkIfItIsAnInternaltionalTravel',
-    sourceID: 'checkApprovalStatus',
-    targetID: 'checkIfItIsAnInternaltionalTravel',
-    annotations: [{ content: 'Accepted', style: { fill: 'white' } }],
-    addInfo: { level: 7 },
-  },
-  {
-    id: 'checkIfItIsAnInternaltionalTravel-setStatusAsAccepted',
-    sourceID: 'checkIfItIsAnInternaltionalTravel',
-    targetID: 'setStatusAsAccepted',
-    annotations: [{ content: 'No', offset: 0.4, style: { fill: 'white' } }],
-    addInfo: { level: 8 },
-  },
-  {
-    id: 'checkIfItIsAnInternaltionalTravel-initialteApprovalWithNextLevelManager',
-    sourceID: 'checkIfItIsAnInternaltionalTravel',
-    targetID: 'initialteApprovalWithNextLevelManager',
-    annotations: [{ content: 'Yes', offset: 0.4, style: { fill: 'white' } }],
-    addInfo: { level: 9 },
-  },
-  {
-    id: 'initialteApprovalWithNextLevelManager-checkLevel2-ApprovalStatus',
-    sourceID: 'initialteApprovalWithNextLevelManager',
-    targetID: 'checkLevel2-ApprovalStatus',
-    addInfo: { level: 10 },
-  },
-  {
-    id: 'checkLevel2-ApprovalStatus-setNextApprovalStatusAsRejected',
-    sourceID: 'checkLevel2-ApprovalStatus',
-    targetID: 'setNextApprovalStatusAsRejected',
-    annotations: [
-      { content: 'Rejected', offset: 0.4, style: { fill: 'white' } },
-    ],
-    addInfo: { level: 11 },
-  },
-  {
-    id: 'checkLevel2-ApprovalStatus-setNextApprovalStatusAsAccepted',
-    sourceID: 'checkLevel2-ApprovalStatus',
-    targetID: 'setNextApprovalStatusAsAccepted',
-    annotations: [
-      { content: 'Approved', offset: 0.4, style: { fill: 'white' } },
-    ],
-    addInfo: { level: 12 },
+    name: "stopAnimation",
+    pathData: "M4.75,0.75 L9.25,0.75 L9.25,9.25 L4.75,9.25 Z", // Stop icon
+    tooltip: { content: "Enable Animation" },
+    disableNodes: true
   },
 ];
 
 // CSS styles for custom elements in the diagram
 const sample_css = `
-/* To display the loading sign */
-.loading-indicator {
-border: 4px solid #f3f3f3;
-border-top: 4px solid #3498db;
-border-radius: 50%;
-width: 15px;
-height: 15px;
-animation: spin 2s linear infinite;
+
+.diagram-workflow #toolbarContainer {
+  display: flex;
+  align-items: center;
+  height: 62px !important;
+  width: 100% !important;
+  position: relative;  
+  justify-content: center;
+}
+.diagram-workflow #toolbar {
+  width: 80% !important;
+  height: 62px !important;
+  flex-grow: 1;
+}
+.diagram-workflow #toolbar_diagram {
+  height: 62px !important;
+}
+.diagram-workflow #toggleSwitchContainer {
+  width: 20% !important;
+  height: 62px !important;
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  background: #f9fafb
 }
 
+.diagram-workflow #toolbar .e-toolbar-item{
+  padding: 0px !important;
+}
+.diagram-workflow #symbolPalette {
+  overflow: hidden !important;
+  height: 100%; 
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+.diagram-workflow #symbolPaletteComponent_container{
+  border: none !important;
+}
+.diagram-workflow #symbolPalette_container{
+  border: none !important;
+}
+.diagram-workflow #symbolPalette .e-acrdn-header{
+  display: none;
+}
+.diagram-workflow #symbolPalette .e-acrdn-content{
+  padding: 0;
+  background-color: transparent !important;
+}
+.diagram-workflow #symbolPalette .e-remove-palette{
+  background-color: transparent !important;
+}
+.diagram-workflow #symbolPalette .e-accordion{
+  background-color: transparent !important;
+}
+.diagram-workflow #symbolPalette .e-accordion .e-acrdn-item.e-selected.e-select.e-active{
+  background-color: transparent !important;
+}
+.diagram-workflow #diagramContainer {
+    flex: 1;
+}
+.diagram-workflow #diagram {
+    width: 100%;
+    height: 100%;
+    border: 1px solid transparent;
+}
+.diagram-workflow #switch-container{
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0; 
+    margin-right: 10px;
+    margin-top: 15px;
+}
+/* To display the loading sign */
+  .diagram-workflow .diagram-loading-indicator {
+    border: 4px solid #e6ffe6;
+    border-top: 4px solid green;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    animation: spin 2s linear infinite;
+  }
+
 /* To display the success sign */
-.tick {
-display: none;
-animation: showTick 0.5s 0.2s forwards;
-font-size: 10px;
-width:15px;height:15px;
-padding-left: 4px;
-padding-top: 2.5px;
-line-height: 1;
-color: white;
-border-radius: 50%;
+.diagram-workflow .diagram-tick {
+  display: none;
+  animation: showTick 0.5s forwards;
+  width: 14px;
+  height: 14px;
+  padding: 1px;
+  line-height: 1;
+  color: white;
+  border-radius: 50%;
+  background-color:green;
 }
-.tick {
-background-color:green;
-}
-.e-play {
+.diagram-workflow .e-play {
   content: '\e70C';
 }
 /* To display the failure sign */
-.cross {
+.diagram-workflow .cross {
 display: none;
 animation: showTick 0.5s 0.2s forwards;
 font-size: 10px;
@@ -324,18 +359,16 @@ color: white;
 border-radius: 50%;
 background-color:red;
 }
-
 @keyframes spin {
-0% { transform: rotate(0deg); }
-100% { transform: rotate(360deg); }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 @keyframes showTick {
-0% { opacity: 0; transform: scale(0.5); }
-100% { opacity: 1; transform: scale(1); }
+  0% { opacity: 0; transform: scale(0.5); }
+  100% { opacity: 1; transform: scale(1); }
 }
-`;
-
+  `;
 
 // Declare variables for diagram instance, toolbar instance, and workflow management
 let diagramInstance: DiagramComponent;
@@ -343,278 +376,698 @@ let toolbarEditor: ToolbarComponent;
 let flowInterval: any;
 let flowTimeOut1: any;
 let flowTimeOut2: any;
-let connectorCollection = [];
-let currentLevel: number;
-let currentTarget: any;
+let switchTooltipRef: any;
+let switchRef: any;
+let switchContainerRef: any;
+let symbolPaletteRef: any;
+
+let isPaused = false;
+let animationIntervals = [];
+let connectorBeforeAnimationColor = "#B0B0B0";
+let connectorDuringAnimationColor = "#FF7F50";
+let connectorAfterAnimationColor = "green";
+let connectorAnnotationColor = "#32CD32";
+let nodeStrokeBeforeAnimationColor = "black";
+let nodeStrokeAfterAnimationColor = "green";
+let isEditMode = false;
+
+// React component for the BPMN workflow editor
 function WorkFlowEditor() {
+
   React.useEffect(() => {
     updateSampleSection();
   }, [])
 
-  // Function to handle toolbar item clicks
+  // symbol palette template
+  const paletteTemplate = () => (
+    <aside
+      id="symbolPalette"
+      style={{
+        display: isEditMode ? "flex" : "none",
+        height: "100%",
+        alignItems: "center",
+        border: "none",
+      }}
+    >
+      <SymbolPaletteComponent
+        id="symbolPaletteComponent"
+        ref={(symbolPaletteComponent: any) => (symbolPaletteRef = symbolPaletteComponent)}
+        width="100%"
+        height="62px"
+        symbolHeight={45}
+        symbolWidth={45}
+        enableAnimation={false}
+        // showHeader={false}
+        palettes={[
+          {
+            id: "BPMN",
+            expanded: true,
+            symbols: [
+              {
+                id: "Start",
+                shape: { type: "Bpmn", shape: "Event" },
+                annotations: [{ content: "Start" }],
+                tooltip: { content: "Start", relativeMode: "Object" },
+                constraints: NodeConstraints.Default | NodeConstraints.Tooltip,
+              },
+              {
+                id: "Decision",
+                shape: { type: "Bpmn", shape: "Gateway" },
+                annotations: [{ content: "Decision" }],
+                tooltip: { content: "Decision", relativeMode: "Object" },
+                constraints: NodeConstraints.Default | NodeConstraints.Tooltip,
+              },
+              {
+                id: "Task",
+                shape: { type: "Bpmn", shape: "Activity" },
+                annotations: [{ content: "Task" }],
+                tooltip: { content: "Task", relativeMode: "Object" },
+                constraints: NodeConstraints.Default | NodeConstraints.Tooltip,
+              },
+              {
+                id: "End",
+                shape: {
+                  type: "Bpmn",
+                  shape: "Event",
+                  event: { event: "End", trigger: "None" },
+                },
+                annotations: [{ content: "End" }],
+                tooltip: { content: "End", relativeMode: "Object" },
+                constraints: NodeConstraints.Default | NodeConstraints.Tooltip,
+              },
+            ],
+            iconCss: "",
+          },
+        ]}
+        getSymbolInfo={() => ({ fit: true })}
+        paletteExpanding={(args) => { args.cancel = true; }}
+      />
+    </aside>
+  );
+
+  // function to handle toolbar items click
   function tooledit(args: any) {
-    let toolbardiagram: any = toolbarEditor;
-    switch (args.item.tooltipText) {
-      case 'Zoom In':
+    switch (args.item && args.item.text) {
+      case 'New':
+        updateExecuteButton("Execute");
+        clearAnimationIntervals();
+        diagramInstance.clear();
+        break;
+      case 'Open':
+        document.getElementById("fileInput").click();
+        break;
+      case 'Save':
+        saveDiagram();
+        break;
       case 'Execute':
-        startWorkflow(undefined);
-        toolbardiagram.items[0].disabled = true;
-        toolbardiagram.items[2].disabled = true;
+      case 'Pause':
+      case 'Resume':
+        diagramInstance.clearSelection();
+        startWorkflow();
         break;
       case 'Reset':
-        reset();
-        toolbardiagram.items[0].disabled = false;
-        toolbardiagram.items[2].disabled = true;
+        resetWorkflow();
+        updateExecuteButton("Execute");
+        break;
+      case 'Delete':
+        diagramInstance.remove();
+        break;
+      case 'Select':
+        diagramInstance.tool = DiagramTools.MultipleSelect;
+        break;
+      case 'Pan':
+        diagramInstance.tool = DiagramTools.ZoomPan;
         break;
     }
   }
 
-  // Function to start the workflow execution
-  function startWorkflow(args: number) {
-    if (typeof args != 'number') {
-      clearInterval(flowInterval);
-      clearTimeout(flowTimeOut1);
-      clearTimeout(flowTimeOut2);
+  // start Workflow animation
+  function startWorkflow() {
+    // PAUSE state if running
+    if (!isPaused && animationIntervals.length) {
+      isPaused = true;
+      updateExecuteButton("Resume");
+      clearAnimationIntervals();
+      return;
     }
-    connectorCollection = [];
-    let level: number;
-    if (typeof args != 'number') {
-      level = 1;
-    } else {
-      level = args;
+
+    // RESUME state if paused
+    if (isPaused) {
+      isPaused = false;
+      updateExecuteButton("Pause");
+      resumeWorkflow();
+      return;
     }
-    let connectors = diagramInstance.connectors;
-    for (let i: number = 0; i < connectors.length; i++) {
-      if (connectors[i].addInfo && (connectors[i].addInfo as any).level === level) {
-        connectorCollection.push(connectors[i]);
-      }
+
+    // EXECUTE state to start from start
+    isPaused = false;
+    resetWorkflow();
+    updateExecuteButton("Pause");
+
+    // find the "start" nodes in the diagram, as animation only works from "start" nodes
+    var startNodes = diagramInstance.nodes.filter(function (node) {
+      return (
+        node.shape &&
+        node.shape.type === "Bpmn" &&
+        (node.shape as any).shape === "Event" &&
+        (node.shape as any).event.event === "Start"
+      );
+    });
+    if (startNodes.length === 0) {
+      console.error("No start nodes found.");
+      return;
     }
-    const intervalDuration = 120;
-    let completedCount = 0;
-    flowInterval = setInterval(() => {
-      for (let j = 0; j < connectorCollection.length; j++) {
-        const connector = connectorCollection[j];
-        if ((connector.id !== "checkApprovalStatus-setStatusAsRejected") && (connector.id !== "checkIfItIsAnInternaltionalTravel-setStatusAsAccepted") && (connector.id !== "checkLevel2-ApprovalStatus-setNextApprovalStatusAsRejected")) {
-          connector.annotations[connector.annotations.length - 1].style.fill =
-            '#76F543';
-          if (connector.annotations[connector.annotations.length - 1].offset < 0.9) {
-            connector.annotations[
-              connector.annotations.length - 1
-            ].offset += 0.025;
-            connector.style.strokeColor = '#F8FC02';
-          }
-          if (connector.annotations[connector.annotations.length - 1].offset >= 0.9) {
-            completedCount++;
-            if (completedCount === connectorCollection.length) {
-              clearInterval(flowInterval);
-              flowTimeOut1 = setTimeout(() => {
-                for (let k = 0; k < connectorCollection.length; k++) {
-                  connectorCollection[k].annotations[
-                    connector.annotations.length - 1
-                  ].style.fill = 'transparent';
-                  connectorCollection[k].style.strokeColor = 'green';
-                  connectorCollection[k].targetDecorator.style.strokeColor =
-                    'green';
-                  connectorCollection[k].targetDecorator.style.fill =
-                    'green';
-                  let targetNode = diagramInstance.getObject(
-                    connectorCollection[k].targetID
-                  );
-                  if (((targetNode as Node).shape as BpmnShapeModel).shape !== 'Gateway' && ((targetNode as Node).id !== 'setStatusAsRejected' ||
-                    (targetNode as Node).id !== 'setStatusAsAccepted' ||
-                    (targetNode as Node).id !== 'setNextApprovalStatusAsRejected')) {
-                    let newNode: NodeModel = {
-                      id: randomId(),
-                      width: 15,
-                      height: 15,
-                      offsetX: (targetNode as Node).wrapper.bounds.left + 1,
-                      offsetY: (targetNode as Node).wrapper.bounds.top +2,
-                      shape: {
-                        type: 'HTML',
-                        content:
-                          '<div style="display: flex; flex-direction: column; align-items: center;"><div id="loadingIndicator" class="loading-indicator"></div><div class="tick">✓</div></div>',
-                      },
-                    };
-                    diagramInstance.add(newNode);
-                    currentTarget = targetNode;
-                  }
-                }
-              }, 10);
-              flowTimeOut2 = setTimeout(() => {
-                diagramInstance.dataBind();
-                const loadingIndicator =
-                  document.getElementsByClassName('loading-indicator');
-                // To remove loading indicator.
-                for (let l = 0; l < loadingIndicator.length; l++) {
-                  (loadingIndicator[l] as any).style.display = 'none';
-                }
-                // To add tick mark.
-                const tick = document.getElementsByClassName('tick');
-                for (let l = 0; l < tick.length; l++) {
-                  (tick[l] as any).style.display = 'block';
-                }
-                if (level < 12) {
-                  startWorkflow(level + 1);
-                } else {
-                  let toolbardiagram: any = toolbarEditor ;
-                  toolbardiagram.items[2].disabled = false;
-                }
-                currentTarget.style.strokeColor='green';
-                currentTarget.style.strokeWidth=2;
-              }, 1800);
-            }
-          }
-        } else {
-          clearInterval(flowInterval);
-          clearTimeout(flowTimeOut1);
-          clearTimeout(flowTimeOut2);
-          startWorkflow(level + 1);
-        }
-      }
-      diagramInstance.dataBind();
-    }, intervalDuration);
+    startNodes.forEach(function (startNode) {
+      animateNode(startNode.id);
+    });
   }
 
-  //Function to reset the workflow
-  function reset() {
-    clearInterval(flowInterval);
+  // Resume Workflow animation from the last paused state
+  function resumeWorkflow() {
+    diagramInstance.connectors.forEach(function (connector) {
+      // Retrieve the last annotation of the connector
+      var lastAnn = connector.annotations[connector.annotations.length - 1];
+      // Check if the annotation offset is within the animation range
+      if (lastAnn && lastAnn.offset > 0 && lastAnn.offset < 0.9) {
+        // Restore the annotations that need to be visible
+        lastAnn.content = "●";
+        if (lastAnn.style) lastAnn.style.color = connectorAnnotationColor;
+
+        // Get the source node of the connector and check if it s a start event node
+        var sourceNode = diagramInstance.getObject(connector.sourceID);
+        var isStartNode =
+          sourceNode &&
+          (sourceNode as any).shape &&
+          (sourceNode as any).shape.type === "Bpmn" &&
+          (sourceNode as any).shape.shape === "Event" &&
+          (sourceNode as any).shape.event &&
+          (sourceNode as any).shape.event.event === "Start";
+
+        // If the source node is a start node or already completed node, continue the animation
+        if (
+          isStartNode ||
+          (sourceNode &&
+            (sourceNode as any).style.strokeColor === nodeStrokeAfterAnimationColor)
+        ) {
+          // Animate the connector and the target node
+          animateConnector(connector, function (targetId) {
+            var targetNode = diagramInstance.getObject(targetId);
+            if (targetNode) {
+              createLoadingAnimation(targetNode);
+              setTimeout(function () {
+                completeNodeAnimation(targetNode);
+                animateNode(targetId);
+              }, 1000);
+            }
+          });
+        }
+      }
+    });
+  }
+
+  // Function to animate a node and its connected nodes
+  function animateNode(nodeId: any) {
+    // Filter connectors originating from the node
+    var currentConnectors = diagramInstance.connectors.filter(function (conn) {
+      return conn.sourceID === nodeId;
+    });
+
+    currentConnectors.forEach(function (connector) {
+      // Check if additional info contains "stopAnimation"
+      if (!(connector.addInfo && (connector.addInfo as any).stopAnimation === true)) {
+        animateConnector(connector, function (targetNodeId) {
+          var targetNode = diagramInstance.getObject(targetNodeId);
+
+          // Start loading animation for the target node
+          if (targetNode) {
+            createLoadingAnimation(targetNode);
+
+            flowTimeOut1 = setTimeout(function () {
+              // Hide all loading indicators
+              Array.prototype.slice
+                .call(document.getElementsByClassName("diagram-loading-indicator"))
+                .forEach(function (el) {
+                  el.style.display = "none";
+                });
+              // Show all tick indicators
+              Array.prototype.slice
+                .call(document.getElementsByClassName("diagram-tick"))
+                .forEach(function (el) {
+                  el.style.display = "block";
+                });
+
+              (targetNode as any).style.strokeColor = nodeStrokeAfterAnimationColor;
+              diagramInstance.dataBind();
+
+              // Check if the target node is a BPMN "End" event node
+              if (
+                (targetNode as any).shape &&
+                (targetNode as any).shape.type === "Bpmn" &&
+                (targetNode as any).shape.shape === "Event" &&
+                (targetNode as any).shape.event &&
+                (targetNode as any).shape.event.event === "End"
+              ) {
+                // Reset toolbar for new execution
+                updateExecuteButton("Execute");
+                animationIntervals.length = 0; // Clear animation intervals
+              } else {
+                // Recursively animate connected nodes
+                animateNode(targetNodeId);
+              }
+            }, 1000);
+          }
+        });
+      }
+    });
+  }
+
+  // Function to animate a connector and execute a callback upon completion
+  function animateConnector(connector: ConnectorModel, callback: any) {
+    var lastAnn = connector.annotations[connector.annotations.length - 1];
+    lastAnn.offset = lastAnn.offset || 0.02; // Initialize or set the offset
+    lastAnn.content = "●"; // Set visual marker, to show the flow
+    lastAnn.style.color = connectorAnnotationColor; // Set annotation marker color
+    diagramInstance.dataBind();
+
+    // Start interval to animate the connector
+    var flowInterval = setInterval(function () {
+      if (isPaused) {
+        return; // Pause animation if the workflow is paused
+      }
+      // Continue animation if the offset hasn't reached the end
+      if (lastAnn.offset < 0.9) {
+        lastAnn.offset += 0.025;
+        connector.style.strokeColor =
+          connector.targetDecorator.style.strokeColor =
+          connector.targetDecorator.style.fill =
+          connectorDuringAnimationColor; // Change color during animation
+        diagramInstance.dataBind();
+      } else {
+        // Animation complete, clean up and execute the callback
+        clearInterval(flowInterval);
+        lastAnn.style.color = "transparent";
+        connector.style.strokeColor =
+          connector.targetDecorator.style.strokeColor =
+          connector.targetDecorator.style.fill =
+          connectorAfterAnimationColor; // Set after animation color for connector
+        diagramInstance.dataBind();
+        callback(connector.targetID); // Execute callback with target node ID
+      }
+    }, 120); // Interval of 120ms for the animation steps
+
+    // Add the interval to the list of active animations
+    animationIntervals.push(flowInterval);
+  }
+
+  // Function to create and add a loading animation annotation to a node
+  function createLoadingAnimation(targetNode: any) {
+    if (!targetNode || !targetNode.annotations) {
+      return;
+    }
+    // HTML template for the loading animation and a hidden tick indicator
+    var htmlTemplate = '<div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; margin-left: -3px; margin-top: -3px;"><div class="diagram-loading-indicator"></div><div class="diagram-tick" style="display: none;"><i class="e-icons e-check"></i></div></div>';
+
+    // adding annotation with the template to the node
+    var annotation: any = {
+      template: htmlTemplate,
+      offset: { x: 0, y: 0 },
+      verticalAlignment: "Top",
+      horizontalAlignment: "Left",
+      style: { fill: "transparent" },
+    };
+    diagramInstance.addLabels(targetNode, [annotation]);
+  }
+
+  // Function to show complete status for the given node
+  function completeNodeAnimation(node: any) {
+    // Hide all loading indicators
+    document.querySelectorAll(".diagram-loading-indicator").forEach(function (el: any) {
+      el.style.display = "none";
+    });
+
+    // Display all tick elements as visible
+    document.querySelectorAll(".diagram-tick").forEach(function (el: any) {
+      el.style.display = "block";
+    });
+
+    // Update the stroke color for the node to indicate completion
+    if (node.style) {
+      node.style.strokeColor = nodeStrokeAfterAnimationColor;
+    }
+
+    // Update the diagram to reflect changes
+    diagramInstance.dataBind();
+  }
+
+  // reset Workflow animation
+  function resetWorkflow() {
+    // Set pause state to false
+    isPaused = false;
+    // clear any existing timeouts
     clearTimeout(flowTimeOut1);
     clearTimeout(flowTimeOut2);
-    diagramInstance.loadDiagram('{"width":"100%","height":"645px","nodes":[{"shape":{"type":"Bpmn","shape":"Event","event":{"event":"Start","trigger":"None"},"activity":{"subProcess":{}},"annotations":[]},"ports":[],"id":"newTravelRequestRecieved","width":50,"height":50,"offsetX":100,"offsetY":245,"addInfo":{"type":"Bpmn"},"annotations":[{"id":"newTravelRequestRecieved_label","content":"New Travel Request Recieved","style":{"strokeWidth":0,"strokeColor":"transparent","fill":"transparent","fontSize":14,"bold":false,"textWrapping":"WrapWithOverflow","color":"black","whiteSpace":"CollapseSpace","fontFamily":"Arial","italic":false,"opacity":1,"strokeDashArray":"","textAlign":"Center","textOverflow":"Wrap","textDecoration":"None"},"constraints":2,"offset":{"x":0.5,"y":1.7},"annotationType":"String","hyperlink":{"link":"","hyperlinkOpenState":"NewTab","content":"","textDecoration":"None"},"visibility":true,"rotateAngle":0,"margin":{"right":0,"bottom":0,"left":0,"top":0},"horizontalAlignment":"Center","verticalAlignment":"Center"}],"zIndex":0,"container":null,"visible":true,"horizontalAlignment":"Left","verticalAlignment":"Top","backgroundColor":"transparent","borderColor":"none","borderWidth":0,"rotateAngle":0,"pivot":{"x":0.5,"y":0.5},"margin":{},"flip":"None","wrapper":{"actualSize":{"width":50,"height":50},"offsetX":100,"offsetY":245},"style":{"fill":"white","strokeColor":"black","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"constraints":5240814,"isExpanded":true,"expandIcon":{"shape":"None"},"fixedUserHandles":[],"flipMode":"All","inEdges":[],"outEdges":["newTravelRequestRecieved-getTravelRequestDetails"],"parentId":"","processId":"","umlIndex":-1,"isPhase":false,"isLane":false},{"shape":{"type":"Bpmn","shape":"Activity","activity":{"activity":"Task","subProcess":{"type":"None"},"task":{"call":false,"compensation":false,"loop":"None","type":"None"}},"annotations":[]},"ports":[],"id":"getTravelRequestDetails","width":100,"height":80,"offsetX":250,"offsetY":245,"annotations":[{"id":"getTravelRequestDetails_label","content":"Get Travel Request Details","style":{"strokeWidth":0,"strokeColor":"transparent","fill":"transparent","fontSize":14,"bold":false,"textWrapping":"WrapWithOverflow","color":"black","whiteSpace":"CollapseSpace","fontFamily":"Arial","italic":false,"opacity":1,"strokeDashArray":"","textAlign":"Center","textOverflow":"Wrap","textDecoration":"None"},"constraints":2,"annotationType":"String","hyperlink":{"link":"","hyperlinkOpenState":"NewTab","content":"","textDecoration":"None"},"visibility":true,"rotateAngle":0,"margin":{"right":0,"bottom":0,"left":0,"top":0},"horizontalAlignment":"Center","verticalAlignment":"Center","offset":{"x":0.5,"y":0.5}}],"zIndex":1,"container":null,"visible":true,"horizontalAlignment":"Left","verticalAlignment":"Top","backgroundColor":"transparent","borderColor":"none","borderWidth":0,"rotateAngle":0,"pivot":{"x":0.5,"y":0.5},"margin":{},"flip":"None","wrapper":{"actualSize":{"width":100,"height":80},"offsetX":250,"offsetY":245},"style":{"fill":"white","strokeColor":"black","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"constraints":5240814,"isExpanded":true,"expandIcon":{"shape":"None"},"fixedUserHandles":[],"flipMode":"All","inEdges":["newTravelRequestRecieved-getTravelRequestDetails"],"outEdges":["getTravelRequestDetails-getRequesterProfile"],"parentId":"","processId":"","umlIndex":-1,"isPhase":false,"isLane":false},{"shape":{"type":"Bpmn","shape":"Activity","activity":{"activity":"Task","subProcess":{"type":"None"},"task":{"call":false,"compensation":false,"loop":"None","type":"None"}},"annotations":[]},"ports":[],"id":"getRequesterProfile","width":100,"height":80,"offsetX":400,"offsetY":245,"annotations":[{"id":"getRequesterProfile_label","content":"Get Requester Profile","style":{"strokeWidth":0,"strokeColor":"transparent","fill":"transparent","fontSize":14,"bold":false,"textWrapping":"WrapWithOverflow","color":"black","whiteSpace":"CollapseSpace","fontFamily":"Arial","italic":false,"opacity":1,"strokeDashArray":"","textAlign":"Center","textOverflow":"Wrap","textDecoration":"None"},"constraints":2,"annotationType":"String","hyperlink":{"link":"","hyperlinkOpenState":"NewTab","content":"","textDecoration":"None"},"visibility":true,"rotateAngle":0,"margin":{"right":0,"bottom":0,"left":0,"top":0},"horizontalAlignment":"Center","verticalAlignment":"Center","offset":{"x":0.5,"y":0.5}}],"zIndex":2,"container":null,"visible":true,"horizontalAlignment":"Left","verticalAlignment":"Top","backgroundColor":"transparent","borderColor":"none","borderWidth":0,"rotateAngle":0,"pivot":{"x":0.5,"y":0.5},"margin":{},"flip":"None","wrapper":{"actualSize":{"width":100,"height":80},"offsetX":400,"offsetY":245},"style":{"fill":"white","strokeColor":"black","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"constraints":5240814,"isExpanded":true,"expandIcon":{"shape":"None"},"fixedUserHandles":[],"flipMode":"All","inEdges":["getTravelRequestDetails-getRequesterProfile"],"outEdges":["getRequesterProfile-getManagerDetails"],"parentId":"","processId":"","umlIndex":-1,"isPhase":false,"isLane":false},{"shape":{"type":"Bpmn","shape":"Activity","activity":{"activity":"Task","subProcess":{"type":"None"},"task":{"call":false,"compensation":false,"loop":"None","type":"None"}},"annotations":[]},"ports":[],"id":"getManagerDetails","width":100,"height":80,"offsetX":550,"offsetY":245,"annotations":[{"id":"getManagerDetails_label","content":"Get Manager Details","style":{"strokeWidth":0,"strokeColor":"transparent","fill":"transparent","fontSize":14,"bold":false,"textWrapping":"WrapWithOverflow","color":"black","whiteSpace":"CollapseSpace","fontFamily":"Arial","italic":false,"opacity":1,"strokeDashArray":"","textAlign":"Center","textOverflow":"Wrap","textDecoration":"None"},"constraints":2,"annotationType":"String","hyperlink":{"link":"","hyperlinkOpenState":"NewTab","content":"","textDecoration":"None"},"visibility":true,"rotateAngle":0,"margin":{"right":0,"bottom":0,"left":0,"top":0},"horizontalAlignment":"Center","verticalAlignment":"Center","offset":{"x":0.5,"y":0.5}}],"zIndex":3,"container":null,"visible":true,"horizontalAlignment":"Left","verticalAlignment":"Top","backgroundColor":"transparent","borderColor":"none","borderWidth":0,"rotateAngle":0,"pivot":{"x":0.5,"y":0.5},"margin":{},"flip":"None","wrapper":{"actualSize":{"width":100,"height":80},"offsetX":550,"offsetY":245},"style":{"fill":"white","strokeColor":"black","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"constraints":5240814,"isExpanded":true,"expandIcon":{"shape":"None"},"fixedUserHandles":[],"flipMode":"All","inEdges":["getRequesterProfile-getManagerDetails"],"outEdges":["getManagerDetails-initiateApprovalWithManager"],"parentId":"","processId":"","umlIndex":-1,"isPhase":false,"isLane":false},{"shape":{"type":"Bpmn","shape":"Activity","activity":{"activity":"Task","subProcess":{},"task":{"call":false,"compensation":false,"loop":"None","type":"None"}},"annotations":[]},"ports":[],"id":"setStatusAsRejected","width":100,"height":80,"offsetX":700,"offsetY":245,"annotations":[{"id":"setStatusAsRejected_label","content":"Set Status As Rejected","style":{"strokeWidth":0,"strokeColor":"transparent","fill":"transparent","fontSize":14,"bold":false,"textWrapping":"WrapWithOverflow","color":"black","whiteSpace":"CollapseSpace","fontFamily":"Arial","italic":false,"opacity":1,"strokeDashArray":"","textAlign":"Center","textOverflow":"Wrap","textDecoration":"None"},"constraints":2,"annotationType":"String","hyperlink":{"link":"","hyperlinkOpenState":"NewTab","content":"","textDecoration":"None"},"visibility":true,"rotateAngle":0,"margin":{"right":0,"bottom":0,"left":0,"top":0},"horizontalAlignment":"Center","verticalAlignment":"Center","offset":{"x":0.5,"y":0.5}}],"zIndex":4,"container":null,"visible":true,"horizontalAlignment":"Left","verticalAlignment":"Top","backgroundColor":"transparent","borderColor":"none","borderWidth":0,"rotateAngle":0,"pivot":{"x":0.5,"y":0.5},"margin":{},"flip":"None","wrapper":{"actualSize":{"width":100,"height":80},"offsetX":700,"offsetY":245},"style":{"fill":"white","strokeColor":"black","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"constraints":5240814,"isExpanded":true,"expandIcon":{"shape":"None"},"fixedUserHandles":[],"flipMode":"All","inEdges":["checkApprovalStatus-setStatusAsRejected"],"outEdges":[],"parentId":"","processId":"","umlIndex":-1,"isPhase":false,"isLane":false},{"shape":{"type":"Bpmn","shape":"Activity","activity":{"activity":"Task","subProcess":{},"task":{"call":false,"compensation":false,"loop":"None","type":"None"}},"annotations":[]},"ports":[],"id":"setStatusAsAccepted","width":100,"height":80,"offsetX":850,"offsetY":245,"annotations":[{"id":"setStatusAsAccepted_label","content":"Set Status As Accepted","style":{"strokeWidth":0,"strokeColor":"transparent","fill":"transparent","fontSize":14,"bold":false,"textWrapping":"WrapWithOverflow","color":"black","whiteSpace":"CollapseSpace","fontFamily":"Arial","italic":false,"opacity":1,"strokeDashArray":"","textAlign":"Center","textOverflow":"Wrap","textDecoration":"None"},"constraints":2,"annotationType":"String","hyperlink":{"link":"","hyperlinkOpenState":"NewTab","content":"","textDecoration":"None"},"visibility":true,"rotateAngle":0,"margin":{"right":0,"bottom":0,"left":0,"top":0},"horizontalAlignment":"Center","verticalAlignment":"Center","offset":{"x":0.5,"y":0.5}}],"zIndex":5,"container":null,"visible":true,"horizontalAlignment":"Left","verticalAlignment":"Top","backgroundColor":"transparent","borderColor":"none","borderWidth":0,"rotateAngle":0,"pivot":{"x":0.5,"y":0.5},"margin":{},"flip":"None","wrapper":{"actualSize":{"width":100,"height":80},"offsetX":850,"offsetY":245},"style":{"fill":"white","strokeColor":"black","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"constraints":5240814,"isExpanded":true,"expandIcon":{"shape":"None"},"fixedUserHandles":[],"flipMode":"All","inEdges":["checkIfItIsAnInternaltionalTravel-setStatusAsAccepted"],"outEdges":[],"parentId":"","processId":"","umlIndex":-1,"isPhase":false,"isLane":false},{"shape":{"type":"Bpmn","shape":"Activity","activity":{"activity":"Task","subProcess":{},"task":{"call":false,"compensation":false,"loop":"None","type":"None"}},"annotations":[]},"ports":[],"id":"setNextApprovalStatusAsRejected","width":100,"height":80,"offsetX":1100,"offsetY":245,"annotations":[{"id":"setNextApprovalStatusAsRejected_label","content":"Set Next Approval Status As Rejected","style":{"strokeWidth":0,"strokeColor":"transparent","fill":"transparent","fontSize":14,"bold":false,"textWrapping":"WrapWithOverflow","color":"black","whiteSpace":"CollapseSpace","fontFamily":"Arial","italic":false,"opacity":1,"strokeDashArray":"","textAlign":"Center","textOverflow":"Wrap","textDecoration":"None"},"constraints":2,"annotationType":"String","hyperlink":{"link":"","hyperlinkOpenState":"NewTab","content":"","textDecoration":"None"},"visibility":true,"rotateAngle":0,"margin":{"right":0,"bottom":0,"left":0,"top":0},"horizontalAlignment":"Center","verticalAlignment":"Center","offset":{"x":0.5,"y":0.5}}],"zIndex":6,"container":null,"visible":true,"horizontalAlignment":"Left","verticalAlignment":"Top","backgroundColor":"transparent","borderColor":"none","borderWidth":0,"rotateAngle":0,"pivot":{"x":0.5,"y":0.5},"margin":{},"flip":"None","wrapper":{"actualSize":{"width":100,"height":80},"offsetX":1100,"offsetY":245},"style":{"fill":"white","strokeColor":"black","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"constraints":5240814,"isExpanded":true,"expandIcon":{"shape":"None"},"fixedUserHandles":[],"flipMode":"All","inEdges":["checkLevel2-ApprovalStatus-setNextApprovalStatusAsRejected"],"outEdges":[],"parentId":"","processId":"","umlIndex":-1,"isPhase":false,"isLane":false},{"shape":{"type":"Bpmn","shape":"Activity","activity":{"activity":"Task","subProcess":{},"task":{"call":false,"compensation":false,"loop":"None","type":"None"}},"annotations":[]},"ports":[],"id":"setNextApprovalStatusAsAccepted","width":100,"height":80,"offsetX":1250,"offsetY":245,"annotations":[{"id":"setNextApprovalStatusAsAccepted_label","content":"Set Next Approval Status As Accepted","style":{"strokeWidth":0,"strokeColor":"transparent","fill":"transparent","fontSize":14,"bold":false,"textWrapping":"WrapWithOverflow","color":"black","whiteSpace":"CollapseSpace","fontFamily":"Arial","italic":false,"opacity":1,"strokeDashArray":"","textAlign":"Center","textOverflow":"Wrap","textDecoration":"None"},"constraints":2,"annotationType":"String","hyperlink":{"link":"","hyperlinkOpenState":"NewTab","content":"","textDecoration":"None"},"visibility":true,"rotateAngle":0,"margin":{"right":0,"bottom":0,"left":0,"top":0},"horizontalAlignment":"Center","verticalAlignment":"Center","offset":{"x":0.5,"y":0.5}}],"zIndex":7,"container":null,"visible":true,"horizontalAlignment":"Left","verticalAlignment":"Top","backgroundColor":"transparent","borderColor":"none","borderWidth":0,"rotateAngle":0,"pivot":{"x":0.5,"y":0.5},"margin":{},"flip":"None","wrapper":{"actualSize":{"width":100,"height":80},"offsetX":1250,"offsetY":245},"style":{"fill":"white","strokeColor":"black","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"constraints":5240814,"isExpanded":true,"expandIcon":{"shape":"None"},"fixedUserHandles":[],"flipMode":"All","inEdges":["checkLevel2-ApprovalStatus-setNextApprovalStatusAsAccepted"],"outEdges":[],"parentId":"","processId":"","umlIndex":-1,"isPhase":false,"isLane":false},{"shape":{"type":"Bpmn","shape":"Activity","activity":{"activity":"Task","subProcess":{"type":"None"},"task":{"call":false,"compensation":false,"loop":"None","type":"None"}},"annotations":[]},"ports":[],"id":"initiateApprovalWithManager","width":100,"height":80,"offsetX":550,"offsetY":445,"annotations":[{"id":"initiateApprovalWithManager_label","content":"Initiate Approval With Manager","style":{"strokeWidth":0,"strokeColor":"transparent","fill":"transparent","fontSize":14,"bold":false,"textWrapping":"WrapWithOverflow","color":"black","whiteSpace":"CollapseSpace","fontFamily":"Arial","italic":false,"opacity":1,"strokeDashArray":"","textAlign":"Center","textOverflow":"Wrap","textDecoration":"None"},"constraints":2,"annotationType":"String","hyperlink":{"link":"","hyperlinkOpenState":"NewTab","content":"","textDecoration":"None"},"visibility":true,"rotateAngle":0,"margin":{"right":0,"bottom":0,"left":0,"top":0},"horizontalAlignment":"Center","verticalAlignment":"Center","offset":{"x":0.5,"y":0.5}}],"zIndex":8,"container":null,"visible":true,"horizontalAlignment":"Left","verticalAlignment":"Top","backgroundColor":"transparent","borderColor":"none","borderWidth":0,"rotateAngle":0,"pivot":{"x":0.5,"y":0.5},"margin":{},"flip":"None","wrapper":{"actualSize":{"width":100,"height":80},"offsetX":550,"offsetY":445},"style":{"fill":"white","strokeColor":"black","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"constraints":5240814,"isExpanded":true,"expandIcon":{"shape":"None"},"fixedUserHandles":[],"flipMode":"All","inEdges":["getManagerDetails-initiateApprovalWithManager"],"outEdges":["initiateApprovalWithManager-checkApprovalStatus"],"parentId":"","processId":"","umlIndex":-1,"isPhase":false,"isLane":false},{"shape":{"type":"Bpmn","shape":"Gateway","gateway":{"type":"Exclusive"},"activity":{"subProcess":{}},"annotations":[]},"ports":[],"id":"checkApprovalStatus","width":80,"height":60,"offsetX":700,"offsetY":445,"annotations":[{"id":"checkApprovalStatus_label","content":"Check Approval Status","style":{"strokeWidth":0,"strokeColor":"transparent","fill":"transparent","fontSize":14,"bold":false,"textWrapping":"WrapWithOverflow","color":"black","whiteSpace":"CollapseSpace","fontFamily":"Arial","italic":false,"opacity":1,"strokeDashArray":"","textAlign":"Center","textOverflow":"Wrap","textDecoration":"None"},"constraints":2,"offset":{"x":0.5,"y":1.7},"annotationType":"String","hyperlink":{"link":"","hyperlinkOpenState":"NewTab","content":"","textDecoration":"None"},"visibility":true,"rotateAngle":0,"margin":{"right":0,"bottom":0,"left":0,"top":0},"horizontalAlignment":"Center","verticalAlignment":"Center"}],"zIndex":9,"container":null,"visible":true,"horizontalAlignment":"Left","verticalAlignment":"Top","backgroundColor":"transparent","borderColor":"none","borderWidth":0,"rotateAngle":0,"pivot":{"x":0.5,"y":0.5},"margin":{},"flip":"None","wrapper":{"actualSize":{"width":80,"height":60},"offsetX":700,"offsetY":445},"style":{"fill":"white","strokeColor":"black","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"constraints":5240814,"isExpanded":true,"expandIcon":{"shape":"None"},"fixedUserHandles":[],"flipMode":"All","inEdges":["initiateApprovalWithManager-checkApprovalStatus"],"outEdges":["checkApprovalStatus-setStatusAsRejected","checkApprovalStatus-checkIfItIsAnInternaltionalTravel"],"parentId":"","processId":"","umlIndex":-1,"isPhase":false,"isLane":false},{"shape":{"type":"Bpmn","shape":"Gateway","gateway":{"type":"Exclusive"},"activity":{"subProcess":{}},"annotations":[]},"ports":[],"id":"checkIfItIsAnInternaltionalTravel","width":80,"height":60,"offsetX":850,"offsetY":445,"annotations":[{"id":"checkIfItIsAnInternaltionalTravel_label","content":"Check If It Is An Internaltional Travel","style":{"strokeWidth":0,"strokeColor":"transparent","fill":"transparent","fontSize":14,"bold":false,"textWrapping":"WrapWithOverflow","color":"black","whiteSpace":"CollapseSpace","fontFamily":"Arial","italic":false,"opacity":1,"strokeDashArray":"","textAlign":"Center","textOverflow":"Wrap","textDecoration":"None"},"constraints":2,"offset":{"x":0.5,"y":1.7},"annotationType":"String","hyperlink":{"link":"","hyperlinkOpenState":"NewTab","content":"","textDecoration":"None"},"visibility":true,"rotateAngle":0,"margin":{"right":0,"bottom":0,"left":0,"top":0},"horizontalAlignment":"Center","verticalAlignment":"Center"}],"zIndex":10,"container":null,"visible":true,"horizontalAlignment":"Left","verticalAlignment":"Top","backgroundColor":"transparent","borderColor":"none","borderWidth":0,"rotateAngle":0,"pivot":{"x":0.5,"y":0.5},"margin":{},"flip":"None","wrapper":{"actualSize":{"width":80,"height":60},"offsetX":850,"offsetY":445},"style":{"fill":"white","strokeColor":"black","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"constraints":5240814,"isExpanded":true,"expandIcon":{"shape":"None"},"fixedUserHandles":[],"flipMode":"All","inEdges":["checkApprovalStatus-checkIfItIsAnInternaltionalTravel"],"outEdges":["checkIfItIsAnInternaltionalTravel-setStatusAsAccepted","checkIfItIsAnInternaltionalTravel-initialteApprovalWithNextLevelManager"],"parentId":"","processId":"","umlIndex":-1,"isPhase":false,"isLane":false},{"shape":{"type":"Bpmn","shape":"Activity","activity":{"activity":"Task","subProcess":{"type":"None"},"task":{"call":false,"compensation":false,"loop":"None","type":"None"}},"annotations":[]},"ports":[],"id":"initialteApprovalWithNextLevelManager","width":100,"height":80,"offsetX":1000,"offsetY":445,"annotations":[{"id":"initialteApprovalWithNextLevelManager_label","content":"Initialte Approval With Next Level Manager","style":{"strokeWidth":0,"strokeColor":"transparent","fill":"transparent","fontSize":14,"bold":false,"textWrapping":"WrapWithOverflow","color":"black","whiteSpace":"CollapseSpace","fontFamily":"Arial","italic":false,"opacity":1,"strokeDashArray":"","textAlign":"Center","textOverflow":"Wrap","textDecoration":"None"},"constraints":2,"annotationType":"String","hyperlink":{"link":"","hyperlinkOpenState":"NewTab","content":"","textDecoration":"None"},"visibility":true,"rotateAngle":0,"margin":{"right":0,"bottom":0,"left":0,"top":0},"horizontalAlignment":"Center","verticalAlignment":"Center","offset":{"x":0.5,"y":0.5}}],"zIndex":11,"container":null,"visible":true,"horizontalAlignment":"Left","verticalAlignment":"Top","backgroundColor":"transparent","borderColor":"none","borderWidth":0,"rotateAngle":0,"pivot":{"x":0.5,"y":0.5},"margin":{},"flip":"None","wrapper":{"actualSize":{"width":100,"height":80},"offsetX":1000,"offsetY":445},"style":{"fill":"white","strokeColor":"black","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"constraints":5240814,"isExpanded":true,"expandIcon":{"shape":"None"},"fixedUserHandles":[],"flipMode":"All","inEdges":["checkIfItIsAnInternaltionalTravel-initialteApprovalWithNextLevelManager"],"outEdges":["initialteApprovalWithNextLevelManager-checkLevel2-ApprovalStatus"],"parentId":"","processId":"","umlIndex":-1,"isPhase":false,"isLane":false},{"shape":{"type":"Bpmn","shape":"Gateway","gateway":{"type":"Exclusive"},"activity":{"subProcess":{}},"annotations":[]},"ports":[{"inEdges":[],"outEdges":["checkLevel2-ApprovalStatus-setNextApprovalStatusAsAccepted"],"id":"right_port","offset":{"x":1,"y":0.5},"height":12,"width":12,"shape":"Square","margin":{"right":0,"bottom":0,"left":0,"top":0},"style":{"fill":"white","strokeColor":"black","opacity":1,"strokeDashArray":"","strokeWidth":1},"horizontalAlignment":"Center","verticalAlignment":"Center","visibility":8,"constraints":24}],"id":"checkLevel2-ApprovalStatus","width":80,"height":60,"offsetX":1130,"offsetY":445,"annotations":[{"id":"checkLevel2-ApprovalStatus_label","content":"Check Level 2 Approval Status","style":{"strokeWidth":0,"strokeColor":"transparent","fill":"transparent","fontSize":14,"bold":false,"textWrapping":"WrapWithOverflow","color":"black","whiteSpace":"CollapseSpace","fontFamily":"Arial","italic":false,"opacity":1,"strokeDashArray":"","textAlign":"Center","textOverflow":"Wrap","textDecoration":"None"},"constraints":2,"offset":{"x":0.5,"y":1.7},"annotationType":"String","hyperlink":{"link":"","hyperlinkOpenState":"NewTab","content":"","textDecoration":"None"},"visibility":true,"rotateAngle":0,"margin":{"right":0,"bottom":0,"left":0,"top":0},"horizontalAlignment":"Center","verticalAlignment":"Center"}],"zIndex":12,"container":null,"visible":true,"horizontalAlignment":"Left","verticalAlignment":"Top","backgroundColor":"transparent","borderColor":"none","borderWidth":0,"rotateAngle":0,"pivot":{"x":0.5,"y":0.5},"margin":{},"flip":"None","wrapper":{"actualSize":{"width":80,"height":60},"offsetX":1130,"offsetY":445},"style":{"fill":"white","strokeColor":"black","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"constraints":5240814,"flipMode":"All","isExpanded":true,"expandIcon":{"shape":"None"},"fixedUserHandles":[],"inEdges":["initialteApprovalWithNextLevelManager-checkLevel2-ApprovalStatus"],"outEdges":["checkLevel2-ApprovalStatus-setNextApprovalStatusAsRejected","checkLevel2-ApprovalStatus-setNextApprovalStatusAsAccepted"],"parentId":"","processId":"","umlIndex":-1,"isPhase":false,"isLane":false}],"connectors":[{"shape":{"type":"None"},"id":"newTravelRequestRecieved-getTravelRequestDetails","sourceID":"newTravelRequestRecieved","targetID":"getTravelRequestDetails","addInfo":{"level":1},"annotations":[{"id":"HvJiG","content":"","height":8,"width":8,"offset":0,"style":{"strokeWidth":0,"strokeColor":"transparent","fill":"transparent","fontSize":14,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"},"fontFamily":"Arial","textOverflow":"Wrap","textDecoration":"None","whiteSpace":"CollapseSpace","textWrapping":"WrapWithOverflow","textAlign":"Center","color":"black","italic":false,"bold":false},"annotationType":"String","constraints":4,"visibility":true,"rotateAngle":0,"horizontalAlignment":"Center","verticalAlignment":"Center","margin":{"left":0,"right":0,"bottom":0,"top":0},"alignment":"Center","segmentAngle":false,"displacement":{"x":0,"y":0}}],"zIndex":13,"type":"Orthogonal","style":{"strokeWidth":1,"strokeColor":"#B6B6B4","fill":"transparent","strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"targetDecorator":{"shape":"Arrow","style":{"fill":"#B6B6B4","strokeColor":"#B6B6B4","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"width":10,"height":10,"pivot":{"x":0,"y":0.5}},"segments":[{"type":"Orthogonal","direction":null}],"sourcePortID":"","targetPortID":"","targetPoint":{"x":200,"y":245},"connectorSpacing":13,"sourcePadding":0,"targetPadding":0,"sourcePoint":{"x":124.66,"y":245},"sourceDecorator":{"shape":"None","width":10,"height":10,"pivot":{"x":0,"y":0.5},"style":{"fill":"black","strokeColor":"black","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}}},"cornerRadius":0,"wrapper":{"actualSize":{"width":75.34,"height":0},"offsetX":162.32999999999998,"offsetY":245},"fixedUserHandles":[],"ports":[],"visible":true,"constraints":994878,"flipMode":"All","parentId":""},{"shape":{"type":"None"},"id":"getTravelRequestDetails-getRequesterProfile","sourceID":"getTravelRequestDetails","targetID":"getRequesterProfile","addInfo":{"level":2},"annotations":[{"id":"fi2MU","content":"","height":8,"width":8,"offset":0,"style":{"strokeWidth":0,"strokeColor":"transparent","fill":"transparent","fontSize":14,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"},"fontFamily":"Arial","textOverflow":"Wrap","textDecoration":"None","whiteSpace":"CollapseSpace","textWrapping":"WrapWithOverflow","textAlign":"Center","color":"black","italic":false,"bold":false},"annotationType":"String","constraints":4,"visibility":true,"rotateAngle":0,"horizontalAlignment":"Center","verticalAlignment":"Center","margin":{"left":0,"right":0,"bottom":0,"top":0},"alignment":"Center","segmentAngle":false,"displacement":{"x":0,"y":0}}],"zIndex":14,"type":"Orthogonal","style":{"strokeWidth":1,"strokeColor":"#B6B6B4","fill":"transparent","strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"targetDecorator":{"shape":"Arrow","style":{"fill":"#B6B6B4","strokeColor":"#B6B6B4","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"width":10,"height":10,"pivot":{"x":0,"y":0.5}},"segments":[{"type":"Orthogonal","direction":null}],"sourcePortID":"","targetPortID":"","targetPoint":{"x":350,"y":245},"connectorSpacing":13,"sourcePadding":0,"targetPadding":0,"sourcePoint":{"x":300,"y":245},"sourceDecorator":{"shape":"None","width":10,"height":10,"pivot":{"x":0,"y":0.5},"style":{"fill":"black","strokeColor":"black","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}}},"cornerRadius":0,"wrapper":{"actualSize":{"width":50,"height":0},"offsetX":325,"offsetY":245},"fixedUserHandles":[],"ports":[],"visible":true,"constraints":994878,"flipMode":"All","parentId":""},{"shape":{"type":"None"},"id":"getRequesterProfile-getManagerDetails","sourceID":"getRequesterProfile","targetID":"getManagerDetails","addInfo":{"level":3},"annotations":[{"id":"JyK3T","content":"","height":8,"width":8,"offset":0,"style":{"strokeWidth":0,"strokeColor":"transparent","fill":"transparent","fontSize":14,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"},"fontFamily":"Arial","textOverflow":"Wrap","textDecoration":"None","whiteSpace":"CollapseSpace","textWrapping":"WrapWithOverflow","textAlign":"Center","color":"black","italic":false,"bold":false},"annotationType":"String","constraints":4,"visibility":true,"rotateAngle":0,"horizontalAlignment":"Center","verticalAlignment":"Center","margin":{"left":0,"right":0,"bottom":0,"top":0},"alignment":"Center","segmentAngle":false,"displacement":{"x":0,"y":0}}],"zIndex":15,"type":"Orthogonal","style":{"strokeWidth":1,"strokeColor":"#B6B6B4","fill":"transparent","strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"targetDecorator":{"shape":"Arrow","style":{"fill":"#B6B6B4","strokeColor":"#B6B6B4","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"width":10,"height":10,"pivot":{"x":0,"y":0.5}},"segments":[{"type":"Orthogonal","direction":null}],"sourcePortID":"","targetPortID":"","targetPoint":{"x":500,"y":245},"connectorSpacing":13,"sourcePadding":0,"targetPadding":0,"sourcePoint":{"x":450,"y":245},"sourceDecorator":{"shape":"None","width":10,"height":10,"pivot":{"x":0,"y":0.5},"style":{"fill":"black","strokeColor":"black","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}}},"cornerRadius":0,"wrapper":{"actualSize":{"width":50,"height":0},"offsetX":475,"offsetY":245},"fixedUserHandles":[],"ports":[],"visible":true,"constraints":994878,"flipMode":"All","parentId":""},{"shape":{"type":"None"},"id":"getManagerDetails-initiateApprovalWithManager","sourceID":"getManagerDetails","targetID":"initiateApprovalWithManager","addInfo":{"level":4},"annotations":[{"id":"HANdM","content":"","height":8,"width":8,"offset":0,"style":{"strokeWidth":0,"strokeColor":"transparent","fill":"transparent","fontSize":14,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"},"fontFamily":"Arial","textOverflow":"Wrap","textDecoration":"None","whiteSpace":"CollapseSpace","textWrapping":"WrapWithOverflow","textAlign":"Center","color":"black","italic":false,"bold":false},"annotationType":"String","constraints":4,"visibility":true,"rotateAngle":0,"horizontalAlignment":"Center","verticalAlignment":"Center","margin":{"left":0,"right":0,"bottom":0,"top":0},"alignment":"Center","segmentAngle":false,"displacement":{"x":0,"y":0}}],"zIndex":16,"type":"Orthogonal","style":{"strokeWidth":1,"strokeColor":"#B6B6B4","fill":"transparent","strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"targetDecorator":{"shape":"Arrow","style":{"fill":"#B6B6B4","strokeColor":"#B6B6B4","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"width":10,"height":10,"pivot":{"x":0,"y":0.5}},"segments":[{"type":"Orthogonal","direction":null}],"sourcePortID":"","targetPortID":"","targetPoint":{"x":550,"y":405},"connectorSpacing":13,"sourcePadding":0,"targetPadding":0,"sourcePoint":{"x":550,"y":285},"sourceDecorator":{"shape":"None","width":10,"height":10,"pivot":{"x":0,"y":0.5},"style":{"fill":"black","strokeColor":"black","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}}},"cornerRadius":0,"wrapper":{"actualSize":{"width":0,"height":120},"offsetX":550,"offsetY":345},"fixedUserHandles":[],"ports":[],"visible":true,"constraints":994878,"flipMode":"All","parentId":""},{"shape":{"type":"None"},"id":"initiateApprovalWithManager-checkApprovalStatus","sourceID":"initiateApprovalWithManager","targetID":"checkApprovalStatus","addInfo":{"level":5},"annotations":[{"id":"XvuH5","content":"","height":8,"width":8,"offset":0,"style":{"strokeWidth":0,"strokeColor":"transparent","fill":"transparent","fontSize":14,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"},"fontFamily":"Arial","textOverflow":"Wrap","textDecoration":"None","whiteSpace":"CollapseSpace","textWrapping":"WrapWithOverflow","textAlign":"Center","color":"black","italic":false,"bold":false},"annotationType":"String","constraints":4,"visibility":true,"rotateAngle":0,"horizontalAlignment":"Center","verticalAlignment":"Center","margin":{"left":0,"right":0,"bottom":0,"top":0},"alignment":"Center","segmentAngle":false,"displacement":{"x":0,"y":0}}],"zIndex":17,"type":"Orthogonal","style":{"strokeWidth":1,"strokeColor":"#B6B6B4","fill":"transparent","strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"targetDecorator":{"shape":"Arrow","style":{"fill":"#B6B6B4","strokeColor":"#B6B6B4","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"width":10,"height":10,"pivot":{"x":0,"y":0.5}},"segments":[{"type":"Orthogonal","direction":null}],"sourcePortID":"","targetPortID":"","targetPoint":{"x":660,"y":445},"connectorSpacing":13,"sourcePadding":0,"targetPadding":0,"sourcePoint":{"x":600,"y":445},"sourceDecorator":{"shape":"None","width":10,"height":10,"pivot":{"x":0,"y":0.5},"style":{"fill":"black","strokeColor":"black","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}}},"cornerRadius":0,"wrapper":{"actualSize":{"width":60,"height":0},"offsetX":630,"offsetY":445},"fixedUserHandles":[],"ports":[],"visible":true,"constraints":994878,"flipMode":"All","parentId":""},{"shape":{"type":"None"},"id":"checkApprovalStatus-setStatusAsRejected","sourceID":"checkApprovalStatus","targetID":"setStatusAsRejected","addInfo":{"level":6},"annotations":[{"id":"CrRG5","content":"Rejected","style":{"strokeWidth":0,"strokeColor":"transparent","fill":"white","fontSize":14,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"},"fontFamily":"Arial","textOverflow":"Wrap","textDecoration":"None","whiteSpace":"CollapseSpace","textWrapping":"WrapWithOverflow","textAlign":"Center","color":"black","italic":false,"bold":false},"annotationType":"String","constraints":4,"visibility":true,"rotateAngle":0,"horizontalAlignment":"Center","verticalAlignment":"Center","margin":{"left":0,"right":0,"bottom":0,"top":0},"offset":0.5,"alignment":"Center","segmentAngle":false},{"id":"SgPGQ","content":"","height":8,"width":8,"offset":0,"style":{"strokeWidth":0,"strokeColor":"transparent","fill":"transparent","strokeDashArray":"","opacity":1,"gradient":{"type":"None"},"fontSize":12,"fontFamily":"Arial","textOverflow":"Wrap","textDecoration":"None","whiteSpace":"CollapseSpace","textWrapping":"WrapWithOverflow","textAlign":"Center","color":"black","italic":false,"bold":false},"annotationType":"String","constraints":4,"visibility":true,"rotateAngle":0,"horizontalAlignment":"Center","verticalAlignment":"Center","margin":{"left":0,"right":0,"bottom":0,"top":0},"alignment":"Center","segmentAngle":false,"displacement":{"x":0,"y":0}}],"zIndex":18,"type":"Orthogonal","style":{"strokeWidth":1,"strokeColor":"#B6B6B4","fill":"transparent","strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"targetDecorator":{"shape":"Arrow","style":{"fill":"#B6B6B4","strokeColor":"#B6B6B4","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"width":10,"height":10,"pivot":{"x":0,"y":0.5}},"segments":[{"type":"Orthogonal","direction":null}],"sourcePortID":"","targetPortID":"","targetPoint":{"x":700,"y":285},"connectorSpacing":13,"sourcePadding":0,"targetPadding":0,"sourcePoint":{"x":700,"y":415},"sourceDecorator":{"shape":"None","width":10,"height":10,"pivot":{"x":0,"y":0.5},"style":{"fill":"black","strokeColor":"black","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}}},"cornerRadius":0,"wrapper":{"actualSize":{"width":0,"height":130},"offsetX":700,"offsetY":350},"fixedUserHandles":[],"ports":[],"visible":true,"constraints":994878,"flipMode":"All","parentId":""},{"shape":{"type":"None"},"id":"checkApprovalStatus-checkIfItIsAnInternaltionalTravel","sourceID":"checkApprovalStatus","targetID":"checkIfItIsAnInternaltionalTravel","annotations":[{"id":"vvnwf","content":"Accepted","style":{"strokeWidth":0,"strokeColor":"transparent","fill":"white","fontSize":14,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"},"fontFamily":"Arial","textOverflow":"Wrap","textDecoration":"None","whiteSpace":"CollapseSpace","textWrapping":"WrapWithOverflow","textAlign":"Center","color":"black","italic":false,"bold":false},"alignment":"Before","displacement":{"x":0,"y":10},"annotationType":"String","constraints":4,"visibility":true,"rotateAngle":0,"horizontalAlignment":"Center","verticalAlignment":"Center","margin":{"left":0,"right":0,"bottom":0,"top":0},"offset":0.5,"segmentAngle":false},{"id":"CpHnx","content":"","height":8,"width":8,"offset":0,"style":{"strokeWidth":0,"strokeColor":"transparent","fill":"transparent","strokeDashArray":"","opacity":1,"gradient":{"type":"None"},"fontSize":12,"fontFamily":"Arial","textOverflow":"Wrap","textDecoration":"None","whiteSpace":"CollapseSpace","textWrapping":"WrapWithOverflow","textAlign":"Center","color":"black","italic":false,"bold":false},"annotationType":"String","constraints":4,"visibility":true,"rotateAngle":0,"horizontalAlignment":"Center","verticalAlignment":"Center","margin":{"left":0,"right":0,"bottom":0,"top":0},"alignment":"Center","segmentAngle":false,"displacement":{"x":0,"y":0}}],"addInfo":{"level":7},"zIndex":19,"type":"Orthogonal","style":{"strokeWidth":1,"strokeColor":"#B6B6B4","fill":"transparent","strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"targetDecorator":{"shape":"Arrow","style":{"fill":"#B6B6B4","strokeColor":"#B6B6B4","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"width":10,"height":10,"pivot":{"x":0,"y":0.5}},"segments":[{"type":"Orthogonal","direction":null}],"sourcePortID":"","targetPortID":"","targetPoint":{"x":810,"y":445},"connectorSpacing":13,"sourcePadding":0,"targetPadding":0,"sourcePoint":{"x":740,"y":445},"sourceDecorator":{"shape":"None","width":10,"height":10,"pivot":{"x":0,"y":0.5},"style":{"fill":"black","strokeColor":"black","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}}},"cornerRadius":0,"wrapper":{"actualSize":{"width":70,"height":0},"offsetX":775,"offsetY":445},"fixedUserHandles":[],"ports":[],"visible":true,"constraints":994878,"flipMode":"All","parentId":""},{"shape":{"type":"None"},"id":"checkIfItIsAnInternaltionalTravel-setStatusAsAccepted","sourceID":"checkIfItIsAnInternaltionalTravel","targetID":"setStatusAsAccepted","annotations":[{"id":"Vi7uZ","content":"No","offset":0.4,"style":{"strokeWidth":0,"strokeColor":"transparent","fill":"white","fontSize":14,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"},"fontFamily":"Arial","textOverflow":"Wrap","textDecoration":"None","whiteSpace":"CollapseSpace","textWrapping":"WrapWithOverflow","textAlign":"Center","color":"black","italic":false,"bold":false},"annotationType":"String","constraints":4,"visibility":true,"rotateAngle":0,"horizontalAlignment":"Center","verticalAlignment":"Center","margin":{"left":0,"right":0,"bottom":0,"top":0},"alignment":"Center","segmentAngle":false},{"id":"b2ATX","content":"","height":8,"width":8,"offset":0,"style":{"strokeWidth":0,"strokeColor":"transparent","fill":"transparent","strokeDashArray":"","opacity":1,"gradient":{"type":"None"},"fontSize":12,"fontFamily":"Arial","textOverflow":"Wrap","textDecoration":"None","whiteSpace":"CollapseSpace","textWrapping":"WrapWithOverflow","textAlign":"Center","color":"black","italic":false,"bold":false},"annotationType":"String","constraints":4,"visibility":true,"rotateAngle":0,"horizontalAlignment":"Center","verticalAlignment":"Center","margin":{"left":0,"right":0,"bottom":0,"top":0},"alignment":"Center","segmentAngle":false,"displacement":{"x":0,"y":0}}],"addInfo":{"level":8},"zIndex":20,"type":"Orthogonal","style":{"strokeWidth":1,"strokeColor":"#B6B6B4","fill":"transparent","strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"targetDecorator":{"shape":"Arrow","style":{"fill":"#B6B6B4","strokeColor":"#B6B6B4","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"width":10,"height":10,"pivot":{"x":0,"y":0.5}},"segments":[{"type":"Orthogonal","direction":null}],"sourcePortID":"","targetPortID":"","targetPoint":{"x":850,"y":285},"connectorSpacing":13,"sourcePadding":0,"targetPadding":0,"sourcePoint":{"x":850,"y":415},"sourceDecorator":{"shape":"None","width":10,"height":10,"pivot":{"x":0,"y":0.5},"style":{"fill":"black","strokeColor":"black","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}}},"cornerRadius":0,"wrapper":{"actualSize":{"width":0,"height":130},"offsetX":850,"offsetY":350},"fixedUserHandles":[],"ports":[],"visible":true,"constraints":994878,"flipMode":"All","parentId":""},{"shape":{"type":"None"},"id":"checkIfItIsAnInternaltionalTravel-initialteApprovalWithNextLevelManager","sourceID":"checkIfItIsAnInternaltionalTravel","targetID":"initialteApprovalWithNextLevelManager","annotations":[{"id":"iNfD4","content":"Yes","offset":0.4,"style":{"strokeWidth":0,"strokeColor":"transparent","fill":"white","fontSize":14,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"},"fontFamily":"Arial","textOverflow":"Wrap","textDecoration":"None","whiteSpace":"CollapseSpace","textWrapping":"WrapWithOverflow","textAlign":"Center","color":"black","italic":false,"bold":false},"alignment":"Before","displacement":{"x":0,"y":10},"annotationType":"String","constraints":4,"visibility":true,"rotateAngle":0,"horizontalAlignment":"Center","verticalAlignment":"Center","margin":{"left":0,"right":0,"bottom":0,"top":0},"segmentAngle":false},{"id":"tDi9H","content":"","height":8,"width":8,"offset":0,"style":{"strokeWidth":0,"strokeColor":"transparent","fill":"transparent","strokeDashArray":"","opacity":1,"gradient":{"type":"None"},"fontSize":12,"fontFamily":"Arial","textOverflow":"Wrap","textDecoration":"None","whiteSpace":"CollapseSpace","textWrapping":"WrapWithOverflow","textAlign":"Center","color":"black","italic":false,"bold":false},"annotationType":"String","constraints":4,"visibility":true,"rotateAngle":0,"horizontalAlignment":"Center","verticalAlignment":"Center","margin":{"left":0,"right":0,"bottom":0,"top":0},"alignment":"Center","segmentAngle":false,"displacement":{"x":0,"y":0}}],"addInfo":{"level":9},"zIndex":21,"type":"Orthogonal","style":{"strokeWidth":1,"strokeColor":"#B6B6B4","fill":"transparent","strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"targetDecorator":{"shape":"Arrow","style":{"fill":"#B6B6B4","strokeColor":"#B6B6B4","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"width":10,"height":10,"pivot":{"x":0,"y":0.5}},"segments":[{"type":"Orthogonal","direction":null}],"sourcePortID":"","targetPortID":"","targetPoint":{"x":950,"y":445},"connectorSpacing":13,"sourcePadding":0,"targetPadding":0,"sourcePoint":{"x":890,"y":445},"sourceDecorator":{"shape":"None","width":10,"height":10,"pivot":{"x":0,"y":0.5},"style":{"fill":"black","strokeColor":"black","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}}},"cornerRadius":0,"wrapper":{"actualSize":{"width":60,"height":0},"offsetX":920,"offsetY":445},"fixedUserHandles":[],"ports":[],"visible":true,"constraints":994878,"flipMode":"All","parentId":""},{"shape":{"type":"None"},"id":"initialteApprovalWithNextLevelManager-checkLevel2-ApprovalStatus","sourceID":"initialteApprovalWithNextLevelManager","targetID":"checkLevel2-ApprovalStatus","addInfo":{"level":10},"annotations":[{"id":"TxsOH","content":"","height":8,"width":8,"offset":0,"style":{"strokeWidth":0,"strokeColor":"transparent","fill":"transparent","fontSize":14,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"},"fontFamily":"Arial","textOverflow":"Wrap","textDecoration":"None","whiteSpace":"CollapseSpace","textWrapping":"WrapWithOverflow","textAlign":"Center","color":"black","italic":false,"bold":false},"annotationType":"String","constraints":4,"visibility":true,"rotateAngle":0,"horizontalAlignment":"Center","verticalAlignment":"Center","margin":{"left":0,"right":0,"bottom":0,"top":0},"alignment":"Center","segmentAngle":false,"displacement":{"x":0,"y":0}}],"zIndex":22,"type":"Orthogonal","style":{"strokeWidth":1,"strokeColor":"#B6B6B4","fill":"transparent","strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"targetDecorator":{"shape":"Arrow","style":{"fill":"#B6B6B4","strokeColor":"#B6B6B4","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"width":10,"height":10,"pivot":{"x":0,"y":0.5}},"segments":[{"type":"Orthogonal","direction":null}],"sourcePortID":"","targetPortID":"","targetPoint":{"x":1090,"y":445},"connectorSpacing":13,"sourcePadding":0,"targetPadding":0,"sourcePoint":{"x":1050,"y":445},"sourceDecorator":{"shape":"None","width":10,"height":10,"pivot":{"x":0,"y":0.5},"style":{"fill":"black","strokeColor":"black","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}}},"cornerRadius":0,"wrapper":{"actualSize":{"width":40,"height":0},"offsetX":1070,"offsetY":445},"fixedUserHandles":[],"ports":[],"visible":true,"constraints":994878,"flipMode":"All","parentId":""},{"shape":{"type":"None"},"id":"checkLevel2-ApprovalStatus-setNextApprovalStatusAsRejected","sourceID":"checkLevel2-ApprovalStatus","targetID":"setNextApprovalStatusAsRejected","annotations":[{"id":"vuJBl","content":"Rejected","offset":0.4,"style":{"strokeWidth":0,"strokeColor":"transparent","fill":"white","fontSize":14,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"},"fontFamily":"Arial","textOverflow":"Wrap","textDecoration":"None","whiteSpace":"CollapseSpace","textWrapping":"WrapWithOverflow","textAlign":"Center","color":"black","italic":false,"bold":false},"annotationType":"String","constraints":4,"visibility":true,"rotateAngle":0,"horizontalAlignment":"Center","verticalAlignment":"Center","margin":{"left":0,"right":0,"bottom":0,"top":0},"alignment":"Center","segmentAngle":false},{"id":"f9rUi","content":"","height":8,"width":8,"offset":0,"style":{"strokeWidth":0,"strokeColor":"transparent","fill":"transparent","strokeDashArray":"","opacity":1,"gradient":{"type":"None"},"fontSize":12,"fontFamily":"Arial","textOverflow":"Wrap","textDecoration":"None","whiteSpace":"CollapseSpace","textWrapping":"WrapWithOverflow","textAlign":"Center","color":"black","italic":false,"bold":false},"annotationType":"String","constraints":4,"visibility":true,"rotateAngle":0,"horizontalAlignment":"Center","verticalAlignment":"Center","margin":{"left":0,"right":0,"bottom":0,"top":0},"alignment":"Center","segmentAngle":false,"displacement":{"x":0,"y":0}}],"addInfo":{"level":11},"zIndex":23,"type":"Orthogonal","style":{"strokeWidth":1,"strokeColor":"#B6B6B4","fill":"transparent","strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"targetDecorator":{"shape":"Arrow","style":{"fill":"#B6B6B4","strokeColor":"#B6B6B4","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"width":10,"height":10,"pivot":{"x":0,"y":0.5}},"segments":[{"type":"Orthogonal","direction":null}],"sourcePortID":"","targetPortID":"","targetPoint":{"x":1100,"y":285},"connectorSpacing":13,"sourcePadding":0,"targetPadding":0,"sourcePoint":{"x":1130,"y":415},"sourceDecorator":{"shape":"None","width":10,"height":10,"pivot":{"x":0,"y":0.5},"style":{"fill":"black","strokeColor":"black","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}}},"cornerRadius":0,"wrapper":{"actualSize":{"width":30,"height":130},"offsetX":1115,"offsetY":350},"fixedUserHandles":[],"ports":[],"visible":true,"constraints":994878,"flipMode":"All","parentId":""},{"shape":{"type":"None"},"id":"checkLevel2-ApprovalStatus-setNextApprovalStatusAsAccepted","sourceID":"checkLevel2-ApprovalStatus","targetID":"setNextApprovalStatusAsAccepted","sourcePortID":"right_port","annotations":[{"id":"Th5Zc","content":"Approved","style":{"strokeWidth":0,"strokeColor":"transparent","fill":"white","fontSize":14,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"},"fontFamily":"Arial","textOverflow":"Wrap","textDecoration":"None","whiteSpace":"CollapseSpace","textWrapping":"WrapWithOverflow","textAlign":"Center","color":"black","italic":false,"bold":false},"annotationType":"String","constraints":4,"visibility":true,"rotateAngle":0,"horizontalAlignment":"Center","verticalAlignment":"Center","margin":{"left":0,"right":0,"bottom":0,"top":0},"offset":0.5,"alignment":"Center","segmentAngle":false},{"id":"XQHwT","content":"","height":8,"width":8,"offset":0,"style":{"strokeWidth":0,"strokeColor":"transparent","fill":"transparent","strokeDashArray":"","opacity":1,"gradient":{"type":"None"},"fontSize":12,"fontFamily":"Arial","textOverflow":"Wrap","textDecoration":"None","whiteSpace":"CollapseSpace","textWrapping":"WrapWithOverflow","textAlign":"Center","color":"black","italic":false,"bold":false},"annotationType":"String","constraints":4,"visibility":true,"rotateAngle":0,"horizontalAlignment":"Center","verticalAlignment":"Center","margin":{"left":0,"right":0,"bottom":0,"top":0},"alignment":"Center","segmentAngle":false,"displacement":{"x":0,"y":0}}],"addInfo":{"level":12},"zIndex":24,"type":"Orthogonal","style":{"strokeWidth":1,"strokeColor":"#B6B6B4","fill":"transparent","strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"targetDecorator":{"shape":"Arrow","style":{"fill":"#B6B6B4","strokeColor":"#B6B6B4","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}},"width":10,"height":10,"pivot":{"x":0,"y":0.5}},"segments":[{"type":"Orthogonal","direction":null}],"targetPortID":"","targetPoint":{"x":1250,"y":285},"connectorSpacing":13,"sourcePadding":0,"targetPadding":0,"sourcePoint":{"x":1170,"y":445},"sourceDecorator":{"shape":"None","width":10,"height":10,"pivot":{"x":0,"y":0.5},"style":{"fill":"black","strokeColor":"black","strokeWidth":1,"strokeDashArray":"","opacity":1,"gradient":{"type":"None"}}},"cornerRadius":0,"wrapper":{"actualSize":{"width":80,"height":160},"offsetX":1210,"offsetY":365},"fixedUserHandles":[],"ports":[],"visible":true,"constraints":994878,"flipMode":"All","parentId":""}],"tool":4,"scrollSettings":{"currentZoom":0.8979658060097132,"viewPortWidth":1153.5999755859375,"viewPortHeight":645,"horizontalOffset":38.400001525878906,"verticalOffset":0,"padding":{"left":0,"right":0,"top":0,"bottom":0},"scrollLimit":"Diagram","minZoom":0.2,"maxZoom":30},"snapSettings":{"constraints":0,"gridType":"Lines","verticalGridlines":{"lineIntervals":[1.25,18.75,0.25,19.75,0.25,19.75,0.25,19.75,0.25,19.75],"snapIntervals":[20]},"horizontalGridlines":{"lineIntervals":[1.25,18.75,0.25,19.75,0.25,19.75,0.25,19.75,0.25,19.75],"snapIntervals":[20]}},"pageSettings":{"background":{"color":"white","source":""},"boundaryConstraints":"Infinity","orientation":"Landscape","height":null,"width":null,"showPageBreaks":false,"fitOptions":{"canFit":false}},"getNodeDefaults":{},"getConnectorDefaults":{},"created":{},"enableRtl":false,"locale":"en","enablePersistence":false,"rulerSettings":{"showRulers":false},"backgroundColor":"transparent","constraints":500,"layout":{"type":"None","enableAnimation":true,"connectionPointOrigin":"SamePoint","arrangement":"Nonlinear","enableRouting":false},"contextMenuSettings":{},"dataSourceSettings":{"dataManager":null,"dataSource":null,"crudAction":{"read":""},"connectionDataSource":{"crudAction":{"read":""}}},"mode":"SVG","layers":[{"id":"default_layer","visible":true,"lock":false,"objects":["newTravelRequestRecieved","getTravelRequestDetails","getRequesterProfile","getManagerDetails","setStatusAsRejected","setStatusAsAccepted","setNextApprovalStatusAsRejected","setNextApprovalStatusAsAccepted","initiateApprovalWithManager","checkApprovalStatus","checkIfItIsAnInternaltionalTravel","initialteApprovalWithNextLevelManager","checkLevel2-ApprovalStatus","newTravelRequestRecieved-getTravelRequestDetails","getTravelRequestDetails-getRequesterProfile","getRequesterProfile-getManagerDetails","getManagerDetails-initiateApprovalWithManager","initiateApprovalWithManager-checkApprovalStatus","checkApprovalStatus-setStatusAsRejected","checkApprovalStatus-checkIfItIsAnInternaltionalTravel","checkIfItIsAnInternaltionalTravel-setStatusAsAccepted","checkIfItIsAnInternaltionalTravel-initialteApprovalWithNextLevelManager","initialteApprovalWithNextLevelManager-checkLevel2-ApprovalStatus","checkLevel2-ApprovalStatus-setNextApprovalStatusAsRejected","checkLevel2-ApprovalStatus-setNextApprovalStatusAsAccepted"],"zIndex":0,"objectZIndex":24}],"diagramSettings":{"inversedAlignment":true},"selectedItems":{"nodes":[],"connectors":[],"wrapper":null,"constraints":16382,"selectedObjects":[]},"basicElements":[],"tooltip":{"content":""},"commandManager":{"commands":[]},"version":17.1}');
-    diagramInstance.fitToPage({ region: 'Content', mode: 'Width' });
+    // Clear any running animation intervals
+    clearAnimationIntervals();
+    // Remove all custom animations and tick indicators
+    document.querySelectorAll(".diagram-loading-indicator, .diagram-tick").forEach(function (el) {
+      el.remove();
+    });
+    // Restore all nodes to their default styles
+    diagramInstance.nodes.forEach(function (node) {
+      if (node.style) node.style.strokeColor = nodeStrokeBeforeAnimationColor;
+    });
+    // Restore all connectors to their default styles
+    diagramInstance.connectors.forEach(function (connector) {
+      connector.style.strokeColor =
+        connector.targetDecorator.style.strokeColor =
+        connector.targetDecorator.style.fill =
+        connectorBeforeAnimationColor;
+
+      // Reset connector annotations to initial state
+      connector.annotations.forEach(function (ann) {
+        ann.offset = 0; // start position
+        ann.content = ""; // Reset content
+        ann.style.color = connectorAnnotationColor; // initial state color
+      });
+    });
+
+    diagramInstance.dataBind(); // Ensure all changes are applied
+  }
+
+  // Function to clear all active animation intervals
+  function clearAnimationIntervals() {
+    // Stop all timers stored in animationIntervals
+    animationIntervals.forEach(clearInterval);
+    // Reset the array to remove all interval references
+    animationIntervals.length = 0;
+  }
+
+  // Hidden file input for opening json files
+  var input = document.createElement("input");
+  input.type = "file";
+  input.accept = ".json";
+  input.id = "fileInput";
+  input.style.display = "none";
+  document.body.appendChild(input);
+
+  input.addEventListener("change", function (e) {
+    var file = (e.target as any).files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function (evt) {
+      var json = JSON.parse(evt.target.result as any);
+      diagramInstance.loadDiagram(json);
+      diagramInstance.fitToPage();
+      updateExecuteButton("Execute");
+      clearAnimationIntervals();
+      diagramInstance.tool = DiagramTools.ZoomPan;
+      input.value = "";
+    };
+    reader.readAsText(file);
+  });
+
+  // Update the execute button's text and tooltip based on the workflow state
+  function updateExecuteButton(state: string) {
+    var btn = toolbarEditor.items[4];
+    var states = {
+      Pause: {
+        id: "Pause",
+        text: "Pause",
+        tooltipText: "Pause Workflow",
+        prefixIcon: "e-icons e-pause",
+      },
+      Resume: {
+        id: "Resume",
+        text: "Resume",
+        tooltipText: "Resume Workflow",
+        prefixIcon: "e-icons e-play",
+      },
+      Execute: {
+        id: "Execute",
+        text: "Execute",
+        tooltipText: "Start Workflow",
+        prefixIcon: "e-icons e-play",
+      },
+    };
+
+    var newState = states[state] || states.Execute;
+    Object.assign(btn, newState);
+  }
+
+  // save the current diagram in json format
+  function saveDiagram() {
+    var fileName = "Diagram.json";
+    var jsonData = diagramInstance.saveDiagram();
+    var blob = new Blob([jsonData], { type: "application/json" });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = fileName;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  // functions on toggle switch change
+  function switchChange(args: any) {
+    isEditMode = args;
+    applyModeState(args);
+    updateTooltipContent(args);
+  }
+
+  // function to update tooltip content based on switch state
+  function updateTooltipContent(isChecked: boolean) {
+    if (switchTooltipRef) {
+      if (isChecked) {
+        switchTooltipRef.content = "Disable Editing";
+      } else {
+        switchTooltipRef.content = "Enable Editing";
+      }
+    }
+  }
+
+  // function to enable or disable tool bar buttons based on editing mode
+  function applyModeState(isEditMode: boolean) {
+    var buttonsToToggle = ["Select", "Delete", "Save"];
+
+    if (toolbarEditor) {
+      toolbarEditor.items.forEach(function (item) {
+        if (buttonsToToggle.includes(item.id)) {
+          item.disabled = !isEditMode;
+        }
+      });
+      // Hide last separator in toolbar if palette is hidden
+      var items = toolbarEditor.items;
+      var lastSepIndex = items.findIndex(function (item) {
+        return item.type === "Separator" && items.indexOf(item) > 7;
+      });
+      if (lastSepIndex !== -1) {
+        items[lastSepIndex].visible = isEditMode;
+      }
+      toolbarEditor.refresh();
+      const paletteEl = document.getElementById('symbolPalette');
+      if (paletteEl) {
+        paletteEl.style.display = isEditMode ? 'flex' : 'none';
+      }
+      diagramInstance.tool = isEditMode ? DiagramTools.MultipleSelect : DiagramTools.ZoomPan;
+    }
+  }
+
+  // update the label color based on toolbar button color
+  var toolbarButton = document.querySelector(".e-toolbar-item button");
+  if (toolbarButton) {
+    var buttonStyle = window.getComputedStyle(toolbarButton);
+    var buttonColor = buttonStyle.color;
+    var editLabel = document.getElementById("editLabel");
+    editLabel.style.color = buttonColor;
   }
 
   return (
-    <div className="control-pane">
+    <div className="control-pane diagram-workflow">
       <style>{sample_css}</style>
       <div className="col-lg-12 control-section">
-        <div className="content-wrapper" style={{ width: "100%" }}>
-          <div>
-            <div>
+        <div style={{ width: "100%" }}>
+          <div id="toolbarContainer">
+            <div id="toolbar">
               <ToolbarComponent
-                ref={(toolbar) => (toolbarEditor = toolbar)}
+                ref={(toolbar: any) => (toolbarEditor = toolbar)}
                 id="toolbar_diagram"
                 clicked={tooledit}
+                overflowMode="Popup"
               >
                 <ItemsDirective>
-                  <ItemDirective
-                    tooltipText="Execute"
-                    text="Execute"
-                    prefixIcon='e-play'
-                  />
+                  <ItemDirective id="New" tooltipText="New Diagram" text="New" prefixIcon="e-icons e-circle-add" />
+                  <ItemDirective id="Open" tooltipText="Open Diagram" text="Open" prefixIcon="e-icons e-folder-open" />
+                  <ItemDirective id="Save" tooltipText="Save Diagram" text="Save" prefixIcon="e-icons e-save" />
                   <ItemDirective type="Separator" />
-                  <ItemDirective
-                    tooltipText="Reset"
-                    text="Reset"
-                    disabled={true}
-                    prefixIcon="e-icons e-reset"
-                  />
+                  <ItemDirective id="Execute" tooltipText="Start Workflow" text="Execute" prefixIcon="e-icons e-play" width={90} overflow= "Show" />
+                  <ItemDirective id="Reset" tooltipText="Reset View/State" text="Reset" prefixIcon="e-icons e-reset" overflow= "Show" />
+                  <ItemDirective id="Delete" tooltipText="Delete Selected" text="Delete" prefixIcon="e-icons e-trash" />
+                  <ItemDirective type="Separator" />
+                  <ItemDirective id="Select" tooltipText="Select Tool" text="Select" prefixIcon="e-icons e-mouse-pointer" overflow= "Show" />
+                  <ItemDirective id="Pan" tooltipText="Pan Tool" text="Pan" prefixIcon="e-icons e-pan" overflow= "Show" />
+                  <ItemDirective type="Separator" />
+                  <ItemDirective id="palette" template={paletteTemplate} overflow= "Show" />
                 </ItemsDirective>
               </ToolbarComponent>
             </div>
-            <div>
-              <DiagramComponent
-                id="diagram"
-                ref={diagram => (diagramInstance = diagram)}
-                width={"100%"}
-                height={"645px"}
-                nodes={nodes}
-                connectors={connectors}
-                tool={
-                  DiagramTools.ZoomPan //Disables all interactions except zoom/pan
-                }
-                scrollSettings={{ currentZoom: 0.8 }}
-                snapSettings={{ constraints: SnapConstraints.None }}
-                pageSettings={{ background: { color: 'white' } }}
-                getNodeDefaults={(node: Node, diagram: Diagram) => {
-                  if (node.id === 'checkLevel2-ApprovalStatus') {
-                    node.ports = [{ id: 'right_port', offset: { x: 1, y: 0.5 } }];
-                  }
-                  if (node.shape.type === 'HTML') {
-                    node.constraints = NodeConstraints.None;
-                  }
-                  if (node.shape.type !== 'HTML') {
-                    node.annotations = [
-                      {
-                        id: node.id + '_label',
-                        content: node.id
-                          .replace(/-/g, ' ')
-                          .replace(/([a-z])([A-Z0-9])/g, '$1 $2')
-                          .replace(/\b\w/g, (match) => match.toUpperCase()),
-                        style: { fontSize: 15 },
-                        constraints: AnnotationConstraints.ReadOnly,
-                      },
-                    ];
-
-                    if (node.id === 'travelRequestApprovalProcess') {
-                      node.annotations[0].offset = { x: 0.1, y: 0.5 };
-                    }
-                    if ((node.shape as BpmnShapeModel).shape === 'Gateway' || (node.shape as BpmnShapeModel).shape === 'Event') {
-                      node.annotations[0].offset = { x: 0.5, y: 1.7 };
-                    }
-                    if (node.id === 'row1' || node.id === 'row2') {
-                      node.annotations = [];
-                    }
-                    node.annotations[0].style.fontSize = 14;
-                  }
-                }} //Sets the default values of connector
-                getConnectorDefaults={(
-                  connector: ConnectorModel,
-                  diagram: Diagram
-                ) => {
-                  connector.type = 'Orthogonal';
-                  connector.style = { strokeColor: '#B6B6B4' };
-                  connector.targetDecorator.style = {
-                    strokeColor: '#B6B6B4',
-                    fill: '#B6B6B4',
-                  };
-                  if (connector.annotations && connector.annotations.length > 0) {
-                    connector.annotations[0].style.fontSize=14;
-                    connector.annotations = connector.annotations.concat({
-                      content: '',
-                      height: 8,
-                      width: 8,
-                      offset: 0,
-                      style: { fill: 'transparent' },
-                    });
-                    if (
-                      connector.annotations[0].content === 'Accepted' ||
-                      connector.annotations[0].content === 'Yes'
-                    ) {
-                      connector.annotations[0].alignment = 'Before';
-                      connector.annotations[0].displacement = { x: 0, y: 10 };
-                    }
-                  } else {
-                    connector.annotations = [
-                      {
-                        content: '',
-                        height: 8,
-                        width: 8,
-                        offset: 0,
-                        style: { fill: 'transparent' },
-                      },
-                    ];
-                  }
-                }}
-                created={() => {
-                  diagramInstance.fitToPage({ region: 'Content', mode: 'Width' });
-                }}
-              >
-              </DiagramComponent>
+            <div id='toggleSwitchContainer'>
+              <div id="switch-container" ref={(switchContainer: any) => (switchContainerRef = switchContainer)}>
+                <span id="editLabel" style={{ fontSize: '14px', marginRight: '6px' }}>Edit</span>
+                <TooltipComponent
+                  id="switch_tooltip_digram"
+                  ref={(switchTooltip: any) => (switchTooltipRef = switchTooltip)}
+                  content="Enable Editing"
+                  position="TopCenter"
+                >
+                  <SwitchComponent
+                    id="DiagramToggleSwitch"
+                    ref={(DiagramToggleSwitch: any) => (switchRef = DiagramToggleSwitch)}
+                    checked={isEditMode}
+                    change={(args) => switchChange(args.checked)}
+                  />
+                </TooltipComponent>
+              </div>
             </div>
+          </div>
+          <div>
+            <DiagramComponent
+              id="diagram"
+              ref={(diagram: any) => (diagramInstance = diagram)}
+              width={"100%"}
+              height={"645px"}
+              nodes={nodes}
+              connectors={connectors}
+              tool={DiagramTools.ZoomPan}
+              scrollSettings={{ scrollLimit: "Infinity", canAutoScroll: true }}
+              selectedItems={{ userHandles: userHandles }}
+              getNodeDefaults={(node: Node, diagram: Diagram) => {
+                // restrict rotation and hide thumbs
+                node.constraints = (NodeConstraints.Default & ~NodeConstraints.Rotate) | NodeConstraints.HideThumbs;
+                // Set default width and height
+                if (typeof node.width === "undefined" || typeof node.height === "undefined") {
+                  var dimensions = {
+                    Event: { width: 60, height: 60 },
+                    Gateway: { width: 90, height: 70 },
+                    Activity: { width: 90, height: 50 },
+                  };
+                  var shapeType = (node.shape as any).shape;
+                  if (typeof node.width === "undefined") {
+                    node.width = dimensions[shapeType].width;
+                  }
+                  if (typeof node.height === "undefined") {
+                    node.height = dimensions[shapeType].height;
+                  }
+                }
+                return node;
+              }} //Sets the default values of connector
+              getConnectorDefaults={(connector: ConnectorModel, diagram: Diagram) => {
+                // Configure the connector with a straight type
+                connector.type = "Straight";
+                // connector initial color style, before animation
+                connector.style.strokeColor =
+                  connector.targetDecorator.style.strokeColor =
+                  connector.targetDecorator.style.fill =
+                  connectorBeforeAnimationColor;
+                // connector annotation, that will be animated during the workflow animation
+                connector.annotations = [
+                  {
+                    content: "",
+                    height: 16,
+                    width: 16,
+                    offset: 0,
+                    style: { fill: "transparent", fontSize: 24 },
+                  },
+                ];
+                return connector;
+
+              }}
+              selectionChange={(args) => {
+                if (args.state !== "Changed") return;
+                var connector = diagramInstance.selectedItems.connectors[0];
+                var handle = null;
+                for (var i = 0; i < diagramInstance.selectedItems.userHandles.length; i++) {
+                  if (diagramInstance.selectedItems.userHandles[i].name === "stopAnimation") {
+                    handle = diagramInstance.selectedItems.userHandles[i];
+                    break;
+                  }
+                }
+                if (connector && handle) {
+                  var isStopped =
+                    connector.addInfo && (connector.addInfo as any).stopAnimation === true;
+                  if (isStopped) {
+                    handle.pathData = "M2,0 L10,8 L2,16 L2,0 Z"; // Play icon (start animation)
+                  } else {
+                    handle.pathData = "M5.25,1.25 L8.75,1.25 L8.75,8.75 L5.25,8.75 Z"; // Stop icon
+                  }
+                  if (isStopped) {
+                    handle.tooltip.content = "Enable Animation";
+                  } else {
+                    handle.tooltip.content = "Disable Animation";
+                  }
+                  handle.visible = true;
+                } else if (handle) {
+                  handle.visible = false;
+                }
+              }}
+              onUserHandleMouseDown={(args) => {
+                var handleName = args.element.name;
+                switch (handleName) {
+                  case "delete":
+                    diagramInstance.remove(diagramInstance.selectedItems.nodes[0]);
+                    break;
+                  case "drawConnector":
+                    var sourceNode = diagramInstance.selectedItems.nodes[0];
+                    if (!sourceNode) return;
+                    diagramInstance.drawingObject = { type: "Straight", sourceID: sourceNode.id };
+                    diagramInstance.tool = DiagramTools.DrawOnce;
+                    break;
+                  case "stopAnimation":
+                    var connector = diagramInstance.selectedItems.connectors[0];
+                    if (connector) {
+                      if (!connector.addInfo) connector.addInfo = {};
+                      (connector.addInfo as any).stopAnimation = !(connector.addInfo as any).stopAnimation;
+
+                      // Update path and tooltip
+                      var handle = diagramInstance.selectedItems.userHandles.find(function (h) {
+                        return h.name === "stopAnimation";
+                      });
+                      if (handle) {
+                        var isStopped = (connector.addInfo as any).stopAnimation;
+
+                        if (isStopped) {
+                          handle.pathData = "M2,0 L10,8 L2,16 L2,0 Z"; // Play icon
+                          handle.tooltip.content = "Enable Animation";
+                        } else {
+                          handle.pathData = "M4.75,0.75 L9.25,0.75 L9.25,9.25 L4.75,9.25 Z"; // Stop icon
+                          handle.tooltip.content = "Disable Animation";
+                        }
+                      }
+                    }
+                    break;
+                }
+              }}
+              created={() => {
+                diagramInstance.fitToPage({ region: 'Content', mode: 'Width' });
+                applyModeState(false);
+                updateTooltipContent(false);
+              }}
+            >
+            </DiagramComponent>
           </div>
         </div>
       </div>
       <div id="action-description">
-          <p>
-          This sample provides a visual representation of a streamlined Travel Request Approval Workflow created with the Syncfusion<sup>®</sup> EJ2 TypeScript. The diagram incorporates BPMN nodes, connectors, and annotations to represent various diagram elements.
-          </p>
-        </div>
-        <div id="description">
-            <p>
-            This example showcases the process of building a Workflow diagram using the diagram control. Upon clicking the 'Execute' button, the Workflow will commence. It will be indicated by animated connectors, followed by the display of loading indicators as HTML templates on the nodes. Subsequently, the loading indicators will transition to checkmarks, signifying successful execution. Finally, in the last phase, the Workflow execution will reach its conclusion. The “Reset” button will refresh the diagram elements. Here, zoom and pan options are enabled. The tool property of the diagram control allows you to enable or disable zoom and pan options.
-            </p>
-          </div>
+        <p>
+          This sample provides a visual representation of a streamlined workflow diagram built using the Syncfusion<sup>®</sup> EJ2 Diagram control with BPMN shapes.
+        </p>
+      </div>
+      <div id="description">
+        <p>
+          This sample demonstrates how to build an animated workflow diagram using BPMN nodes, connectors, and annotations. The diagram simulates a workflow execution process, where clicking the <code>Execute</code> button triggers animated connectors and loading indicators on nodes that transition to checkmarks upon successful completion. The sample also includes options to pause, resume, stop, and reset the workflow. The <code>Reset</code> button restores the diagram to its initial state. Users can enhance the workflow by dragging BPMN elements from the symbol palette, with zoom and pan functionalities enabled for interactive navigation.
+        </p>
+      </div>
     </div>
   );
 }

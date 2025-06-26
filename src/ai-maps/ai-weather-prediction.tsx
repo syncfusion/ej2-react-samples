@@ -2,8 +2,9 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { LayerDirective, LayersDirective, MapsComponent, Marker, MapsTooltip, Annotations, Zoom, Inject, AnnotationsDirective, AnnotationDirective } from '@syncfusion/ej2-react-maps';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
+import { serverAIRequest } from '../common/ai-service';
 
-function WeatherPrediction() {
+function AiWeatherPrediction() {
     let mapInstance: MapsComponent;
     let markerDataSource: MarkerData[] = [];
     interface MarkerData {
@@ -95,7 +96,7 @@ function WeatherPrediction() {
 
     function generateWeatherRequest(date: string): Promise<any> {
         const prompt = 'Generate ' + date + '\'s temperature in Celsius for 15 important cities in USA as a JSON object, with fields such as "city_name", "temperature", "latitude", "longitude" and "weather_condition". The weather conditions must be sunny day, rainy day, cloudy day, snowy day and foggy day based on the temperature of the state. Strictly provide flat JSON object list alone without nested objects.';
-        return (window as any).getAzureChatAIRequest({ messages: [{ role: 'user', content: prompt }] });
+        return serverAIRequest({ messages: [{ role: 'user', content: prompt }] });
     }
 
     function getWeatherImage(condition: string): string {
@@ -198,4 +199,4 @@ function WeatherPrediction() {
     )
 }
 
-export default WeatherPrediction
+export default AiWeatherPrediction;

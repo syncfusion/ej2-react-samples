@@ -28,9 +28,7 @@ export class Inline extends SampleBase<{}, {}> {
     width: 'auto'
   }
   // Rich Text Editor items list
-  private items: string[] = ['Bold', 'Italic', 'Underline',
-    'Formats', '-', 'Alignments', 'OrderedList', 'UnorderedList',
-    'CreateLink'];
+  private items: string[] = ['Formats', '|', 'Bold', 'Italic', 'Fontcolor', 'BackgroundColor', '|', 'CreateLink', 'Image', 'CreateTable', '|' , 'Unorderedlist', 'Orderedlist']
 
   //Rich Text Editor ToolbarSettings
   private toolbarSettings: ToolbarSettingsModel = {

@@ -17,7 +17,7 @@ export let data1: any[] = [
     { x: 'Firefox', y: 25, text: 'Firefox (25M)<br>10%', tooltipMappingName: '10%' },
     { x: 'Others', y: 25, text: 'Others (25M)<br>10%', tooltipMappingName: '10%' }
 ];
-let content = Browser.isDevice ? "<div style='font-Weight:700; font-size:11px;'>Browser<br>Market<br>Shares</div>" : "<div style='font-Weight:600; font-size:14px;'>Browser<br>Market<br>Shares</div>";
+let content = Browser.isDevice ? "<div style='font-Weight:700; font-size:10px;'>Browser<br>Market<br>Shares</div>" : "<div style='font-Weight:600; font-size:14px;'>Browser<br>Market<br>Shares</div>";
 const SAMPLE_CSS = `
     .control-fluid {
         padding: 0px !important;
@@ -40,23 +40,23 @@ const SemiPie = () => {
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
-                <AccumulationChartComponent id='pie-chart' ref={pie => pie = pie} legendSettings={{ visible: false }} enableBorderOnMouseMove={false} load={load.bind(this)} loaded={onChartLoad.bind(this)} tooltip={{ enable: true, format: "<b>${point.x}</b><br>Browser Share: <b>${point.tooltip}</b>", header:'', enableHighlight: true }}>
+                <AccumulationChartComponent id='pie-chart' ref={pie => pie = pie} legendSettings={{ visible: false }}  enableAnimation={false} enableBorderOnMouseMove={false}  load={load.bind(this)} loaded={onChartLoad.bind(this)}>
                     <Inject services={[AccumulationDataLabel, PieSeries, AccumulationTooltip, ChartAnnotation, AccumulationAnnotation]} />
                     <AccumulationSeriesCollectionDirective>
-                        <AccumulationSeriesDirective dataSource={data1} tooltipMappingName='tooltipMappingName' xName='x' yName='y' startAngle={270} endAngle={90} explode={false} radius = {Browser.isDevice ? '85%' : '100%'} innerRadius='40%' dataLabel={{ visible: true, position: 'Inside' , enableRotation: true, connectorStyle: { length: '10%' }, name: 'text', font: { fontWeight: '600', size: Browser.isDevice ? '8px' : '11px', color: '#ffffff' } }} />
+                        <AccumulationSeriesDirective dataSource={data1} xName='x' yName='y' name='Browser' startAngle={270} endAngle={90} explode={false} radius = {'100%'} borderRadius={3} innerRadius='50%' border={{ width: 1, color: '#ffffff' }} dataLabel={{ visible: true, position: 'Inside' , enableRotation: true, connectorStyle: { length: '20px', type:'Curve' }, name: 'text', font: { fontWeight: '600', size: Browser.isDevice ? '7px' : '11px' } }} />
                     </AccumulationSeriesCollectionDirective>
                     <AccumulationAnnotationsDirective>
-                        <AccumulationAnnotationDirective content={content} region="Series" x= { Browser.isDevice ? "52%" : "50%"} y={ Browser.isDevice ? "82%" : "85%" } />
+                        <AccumulationAnnotationDirective content={content} region="Series" x= {"50%"} y={"85%"} />
                     </AccumulationAnnotationsDirective>
                 </AccumulationChartComponent>
             </div>
             <div id="action-description">
-                <p>This example demonstrates a semi-pie chart for mobile browsers usage statistics.</p>
+                <p>This example demonstrates a semi-pie chart for mobile browsers usage statistics. Data label shows the information about the points.</p>
             </div>
             <div id="description">
-                <p> 
-                    In this example, you can see how to render a semi pie chart using <code>StartAngle</code> and <code>EndAngle</code> properties. Data labels are wrapped to fit inside the pie slice.
-                </p>                
+                <p>
+                    In this example, you can see how to render a semi pie chart using <code>StartAngle</code> and <code>EndAngle</code> properties.  Data labels are wrapped to fit inside the pie slice. To enable the datalabel wrap feature, use the <code>TextWrap</code> datalabel property.
+                </p>
                 <p>
                     More information on the data labels can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/accumulation-chart/data-label/" aria-label="Navigate to the documentation for DataLabel in React Accumulation Chart component">documentation section</a>.
                 </p>

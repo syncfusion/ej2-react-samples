@@ -7,14 +7,12 @@ import * as ReactDOM from "react-dom";
 import { AccumulationChartComponent, AccumulationSeriesCollectionDirective, AccumulationSeriesDirective, Inject, AccumulationDataLabel, AccumulationTooltip, PieSeries, IAccLoadedEventArgs, EmptyPointMode, AccumulationTheme } from '@syncfusion/ej2-react-charts';
 import { PropertyPane } from '../common/property-pane';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
-import { EmitType } from '@syncfusion/ej2-base';
+import { Browser, EmitType } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import { loadAccumulationChartTheme, loadChartTheme } from './theme-color';
 export let data1: any[] = [
-    { x: 'Rice', y: 80, }, { x: 'Wheat', y: null }, { x: 'Oil', y: 70 },
-    { x: 'Corn', y: 60 }, { x: 'Gram', y: null },
-    { x: 'Milk', y: 70 }, { x: 'Peas', y: 80 },
-    { x: 'Fruit', y: 60 }, { x: 'Butter', y: null }
+    { x: 'Action', y: 35,}, { x: 'Drama', y: 25 }, { x: 'Comedy', y: null },
+    { x: 'Romance', y: 20 }, { x: 'Horror', y: 10 }, { x: 'Sci-Fi', y: null }
 ];
 const SAMPLE_CSS = `
     .control-fluid {
@@ -45,7 +43,7 @@ const PieEmptyPoint = () => {
     };
     const load = (args: IAccLoadedEventArgs): void => {
         let selectedTheme: string = loadAccumulationChartTheme(args);
-        if(selectedTheme === 'Bootstrap5-Dark'){
+        if(selectedTheme === 'Bootstrap5Dark'){
             args.chart.series[0].emptyPointSettings.fill = '#FF7F7F';
         }
     };
@@ -57,10 +55,10 @@ const PieEmptyPoint = () => {
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-md-8'>
-                    <AccumulationChartComponent id='pie-chart' ref={pie} title='Annual Product-Wise Profit Analysis' load={load.bind(this)} textRender={textRender.bind(this)} legendSettings={{ visible: false }} tooltip={{ enable: true, header: "", format: '<b>${point.x}</b><br> Profit: <b>$${point.y}K</b>', enableHighlight: true }} enableBorderOnMouseMove={false} loaded={onChartLoad.bind(this)}>
+                    <AccumulationChartComponent id='pie-chart' ref={pie} title='Movie Genre Revenue Share' load={load.bind(this)} textRender={textRender.bind(this)} legendSettings={{ visible: false }} tooltip={{ enable: true, header: "", format: '<b>${point.x}</b><br> Profit: <b>$${point.y}K</b>', enableHighlight: true }} enableBorderOnMouseMove={false} loaded={onChartLoad.bind(this)}>
                         <Inject services={[PieSeries, AccumulationDataLabel, AccumulationTooltip]} />
                         <AccumulationSeriesCollectionDirective>
-                            <AccumulationSeriesDirective dataSource={data1} xName='x' yName='y' name='Profit' dataLabel={{ visible: true, position: 'Inside', enableRotation: true, font: { fontWeight: '600' } }} emptyPointSettings={{ fill: '#e6e6e6', mode: emptyPointMode }} />
+                            <AccumulationSeriesDirective dataSource={data1} xName='x' yName='y' radius="80%" name='Profit' borderRadius={3} border={{ width: 1, color: '#ffffff' }} dataLabel={{ visible: true, position: 'Inside', enableRotation: true, font: { size: Browser.isDevice ? '8px' : '12px', fontWeight: '600' } }} emptyPointSettings={{ fill: '#e6e6e6', mode: emptyPointMode }}/>
                         </AccumulationSeriesCollectionDirective>
                     </AccumulationChartComponent>
                 </div>
@@ -82,14 +80,14 @@ const PieEmptyPoint = () => {
             </div>
             <div id="action-description">
                 <p>
-                    This sample illustrates the annual product-wise profit analysis of an organization with empty point functionality in the pie series.  The Mode of empty point can be changed by using <code>Empty Point Mode</code> in property panel.
+                    This sample illustrates the movie genre revenue share with empty point functionality in the pie series. The Mode of empty point can be changed by using <code>Empty Point Mode</code> in property panel.
                 </p>
             </div>
             <div id="description">
                 <p>
                     In this example, you can see how to render and configure the pie series with empty points. The empty point in the chart can be handled using the <code>EmptyPointSettings</code> property.
                 </p>
-                <p>Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
+                <p><code>Tooltip</code> is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
                 <p>
                     More information on the empty points can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/accumulation-chart/empty-points/" aria-label="Navigate to the documentation for Empty Points in React Accumulation Chart component">documentation section</a>.
                 </p>

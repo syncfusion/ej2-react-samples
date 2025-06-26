@@ -1,14 +1,22 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
+import AiSmartFlowchart from './ai-text-to-flowchart';
+/* custom code start*/
+import AIToast from '../common/ai-toast';
+/* custom code end*/
+import { updateAISampleSection } from '../common/sample-base';
 
 export class SmartFlowchart extends SampleBase<{}, {}> {
+     componentDidMount() {
+          updateAISampleSection(); 
+    }
 
     render() {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <img src={'src/ai-diagram/images/text-to-flowchart.gif'} width='100%' alt="Showcase Text to Flowchart Gif" height='100%'></img>
+                    <AiSmartFlowchart />
                 </div>
                 <div id="action-description">
                     <p>
@@ -31,6 +39,7 @@ export class SmartFlowchart extends SampleBase<{}, {}> {
                         paths.
                     </p>
                 </div>
+             <AIToast/>   
             </div>
         )
     }

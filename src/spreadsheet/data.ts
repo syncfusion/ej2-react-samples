@@ -1486,8 +1486,8 @@ export const conditionalFormatting: Object[] =[
         "Item Code": "BK120L",
         "Item Name": "Gaming Mouse",
         "Quantity": "225",
-        "Purchase Price": "34.80",
-        "Selling Price": "38.00",
+        "Purchase Price": "34.8",
+        "Selling Price": "38",
         "Profit": "=E16-D16",
         "Last Updated": "01-12-2020",
         "Rating": "4.2"

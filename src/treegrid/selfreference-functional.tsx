@@ -30,7 +30,7 @@ const SelfReference = () => {
             <ColumnDirective
               field="TaskName"
               headerText="Task Name"
-              width="100"
+              width="200"
             ></ColumnDirective>
             <ColumnDirective
               field="StartDate"

@@ -14,32 +14,86 @@ import { SampleBase } from '../common/sample-base';
 import { loadSmithChartTheme } from './theme-color';
 // custom code start
 const SAMPLE_CSS = `
-    .control-fluid {
-		padding: 0px !important;
+     .control-fluid {
+         padding: 0px !important;
+     }
+     #btn-control {
+         width: 100%;
+         text-align: center;
+         text-transform:none !important;
+     }
+     .e-print-icon::before {
+        content: '\\e34b';
     }
-    #btn-control {
-        width: 100%;
-        text-align: center;
-        text-transform:none !important;
+ 
+    .e-view.fabric .e-print-icon::before, .e-view.fabric-dark .e-print-icon::before {
+        content: '\\e7df';
     }
-    .e-export-icon::before {
-        content: '\\e728';
+ 
+    .e-view.bootstrap .e-print-icon::before {
+        content: '\\ebd2';
     }
-    .e-view.fluent .e-print-icon::before, .e-view.fluent-dark .e-print-icon::before {
-        content: '\\e75d';
+ 
+   .e-view.bootstrap4 .e-print-icon::before {
+        content: '\\e743';
     }
-    .e-play-icon::before {
-        content: "\\e728";
-    }
-    .e-play-icon::before {
-        content: "\\e813";
-    }
+ 
    .e-view.tailwind3 .e-print-icon::before, .e-view.tailwind3-dark .e-print-icon::before {
           content: '\\e76c';
     }
     
     .e-view.tailwind3 .e-export-icon::before, .e-view.tailwind3-dark .e-export-icon::before {
           content: '\\e7bf';
+    }
+ 
+    .e-view.highcontrast .e-print-icon::before {
+        content: '\\ebf9';
+    }
+ 
+    .e-view.bootstrap5_3 .e-print-icon::before, .e-view.bootstrap5_3-dark .e-print-icon::before {
+        content: '\\e75d';
+    }
+ 
+    .e-view.fluent .e-print-icon::before, .e-view.fluent-dark .e-print-icon::before {
+        content: '\\e75d';
+    }
+    .e-view.fluent2 .e-print-icon::before, .e-view.fluent2-dark .e-print-icon::before, .e-view.fluent2-highcontrast .e-print-icon::before {
+        content: '\\e75d';
+    }
+    .e-view.material3 .e-print-icon::before, .e-view.material3-dark .e-print-icon::before {
+        content: '\\e75d';
+    }
+    .e-export-icon::before {
+        content: '\\e728';
+    }
+ 
+    .e-view.fabric .e-export-icon::before, .e-view.fabric-dark .e-export-icon::before {
+        content: '\\e710';
+    }
+ 
+    .e-view.bootstrap4 .e-icons.e-export::before {
+        content: '\\e7bf';
+    }
+
+.e-view.tailwind\x03-dark .e-export-icon::before, .e-view.tailwind\x03 .e-export-icon::before {
+        content: '\e7bf';
+    }
+ 
+    .e-view.highcontrast .e-export-icon::before {
+        content: '\\e710';
+    }
+ 
+    .e-view.bootstrap5_3 .e-export-icon::before, .e-view.bootstrap5_3-dark .e-export-icon::before {
+            content: '\\e728';
+    }
+    .e-view.fluent .e-export-icon::before, .e-view.fluent-dark .e-export-icon::before {
+        content: '\\e72e';
+    }
+    .e-view.fluent2 .e-export-icon::before, .e-view.fluent2-dark .e-export-icon::before, .e-view.fluent2-highcontrast .e-export-icon::before {
+        content: '\\e72e';
+    }
+    .e-view.material3 .e-export-icon::before, .e-view.material3-dark .e-export-icon::before {
+        content: '\\e72e';
     }`;
     // custom code end
 export class Print extends SampleBase<{}, {}> {

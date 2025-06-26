@@ -13,7 +13,7 @@ export class SelfReference extends SampleBase<{}, {}> {
           <TreeGridComponent dataSource={projectData} treeColumnIndex={1} allowPaging={true} height='350' idMapping= 'TaskID' parentIdMapping='parentID'>
             <ColumnsDirective>
               <ColumnDirective field='TaskID' headerText='Task ID' width='70' textAlign='Right'></ColumnDirective>
-              <ColumnDirective field='TaskName' headerText='Task Name' width='100'></ColumnDirective>
+              <ColumnDirective field='TaskName' headerText='Task Name' width='200'></ColumnDirective>
               <ColumnDirective field='StartDate' headerText='Start Date' width='90' format='yMd' textAlign='Right' />
               <ColumnDirective field='EndDate' headerText='End Date' width='90' format='yMd' textAlign='Right' />
               <ColumnDirective field='Duration' headerText='Duration' width='90' textAlign='Right' />

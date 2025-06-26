@@ -184,7 +184,7 @@ padding: 20px;
 width: 80%;
 }
 
-.row {
+.rows {
 background-color: #fff;
 border: 1px solid #ccc;
 border-radius: 10px;
@@ -360,7 +360,7 @@ export let pizzaData: PizzaDataModel[] = [
         Category: "Order",
         Description: "Stromboli sandwich with chili sauce",
         CardTags: ["Onions", "Pepper", "Cheese"],
-        ImageURL: "https://blazor.syncfusion.com/demos/_content/Blazor_Server_Common_NET8/images/kanban/menu-01.png",
+        ImageURL: "https://blazor.syncfusion.com/demos/_content/Blazor_Server_Common_NET9/images/kanban/menu-01.png",
         Price: "$4.79",
         Date: new Date(new Date().getFullYear(), new Date().getMonth(), 10),
         Feedback: "",
@@ -376,7 +376,7 @@ export let pizzaData: PizzaDataModel[] = [
         Category: "Ready to Serve",
         Description: "It's made using toppings of tomato, mozzarella cheese and fresh basil",
         CardTags: ["Onions", "Pepper", "Cheese"],
-        ImageURL: "https://blazor.syncfusion.com/demos/_content/Blazor_Server_Common_NET8/images/kanban/menu-02.png",
+        ImageURL: "https://blazor.syncfusion.com/demos/_content/Blazor_Server_Common_NET9/images/kanban/menu-02.png",
         Price: "$14.99",
         Date: new Date(new Date().getFullYear(), new Date().getMonth(), 10),
         Feedback: "",
@@ -392,7 +392,7 @@ export let pizzaData: PizzaDataModel[] = [
         Category: "Order",
         Description: "Barbeque chicken with a topping of golden corn loaded with extra cheese",
         CardTags: ["BBQ", "Prawn"],
-        ImageURL: "https://blazor.syncfusion.com/demos/_content/Blazor_Server_Common_NET8/images/kanban/menu-07.png",
+        ImageURL: "https://blazor.syncfusion.com/demos/_content/Blazor_Server_Common_NET9/images/kanban/menu-07.png",
         Price: "$14.99",
         Date: new Date(new Date().getFullYear(), new Date().getMonth(), 10),
         Feedback: "",
@@ -409,7 +409,7 @@ export let pizzaData: PizzaDataModel[] = [
         Feedback: "Good",
         Description: "Grilled Chicken Rashers with Peri-Peri chicken, Onion and Capsicum",
         CardTags: ["Chicken", "Capsicum"],
-        ImageURL: "https://blazor.syncfusion.com/demos/_content/Blazor_Server_Common_NET8/images/kanban/menu-13.png",
+        ImageURL: "https://blazor.syncfusion.com/demos/_content/Blazor_Server_Common_NET9/images/kanban/menu-13.png",
         Price: "$4.79",
         Date: new Date(new Date().getFullYear(), new Date().getMonth(), 10),
         SentimentScore: 0,
@@ -425,7 +425,7 @@ export let pizzaData: PizzaDataModel[] = [
         Feedback: "Best",
         Description: "Margherita with chili sauce and double Cheese",
         CardTags: ["Onions", "Pepper"],
-        ImageURL: "https://blazor.syncfusion.com/demos/_content/Blazor_Server_Common_NET8/images/kanban/menu-10.png",
+        ImageURL: "https://blazor.syncfusion.com/demos/_content/Blazor_Server_Common_NET9/images/kanban/menu-10.png",
         Price: "$11.99",
         Date: new Date(new Date().getFullYear(), new Date().getMonth(), 10),
         SentimentScore: 0,
@@ -440,7 +440,7 @@ export let pizzaData: PizzaDataModel[] = [
         Category: "Menu",
         Description: "Double Pepper Barbecue Chicken with Peri-Peri Chicken, Chicken Tikka, Grilled and Rashers",
         CardTags: ["Pepper", "Chicken"],
-        ImageURL: "https://blazor.syncfusion.com/demos/_content/Blazor_Server_Common_NET8/images/kanban/menu-15.png",
+        ImageURL: "https://blazor.syncfusion.com/demos/_content/Blazor_Server_Common_NET9/images/kanban/menu-15.png",
         Price: "$4.79",
         Date: new Date(new Date().getFullYear(), new Date().getMonth(), 10),
         Feedback: "",
@@ -456,7 +456,7 @@ export let pizzaData: PizzaDataModel[] = [
         Category: "Ready to Deliver",
         Description: "Lebanese Pizza topped with tomato sauce",
         CardTags: ["Pepper", "Cheese"],
-        ImageURL: "https://blazor.syncfusion.com/demos/_content/Blazor_Server_Common_NET8/images/kanban/menu-18.png",
+        ImageURL: "https://blazor.syncfusion.com/demos/_content/Blazor_Server_Common_NET9/images/kanban/menu-18.png",
         Price: "$4.99",
         Date: new Date(new Date().getFullYear(), new Date().getMonth(), 10),
         Feedback: "",
@@ -472,7 +472,7 @@ export let pizzaData: PizzaDataModel[] = [
         Category: "Ready to Deliver",
         Description: "Pepper Barbecue chicken with Onion",
         CardTags: ["Onions", "Chicken"],
-        ImageURL: "https://blazor.syncfusion.com/demos/_content/Blazor_Server_Common_NET8/images/kanban/menu-20.png",
+        ImageURL: "https://blazor.syncfusion.com/demos/_content/Blazor_Server_Common_NET9/images/kanban/menu-20.png",
         Price: "$11.99",
         Date: new Date(new Date().getFullYear(), new Date().getMonth(), 10),
         Feedback: "",

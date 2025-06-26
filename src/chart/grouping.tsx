@@ -10,27 +10,29 @@ import {
   IAccTextRenderEventArgs, AccumulationTheme, Inject, AccumulationDataLabel, IAccPointRenderEventArgs, IAccLoadedEventArgs, GroupModes
 } from '@syncfusion/ej2-react-charts';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
+import { Browser } from '@syncfusion/ej2/base';
 export let data1: any[] = [
-  { 'x': 'Australia', y: 26, text: 'Australia: 26' },
-  { 'x': 'Russia', y: 19, text: 'Russia: 19' },
-  { 'x': 'Germany', y: 17, text: 'Germany: 17' },
-  { 'x': 'Japan', y: 12, text: 'Japan: 12' },
-  { 'x': 'China', y: 10, text: 'China: 10' },
-  { 'x': 'South Korea', y: 9, text: 'South Korea: 9' },
-  { 'x': 'Great Britain', y: 27, text: 'Great Britain: 27' },
-  { 'x': 'Italy', y: 8, text: 'Italy: 8' },
-  { 'x': 'France', y: 8, text: 'France: 8' },
-  { 'x': 'Spain', y: 7, text: 'Spain: 7' },
-  { 'x': 'Hungary', y: 8, text: 'Hungary: 8' },
-  { 'x': 'Brazil', y: 7, text: 'Brazil: 7' },
-  { 'x': 'Netherlands', y: 8, text: 'Netherlands: 8' },
-  { 'x': 'Kenya', y: 6, text: 'Kenya: 6' },
+  { x: 'China', y: 40, text: 'China: 40' },
+  { x: 'Japan', y: 20, text: Browser.isDevice ? 'Japan:<br> 20' : 'Japan: 20' },
+  { x: 'Australia', y: 18, text: Browser.isDevice ? 'Australia:<br> 18' : 'Australia: 18' },
+  { x: 'France', y: 16, text: 'France: 16' },
+  { x: 'Netherlands', y: 15, text: 'Netherlands: 15' },
+  { x: 'Great Britain', y: 14, text: 'Great Britain: 14' },
+  { x: 'South Korea', y: 13, text: 'South Korea: 13' },
+  { x: 'Germany', y: 12, text: Browser.isDevice ? 'Germany:<br> 12' : 'Germany: 12' },
+  { x: 'Italy', y: 12, text: Browser.isDevice ? 'Italy:<br> 12' : 'Italy: 12' },
+  { x: 'Canada', y: 9, text: Browser.isDevice ? 'CA: 9' : 'Canada: 9' },
+  { x: 'Hungary', y: 6, text: Browser.isDevice ? 'HU: 6' : 'Hungary: 6' },
+  { x: 'Spain', y: 5, text: 'Spain: 5' },
+  { x: 'Kenya', y: 4, text: 'Kenya: 4' },
+  { x: 'Brazil', y: 3, text: 'Brazil: 3' }
 ];
 
 export class Grouping extends SampleBase<{}, {}> {
   public pie: AccumulationChartComponent;
   private slider: HTMLInputElement;
   private dropElement: DropDownListComponent;
+  private radius: string = Browser.isDevice ? '40%' : '55%';
   private change(): void {
     this.pie.series[0].groupMode = this.dropElement.value as GroupModes;
     let currentValue: number = this.dropElement.value === 'Point' ? 9 : 8;
@@ -52,24 +54,22 @@ export class Grouping extends SampleBase<{}, {}> {
         <div className='control-section row'>
         <div className='col-lg-9'>
             <AccumulationChartComponent id='pie-chart' ref={pie => this.pie = pie}
-              title='Rio Olympic Gold Medals'
+              title='Summer Olympic 2024 - Gold Medals' subTitle='Source: wikipedia.org'
               load={this.load.bind(this)}
-              tooltip={{ enable: true ,format:"<b>${point.x}</b><br> Gold Medals: <b>${point.y}</b>", enableHighlight: true}}
+              tooltip={{ enable: true , header: "", format:"<b>${point.x}</b><br> Gold Medals: <b>${point.y}</b>", enableHighlight: true}}
               legendSettings={{ visible: false }}
-              textRender={this.onTextRender.bind(this)}
-              pointRender={this.onPointRender.bind(this)}
               enableSmartLabels={true}
               loaded={this.onChartLoad.bind(this)}
               enableBorderOnMouseMove={false}
             >
               <Inject services={[AccumulationLegend, PieSeries, AccumulationTooltip, AccumulationDataLabel]} />
               <AccumulationSeriesCollectionDirective>
-                <AccumulationSeriesDirective  dataSource={data1} xName='x' yName='y' animation={{ enable: true } } explode={true}
-                  radius='70%'
-                  groupTo='9' groupMode='Point' startAngle={0}
-                  endAngle={360}
-                  innerRadius='0%'
-                  dataLabel={{ visible: true, position: 'Outside', connectorStyle: { type: 'Curve', length: '20px' }, font: { fontWeight: '600' } }}
+                <AccumulationSeriesDirective  dataSource={data1} xName='x' yName='y' name='Summer Olympics' animation={{ enable: true } } explode={true}
+                  radius={this.radius}
+                  groupTo='9' groupMode='Point' startAngle={-20}
+                  endAngle={340}
+                  innerRadius='0%' borderRadius={3} border={{ width: 1, color: '#ffffff' }}
+                  dataLabel={{ visible: true, name: 'text', position: 'Outside', connectorStyle: { type: 'Curve', length: Browser.isDevice ? '10px' : '20px' }, font: { size: Browser.isDevice ? '8px' : '13px', fontWeight: '600' } }}
                 >
                 </AccumulationSeriesDirective>
               </AccumulationSeriesCollectionDirective>
@@ -105,13 +105,13 @@ export class Grouping extends SampleBase<{}, {}> {
       </div>
         <div id="action-description">
           <p>
-          This sample shows the gold medal count scored by each country at the Rio Olympic Games, along with the pie series grouping functionality.
+          This sample shows the gold medal count scored by each country at the summer olympic 2024 games, along with the pie series grouping functionality.
     </p>
         </div>
         <div id="description">
           <p>In this example, you can see how to group points based on count and values. The slice can be grouped based on the number of points by specifying the <code>GroupMode</code> to Point. For example, if the <code>GroupTo</code> property is set to 10, the chart will display the first 10 points and the remaining entries from the collection will be grouped as a single point. The slice can also be grouped based on values by specifying the <code>GroupMode</code> to Value. For example, if the <code>GroupTo</code> is set to 10, the first 10 points with a lower value will be grouped together and shown as a single point while the others as a slice.</p>
           
-          <p> A tooltip is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.</p>
+          <p> A <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.</p>
         <p>
           More information on the grouping in pie series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/accumulation-chart/grouping" aria-label="Navigate to the documentation for Grouping in React Accumulation Chart component">documentation section</a>.
         </p>
@@ -120,14 +120,6 @@ export class Grouping extends SampleBase<{}, {}> {
       </div>
     )
   }
-  public onTextRender(args: IAccTextRenderEventArgs): void {
-    args.text = args.point.x + ' ' + args.point.y;
-  };
-  public onPointRender(args: IAccPointRenderEventArgs): void {
-    if (args.point.isClubbed || args.point.isSliced) {
-      args.fill = '#D3D3D3';
-    }
-  };
   public onChartLoad(args: IAccLoadedEventArgs): void {
     document.getElementById('pie-chart').setAttribute('title', '');
   };

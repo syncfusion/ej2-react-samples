@@ -2,11 +2,11 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { useEffect, useRef } from 'react';
 import { updateSampleSection } from '../common/sample-base';
-import { DocumentEditorContainerComponent, Toolbar } from '@syncfusion/ej2-react-documenteditor';
+import { DocumentEditorContainerComponent, Toolbar, Ribbon } from '@syncfusion/ej2-react-documenteditor';
 import { TitleBar } from './title-bar';
-import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
+import { ButtonComponent, SwitchComponent } from '@syncfusion/ej2-react-buttons';
 import './default.component.css';
-DocumentEditorContainerComponent.Inject(Toolbar);
+DocumentEditorContainerComponent.Inject(Toolbar,Ribbon);
 // tslint:disable:max-line-length
 const DocumentEditorAutoSave = () => {
     useEffect(() => {
@@ -47,6 +47,7 @@ const DocumentEditorAutoSave = () => {
             true
         );
         onLoadDefault();
+        titleBar.showButtons(false);
         setInterval(() => {
             if (contentChanged) {
                 //You can save the document as below
@@ -78,9 +79,25 @@ const DocumentEditorAutoSave = () => {
     const clearLog = () => {
         document.getElementById("AutosaveLog").innerHTML = "";
     };
+    const change = (args): void => {
+        if (args.checked) {
+            container.current.toolbarMode = 'Ribbon';
+        }
+        else {
+            container.current.toolbarMode = 'Toolbar';
+        }
+        titleBar.showButtons(container.current.toolbarMode != 'Ribbon')
+    }
     return (
         <div className="control-pane">
             <div className="col-lg-9 control-section">
+                <div className="flex-container">
+                    <label className="switchLabel" htmlFor="toolbarSwitch">Ribbon UI</label>
+                    <div className="e-message render-mode-info">
+                        <span className="e-msg-icon render-mode-info-icon" title="Turn OFF to switch from Ribbon to toolbar UI"></span>
+                    </div>
+                    <SwitchComponent cssClass="buttonSwitch" id="toolbarSwitch" change={change} checked={true}></SwitchComponent>
+                </div>
                 <div id="documenteditor_titlebar" className="e-de-ctn-title"></div>
                 <div id="documenteditor_container_body">
                     <DocumentEditorContainerComponent
@@ -90,6 +107,7 @@ const DocumentEditorAutoSave = () => {
                         serviceUrl={hostUrl}
                         enableToolbar={true}
                         height={"590px"}
+                        toolbarMode= {"Ribbon"}
                         locale="en-US"
                     />
                 </div>

@@ -1,11 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
-import { DocumentEditorContainerComponent, Toolbar } from '@syncfusion/ej2-react-documenteditor';
+import { DocumentEditorContainerComponent, Toolbar, Ribbon } from '@syncfusion/ej2-react-documenteditor';
 import { TitleBar } from './title-bar';
 
 import './default.component.css';
-DocumentEditorContainerComponent.Inject(Toolbar);
+import { SwitchComponent } from '@syncfusion/ej2-react-buttons';
+DocumentEditorContainerComponent.Inject(Toolbar,Ribbon);
 
 // tslint:disable:max-line-length
 export class HeadersAndFootersView extends SampleBase<{}, {}> {
@@ -21,6 +22,7 @@ export class HeadersAndFootersView extends SampleBase<{}, {}> {
         this.container.documentEditor.resize();
         this.titleBar = new TitleBar(document.getElementById('documenteditor_titlebar'), this.container.documentEditor, true);
         this.onLoadDefault();
+        this.titleBar.showButtons(false);
     }
     render() {
         return (<div className='control-pane'>
@@ -28,7 +30,7 @@ export class HeadersAndFootersView extends SampleBase<{}, {}> {
                 <div id='documenteditor_titlebar' className="e-de-ctn-title"></div>
                 <div id="documenteditor_container_body">
                     <DocumentEditorContainerComponent id="container" ref={(scope) => { this.container = scope; }} style={{ 'display': 'block' }}
-                       height={'590px'} serviceUrl={this.hostUrl} enableToolbar={true} locale='en-US'  />
+                       height={'590px'} toolbarMode={'Ribbon'} serviceUrl={this.hostUrl} enableToolbar={true} locale='en-US'  />
                 </div>
             </div>
             <div id="action-description">
@@ -60,5 +62,15 @@ export class HeadersAndFootersView extends SampleBase<{}, {}> {
         this.titleBar.updateDocumentTitle();
         this.container.documentEditor.focusIn();
         };
+    }
+
+    change = (args):void=>{
+        if (args.checked) {
+            this.container.toolbarMode = 'Ribbon';
+        }
+        else {
+            this.container.toolbarMode = 'Toolbar';
+        }
+        this.titleBar.showButtons(this.container.toolbarMode != 'Ribbon')
     }
 }

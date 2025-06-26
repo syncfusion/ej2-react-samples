@@ -4,6 +4,8 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { ComboBoxComponent, FilteringEventArgs } from '@syncfusion/ej2-react-dropdowns';
+import { NumericTextBoxComponent, ChangeEventArgs  } from '@syncfusion/ej2-react-inputs';
+import { PropertyPane } from '../common/property-pane';
 import { Query } from '@syncfusion/ej2-data';
 import { SampleBase } from '../common/sample-base';
 import './filtering.css';
@@ -25,13 +27,25 @@ export class Filtering extends SampleBase<{}, {}> {
     //pass the filter data source, filter query to updateData method.
     e.updateData(this.searchData, query);
   };
-
+  onChange(args: ChangeEventArgs) {
+          this.listObj.debounceDelay = args.value;
+      }
   render() {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <div id='filtering'>
-            <ComboBoxComponent id="country" ref={(ComboBox) => { this.listObj = ComboBox }} dataSource={this.searchData} filtering={this.onFiltering.bind(this)} allowFiltering={true} fields={this.fields} placeholder="Select a country" popupHeight="270px" />
+          <div className='col-lg-8'>
+            <div id='filtering' style={{paddingTop:'50px'}}>
+              <ComboBoxComponent id="country" ref={(ComboBox) => { this.listObj = ComboBox }} dataSource={this.searchData} filtering={this.onFiltering.bind(this)} allowFiltering={true} fields={this.fields} placeholder="Select a country" popupHeight="270px" debounceDelay={300} />
+            </div>
+          </div>
+          <div className='col-lg-4 property-section dropdown-filtering'>
+            <PropertyPane title='Properties:'>
+              <div className="property-panel-content">
+                <label className="example-label">Debounce Delay</label>
+                <NumericTextBoxComponent format='n0' value={300} min={1} change={ this.onChange.bind(this) }></NumericTextBoxComponent>
+              </div>
+            </PropertyPane>
           </div>
         </div>
         <div id="action-description">
@@ -41,7 +55,9 @@ export class Filtering extends SampleBase<{}, {}> {
         <div id="description">
             <p>The ComboBox has built-in support to filter the data source when <code>allowFiltering</code> is enabled. It performs
                 when characters are typed in the search box. In <code>filtering</code> event, you can filter down the data source and
-                return the resulted data to ComboBox via <code>updateData</code> method to display its list items.</p>
+                return the resulted data to ComboBox via <code>updateData</code> method to display its list items.
+                The debounce delay, in milliseconds, for filtering items in the ComboBox component can be set using the <a href="https://ej2.syncfusion.com/react/documentation/api/combo-box/#debouncedelay" target="_blank">debounceDelay</a> property.
+                </p>
             <p>This sample illustrates that, query the data source and pass the resulted data to ComboBox through the <code>updateData</code> method in <code>filtering</code> event.</p>
             <p> More information on the filtering feature configuration can be found in the
                 <a href="http://ej2.syncfusion.com/react/documentation/combo-box/filtering.html" target="_blank"> documentation section</a>.

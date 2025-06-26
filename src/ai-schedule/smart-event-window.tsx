@@ -1,8 +1,15 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
+import { updateAISampleSection } from '../common/sample-base';
+ /* custom code start*/
+import AIToast from '../common/ai-toast';
+/* custom code end*/
 
 export class SmartEventWindow extends SampleBase<{}, {}> {
+    componentDidMount() {
+          updateAISampleSection(); 
+    }
 
     render() {
         return (
@@ -23,6 +30,7 @@ export class SmartEventWindow extends SampleBase<{}, {}> {
                         In this sample, we have integrated Smart Paste component with the Scheduler component to convert natural language content into scheduler events. By using the smart paste feature, users can populate the converted content into a custom dialog, which is then added to the Scheduler component.
                     </p>
                 </div>
+                <AIToast/>
             </div>
         )
     }

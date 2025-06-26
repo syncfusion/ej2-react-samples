@@ -150,7 +150,6 @@ export class Default extends SampleBase<{}, SpeechToTextDefaultState> {
                         </div>  
                         <div className="output-container">
                             <h4>Live Speech Transcription</h4>
-                            <mark className="speech-recognition-status">Click the above mic button to start speaking...</mark>
                             <TextAreaComponent
                                 id="output-textarea"
                                 ref={(textarea) => { this.textareaObj = textarea }}

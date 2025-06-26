@@ -76,6 +76,11 @@ const Dateformat = () => {
                 <p>Format sample illustrates the support of custom date format in the DatePicker component by
                     using the <code>format</code> property. You can also change the date format by selecting it from the format options in the properties
                     panel.</p>
+                <p>
+                    Furthermore, this example showcases the flexible date value parsing functionality available in DatePicker component.
+                    By utilizing the <code>inputFormats</code> property, users can enter dates in various formats, which will be
+                    automatically parsed and formatted according to the chosen date format.
+                </p>
                 <p> More information on the date format configuration can be found in the <a href="https://ej2.syncfusion.com/react/documentation/datepicker/date-format/" target="_blank"> documentation section</a>.</p>
             </div>
         </div>

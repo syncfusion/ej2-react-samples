@@ -1,14 +1,22 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
+import AiWeatherPrediction from './ai-weather-prediction';
+/* custom code start*/
+import AIToast from '../common/ai-toast';
+/* custom code end*/
+import { updateAISampleSection } from '../common/sample-base';
 
 export class WeatherPrediction extends SampleBase<{}, {}> {
+     componentDidMount() {
+          updateAISampleSection(); 
+    }
 
     render() {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <img src={'src/ai-maps/images/weather-prediction.gif'} width='100%' height='100%'></img>
+               <img src={'src/ai-maps/images/weather-prediction.gif'} width='100%' height='100%'></img>
                 </div>
                 <div id="action-description">
                     <p>This sample demonstrates the integration of AI for automatically forecasting weather conditions in the United
@@ -25,6 +33,9 @@ export class WeatherPrediction extends SampleBase<{}, {}> {
                         marker templates in the Syncfusion React Maps component.
                     </p>
                 </div>
+            /* custom code start*/
+             <AIToast/>   
+            /* custom code end*/  
             </div>
         )
     }

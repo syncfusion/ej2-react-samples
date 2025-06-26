@@ -63,9 +63,6 @@ let SAMPLE_CSS = `
             padding-right: 0px;
         }
 
-        #flowExecitionControlSection.content-wrapper {
-            border: 1px solid #D7D7D7;
-        }
 `;
 
 let diagramInstance: DiagramComponent;
@@ -83,7 +80,7 @@ export class FlowExecution extends SampleBase<{}, {}> {
             <div className="control-pane1">
                 <div className="col-lg-8 control-section">
                     <style>{SAMPLE_CSS}</style>
-                    <div id="flowExecitionControlSection" className="content-wrapper" style={{ width: "100%" }}>
+                    <div id="flowExecitionControlSection"  style={{ width: "100%", border: "1px solid #D7D7D7" }}>
                         <DiagramComponent
                             id="diagram"
                             ref={diagram => (diagramInstance = diagram)}

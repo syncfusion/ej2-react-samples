@@ -30,9 +30,7 @@ function Inline() {
         width: 'auto'
     }
     // Rich Text Editor items list
-    const items: string[] = ['Bold', 'Italic', 'Underline',
-        'Formats', '-', 'Alignments', 'OrderedList', 'UnorderedList',
-        'CreateLink'];
+    const items: string[] = ['Formats', '|', 'Bold', 'Italic', 'Fontcolor', 'BackgroundColor', '|', 'CreateLink', 'Image', 'CreateTable', '|' , 'Unorderedlist', 'Orderedlist']
 
     //Rich Text Editor ToolbarSettings
     const toolbarSettings: ToolbarSettingsModel = {

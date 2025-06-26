@@ -70,16 +70,16 @@ export class RemoteData extends SampleBase<{}, {}> {
           </div>
         </div>
         <div id="action-description">
-          <p>This sample demonstrates the way of binding data to Gantt chart with remote service. The Gantt chart data source
+          <p>This sample demonstrates the way of binding data to Gantt Chart with remote service. The Gantt Chart data source
               is bound to remote data using DataManager. This sample data helps to visualize the various phases of Barley
         harvesting.</p>
         </div>
 
         <div id="description">
           <p>
-            The <code>dataSource</code> property in Gantt chart can be assigned with the instance of
+            The <code>dataSource</code> property in Gantt Chart can be assigned with the instance of
         <code>DataManager</code> to bind remote data.
-                        The DataManager, which will act as an interface between the service endpoint and the Gantt chart, will require
+                        The DataManager, which will act as an interface between the service endpoint and the Gantt Chart, will require
                         the below minimal information to interact with service endpoint properly.
         <li><code>DataManager-&gt;url</code> - Defines the service endpoint to fetch data</li>
             <li><code>DataManager-&gt;adaptor</code> - Defines the adaptor option. By default, ODataAdaptor is used for remote

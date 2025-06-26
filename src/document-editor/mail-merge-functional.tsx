@@ -417,7 +417,7 @@ const MailMerge = () => {
                 <ul>
                     <li>Fields can be inserted using API.</li>
                     <li>
-                        Document generated is mail merged by Syncfusion<sup>®</sup> DocIO on the
+                        Document generated is mail merged by Syncfusion DocIO on the
                         server-side.
                     </li>
                     <li>Merged document is opened in the DocumentEditor.</li>

@@ -29,7 +29,7 @@ function LocalData() {
       <div
         className="control-section"
       >
-        <div className="content-wrapper" style={{ width: "100%" }}>
+        <div  style={{ width: "100%" }}>
           <DiagramComponent
             id="diagram"
             width={"100%"}

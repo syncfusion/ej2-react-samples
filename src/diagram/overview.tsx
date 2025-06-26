@@ -2,7 +2,7 @@ import * as ReactDOM from "react-dom";
 import * as React from "react";
 import {
     HierarchicalTree,
-    Container,
+    GroupableView,
     StackPanel,
     ImageElement,
     TextElement,
@@ -29,7 +29,7 @@ export class Overview extends SampleBase<{}, {}> {
         return (
             <div className="control-pane">
                 <div className="col-lg-12 control-section">
-                    <div className="content-wrapper">
+                    <div >
                         <DiagramComponent
                             id="diagram"
                             ref={diagram => (diagramInstance = diagram)}
@@ -107,7 +107,7 @@ export class Overview extends SampleBase<{}, {}> {
 function getLayoutInfo(node: Node, tree: TreeInfo): void {
     if (!tree.hasSubTree) {
         tree.orientation = "Vertical";
-        tree.type = "Right";
+        tree.type = "Alternate";
     }
 }
 
@@ -126,9 +126,9 @@ function getConnectorDefaults(connector: ConnectorModel, diagram: Diagram): Conn
 }
 
 // Funtion to add the Template of the Node.
-function setNodeTemplate(obj: Node, diagram: Diagram): Container {
+function setNodeTemplate(obj: Node, diagram: Diagram): GroupableView {
 
-    // Create the outer container for the node content.
+    // Create the outer GroupableView for the node content.
     let content: StackPanel = new StackPanel();
     content.id = obj.id + "_outerstack";
     content.orientation = "Horizontal";

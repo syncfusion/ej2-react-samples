@@ -143,7 +143,7 @@ public rendereComplete(): void {
 	this.uploadObj.dropArea = this.dropElement;
     this.uploadObj.dataBind();
     if (Browser.isDevice) {
-        (this.uploadObj.dropArea.querySelector('drop') as HTMLElement).style.padding = '4% 13%';
+        (this.uploadObj.dropArea.querySelector('#drop') as HTMLElement).style.padding = '4% 13%';
     }
 }
 

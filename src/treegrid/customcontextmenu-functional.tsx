@@ -46,7 +46,8 @@ const CustomContextMenu = () => {
             "hasChildRecords",
             treegridObj.current.grid.getRowObjectFromUID(uid).data
           )
-        )
+        ) ||
+        !getValue('hasChildRecords', treegridObj.current.grid.getRowObjectFromUID(uid).data)
       ) {
         args.cancel = true;
       } else {

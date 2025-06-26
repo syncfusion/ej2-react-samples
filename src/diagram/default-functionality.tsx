@@ -180,6 +180,7 @@ let gridlines: GridlinesModel = {
   lineColor: "#e0e0e0",
   lineIntervals: interval
 };
+let selectedItems: any[];
 let diagramInstance: DiagramComponent;
 let toolbarEditor: ToolbarComponent;
 
@@ -433,7 +434,9 @@ export class Default extends SampleBase<{}, {}> {
                   if (node.width === undefined) {
                     node.width = 145;
                   }
-                  node.style = { fill: '#357BD2', strokeColor: 'white' };
+                  if (node.shape.type !=='Text') {
+                    node.style = { fill: '#357BD2', strokeColor: 'white' };
+                  }
                   for (let i: number = 0; i < node.annotations.length; i++) {
                     node.annotations[i].style = {
                       color: 'white',
@@ -469,7 +472,7 @@ export class Default extends SampleBase<{}, {}> {
                 }}
                 selectionChange={(args: ISelectionChangeEventArgs) => {
                   if (args.state === 'Changed') {
-                    let selectedItems = diagramInstance.selectedItems.nodes;
+                    selectedItems = diagramInstance.selectedItems.nodes;
                     selectedItems = selectedItems.concat(
                       (diagramInstance.selectedItems as any).connectors
                     );
@@ -541,6 +544,10 @@ export class Default extends SampleBase<{}, {}> {
                     obj.offsetY += (obj.height - objHeight) / 2;
                     obj.style = { fill: "#357BD2", strokeColor: "white" };
                   }
+                }}
+                textEdit={(args: any): void => {
+                    var obj: any = args.element;
+                    obj.annotations[0].style = { color: 'white', fill: 'transparent' }
                 }}
               />
             </div>
@@ -630,11 +637,34 @@ function printDiagram(args: any) {
 
 //To enable toolbar items.
 function enableItems() {
+  let isSelectedItemLocked: boolean;
+  let obj = selectedItems[0];
+  if (obj instanceof Node) {
+      if (obj.constraints === (NodeConstraints.PointerEvents | NodeConstraints.Select | NodeConstraints.ReadOnly)) {
+          isSelectedItemLocked = true;
+      }
+      else {
+          isSelectedItemLocked = false;
+      }
+  }
+  else if (obj instanceof Connector) {
+      if (obj.constraints === (ConnectorConstraints.PointerEvents | ConnectorConstraints.Select | ConnectorConstraints.ReadOnly)) {
+          isSelectedItemLocked = true;
+      }
+      else {
+          isSelectedItemLocked = false;
+      }
+  }
   const itemIds = ['Cut', 'Copy', 'Lock', 'Delete', 'Order', 'Rotate', 'Flip'];
   itemIds.forEach(itemId => {
     const item = toolbarEditor.items.find(item => item.id === itemId);
     if (item) {
-      item.disabled = false;
+      if (!isSelectedItemLocked) {
+        item.disabled = false;
+      }
+      else {
+        item.disabled = true;
+      }
     }
   });
 }
@@ -712,6 +742,25 @@ function toolbarClick(args: any) {
         .querySelector('button')
         .click();
       break;
+  }
+  if (selectedItems && selectedItems.length > 0) {
+    var obj = selectedItems[0];
+    if (obj instanceof Node) {
+        if (obj.constraints === (NodeConstraints.PointerEvents | NodeConstraints.Select | NodeConstraints.ReadOnly)) {
+            updateToolbarState(true);
+        }
+        else {
+            updateToolbarState(false);
+        }
+    }
+    else if (obj instanceof Connector) {
+        if (obj.constraints === (ConnectorConstraints.PointerEvents | ConnectorConstraints.Select | ConnectorConstraints.ReadOnly)) {
+            updateToolbarState(true);
+        }
+        else {
+            updateToolbarState(false);
+        }
+    }
   }
   diagramInstance.dataBind();
 }

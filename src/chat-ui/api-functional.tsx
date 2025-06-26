@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useEffect, useRef } from 'react';
 import { updateSampleSection } from '../common/sample-base';
-import { ChatUIComponent, UserModel } from '@syncfusion/ej2-react-interactive-chat';
+import { ChatUIComponent, UserModel, MessageToolbarSettingsModel, MessageToolbarItemClickedEventArgs } from '@syncfusion/ej2-react-interactive-chat';
 import { SwitchComponent } from '@syncfusion/ej2-react-buttons';
 import { DropDownListComponent, MultiSelectComponent } from '@syncfusion/ej2-react-dropdowns';
 import './api.css';
@@ -40,6 +40,23 @@ const API = () => {
         ...message,
         timeStamp: (message.timeStamp ? new Date(message.timeStamp) : new Date())
     }));
+    const messageToolbarSettings: MessageToolbarSettingsModel = {
+        items: [
+            { type: 'Button', iconCss: 'e-icons e-chat-forward', tooltip: 'Forward' },
+            { type: 'Button', iconCss: 'e-icons e-chat-copy', tooltip: 'Copy' },
+            { type: 'Button', iconCss: 'e-icons e-chat-reply', tooltip: 'Reply' },
+            { type: 'Button', iconCss: 'e-icons e-chat-pin', tooltip: 'Pin' },
+            { type: 'Button', iconCss: 'e-icons e-chat-trash', tooltip: 'Delete' }
+        ],
+        itemClicked: (args: MessageToolbarItemClickedEventArgs) => {
+            if (args.item.prefixIcon === 'e-icons e-chat-forward') {
+                const newMessageObj = args.message;
+                newMessageObj.isForwarded = true;
+                newMessageObj.id = 'chat-message-' + (chatUiInst?.current.messages.length + 1).toString();
+                chatUiInst?.current.addMessage(newMessageObj);
+            }
+        }
+    };
 
     return (
         <div className='control-pane'>
@@ -53,6 +70,7 @@ const API = () => {
                         headerText="Design Community"
                         showTimeBreak={true}
                         timeStampFormat="MM/dd hh:mm a"
+                        messageToolbarSettings={messageToolbarSettings}
                     />
                 </div>
             </div>
@@ -114,11 +132,23 @@ const API = () => {
                                 </td>
                             </tr>
                             <tr>
+                                <td >
+                                    <div>Compact mode</div>
+                                </td>
+                                <td style={{paddingRight: "10px"}}>
+                                    <SwitchComponent
+                                        id="compactmode"
+                                        checked={false}
+                                        change={(e) => handleSwitchChange('enableCompactMode', e.checked)}
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
                                 <td><div>Typing users</div></td>
                                 <td style={{paddingRight: "10px"}}>
                                     <MultiSelectComponent
                                         id="chat_typingUsers"
-                                        dataSource={['Michale', 'Laura', 'Charlie']}
+                                        dataSource={['Michale', 'Laura', 'Charlie', 'Jordan']}
                                         placeholder="Typing users..."
                                         select={(e) => handleMultiSelectChange(e, 'select')}
                                         removed={(e) => handleMultiSelectChange(e, 'removed')}
@@ -140,7 +170,10 @@ const API = () => {
                     <li><code>showTimeBreak</code>: Enables or disables the display of time breaks in the chat interface.</li>
                     <li><code>showHeader</code>: Lets users toggle the visibility of the chat header.</li>
                     <li><code>showFooter</code>: Toggles the visibility of the chat footer.</li>
+                    <li><code>enableCompactMode</code>: Reduces spacing and left-aligns all messages to display more content within the visible chat area. </li>
                     <li><code>typingUsers</code>: Allows users to manage the list of users who are typing, updated through the multi-select options in the property pane.</li>
+                    <li><code>statusIconCss</code>: Defines a CSS class for the status bar icon, with built-in styles for Online, Offline, Away, and Busy statuses, while allowing further customization.</li>
+                    <li><code>messageToolbarSettings</code>: Configures the toolbar that appears on individual messages, allowing customization such as copy, forward, reply, pin and delete. Supports adding, removing, or reordering toolbar items based on application needs.</li>
                 </ul>
                 <p>
                     These properties can be adjusted via the property pane for a highly flexible and customizable chat experience.

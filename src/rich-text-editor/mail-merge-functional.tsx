@@ -20,8 +20,8 @@ function MailMerge() {
 
     const items: (string | IToolbarItems)[] = ['Bold', 'Italic', 'Underline', '|', 'Formats', 'Alignments', 'OrderedList', 'UnorderedList', '|',
         'CreateLink', 'Image', 'CreateTable', '|',
-        { tooltipText: 'Merge Data', template: '#merge_data' },
-        { tooltipText: 'Insert Field', template: '#insertField' },
+        { tooltipText: 'Merge Data', template: '#merge_data', command: 'Custom' },
+        { tooltipText: 'Insert Field', template: '#insertField', command: 'Custom' },
         'SourceCode', '|', 'Undo', 'Redo'
     ]
     //Rich Text Editor ToolbarSettings
@@ -114,6 +114,12 @@ function MailMerge() {
         const saveSelection = selection.save(range, document);
     }
 
+    function onDropDownClose() {
+        if (rteObj) {
+            rteObj.focusIn();
+        }
+    }
+
     function onItemSelect(args: { item: { text: string } }) {
         if (args.item.text != null) {
             const value = textToValueMap[args.item.text];
@@ -164,10 +170,10 @@ function MailMerge() {
                 </span>
             </button>
             <DropDownButtonComponent
-                className="e-rte-dropdown-btn e-control e-dropdown-btn e-lib e-btn e-rte-dropdown-popup e-rte-dropdown-items e-formats-tbar-btn e-rte-elements e-tbar-btn "
+                className="e-rte-dropdown-btn e-control e-dropdown-btn e-lib e-btn e-rte-dropdown-popup e-rte-dropdown-items e-formats-tbar-btn e-rte-elements e-rte-dropdown-menu"
                 items={itemsName}
                 content='<span style="display: inline-flex;"><span class="e-rte-dropdown-btn-text">Insert Field</span></span>'
-                select={onItemSelect}
+                select={onItemSelect} close={onDropDownClose}
                 id="insertField"
             ></DropDownButtonComponent>
             <MentionComponent ref={(scope) => { mentionObj = scope; }} id="mentionEditor" target="#mailMergeEditor" mentionChar={mentionChar} showMentionChar={true} allowSpaces={true} dataSource={data} fields={fieldsData} popupWidth="250px" popupHeight="200px" displayTemplate={displayTemplate}></MentionComponent>

@@ -1,14 +1,22 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
-
+import DefaultTextArea from './ai-default';
+/* custom code start*/
+import AIToast from '../common/ai-toast';
+/* custom code end*/
+import { updateAISampleSection } from '../common/sample-base';
+ 
 export class Default extends SampleBase<{}, {}> {
+    componentDidMount() {
+          updateAISampleSection(); 
+    }
 
     render() {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <img src={'src/ai-smart-textarea/images/smarttextarea.gif'} width='100%' height='100%'></img>
+                    <DefaultTextArea/>
                 </div>
                 <div id="action-description">
                     <p>
@@ -22,6 +30,7 @@ export class Default extends SampleBase<{}, {}> {
                         The Smart TextArea uses AI to offer real-time sentence suggestions based on the user's input and role, helping users complete sentences more quickly and accurately.
                     </p>
                 </div>
+             <AIToast/>     
             </div>
         )
     }

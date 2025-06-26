@@ -385,7 +385,7 @@ function DrawingTools() {
     <div className="control-pane diagram-control-pane">
       <style>{SAMPLE_CSS}</style>
       <div className="col-lg-8 control-section">
-        <div className="content-wrapper" style={{ width: "100%" }}>
+        <div  style={{ width: "100%" }}>
           <DiagramComponent
             id="diagram"
             ref={diagram => (diagramInstance = diagram)}

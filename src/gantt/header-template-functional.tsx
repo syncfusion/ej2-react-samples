@@ -52,8 +52,8 @@ const HeaderTemplate = () => {
                           <b className='e-header'>Start Date</b></div>);
                   }}></ColumnDirective>
                       <ColumnDirective field='resources' headerTemplate={() => {
-                      return (<div style={{ display: 'flex', alignItems: 'center' }}>
-                      <div className="ganttresource" ></div>
+                      return (<div style={{ display: 'inline-flex', alignItems: 'center' }}>
+                      <div className="ganttresource"></div>
                           <b className='e-header'>Resources</b></div>);
                   }}></ColumnDirective>
                       <ColumnDirective field='Duration' headerTemplate={() => {

@@ -56,10 +56,10 @@ export class Resizing extends SampleBase<{}, {}> {
           Task Name column can be resized between a range of <code>minWidth (120 pixels)</code> and <code>maxWidth (300 pixels)</code>.
           The column resizing has been disabled in the <b>Duration</b> column
         </p>
-        <p>
+        
           <b>Injecting Module:</b>
           <p>Gantt component features are segregated into individual feature-wise modules. To use Resize feature, we need to inject <code>Resize</code> module into the <code>services</code>.</p>
-        </p>
+      
         </div>
       </div>
     )

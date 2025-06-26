@@ -103,6 +103,7 @@ import { AIDiagramSampleOrder } from '../ai-diagram/config';
 import { AIGanttSampleOrder } from '../ai-gantt/config';
 import { AIPdfViewerSampleOrder } from '../ai-pdfviewer/config';
 import {SpeechToTextSampleOrder } from '../speech-to-text/config';
+import { BlockEditorSampleOrder } from '../block-editor/config';
 
 export let samplesList: any = [
     {
@@ -110,6 +111,18 @@ export let samplesList: any = [
     },
     {
         'name': 'Smart TextArea', 'category': 'Smart Components', 'order': '01', 'path': 'ai-smart-textarea', 'samples': SmartTextAreaSampleOrder, 'type':'preview'
+    },
+    {
+        'name': 'Diagram', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-diagram', 'samples': AIDiagramSampleOrder
+    },
+    {
+        'name': 'Query Builder', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-querybuilder', 'samples': AIQuerybuilderSampleOrder
+    },
+    {
+        'name': 'Rich Text Editor', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-rich-text-editor', 'samples': AIRichTextEditorSampleOrder
+    },
+    {
+        'name': 'Kanban', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-kanban', 'samples': AIKanbanSampleOrder
     },
     {
         'name': 'Data Grid', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-grid', 'samples': AIGridSampleOrder
@@ -121,13 +134,7 @@ export let samplesList: any = [
         'name': 'Spreadsheet', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-spreadsheet', 'samples': AISpreadsheetSampleOrder
     },
     {
-        'name': 'Diagram', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-diagram', 'samples': AIDiagramSampleOrder
-    },
-    {
         'name': 'Gantt Chart', 'category': 'Smart AI Solutions', 'order': '01',  'path': 'ai-gantt', 'samples': AIGanttSampleOrder
-    },
-    {
-        'name': 'Query Builder', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-querybuilder', 'samples': AIQuerybuilderSampleOrder
     },
     {
         'name': 'ComboBox', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-combo-box', 'samples': ComboBoxAISampleOrder
@@ -137,12 +144,6 @@ export let samplesList: any = [
     },
     {
         'name': 'Pivot Table', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-pivot-table', 'samples': AIPivotTableSampleOrder
-    },
-    {
-        'name': 'Rich Text Editor', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-rich-text-editor', 'samples': AIRichTextEditorSampleOrder
-    },
-    {
-        'name': 'Kanban', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-kanban', 'samples': AIKanbanSampleOrder
     },
     {
         'name': 'Scheduler', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-schedule', 'samples': AISchedulerSampleOrder
@@ -160,7 +161,7 @@ export let samplesList: any = [
         'name': 'Data Grid', 'type':'update', 'category': 'Grids', 'order': '03', 'path': 'grid', 'samples': GridSampleOrder
     },
     {
-        'name': 'Pivot Table', 'category': 'Grids', 'order': '03', 'path': 'pivot-table', 'samples': PivotViewSampleOrder
+        'name': 'Pivot Table', 'category': 'Grids', 'type': 'update', 'order': '03', 'path': 'pivot-table', 'samples': PivotViewSampleOrder
     },
     {
         'name': 'Tree Grid', 'category': 'Grids', 'order': '03', 'path': 'treegrid', 'samples': TreeGridSampleOrder, 'ftName' :'treegrid', 'type':'update'
@@ -170,6 +171,9 @@ export let samplesList: any = [
     },
     {
         'name': 'AI AssistView', 'category': 'Interactive Chat', 'order': '06', 'path': 'ai-assistview', 'samples': AIAssistViewSampleOrder, 'ftName': 'ai-assistview', 'type':'update'
+    },
+    {
+        'name': 'Block Editor', 'category': 'File Viewers & Editors', 'order': '01', 'path': 'block-editor', 'samples': BlockEditorSampleOrder, 'ftName' :'block-editor', 'type':'preview'
     },
     {
         'name': 'Chat UI', 'category': 'Interactive Chat', 'order': '06', 'path': 'chat-ui', 'samples': ChatUISampleOrder, 'ftName': 'chat-ui', 'type':'preview'
@@ -184,7 +188,7 @@ export let samplesList: any = [
         'name': '3D Circular Chart', 'category': 'Data Visualization', 'order': '03', 'path': 'three-dimension-circular-chart', 'samples': Circular3DOrderList,
     },
     {
-        'name': 'Stock Chart', 'category': 'Data Visualization', 'order': '02', 'path': 'stock-chart', 'samples': StockChartSampleOrder
+        'name': 'Stock Chart', 'category': 'Data Visualization', 'order': '02', 'path': 'stock-chart', 'samples': StockChartSampleOrder, 'type':'update'
     },
     {
         'name': 'Arc Gauge', 'category': 'Data Visualization', 'order': '04', 'path': 'arc-gauge', 'samples': ArcGaugeSampleOrder, 
@@ -232,16 +236,16 @@ export let samplesList: any = [
         'name': 'PDF Viewer', 'type': 'update', 'category': 'File Viewers & Editors', 'order': '01', 'path': 'pdfviewer', 'samples': PdfViewerSampleOrder, 'ftName': 'pdfviewer'
     },
     {
-        'name': 'Rich Text Editor', 'category': 'File Viewers & Editors', 'order': '04', 'path': 'rich-text-editor', 'samples': RichTextEditorSampleOrder
+        'name': 'Rich Text Editor', 'type':'update', 'category': 'File Viewers & Editors', 'order': '04', 'path': 'rich-text-editor', 'samples': RichTextEditorSampleOrder
     },
     {
         'name': 'Markdown Editor', 'category': 'File Viewers & Editors', 'order': '04', 'path': 'markdown-editor', 'samples': MarkdownEditorSampleOrder
     },
     {
-        'name': 'Word Processor', 'category': 'File Viewers & Editors', 'order': '04', 'path': 'document-editor', 'samples': DocumentEditorSampleOrder
+        'name': 'Word Processor', 'category': 'File Viewers & Editors', 'order': '04', 'path': 'document-editor', 'samples': DocumentEditorSampleOrder,  'type': 'update'
     },
     {
-        'name': 'Image Editor', 'category': 'File Viewers & Editors', 'ftName': 'image-editor', 'order': '04', 'path': 'image-editor', 'samples': ImageEditorSampleOrder
+        'name': 'Image Editor', 'category': 'File Viewers & Editors', 'ftName': 'image-editor', 'order': '04', 'path': 'image-editor', 'samples': ImageEditorSampleOrder, 'type': 'update'
     },
     {
         'name': 'Scheduler', 'category': 'Calendars', 'order': '02', 'path': 'schedule', 'samples': ScheduleSampleOrder, 'ftName': 'scheduler', 'type': 'update'
@@ -253,13 +257,13 @@ export let samplesList: any = [
         'name': 'Calendar', 'category': 'Calendars', 'order': '04', 'path': 'calendar', 'samples': CalendarSampleOrder
     },
     {
-        'name': 'DatePicker', 'category': 'Calendars', "type": "update", 'order': '04', 'path': 'datepicker', 'samples': DatePickerSampleOrder
+        'name': 'DatePicker', 'category': 'Calendars', 'order': '04', 'path': 'datepicker', 'samples': DatePickerSampleOrder
     },
     {
-        'name': 'DateRangePicker', 'category': 'Calendars', 'order': '04', 'path': 'daterangepicker', 'samples': DateRangePickerSampleOrder
+        'name': 'DateRangePicker', 'type':'update' , 'category': 'Calendars', 'order': '04', 'path': 'daterangepicker', 'samples': DateRangePickerSampleOrder
     },
     {
-        'name': 'DateTimePicker', 'category': 'Calendars', "type": "update", 'order': '04', 'path': 'datetimepicker', 'samples': DateTimeOrder
+        'name': 'DateTimePicker', 'category': 'Calendars', 'order': '04', 'path': 'datetimepicker', 'samples': DateTimeOrder
     },
     {
         'name': 'TimePicker', 'category': 'Calendars', 'order': '04', 'path': 'timepicker', 'samples': TimePickerSampleOrder
@@ -268,7 +272,7 @@ export let samplesList: any = [
         'name': 'Button', 'category': 'Buttons', 'order': '04', 'path': 'button', 'samples': ButtonSampleOrder
     },
     {
-        'name': 'Chips', 'category': 'Buttons', "type": "update", 'order': '04', 'path': 'chips', 'samples': ChipsSampleOrder
+        'name': 'Chips', 'category': 'Buttons', 'order': '04', 'path': 'chips', 'samples': ChipsSampleOrder
     },
     {
         'name': 'Floating Action Button', 'category': 'Buttons', 'order': '04', 'path': 'floating-action-button', 'samples': FloatingActionButtonSampleOrder
@@ -277,19 +281,19 @@ export let samplesList: any = [
         'name': 'SpeedDial', 'category': 'Buttons', 'order': '04', 'path': 'speed-dial', 'samples': SpeedDialSampleOrder
     },
     {
-        'name': 'AutoComplete',  'category': 'Dropdowns', 'order': '04', 'path': 'auto-complete', 'samples': AutoCompleteSampleOrder
+        'name': 'AutoComplete', 'type':'update' , 'category': 'Dropdowns', 'order': '04', 'path': 'auto-complete', 'samples': AutoCompleteSampleOrder
     },
     {
-        'name': 'ComboBox', 'category': 'Dropdowns', 'order': '04', 'path': 'combo-box', 'samples': ComboBoxSampleOrder
+        'name': 'ComboBox', 'type':'update' , 'category': 'Dropdowns', 'order': '04', 'path': 'combo-box', 'samples': ComboBoxSampleOrder
     },
     {
-        'name': 'Dropdown List', 'category': 'Dropdowns',  'order': '04', 'path': 'drop-down-list', 'samples': DropDownListSampleOrder
+        'name': 'Dropdown List', 'type':'update' , 'category': 'Dropdowns',  'order': '04', 'path': 'drop-down-list', 'samples': DropDownListSampleOrder
     },
     {
         'name': 'Dropdown Tree', 'category': 'Dropdowns', 'order': '04', 'path': 'drop-down-tree', 'samples': DropDownTreeSampleOrder
     },
     {
-        'name': 'MultiSelect Dropdown', 'category': 'Dropdowns', 'order': '04', 'path': 'multi-select', 'samples': MultiSelectSampleOrder
+        'name': 'MultiSelect Dropdown', 'type':'update' , 'category': 'Dropdowns', 'order': '04', 'path': 'multi-select', 'samples': MultiSelectSampleOrder
     },
     {
         'name': 'List Box', 'category': 'Dropdowns', 'ftName': 'list-box', 'order': '04', 'path': 'list-box', 'samples': ListBoxSampleOrder
@@ -298,7 +302,7 @@ export let samplesList: any = [
         'name': 'MultiColumn ComboBox', 'category': 'Dropdowns', 'ftName': 'multicolumn-combobox', 'order': '04', 'path': 'multicolumn-combobox', 'samples': MultiColumnComboboxSampleOrder
     },
     {
-        'name': 'Mention', 'category': 'Dropdowns', "type": "update", 'path': 'mention', 'order': '03', 'samples': MentionSampleOrder
+        'name': 'Mention', 'category': 'Dropdowns', 'path': 'mention', 'order': '03', 'samples': MentionSampleOrder
     },
     {
         'name': 'Accordion', 'category': 'Navigation', 'path': 'accordion', 'samples': AccordionSampleOrder
@@ -388,7 +392,7 @@ export let samplesList: any = [
         'name': 'OTP Input', 'category': 'Inputs', 'order': '04', 'path': 'otp-input', 'samples': OTPSampleOrder, 'ftName' :'otp-input'
     },
     {
-        'name': 'Speech To Text', 'category': 'Inputs', 'order': '04', 'path': 'speech-to-text', 'samples': SpeechToTextSampleOrder, 'ftName' :'Speech-to-text', 'type': 'preview'
+        'name': 'Speech To Text', 'category': 'Inputs', 'order': '04', 'path': 'speech-to-text', 'samples': SpeechToTextSampleOrder, 'ftName' :'Speech-to-text'
     },
     {
         'name': 'Avatar', 'category': 'Layout', 'path': 'avatar', 'samples': AvatarSampleOrder

@@ -21,9 +21,6 @@ let SAMPLE_CSS = `#historyPropertySection .row {
             margin-left: 0px;
             margin-right: 0px;
         }
-        #historyControlSection.content-wrapper {
-            border: 1px solid #D7D7D7;
-        }
 
         #historyPropertySection .listbox {
             width: 100%;
@@ -158,7 +155,7 @@ export class HistoryManager extends SampleBase<{}, {}> {
         return (
             <div className="control-pane1">
                 <div className="col-lg-8 control-section">
-                    <div id="historyControlSection" className="content-wrapper" style={{ width: "100%" }}>
+                    <div id="historyControlSection"  style={{ width: "100%", border: "1px solid #D7D7D7" }}>
                         <style>{SAMPLE_CSS}</style>
                         <DiagramComponent
                             id="diagram"

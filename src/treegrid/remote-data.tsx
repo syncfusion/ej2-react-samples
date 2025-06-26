@@ -16,7 +16,7 @@ export class RemoteData extends SampleBase<{}, {}> {
               pageSettings={{ pageCount: 3 }} treeColumnIndex={1} allowPaging={true} idMapping= 'TaskID' parentIdMapping='parentItem'>
             <ColumnsDirective>
               <ColumnDirective field='TaskID' headerText='Task ID' width='120' textAlign='Right'></ColumnDirective>
-              <ColumnDirective field='TaskName' headerText='Task Name' width='140'></ColumnDirective>
+              <ColumnDirective field='TaskName' headerText='Task Name' width='200'></ColumnDirective>
               <ColumnDirective field='StartDate' headerText='Start Date' width='110' format='yMd' textAlign='Right' />
               <ColumnDirective field='EndDate' headerText='End Date' width='110' format='yMd' textAlign='Right' />
               <ColumnDirective field='StartDate' headerText='Start Date' width='90' format='yMd' textAlign='Right' />

@@ -1,8 +1,15 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
+import { updateAISampleSection } from '../common/sample-base';
+/* custom code start*/
+import AIToast from '../common/ai-toast';
+/* custom code end*/
 
 export class SmartRedact extends SampleBase<{}, {}> {
+     componentDidMount() {
+          updateAISampleSection(); 
+    }
 
     render() {
         return (
@@ -31,6 +38,7 @@ export class SmartRedact extends SampleBase<{}, {}> {
                             that only the intended sensitive information is protected.</li>
                     </ul>
                 </div>
+                <AIToast/>
             </div>
         )
     }

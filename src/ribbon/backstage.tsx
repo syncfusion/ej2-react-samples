@@ -10,7 +10,7 @@ import './backstage.css';
 import * as data from './dataSource/datasource.json';
 
 export class Backstage extends SampleBase<{}, {}> {
-    private ribbonObj: Ribbon;
+    public ribbonObj: Ribbon;
 
     public pasteOptions: ItemModel[] = [{ text: "Keep Source Format" }, { text: "Merge Format" }, { text: "Keep Text Only" }];
     public findOptions: ItemModel[] = [{ text: "Find", iconCss: "e-icons e-search" }, { text: "Advanced Find", iconCss: "e-icons e-search" }, { text: "Go to", iconCss: "e-icons e-arrow-right" }];
@@ -40,17 +40,17 @@ export class Backstage extends SampleBase<{}, {}> {
     toastInstance: ToastComponent;
 
     public isPasteDisabled: boolean = true;
-    public enablePaste() {
+    public enablePaste = () => {
         if (!this.isPasteDisabled) { return; }
         this.ribbonObj.enableItem('pastebtn');
         this.isPasteDisabled = false;
     }
 
-    public updateContent(args: string) {
+    public updateContent = (args: string) => {
         this.toastInstance.show({ content: "Last clicked item is " + args });
     }
 
-    public launchClick(args: LauncherClickEventArgs) {
+    public launchClick = (args: LauncherClickEventArgs) => {
         if (args.groupId == "clipboard") {
             this.updateContent("Clipboard Launcher Icon");
         }
@@ -63,7 +63,7 @@ export class Backstage extends SampleBase<{}, {}> {
     }
 
     public isBackstageOpened = false;
-    public handleClickInsideBackstageContent(e: any) {
+    public handleClickInsideBackstageContent = (e: any) => {
         e.stopPropagation();
         var cName: string = e.target.className;
         if (cName !== "section-title" && cName !== "home-wrapper" && cName !== "new-wrapper" && cName !== "block-wrapper" && cName !== "e-ribbon-backstage-content") {
@@ -74,12 +74,12 @@ export class Backstage extends SampleBase<{}, {}> {
     }
     
 
-    public backstageClickHandler() {
+    public backstageClickHandler = () => {
         this.ribbonObj.ribbonBackstageModule.hideBackstage();
         this.toastInstance.show({ content: 'Print action is selected' });
     }
 
-    public getBackstageContent(item: string): string {
+    public getBackstageContent = (item: string): string => {
         var homeContentTemplate = "<div class='home-wrapper'>{{newSection}}{{recentSection}}</div>";
         var newSection = "<div class='new-wrapper'><div class='section-title'> New </div><div class='category_container'><div class='doc_category_image'></div> <span class='doc_category_text'> New document </span></div></div>";
         var recentSection = "<div class='block-wrapper'><div class='section-title'> Recent </div>{{recentWrapper}}</div>";
@@ -126,12 +126,12 @@ export class Backstage extends SampleBase<{}, {}> {
         { text: 'Feedback', isFooter: true, content: this.getBackstageContent('feedback') }
     ];
 
-    public ribbonCreated() {
+    public ribbonCreated = () => {
         if (!this.isBackstageOpened) {
             this.ribbonObj.element.querySelector('.e-ribbon-backstage').addEventListener('click', this.backstageClick.bind(this));
         }
     }
-    public backstageClick() {
+    public backstageClick = () => {
         this.isBackstageOpened = true;
         this.ribbonObj.element.querySelector('.e-ribbon-backstage-content').addEventListener('click', this.handleClickInsideBackstageContent.bind(this));
     }

@@ -32,10 +32,10 @@ const SAMPLE_CSS = `.diagram-userhandle .image-pattern-style {
         background-position: center;
         float: left;
     }
-     .e-remove-selection .property-section-content {
+     .diagram-userhandle .e-remove-selection .property-section-content {
       pointer-events: none;
     }
-      .property-section .e-remove-selection {
+      .diagram-userhandle .property-section .e-remove-selection {
       cursor: not-allowed;
     }
     .diagram-userhandle .image-pattern-style:hover {
@@ -332,7 +332,7 @@ function UserHandle() {
       <div
         className="col-lg-8 control-section"
       >
-        <div className="content-wrapper" style={{ width: "100%" }}>
+        <div  style={{ width: "100%" }}>
           <DiagramComponent
             id="diagram"
             ref={diagram => (diagramInstance = diagram)}

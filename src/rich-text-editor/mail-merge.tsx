@@ -22,8 +22,8 @@ export class MailMerge extends SampleBase<{}, {}>  {
 
     private items: (string | IToolbarItems)[] = ['Bold', 'Italic', 'Underline', '|', 'Formats', 'Alignments', 'OrderedList', 'UnorderedList', '|',
         'CreateLink', 'Image', 'CreateTable', '|',
-        { tooltipText: 'Merge Data', template: '#merge_data' },
-        { tooltipText: 'Insert Field', template: '#insertField' },
+        { tooltipText: 'Merge Data', template: '#merge_data', command: 'Custom' },
+        { tooltipText: 'Insert Field', template: '#insertField', command: 'Custom' },
         'SourceCode', '|', 'Undo', 'Redo'
     ]
 
@@ -109,6 +109,12 @@ export class MailMerge extends SampleBase<{}, {}>  {
         this.saveSelection = this.selection.save(this.range, document);
     }
 
+    onDropDownClose() {
+        if (this.rteObj) {
+            this.rteObj.focusIn();
+        }
+    }
+
     onItemSelect(args: { item: { text: string; }; }) {
         if (args.item.text != null) {
             const value = this.textToValueMap[args.item.text];
@@ -179,10 +185,10 @@ export class MailMerge extends SampleBase<{}, {}>  {
                     </span>
                 </button>
                 <DropDownButtonComponent
-                    className="e-rte-dropdown-btn e-rte-dropdown-popup e-rte-dropdown-items e-rte-elements e-tbar-btn"
+                    className="e-rte-dropdown-btn e-rte-dropdown-popup e-rte-dropdown-items e-rte-elements e-rte-dropdown-menu"
                     items={this.itemsName}
                     content='<span style="display: inline-flex;"><span class="e-rte-dropdown-btn-text">Insert Field</span></span>'
-                    select={this.onItemSelect}
+                    select={this.onItemSelect} close={this.onDropDownClose}
                     id="insertField"
                 ></DropDownButtonComponent>
                 <MentionComponent

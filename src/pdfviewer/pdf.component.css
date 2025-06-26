@@ -214,6 +214,7 @@ div#magnificationToolbar.e-toolbar .e-toolbar-items {
 .e-pv-flex-container{
     display: flex;
     justify-content: flex-end;
+    align-items: center;
 }
 
 .render-mode-info {

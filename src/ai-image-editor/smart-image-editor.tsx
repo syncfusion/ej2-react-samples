@@ -1,8 +1,15 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
+import { updateAISampleSection } from '../common/sample-base';
+/* custom code start*/
+import AIToast from '../common/ai-toast';
+/* custom code end*/
 
 export class SmartImageEditor extends SampleBase<{}, {}> {
+     componentDidMount() {
+          updateAISampleSection(); 
+    }
 
     render() {
         return (
@@ -45,6 +52,7 @@ export class SmartImageEditor extends SampleBase<{}, {}> {
                             backgrounds or placing the subject onto a different backdrop, enhancing the versatility of the image.</li>
                     </ul>
                 </div>
+                <AIToast/>
             </div>
         )
     }

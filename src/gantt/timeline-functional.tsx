@@ -234,7 +234,7 @@ const Timeline = () => {
             <tbody>
               <tr>
                 <td>
-                  <div>Unit width</div>
+                  <div>Timeline Unit Size</div>
                 </td>
                 <td>
                   <div>
@@ -339,34 +339,29 @@ const Timeline = () => {
         </div>
       </div>
       <div id="action-description">
-        <p>This sample illustrates the different phases from planning to delivery, involved in a software development
-          lifecycle.
-          This sample demonstrates the different timeline modes available in Gantt chart. Options are available to change
-          the unit,
-          format and count of the header texts for both top and bottom timeline headers.</p>
+        <p>This sample allows you to customize the Gantt Chart timeline by adjusting the timeline unit size, header text format, and count for both the top and bottom tiers, and provides an option to enable the multitaskbar feature.
+        </p>
       </div>
 
       <div id="description">
         <p>
-          In this example, you can see how to change the timeline settings in Gantt chart. The top and bottom timeline
-          header texts can be customized by using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/timelineSettingsModel/#toptier">timelineSettings.topTier</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/timelineSettingsModel/#bottomtier">timelineSettings.bottomTier</a> properties                                                          Using these properties, you can change the format, count, and units of the timeline header texts.
+          This example demonstrates how to effectively customize the timeline settings of a Gantt Chart.
+          You can customize the timeline width by adjusting the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/timelineSettingsModel/#timelineunitsize">timelineunitsize</a> property
+          in <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/timelineSettingsModel/">timelineSettings</a>.
+          The Gantt Chart supports various timeline units such as <code>minutes</code>, <code>hours</code>, <code>days</code>, <code>weeks</code>, <code>months</code>, and <code>years</code>.
+          You can easily customize these units by changing the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/timelineTierSettings/#unit">unit</a> for both top tier and bottom tier in <code>timelineSettings</code>.
+          The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/timelineTierSettings/#format">format</a> of the timeline can be customized by modifying the format value for both the top and bottom tiers.
+          You can combine timeline cells in the top and bottom tiers using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/timelineTierSettings/#count">count</a> property in <code>timelineSettings</code>.
         </p>
         <p>
-          Gantt chart has built-in support for many timeline modes such as minutes, hour, day, week, month and year.
+          Tooltips are visible by default in the Gantt Chart timeline, You can customize the tooltip visiblity by using the  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/timelineSettings/#showtooltip">showtooltip</a> property in the timeline settings.
         </p>
         <p>
-          The default timeline headers can also be replaced with custom header texts by using the <code>formatter</code> method.
-        </p>
-        <p>
-          Tooltip is enabled by default for the timeline headers, to see the tooltip in action, hover a point or tap on a
-          point in touch enabled devices.
+          <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#enablemultitaskbar">enablemultitaskbar</a> allows you to display multiple taskbars within a parent row, ensuring a clear overview even in collapsed states.
         </p>
         <p>
           Gantt component features are segregated into individual feature-wise modules. To use a selection support, inject the
           <code>Selection</code> module. To use markers in Gantt, inject the <code>DayMarkers</code> module.
-        </p>
-        <p>
-          If the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#enablemultitaskbar">enableMultiTaskbar</a> property is enabled, it displays child taskbars in the parent row when in collapsed state.
         </p>
       </div>
     </div>

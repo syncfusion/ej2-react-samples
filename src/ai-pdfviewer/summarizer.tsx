@@ -1,8 +1,15 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
+import { updateAISampleSection } from '../common/sample-base';
+/* custom code start*/
+import AIToast from '../common/ai-toast';
+/* custom code end*/
 
 export class Summarizer extends SampleBase<{}, {}> {
+    componentDidMount() {
+          updateAISampleSection(); 
+    }
 
     render() {
         return (
@@ -32,6 +39,7 @@ export class Summarizer extends SampleBase<{}, {}> {
                         question is asked, the tool identifies the specific content and directs the user to the corresponding page. It
                         streamlines finding specific information within the document.</p>
                 </div>
+                <AIToast/>
             </div>
         )
     }

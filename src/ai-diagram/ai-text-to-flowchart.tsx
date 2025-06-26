@@ -21,7 +21,7 @@ import { DialogComponent } from '@syncfusion/ej2-react-popups';
 import { useEffect } from 'react';
 import './smart-flowchart.css';
 
-function SmartFlowchart() {
+function AiSmartFlowchart() {
     let diagram: DiagramComponent;
     let dialog: DialogComponent;
     let msgBtn1: ButtonComponent;
@@ -188,8 +188,8 @@ function SmartFlowchart() {
     }
 
     let palettes: PaletteModel[] = [
-        { id: 'flow', expanded: true, symbols: flowShapes, iconCss: 'e-ddb-icons e-flow', title: 'Flow Shapes' },
-        { id: 'connectors', expanded: true, symbols: connectorSymbols, iconCss: 'e-ddb-icons e-connector', title: 'Connectors' }
+        { id: 'flow', expanded: true, symbols: flowShapes, iconCss: 'ai-e-ddb-icons e-flow', title: 'Flow Shapes' },
+        { id: 'connectors', expanded: true, symbols: connectorSymbols, iconCss: 'ai-e-ddb-icons e-connector', title: 'Connectors' }
     ];
 
     function onTextBoxChange(args: InputEventArgs) {
@@ -205,24 +205,22 @@ function SmartFlowchart() {
             <>
                 <p style={{ marginBottom: '10px', fontWeight: 'bold' }}>Suggested Prompts</p>
                 <ButtonComponent
-                    ref={btn2 => msgBtn2 = btn2 as ButtonComponent}
                     id="btn2" style={{ flex: 1, overflow: 'visible', borderRadius: '8px', marginBottom: '10px' }}
                     onClick={() => {
                         dialog.hide();
-                        convertTextToFlowchart((msgBtn2 as any).value, diagram);
+                        convertTextToFlowchart("Flowchart for online shopping", diagram);
                     }}
                 >Flowchart for online shopping</ButtonComponent>
-                <ButtonComponent ref={btn1 => msgBtn1 = btn1 as ButtonComponent}
+                <ButtonComponent 
                     onClick={() => {
                         dialog.hide();
-                        convertTextToFlowchart((msgBtn1 as any).value, diagram);
+                        convertTextToFlowchart("Flowchart for Mobile banking registration", diagram);
                     }}
                     id="btn1" style={{ flex: 1, overflow: 'visible', borderRadius: '8px', marginBottom: '10px' }}>Flowchart for Mobile banking registration</ButtonComponent>
                 <ButtonComponent
-                    ref={btn3 => msgBtn3 = btn3 as ButtonComponent}
                     onClick={() => {
                         dialog.hide();
-                        convertTextToFlowchart((msgBtn3 as any).value, diagram);
+                        convertTextToFlowchart("Flowchart for Bus ticket booking", diagram);
                     }}
                     id="btn3" style={{ flex: 1, overflow: 'visible', borderRadius: '8px', marginBottom: '10px' }}>Flowchart for Bus ticket booking</ButtonComponent>
                 <div style={{ display: 'flex', alignItems: 'center', marginTop: '20px' }}>
@@ -233,11 +231,13 @@ function SmartFlowchart() {
                     <ButtonComponent id="db-send"
                         ref={btn => sendButton = btn as ButtonComponent}
                         onClick={() => {
-                            dialog.hide();
-                            convertTextToFlowchart(textBox.value, diagram)
+                            if (textBox.value) {
+                                dialog.hide();
+                                convertTextToFlowchart(textBox.value, diagram)
+                            }
                         }}
-                        iconCss='e-icons e-send' isPrimary={true} disabled={true}
-                        style={{ marginLeft: '5px', height: '32px', width: '32px' }}></ButtonComponent>
+                        iconCss='e-icons e-send' isPrimary={true} disabled={false}
+                        style={{ marginLeft: '5px', height: '32px', width: '32px', paddingTop: '4px', paddingLeft: '6px'}}></ButtonComponent>
                 </div>
             </>
         );
@@ -245,7 +245,6 @@ function SmartFlowchart() {
 
     return (
         <>
-            <div className="container">
                 <link href="https://ej2.syncfusion.com/javascript/demos/src/diagram/styles/diagram-common.css" rel="stylesheet" />
                 <div className="main">
                     <div className="diagram-upload-file">
@@ -274,13 +273,11 @@ function SmartFlowchart() {
                                     <ItemDirective prefixIcon='e-print e-icons' tooltipText='Print Diagram' />
                                     <ItemDirective type='Input' tooltipText='Export Diagram'
                                         template={() => <DropDownButtonComponent id="exportBtn" style={{ width: '100%' }}
-                                            items={exportItems} iconCss='e-ddb-icons e-export' select={function (args: any) { onselectExport(args); }}
+                                            items={exportItems} iconCss='ai-e-ddb-icons e-export' select={function (args: any) { onselectExport(args); }}
                                         ></DropDownButtonComponent>}
                                     />
-                                    <ItemDirective type='Separator' />
                                     <ItemDirective prefixIcon='e-pan e-icons' tooltipText='Pan Tool' cssClass='tb-item-start pan-item' />
                                     <ItemDirective prefixIcon='e-mouse-pointer e-icons' tooltipText='Select Tool' cssClass='tb-item-middle tb-item-selected' />
-                                    <ItemDirective type='Separator' />
                                     <ItemDirective cssClass='tb-item-end tb-zoom-dropdown-btn' align='Right'
                                         template={() => <DropDownButtonComponent id="btnZoomIncrement"
                                             items={zoomMenuItems} content={Math.round(diagram.scrollSettings.currentZoom! * 100) + ' %'} select={zoomChange}
@@ -368,7 +365,7 @@ function SmartFlowchart() {
                     <DialogComponent
                         ref={dialogObj => dialog = dialogObj as DialogComponent}
                         id='dialog'
-                        header='<span class="e-icons e-assist-chat" style="color: black;width:20px; font-size: 16px;"></span> AI Assist'
+                        header='<span class="e-icons e-assistview-icon" style="color: black;width:20px; font-size: 16px;"></span> AI Assist'
                         showCloseIcon={true}
                         isModal={true}
                         content={dialogContent}
@@ -379,7 +376,7 @@ function SmartFlowchart() {
                     />
                 </div>
                 <FabComponent id="ai-assist"
-                    isPrimary={true} content='AI Assist' iconCss='e-icons e-assist-chat'
+                    isPrimary={true} content='AI Assist' iconCss='e-icons e-assistview-icon' target="#diagram"
                     onClick={() => { dialog.show(); }}
                 ></FabComponent>
 
@@ -388,9 +385,8 @@ function SmartFlowchart() {
                     <div className="loading-indicator"></div>
                     <div className="loading-text">Generating Flowchart...</div>
                 </div>
-            </div>
         </>
     )
 }
 
-export default SmartFlowchart
+export default AiSmartFlowchart;

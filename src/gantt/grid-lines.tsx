@@ -73,7 +73,7 @@ export class GridLines extends SampleBase<{}, {}> {
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ width: '100%' }}>
+                  <td style={{ width: '50%', padding: '10px 10px 10px 0px' }}>
                     <div>
                       <DropDownListComponent ref={dropdown => this.dropdownObj = dropdown} id='gridLines' dataSource={this.linesData} fields={{ text: 'type', value: 'id' }}
                         value='Both' change={this.changeLine.bind(this)}></DropDownListComponent>

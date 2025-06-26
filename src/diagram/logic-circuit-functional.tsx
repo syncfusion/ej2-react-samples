@@ -198,21 +198,21 @@ function createConnections(id, type, dashed, cornerRadius) {
 
 // CSS styles for the sample
 const SAMPLE_CSS = `
-.sb-mobile-palette {
+.diagram-logicCircuit .sb-mobile-palette {
   width: 240px;
   height: 100%;
   float: left;
 }
 
-.sb-mobile-palette-bar {
+.diagram-logicCircuit .sb-mobile-palette-bar {
   display: none;
 }
 
-.container-fluid {
+.diagram-logicCircuit .container-fluid {
   padding-bottom: 15px;
 }
 
-.sb-mobile-diagram {
+.diagram-logicCircuit .sb-mobile-diagram {
   width: calc(100% - 242px);
   height: 100%;
   float: left;
@@ -222,7 +222,7 @@ const SAMPLE_CSS = `
 
 @media (max-width: 550px) {
 
-  .sb-mobile-palette {
+  .diagram-logicCircuit .sb-mobile-palette {
       z-index: 19;
       position: absolute;
       display: none;
@@ -231,7 +231,7 @@ const SAMPLE_CSS = `
       height: 100%;
   }
 
-  .sb-mobile-palette-bar {
+  .diagram-logicCircuit .sb-mobile-palette-bar {
       display: block;
       width: 100%;
       background: #fafafa;
@@ -240,25 +240,25 @@ const SAMPLE_CSS = `
       min-height: 40px;
   }
 
-  .sb-mobile-diagram {
+  .diagram-logicCircuit .sb-mobile-diagram {
       width: 100%;
       height: 100%;
       float: left;
       left: 0px;
   }
 
-  #paletteIcon {
+  .diagram-logicCircuit #paletteIcon {
       font-size: 20px;
   }
 }
 
-.sb-mobile-palette-open {
+.diagram-logicCircuit .sb-mobile-palette-open {
   position: absolute;
   display: block;
   right: 15px;
 }
 
-.e-toggle-palette::before {
+.diagram-logicCircuit .e-toggle-palette::before {
   content: "\e700"
 }`
 function createNode(
@@ -368,7 +368,7 @@ function LogicCircuit() {
     }
   }
   return (
-    <div className="control-pane">
+    <div className="control-pane diagram-logicCircuit">
       <style>{SAMPLE_CSS}</style>
       <div className="control-section">
         <div id="logicCircuit" style={{ width: "100%", height: "600px" }}>

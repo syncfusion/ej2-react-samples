@@ -42,7 +42,7 @@ export class KeyBoardInteraction extends SampleBase<{}, {}> {
         return (
             <div className="control-pane">
                 <div className="col-lg-8 control-section">
-                    <div className="content-wrapper" style={{ width: "100%" }}>
+                    <div  style={{ width: "100%" }}>
                         {/* Initializes and renders diagram control */}
                         <DiagramComponent
                             ref={diagram => (diagramInstance = diagram)}

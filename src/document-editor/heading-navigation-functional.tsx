@@ -2,10 +2,11 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { useEffect, useRef } from 'react';
 import { updateSampleSection } from '../common/sample-base';
-import { DocumentEditorContainerComponent, Toolbar } from '@syncfusion/ej2-react-documenteditor';
+import { DocumentEditorContainerComponent, Toolbar, Ribbon } from '@syncfusion/ej2-react-documenteditor';
 import { TitleBar } from './title-bar';
 import './default.component.css';
-DocumentEditorContainerComponent.Inject(Toolbar);
+import { SwitchComponent } from '@syncfusion/ej2-react-buttons';
+DocumentEditorContainerComponent.Inject(Toolbar,Ribbon);
 // tslint:disable:max-line-length
 const HeadingNavigation = () => {
     useEffect(() => {
@@ -44,18 +45,36 @@ const HeadingNavigation = () => {
             container.current.documentEditor,
             true
         );
-        onLoadDefault();
+       onLoadDefault();
+titleBar.showButtons(false);
     };
+    const change = (args):void=>{
+        if (args.checked) {
+            container.current.toolbarMode = 'Ribbon';
+        }
+        else {
+            container.current.toolbarMode = 'Toolbar';
+        }
+        titleBar.showButtons(container.current.toolbarMode != 'Ribbon')
+    }
     return (
         <div className="control-pane">
             <div className="control-section">
+                <div className="flex-container">
+                                  <label className="switchLabel" htmlFor="toolbarSwitch">Ribbon UI</label>
+                            <div className="e-message render-mode-info">
+                                <span className="e-msg-icon render-mode-info-icon" title="Turn OFF to switch from Ribbon to toolbar UI"></span>
+                            </div>
+                                <SwitchComponent cssClass="buttonSwitch" id="toolbarSwitch" change={change} checked={true}></SwitchComponent>
+                                </div>
                 <div id="documenteditor_titlebar" className="e-de-ctn-title"></div>
                 <div id="documenteditor_container_body">
                     <DocumentEditorContainerComponent
                         id="container"
                         ref={container}
                         style={{ display: "block" }}
-                        height={"590px"}
+                                                height={"590px"}
+                        toolbarMode= {"Ribbon"}
                         serviceUrl={hostUrl}
                         enableToolbar={true}
                         locale="en-US"

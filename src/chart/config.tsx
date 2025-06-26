@@ -4,11 +4,11 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the line series.'
     },
     {
-        'path': 'chart/line', 'component': 'Line', 'name': 'Line', 'order': '02', 'category': 'Line Charts', 'type': 'update',
+        'path': 'chart/line', 'component': 'Line', 'name': 'Line', 'order': '02', 'category': 'Line Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the line series.'
     },
     {
-        'path': 'chart/spline', 'component': 'Spline', 'name': 'Spline', 'order': '02', 'category': 'Line Charts', 'type': 'update',
+        'path': 'chart/spline', 'component': 'Spline', 'name': 'Spline', 'order': '02', 'category': 'Line Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the spline series.'
     },
     {
@@ -132,7 +132,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the rounded bar series.'
     },
     {
-        'path': 'chart/stacked-column', 'component': 'StackedColumn', 'name': 'Stacked Column', 'order': '04', 'category': 'Bar Charts', 'type': 'update',
+        'path': 'chart/stacked-column', 'component': 'StackedColumn', 'name': 'Stacked Column', 'order': '04', 'category': 'Bar Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the stacking column series.'
     },
     {
@@ -188,7 +188,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the pyramid charts.'
     },
     {
-        'path': 'chart/funnel', 'component': 'Funnel', 'name': 'Funnel', 'order': '07', 'category': 'Accumulation Charts', 'type': 'update',
+        'path': 'chart/funnel', 'component': 'Funnel', 'name': 'Funnel', 'order': '07', 'category': 'Accumulation Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the funnel charts.'
     },
     {
@@ -308,7 +308,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the real time charts.'
     },
     {
-        'path': 'chart/live-stock-data', 'component': 'LiveStock', 'name': 'Live stock data', 'order': '11', 'category': 'Real-time Charts',
+        'path': 'chart/live-stock-data', 'component': 'LiveStock', 'name': 'Live stock data', 'order': '11', 'category': 'Real-time Charts', 'type': 'update',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the real time charts.'
     },
     {
@@ -460,7 +460,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the range color mapping.'
     },
     {
-        'path': 'chart/series-animation', 'component': 'SeriesAnimation', 'name': 'Animation', 'order': '15', 'category': 'Chart Customization', 'type': 'new',
+        'path': 'chart/series-animation', 'component': 'SeriesAnimation', 'name': 'Animation', 'order': '15', 'category': 'Chart Customization',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure series animation.'
     },
     {
@@ -492,11 +492,11 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates the trackball behavior in chart.'
     },
     {
-        'path': 'chart/zoom', 'component': 'Zooming', 'name': 'Zooming and Panning', 'order': '17', 'category': 'User Interaction', 'type': 'update',
+        'path': 'chart/zoom', 'component': 'Zooming', 'name': 'Zooming and Panning', 'order': '17', 'category': 'User Interaction',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates the zooming behavior in chart.'
     },
     {
-        'path': 'chart/pagination', 'component': 'Pagination', 'name': 'Pagination', 'order': '17', 'category': 'User Interaction', 'type': 'new',
+        'path': 'chart/pagination', 'component': 'Pagination', 'name': 'Pagination', 'order': '17', 'category': 'User Interaction',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates the zooming behavior in chart.'
     },
     {

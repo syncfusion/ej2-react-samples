@@ -9,7 +9,7 @@ import { SampleBase } from '../common/sample-base';
 import './default.css';
 
 export class Default extends SampleBase<{}, {}> {
-  private ribbonObj: Ribbon;
+  public ribbonObj: Ribbon;
   public pasteOptions: ItemModel[] = [{ text: "Keep Source Format" }, { text: "Merge Format" }, { text: "Keep Text Only" }];
   public findOptions: ItemModel[] = [{ text: "Find", iconCss: "e-icons e-search" }, { text: "Advanced Find", iconCss: "e-icons e-search" }, { text: "Go to", iconCss: "e-icons e-arrow-right" }];
   public selectOptions: ItemModel[] = [{ text: "Select All" }, { text: "Select Objects" }];
@@ -38,17 +38,17 @@ export class Default extends SampleBase<{}, {}> {
   toastInstance: ToastComponent;
 
   public isPasteDisabled: boolean = true;
-  public enablePaste() { 
+  public enablePaste = () => { 
     if (!this.isPasteDisabled) { return; }
     this.ribbonObj.enableItem('pastebtn');
     this.isPasteDisabled = false;
   }
 
-  public updateContent(args: string) {
+  public updateContent = (args: string) => {
     this.toastInstance.show({ content: "Last clicked item is " + args });
   }
 
-  public fileSelect(args: FileMenuEventArgs){
+  public fileSelect = (args: FileMenuEventArgs) => {
     if(args.item.id === "newword" || args.item.id === "oldword" || args.item.id === "pdf"){
         this.updateContent("File -> Save as -> " + args.item.text);
     }
@@ -57,7 +57,7 @@ export class Default extends SampleBase<{}, {}> {
     }
   }
 
-public launchClick(args: LauncherClickEventArgs) {
+public launchClick = (args: LauncherClickEventArgs) => {
     if (args.groupId == "clipboard") {
         this.updateContent("Clipboard Launcher Icon");
     }

@@ -2,7 +2,7 @@
  * Rich Text Editor Smart Suggestion sample
  */
 import * as React from 'react';
-import { HtmlEditor, Image, Audio, Video, Table, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar, ToolbarSettingsModel, EmojiPicker, PasteCleanup, FormatPainter, SlashMenu, SlashMenuSettingsModel, SlashMenuItemSelectArgs } from '@syncfusion/ej2-react-richtexteditor';
+import { HtmlEditor, Image, Audio, Video, Table, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar, ToolbarSettingsModel, EmojiPicker, PasteCleanup, FormatPainter, SlashMenu, SlashMenuSettingsModel, SlashMenuItemSelectArgs, CodeBlock } from '@syncfusion/ej2-react-richtexteditor';
 import { SampleBase } from '../common/sample-base';
 
 export class SmartSuggestion extends SampleBase<{}, {}> {
@@ -17,7 +17,7 @@ export class SmartSuggestion extends SampleBase<{}, {}> {
       'FontName', 'FontSize', 'FontColor', 'BackgroundColor', '|',
       'LowerCase', 'UpperCase', '|',
       'Formats', 'Alignments', 'Blockquote', '|', 'NumberFormatList', 'BulletFormatList', '|',
-      'Outdent', 'Indent', '|', 'CreateLink', 'Image', 'Video', 'Audio', 'CreateTable', '|', 'FormatPainter', 'ClearFormat',
+      'Outdent', 'Indent', '|', 'CreateLink', 'Image', 'Video', 'Audio', 'CreateTable', 'CodeBlock', '|', 'FormatPainter', 'ClearFormat',
       '|', 'EmojiPicker', '|',
       'SourceCode', '|', 'Undo', 'Redo']
   };
@@ -55,7 +55,7 @@ export class SmartSuggestion extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section' id="mentionFormat">
           <RichTextEditorComponent id="MentionInlineFormat" ref={(scope) => { this.formatRTE = scope }} toolbarSettings={this.toolbarSettings} placeholder="Type '/' and choose format" slashMenuSettings={this.slashMenuSettings} slashMenuItemSelect={this.slashMenuItemSelect.bind(this)}>
-            <Inject services={[HtmlEditor, Toolbar, Image, Audio, Table, Video, Link, QuickToolbar, EmojiPicker, PasteCleanup, FormatPainter, SlashMenu]} />
+            <Inject services={[HtmlEditor, Toolbar, Image, Audio, Table, Video, Link, QuickToolbar, EmojiPicker, PasteCleanup, FormatPainter, SlashMenu, CodeBlock]} />
           </RichTextEditorComponent>
         </div>
         <div id="action-description">

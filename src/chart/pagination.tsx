@@ -362,20 +362,20 @@ export class Pagination extends SampleBase<{}, {}> {
   };
 
   public annotationRender = (args: IAnnotationRenderEventArgs): void => {
-    if (args.content.id === 'container_Annotation_0') {
+    if (args.content.id === 'chart_container_Annotation_0') {
       args.content.innerHTML = '<div id="chart_cloud" align="center"><img src="src/chart/images/' + this.image + '.png" alt="Cloud Picture" style="width: 70px; height: 70px; margin-right: 10px;"/></div>';
-    } else if (args.content.id === 'container_Annotation_1') {
+    } else if (args.content.id === 'chart_container_Annotation_1') {
       const tempDisplay: number = this.isFahrenheit ? this.temperatureData[buttonIndex].fahrenheit : this.temperatureData[buttonIndex].celsius;
       args.content.innerHTML = '<div id="temperature"><b align="center" style="font-size: 50px">' + tempDisplay + '<b></div>';
-    } else if (args.content.id === 'container_Annotation_2') {
+    } else if (args.content.id === 'chart_container_Annotation_2') {
       args.content.innerHTML = '<div id="celsius" style="font-size: 17px; vertical-align: super; cursor: pointer; opacity: 1;">°C | </div>';
-    } else if (args.content.id === 'container_Annotation_3') {
+    } else if (args.content.id === 'chart_container_Annotation_3') {
       args.content.innerHTML = '<div id="fahrenheit" style="font-size: 17px; vertical-align: super; cursor: pointer; opacity: 0.5;">°F</div>'
-    } else if (args.content.id === 'container_Annotation_4') {
+    } else if (args.content.id === 'chart_container_Annotation_4') {
       args.content.innerHTML = Browser.isDevice ? '<div id="days" style="text-align: right; font-size: 9px; opacity: 0.7;">' + this.day + '</div>' : '<div id="days" style="text-align: right; font-size: 15px; opacity: 0.7;">' + this.day + '</div>';
-    } else if (args.content.id === 'container_Annotation_5') {
+    } else if (args.content.id === 'chart_container_Annotation_5') {
       args.content.innerHTML = '<div id="weather" style="text-align: right; font-size: 15px; opacity: 0.7;">' + this.weather + '</div>';
-    } else if (args.content.id === 'container_Annotation_6') {
+    } else if (args.content.id === 'chart_container_Annotation_6') {
       args.content.innerHTML = Browser.isDevice ? `<div id="title" style="font-size: 16px; font-weight: 600">USA, Texas</div>` : `<div id="title" style="font-size: 20px; font-weight: 600">USA, Texas</div>`;
     } else {
       args.content.innerHTML = '<div style="text-align:left; opacity: 0.7;">' + 'Rainfall: ' + this.rainfalls + ' mm/hr<br>' + 'Moisture: ' + this.moistureLevels + '%<br>' + 'Breeze: ' + this.breezeSpeeds + ' km/hr' + '</div>';
@@ -396,7 +396,7 @@ export class Pagination extends SampleBase<{}, {}> {
       </style>
       <div className='control-section' style={{ textAlign: "center" }}>
         <ChartComponent
-          id='container'
+          id='chart_container'
           style={{ textAlign: "center" }}
           ref={chartInstance => this.chartInstance = chartInstance}
           primaryXAxis={{

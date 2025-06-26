@@ -17,7 +17,7 @@ function QuickFormatToolbar () {
         enableFloating: false
     };
     const quickToolbarSettings: QuickToolbarSettingsModel = {
-        text: ['Bold', 'Italic', 'Underline', 'FontColor', 'BackgroundColor', 'Alignments', '-', 'FontSize', 'FontName', 'Formats', 'OrderedList', 'UnorderedList', 'FormatPainter']
+        text: ['Formats', '|', 'Bold', 'Italic', 'Fontcolor', 'BackgroundColor', '|', 'CreateLink', 'Image', 'CreateTable', 'Blockquote', '|' , 'Unorderedlist', 'Orderedlist', 'Indent', 'Outdent'],
     };
     return (
         <div className='control-pane'>

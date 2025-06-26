@@ -65,7 +65,7 @@ export class TitleBar {
         this.print = this.addButton('e-de-icon-Print e-de-padding-right', printText, btnStyles, 'de-print', printToolTip, false) as Button;
         this.open = this.addButton('e-de-icon-Open e-de-padding-right', openText, btnStyles, 'de-open', openText, false) as Button;
         let items = [
-            { text: 'Syncfusion® Document Text (*.sfdt)', id: 'sfdt' },
+            { text: 'Syncfusion Document Text (*.sfdt)', id: 'sfdt' },
             { text: 'Word Document (*.docx)', id: 'word' },
             { text: 'Word Template (*.dotx)', id: 'dotx'},
             { text: 'Plain Text (*.txt)', id: 'txt'},
@@ -173,5 +173,15 @@ export class TitleBar {
     private save = (format: string): void => {
         // tslint:disable-next-line:max-line-length
         this.documentEditor.save(this.documentEditor.documentName === '' ? 'sample' : this.documentEditor.documentName, format as FormatType);
+    }
+    public showButtons = (show: boolean): void => {
+        const displayStyle = show ? 'block' : 'none';
+
+        if (this.print) {
+            this.print.element.style.display = displayStyle;
+        }
+        if (this.export) {
+            this.export.element.style.display = displayStyle;
+        }
     }
 }

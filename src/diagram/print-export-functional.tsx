@@ -161,7 +161,7 @@ function PrintExport() {
         <div className="control-pane">
             <style>{SAMPLE_CSS}</style>
             <div className="control-section" >
-                <div className="content-wrapper" style={{ width: "100%" }}>
+                <div  style={{ width: "100%" }}>
                     {/* create and add printing and exporting option in ToolBar. */}
                     <ToolbarComponent
                         style={{ width: "100%", height: "10%", marginTop: "10px" }}

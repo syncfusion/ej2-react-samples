@@ -1,8 +1,14 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
-
+import { updateAISampleSection } from '../common/sample-base';
+/* custom code start*/
+import AIToast from '../common/ai-toast';
+/* custom code end*/
 export class SemanticFiltering extends SampleBase<{}, {}> {
+     componentDidMount() {
+          updateAISampleSection(); 
+    }
 
     render() {
         return (
@@ -24,6 +30,7 @@ export class SemanticFiltering extends SampleBase<{}, {}> {
                         dynamically displays related search results using AI.
                     </p>
                 </div>
+                <AIToast/> 
             </div>
         )
     }

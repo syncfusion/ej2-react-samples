@@ -644,7 +644,7 @@ export class Overview extends SampleBase<{}, {}> {
                 </div>
 
                 <div id="description">
-                    <p>This example shows the three-quarter release planning of product features rendered in the EJ2 Gantt chart. It tracks the quarterly release planning of product status, resources, and task scheduling.</p>
+                    <p>This example shows the three-quarter release planning of product features rendered in the EJ2 Gantt Chart. It tracks the quarterly release planning of product status, resources, and task scheduling.</p>
                     <p>EJ2 Gantt Chart features such as Sorting, Filtering, Column resizing, Column menu, column template and so on are used in this demo.</p>
                 </div>
             </div>

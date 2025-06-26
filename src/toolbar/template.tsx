@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { ToolbarComponent, ItemsDirective, ItemDirective } from '@syncfusion/ej2-react-navigations';
+import { ToolbarComponent, ItemsDirective, ItemDirective, KeyDownEventArgs } from '@syncfusion/ej2-react-navigations';
 import { SampleBase } from '../common/sample-base';
 import { ComboBoxComponent } from '@syncfusion/ej2-react-dropdowns';
 import './toolbar.component.css'
@@ -24,12 +24,37 @@ export class Template extends SampleBase<{}, {}> {
         function onCreate() {
             textboxObj.addIcon('prepend', 'e-icons e-search');
         }
+
+        function handleKeyDown(args: KeyDownEventArgs) {
+            if (args.originalEvent.action === 'moveRight') {
+                if (args.nextItem) {
+                    focusInputElement(args.nextItem, args);
+                }
+            }
+
+            else if (args.originalEvent.action === 'moveLeft') {
+                if (args.nextItem) {
+                    focusInputElement(args.nextItem, args);
+                }
+            }
+        };
+
+        function focusInputElement(item: HTMLElement | null, args: KeyDownEventArgs) {
+            if (item && item.classList.contains('e-template')) {
+                const inputElement = item.querySelector('input');
+                if (inputElement) {
+                    inputElement.focus();
+                    args.cancel = true;
+                }
+            }
+        };
+
         return (
             <div className='control-pane'>
                 <div className='control-section tbar-control-section'>
                     <div className='control toolbar-sample tbar-sample' style={{ margin: '150px 0', width: '100%', maxWidth: '100%' }}>
                         {/* Render the Toolbar Component with Popup mode */}
-                        <ToolbarComponent overflowMode='Popup' cssClass='template'>
+                        <ToolbarComponent overflowMode='Popup' cssClass='template' keyDown={handleKeyDown}>
                             <ItemsDirective>
                                 <ItemDirective prefixIcon='e-icons e-folder' tooltipText='Open File' text='Open' showTextOn='Overflow' align="Left" />
                                 <ItemDirective type='Separator' />
@@ -39,19 +64,19 @@ export class Template extends SampleBase<{}, {}> {
                                 <ItemDirective prefixIcon='e-icons e-last-page' tooltipText='Show last page' text='Last' showTextOn='Overflow' align="Left" />
                                 <ItemDirective cssClass='page-count' template={numeric} align="Left" />
                                 <ItemDirective type='Separator' />
-                                <ItemDirective prefixIcon='e-icons e-zoom-out' tooltipText='Zoom-Out' text='Zoom-Out' showTextOn='Overflow' align="Left" />
+                                <ItemDirective prefixIcon='e-icons e-zoom-out' tooltipText='Zoom-Out' text='Zoom-Out' showTextOn='Overflow' align="Left" tabIndex={0} />
                                 <ItemDirective prefixIcon='e-icons e-zoom-in' tooltipText='Zoom-In' text='Zoom-In' showTextOn='Overflow' align="Left" />
                                 <ItemDirective cssClass='percentage' type="Input" template={dropDown} align="Left" />
                                 <ItemDirective type='Separator' />
-                                <ItemDirective prefixIcon='e-icons e-mouse-pointer' tooltipText='Text selection tool' text='Selection' showTextOn='Overflow' align="Left" />
+                                <ItemDirective prefixIcon='e-icons e-mouse-pointer' tooltipText='Text selection tool' text='Selection' showTextOn='Overflow' align="Left" tabIndex={0} />
                                 <ItemDirective prefixIcon='e-icons e-pan' tooltipText='Pan mode' text='Pan mode' showTextOn='Overflow' align="Left" />
                                 <ItemDirective type='Separator' />
                                 <ItemDirective prefixIcon='e-icons e-undo' tooltipText='Undo' text='Undo' showTextOn='Overflow' align="Left" />
                                 <ItemDirective prefixIcon='e-icons e-redo' tooltipText='Redo' text='Redo' showTextOn='Overflow' align="Left" />
                                 <ItemDirective type='Separator' />
-                                <ItemDirective prefixIcon='e-pv-comment-icon' tooltipText='Add Comments' text='Add Comments' showTextOn='Overflow' align="Left" />
+                                <ItemDirective prefixIcon='e-pv-comment-icon' tooltipText='Add Comments' text='Add Comments' showTextOn='Overflow' align="Left" tabIndex={0} />
                                 <ItemDirective type='Separator' />
-                                <ItemDirective text='Submit Form' align="Left" />
+                                <ItemDirective text='Submit Form' align="Left" tabIndex={0} />
                                 <ItemDirective cssClass='find' type="Input" template={textBox} overflow="Show" align="Right" />
                                 <ItemDirective prefixIcon='e-icons e-annotation-edit' tooltipText='Edit Annotations' text='Edit' showTextOn='Overflow' align="Right" />
                                 <ItemDirective prefixIcon='e-icons e-print' tooltipText='Print File' text='Print' showTextOn='Overflow' align="Right" />

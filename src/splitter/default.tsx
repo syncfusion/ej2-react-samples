@@ -94,10 +94,12 @@ export class Basic extends SampleBase<{}, {}> {
                 <div id="description">
                     <p>
                         The split panes of the Splitter control can be oriented horizontally or vertically using the Orientation property.
-                        <ul>
-                            <li>Set orientation property to Horizontal to create horizontal splitter, which align panels left-to-right.</li>
-                            <li>Set orientation property to Vertical to create vertical splitter, which align panels top-to-bottom.</li>
-                        </ul>
+                    </p>
+                    <ul>
+                        <li>Set orientation property to Horizontal to create horizontal splitter, which align panels left-to-right.</li>
+                        <li>Set orientation property to Vertical to create vertical splitter, which align panels top-to-bottom.</li>
+                    </ul>
+                    <p>
                         The splitter allows resizing its panes when the drag separator (divider) bar is used to increase its dimension.
                     </p>
                 </div>

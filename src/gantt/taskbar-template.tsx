@@ -109,14 +109,35 @@ export class Taskbar extends SampleBase<{}, {}> {
   };
   public childTaskbarTemplate: any = this.taskbarTemplate.bind(this);
   public milstoneTemplate(props): any {
-    return (<div style={{ marginTop: "-7px" }}>
-      <div className="e-gantt-milestone" style={{ position: "absolute" }}>
-        <img className="moments" src="src/gantt/images/moments.svg" height="24" width="48" alt='Moments svg' />
-        <div className="e-milestone-top" style={{ borderRightWidth: "26px", marginTop: "-24px", borderLeftWidth: "26px", borderBottomWidth: "26px" }}></div>
-        <div className="e-milestone-bottom" style={{ top: "26px", borderRightWidth: "26px", borderLeftWidth: "26px", borderTopWidth: "26px" }}></div>
+  return (
+    <div style={{ marginTop: "3px" }}>
+      <div style={{ position: "absolute", left: "3px", top: "4px" }}>
+        <img
+          className="moments"
+          src="src/gantt/images/moments.svg"
+          height="24"
+          width="48"
+          style={{ zIndex: 1, left: "-4px", top: "12px", position: "absolute" }}
+          alt="Moments svg"
+        />
+        <div
+          className="e-gantt-milestone"
+          style={{
+            width: "41px",
+            height: "41px",
+            transform: "rotate(45deg)",
+            backgroundColor: "#7ab748",
+            border: "0",
+            position: "absolute",
+            left: "-5px",
+            top: "4px"
+          }}
+        ></div>
       </div>
-    </div>);
-  };
+    </div>
+  );
+}
+
   public milestone: any = this.milstoneTemplate.bind(this);
   public projectStartDate: any = new Date('03/05/2024 06:00 PM');
   public projectEndDate: any = new Date('03/05/2024 09:50 PM');
@@ -162,7 +183,7 @@ export class Taskbar extends SampleBase<{}, {}> {
 
         <div id="description">
         <p>
-          The Gantt chart provides support for customizing taskbar UI using taskbar template feature. The
+          The Gantt Chart provides support for customizing taskbar UI using taskbar template feature. The
           <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#taskbartemplate">taskbarTemplate</a>
           property accepts either string or HTML element`s ID value, which will be used as the template for the taskbars.
           The summary tasks and the milestone items can also customized using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#parenttaskbartemplate">parentTaskbarTemplate</a> and

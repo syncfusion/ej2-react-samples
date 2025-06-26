@@ -3,8 +3,9 @@ import * as React from 'react';
 import { SmartTextAreaComponent } from '@syncfusion/ej2-react-inputs'
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import './default.css';
+import { serverAIRequest } from '../common/ai-service';
 
-function Default() {
+function DefaultTextArea() {
     let textareaObj: SmartTextAreaComponent;
     const phrasesData: string[] = [
         "Please find the attached report.",
@@ -62,16 +63,6 @@ function Default() {
             ]
         }
     ];
-    const serverAIRequest = async (settings: any) => {
-        let output = '';
-        try {
-            const response = await (window as any).getAzureChatAIRequest(settings) as string;
-            output = response;
-        } catch (error) {
-            console.error("Error:", error);
-        }
-        return output;
-    };
 
     function onChange(args: any) {
         let selectedRole: string = args.value;
@@ -82,8 +73,8 @@ function Default() {
 
     return (<div className='control-pane'>
         <div className='control-section'>
-            <div className="content-wrapper">
-                <div className="example-label">Select a role</div>
+            <div className="ai-content-wrapper">
+                <div className="ai-example-label">Select a role</div>
                 <DropDownListComponent type="text" id='user-role'
                     dataSource={rolesData}
                     width='75%'
@@ -92,8 +83,9 @@ function Default() {
                     popupHeight="200px"
                     change={onChange}
                 />
-                <br />
+                 <div style={{ width: "75%"  }}>
                 <SmartTextAreaComponent
+                    cols={150}
                     id='smart-textarea'
                     ref={(textarea) => { textareaObj = textarea as SmartTextAreaComponent; }}
                     placeholder={'Enter your queries here'}
@@ -103,22 +95,11 @@ function Default() {
                     UserPhrases={phrasesData}
                     aiSuggestionHandler={serverAIRequest}
                 ></SmartTextAreaComponent>
-            </div>
-            <div id="action-description">
-                <p>
-                    This example demonstrates how the Smart TextArea provides sentence-level autocompletion suggestions based on its configuration and the user's current input.
-                </p>
-                <p>To explore this and more Syncfusion React Smart AI integrations locally, check out our <a target='_blank' href='https://github.com/syncfusion/smart-ai-samples/tree/master/react/ej2-react-ai-samples' aria-label="Navigate to explore the syncfusion React AI Demos repository">GitHub repository</a>.</p>
-            </div>
-
-            <div id="description">
-                <p>
-                    The Smart TextArea uses AI to offer real-time sentence suggestions based on the user's input and role, helping users complete sentences more quickly and accurately.
-                </p>
+                </div>
             </div>
         </div>
     </div>
     );
 }
 
-export default Default;
+export default DefaultTextArea;

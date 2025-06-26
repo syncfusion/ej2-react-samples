@@ -27,7 +27,7 @@ export class Timezone extends SampleBase<{}, {}> {
     parentID: 'parentID'
   };
   public timelineSettings: any = {
-    timelineUnitSize: 65,
+    timelineUnitSize: 70,
     topTier: {
         unit: 'Day',
         format: 'MMM dd, yyyy'

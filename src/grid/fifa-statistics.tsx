@@ -26,7 +26,7 @@ function ImageTemplate(props: any) {
   }
 
   let className: string = (field === 'Coach' || field === 'TopScorer' || field === 'BestPlayerAward') ? 'infotooltip' : ''
-  const src: string = '/src/grid/images/country/' + (webpfiles.indexOf(value) > -1 ? value + '.webp' : value + '.png');
+  const src: string = 'src/grid/images/country/' + (webpfiles.indexOf(value) > -1 ? value + '.webp' : value + '.png');
 
   return (
     <img
@@ -161,23 +161,23 @@ export class FIFAStatistics extends SampleBase<{}, {}> {
       switch (field) {
         case 'Host':
           value = args.target.title;
-          imageSource = '/src/grid/images/country/' + (webpfiles.indexOf(value) > -1 ? value + '.webp' : value + '.png');
+          imageSource = 'src/grid/images/country/' + (webpfiles.indexOf(value) > -1 ? value + '.webp' : value + '.png');
           cellInfo = (countryInfo as any)[0][value.replace(/ /g, '_')];
           break;
         case 'Champions':
-          imageSource = '/src/grid/images/team/' + value + '.png';
+          imageSource = 'src/grid/images/team/' + value + '.png';
           cellInfo = (teamInfo as any)[0][value.replace(/ /g, '_')];
           break;
         case 'Coach':
           if (args.target.tagName === 'IMG') {
             value = (rowInfo.rowData as any)['Champions'];
-            imageSource = '/src/grid/images/country/' + (webpfiles.indexOf(value) > -1 ? value + '.webp' : value + '.png');
+            imageSource = 'src/grid/images/country/' + (webpfiles.indexOf(value) > -1 ? value + '.webp' : value + '.png');
             cellInfo = (countryInfo as any)[0][value.replace(/ /g, '_')];
           } else {
             if (value === 'Juan López') {
               hideImage = true;
             }
-            imageSource = '/src/grid/images/coach/' + value + (value === 'Aymoré Moreira' ? '.png' : '.jpg');
+            imageSource = 'src/grid/images/coach/' + value + (value === 'Aymoré Moreira' ? '.png' : '.jpg');
             cellInfo = (coachInfo as any)[0][value.replace(/ /g, '_')];
           }
           break;
@@ -187,10 +187,10 @@ export class FIFAStatistics extends SampleBase<{}, {}> {
             if (value === 'Croatia') {
               hideImage = true;
             }
-            imageSource = '/src/grid/images/team/' + value + '.png';
+            imageSource = 'src/grid/images/team/' + value + '.png';
             cellInfo = (teamInfo as any)[0][value.replace(/ /g, '_')];
           } else {
-            imageSource = '/src/grid/images/top_scorer/' + value + '.jpg';
+            imageSource = 'src/grid/images/top_scorer/' + value + '.jpg';
             cellInfo = (topScrorerInfo as any)[0][value.replace(/ /g, '_')];
           }
           break;
@@ -200,10 +200,10 @@ export class FIFAStatistics extends SampleBase<{}, {}> {
             if (value === 'Croatia') {
               hideImage = true;
             }
-            imageSource = '/src/grid/images/team/' + value + '.png';
+            imageSource = 'src/grid/images/team/' + value + '.png';
             cellInfo = (teamInfo as any)[0][value.replace(/ /g, '_')];
           } else {
-            imageSource = '/src/grid/images/best_player/' + value + '.jpg';
+            imageSource = 'src/grid/images/best_player/' + value + '.jpg';
             cellInfo = (bestPlayerInfo as any)[0][value.replace(/ /g, '_')];
           }
           break;
@@ -264,7 +264,7 @@ export class FIFAStatistics extends SampleBase<{}, {}> {
     if (args.column?.field === 'BestPlayerAward') {
       let rowIndex: number = parseInt(args.cell?.getAttribute('index') as string);
       if (rowIndex > 0) {
-        if ((this.fifaGridIns.current?.currentViewData[rowIndex - 1] as FifaDetails)[args.column.field] !== (args.data as FifaDetails)[args.column.field]) {
+        if ((this.fifaGridIns?.currentViewData[rowIndex - 1] as FifaDetails)[args.column.field] !== (args.data as FifaDetails)[args.column.field]) {
           args.rowSpan = this.calculateRowspan(args, rowIndex);
         }
       } else {

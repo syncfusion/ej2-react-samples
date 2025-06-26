@@ -131,8 +131,8 @@ const Editing = () => {
       </div>
       <div id="description">
         <p>
-          This CRUD operations can be configured in Gantt chart using <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#editsettings">editSettings</a> and
-          <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#allowtaskbardraganddrop">allowTaskbarEditing</a>. Gantt chart
+          This CRUD operations can be configured in Gantt Chart using <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#editsettings">editSettings</a> and
+          <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#allowtaskbardraganddrop">allowTaskbarEditing</a>. Gantt Chart
           has two modes to manipulate the datasource
           <li><code>Auto</code></li>
           <li><code>Dialog</code></li>

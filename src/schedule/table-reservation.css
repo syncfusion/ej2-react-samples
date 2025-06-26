@@ -1,0 +1,899 @@
+@font-face {
+    font-family: 'eve-management-tailwind';
+    src:
+        url(data:application/x-font-ttf;charset=utf-8;base64,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) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="tr-icon-"],
+[class*=" tr-icon-"] {
+    font-family: 'eve-management-tailwind' !important;
+    speak: none;
+    font-size: 55px;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.table-reservation-wrapper {
+    height: 550px;
+    width: 100%;
+
+    .schedule-table-reservation {
+        .e-schedule-toolbar-container .e-show-waiting-list::before {
+            content: '\e71a';
+        }
+
+        .e-schedule-toolbar-container .e-hide-waiting-list::before {
+            content: '\e82b';
+        }
+
+        .e-timeline-view {
+            .e-resource-left-td,
+            .e-date-header-container {
+                height: 92px;
+            }
+
+            .e-date-header-wrap .custom-slot-template .meal-period-indicator {
+                font-weight: 500;
+            }
+
+            .e-resource-column-wrap {
+                .e-resource-cells.e-child-node {
+                    height: 75px !important;
+
+                    .table-name {
+                        line-height: 22px;
+                    }
+
+                    .seat-capacity-icon::before {
+                        content: '\e7b9';
+                    }
+
+                    .seat-capacity-icon {
+                        display: inline-flex;
+                        vertical-align: middle;
+                    }
+                }
+            }
+
+            .e-content-wrap {
+                .e-work-cells:not(.e-resource-group-cells) {
+                    height: 75px !important;
+                }
+
+                .e-appointment.e-cancelled {
+                    background-color: #FFE2E5;
+                    border: 1px dashed #D13438 !important;
+                    color: #242424;
+                }
+
+                .e-appointment.e-blocked,
+                .e-appointment.e-not-available {
+                    background-color: #E6E6E6;
+                    color: #424242;
+                }
+
+                .e-appointment {
+                    height: 72px !important;
+                    color: #FFFFFF;
+
+                    .template-wrap {
+                        margin: 4px 6px;
+
+                        .e-icons.appointment-icon {
+                            display: inline-flex;
+                            vertical-align: middle;
+                        }
+
+                        .status-badge {
+                            position: absolute;
+                            top: 5px;
+                            background-color: #D13438;
+                            color: #FFFFFF;
+                            padding: 2px 6px;
+                            border-radius: 100px;
+                        }
+
+                        .customer-details,
+                        .time-details,
+                        .contact-info {
+                            margin-bottom: 4px;
+                        }
+
+                        .customer-details .time-slot,
+                        .contact-info .contact-info-number {
+                            line-height: 16px;
+                        }
+
+                        .customer-details .guest-icon:before {
+                            content: '\e7b9';
+                        }
+
+                        .time-details .time-icon:before {
+                            content: '\e705';
+                        }
+
+                        .contact-info .tr-icon-telephone::before {
+                            content: "\e700";
+                        }
+                    }
+                }
+            }
+        }
+
+        .e-table-wrap.e-agenda-view {
+            .e-resource-column:first-child {
+                width: 100px;
+            }
+
+            .e-agenda-item.e-agenda-view {
+                .e-appointment.e-template {
+                    border-top-color: #D1D1D1 !important;
+                    border-bottom-color: #D1D1D1 !important;
+                    border-top: 1px solid;
+                    border-bottom: 1px solid;
+                    flex-direction: row;
+                    position: relative;
+                    width: 100%;
+
+                    >div:first-child {
+                        width: 100%;
+                    }
+
+                    .agenda-item {
+                        .appointment-item,
+                        .e-icons {
+                            font-size: 14px;
+                            font-weight: 400;
+                            letter-spacing: 0%;
+                        }
+
+                        .e-icons {
+                            line-height: 100%;
+                            display: inline-flex;
+                            vertical-align: middle;
+                        }
+
+                        .status-badge {
+                            position: absolute;
+                            top: 5px;
+                            background-color: #FDF3F4;
+                            color: #D13438;
+                            padding: 2px 6px;
+                            border-radius: 4px;
+                        }
+
+                        .table-info {
+                            margin: 12px 0 8px 0;
+                        }
+
+                        .customer-name {
+                            margin-bottom: 6px;
+                        }
+
+                        .time-section,
+                        .slot-duration-details,
+                        .party-details,
+                        .contact-details {
+                            margin-bottom: 8px;
+                        }
+
+                        .time-size-details {
+                            justify-content: flex-start;
+
+                            .time-icon::before {
+                                content: '\e705';
+                            }
+
+                            .time-icon,
+                            .time-value,
+                            .slot-duration {
+                                display: inline-block;
+                            }
+
+                            .slot-duration::before {
+                                content: '•';
+                                font-weight: bold;
+                            }
+
+                            .party-details .party-icon::before {
+                                content: '\e7b9';
+                            }
+                        }
+
+                        .contact-details .tr-icon-telephone::before {
+                            content: '\e700';
+                        }
+
+                        .notes-details {
+                            margin-bottom: 12px;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+
+                            .notes-icon::before {
+                                content: '\e8f7';
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .waiting-list-container {
+        border-style: solid;
+        border-color: #D1D1D1;
+        border-width: 1px 1px 1px 0px;
+        min-width: 300px;
+        width: 300px;
+
+        .title-container {
+            height: 48px;
+
+            .title-text {
+                padding: 14px 0;
+            }
+        }
+
+        #list-container {
+            border-top: 1px solid #D1D1D1;
+            height: auto;
+
+            .slot-tabs {
+                height: 48px;
+                margin: 3px 0 12px 0;
+
+                .e-tab.e-control .e-toolbar-items {
+                    margin: 0px 12px 0 12px;
+                }
+
+                .e-tab .e-tab-header .e-toolbar-item,
+                .e-tab .e-tab-header .e-toolbar-item .e-tab-wrap:hover .e-tab.e-focused .e-tab-header .e-toolbar-item,
+                .e-tab.e-focused .e-tab-header .e-toolbar-item .e-tab-wrap:hover {
+                    height: 48px;
+                }
+            }
+
+            .table-reservation-treeview {
+                height: 435px;
+                margin: 0 12px 0 12px;
+                border: none;
+                overflow-y: auto;
+
+                .e-list-parent.e-ul {
+                    padding: 0;
+                    overflow: visible;
+                }
+
+                .e-list-item {
+                    height: 124px;
+                    margin-bottom: 8px;
+                    padding: 0;
+
+                    .e-fullrow {
+                        border-radius: 6px;
+                        height: 124px;
+                        padding: 1px;
+                        margin: 0;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+
+        .no-waiting-list-message {
+            justify-content: center;
+            height: 30px;
+            width: 100%;
+        }
+    }
+
+    .waiting-list-container.hide {
+        transform: translateX(100%);
+        transition: transform .5s ease, width 500ms;
+        width: 0;
+    }
+
+    .e-control.e-schedule:not(.e-rtl) {
+        .e-timeline-view {
+            .e-resource-column-wrap .e-resource-cells.e-child-node .resource-header-template .table-seat-capacity .seat-capacity-icon {
+                margin-right: 4px;
+            }
+
+            .e-content-wrap {
+                .e-appointment {
+                    .template-wrap {
+                        .status-badge {
+                            right: 5px;
+                        }
+
+                        .customer-details .customer-name {
+                            margin-right: 6px;
+                        }
+
+                        .customer-details .guest-info .guest-icon {
+                            margin-right: 3px;
+                        }
+
+                        .time-details .time-icon,
+                        .contact-info .contact-info-icon {
+                            margin-right: 4px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .e-table-wrap.e-agenda-view {
+            .e-resource-column:first-child .e-resource-text {
+                padding: 12px 0 0 7px;
+            }
+
+            .e-agenda-item.e-agenda-view {
+                .e-appointment.e-template {
+                    border-right-color: #D1D1D1 !important;
+                    border-right: 1px solid;
+
+                    .agenda-item {
+                        .e-icons {
+                            margin-right: 6px;
+                        }
+
+                        .status-badge {
+                            right: 5px;
+                        }
+
+                        .slot-duration::before {
+                            margin: 0 10px 0 4px;
+                        }
+
+                        .time-size-details .time-value {
+                            margin-right: 20px;
+                        }
+
+                        .time-size-details .party-details {
+                            margin-left: 56px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .e-control.e-schedule.e-rtl {
+        .e-timeline-view {
+            .e-resource-column-wrap .e-resource-cells.e-child-node .resource-header-template .table-seat-capacity .seat-capacity-icon {
+                margin-left: 4px;
+            }
+
+            .e-content-wrap {
+                .e-appointment {
+                    .template-wrap {
+                        .status-badge {
+                            left: 5px;
+                        }
+
+                        .customer-details .customer-name {
+                            margin-left: 6px;
+                        }
+
+                        .customer-details .guest-info .guest-icon {
+                            margin-left: 3px;
+                        }
+
+                        .time-details .time-icon,
+                        .contact-info .contact-info-icon {
+                            margin-left: 4px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .e-table-wrap.e-agenda-view {
+            .e-resource-column:first-child .e-resource-text {
+                padding: 12px 7px 0 0;
+            }
+
+            .e-agenda-item.e-agenda-view {
+                .e-appointment.e-template {
+                    border-left-color: #D1D1D1 !important;
+                    border-left: 1px solid;
+
+                    .agenda-item {
+                        .e-icons {
+                            margin-left: 6px;
+                        }
+
+                        .status-badge {
+                            left: 5px;
+                        }
+
+                        .slot-duration::before {
+                            margin: 0 4px 0 10px;
+                        }
+
+                        .time-size-details .time-value {
+                            margin-left: 20px;
+                        }
+
+                        .time-size-details .party-details {
+                            margin-right: 56px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .e-control.e-schedule.e-rtl~.waiting-list-container {
+        border-width: 1px 0px 1px 1px;
+        order: -1;
+
+        #list-container .events-list {
+            text-align: right;
+        }
+    }
+
+    .alert-dialog.e-dialog {
+        height: auto !important;
+    }
+}
+
+.e-quick-popup-wrapper.table-reservation-quick-popup {
+    .e-event-popup {
+        .e-popup-header {
+            .e-event-header.e-popup-header {
+                .quick-info-header-content {
+                    padding: 8px 11px;
+                    flex-grow: 1;
+                    margin: 10px 16px 0 16px;
+
+                    .quick-info-title {
+                        height: 100%;
+                    }
+
+                    .duration-text {
+                        height: 100%;
+                        margin-top: 2px;
+                        white-space: nowrap;
+                    }
+                }
+            }
+        }
+
+        .e-popup-content {
+            padding: 14px 16px;
+
+            .quick-info-content {
+                .event-content {
+                    height: 100%;
+                    padding: 0%;
+
+                    .e-content-item {
+                        align-items: baseline;
+
+                        label {
+                            flex-shrink: 0;
+                            width: 116px !important;
+                        }
+
+                        .e-notes-colon {
+                            margin-right: 5px;
+                        }
+                    }
+
+                    .e-time,
+                    .e-party-size,
+                    .e-contact-number,
+                    .e-notes {
+                        margin-top: 14px;
+                    }
+                }
+            }
+        }
+
+        .e-popup-footer {
+            display: none;
+        }
+    }
+}
+
+.table-reservation-quick-popup:not(.e-rtl) {
+    .e-popup-header .quick-info-title {
+        margin-right: 24px;
+    }
+
+    .e-popup-content label {
+        margin-right: 8px;
+    }
+}
+
+.table-reservation-quick-popup.e-rtl {
+    .e-popup-header .quick-info-title {
+        margin-left: 24px;
+    }
+
+    .e-popup-content label {
+        margin-left: 8px;
+    }
+}
+
+.table-reservation-editor-popup {
+    .e-dlg-header-content {
+        padding: 24px 24px 10px 24px;
+    }
+
+    .e-dlg-content {
+        padding: 10px 24px;
+
+        .time-alert {
+            color: red;
+            font-size: 12px;
+            padding-bottom: 12px;
+            margin-top: -10px;
+        }
+
+        .form-row {
+            flex-wrap: wrap;
+            margin-bottom: 13px;
+
+            .e-textlabel {
+                margin-bottom: 4px;
+            }
+        }
+
+        .form-group {
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 0;
+        }
+
+        .form-group.e-contact-number,
+        .form-group.e-note {
+            width: 100%;
+        }
+
+        .ready-only-item {
+            pointer-events: none;
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
+}
+
+.table-reservation-editor-popup:not(.e-rtl) .e-dlg-content .form-group.first-item {
+    padding-right: 16px;
+}
+
+.table-reservation-editor-popup.e-rtl .e-dlg-content .form-group.first-item {
+    padding-left: 16px;
+}
+
+.table-reservation-wrapper .waiting-list-container .table-reservation-treeview,
+.e-drag-item.e-treeview.table-reservation-treeview {
+    .e-text-content {
+        border-color: #D1D1D1 !important;
+        border: 1px solid;
+        border-radius: 6px;
+        height: 124px;
+        padding: 0;
+
+        .e-list-text {
+            border: none;
+            display: inline-block;
+            height: auto;
+            line-height: 20px;
+            padding: 12px;
+            white-space: nowrap;
+            width: 100%;
+
+            .waiting-list-card {
+                .list-item,
+                .e-icons {
+                    font-size: 14px;
+                    font-weight: 400;
+                    letter-spacing: 0%;
+                }
+
+                .list-item {
+                    font-family: 'Segoe UI';
+                    line-height: 20px;
+                }
+
+                .e-icons {
+                    line-height: 100%;
+                    display: inline-flex;
+                    align-items: center;
+                    vertical-align: middle;
+                }
+
+                .customer-header {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 8px;
+
+                    .customer-name-section,
+                    .customer-name-section .guest-info {
+                        display: flex;
+                        align-items: center;
+                    }
+
+                    .customer-name-section .guest-icon::before {
+                        content: '\e7b9';
+                    }
+
+                    .contact-info .tr-icon-telephone::before {
+                        content: "\e700";
+                    }
+                }
+
+                .time-details {
+                    margin-bottom: 4px;
+
+                    .time-icon::before {
+                        content: '\e705';
+                    }
+                }
+
+                .notes-details {
+                    margin-bottom: 8px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+
+                    .notes-icon::before {
+                        content: '\e8f7';
+                    }
+                }
+
+                .table-category {
+                    display: flex;
+                }
+
+                .customer-header .customer-name-section .customer-name,
+                .table-category .category-value {
+                    font-family: 'Segoe UI';
+                    font-size: 14px;
+                    font-weight: 600;
+                    line-height: 20px;
+                }
+            }
+        }
+    }
+}
+
+.table-reservation-wrapper .waiting-list-container .table-reservation-treeview:not(.e-rtl),
+.e-drag-item.e-treeview.table-reservation-treeview:not(.e-rtl) {
+    .e-text-content .e-list-text .waiting-list-card {
+        .e-icons {
+            margin-right: 6px;
+        }
+
+        .customer-header .customer-name-section .customer-name {
+            margin-right: 12px;
+        }
+
+        .table-category .category-label {
+            padding-right: 4px;
+        }
+    }
+}
+
+.table-reservation-wrapper .waiting-list-container .table-reservation-treeview.e-rtl,
+.e-drag-item.e-treeview.table-reservation-treeview.e-rtl {
+    .e-text-content .e-list-text .waiting-list-card {
+        .e-icons {
+            margin-left: 6px;
+        }
+
+        .customer-header .customer-name-section .customer-name {
+            margin-left: 12px;
+        }
+
+        .table-category .category-label {
+            padding-left: 4px;
+        }
+    }
+}
+
+.table-reservation-wrapper,
+.schedule-table-reservation .table-seat-capacity,
+.schedule-table-reservation .customer-details,
+.schedule-table-reservation .customer-details .guest-info,
+.schedule-table-reservation:not(.e-device) .time-size-details,
+.no-waiting-list-message,
+.table-reservation-quick-popup .e-dlg-closeicon-btn,
+.table-reservation-quick-popup .e-content-item,
+.table-reservation-editor-popup .form-row {
+    display: flex;
+}
+
+.schedule-table-reservation .seat-capacity-icon,
+.schedule-table-reservation .appointment-icon,
+.schedule-table-reservation .agenda-item .e-icons,
+.schedule-table-reservation .time-size-details,
+.no-waiting-list-message,
+.table-reservation-quick-popup .e-dlg-closeicon-btn {
+    align-items: center;
+}
+
+.schedule-table-reservation .seat-capacity,
+.schedule-table-reservation .e-appointment .guest-count,
+.schedule-table-reservation .e-appointment .time-slot,
+.schedule-table-reservation .e-appointment .contact-info-number,
+.schedule-table-reservation .table-name,
+.schedule-table-reservation .e-appointment .customer-name,
+.schedule-table-reservation .status-badge,
+.waiting-list-container .title-text,
+.table-reservation-editor-popup .event-editor-header,
+.table-reservation-quick-popup .quick-info-title,
+.table-reservation-quick-popup .duration-text,
+.table-reservation-quick-popup label,
+.table-reservation-quick-popup .e-content,
+.table-reservation-editor-popup .e-textlabel,
+.table-reservation-editor-popup .e-field,
+.schedule-table-reservation .agenda-item .appointment-item {
+    font-family: 'Segoe UI';
+}
+
+.schedule-table-reservation .e-appointment .time-slot,
+.schedule-table-reservation .e-appointment .contact-info-number,
+.schedule-table-reservation .status-badge,
+.schedule-table-reservation .custom-slot-template .time-text,
+.schedule-table-reservation .appointment-icon,
+.table-reservation-quick-popup .e-dlg-closeicon-btn {
+    font-size: 12px;
+}
+
+.schedule-table-reservation .seat-capacity-icon,
+.schedule-table-reservation .seat-capacity,
+.schedule-table-reservation .e-timeline-view .e-appointment .customer-name,
+.schedule-table-reservation .e-appointment .guest-count,
+.schedule-table-reservation .e-appointment .table-name,
+.table-reservation-quick-popup .duration-text,
+.table-reservation-quick-popup label,
+.table-reservation-quick-popup .e-content,
+.schedule-table-reservation .meal-period-indicator,
+.table-reservation-editor-popup .e-textlabel,
+.table-reservation-editor-popup .e-field,
+.no-waiting-list-message {
+    font-size: 14px;
+}
+
+.schedule-table-reservation .resource-header-template .table-name,
+.schedule-table-reservation .e-appointment .agenda-item .customer-name,
+.waiting-list-container .title-text,
+.table-reservation-editor-popup .event-editor-header,
+.table-reservation-quick-popup .quick-info-title {
+    font-size: 16px;
+}
+
+.schedule-table-reservation .resource-header-template .table-name,
+.schedule-table-reservation .seat-capacity-icon,
+.schedule-table-reservation .seat-capacity,
+.schedule-table-reservation .e-appointment .guest-count,
+.table-reservation-quick-popup .duration-text,
+.table-reservation-quick-popup .e-content,
+.schedule-table-reservation .appointment-icon,
+.table-reservation-editor-popup .e-textlabel,
+.table-reservation-editor-popup .e-field {
+    font-weight: 400;
+}
+
+.schedule-table-reservation .e-appointment .customer-name,
+.schedule-table-reservation .e-appointment .time-slot,
+.schedule-table-reservation .e-appointment .contact-info-number,
+.schedule-table-reservation .status-badge,
+.schedule-table-reservation .e-appointment .table-name,
+.waiting-list-container .title-text,
+.table-reservation-editor-popup .event-editor-header,
+.table-reservation-quick-popup .quick-info-title,
+.table-reservation-quick-popup label {
+    font-weight: 600;
+}
+
+.schedule-table-reservation .seat-capacity,
+.schedule-table-reservation .e-appointment .customer-name,
+.schedule-table-reservation .e-appointment .guest-count,
+.schedule-table-reservation .e-appointment .table-name,
+.waiting-list-container .title-text,
+.table-reservation-editor-popup .event-editor-header,
+.table-reservation-quick-popup .quick-info-title,
+.table-reservation-quick-popup .duration-text,
+.table-reservation-quick-popup label,
+.table-reservation-quick-popup .e-content,
+.table-reservation-editor-popup .e-textlabel,
+.table-reservation-editor-popup .e-field,
+.schedule-table-reservation .agenda-item .appointment-item {
+    line-height: 20px;
+}
+
+.schedule-table-reservation .seat-capacity-icon,
+.schedule-table-reservation .appointment-icon {
+    line-height: 100%;
+}
+
+.schedule-table-reservation .e-resource-column:has(.resource-header-template),
+.no-waiting-list-message.hidden,
+.waiting-list-container.hide,
+.e-drag-item.table-reservation-treeview .e-icon-expandable,
+.table-reservation-editor-popup .e-footer-content .e-event-delete.e-btn {
+    display: none;
+}
+
+.e-drag-item.e-treeview.table-reservation-treeview {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+
+    .e-text-content {
+        border: none;
+    }
+}
+
+.table-reservation-dragging .e-work-cells:not(.e-resource-group-cells),
+.table-reservation-dragging .e-appointment.e-cancelled {
+    cursor: default !important;
+}
+
+.cursor-not-allowed {
+    cursor: not-allowed !important;
+}
+
+@media (max-width: 768px) {
+    .table-reservation-wrapper {
+        display: block;
+        height: auto;
+        overflow: hidden;
+
+        .schedule-table-reservation {
+            margin-right: 0;
+            margin-bottom: 10px;
+            width: 100%;
+            height: 450px;
+
+            .e-timeline-view .e-date-header-wrap table td:first-child {
+                border-left-width: 0 !important;
+            }
+
+            .e-timeline-view .e-date-header-wrap table td:not(.e-time-cells) {
+                border-left-width: 1px;
+            }
+
+            .e-agenda-view .e-appointment .time-size-details .party-details {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+
+            .e-resource-tree-popup .e-list-item {
+                .e-fullrow,
+                .e-text-content {
+                    height: 82px;
+                }
+            }
+        }
+
+        .waiting-list-container {
+            border-left: 1px solid #D1D1D1;
+            width: 100%;
+            height: auto;
+            position: relative;
+            overflow: visible;
+
+            .table-reservation-treeview.e-control {
+                height: 300px;
+            }
+        }
+    }
+
+    .e-drag-item.table-reservation-treeview {
+        position: fixed !important;
+        max-width: 80%;
+        z-index: 9999;
+    }
+}

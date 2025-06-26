@@ -386,7 +386,7 @@ const SAMPLE_CSS = `
   font-style: normal;
 }
 
-.e-ddb-icons1 {
+.diagram-network .e-ddb-icons1 {
   font-family: 'e-ddb-icons1';
   speak: none;
   font-size: 16px;
@@ -399,35 +399,35 @@ const SAMPLE_CSS = `
   -moz-osx-font-smoothing: grayscale;
 }
 
-.e-toggle-palette::before {
+.diagram-network .e-toggle-palette::before {
   content: "\e700"
 }
-diagram-property-tab .sb-mobile-palette {
+.diagram-network .diagram-property-tab .sb-mobile-palette {
   width:215px;
   height:559px;
   float:left;
 }
-diagram-property-tab .sb-mobile-palette-bar {
+.diagram-network .diagram-property-tab .sb-mobile-palette-bar {
   display: none;
 }
-diagram-property-tab .sb-mobile-diagram {
+.diagram-network .diagram-property-tab .sb-mobile-diagram {
   width:calc(100% - 217px);
   height: 559px;
   float: left;
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-left: none;
 }
-.container-fluid{
+.diagram-network .container-fluid{
   padding-bottom: 15px;
 }
-.e-upload
+.diagram-network .e-upload
 {
   height: 0px;
   width: 0px;
   display: none !important;
   border: none !important;
 }
-#dropArea {
+.diagram-network #dropArea {
   height: 50px;
   padding: 7px;
   text-align: center;
@@ -436,7 +436,7 @@ diagram-property-tab .sb-mobile-diagram {
   /* border-top: none; */
 }
 @media (max-width: 550px) {
-  diagram-property-tab .sb-mobile-palette {
+  .diagram-network .diagram-property-tab .sb-mobile-palette {
       z-index: 19;
       position: absolute;
       display: none;
@@ -444,13 +444,13 @@ diagram-property-tab .sb-mobile-diagram {
       width:39%;
       height:100%;
   }
-  diagram-property-tab .sb-mobile-diagram {
+  .diagram-network .diagram-property-tab .sb-mobile-diagram {
       width: 100%;
       height: 100%;
       float: left;
       left: 0px;
   }
-  diagram-property-tab .sb-mobile-palette-bar {
+  .diagram-network .diagram-property-tab .sb-mobile-palette-bar {
       display: block;
       width: 100%;
       background:#fafafa;
@@ -458,11 +458,11 @@ diagram-property-tab .sb-mobile-diagram {
       border:0.5px solid #e0e0e0;
       min-height: 40px;
   }
-  #palette-icon {
+  .diagram-network #palette-icon {
       font-size: 20px; 
   }
 }
-diagram-property-tab .sb-mobile-palette-open {
+.diagram-network .diagram-property-tab .sb-mobile-palette-open {
   position: absolute;
   display: block;
   right: 15px;
@@ -474,7 +474,7 @@ diagram-property-tab .sb-mobile-palette-open {
 .material #networkDiagram #palette-space {
   border: 1px solid rgba(0, 0, 0, 0.12);
 }
-.material #dropArea {
+.diagram-network .material #dropArea {
   border-width: 1px 0px 0px 0px;
   border-style: solid;
   border-color: rgba(0, 0, 0, 0.12);
@@ -667,7 +667,7 @@ function NetworkShapes() {
     }
   }
   return (
-    <div className="control-pane">
+    <div className="control-pane diagram-network">
       <style>{SAMPLE_CSS}</style>
       <div className="control-section">
         <div id="networkDiagram" className="diagram-property-tab" style={{ width: "100%", height: "600px" }}>

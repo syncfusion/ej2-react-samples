@@ -1,5 +1,6 @@
 import { DiagramComponent } from "@syncfusion/ej2-react-diagrams";
-
+import { serverAIRequest } from '../common/ai-service';
+let attempts = 0;
 export async function convertTextToFlowchart(inputText: string, diagram: DiagramComponent) {
     showLoading();
     const options = {
@@ -55,14 +56,19 @@ export async function convertTextToFlowchart(inputText: string, diagram: Diagram
     }
 
     try {
-        const jsonResponse = await (window as any).getAzureChatAIRequest(options);
+        let jsonResponse = await serverAIRequest(options);
+        // Remove ```mermaid and ``` if they exist at the start and end of the response
+        jsonResponse = jsonResponse.replace('```mermaid', '').replace('```', '');
         diagram.loadDiagramFromMermaid(jsonResponse as string);
         diagram.dataBind();
         hideLoading();
 
     } catch (error) {
-        console.error('Error:', error);
-        convertTextToFlowchart(inputText, diagram);
+        hideLoading();
+         if(attempts < 2){
+            convertTextToFlowchart(inputText, diagram);
+        }
+        attempts++;
     }
 };
 

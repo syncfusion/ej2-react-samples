@@ -20,9 +20,9 @@ function ColumnResizing() {
                 <div style={{ overflowX: 'auto', marginLeft: '4px' }}>
                     <GridComponent dataSource={orderDetails} allowResizing={true} height='400' width='850' autoFit={true} allowSorting={true} editSettings={editSettings} allowFiltering={true} filterSettings={filterSettings} toolbar={toolbar}>
                         <ColumnsDirective>
-                            <ColumnDirective field='OrderID' headerText='Order ID' minWidth='100' width='150' maxWidth='200' textAlign='Right' validationRules={orderidRules} isPrimaryKey={true}></ColumnDirective>
+                            <ColumnDirective field='OrderID' headerText='Order ID' minWidth='115' width='150' maxWidth='200' textAlign='Right' validationRules={orderidRules} isPrimaryKey={true}></ColumnDirective>
                             <ColumnDirective field='CustomerName' headerText='Customer Name' minWidth='115' width='150' validationRules={customeridRule}></ColumnDirective>
-                            <ColumnDirective field='Freight' headerText='Freight' minWidth='100' width='120' format='C2' textAlign='Right' validationRules={freightRules} editType='numericedit'/>
+                            <ColumnDirective field='Freight' headerText='Freight' minWidth='115' width='120' format='C2' textAlign='Right' validationRules={freightRules} editType='numericedit'/>
                             <ColumnDirective field='ShippedDate' headerText='Shipped Date' allowResizing={false} width='150' format='yMd' textAlign='Right' editType='datepickeredit'/>
                             <ColumnDirective field='ShipCountry' headerText='Ship Country' minWidth='115' width='150' editType='dropdownedit'></ColumnDirective>
                         </ColumnsDirective>

@@ -110,11 +110,13 @@ export class CheckBox extends SampleBase<{}, {}> {
           as <code>CheckBox</code>. To perform the checkbox feature in MultiSelect, the <code>CheckBoxSelection</code> module
         have to be injected in the application end.</p>
 
-          <p>In this sample, the local data is bound to a collection of countries data. Also, provided options for the following:
-        <p> To enable/disable <code>Select All</code>feature in the property panel.</p>
-            <p> To enable/disable <code>DropDown Button</code>feature in the property panel.</p>
-            <p> To enable/disable <code>Selection Reorder</code>feature in the property panel.</p>
-          </p>
+          <p>In this sample, the local data is bound to a collection of countries data. Also, provided options for the following:</p>
+            <ul>
+              <li> To enable/disable <code>Select All</code>feature in the property panel.</li>
+              <li> To enable/disable <code>DropDown Button</code>feature in the property panel.</li>
+              <li> To enable/disable <code>Selection Reorder</code>feature in the property panel.</li>
+            </ul>
+          
 
           <p>The checkbox sample illustrates using the countries data. </p>
 

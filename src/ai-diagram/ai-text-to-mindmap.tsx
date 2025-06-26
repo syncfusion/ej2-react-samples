@@ -52,7 +52,8 @@ export interface MindMapData {
     orientation: string;
     level: number;
 }
-function smartMindMap() {
+
+function AiSmartMindMap() {
     let dialog: DialogComponent;
     let textBox: TextBoxComponent;
     let sendButton: ButtonComponent;
@@ -60,10 +61,12 @@ function smartMindMap() {
     useEffect(() => {
         // Add keypress event listener to the document
         document.addEventListener('keypress', function (event) {
-            if (event.key === 'Enter' && document.activeElement === textBox.element) {
-                if (textBox.value) {
-                    dialog.hide();
-                    convertTextToMindMap(textBox.value, diagram);
+            if (textBox) {
+                if (event.key === 'Enter' && document.activeElement === textBox.element) {
+                    if (textBox.value) {
+                        dialog.hide();
+                        convertTextToMindMap(textBox.value, diagram);
+                    }
                 }
             }
         });
@@ -168,10 +171,12 @@ function smartMindMap() {
                     <ButtonComponent id="db-send"
                         ref={sendButtonObj => sendButton = sendButtonObj as ButtonComponent}
                         onClick={() => {
-                            dialog.hide();
-                            convertTextToMindMap(textBox.value, diagram)
+                            if (textBox.value) {
+                                dialog.hide();
+                                convertTextToMindMap(textBox.value, diagram)
+                            }
                         }}
-                        iconCss='e-icons e-send' isPrimary={true} disabled={true}
+                        iconCss='e-icons e-send' isPrimary={true} disabled={false}
                         style={{ marginLeft: '5px', height: '32px', width: '32px' }}></ButtonComponent>
                 </div>
             </>
@@ -180,18 +185,9 @@ function smartMindMap() {
 
     return (
         <>
-            <div className="description-container e-card">
-                <div className="e-card-header-title" style={{ fontWeight: 600 }}>AI-Powered Mindmap Creation</div>
-                <div className="e-card-content">
-                    <p>
-                        This demo showcases the React Diagram Component used to create an AI-assisted mindmap diagram. It features nodes and connectors for visually organizing ideas and concepts, ideal for brainstorming and mapping complex information.
-                    </p>
-                </div>
-            </div>
-            <div className="container">
                 <div className="main">
                     <div className="db-toolbar-editor">
-                        <div className="menu-control">
+                        <div id="aiMindMap" className="ai-menu-control">
                             <MenuComponent id="menu"
                                 ref={menuObj => menu = menuObj as MenuComponent}
                                 items={menuItems} select={menuClick}
@@ -205,15 +201,12 @@ function smartMindMap() {
                                 height={46}
                             >
                                 <ItemsDirective>
-                                    <ItemDirective prefixIcon='sf-icon-undo' tooltipText='Undo' disabled={true} />
-                                    <ItemDirective prefixIcon='sf-icon-redo' tooltipText='Redo' disabled={true} />
-                                    <ItemDirective type='Separator' />
-                                    <ItemDirective prefixIcon='sf-icon-pointer tb-icons' tooltipText='Select Tool' cssClass='tb-item-selected' />
-                                    <ItemDirective prefixIcon='sf-icon-Pan tb-icons' tooltipText='Pan Tool' />
-                                    <ItemDirective type='Separator' />
-                                    <ItemDirective prefixIcon='sf-icon-add-child' tooltipText='Add Child' disabled={true} />
-                                    <ItemDirective prefixIcon='sf-icon-add-sibling' tooltipText='Add Sibling' disabled={true} />
-                                    <ItemDirective type='Separator' />
+                                    <ItemDirective prefixIcon='ai-sf-icon-undo' tooltipText='Undo' disabled={true} />
+                                    <ItemDirective prefixIcon='ai-sf-icon-redo' tooltipText='Redo' disabled={true} />
+                                    <ItemDirective prefixIcon='ai-sf-icon-pointer tb-icons' tooltipText='Select Tool' cssClass='tb-item-selected' />
+                                    <ItemDirective prefixIcon='ai-sf-icon-pan tb-icons' tooltipText='Pan Tool' />
+                                    <ItemDirective prefixIcon='ai-sf-icon-add-child' tooltipText='Add Child' disabled={true} />
+                                    <ItemDirective prefixIcon='ai-sf-icon-add-sibling' tooltipText='Add Sibling' disabled={true} />
                                     <ItemDirective cssClass='tb-item-end tb-zoom-dropdown-btn' align='Right'
                                         template={() => <DropDownButtonComponent id="btnZoomIncrement"
                                                 items={zoomMenuItems} content={Math.round(diagram.scrollSettings.currentZoom! * 100) + ' %'} select={zoomChange}
@@ -245,13 +238,14 @@ function smartMindMap() {
                         border: '1px solid #fff7b5',
                         position: 'absolute',
                         margin: '27px',
+                        fontSize: '14px',
                         visibility: 'hidden',
                         zIndex: 1000
                     }}>
                         <div id="closeIconDiv" style={{
                             float: 'right',
-                            width: '22px',
-                            height: '22px',
+                            width: '16px',
+                            height: '16px',
                             border: '1px solid #fff7b5'
                         }}
                             onClick={onHideNodeClick}
@@ -408,27 +402,26 @@ function smartMindMap() {
                     <DialogComponent
                         ref={dialogObj => dialog = dialogObj as DialogComponent}
                         id='dialog'
-                        header='<span class="e-icons e-aiassist-chat" style="color: black;width:20px; font-size: 16px;"></span> AI Assist'
+                        header='<span class="e-icons e-assistview-icon" style="color: black;width:20px; font-size: 16px;"></span> AI Assist'
                         showCloseIcon={true}
                         isModal={true}
                         content={dialogContent}
-                        target={document.getElementById('container') as HTMLElement}
+                        target={document.getElementById('control-section') as HTMLElement}
                         width='540px'
                         visible={false}
                         height='310px'
                     />
                 </div>
                 <FabComponent id="ai-assist"
-                    isPrimary={true} content='AI Assist' iconCss='e-icons e-assist-chat'
+                    isPrimary={true} content='AI Assist' iconCss='e-icons e-assistview-icon' target="#diagram"
                     onClick={() => dialog.show()}></FabComponent>
                 {/* Loading indicator container */}
                 <div id="loadingContainer" className="loading-container">
                     <div className="loading-indicator"></div>
                     <div className="loading-text">Generating Mindmap...</div>
                 </div>
-            </div>
         </>
     )
 }
 
-export default smartMindMap
+export default AiSmartMindMap;

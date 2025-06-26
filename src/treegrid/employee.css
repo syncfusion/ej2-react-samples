@@ -1,0 +1,343 @@
+    .tailwind .email-link,
+    .tailwind3 .email-link,
+    .bootstrap .email-link,
+    .bootstrap4 .email-link,
+    .bootstrap5 .email-link,
+    .fluent .email-link,
+    .fluent2 .email-link,
+    .fluent2-highcontrast .email-link,
+    .highcontrast .email-link,
+    .material .email-link,
+    .material3 .email-link,
+    .fabric .email-link {
+        background-color: #ebf1ff;
+        font-size: xx-small;
+    }
+ 
+    .tailwind .employee-title,
+    .tailwind3 .employee-title,
+    .bootstrap .employee-title,
+    .bootstrap4 .employee-title,
+    .bootstrap5 .employee-title,
+    .fluent .employee-title,
+    .fluent2 .employee-title,
+    .fluent2-highcontrast .employee-title,
+    .highcontrast .employee-title,
+    .material .employee-title,
+    .material3 .employee-title,
+    .fabric .employee-title {
+        color: gray;
+    }
+ 
+    /* Dark Themes */
+    .tailwind-dark .email-link,
+    .tailwind3-dark .email-link,
+    .bootstrap-dark .email-link,
+    .bootstrap5-dark .email-link,
+    .fluent-dark .email-link,
+    .fluent2-dark .email-link,
+    .material-dark .email-link,
+    .material3-dark .email-link,
+    .fabric-dark .email-link {
+        background-color: #000000aa;
+        color: #6179ff;
+        font-size: xx-small;
+    }
+ 
+    .tailwind-dark .employee-title,
+    .tailwind3-dark .employee-title,
+    .bootstrap-dark .employee-title,
+    .bootstrap5-dark .employee-title,
+    .fluent-dark .employee-title,
+    .fluent2-dark .employee-title,
+    .material-dark .employee-title,
+    .material3-dark .employee-title,
+    .fabric-dark .employee-title {
+        color: lightgray;
+    }
+ 
+    .employee-cell {
+        padding: 8px 10px;
+    }
+ 
+    .employee-content {
+        display: flex;
+        align-items: center;
+    }
+ 
+    .employee-img {
+        border-radius: 50%;
+        margin: 0 10px;
+        width: 30px;
+        height: 30px;
+    }
+ 
+    .employee-info {
+        display: flex;
+        flex-direction: column;
+    }
+ 
+    .employee-name {
+        font-size: 14px;
+        font-weight: 500;
+    }
+ 
+    .employee-title {
+        font-size: 10px;
+    }
+ 
+    .flag-container {
+        display: inline-block;
+    }
+ 
+    .flag-img {
+        width: 20px;
+        height: 13px;
+    }
+ 
+    .flag-text {
+        display: inline-block;
+        padding: 0 6px;
+        vertical-align: middle;
+    }
+ 
+    .email-cell {
+        padding: 8px 10px;
+    }
+ 
+    .email-link {
+        font-size: 13px;
+        padding: 4px 8px;
+    }
+ 
+    .fluent2,
+    .fluent2-dark,
+    .fluent2-highcontrast {
+        #columnddl .e-input-group {
+            width: 140px !important;
+        }
+    }
+ 
+    .leave-bar-container {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        padding: 2px 0;
+    }
+ 
+    .leave-bar {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+ 
+    .leave-label {
+        text-align: right;
+    }
+ 
+    #sample .bar {
+        width: 50px;
+        height: 15px;
+        background-color: #eee;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        color: #000000;
+        padding: 6px 4px;
+    }
+ 
+    #sample .barlabel {
+        position: absolute;
+        z-index: 1;
+        pointer-events: none;
+        font-size: 12px;
+        font-weight: 500;
+    }
+ 
+    #sample .bar-fill {
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+ 
+    #sample .bar-fill.low {
+        background-color: #df2222;
+    }
+ 
+    #sample .bar-fill.medium {
+        background-color: #ffa500;
+    }
+ 
+    #sample .bar-fill.high {
+        background-color: #00b300;
+    }
+ 
+    .separator {
+        width: 1px;
+        background-color: #ccc;
+        margin: 0 8px;
+    }
+ 
+    .material-dark img.resources {
+        content: url("src/tree-grid/images/Resources.png");
+        padding-right: 5px;
+        width: 21px;
+    }
+ 
+    .material img.resources {
+        content: url("src/tree-grid/images/__Resources.png");
+        padding-left: 3px;
+        padding-right: 5px;
+        width: 24px;
+    }
+ 
+    .material3-dark img.resources {
+        content: url("src/tree-grid/images/Resources.png");
+        padding-right: 5px;
+        width: 21px;
+    }
+ 
+    .material3 img.resources {
+        content: url("src/tree-grid/images/__Resources.png");
+        padding-left: 3px;
+        padding-right: 5px;
+        width: 24px;
+    }
+ 
+    .fabric-dark img.resources {
+        content: url("src/tree-grid/images/Resources.png");
+        padding-right: 5px;
+        width: 21px;
+    }
+ 
+    .fabric img.resources {
+        content: url("src/tree-grid/images/__Resources.png");
+        padding-left: 3px;
+        padding-right: 5px;
+        width: 24px;
+    }
+ 
+    .bootstrap-dark img.resources {
+        content: url("src/tree-grid/images/Resources.png");
+        padding-right: 5px;
+        margin-top: -6px;
+        width: 21px;
+    }
+ 
+    .bootstrap img.resources {
+        content: url("src/tree-grid/images/__Resources.png");
+        padding-left: 3px;
+        padding-right: 5px;
+        margin-top: -4px;
+        width: 24px;
+    }
+ 
+    .tailwind-dark img.resources,
+    .tailwind3-dark img.resources {
+        content: url("src/tree-grid/images/Resources.png");
+        padding-left: 0px;
+        padding-right: 5px;
+        width: 21px;
+    }
+ 
+    .tailwind img.resources,
+    .tailwind3 img.resources {
+        content: url("src/tree-grid/images/__Resources.png");
+        padding-left: 3px;
+        padding-right: 5px;
+        width: 24px;
+    }
+ 
+    .bootstrap5-dark img.resources,
+    .bootstrap5\.3-dark img.resources {
+        content: url("src/tree-grid/images/Resources.png");
+        padding-left: 0px;
+        padding-right: 5px;
+        width: 21px;
+    }
+ 
+    .bootstrap4 img.resources {
+        content: url("src/tree-grid/images/__Resources.png");
+        padding-left: 3px;
+        padding-right: 5px;
+        margin-top: -8px;
+        width: 24px;
+    }
+ 
+    .highcontrast img.resources {
+        content: url("src/tree-grid/images/Resources.png");
+        padding-right: 5px;
+        width: 21px;
+    }
+ 
+    .fluent-dark img.resources {
+        content: url("src/tree-grid/images/Resources.png");
+        padding-left: 0px;
+        padding-right: 5px;
+        width: 21px;
+    }
+ 
+    .fluent img.resources {
+        content: url("src/tree-grid/images/__Resources.png");
+        padding-left: 3px;
+        padding-right: 5px;
+        width: 24px;
+    }
+ 
+    .fluent2-dark img.resources {
+        content: url("src/tree-grid/images/Resources.png");
+        padding-left: 0px;
+        padding-right: 5px;
+        width: 21px;
+    }
+ 
+    .fluent2-highcontrast img.resources {
+        content: url("src/tree-grid/images/Resources.png");
+        padding-left: 0px;
+        padding-right: 5px;
+        width: 21px;
+    }
+ 
+    .fluent2 img.resources {
+        content: url("src/tree-grid/images/__Resources.png");
+        padding-left: 3px;
+        padding-right: 5px;
+        width: 24px;
+    }
+ 
+    #sample .e-headertext ,
+    #sample .e-headercelldiv{
+       font-size: medium;
+    }
+    .e-headercell.e-templatecell {
+        .resources {
+            padding-bottom: 2px;
+        }
+    }
+ 
+    .bootstrap5  img.resources,
+    .bootstrap5\.3 img.resources {
+        content: url("src/tree-grid/images/__Resources.png");
+        padding-left: 3px;
+        padding-right: 5px;
+        width: 24px;
+    }
+ 
+    img.resources {
+        display: inline-block;
+    }
+ 
+    .viewer-container .e-input-group {
+        width: 21% !important;
+        margin-left: 10px;
+    }
+ 
+    @media (max-width: 1080px) {
+        .viewer-container .e-input-group {
+            width: 45% !important;
+        }
+    }

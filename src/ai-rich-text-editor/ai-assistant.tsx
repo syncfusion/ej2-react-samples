@@ -10,9 +10,11 @@ import { ButtonComponent, ChipListComponent } from '@syncfusion/ej2-react-button
 import { SkeletonComponent, ToastComponent } from '@syncfusion/ej2-react-notifications';
 import { Dialog, DialogComponent } from '@syncfusion/ej2-react-popups';
 import { useEffect } from 'react';
+import { getOpenAiModelRTE } from '../common/ai-service';
+
 enableRipple(true);
 
-function SmartRichTextEditor() {
+function AISmartRichTextEditor() {
     useEffect(() => {
         regenerateButton!.element.addEventListener('click', () => {
             updateAISugesstions();
@@ -200,7 +202,7 @@ function SmartRichTextEditor() {
     }
 
     async function getResponseFromOpenAI(subQuery: string, promptQuery: string): Promise<string> {
-        const content = await (window as any).OpenAiModelRTE(subQuery, promptQuery);
+        const content = await getOpenAiModelRTE(subQuery, promptQuery);
         return content ? content as string : '';
     }
 
@@ -496,4 +498,4 @@ function SmartRichTextEditor() {
     )
 }
 
-export default SmartRichTextEditor
+export default AISmartRichTextEditor

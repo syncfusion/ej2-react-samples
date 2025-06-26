@@ -109,7 +109,7 @@ const CustomAggregate = () => {
             <ColumnDirective
               field="category"
               headerText="Category"
-              width="270"
+              width="460"
               minWidth="270"
             />
             <ColumnDirective

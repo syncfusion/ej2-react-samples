@@ -20,14 +20,15 @@ const FileRestrict = () => {
     // States for file restrictions
     const [minFileSize, setMinFileSize] = useState(1);
     const [maxFileSize, setMaxFileSize] = useState(100);
-    const [allowedExtensions, setAllowedExtensions] = useState([".jpeg", ".jpg", ".png", ".svg", ".webp"]);
+    const [allowedExtensions, setAllowedExtensions] = useState([".jpeg", ".jpg", ".png", ".svg", ".webp", ".bmp"]);
     const [fileSizeUnit, setFileSizeUnit] = useState('KB');
     const fileExtensionsList = [
         { Name: "JPEG", Value: ".jpeg" },
         { Name: "JPG", Value: ".jpg" },
         { Name: "PNG", Value: ".png" },
         { Name: "SVG", Value: ".svg" },
-        { Name: "WebP", Value: ".webp" }
+        { Name: "WebP", Value: ".webp" },
+        { Name: "BMP", Value: ".bmp" }
     ];
 
     const units = [
@@ -119,7 +120,7 @@ const FileRestrict = () => {
                                     width="210px"
                                     change={(e) => {
                                         if (e.value.length === 0) {
-                                            setAllowedExtensions([".jpeg", ".jpg", ".png", ".svg", ".webp"]);
+                                            setAllowedExtensions([".jpeg", ".jpg", ".png", ".svg", ".webp", ".bmp"]);
                                         } else {
                                             setAllowedExtensions(e.value);
                                         }
@@ -153,12 +154,12 @@ const FileRestrict = () => {
                     This sample highlights the enhanced configuration capabilities of the Image Editor component through the <b>uploadSettings</b> property. The following features are included:
                 </p>
                 <ul>
-                    <li><b>File Extensions</b>: Use a multi-select dropdown with checkboxes to dynamically choose the allowed file extensions. Supported values include <code>jpeg</code>, <code>jpg</code>, <code>png</code>, <code>svg</code>, and <code>webp</code>.</li>
+                    <li><b>File Extensions</b>: Use a multi-select dropdown with checkboxes to dynamically choose the allowed file extensions. Supported values include <code>jpeg</code>, <code>jpg</code>, <code>png</code>, <code>svg</code>, <code>webp</code>, and <code>bmp</code>.</li>
                     <li><b>File Size</b>: Numeric textboxes to set minimum and maximum file sizes dynamically.</li>
                     <li><b>Dynamic Updates</b>: Changes made to the numeric textboxes or the dropdown options immediately reflect in the component's <code>uploadSettings</code>.</li>
                     <li><b>Upload Settings</b>: Predefined settings include:
                         <ul>
-                            <li><b>Allowed Extensions</b>: <code>.jpeg</code>, <code>.png</code>, <code>.svg</code>, <code>.webp</code></li>
+                            <li><b>Allowed Extensions</b>: <code>.jpeg</code>, <code>.png</code>, <code>.svg</code>, <code>.webp</code>, <code>.bmp</code></li>
                             <li><b>Minimum File Size</b>: 1 KB</li>
                             <li><b>Maximum File Size</b>: 100 KB</li>
                         </ul>

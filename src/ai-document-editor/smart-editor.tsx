@@ -1,8 +1,15 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
+import { updateAISampleSection } from '../common/sample-base';
+/* custom code start*/
+import AIToast from '../common/ai-toast';
+/* custom code end*/
 
 export class SmartEditor extends SampleBase<{}, {}> {
+     componentDidMount() {
+          updateAISampleSection(); 
+    }
 
     render() {
         return (
@@ -39,6 +46,7 @@ export class SmartEditor extends SampleBase<{}, {}> {
                         languages. This is particularly useful for creating multilingual documents or understanding content written in
                         foreign languages.</p>
                 </div>
+                <AIToast/>
             </div>
         )
     }
