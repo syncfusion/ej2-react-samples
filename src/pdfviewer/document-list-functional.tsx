@@ -109,7 +109,7 @@ function DocumentList () {
         'FormDesignerEditTool', 'FreeTextAnnotationOption', 'InkAnnotationOption',
         'ShapeAnnotationOption', 'StampAnnotation', 'SignatureOption', 'SearchOption',
         'PrintOption', 'DownloadOption'],
-      annotationToolbarItems: ['HighlightTool', 'UnderlineTool', 'StrikethroughTool',
+      annotationToolbarItems: ['HighlightTool', 'UnderlineTool', 'StrikethroughTool', 'SquigglyTool',
         'ColorEditTool', 'OpacityEditTool', 'AnnotationDeleteTool', 'StampAnnotationTool',
         'HandWrittenSignatureTool', 'InkAnnotationTool', 'ShapeTool', 'CalibrateTool',
         'StrokeColorEditTool', 'ThicknessEditTool', 'FreeTextAnnotationTool', 'FontFamilyAnnotationTool',

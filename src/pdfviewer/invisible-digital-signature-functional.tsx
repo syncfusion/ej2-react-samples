@@ -1,5 +1,5 @@
 /**
- * Invisible signature sample
+ * Invisible digital signature sample
  */
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';

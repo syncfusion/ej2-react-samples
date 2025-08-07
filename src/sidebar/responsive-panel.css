@@ -323,6 +323,3 @@
 .bootstrap5-dark .sidebar-treeview {
     border-right: 1px solid #eaeaea63;
 }
-.sidebar-treeview {
-    overflow: auto;
-}

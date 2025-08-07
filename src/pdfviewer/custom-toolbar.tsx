@@ -551,6 +551,10 @@ export class CustomToolbar extends SampleBase<{}, {}> {
           disableInkAnnotation.bind(this);
           viewer.annotationModule.setAnnotationMode('Strikethrough');
           break;
+        case 'squiggly':
+          disableInkAnnotation.bind(this);
+          viewer.annotationModule.setAnnotationMode('Squiggly');
+          break;
         case 'edit_annotation':
           disableInkAnnotation.bind(this);
           let formFieldToolbarElement: HTMLInputElement = document.getElementById(
@@ -783,6 +787,7 @@ export class CustomToolbar extends SampleBase<{}, {}> {
                 <ItemDirective prefixIcon="e-icons e-highlight-color" tooltipText="Highlight" id="highlights" align="Center"></ItemDirective>
                 <ItemDirective prefixIcon="e-icons e-underline" tooltipText="Underline" id="underline" align="Center" ></ItemDirective>
                 <ItemDirective prefixIcon="e-icons e-strikethrough" tooltipText="Strikethrough" id="strikethrough" align="Center" ></ItemDirective>
+                <ItemDirective prefixIcon="e-icons e-squiggly" tooltipText="Squiggly" id="squiggly" align="Center" ></ItemDirective>
                 <ItemDirective type="Separator" tooltipText="separator" align="Center" ></ItemDirective>
                 <ItemDirective prefixIcon="e-icons e-line" tooltipText="Add Line" id="line" align="Center" ></ItemDirective>
                 <ItemDirective prefixIcon="e-icons e-arrow-right-up" tooltipText="Add Arrow" id="arrow" align="Center" ></ItemDirective>
