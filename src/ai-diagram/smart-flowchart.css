@@ -23,7 +23,7 @@
     content: '\e724';
 }
 
-.e-connector::before {
+#palette-space .e-connector::before {
     content: '\e725';
 }
 

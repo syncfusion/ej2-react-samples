@@ -6,7 +6,6 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
 import { TabComponent, SelectEventArgs, TabItemsDirective, TabItemDirective } from '@syncfusion/ej2-react-navigations';
-import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 import { callHistoryData } from './listData';
 import './call-history.css';
@@ -48,14 +47,6 @@ export class CallHistory extends SampleBase<{}, {}> {
         });
         return newData;
     }
-    // EventHandler to check the device mode
-    onCreated() {
-        if (!Browser.isDevice) {
-            document.getElementsByClassName('layoutWrapper')[0].classList.add('e-device-layout');
-        } else {
-            document.getElementsByClassName('tabContainer')[0].classList.add('e-visbile-layer');
-        }
-    }
     // EventHandler to select the tab
     selectedHanlder(args: SelectEventArgs) {
         if (this.allInstance !== undefined) {
@@ -70,7 +61,7 @@ export class CallHistory extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='slider-call-history col-lg-12 control-section'>
-                    <div className="layoutWrapper">
+                    <div className="layoutWrapper e-device-layout">
                         <div className="speaker">
                             <div className="camera"></div>
                         </div>
@@ -78,7 +69,7 @@ export class CallHistory extends SampleBase<{}, {}> {
                             <div id="list-container">
                                 <div className="tabContainer">
                                     {/* Tab element */}
-                                    <TabComponent id="tab" ref={tab => this.tab = tab} selected={this.selectedHanlder.bind(this)} created={this.onCreated}>
+                                    <TabComponent id="tab" ref={tab => this.tab = tab} selected={this.selectedHanlder.bind(this)}>
                                         <TabItemsDirective>
                                             <TabItemDirective header={this.headerText[0]} content={"#all"} />
                                             <TabItemDirective header={this.headerText[1]} content={"#received"} />

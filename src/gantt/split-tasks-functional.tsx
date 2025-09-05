@@ -35,15 +35,15 @@ const SplitTasks = () => {
     leftLabel: 'TaskName',
     taskLabel: '${Progress}%'
   };
-  const projectStartDate: Date = new Date('01/30/2024');
-  const projectEndDate: Date = new Date('03/04/2024');
+  const projectStartDate: Date = new Date('01/29/2025');
+  const projectEndDate: Date = new Date('04/20/2025');
   return (
     <div className='control-pane'>
       <div className='control-section'>
         <GanttComponent id='SplitTasks' dataSource={splitTasksData} treeColumnIndex={1} labelSettings={labelSettings}
           allowSelection={true} highlightWeekends={true} enableContextMenu={true} toolbar={toolbar} editSettings={editSettings}
           projectStartDate={projectStartDate} projectEndDate={projectEndDate}
-          taskFields={taskFields} splitterSettings={splitterSettings} height='450px'>
+          taskFields={taskFields} splitterSettings={splitterSettings} height='650px' taskbarHeight={25} rowHeight={46}>
           <ColumnsDirective>
             <ColumnDirective field='TaskID' width='80' />
             <ColumnDirective field='TaskName' headerText='Task Name' />
@@ -67,6 +67,8 @@ const SplitTasks = () => {
           can be defined in the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/taskFieldsModel/#segments">taskFields.segments</a> property. Segments can be created or merged by two ways: Using Edit Dialog and Context Menu.
         </p>
         <p>A task must have a duration of minimum two time unit cells in order to be split. Similarly, milestone tasks or parent tasks cannot be split into segments.</p>
+        <br/>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/managing-tasks/splitting-and-merging-tasks">documentation section</a>.</p>
       </div>
     </div>
   )

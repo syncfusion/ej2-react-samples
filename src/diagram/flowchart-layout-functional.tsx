@@ -104,7 +104,7 @@ function FlowchartLayoutDiagram() {
                             id="diagram"
                             ref={(diagram) => (diagramInstance = diagram)}
                             width={'100%'}
-                            height={'1500px'}
+                            height={'700px'}
                             scrollSettings= {{ scrollLimit: 'Infinity', padding: { bottom: 50, right: 50 }}}
                             rulerSettings={{ showRulers: true }}
                             getNodeDefaults={getNodeDefaults}

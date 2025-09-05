@@ -1,0 +1,10 @@
+#Baseline .e-baseline-bar {
+        height: 6px !important; 
+}
+.fluent2-highcontrast .e-custom-parent, .fluent2-dark .e-custom-parent, .bootstrap5_3-dark .e-custom-parent, .tailwind3-dark .e-custom-parent{
+    background: #232937 !important;
+    border: 1px solid #2F3542 !important;
+}
+.fluent2-highcontrast .e-custom-progress, .fluent2-dark .e-custom-progress, .bootstrap5_3-dark .e-custom-progress, .tailwind3-dark .e-custom-progress{
+    background: #2F3542 !important;
+}

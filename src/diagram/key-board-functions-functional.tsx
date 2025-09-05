@@ -161,7 +161,10 @@ function renderCommandTable(title, commands) {
         </div>
     );
 }
-
+const sample_css = `
+  .diagram-keyboard .property-panel-content td{
+       padding: 2px 0px;
+  }`;
 // Functional component for keyboard interaction
 function KeyBoardInteraction() {
     // useEffect hook to perform side effects when the component mounts
@@ -170,7 +173,8 @@ function KeyBoardInteraction() {
     }, [])
     // Renders the component UI.
     return (
-        <div className="control-pane">
+        <div className="control-pane diagram-keyboard">
+            <style>{sample_css}</style>
             <div className="col-lg-8 control-section">
                 <div  style={{ width: "100%" }}>
                     {/* Initializes and renders diagram control */}

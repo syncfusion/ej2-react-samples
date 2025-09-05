@@ -1,9 +1,13 @@
 import * as React from 'react';
 import './bottom-toolbar.css';
 import { ChatUIComponent } from '@syncfusion/ej2-react-interactive-chat';
+import { updateSampleSection } from '../common/sample-base';
 import { RichTextEditorComponent, ToolbarSettingsModel, Toolbar, Link, Image, HtmlEditor, QuickToolbar, Table, EmojiPicker,Inject } from '@syncfusion/ej2-react-richtexteditor';
 
 export const BottomToolbar = () => {
+  React.useEffect(() => {
+      updateSampleSection();
+  }, [])
   const chatRTERef = React.useRef<RichTextEditorComponent | null>(null);
   const chatUIRef = React.useRef<ChatUIComponent>(null);
 
@@ -37,18 +41,39 @@ export const BottomToolbar = () => {
     },
   ];
 
+  const isValidContent = (html) => {
+
+    if (!html || html.trim().length === 0)
+        return false;
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = html;
+    // Check for meaningful text
+    const textContent = tempDiv.innerHTML.replace(/<br\s*\/?>/gi, '').replace(/&nbsp;/gi, '').replace(/<[^>]*>/g, '').trim();
+    if (textContent.length > 0)
+        return true;
+    // Check for media elements
+    const mediaTags = ['img', 'table', 'audio', 'video', 'iframe'];
+    for (var tag of mediaTags) {
+        if (tempDiv.getElementsByTagName(tag).length > 0)
+            return true;
+        }
+    return false;
+}
+
   const sendMessage = () => {
     const chatRTE = chatRTERef.current;
     if (chatRTE && chatRTE.value && chatRTE.value.length > 0) {
       const message = chatRTE.value;
-      chatRTE.value = '';
-      chatRTE.dataBind();
-      chatUIRef.current?.addMessage({
-        author: currentUserModel,
-        text: message,
-      });
-      chatRTE.clearUndoRedo();
-      chatRTE.focusIn();
+      if (isValidContent(message)) {
+        chatRTE.value = '';
+        chatRTE.dataBind();
+        chatUIRef.current?.addMessage({
+          author: currentUserModel,
+          text: message,
+        });
+        chatRTE.clearUndoRedo();
+        chatRTE.focusIn();
+      }
     }
   };
 

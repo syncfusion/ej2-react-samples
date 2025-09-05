@@ -99,9 +99,7 @@ function DefaultSmartPaste() {
                                 aiAssistHandler={serverAIRequest} />
                         </div>
                     </form>
-                    <div className="col-lg-8 property-section" style={{ marginTop: "20px", marginLeft: "16%" }}>
-                        <div className="property-panel-section">
-                            <div className="property-panel-content">
+                    <div className="quick-message">
                                 <div className="e-card">
                                     <div className="e-card-content">
                                         <h4> Choose a preset below </h4>
@@ -121,8 +119,6 @@ function DefaultSmartPaste() {
                                         ></ButtonComponent>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

@@ -95,7 +95,7 @@ export class Reveal extends SampleBase<{}, {}> {
                                                         <td style={{ textAlign: 'right' }}>
                                                             <div className="e-card-actions">
                                                                 <button className="e-card-btn" id="showcarddata_icon" title="Click to see more...">
-                                                                    <span className="e-btn-icon e-icons e-reveal-icon e-icon-right" style={{ margin: '0px' }}></span>
+                                                                    <span className="e-icons e-more-vertical-1" style={{ margin: '0px' }}></span>
                                                                 </button>
                                                             </div>
                                                         </td>

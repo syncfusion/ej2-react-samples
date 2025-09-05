@@ -71,12 +71,10 @@ const DefaultScrolling = () => {
                 </TreeGridComponent>
             </div>
             <div id="action-description">
-                <p>
-                   <p>This sample demonstrates the Tree Grid component with the horizontal and vertical scrollbars to view the exceeded Tree Grid content.</p>
-                </p>
+                <p>This sample demonstrates the Tree Grid component with the horizontal and vertical scrollbars to view the exceeded Tree Grid content.</p>
             </div>
             <div id="description">
-               <p>
+                <p>
                     The Tree Grid will show scrollbars when the content exceeds the element's width or height. The vertical and horizontal scrollbars will be displayed based on the following criteria.
                 </p>
                 <ul>

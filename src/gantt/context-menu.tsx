@@ -15,7 +15,7 @@ export class ContextMenuItem extends SampleBase<{}, {}> {
     duration: 'Duration',
     progress: 'Progress',
     dependency: 'Predecessor',
-    child: 'subtasks',
+    parentID: 'ParentId',
     notes: 'info',
     resourceInfo: 'resources'
   };
@@ -34,8 +34,8 @@ export class ContextMenuItem extends SampleBase<{}, {}> {
     position: "35%"
   };
   private ganttInstance: GanttComponent;
-  public projectStartDate: Date = new Date('03/25/2024');
-  public projectEndDate: Date = new Date('07/28/2024');
+  public projectStartDate: Date = new Date('03/25/2025');
+  public projectEndDate: Date = new Date('09/01/2025');
   public gridLines: any = 'Both';
   public toolbar: any = ['Add', 'Edit', 'Update', 'Delete', 'Cancel', 'ExpandAll', 'CollapseAll'];
   public timelineSettings: any = {
@@ -80,10 +80,6 @@ export class ContextMenuItem extends SampleBase<{}, {}> {
   'SortAscending', 'SortDescending', 'Add', 'DeleteDependency', 'Convert', 'Indent', 'Outdent',
   {text: 'Collapse the Row', target: '.e-content', id: 'collapserow'} as ContextMenuItemModel,
   {text: 'Expand the Row', target: '.e-content', id: 'expandrow'} as ContextMenuItemModel];
-  public eventMarkerDay1: Date = new Date('4/17/2024');
-  public eventMarkerDay2: Date = new Date('5/3/2024');
-  public eventMarkerDay3: Date = new Date('6/7/2024');
-  public eventMarkerDay4: Date = new Date('7/16/2024');
   render() {
     return (
       <div className='control-pane'>
@@ -93,7 +89,7 @@ export class ContextMenuItem extends SampleBase<{}, {}> {
             contextMenuItems={this.contextMenuItems}  contextMenuOpen={this.contextMenuOpen.bind(this)} contextMenuClick={this.contextMenuClick.bind(this)}
             allowUnscheduledTasks={true} projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}
             taskFields={this.taskFields} timelineSettings={this.timelineSettings} labelSettings={this.labelSettings} splitterSettings={this.splitterSettings}
-            height='410px' editSettings={this.editSettings} gridLines={this.gridLines} toolbar={this.toolbar} resourceFields={this.resourceFields} resources={editingResources}>
+            height='650px' taskbarHeight={25} rowHeight={46} editSettings={this.editSettings} gridLines={this.gridLines} toolbar={this.toolbar} resourceFields={this.resourceFields} resources={editingResources}>
             <ColumnsDirective>
               <ColumnDirective field='TaskID' width='80' ></ColumnDirective>
               <ColumnDirective field='TaskName' headerText='Job Name' width='250' clipMode='EllipsisWithTooltip'></ColumnDirective>
@@ -108,12 +104,6 @@ export class ContextMenuItem extends SampleBase<{}, {}> {
               <EditDialogFieldDirective type='Resources'></EditDialogFieldDirective>
               <EditDialogFieldDirective type='Notes'></EditDialogFieldDirective>
             </EditDialogFieldsDirective>
-            <EventMarkersDirective>
-              <EventMarkerDirective day={this.eventMarkerDay1} label='Project approval and kick-off' ></EventMarkerDirective>
-              <EventMarkerDirective day={this.eventMarkerDay2} label='Foundation inspection' ></EventMarkerDirective>
-              <EventMarkerDirective day={this.eventMarkerDay3} label='Site manager inspection' ></EventMarkerDirective>
-              <EventMarkerDirective day={this.eventMarkerDay4} label='Property handover and sign-off' ></EventMarkerDirective>
-            </EventMarkersDirective>
             <Inject services={[Edit, Selection, Toolbar, DayMarkers, ContextMenu, Resize, Sort]} />
           </GanttComponent>
           <div style={{ float: 'right', margin: '10px' }}>Source:
@@ -122,17 +112,16 @@ export class ContextMenuItem extends SampleBase<{}, {}> {
         </div>
         <div id="action-description">
         <p>This sample demonstrates the various phases involved in constructing a residential house, from testing
-        the soil to handing over the fully constructed property to the owner. This also demonstrates the usage of default and custom context menu in Gantt component.
+          the soil to handing over the fully constructed property to the owner. This also demonstrates the usage of default and custom context menu in Gantt component.
         </p>
         </div>
-
         <div id="description">
           <p>
-            Gantt has an option to show the context menu while performing right click on it. You can configure the default and custom menu items in the context menu using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#columnmenuitems">contextMenuItems</a> property.
-            Each menu item will be displayed contextually based on its target. In this demo we have rendered following default and custom menu items
+          Gantt has an option to show the context menu while performing right click on it. You can configure the default and custom menu items in the context menu using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#columnmenuitems">contextMenuItems</a> property.
+          Each menu item will be displayed contextually based on its target. In this demo we have rendered following default and custom menu items
           </p>
-    <p>Default items:</p>
-    <ul>
+          <p>Default items:</p>
+          <ul>
             <li><code>AutoFitAll</code> - Auto fit all columns.</li>
             <li><code>AutoFit</code> - Auto fit the current column.</li>
             <li><code>TaskInformation</code> - Edit the current record.</li>
@@ -146,23 +135,23 @@ export class ContextMenuItem extends SampleBase<{}, {}> {
             <li><code>DeleteDependency </code> - Delete the dependency of the current record.</li>
             <li><code>Convert </code> - Convert the normal task in to milestone task and vice versa.</li>
             <li><code>Add</code>
-                <ul>
-                    <li><code>Above</code> - Add a new row above the selected row </li>
-                    <li><code>Below</code> - Add a new row below the selected row</li>
-                    <li><code>Child</code> - Add a new row as child to the selected row</li>
-                    <li><code>Milestone</code> - Add a milestone task below to selected row</li>
-                </ul>
+              <ul>
+                <li><code>Above</code> - Add a new row above the selected row </li>
+                <li><code>Below</code> - Add a new row below the selected row</li>
+                <li><code>Child</code> - Add a new row as child to the selected row</li>
+                <li><code>Milestone</code> - Add a milestone task below to selected row</li>
+              </ul>
             </li>
-    </ul>
-
-    <p>Custom items:</p>
-    <p>
-        In this demo, custom menu items have been enabled in the context menu to perform expanding and collapsing the parent rows,
-        <li><code>Expand the Row</code> - Used to expand the parent row and it will render where the row is in a collapsed state.</li>
-        <li><code>Collapse the Row</code> - Used to collapse the parent row and it will render  where the row is in a expanded state.</li>
-        
-        To use context menu feature, we need to inject <code>ContextMenu</code> module into the <code>services</code>.
-    </p>
+          </ul>
+          <p>Custom items:</p>
+          <p>
+            In this demo, custom menu items have been enabled in the context menu to perform expanding and collapsing the parent rows,
+            <li><code>Expand the Row</code> - Used to expand the parent row and it will render where the row is in a collapsed state.</li>
+            <li><code>Collapse the Row</code> - Used to collapse the parent row and it will render  where the row is in a expanded state.</li>
+            To use context menu feature, we need to inject <code>ContextMenu</code> module into the <code>services</code>.
+          </p>
+          <br />
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/recat/documentation/gantt/context-menu">documentation section</a>.</p>
         </div>
       </div>
     )

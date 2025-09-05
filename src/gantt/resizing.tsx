@@ -13,23 +13,23 @@ export class Resizing extends SampleBase<{}, {}> {
     duration: 'Duration',
     progress: 'Progress',
     dependency: 'Predecessor',
-    child: 'subtasks'
+    parentID: 'ParentId'
   };
   public labelSettings: any = {
-    leftLabel: 'TaskName'
+    rightLabel: 'TaskName'
   };
   public splitterSettings: any = {
     columnIndex: 6
 };
-  public projectStartDate: Date = new Date('03/24/2024');
-  public projectEndDate: Date = new Date('07/06/2024');
+  public projectStartDate: Date = new Date('03/30/2025');
+  public projectEndDate: Date = new Date('07/20/2025');
   render() {
     return (
       <div className='control-pane'>
         <div className='control-section'>
           <GanttComponent id='ColumnMenu' treeColumnIndex={1}
             allowResizing={true} dataSource={projectNewData} highlightWeekends={true} splitterSettings={this.splitterSettings}
-            taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'
+            taskFields={this.taskFields} labelSettings={this.labelSettings} height='650px' taskbarHeight={25} rowHeight={46}
             projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>
               <ColumnsDirective>
               <ColumnDirective field='TaskID' headerText='ID' width='80' ></ColumnDirective>
@@ -60,6 +60,8 @@ export class Resizing extends SampleBase<{}, {}> {
           <b>Injecting Module:</b>
           <p>Gantt component features are segregated into individual feature-wise modules. To use Resize feature, we need to inject <code>Resize</code> module into the <code>services</code>.</p>
       
+          <br/>
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/columns/column-resizing">documentation section</a>.</p>
         </div>
       </div>
     )

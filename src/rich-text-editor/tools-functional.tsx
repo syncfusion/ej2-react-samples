@@ -31,7 +31,7 @@ function Overview() {
     const items: any = [
         'Undo', 'Redo', '|', 'ImportWord', 'ExportWord', 'ExportPdf', '|',
         'Bold', 'Italic', 'Underline', 'StrikeThrough', 'InlineCode', '|', 'CreateLink', 'Image', 'CreateTable', 'CodeBlock',
-        'HorizontalLine', 'Blockquote', '|', 'BulletFormatList', 'NumberFormatList', '|', 'Formats', 'Alignments', '|', 'Outdent', 'Indent', '|',
+        'HorizontalLine', 'Blockquote', '|', 'BulletFormatList', 'NumberFormatList', 'Checklist', '|', 'Formats', 'Alignments', '|', 'Outdent', 'Indent', '|',
         'FontColor', 'BackgroundColor', 'FontName', 'FontSize', '|', 'LowerCase', 'UpperCase', '|', 'SuperScript', 'SubScript', '|',
         'EmojiPicker', 'FileManager', 'Video', 'Audio', '|', 'FormatPainter', 'ClearFormat',
         '|', 'Print', 'FullScreen', '|', 'SourceCode']
@@ -67,7 +67,7 @@ function Overview() {
     }
 
     const quickToolbarSettings: QuickToolbarSettingsModel = {
-        table: ['Tableheader', 'TableRemove', '|', 'TableRows', 'TableColumns', 'TableCell', '|' , 'Styles', 'BackgroundColor', 'Alignments', 'TableCellVerticalAlign'],
+        table: ['Tableheader', 'TableRemove', '|', 'TableRows', 'TableColumns', 'TableCell', '|', 'TableEditProperties', 'Styles', 'BackgroundColor', 'Alignments', 'TableCellVerticalAlign'],
         text: ['Formats', '|', 'Bold', 'Italic', 'Fontcolor', 'BackgroundColor', '|', 'CreateLink', 'Image', 'CreateTable', 'Blockquote', '|' , 'Unorderedlist', 'Orderedlist', 'Indent', 'Outdent'],
         showOnRightClick: true,
     }
@@ -127,13 +127,14 @@ function Overview() {
         } else {
             rteContainer.classList.add('e-rte-code-mirror-enabled');
             rteContainer.classList.remove('e-source-code-enabled');
+            const editorVlaue: string = (editor.element.querySelector('.e-rte-srctextarea') as HTMLTextAreaElement).value;
             if (!mirrorView) {
                 mirrorView = createElement('div', { className: 'rte-code-mirror', id: id, styles: 'display: none;' });
                 rteContainer.appendChild(mirrorView);
-                renderCodeMirror(mirrorView, editor.value === null ? '' : editor.value);
+                renderCodeMirror(mirrorView, editorVlaue === null ? '' : editorVlaue);
             }
             else {
-                codeMirror.setValue(editor.value);
+                codeMirror.setValue(editorVlaue);
             }
             codeMirror.focus();
         }
@@ -260,6 +261,7 @@ function Overview() {
                     <li><code>InlineCode</code> - Formats selected text as inline code, highlighting code snippets within the text.</li>
                     <li><code>Code Block</code> - The Code Block feature allows you to insert and display blocks of code with preserved formatting and syntax highlighting, making it ideal for sharing code snippets clearly and accurately.</li>
                     <li><code>HorizontalLine</code> - A horizontal line can be inserted into the editor to visually separate sections of content.</li>
+                    <li><code>Checklist</code> - Creates interactive lists with checkable items that users can mark as complete or incomplete.</li>
                 </ul>
                 <p><b>Injecting Module</b></p>
                 <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, Count, HtmlEditor, QuickToolbar, Table, EmojiPicker, Video, Audio, FormatPainter, PasteCleanup, SlashMenu, ImportExport, CodeBlock</code> modules into the services.</p>

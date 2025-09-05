@@ -147,7 +147,12 @@ let basicShapes: NodeModel[] = [
     }
   ];
   const sample_css = `
-  
+  .diagram-scroll .property-panel-header{
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+    font-weight: 600;
+    font-size: 15px;
+  }
   .diagram-scroll .db-text-input {
       width: calc(100% - 15px);
       padding: 2px 2px 0px 0px;

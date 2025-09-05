@@ -59,8 +59,7 @@ export class ColumnMenuSample extends SampleBase<{}, {}> {
                             <ColumnDirective field='OrderID' headerText='Order ID' width='200' textAlign='Right' showInColumnChooser={false} validationRules={this.orderidRules} isPrimaryKey={true}></ColumnDirective>
                             <ColumnDirective field='CustomerName' headerText='Customer Name' width='200' validationRules={this.customeridRule}></ColumnDirective>
                             <ColumnDirective field='Freight' headerText='Freight' width='150' format='C2' textAlign='Right' validationRules={this.freightRules} editType='numericedit'/>
-                            <ColumnDirective field='ShipName' headerText='Ship Name' width='200'></ColumnDirective>
-                            <ColumnDirective field='ShipCountry' headerText='Ship Country' width='200' visible={false} editType='dropdownedit'></ColumnDirective>
+                            <ColumnDirective field='ShipCountry' headerText='Ship Country' width='200' editType='dropdownedit'></ColumnDirective>
                             <ColumnDirective field='ShipCity' headerText='Ship City' width='200'></ColumnDirective>
                         </ColumnsDirective>
                         <Inject services={[Resize, Group, Sort, ColumnMenu, Filter, Page, Edit, Toolbar]} />

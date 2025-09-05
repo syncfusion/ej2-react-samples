@@ -13,20 +13,31 @@ export class Default extends SampleBase<{}, {}> {
     duration: 'Duration',
     progress: 'Progress',
     dependency: 'Predecessor',
-    child: 'subtasks'
+     parentID:'ParentId'
   };
+  private ganttInstance: GanttComponent;
   public labelSettings: any = {
     leftLabel: 'TaskName'
   };
-  public projectStartDate: Date = new Date('03/24/2024');
-  public projectEndDate: Date = new Date('07/06/2024');
+  public splitterSettings:any= {
+      columnIndex: 2
+  };
+  public onCreated=(): void=>{
+    if(document.querySelector('.e-bigger'))
+      {
+          this.ganttInstance.rowHeight=48;
+          this.ganttInstance.taskbarHeight=28;
+      }
+  }
+  public projectStartDate: Date = new Date('03/26/2025');
+  public projectEndDate: Date = new Date('07/20/2025');
   render() {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <GanttComponent id='Default' dataSource={projectNewData} treeColumnIndex={1}
-            taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'
-            projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>
+          <GanttComponent id='Default' ref={gantt=>this.ganttInstance=gantt} dataSource={projectNewData} treeColumnIndex={1}
+            taskFields={this.taskFields} splitterSettings={this.splitterSettings} labelSettings={this.labelSettings} height='650px' taskbarHeight={25} rowHeight={46}
+            projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate} created={this.onCreated}>
               <ColumnsDirective>
               <ColumnDirective field='TaskID' width='80' ></ColumnDirective>
               <ColumnDirective field='TaskName' headerText='Job Name' width='250' clipMode='EllipsisWithTooltip'></ColumnDirective>
@@ -42,7 +53,6 @@ export class Default extends SampleBase<{}, {}> {
           <p>This sample visualizes the various phases involved in a manufacturing process of a product which transforms from
         a conceptual model to a sellable product.</p>
         </div>
-
         <div id="description">
           <p>
             In this example, you can see how to render a Gantt Chart with the provided data source. The default timeline
@@ -56,7 +66,9 @@ export class Default extends SampleBase<{}, {}> {
           <p>
             Gantt component features are segregated into individual feature-wise modules. To use a selection support we need to inject the
             <code>Selection</code> module.
-        </p>
+          </p>
+          <br/>
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/getting-started#adding-gantt-component">documentation section</a>.</p>
         </div>
       </div>
     )

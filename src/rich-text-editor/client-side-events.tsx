@@ -181,6 +181,9 @@ export class RTEEvents extends SampleBase<{}, {}> {
             this.rteObj.toolbarModule.refreshToolbarOverflow();
         }, 400);
     }
+    private selectionChanged(): void {
+        this.appendElement('Rich Text Editor <b>selectionChanged</b> event called<hr>');
+    }
 
     render() {
         return (
@@ -212,7 +215,8 @@ export class RTEEvents extends SampleBase<{}, {}> {
                             beforeSanitizeHtml={this.beforeSanitizeHtml.bind(this)}
                             resizing={this.resizing.bind(this)}
                             resizeStart={this.resizeStart.bind(this)}
-                            resizeStop={this.resizeStop.bind(this)}>
+                            resizeStop={this.resizeStop.bind(this)}
+                            selectionChanged={this.selectionChanged.bind(this)}>
                             <p>The Rich Text Editor component is a WYSIWYG ("what you see is what you get") editor that provides the best user experience to create and update the content.
   Users can format their content using standard toolbar commands.</p>
                             <p><b>Key features:</b></p>
@@ -303,6 +307,7 @@ export class RTEEvents extends SampleBase<{}, {}> {
                         <li><code>resizing</code> – Triggers only when resizing the image</li>
                         <li><code>resizeStart</code> –Triggers only when start resize the image</li>
                         <li><code>resizeStop</code> – Triggers only when stop resize the image</li>
+                        <li><code>selectionChanged</code> – Triggers only when the selection within the editor is modified.</li>
                     </ul>
                     <p><b>Injecting Module</b></p>
                     <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, HtmlEditor, QuickToolbar, Table, EmojiPicker, PasteCleanup, Audio, Video, FormatPainter, FileManager</code> modules into the services.</p>

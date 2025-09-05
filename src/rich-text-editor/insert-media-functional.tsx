@@ -11,17 +11,28 @@ function InsertMedia() {
         updateSampleSection();
     }, [])
     let rteObj: RichTextEditorComponent;
+    const hostUrl: string = 'https://services.syncfusion.com/react/production/';
     // Rich Text Editor items list
     const items: string[] = ['Bold', 'Italic', 'Underline', '|', 'Formats', 'Alignments', 'Blockquote', 'OrderedList', 'UnorderedList', '|', 'CreateLink', 'Image', 'Audio', 'Video', '|', 'SourceCode', 'Undo', 'Redo'];
     //Rich Text Editor ToolbarSettings
     const toolbarSettings: ToolbarSettingsModel = {
         items: items
     };
+    const insertVideoSettings: any = {
+        saveUrl: hostUrl + 'api/RichTextEditor/SaveFile',
+        removeUrl: hostUrl + 'api/RichTextEditor/DeleteFile',
+        path: hostUrl + 'RichTextEditor/'
+    }
+    const insertAudioSettings: any = {
+        saveUrl: hostUrl + 'api/RichTextEditor/SaveFile',
+        removeUrl: hostUrl + 'api/RichTextEditor/DeleteFile',
+        path: hostUrl + 'RichTextEditor/'
+    }
     return (
         <div className='control-pane'>
             <div className='control-section' id="insertMediaRTE">
                 <div className="content-wrapper">
-                    <RichTextEditorComponent id="insertMedia" ref={(richtexteditor) => { rteObj = richtexteditor; }} toolbarSettings={toolbarSettings}>
+                    <RichTextEditorComponent id="insertMedia" ref={(richtexteditor) => { rteObj = richtexteditor; }} toolbarSettings={toolbarSettings} insertAudioSettings={insertAudioSettings} insertVideoSettings={insertVideoSettings}>
 
                         <p>Rich Text Editor allows inserting video and audio from online sources and the local computers where you want to insert a video and audio into your content.</p>
                         <p><b>Get started with Quick Toolbar to click on a video</b></p>
@@ -39,7 +50,7 @@ function InsertMedia() {
                 </div>
             </div>
             <div id="action-description">
-                <p>This sample demonstrates the option to insert the media into the Rich Text Editor content. Click the audio and video button from the toolbar item to insert the media.</p>
+                <p>This sample demonstrates the option to insert the media into the Rich Text Editor content. Click the audio and video button from the toolbar item to insert the media, or drag and drop audio and video files directly into the editor.</p>
             </div>
             <div id="description">
                 <p>Video tools are used to insert a video into the Rich Text Editor and click on the video to customize the video using a quick toolbar. The quick toolbar has the following items:</p>

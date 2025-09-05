@@ -2,7 +2,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { useEffect } from 'react';
 import { GanttComponent, Inject, Selection, DayMarkers, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
-import { projectNewData } from './data';
+import { localData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
 const LocalData = () => {
@@ -25,15 +25,15 @@ const LocalData = () => {
   const splitterSettings: any = {
     position: "35%"
   };
-  const projectStartDate: Date = new Date('03/24/2024');
-  const projectEndDate: Date = new Date('07/06/2024');
+  const projectStartDate: Date = new Date('03/26/2025');
+  const projectEndDate: Date = new Date('07/20/2025');
 
   return (
     <div className='control-pane'>
       <div className='control-section'>
-        <GanttComponent id='LocalData' dataSource={projectNewData} highlightWeekends={true}
+        <GanttComponent id='LocalData' dataSource={localData} highlightWeekends={true}
           allowSelection={true} treeColumnIndex={1} taskFields={taskFields}
-          labelSettings={labelSettings} height='410px' splitterSettings={splitterSettings}
+          labelSettings={labelSettings} height='650px' taskbarHeight={25} rowHeight={46} splitterSettings={splitterSettings}
           projectStartDate={projectStartDate} projectEndDate={projectEndDate}>
           <ColumnsDirective>
             <ColumnDirective field='TaskID' width='60'></ColumnDirective>
@@ -57,6 +57,8 @@ const LocalData = () => {
         <p>Gantt component features are segregated into individual feature-wise modules. To use a selection, inject the
           <code>Selection</code> module using the <code>Gantt.Inject(Selection)</code> method.To use markers, inject the
           <code>DayMarkers</code> module using the <code>Gantt.Inject(DayMarkers)</code> method.</p>
+        <br/>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/data-binding#hierarchical-data-binding">documentation section</a>.</p>
       </div>
     </div>
   )

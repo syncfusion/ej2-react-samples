@@ -23,7 +23,7 @@ const Taskbar = () => {
   };
   let dayWorkingTime: any = [{ from: 0, to: 24 }];
   const timelineSettings: any = {
-    timelineUnitSize: 60,
+    timelineUnitSize: 70,
     topTier: {
       unit: 'Hour',
       format: 'MMM dd, yyyy'
@@ -34,13 +34,13 @@ const Taskbar = () => {
       format: 'h:mm a'
     },
   }
-  const eventMarkerDay1: Date = new Date('03/05/2024 07:09:00 PM');
-  const eventMarkerDay2: Date = new Date('03/05/2024 07:46:00 PM');
-  const eventMarkerDay3: Date = new Date('03/05/2024 07:59:00 PM');
-  const eventMarkerDay4: Date = new Date('03/05/2024 08:08:00 PM');
-  const eventMarkerDay5: Date = new Date('03/05/2024 08:24:00 PM');
-  const eventMarkerDay6: Date = new Date('03/05/2024 08:31:00 PM');
-  const eventMarkerDay7: Date = new Date('03/05/2024 08:47:00 PM');
+  const eventMarkerDay1: Date = new Date('03/05/2025 07:09:00 PM');
+  const eventMarkerDay2: Date = new Date('03/05/2025 07:46:00 PM');
+  const eventMarkerDay3: Date = new Date('03/05/2025 07:59:00 PM');
+  const eventMarkerDay4: Date = new Date('03/05/2025 08:08:00 PM');
+  const eventMarkerDay5: Date = new Date('03/05/2025 08:24:00 PM');
+  const eventMarkerDay6: Date = new Date('03/05/2025 08:31:00 PM');
+  const eventMarkerDay7: Date = new Date('03/05/2025 08:47:00 PM');
   const labelSettings: any = {
     leftLabel: 'TaskName',
   };
@@ -71,7 +71,19 @@ const Taskbar = () => {
             <img className="moments" src="src/gantt/images/moments.svg" height="32" width="32" alt='Oscar Moment svg'/> :
             <div>
               <img className="moments" src="src/gantt/images/moments.svg" height="32" width="32" alt='Oscar Moment svg'/>
-              <span className="e-task-label" style={{ position: "absolute", top: "15px", fontSize: "12px", textOverflow: "ellipsis", height: "90%", overflow: "hidden" }}>{props.Performance}</span>
+              <span className="e-task-label" style={{
+                position: "absolute",
+                top: "15px",
+                left: "40px",
+                right: "5px",
+                fontSize: "12px",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                height: "90%",
+                lineHeight: "1.2",
+                }}>{props.Performance}
+              </span>
             </div>
         }
 
@@ -84,7 +96,19 @@ const Taskbar = () => {
             <img className="face-mask" src="src/gantt/images/face-mask.svg" height="32" width="32" alt='Oscar Performance svg' /> :
             <div>
               <img className="face-mask" src="src/gantt/images/face-mask.svg" height="32" width="32" alt='Oscar Performance svg'/>
-              <span className="e-task-label e-oscar-performance" style={{ position: "absolute", top: "5px", fontSize: "12px", textOverflow: "ellipsis", height: "90%", overflow: "hidden" }}>{props.Performance}</span>
+              <span className="e-task-label e-oscar-performance" style={{
+                position: "absolute",
+                top: "15px",
+                left: "40px",
+                right: "5px",
+                fontSize: "12px",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                height: "90%",
+                lineHeight: "1.2",
+                }}>{props.Performance}
+              </span>
             </div>
         }
 
@@ -97,12 +121,42 @@ const Taskbar = () => {
             props.Winner && props.Movie ?
               <div>
                 <img className="oscar" src="src/gantt/images/oscar.svg" height="32" width="32" alt='Oscar svg'/>
-                <span className="e-task-label" style={{ position: "absolute", top: "13px", fontSize: "14px" }} >{props.Winner}</span>
-                <span className="e-task-label" style={{ position: "absolute", top: "33px", fontSize: "10px", textOverflow: "ellipsis" }}>{props.Movie}</span>
+                <span className="e-task-label" style={{
+                  position: "absolute",
+                  top: "8px",
+                  left: "40px",
+                  right: "5px",
+                  fontSize: "14px",
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  }}>{props.Winner}
+                </span>
+                <span className="e-task-label" style={{
+                  position: "absolute",
+                  top: "28px",
+                  left: "40px",
+                  right: "5px",
+                  fontSize: "10px",
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  }}>{props.Movie}
+                </span>
               </div> : props.Movie ?
                 <div>
                   <img className="oscar" src="src/gantt/images/oscar.svg" height="32" width="32" alt='Oscar svg'/>
-                  <span className="e-task-label e-oscar-movie" style={{ position: "absolute", top: "24px", fontSize: "12px", textOverflow: "ellipsis" }}>{props.Movie} </span>
+                  <span className="e-task-label e-oscar-movie" style={{
+                    position: "absolute",
+                    top: "15px",
+                    left: "40px",
+                    right: "5px",
+                    fontSize: "12px",
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    }}>{props.Movie}
+                  </span>
                 </div> :
                 <span className="e-task-label"></span>
           }
@@ -143,13 +197,13 @@ const Taskbar = () => {
 };
 
   const milestone: any = milstoneTemplate.bind(this);
-  const projectStartDate: any = new Date('03/05/2024 06:00 PM');
-  const projectEndDate: any = new Date('03/05/2024 09:50 PM');
+  const projectStartDate: any = new Date('03/05/2025 06:00 PM');
+  const projectEndDate: any = new Date('03/05/2025 09:50 PM');
   return (
     <div className='control-pane'>
       <div className='control-section'>
         <GanttComponent id='TaskbarTemplate' dataSource={customizedData} dateFormat={'hh:mm a'}
-          taskFields={taskFields} height='410px' splitterSettings={splitterSettings}
+          taskFields={taskFields} height='650px' splitterSettings={splitterSettings}
           treeColumnIndex={1} rowHeight={75} taskbarHeight={65} dayWorkingTime={dayWorkingTime}
           durationUnit={'Minute'} timelineSettings={timelineSettings} labelSettings={labelSettings}
           tooltipSettings={tooltipSettings} milestoneTemplate={milestone} taskbarTemplate={childTaskbarTemplate}
@@ -198,6 +252,8 @@ const Taskbar = () => {
           <code>DayMarkers</code> module. To use a selection, inject the
           <code>Selection</code> module.
         </p>
+        <br/>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/appearance-customization#taskbar-template">documentation section</a>.</p>
       </div>
     </div>
   )

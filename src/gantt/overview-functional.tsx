@@ -16,6 +16,7 @@ import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
 import { extend } from '@syncfusion/ej2-base';
 import { SliderComponent } from '@syncfusion/ej2-react-inputs';
 import { ClickEventArgs } from '@syncfusion/ej2-navigations';
+import { PdfColor } from '@syncfusion/ej2-pdf-export';
 
 const Overview = () =>  {
     useEffect(() => {
@@ -35,6 +36,11 @@ const Overview = () =>  {
     let height: any;
     let background: any;
     let borderRadius: any;
+    let marginTop: any;
+    let marginLeft: any;
+    let IconClass: any;
+    let border: any;
+    let justifyContent: any;
     let color: any;
     let fontStyle: any;
     let fontWeight: any;
@@ -54,18 +60,20 @@ const Overview = () =>  {
         progress: 'Progress',
         dependency: 'Predecessor',
         parentID: 'ParentId',
-        resourceInfo: 'Assignee'
+        constraintType: 'ConstraintType',
+        constraintDate: 'ConstraintDate',
+        resourceInfo: 'resource'
     };
     const resourceFields: any = {
         id: 'resourceId',
         name: 'resourceName'
     };
     const splitterSettings: any = {
-        position: "57%"
+        columnIndex: 4
     };
-    const projectStartDate: Date = new Date('12/17/2023');
-    const projectEndDate: Date = new Date('10/26/2024');
-    const gridLines: any = 'Vertical';
+    const projectStartDate: Date = new Date('01/25/2025');
+    const projectEndDate: Date = new Date('01/30/2026');
+    const gridLines: any = 'Both';
 
     const  change =(args: any ): any =>{
         let gantt = (document.getElementsByClassName('e-gantt')[0] as any).ej2_instances[0];
@@ -91,9 +99,40 @@ const Overview = () =>  {
             format: 'dd'
         },
     };
+    const RightLabelTemplate = (props) => {
+        if (props.ganttProperties.resourceInfo) {
+          let resources = props.ganttProperties.resourceInfo;
+          let out = [];
+          for (let index = 0; index < resources.length; index++) {
+            let src = 'src/gantt/images/' + resources[index].resourceName + '.png';
+            let img = (
+              <img
+                key={`img-${index}`}
+                src={src}
+                height="30px"
+                width ="30px"
+                alt={resources[index].resourceName}
+              />
+            );
+            let span = (
+              <span
+                key={`span-${index}`}
+                style={{ marginLeft: '5px', marginRight: '5px' }}
+              >
+                {props.Assignee}
+              </span>
+            );
+            out.push(img, span);
+          }
+          return (<div>{out}</div>);
+        } else {
+          return <div></div>
+        }
+      };  
+  const templateRight: any = RightLabelTemplate; 
     const labelSettings: any = {
         taskLabel: '${Progress}%',
-        rightLabel: 'Assignee'
+        rightLabel: templateRight.bind(this),    
     };
     const toolbarClick = (args: ClickEventArgs): void => {
         if (args.item.id === "Overview_excelexport") {
@@ -106,9 +145,10 @@ const Overview = () =>  {
           ganttInstance.current.pdfExport();
         }
       }
-    const eventMarkerDay1: Date = new Date('04/04/2024');
-    const eventMarkerDay2: Date = new Date('06/30/2024');
-    const eventMarkerDay3: Date = new Date('09/29/2024');
+    const eventMarkerDay1: Date = new Date('2025-03-13');
+    const eventMarkerDay2: Date = new Date('2025-04-18');
+    const eventMarkerDay3: Date = new Date('2025-05-30');
+    const eventMarkerDay4: Date = new Date('2025-11-25');
 
     const statustemplate = (props): any => {
         let sts = Status(props.taskData.Status);
@@ -118,11 +158,11 @@ const Overview = () =>  {
                 <div className='columnTemplate'>
                     <div style={{
                         "display": `${sts.display}`, "padding": `${sts.padding}`, "gap": `${sts.gap}`, "width": `${sts.width}`, "height": `${sts.height}`,
-                        "background": `${sts.background}`, "borderRadius": `${sts.borderRadius}`
+                        "background": `${sts.background}`, "border": `${sts.border}`, "justifyContent": `${sts.justifyContent}`
                     }} >
                         <span style={{
                             "width": `${stsCon.width}`, "height": `${stsCon.height}`, "fontStyle": `${stsCon.fontStyle}`, "fontWeight": `${stsCon.fontWeight}`, "fontSize": `${stsCon.fontSize}`,
-                            "lineHeight": `${stsCon.lineHeight}`, "borderRadius": `${stsCon.borderRadius}`, "color": `${stsCon.color}`, "padding": `${stsCon.pad}`
+                            "lineHeight": `${stsCon.lineHeight}`, "color": `${stsCon.color}`, "padding": `${stsCon.pad}`, "textAlign": "center"
                         }} >{props.taskData.Status}</span>
                     </div>
                 </div>);
@@ -130,25 +170,24 @@ const Overview = () =>  {
     };
 
     const prioritytemplate = (props): any => {
-        let pri = Priority(props.taskData.Priority);
+        let pri = PriorityIconStyle(props.taskData.Priority);
         let priCon = PriorityContent(props.taskData.Priority);
+        let priClass=PriorityIcon(props.taskData.Priority);
         if (props.taskData.Priority) {
             return (
-                <div className='columnTemplate1'>
-                    <div style={{
-                        "display": `${pri.display}`, "padding": `${pri.padding}`, "gap": `${pri.gap}`, "width": `${pri.width}`, "height": `${pri.height}`,
-                        "background": `${pri.backgroundPri}`, "borderRadius": `${pri.borderRadius}`
-                    }} >
+                <div className='columnTemplate1' style={{display:'flex'}}>
+                    <span className={priClass} style={{
+                        "color": `${pri.backgroundPri}`, "marginTop": `${pri.marginTop}`
+                    }} ></span>
                         <span style={{
-                            "width": `${priCon.width}`, "height": `${priCon.height}`, "fontStyle": `${priCon.fontStyle}`, "fontWeight": `${priCon.fontWeight}`, "fontSize": `${priCon.fontSize}`,
-                            "lineHeight": `${priCon.lineHeight}`, "color": `${priCon.color}`
+                            "width": `${priCon.width}`, "height": `${priCon.height}`, "fontStyle": `${priCon.fontStyle}`,  "fontSize": `${priCon.fontSize}`,
+                            "lineHeight": `${priCon.lineHeight}`, "color": `${priCon.color}`, "textAlign": "center", "marginLeft": `${priCon.marginLeft}`
                         }}>{props.taskData.Priority}</span>
-                    </div>
                 </div>);
         }
     };
-
-    const columnTemplate = (props: { ganttProperties: { resourceNames: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | null | undefined; }; }): any => {
+    
+    const columnTemplate = (props): any => {
         var src = 'src/gantt/images/' + props.ganttProperties.resourceNames + '.png';
         if ((props.ganttProperties.resourceNames)) {
             let gantt = (document.getElementsByClassName('e-gantt')[0] as any).ej2_instances[0];
@@ -161,9 +200,12 @@ const Overview = () =>  {
             }
             else {
                 return (
-                    <div className='columnTemplate'>
-                        <img src={src} height='25px' width='25px' />
-                        <div style={{ display: "inline-block", width: '100%', position: "relative", left: "8px" }}>{props.ganttProperties.resourceNames}</div>
+                    <div className='columnTemplate' style={{display: 'flex', alignItems: 'center',gap: '8px',height: '100%'}}>
+                        <div><img src={src} height='25px' width='25px' /></div>
+                        <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', lineHeight: '16px'}}>
+                            <span style={{  fontSize:'12px' }}>{props.Assignee}</span>
+                            <span style={{fontSize: '9px', textAlign:'left'}} >{props.taskData.Department}</span>
+                        </div>
                     </div>);
             }
         } else {
@@ -172,128 +214,149 @@ const Overview = () =>  {
     }
 
     const load = (): void => {
-        let themeCollection: any = ['bootstrap5', 'bootstrap', 'bootstrap4', 'fluent', 'fabric', 'fusionnew', 'material3', 'material', 'highcontrast', 'tailwind', 'fluent2', 'tailwind3', 'bootstrap5.3'];
-        let cls: any = document.body.className.split(' ');
-        theme = cls.indexOf('bootstrap5') > 0 ? 'bootstrap5' : cls.indexOf('bootstrap') > 0 ? 'bootstrap' : cls.indexOf('tailwind') > 0 ? 'tailwind' :
-            cls.indexOf('fluent') > 0 ? 'fluent' : cls.indexOf('fabric') > 0 ? 'fabric' :
-                cls.indexOf('material3') > 0 ? 'material3' : cls.indexOf('bootstrap4') > 0 ? 'bootstrap4' : cls.indexOf('material') > 0 ? 'material' :
-                    cls.indexOf('fusionnew') > 0 ? 'fusionnew' : cls.indexOf('highcontrast') > 0 ? 'highcontrast' : cls.indexOf('bootstrap5.3') > 0 ? 'bootstrap5.3' :
-                        cls.indexOf('fluent2') > 0 ? 'fluent2' : cls.indexOf('tailwind3') > 0 ? 'tailwind3' : '';
-        let check: any = themeCollection.indexOf(theme);
-        if (check >= 0) {
-            CurrentTheme = true;
-        }
-        else {
-            CurrentTheme = false;
-        }
+        let themeCollection: any = ['bootstrap5', 'bootstrap', 'bootstrap4', 'fluent', 'fabric', 'fusionnew', 'material3', 'material', 'highcontrast', 'tailwind', 'fluent2', 'tailwind3', 'bootstrap5_3'];
+        let theme = document.body.className.split(' ').find(function(cls) { return themeCollection.includes(cls); }) || '';
+        CurrentTheme = theme ? true : false;
     };
 
     const pdfQueryCellInfo = (args): void => {
-        if (args.column.headerText === 'Assignee' && args.data.taskData.resourcesImage) {
-            {
-                args.image = { height:25,width:25, base64: args.data.taskData.resourcesImage };
+        if(args.data.ganttProperties.resourceNames){
+            if (args.column.headerText === 'Assignee' && args.data.taskData.resourcesImage) {
+                args.image = { height: 30, width: 30, base64: args.data.taskData.resourcesImage};
+                args.value = `${args.data.Assignee}\n${args.data.taskData.Department}`; 
             }
+        };
+
+        // Set font color for Status or Priority columns
+        if (args.column.field === 'Status' || args.column.field === 'Priority') {
+            const style = args.column.field === 'Status' ?StatusContent(args.value) : PriorityContent(args.value);// args.value is the cell's value (e.g., "Completed" for Status, "High" for Priority)
+            const rgbMatch = style.color.match(/rgb\(\d+,\s*\d+,\s*\d+\)/);
+            if (rgbMatch) {
+                const rgbValues = rgbMatch[0].slice(4, -1).split(', ').map(Number);
+                args.style.fontColor = new PdfColor(rgbValues[0], rgbValues[1], rgbValues[2]);
+            }   
+        }
+    };
+
+    const pdfQueryTaskbarInfo=(args: any): void=>{
+        if(ganttInstance.current.labelSettings.rightLabel && args.data.taskData.resourcesImage)
+        {
+            args.labelSettings.rightLabel.image= [{base64: args.data.taskData.resourcesImage, height: 25, width: 25}];
+            args.labelSettings.rightLabel.value=args.data.ganttProperties.resourceNames;
         }
     };
 
     const Status = (status): any => {
         switch (status) {
             case "In Progress":
-                statusStyleColor = (CurrentTheme) ? "#DFECFF" : "#2D3E57";
-                display = 'flex'; padding = '0px 12px'; gap = '10px'; width = '96px'; height = '24px'; borderRadius = '24px'; background = statusStyleColor;
+                statusStyleColor = (CurrentTheme) ? "#006AA6" : "#2D3E57";
+                display = 'flex'; padding = '2px 10px'; gap = '10px'; width = '96px'; height = '24px'; border = `solid 1px ${statusStyleColor}`;
                 break;
             case "Open":
-                background = "red"; color = "white"; borderRadius = '15px'; padding = '6px';
+                display= 'flex'; padding='0px' ;justifyContent='center'; gap= '10px'; width= '96px'; height= '24px'; border = 'solid 1px red';
                 break;
             case "On Hold":
-                statusStyleColor = (CurrentTheme) ? "#E4E4E7" : "#3C3B43";
-                display = 'flex'; padding = '0px 12px'; gap = '10px'; width = '78px';
-                height = '24px'; borderRadius = '24px'; background = statusStyleColor;
+                statusStyleColor = (CurrentTheme) ? "#766B7C" : "#CDCBD7";
+                display = 'flex'; justifyContent = 'center'; gap= '10px'; width= '96px'; height = '24px'; border = `solid 1px ${statusStyleColor}`;
                 break;
             case "Completed":
-                statusStyleColor = (CurrentTheme) ? "#DFFFE2" : "#16501C";
-                display = 'flex'; padding = '0px 12px'; gap = '10px'; width = '98px'; height = '24px'; borderRadius = '24px'; background = statusStyleColor;
-                break;
-            case "High":
-                statusStyleColor = (CurrentTheme) ? "#FFEBE9" : "#48211D";
-                display = 'flex'; padding = '0px 12px'; gap = '10px'; width = '55px'; height = '24px'; borderRadius = '24px'; background = statusStyleColor;
+                statusStyleColor = (CurrentTheme) ? "#00A653" : "#92FFC8";
+                display = 'flex'; padding = '2px 10px'; gap = '10px'; width = '96px'; height = '24px'; border = `solid 1px ${statusStyleColor}`;
                 break;
         }
-        return { display: display, padding: padding, gap: gap, width: width, height: height, borderRadius: borderRadius, background: background, color: color };
+        return { display: display, padding: padding, gap: gap, width: width, height: height, border: border, color: color, justifyContent: justifyContent };
     };
 
     const StatusContent = (status): any =>{
         switch (status) {
             case "In Progress":
-                statusContentstyleColor = (CurrentTheme) ? "#006AA6" : "#34B6FF";
-                width = "72px"; height = "22px"; fontStyle = 'normal'; fontWeight = '500'; fontSize = '14px'; lineHeight = '20px'; textAlign = 'center'; color = statusContentstyleColor;
+                statusContentstyleColor = (CurrentTheme) ? "rgb(0, 106, 166)" : "rgb(52, 182, 255)";
+                width = "72px"; height = "22px"; fontStyle = 'normal'; fontWeight = '400'; fontSize = '14px'; lineHeight = '20px'; textAlign = 'center'; color = statusContentstyleColor;
                 break;
             case "Open":
-                backgroundColor = 'red'; color = 'white'; borderRadius = '15px'; pad = '6px'
+                width = "54px"; height = "22px"; fontStyle = 'normal'; fontWeight = '400'; fontSize = '14px'; lineHeight = '22px'; textAlign = 'center'; color = 'rgb(255, 0, 0)';
                 break;
             case "On Hold":
-                statusContentstyleColor = (CurrentTheme) ? "#766B7C" : "#CDCBD7";
-                width = "54px"; height = "22px"; fontStyle = 'normal'; fontWeight = '500'; fontSize = '14px'; lineHeight = '20px'; textAlign = 'center'; color = statusContentstyleColor;
+                statusContentstyleColor = (CurrentTheme) ? "rgb(118, 107, 124)" : "rgb(205, 203, 215)"
+                width = "54px"; height = "22px"; fontStyle = 'normal'; fontWeight = '400'; fontSize = '14px'; lineHeight = '20px'; textAlign = 'center'; color = statusContentstyleColor;
                 break;
             case "Completed":
-                statusContentstyleColor = (CurrentTheme) ? "#00A653" : "#92FFC8";
-                width = "74px"; height = "22px"; fontStyle = 'normal'; fontWeight = '500'; fontSize = '14px'; lineHeight = '20px'; textAlign = 'center'; color = statusContentstyleColor;
+                statusContentstyleColor = (CurrentTheme) ? "rgb(0, 166, 83)" : "rgb(146, 255, 200)";
+                width = "74px"; height = "22px"; fontStyle = 'normal'; fontWeight = '400'; fontSize = '14px'; lineHeight = '20px'; textAlign = 'center'; color = statusContentstyleColor;
                 break;
             case "High":
-                statusContentstyleColor = (CurrentTheme) ? "#FF3740" : "#FFB5B8";
-                width = "31px"; height = "22px"; fontStyle = 'normal'; fontWeight = '500'; fontSize = '14px'; lineHeight = '20px'; textAlign = 'center'; color = statusContentstyleColor;
+                statusContentstyleColor = (CurrentTheme) ? "rgb(243, 86, 32)" : "rgb(255, 181, 184)";
+                width = "31px"; height = "22px"; fontStyle = 'normal'; fontWeight = '400'; fontSize = '14px'; lineHeight = '20px'; textAlign = 'center'; color = statusContentstyleColor;
                 break;
         }
         return {
             width: width, height: height, fontStyle: fontStyle, fontWeight: fontWeight, fontSize: fontSize, lineHeight: lineHeight, textAlign: textAlign, color: color,
-            backgroundColor: backgroundColor, borderRadius: borderRadius, pad: pad
+            backgroundColor: backgroundColor, pad: pad
         };
     };
 
-    const  Priority = (priority): any => {
+    const  PriorityIconStyle = (priority): any => {
         switch (priority) {
             case "Low":
-                priorityStyle = (CurrentTheme) ? "#FFF6D1" : "#473F1E";
-                display = 'flex'; padding = '0px 12px'; gap = '10px'; width = '52px'; height = '24px'; borderRadius = '24px'; backgroundPri = priorityStyle;
+                priorityStyle = (CurrentTheme) ? "#00A653" : "#FDFF88";
+                marginTop = '2px  !important'; backgroundPri = priorityStyle;
                 break;
             case "Normal":
-                priorityStyle = (CurrentTheme) ? "#F5DFFF" : "#4D2F5A";
-                display = 'flex'; padding = '0px 12px'; gap = '10px'; width = '73px'; height = '24px'; borderRadius = '24px'; backgroundPri = priorityStyle;
+                priorityStyle = (CurrentTheme) ? "#7100A6" : "#E3A9FF";
+                marginTop = '2px  !important'; backgroundPri = priorityStyle;
                 break;
             case "Critical":
-                priorityStyle = (CurrentTheme) ? "#FFEBE9" : "#48211D";
-                display = 'flex'; padding = '0px 12px'; gap = '10px'; width = '72px'; height = '24px'; borderRadius = '24px'; backgroundPri = priorityStyle;
+                priorityStyle = (CurrentTheme) ? "#FF3740" : "#FFB5B8";
+                marginTop = '2px  !important'; backgroundPri = priorityStyle;
                 break;
             case "High":
-                priorityStyle = (CurrentTheme) ? "#FFEBE9" : "#48211D";
-                display = 'flex'; padding = '0px 12px'; gap = '10px'; width = '55px'; height = '24px'; borderRadius = '24px'; backgroundPri = priorityStyle;
+                priorityStyle = (CurrentTheme) ? "#f35620" : "#FFB5B8";
+                marginTop = '2px  !important'; backgroundPri = priorityStyle;
                 break;
         }
-        return { display: display, padding: padding, gap: gap, width: width, height: height, borderRadius: borderRadius, backgroundPri: backgroundPri };
+        return { marrginTop: marginTop, backgroundPri: backgroundPri };
     };
 
     const PriorityContent = (priority): any => {
         switch (priority) {
             case "Low":
-                priorityContentStyle = (CurrentTheme) ? "#70722B" : "#FDFF88";
-                width = "28px"; height = "22px"; fontStyle = 'normal'; fontWeight = '500'; fontSize = '14px'; lineHeight = '20px'; textAlign = 'center'; color = priorityContentStyle;
+                priorityContentStyle = (CurrentTheme) ? "rgb(0, 166, 83)" : "rgb(253, 255, 136)";
+                width = "28px"; height = "22px"; fontStyle = 'normal'; marginLeft ='3px'; fontSize = '14px'; lineHeight = '20px'; textAlign = 'center'; color = priorityContentStyle;
                 break;
             case "Normal":
-                priorityContentStyle = (CurrentTheme) ? "#7100A6" : "#E3A9FF";
-                width = "49px"; height = "22px"; fontStyle = 'normal'; fontWeight = '500'; fontSize = '14px'; lineHeight = '20px'; textAlign = 'center'; color = priorityContentStyle;
+                priorityContentStyle = (CurrentTheme) ? "rgb(113, 0, 166)" : "#rgb(227, 169, 255)";
+                width = "28px"; height = "22px"; fontStyle = 'normal'; marginLeft ='3px'; fontSize = '14px'; lineHeight = '20px'; textAlign = 'center'; color = priorityContentStyle;
                 break;
             case "Critical":
-                priorityContentStyle = (CurrentTheme) ? "#FF3740" : "#FFB5B8";
-                width = "48px"; height = "22px"; fontStyle = 'normal'; fontWeight = '500'; fontSize = '14px'; lineHeight = '20px'; textAlign = 'center'; color = priorityContentStyle;
+                priorityContentStyle = (CurrentTheme) ? "rgb(255, 55, 64)" : "rgb(255, 181, 184)";
+                width = "48px"; height = "22px"; fontStyle = 'normal'; marginLeft = '3px'; fontSize = '14px'; lineHeight = '20px'; textAlign = 'center'; color = priorityContentStyle;
                 break;
             case "High":
-                priorityContentStyle = (CurrentTheme) ? "#FF3740" : "#FFB5B8";
-                width = "31px"; height = "22px"; fontStyle = 'normal'; fontWeight = '500'; fontSize = '14px'; lineHeight = '20px'; textAlign = 'center'; color = priorityContentStyle;
+                priorityContentStyle = (CurrentTheme) ?  "rgb(235, 99, 67)" : "rgb(255, 181, 184)";
+                width = "31px"; height = "22px"; fontStyle = 'normal'; marginLeft = '3px'; fontSize = '14px'; lineHeight = '20px'; textAlign = 'center'; color = priorityContentStyle;
                 break;
         }
         return {
-            width: width, height: height, fontStyle: fontStyle, fontWeight: fontWeight, fontSize: fontSize, lineHeight: lineHeight, textAlign: textAlign, color: color
+            width: width, height: height, fontStyle: fontStyle, marginLeft: marginLeft, fontSize: fontSize, lineHeight: lineHeight, textAlign: textAlign, color: color
         };
+    };
+
+    const PriorityIcon =(priority):any=>{
+        switch (priority) {
+            case "Low":
+                IconClass = "e-icons e-arrow-down e-icon-style";
+                break;
+            case "Normal":
+                IconClass = "e-icons e-arrow-right e-icon-style";
+                break;
+            case "Critical":
+                IconClass = "e-icons e-arrow-up e-icon-style";
+                break;
+            case "High":
+                IconClass = "e-icons e-arrow-up e-icon-style";
+                break;
+        }
+        return IconClass;
     };
     const template: any = columnTemplate.bind(this);
     const statusTemplate: any = statustemplate.bind(this);
@@ -352,7 +415,7 @@ const Overview = () =>  {
             gantt.eventMarkers = tempEvents;
         } else {
             tempEvents = gantt.eventMarkers;
-            gantt.eventMarkers = null;
+            gantt.eventMarkers = "";
         }
     }
 
@@ -376,7 +439,7 @@ const Overview = () =>  {
             gantt.labelSettings.rightLabel = tempLabels;
         } else {
             tempLabels = gantt.labelSettings.rightLabel;
-            gantt.labelSettings.rightLabel = null;
+            gantt.labelSettings.rightLabel = "";
         }
     }
 
@@ -429,6 +492,7 @@ const Overview = () =>  {
     }
 
     // view Type change
+    const viewTypeValue = 'ProjectView'
     const viewTypeData: any = [
         { id: "ResourceView", Text: "Resource View" },
         { id: "ProjectView", Text: "Project View" }
@@ -593,7 +657,7 @@ const Overview = () =>  {
                         <li className="list-field stack-container">
                             <label htmlFor="viewType" className="gantt-labels-style">View type:</label>
                             <div style={{ paddingLeft: '10px' }}>
-                                <DropDownListComponent id="viewType" dataSource={viewTypeData} placeholder='View Type' fields={viewFileds} change={typeChange} />
+                                <DropDownListComponent id="viewType" dataSource={viewTypeData} placeholder='View Type' value={viewTypeValue} fields={viewFileds} change={typeChange} />
                             </div>
                         </li>
 
@@ -622,28 +686,32 @@ const Overview = () =>  {
                     </div>
                     <div id='sidebar-gantt'>
                         <GanttComponent id='Overview' ref={ganttInstance} dataSource={overviewData}
-                            treeColumnIndex={1} allowSelection={true} highlightWeekends={true} allowExcelExport={true} allowPdfExport={true} 
+                            treeColumnIndex={0} allowSelection={true} enableWBS={true} enableAutoWbsUpdate={true} enableHover={true} highlightWeekends={true} allowExcelExport={true} allowPdfExport={true} 
                             projectStartDate={projectStartDate} projectEndDate={projectEndDate} load={load.bind(this)} pdfQueryCellInfo={pdfQueryCellInfo.bind(this)} toolbarClick={toolbarClick.bind(this)}
                             taskFields={taskFields} timelineSettings={timelineSettings} labelSettings={labelSettings} splitterSettings={splitterSettings}
-                            height='500px' gridLines={gridLines}  allowFiltering={true} showColumnMenu={true} allowSorting={true} allowResizing={true}
-                            toolbar={toolbarOptions} resourceFields={resourceFields} resources={editingResources}>
+                            height='650px' taskbarHeight={25} rowHeight={46} gridLines={gridLines}  allowFiltering={true} showColumnMenu={true} allowSorting={true} allowResizing={true}
+                            toolbar={toolbarOptions} resourceFields={resourceFields} resources={editingResources} pdfQueryTaskbarInfo={pdfQueryTaskbarInfo.bind(this)}>
                             <ColumnsDirective>
-                                <ColumnDirective field='TaskId' headerText='Task Id' width='180' visible={false}></ColumnDirective>
+                                <ColumnDirective field='WBSCode' headerText='WBS ID' width='120'></ColumnDirective>
                                 <ColumnDirective field='TaskName' headerText='Product Release' width='250'></ColumnDirective>
-                                <ColumnDirective field='Assignee' headerText='Assignee' allowSorting={false} width='170' template={template}></ColumnDirective>
+                                <ColumnDirective field='Assignee' headerText='Assignee' allowSorting={false} width='179' template={template}></ColumnDirective>
                                 <ColumnDirective field='Status' headerText='Status' minWidth="100" width="120" template={statusTemplate}></ColumnDirective>
-                                <ColumnDirective field='Priority' headerText='Priority' minWidth='80' width='100' template={priorityTemplate}></ColumnDirective>
-                                <ColumnDirective field='Work' headerText='Planned Hours' width='120'></ColumnDirective>
-                                <ColumnDirective field='TimeLog' headerText='Work Log' width='120'></ColumnDirective>
+                                <ColumnDirective field='Priority' headerText='Priority' minWidth='80' width='150' template={priorityTemplate}></ColumnDirective>
+                                <ColumnDirective field='WBSPredecessor' headerText='WBS Predecessor' width='190' />
+                                <ColumnDirective field='ConstraintType' headerText='Constraint Type' width='200' />
+                                <ColumnDirective field='ConstraintDate' headerText='Constraint Date' width='200' />
+                                <ColumnDirective field='Progress' headerText='Completion(%)' width='200' />
+                                <ColumnDirective field='TimeLog' headerText='Work Log' width='130' />
                             </ColumnsDirective>
                             <EventMarkersDirective>
-                                <EventMarkerDirective day={eventMarkerDay1} label='Q-1 Release' ></EventMarkerDirective>
-                                <EventMarkerDirective day={eventMarkerDay2} label='Q-2 Release' ></EventMarkerDirective>
-                                <EventMarkerDirective day={eventMarkerDay3} label='Q-3 Release' ></EventMarkerDirective>
+                                <EventMarkerDirective day={eventMarkerDay1} label='Project Initiative' ></EventMarkerDirective>
+                                <EventMarkerDirective day={eventMarkerDay2} label='Requirement Gathering' ></EventMarkerDirective>
+                                <EventMarkerDirective day={eventMarkerDay3} label='Design Phase' ></EventMarkerDirective>
+                                <EventMarkerDirective day={eventMarkerDay4} label='Deployment' ></EventMarkerDirective>
                             </EventMarkersDirective>
                             <HolidaysDirective>
-                                <HolidayDirective from={new Date('01/01/2024')} to={new Date('01/01/2024')} label='New year Holiday'></HolidayDirective>
-                                <HolidayDirective from={new Date('12/25/2023')} to={new Date('12/26/2023')} label='Christmas Holidays'></HolidayDirective>
+                                <HolidayDirective from={new Date('01/01/2025')} to={new Date('01/01/2025')} label='New year Holiday'></HolidayDirective>
+                                <HolidayDirective from={new Date('12/25/2024')} to={new Date('12/26/2024')} label='Christmas Holidays'></HolidayDirective>
                             </HolidaysDirective>
                             <Inject services={[Edit, Selection, Toolbar, DayMarkers, ColumnMenu, Filter, Sort, Resize , ExcelExport, PdfExport]} />
                         </GanttComponent>
@@ -655,12 +723,19 @@ const Overview = () =>  {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>This sample shows an overview of the EJ2 Gantt Chart features that visualize the progress of each feature of the product towards its release and make it easier to monitor the scheduling of the dependent items.</p>
+                    <p>This sample provides an overview of the React Gantt Chart, showcasing its key features through an e-commerce platform redesign project 
+                        timeline. It visualizes task hierarchies, dependencies, milestones, and resource allocations, enabling efficient project tracking from planning to deployment.
+                    </p>
                 </div>
 
                 <div id="description">
-                    <p>This example shows the three-quarter release planning of product features rendered in the EJ2 Gantt Chart. It tracks the quarterly release planning of product status, resources, and task scheduling.</p>
-                    <p>EJ2 Gantt Chart features such as Sorting, Filtering, Column resizing, Column menu, column template and so on are used in this demo.</p>
+                    <p>This demo presents an e-commerce platform redesign project, demonstrating key features such as task organization, customizable timeline views, 
+                        resource management, and interactive controls. Users can <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/sorting">sort</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/filtering/filtering">filter tasks</a>, <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/columns/column-resizing"> resize</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/columns/column-reordering">reorder columns</a>, track progress with <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/baseline"> baselines</a>, 
+                        and highlight key dates with <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/event-markers">event markers</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/holidays"> holidays</a>. The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/tool-bar"> toolbar </a> offers intuitive options to add, edit, delete, search, and expand or 
+                        collapse tasks. Additionally, users can configure <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#workweek"> working days</a>, <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/scheduling-tasks#weekendnon-working-days"> highlight weekends</a>, set <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#projectstartdate"> project date ranges</a>.
+                    </p>
+                <br/>
+                <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/getting-started#adding-gantt-component">documentation section</a>.</p>
                 </div>
             </div>
         )

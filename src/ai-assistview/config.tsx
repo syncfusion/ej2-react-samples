@@ -41,7 +41,6 @@ export const AIAssistViewSampleOrder: Object = [
   { 'path': 'ai-assistview/attachments',
     'component': 'Attachments',
     'name': 'File Attachments',
-    'type': 'new',
     'description':'Shows the AiAssistView component integrated with attachments, demonstrating how it interacts and fits within a larger system.',
     'order': '01',
     'category': 'Integration',
@@ -67,7 +66,7 @@ export const AIAssistViewSampleOrder: Object = [
   },
   { 'path': 'ai-assistview/dialog',
     'component': 'Dialog',
-    'name': 'Dialog',
+    'name': 'Notes Assistant',
     'description':'Shows the AiAssistView component integrated with Dialog, Fab and Splitter components, demonstrating how it interacts and fits within a larger system.',
     'order': '02',
     'category': 'Integration',
@@ -78,5 +77,4 @@ export const AIAssistViewSampleOrder: Object = [
       { 'displayName': 'promptResponseData.json', 'path': 'src/ai-assistview/promptResponseData.json' }
     ]
   }
-  
 ]

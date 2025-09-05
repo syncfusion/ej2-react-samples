@@ -38,13 +38,15 @@ const Format = () => {
     const [separator, setSeparator] = useState<string>('-');
     /*Apply selected format to the component*/
     const onChange = (args: ChangeEventArgs): void => {
-            setFormat(args.value as FormatObject);
+        setFormat(args.value as FormatObject);
     }
     const onChangeInputFormat = (args: any): void => {
+        if (args != null && fields.text != null) {
             setinputFormats(args.value as any);
             setSeparator(
-            args.itemData[fields.text] === 'yyyy/MM/dd HH:mm' ? 'to' : '-'
-        );
+                args.itemData[fields.text] === 'yyyy/MM/dd HH:mm' ? 'to' : '-'
+            );
+        }
     }
     return (
         <div className='control-pane'>

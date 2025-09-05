@@ -1,3 +1,4 @@
+
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { useState, useEffect } from 'react';
@@ -23,7 +24,7 @@ const DefaultFunctionalities = () => {
                 content: '10% of battery remaining',
                 okButton: { click:alertOkAction.bind(this)},
                 position: { X: 'center', Y: 'center' },
-                closeOnEscape: true,
+                closeOnEscape: true ,
                 close : alertOkAction ,
           });
         }       
@@ -35,7 +36,7 @@ const DefaultFunctionalities = () => {
                 okButton: { click:confirmOkAction.bind(this)},
                 cancelButton: { click:confirmCancelAction.bind(this)},
                 position: { X: 'center', Y: 'center' },
-                closeOnEscape: true,
+                closeOnEscape: true ,
                 close : confirmCancelAction ,
             });
         }
@@ -47,7 +48,7 @@ const DefaultFunctionalities = () => {
             okButton: {  click:promptOkAction.bind(this)},
             cancelButton: {  click:promptCancelAction.bind(this)},
             position: { X: 'center', Y: 'center' },
-            closeOnEscape: true,
+            closeOnEscape: true ,
             close : promptOkAction ,
           });
         }

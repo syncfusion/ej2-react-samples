@@ -81,6 +81,12 @@ export const KanbanSampleOrder: Object = [
         'description': 'This sample demonstrates the toggle column of JS Kanban, which is helpful to expand and collapse the columns and can be collapsed on page load also.'
     },
     {
+        'path': 'kanban/column-rearrangement', 'component': 'ColumnRearrange', 'name': 'Column Rearrangement', 'order': '04', 'category': 'Columns', 'api':
+            '{"KanbanComponent": [ "dataSource", "keyField", "columns", "cardSettings"] }', 
+        'description': 'This example demonstrates the column rearrangement of the Kanban control. You can drag and drop the columns to rearrange them across multiple stages of the Kanban board.'
+        , 'type': 'new'
+    },
+    {
         'path': 'kanban/wip-validation', 'component': 'WIPValidation', 'name': 'WIP Validation', 'order': '05', 'category': 'Validation', 'api':
             '{"KanbanComponent": [ "dataSource", "keyField", "columns", "cardSettings", "swimlaneSettings"] }',
         'description': 'The Work-in-progress (WIP) validation demo demonstrates the minimum and maximum limit of card per column or swimlane in JavaScript Kanban board.'

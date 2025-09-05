@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { GanttComponent, Inject, Selection, DayMarkers, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
-import { projectNewData } from './data';
+import { localData } from './data';
 import { SampleBase } from '../common/sample-base';
 
 export class LocalData extends SampleBase<{}, {}> {
@@ -21,15 +21,15 @@ export class LocalData extends SampleBase<{}, {}> {
   public splitterSettings: any = {
     position: "35%"
   };
-  public projectStartDate: Date = new Date('03/24/2024');
-  public projectEndDate: Date = new Date('07/06/2024');
+  public projectStartDate: Date = new Date('03/26/2025');
+  public projectEndDate: Date = new Date('07/20/2025');
   render() {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <GanttComponent id='LocalData' dataSource={projectNewData} highlightWeekends={true}
+          <GanttComponent id='LocalData' dataSource={localData} highlightWeekends={true}
             allowSelection={true} treeColumnIndex={1} taskFields={this.taskFields}
-            labelSettings={this.labelSettings} height='410px' splitterSettings={this.splitterSettings}
+            labelSettings={this.labelSettings} height='650px' taskbarHeight={25} rowHeight={46} splitterSettings={this.splitterSettings}
             projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>
             <ColumnsDirective>
               <ColumnDirective field='TaskID' width='60'></ColumnDirective>
@@ -53,6 +53,8 @@ export class LocalData extends SampleBase<{}, {}> {
           <p>Gantt component features are segregated into individual feature-wise modules. To use a selection, inject the
         <code>Selection</code> module using the <code>Gantt.Inject(Selection)</code> method.To use markers, inject the
         <code>DayMarkers</code> module using the <code>Gantt.Inject(DayMarkers)</code> method.</p>
+          <br/>
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/data-binding#hierarchical-data-binding">documentation section</a>.</p>
         </div>
       </div>
     )

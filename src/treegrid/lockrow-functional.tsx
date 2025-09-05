@@ -249,7 +249,7 @@ const LockRow = () => {
                     <div style={{ paddingLeft: "10px" }}> Disable Rows </div>
                   </td>
                   <td style={{ width: "100%" }}>
-                    <div className="Multiselectlockrow">
+                    <div className="Multiselectlockrow" style={{ paddingLeft: "10px" }}>
                       <MultiSelectComponent
                         width="150px"
                         id="lockrows"

@@ -124,14 +124,14 @@ const TimelineTemplate = () => {
     const labelSettings: any = {
       leftLabel: 'TaskName',
     };
-   const projectStartDate = new Date('03/31/2024');
-   const projectEndDate = new Date('04/23/2024');
+   const projectStartDate = new Date('03/29/2025 01:00:00 PM');
+   const projectEndDate = new Date('04/23/2025');
   return (
     <div className='control-pane'>
       <div className='control-section'>
       <GanttComponent id='TimelineTemplate' dataSource={timelineTemplateData} ref={gantt => ganttInstance = gantt}
             splitterSettings={splitterSettings}
-            taskFields={taskFields} height='550px'
+            taskFields={taskFields} height='650px' taskbarHeight={25} rowHeight={46}
             projectStartDate={projectStartDate} projectEndDate={projectEndDate} timelineSettings={timelineSettings}
             timelineTemplate={timelineTemplate} labelSettings={labelSettings} treeColumnIndex={1}> 
             <ColumnsDirective>
@@ -158,6 +158,8 @@ const TimelineTemplate = () => {
             <li><code>value</code>: Defines the date value to display in the timeline.</li>
             <li><code>tier</code>: Defines the tier of timeline.</li>
           </ul>
+          <br/>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/timeline/timeline#timeline-template">documentation section</a>.</p>
         </div>
       </div>
   )

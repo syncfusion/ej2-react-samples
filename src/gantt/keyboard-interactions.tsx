@@ -14,7 +14,7 @@ export class KeyboardInteraction extends SampleBase<{}, {}> {
     duration: 'Duration',
     progress: 'Progress',
     dependency: 'Predecessor',
-    child: 'subtasks'
+    parentID: 'ParentId'
   };
   public editSettings: any = {
     allowAdding: true,
@@ -28,8 +28,8 @@ export class KeyboardInteraction extends SampleBase<{}, {}> {
   public splitterSettings: any = {
     columnIndex: 2
   };
-  public projectStartDate: Date = new Date('03/24/2024');
-  public projectEndDate: Date = new Date('07/06/2024');
+  public projectStartDate: Date = new Date('03/26/2025');
+  public projectEndDate: Date = new Date('07/20/2025');
   render() {
     return (
       <div className='control-pane'>
@@ -38,7 +38,7 @@ export class KeyboardInteraction extends SampleBase<{}, {}> {
             <GanttComponent id='KeyboardInteraction' dataSource={projectNewData} highlightWeekends={true}
               treeColumnIndex={1} allowSelection={true} allowKeyboard={true}
               toolbar={this.toolbar} editSettings={this.editSettings} splitterSettings={this.splitterSettings}
-              taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'
+              taskFields={this.taskFields} labelSettings={this.labelSettings} height='650px' taskbarHeight={25} rowHeight={46}
               projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>
               <ColumnsDirective>
               <ColumnDirective field='TaskID' width='80' ></ColumnDirective>
@@ -401,6 +401,8 @@ export class KeyboardInteraction extends SampleBase<{}, {}> {
               </tr>
             </table>
           </p>
+          <br/>
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/nextjs-getting-started#add-syncfusion-react-component">documentation section</a>.</p>
         </div>
       </div>
     )

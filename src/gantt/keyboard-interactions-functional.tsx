@@ -18,7 +18,7 @@ const KeyboardInteraction = () => {
     duration: 'Duration',
     progress: 'Progress',
     dependency: 'Predecessor',
-    child: 'subtasks'
+    parentID: 'ParentId'
   };
   const editSettings: any = {
     allowAdding: true,
@@ -32,8 +32,8 @@ const KeyboardInteraction = () => {
   const splitterSettings: any = {
     columnIndex: 2
   };
-  const projectStartDate: Date = new Date('03/24/2024');
-  const projectEndDate: Date = new Date('07/06/2024');
+  const projectStartDate: Date = new Date('03/26/2025');
+  const projectEndDate: Date = new Date('07/20/2025');
   return (
     <div className='control-pane'>
       <div className='control-section'>
@@ -41,7 +41,7 @@ const KeyboardInteraction = () => {
           <GanttComponent id='KeyboardInteraction' dataSource={projectNewData} highlightWeekends={true}
             treeColumnIndex={1} allowSelection={true} allowKeyboard={true}
             toolbar={toolbar} editSettings={editSettings} splitterSettings={splitterSettings}
-            taskFields={taskFields} labelSettings={labelSettings} height='410px'
+            taskFields={taskFields} labelSettings={labelSettings} height='650px' taskbarHeight={25} rowHeight={46}
             projectStartDate={projectStartDate} projectEndDate={projectEndDate}>
             <ColumnsDirective>
               <ColumnDirective field='TaskID' width='80' ></ColumnDirective>
@@ -407,6 +407,8 @@ const KeyboardInteraction = () => {
             </tbody>
           </table>
         </div>
+        <br/>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/nextjs-getting-started#add-syncfusion-react-component">documentation section</a>.</p>
       </div>
     </div>
   )

@@ -2738,6 +2738,10 @@ RTE toolbar not visible in fullscreen
     margin-top: -1.5px;
 }
 
+.sb-themeswitch-btn .dark-theme {
+    color: #D1D5DB;
+}
+
 .sb-theme-splitter {
     float: left;
     border-left: 1px solid rgb(196, 196, 196);

@@ -1,7 +1,6 @@
-
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { Inject, RichTextEditorComponent, Toolbar, Link, Image, QuickToolbar, HtmlEditor, ToolbarClickEventArgs } from '@syncfusion/ej2-react-richtexteditor';
+import { Inject, RichTextEditorComponent, Toolbar, Link, Image, QuickToolbar, HtmlEditor, Table, ToolbarClickEventArgs } from '@syncfusion/ej2-react-richtexteditor';
 import { enableRipple } from '@syncfusion/ej2-base';
 import './rich-text-editor.css';
 import { DropDownButton } from '@syncfusion/ej2-react-splitbuttons';
@@ -33,11 +32,13 @@ function AISmartRichTextEditor() {
         items: [
             {
                 tooltipText: 'AI Assistant',
+                command: 'Custom',
                 template:
                     '<button class="e-tbar-btn e-btn" tabindex="-1" id="ai_assistant_button_tbar" style="width:100%"><div class="e-rte-dropdown-btn-text">AIAssistant</div></button>'
             },
             {
                 tooltipText: 'Rephrase',
+                command: 'Custom',
                 template:
                     '<button class="e-tbar-btn e-btn" tabindex="-1" id="ai_rephrase_button_tbar" style="width:100%"><div class="e-tbar-btn-text">Rephrase</div></button>'
             },
@@ -280,7 +281,7 @@ function AISmartRichTextEditor() {
                     created={onCreate}
                     toolbarClick={onToolbarClick}
                 >
-                    <Inject services={[Toolbar, Link, Image, QuickToolbar, HtmlEditor]} />
+                    <Inject services={[Toolbar, Link, Image, QuickToolbar, HtmlEditor, Table]} />
                 </RichTextEditorComponent>
                 <DialogComponent
                     id="dialog"

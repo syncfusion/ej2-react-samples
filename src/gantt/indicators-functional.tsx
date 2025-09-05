@@ -18,19 +18,19 @@ const Indicators = () => {
     duration: 'Duration',
     progress: 'Progress',
     dependency: 'Predecessor',
-    child: 'subtasks',
+    parentID: 'ParentId',
     indicators: 'Indicators'
   };
   const labelSettings: any = {
     leftLabel: 'TaskName'
   };
-  const projectStartDate: Date = new Date('03/24/2024');
-  const projectEndDate: Date = new Date('07/06/2024');
+  const projectStartDate: Date = new Date('03/26/2025');
+  const projectEndDate: Date = new Date('07/20/2025');
   return (
     <div className='control-pane'>
       <div className='control-section'>
         <GanttComponent id='Indicators' dataSource={projectNewData} highlightWeekends={true} treeColumnIndex={1}
-          taskFields={taskFields} labelSettings={labelSettings} height='410px'
+          taskFields={taskFields} labelSettings={labelSettings} height='650px' taskbarHeight={25} rowHeight={46}
           projectStartDate={projectStartDate} projectEndDate={projectEndDate}>
           <ColumnsDirective>
             <ColumnDirective field='TaskID' width='80' ></ColumnDirective>
@@ -49,16 +49,17 @@ const Indicators = () => {
       </div>
       <div id="description">
         <p>
-          In this example, <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/taskFieldsModel/#indicators">indicators</a> are displayed with some custom text in specified day of task, which are defined in dataSource. You can define the indicators with the following properties for tasks:
+          In this example, <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/taskFieldsModel/#indicators">indicators</a> are displayed with some custom text in specified day of task, which are defined in dataSource. You can define the indicators with the following properties for tasks:</p>
           <li><code>date</code>: Defines the date value to where we want to display the indicators.</li>
           <li><code>iconClass </code>: Defines the icon to highlight the indicator.</li>
           <li><code>name</code>: Defines text to be displayed in the mentioned date.</li>
           <li><code>tooltip</code>: The text to be displayed when hover the mouse over the indicator.</li>
-        </p>
         <p>
           Gantt component features are segregated into individual feature-wise modules. To use a selection support and event markers we need to inject the
           <code>Selection</code>, <code>DayMarkers</code> modules.
         </p>
+        <br/>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/data-markers">documentation section</a>.</p>
       </div>
     </div>
   )

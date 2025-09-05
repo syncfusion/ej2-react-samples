@@ -13,7 +13,7 @@ export class Sorting extends SampleBase<{}, {}> {
     duration: 'Duration',
     progress: 'Progress',
     dependency: 'Predecessor',
-    child: 'subtasks'
+    parentID:'ParentId'
   };
   public labelSettings: any = {
     leftLabel: 'TaskName'
@@ -24,18 +24,18 @@ export class Sorting extends SampleBase<{}, {}> {
   public sortSettings: any = {
     columns: [{ field: 'TaskName', direction: 'Ascending' }, { field: 'TaskID', direction: 'Ascending' }]
   };
-  public projectStartDate: Date = new Date('03/25/2024');
-  public projectEndDate: Date = new Date('07/28/2024');
+  public projectStartDate: Date = new Date('03/26/2025');
+  public projectEndDate: Date = new Date('09/01/2025');
   render() {
     return (
       <div className='control-pane'>
         <div className='control-section'>
           <GanttComponent id='Sorting' dataSource={editingData} highlightWeekends={true} allowSelection={true}
             taskFields={this.taskFields} splitterSettings={this.splitterSettings} treeColumnIndex={1}
-            labelSettings={this.labelSettings} height='410px' selectedRowIndex={0} sortSettings={this.sortSettings} allowSorting={true}
+            labelSettings={this.labelSettings} height='650px' taskbarHeight={25} rowHeight={46} selectedRowIndex={0} sortSettings={this.sortSettings} allowSorting={true}
             projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>
             <ColumnsDirective>
-              <ColumnDirective field='TaskID' width='80'></ColumnDirective>
+              <ColumnDirective field='TaskID' visible={false} width='80'></ColumnDirective>
               <ColumnDirective field='TaskName' width='250'></ColumnDirective>
               <ColumnDirective field='StartDate'></ColumnDirective>
               <ColumnDirective field='EndDate' ></ColumnDirective>
@@ -59,6 +59,8 @@ export class Sorting extends SampleBase<{}, {}> {
         <code>Selection</code> module using the <code>Gantt.Inject(Selection)</code> method. To use sort, inject the
         <code>Sort</code> module using the <code>Gantt.Inject(Sort)</code> method.To use markers, inject the
         <code>DayMarkers</code> module using the <code>Gantt.Inject(DayMarkers)</code> method.</p>
+          <br/>
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/sorting">documentation section</a>.</p>
         </div>
       </div>
     )

@@ -1,12 +1,21 @@
     /* Fluent2 Theme */
-    .fluent2 #ResourceMultiTaskbarallow,
+    .fluent2 #ResourceMultiTaskbarallow ,
     .fluent2-dark #ResourceMultiTaskbarallow,
-    .fluent2-highcontrast #ResourceMultiTaskbarallow {
+    .fluent2-highcontrast #ResourceMultiTaskbarallow{
         padding: 5px;
+        font-size: 15px !important;
+        margin-right: -5px !important;
+        margin-top: 0px !important;
+        padding-right: 0px;
     }
-
     .e-bigger  {
-        #ResourceMultiTaskbarallow {
-        margin: 5px 5px 0px 5px !important;
+            #ResourceMultiTaskbarallow {
+            margin: 5px 5px 0px 5px !important;
+        }
     }
-}
+    .bootstrap5_3 #ResourceMultiTaskbarallow{
+        margin-top: 0px !important;
+    }
+    .e-bigger.fluent2 #ResourceMultiTaskbarallow, .e-bigger.fluent2-dark #ResourceMultiTaskbarallow, .e-bigger.fluent2-highcontrast #ResourceMultiTaskbarallow {
+        margin: 5px -5px 0px 5px !important;
+    }

@@ -17,7 +17,7 @@ export class ReorderColumn extends SampleBase<{}, {}> {
     duration: 'Duration',
     progress: 'Progress',
     dependency: 'Predecessor',
-    child: 'subtasks'
+    parentID: 'ParentId'
   };
   public ganttObj: GanttComponent;
   public columnsDropdownObj: DropDownListComponent;
@@ -62,13 +62,13 @@ export class ReorderColumn extends SampleBase<{}, {}> {
     }
   }
   public labelSettings: any = {
-    leftLabel: 'TaskName'
+    rightLabel: 'TaskName'
   };
   public splitterSettings: any = {
     columnIndex: 4
 };
-  public projectStartDate: Date = new Date('03/24/2024');
-  public projectEndDate: Date = new Date('07/06/2024');
+  public projectStartDate: Date = new Date('03/31/2025');
+  public projectEndDate: Date = new Date('07/20/2025');
   render() {
     return (
       <div className='control-pane'>
@@ -76,7 +76,7 @@ export class ReorderColumn extends SampleBase<{}, {}> {
         <div className='col-md-9'>
           <GanttComponent id='ReorderColumn' treeColumnIndex={1} allowReordering={true}
             ref={gantt => this.ganttObj = gantt} splitterSettings={this.splitterSettings} actionComplete= {this.actionComplete.bind(this)} dataSource={projectNewData} highlightWeekends={true}
-            taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'
+            taskFields={this.taskFields} labelSettings={this.labelSettings} height='650px' taskbarHeight={25} rowHeight={46}
             projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>
               <ColumnsDirective>
               <ColumnDirective field='TaskID' headerText='ID' width='100' ></ColumnDirective>
@@ -139,10 +139,9 @@ export class ReorderColumn extends SampleBase<{}, {}> {
         <b>Injecting Module:</b>
          <p>Gantt features are segregated into individual feature-wise modules. To use reordering feature, we need to
               inject <code>Reorder</code> module into the <code>services</code>.</p>
-          <p>
-            More information about Column Reorder can be found in this documentation section.
-         </p>
-         </div>
+          <br/>
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/columns/column-reordering">documentation section</a>.</p>
+        </div>
       </div>
     )
   }

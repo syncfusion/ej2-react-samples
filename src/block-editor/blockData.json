@@ -2,7 +2,8 @@
   "blockDataAPI": [
     {
       "id": "heading-block",
-      "type": "Heading1",
+      "type": "Heading",
+      "props": { "level": 1 },
       "content": [
         {
           "id": "heading-content",
@@ -24,7 +25,8 @@
     },
     {
       "id": "api-heading",
-      "type": "Heading2",
+      "type": "Heading",
+      "props": { "level": 2 },
       "content": [
         {
           "id": "api-heading-content",
@@ -140,19 +142,21 @@
           "id": "try-it-content",
           "type": "Text",
           "content": "Try it out! Use the property panel on the right to interact with the API.",
-          "styles": {
-            "bold": "true",
-            "bgColor": "#999999"
+          "props": {
+            "styles": {
+              "bold": true,
+              "bgColor": "#999999"
+            }
           }
         }
       ]
     }
   ],
-
   "blockDataOverview": [
     {
       "id": "heading-block",
-      "type": "Heading1",
+      "type": "Heading",
+      "props": { "level": 1 },
       "content": [
         {
           "id": "heading-content",
@@ -185,9 +189,11 @@
           "id": "styled-text-2",
           "type": "Text",
           "content": "formatting options",
-          "styles": {
-            "bold": "true",
-            "italic": "true"
+          "props": {
+            "styles": {
+              "bold": true,
+              "italic": true
+            }
           }
         },
         {
@@ -199,9 +205,11 @@
           "id": "styled-text-4",
           "type": "Text",
           "content": "'/'",
-          "styles": {
-            "bgColor": "#999999",
-            "bold": "true"
+          "props": {
+            "styles": {
+              "bgColor": "#999999",
+              "bold": true
+            }
           }
         },
         {
@@ -213,7 +221,8 @@
     },
     {
       "id": "block-types-heading",
-      "type": "Heading2",
+      "type": "Heading",
+      "props": { "level": 2 },
       "content": [
         {
           "id": "block-types-heading-content",
@@ -230,8 +239,10 @@
           "id": "quote-content",
           "type": "Text",
           "content": "The Block Editor makes document creation a seamless experience with its intuitive block-based approach.",
-          "styles": {
-            "italic": "true"
+          "props": {
+            "styles": {
+              "italic": true
+            }
           }
         }
       ]
@@ -239,26 +250,31 @@
     {
       "id": "callout-block",
       "type": "Callout",
-      "children": [
-        {
-          "id": "callout-content",
-          "type": "Paragraph",
-          "content": [
-            {
-              "id": "callout-content-1",
-              "type": "Text",
-              "content": "Important: Block Editor supports various content types including Text, Link, Code, Mention, and Label.",
-              "styles": {
-                "bold": "true"
+      "props": {
+        "children": [
+          {
+            "id": "callout-content",
+            "type": "Paragraph",
+            "content": [
+              {
+                "id": "callout-content-1",
+                "type": "Text",
+                "content": "Important: Block Editor supports various content types including Text, Link, Code, Mention, and Label.",
+                "props": {
+                  "styles": {
+                    "bold": true
+                  }
+                }
               }
-            }
-          ]
-        }
-      ]
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "list-types-heading",
-      "type": "Heading3",
+      "type": "Heading",
+      "props": { "level": 3 },
       "content": [
         {
           "id": "list-types-heading-content",
@@ -275,8 +291,10 @@
           "id": "bullet-list-header-content",
           "type": "Text",
           "content": "Text blocks: Paragraph, Heading 1-4, Quote, Callout",
-          "styles": {
-            "bold": "true"
+          "props": {
+            "styles": {
+              "bold": true
+            }
           }
         }
       ]
@@ -294,8 +312,8 @@
     },
     {
       "id": "check-list",
-      "type": "CheckList",
-      "isChecked": "true",
+      "type": "Checklist",
+      "props": { "isChecked": true },
       "content": [
         {
           "id": "check-list-content",
@@ -311,8 +329,7 @@
     },
     {
       "id": "toggle-block",
-      "type": "ToggleParagraph",
-      "isExpanded": "true",
+      "type": "CollapsibleParagraph",
       "content": [
         {
           "id": "toggle-content",
@@ -320,19 +337,22 @@
           "content": "Click me to expand/collapse"
         }
       ],
-      "children": [
-        {
-          "id": "toggle-child",
-          "type": "Paragraph",
-          "content": [
-            {
-              "id": "toggle-child-content",
-              "type": "Text",
-              "content": "This content is inside a toggle block. Toggle blocks are useful for organizing content that can be expanded or collapsed."
-            }
-          ]
-        }
-      ]
+      "props": {
+        "isExpanded": "true",
+        "children": [
+          {
+            "id": "toggle-child",
+            "type": "Paragraph",
+            "content": [
+              {
+                "id": "toggle-child-content",
+                "type": "Text",
+                "content": "This content is inside a toggle block. Toggle blocks are useful for organizing content that can be expanded or collapsed."
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "code-block",
@@ -347,7 +367,8 @@
     },
     {
       "id": "formatting-heading",
-      "type": "Heading4",
+      "type": "Heading",
+      "props": { "level": 4 },
       "content": [
         {
           "id": "formatting-heading-content",
@@ -364,64 +385,80 @@
           "id": "format-bold",
           "type": "Text",
           "content": "Bold ",
-          "styles": {
-            "bold": "true"
+          "props": {
+            "styles": {
+              "bold": true
+            }
           }
         },
         {
           "id": "format-italic",
           "type": "Text",
           "content": "Italic ",
-          "styles": {
-            "italic": "true"
+          "props": {
+            "styles": {
+              "italic": true
+            }
           }
         },
         {
           "id": "format-underline",
           "type": "Text",
           "content": "Underline ",
-          "styles": {
-            "underline": "true"
+          "props": {
+            "styles": {
+              "underline": true
+            }
           }
         },
         {
           "id": "format-strikethrough",
           "type": "Text",
           "content": "Strikethrough ",
-          "styles": {
-            "strikethrough": "true"
+          "props": {
+            "styles": {
+              "strikethrough": true
+            }
           }
         },
         {
           "id": "format-superscript",
           "type": "Text",
           "content": "Superscript ",
-          "styles": {
-            "superscript": "true"
+          "props": {
+            "styles": {
+              "superscript": true
+            }
           }
         },
         {
           "id": "format-subscript",
           "type": "Text",
           "content": "Subscript ",
-          "styles": {
-            "subscript": "true"
+          "props": {
+            "styles": {
+              "subscript": true
+            }
           }
         },
         {
           "id": "format-uppercase",
           "type": "Text",
           "content": "uppercase ",
-          "styles": {
-            "uppercase": "true"
+          "props": {
+            "styles": {
+              "uppercase": true
+            }
           }
         },
         {
           "id": "format-lowercase",
           "type": "Text",
           "content": "LOWERCASE",
-          "styles": {
-            "lowercase": "true"
+          "props": {
+            "styles": {
+              "lowercase": true
+            }
           }
         }
       ]
@@ -439,9 +476,9 @@
           "id": "link-content",
           "type": "Link",
           "content": "Syncfusion",
-          "linkSettings": {
+          "props": {
             "url": "https://www.syncfusion.com/",
-            "openInNewWindow": "true"
+            "openInNewWindow": true
           }
         },
         {
@@ -461,8 +498,9 @@
           "content": "This block contains a "
         },
         {
-          "id": "progress",
-          "type": "Label"
+          "id": "progress-label",
+          "type": "Label",
+          "props": { "labelId": "progress" }
         },
         {
           "id": "label-text-end",
@@ -479,19 +517,21 @@
           "id": "try-it-content",
           "type": "Text",
           "content": "Try it out! Click anywhere and start typing, or type '/' to see available commands.",
-          "styles": {
-            "bold": "true",
-            "bgColor": "#999999"
+          "props": {
+            "styles": {
+              "bold": true,
+              "bgColor": "#999999"
+            }
           }
         }
       ]
     }
   ],
-
   "blockDataEvents": [
     {
       "id": "heading-block",
-      "type": "Heading1",
+      "type": "Heading",
+      "props": { "level": 1 },
       "content": [
         {
           "id": "heading-content",
@@ -513,7 +553,8 @@
     },
     {
       "id": "features-heading",
-      "type": "Heading2",
+      "type": "Heading",
+      "props": { "level": 2 },
       "content": [
         {
           "id": "features-heading-content",
@@ -607,9 +648,11 @@
           "id": "try-it-content",
           "type": "Text",
           "content": "Try different actions like typing, selecting text, adding blocks, or moving blocks to see the events triggered.",
-          "styles": {
-            "bold": "true",
-            "bgColor": "#999999"
+          "props": {
+            "styles": {
+              "bold": true,
+              "bgColor": "#999999"
+            }
           }
         }
       ]

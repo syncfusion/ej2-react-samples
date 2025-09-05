@@ -20,7 +20,7 @@ export class Virtualscroll extends SampleBase<{}, {}> {
   public labelSettings: any = {
     taskLabel: 'Progress'
   };
-  public projectStartDate: Date = new Date('04/01/2024');
+  public projectStartDate: Date = new Date('04/01/2025');
   public projectEndDate: Date = new Date('12/31/2030');
   render() {
     return (
@@ -28,10 +28,10 @@ export class Virtualscroll extends SampleBase<{}, {}> {
         <div className='control-section'>
           <GanttComponent id='SplitTasks' dataSource={virtualData} treeColumnIndex={1} labelSettings={this.labelSettings}
             allowSelection={true} highlightWeekends={true} enableVirtualization={true} enableTimelineVirtualization={true}
-            taskFields={this.taskFields} splitterSettings={this.splitterSettings} height='450px' projectEndDate={this.projectEndDate} projectStartDate={this.projectStartDate}>
+            taskFields={this.taskFields} splitterSettings={this.splitterSettings} height='650px' taskbarHeight={25} rowHeight={46} projectEndDate={this.projectEndDate} projectStartDate={this.projectStartDate}>
 			<ColumnsDirective>
                     <ColumnDirective field='TaskID'/>
-                    <ColumnDirective field='TaskName' headerText='Task Name'/>
+                    <ColumnDirective field='TaskName' headerText='Task Name' width={200}/>
                     <ColumnDirective field='StartDate'/>
                     <ColumnDirective field='Duration'/>
                     <ColumnDirective field='Progress'/>
@@ -50,6 +50,8 @@ export class Virtualscroll extends SampleBase<{}, {}> {
           <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#enablevirtualization">enableVirtualization</a> property as true. Additionally, the Gantt component now includes the timeline virtualization feature by setting the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#enabletimelinevirtualization">enableTimelineVirtualization</a> to true.</p>
         <p>This demo highlights the utilization of row and timeline virtualization features within the Gantt.</p>
         <p>By default during Virtual scroll Shimmer effect is enabled you can disable this by changing <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#enablevirtualmaskrow">enableVirtualMaskRow</a> to false</p>
+        <br/>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/virtual-scroll">documentation section</a>.</p>
       </div>
       </div>
     )

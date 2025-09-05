@@ -308,7 +308,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the real time charts.'
     },
     {
-        'path': 'chart/live-stock-data', 'component': 'LiveStock', 'name': 'Live stock data', 'order': '11', 'category': 'Real-time Charts', 'type': 'update',
+        'path': 'chart/live-stock-data', 'component': 'LiveStock', 'name': 'Live stock data', 'order': '11', 'category': 'Real-time Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the real time charts.'
     },
     {
@@ -454,6 +454,10 @@ export const ChartSampleOrder: Object = [
     {
         'path': 'chart/empty-point', 'component': 'EmptyPoint', 'name': 'Empty Points', 'order': '15', 'category': 'Chart Customization',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the empty points.'
+    },
+    {
+        'path': 'chart/no-data-template', 'component': 'NodataTemplate', 'name': 'No Data Template', 'order': '15', 'category': 'Chart Customization', 'type': 'new',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the no data tempalate.'
     },
     {
         'path': 'chart/range-color-mapping', 'component': 'RangeColorMapping', 'name': 'Range Color Mapping', 'order': '15', 'category': 'Chart Customization',

@@ -15,7 +15,7 @@ export class Overview extends SampleBase<{}, {}> {
     var flagIconLocation = (props.parentItem)? props.parentItem.name : props.name;
     return (<div style={{display: 'inline'}}><div style={{display: 'inline-block'}}>
     <img className='e-treeoverviewimage' src={"src/treegrid/images/"+flagIconLocation+".png"} alt = {flagIconLocation}></img>     
-    </div><div style={{ display: 'inline-block', paddingLeft: '6px', verticalAlign: 'middle' }}>{props.name}</div></div>);
+    </div><div style={{ display: 'inline-block', padding: '0px 6px', verticalAlign: 'middle' }}>{props.name}</div></div>);
   }
 
   public treegridTemplate(props): any {
@@ -68,7 +68,7 @@ export class Overview extends SampleBase<{}, {}> {
     let classValue = '';
     if (props.timezone.indexOf('-') !== -1) {
       classValue = 'negativeTimeZone';
-  }
+    }
     return (<div><img src='src/treegrid/images/__Normal.png' alt="Normal" style={{ filter: "brightness(150%)"}} className={classValue}></img><span style={{ paddingLeft: '7px'}}>{props.timezone}</span>)</div>);
   }
 
@@ -96,13 +96,13 @@ export class Overview extends SampleBase<{}, {}> {
           allowFiltering={true} allowSorting={true} filterSettings={{ type:'Menu', hierarchyMode:'Parent'}}>
             <ColumnsDirective>
               <ColumnDirective field='name' headerText='Province' width='210' template={this.flagtemplate} filter={this.Filter}></ColumnDirective>
-              <ColumnDirective field='population' headerText='Population (Million)' allowFiltering={false} valueAccessor={this.populationValue} textAlign='Right' width='200'></ColumnDirective>
-              <ColumnDirective field='gdp' headerText='GDP Rate %' width='155' template={this.gdptemplate} />
+              <ColumnDirective field='population' headerText='Population (Million)' valueAccessor={this.populationValue} textAlign='Right' width='250'></ColumnDirective>
+              <ColumnDirective field='gdp' headerText='GDP Rate %' allowFiltering={false} width='155' template={this.gdptemplate} />
               <ColumnDirective field='rating' headerText='Credit Rating' width='190' template={this.ratingtemplate}  />
               <ColumnDirective field='unemployment' headerText='Unemployment Rate' width='200' allowFiltering={false} template={this.unemploymentTemplate} />
               <ColumnDirective field='coordinates' headerText='Coordinates' allowSorting={false} width='220' template={this.locationtemplate} />
               <ColumnDirective field='area' headerText='Area' width='140' template={this.areatemplate} />
-              <ColumnDirective field='timezone' headerText='Time Zone' width='150' template={this.timezonetemplate} />
+              <ColumnDirective field='timezone' headerText='Time Zone' width='180' template={this.timezonetemplate} />
             </ColumnsDirective>
             <Inject services={[Filter, Sort, Reorder]} />
           </TreeGridComponent>

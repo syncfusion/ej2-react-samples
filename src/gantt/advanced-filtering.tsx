@@ -53,13 +53,13 @@ export class AdvancedFiltering extends SampleBase<{}, AdvancedFilteringState> {
     duration: 'Duration',
     progress: 'Progress',
     dependency: 'Predecessor',
-    child: 'subtasks'
+    parentID:'ParentId'
   };
 
-  public projectStartDate = new Date('04/01/2024');
-  public projectEndDate = new Date('07/06/2024');
+  public projectStartDate = new Date('03/30/2025');
+  public projectEndDate = new Date('07/20/2025');
   public splitterSettings: any = {
-    columnIndex: 3
+    columnIndex: 2
   };
   public labelSettings: any = {
     rightLabel: 'TaskName'
@@ -193,9 +193,9 @@ export class AdvancedFiltering extends SampleBase<{}, AdvancedFilteringState> {
               projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate} taskFields={this.taskFields}
               splitterSettings={this.splitterSettings}
               labelSettings={this.labelSettings}
-              height='410px' rowSelected={this.rowSelected}>
+              height='650px' taskbarHeight={25} rowHeight={46} rowSelected={this.rowSelected}>
               <ColumnsDirective>
-                <ColumnDirective field='TaskID' headerText='Task ID' width='80' ></ColumnDirective>
+                <ColumnDirective field='TaskID' headerText='Task ID' width='120' ></ColumnDirective>
                 <ColumnDirective field='TaskName' headerText='Task Name' width='250' clipMode='EllipsisWithTooltip'></ColumnDirective>
                 <ColumnDirective field='StartDate' headerText='Start Date'></ColumnDirective>
                 <ColumnDirective field='Duration' headerText='Duration'></ColumnDirective>
@@ -209,16 +209,17 @@ export class AdvancedFiltering extends SampleBase<{}, AdvancedFilteringState> {
         </div>
 
         <div id="action-description">
-          <p>This sample demonstrates the integration of the QueryBuilder component for complex filtering in the Gantt Chart.</p>
-        </div>
-
-        <div id="description">
-          <p>
-          In this example, the process involves retrieving the complex query from the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/query-builder/getting-started">QueryBuilder</a>
-          component and subsequently integrating it into the Gantt Chart by updating its <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#query">Query</a> Property.
-          The QueryBuilder component tool is located in a <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/sidebar/getting-started">SideBar</a> component that appears when you click on the toolbar.
-          </p>
-        </div>
+        <p>This sample demonstrates the integration of the QueryBuilder component for complex filtering in the Gantt Chart.</p>
+      </div>
+      <div id="description">
+        <p>
+        In this example, the process involves retrieving the complex query from the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/query-builder/getting-started">QueryBuilder</a>
+        component and subsequently integrating it into the Gantt Chart by updating its <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#query">Query</a> Property.
+        The QueryBuilder component tool is located in a <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/sidebar/getting-started">SideBar</a> component that appears when you click on the toolbar.
+        </p>
+        <br></br>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/filtering/filtering">documentation section</a>.</p>
+      </div>
       </div>
     );
   }

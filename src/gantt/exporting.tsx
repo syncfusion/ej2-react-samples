@@ -17,7 +17,7 @@ export class Exporting extends SampleBase<{}, {}> {
     duration: 'Duration',
     progress: 'Progress',
     dependency: 'Predecessor',
-    child: 'subtasks',
+    parentID: 'ParentId',
     resourceInfo: 'resources'
   };
   public resourceFields: any = {
@@ -27,8 +27,8 @@ export class Exporting extends SampleBase<{}, {}> {
   public splitterSettings: any = {
     position: "35%"
   };
-  public projectStartDate: Date = new Date('03/25/2024');
-  public projectEndDate: Date = new Date('07/28/2024');
+  public projectStartDate: Date = new Date('03/26/2025');
+  public projectEndDate: Date = new Date('09/01/2025');
   public gridLines: any = 'Both';
   public toolbar: any = ['ExcelExport', 'CsvExport', 'PdfExport'];
   public timelineSettings: any = {
@@ -40,38 +40,6 @@ export class Exporting extends SampleBase<{}, {}> {
       unit: 'Day',
     },
   };
-  public eventMarkers: any = [
-            {
-                day: new Date('04/02/2024'),
-            }, {
-                day: new Date("04/09/2024"),
-                label: 'Research phase'
-            }, {
-                day: new Date("04/30/2024"),
-                label: 'Design phase'
-            }, {
-                day: new Date("05/23/2024"),
-                label: 'Production phase'
-            }, {
-                day: new Date("06/20/2024"),
-                label: 'Sales and marketing phase'
-            }
-        ];
-  public holidays: any = [
-            {
-                from: new Date('04/04/2024'),
-                to: new Date('04/04/2024'),
-                label: 'Local Holiday'
-            }, {
-                from: new Date('04/19/2024'),
-                to: new Date('04/19/2024'),
-                label: 'Good Friday'
-            }, {
-                from: new Date('04/30/2024'),
-                to: new Date('04/30/2024'),
-                label: 'Release Holiday'
-            }, 
-        ];
   public labelSettings: any = {
     leftLabel: 'TaskName'
   };
@@ -115,7 +83,7 @@ checkHighContrastMode() {
             treeColumnIndex={1} allowExcelExport={true} allowPdfExport={true} allowSelection={true} showColumnMenu={false} highlightWeekends={true}
             allowUnscheduledTasks={true} projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate} splitterSettings={this.splitterSettings}
             taskFields={this.taskFields} timelineSettings={this.timelineSettings} labelSettings={this.labelSettings} toolbarClick={this.toolbarClick.bind(this)}
-            height='410px' gridLines={this.gridLines} holidays={this.holidays} eventMarkers={this.eventMarkers} toolbar={this.toolbar} resourceFields={this.resourceFields} resources={editingResources}>
+            height='650px' taskbarHeight={25} rowHeight={46} gridLines={this.gridLines} toolbar={this.toolbar} resourceFields={this.resourceFields} resources={editingResources}>
             <ColumnsDirective>
               <ColumnDirective field='TaskID' width='80'></ColumnDirective>
               <ColumnDirective field='TaskName' width='250'></ColumnDirective>
@@ -143,6 +111,8 @@ checkHighContrastMode() {
               <code><a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#pdfexport">
               pdfExport
               </a></code> module into the <code>services</code>. </p>
+          <br/>
+            <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/excel-export/excel-export">documentation section</a>.</p>
         </div>
       </div>
     )

@@ -1,8 +1,38 @@
 {
+    "communityMessageAdmin" : {
+        "user": "Alice Brown",
+        "id": "admin",
+        "statusIconCss": "e-icons e-user-busy"
+    },
+    "communityMessageUser1" : {
+        "user": "Michale Suyama",
+        "id": "user1",
+        "avatarBgColor": "#87cefa",
+        "statusIconCss": "e-icons e-user-online"
+    },
+    "communityMessageUser2" : {
+        "user": "Charlie",
+        "id": "user2",
+        "avatarUrl": "./src/chat-ui/images/charlie.png",
+        "avatarBgColor": "#e6cdde",
+        "statusIconCss": "e-icons e-user-away"
+    },
+    "communityMessageUser3" : {
+        "user": "Janet",
+        "id": "user3",
+        "avatarBgColor": "#dec287",
+        "avatarUrl": "./src/chat-ui/images/janet.png",
+        "statusIconCss": "e-icons e-user-offline"
+    },
+    "communityMessageUser4" : {
+        "user": "Jordan Peele",
+        "id": "user4",
+        "statusIconCss": "e-icons e-user-busy"
+    },
     "communityMessagedata" : [
         {
             "author": {
-                "user": "Alice brown",
+                "user": "Alice Brown",
                 "id": "admin",
                 "statusIconCss": "e-icons e-user-busy"
             },

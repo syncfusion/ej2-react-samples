@@ -10,6 +10,15 @@ export class VirtualScrolling extends SampleBase<{}, {}> {
     public editSettings: any = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Row', newRowPosition: 'Child' };
     public validationRule: Object = { required: true};
     public validationRule1: Object = { required: true, number: true};
+    public tmidrule: Object = { required: true, number: true};
+    public stintrule: Object = { required: true, number: true};
+    public customLength = (args) => {
+        return args['value'].toString().length == 4;
+    };
+    public yearrule = {
+        minLength: [this.customLength, 'Value should be Maximum 4'],
+        required: true
+    };
     
     render() {
         if (virtualData.length === 0) {
@@ -22,9 +31,9 @@ export class VirtualScrolling extends SampleBase<{}, {}> {
                 <ColumnsDirective>
                 <ColumnDirective field='TaskID' headerText='Player Jersey' validationRules={this.validationRule1} width='120' textAlign='Right' isPrimaryKey={true}></ColumnDirective>
                 <ColumnDirective field='FIELD1' headerText='Player Name' validationRules={this.validationRule} width='120'></ColumnDirective>
-                <ColumnDirective field='FIELD2' headerText='Year' width='100' textAlign='Right'></ColumnDirective>
-                <ColumnDirective field='FIELD3' headerText='Stint' width='120' textAlign='Right'></ColumnDirective>
-                <ColumnDirective field='FIELD4' headerText='TMID' width='120' textAlign='Right'></ColumnDirective>
+                <ColumnDirective field='FIELD2' headerText='Year' width='100' textAlign='Right' validationRules={this.yearrule}></ColumnDirective>
+                <ColumnDirective field='FIELD3' headerText='Stint' width='120' textAlign='Right' validationRules={this.stintrule}></ColumnDirective>
+                <ColumnDirective field='FIELD4' headerText='TMID' width='120' textAlign='Right' validationRules={this.tmidrule}></ColumnDirective>
                 </ColumnsDirective>
                 <Inject services={[VirtualScroll, Edit, Toolbar, RowDD]} />
                 </TreeGridComponent>

@@ -31,6 +31,8 @@ export class Clipboard extends SampleBase<{}, {}> {
             let withHeader: boolean = args.item.id === 'copyHeader' ? true : false;
             this.gridInstance.copy(withHeader);
         } else {
+            this.alertDialogInstance.content = args.item.id === 'copyHeader' ? 'Atleast one row should be selected to copy with header' : 'Atleast one row should be selected to copy';
+            this.alertDialogInstance.header = args.item.id === 'copyHeader' ? 'Copy with Header' : 'Copy';
             this.alertDialogInstance.show();
         }
     }

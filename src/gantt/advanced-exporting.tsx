@@ -31,7 +31,7 @@ export class AdvancedExporting extends SampleBase<{}, {}> {
     name: 'resourceName'
   };
   public splitterSettings: any = {
-    position: "35%"
+    columnIndex: 3,
   };
   public projectStartDate: Date = new Date('03/25/2025');
   public projectEndDate: Date = new Date('06/25/2025');
@@ -238,7 +238,7 @@ checkHighContrastMode() {
             treeColumnIndex={1} allowExcelExport={true} allowPdfExport={true} allowSelection={true} showColumnMenu={false} highlightWeekends={true}
             allowUnscheduledTasks={true} projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate} splitterSettings={this.splitterSettings}
             taskFields={this.taskFields} timelineSettings={this.timelineSettings} labelSettings={this.labelSettings} toolbarClick={this.toolbarClick.bind(this)}
-            height='410px' gridLines={this.gridLines} holidays={this.holidays} eventMarkers={this.eventMarkers} toolbar={this.toolbar} resourceFields={this.resourceFields} resources={editingResources}
+            height='650px' taskbarHeight={25} rowHeight={46} gridLines={this.gridLines} holidays={this.holidays} eventMarkers={this.eventMarkers} toolbar={this.toolbar} resourceFields={this.resourceFields} resources={editingResources}
             pdfQueryTaskbarInfo = {this.pdfQueryTaskbarInfo} queryTaskbarInfo={this.queryTaskbarInfo}>
             <ColumnsDirective>
               <ColumnDirective field='TaskID' width='80'></ColumnDirective>
@@ -251,66 +251,63 @@ checkHighContrastMode() {
           </GanttComponent>
         </div>
         <div id="action-description">
-        <p>This sample demonstrates the advanced PDF export features of the Gantt Chart, allowing customization of various
-            elements such as headers, footers, task labels, event markers, holidays, and taskbars. These customizations can
-            be configured using the
-            <a target="_blank"
-              href="https://ej2.syncfusion.com/react/documentation/api/gantt/pdfExportProperties/">pdfExportProperties</a>
-            and
-            <a target="_blank"
-              href="https://ej2.syncfusion.com/react/documentation/api/gantt/pdfQueryTaskbarInfoEventArgs/">pdfQueryTaskbarInfo</a>
-            event.
-          </p>
+      <p>This sample demonstrates the advanced PDF export features of the Gantt Chart, allowing customization of various
+          elements such as headers, footers, task labels, event markers, holidays, and taskbars. These customizations can
+          be configured using the
+          <a target="_blank"
+            href="https://ej2.syncfusion.com/react/documentation/api/gantt/pdfExportProperties/"> pdfExportProperties </a>
+          and
+          <a target="_blank"
+            href="https://ej2.syncfusion.com/react/documentation/api/gantt/pdfQueryTaskbarInfoEventArgs/"> pdfQueryTaskbarInfo </a>
+          event.
+        </p>
         </div>
         <div id="description">
-        <p>In this sample, the Gantt Chart's PDF export functionality
-             is enhanced with various customization options:
-          </p>
-
+          <p>In this sample, the Gantt Chart's PDF export functionality is enhanced with various customization options:</p>
           <ul>
-            <li>
-              <strong>Custom Headers and Footers</strong>: The headers and footers in the exported PDF can be
-              customized using the
-              <a target="_blank"
-                href="https://ej2.syncfusion.com/react/documentation/api/gantt/pdfExportProperties/#header">header</a>
-              and
-              <a target="_blank"
-                href="https://ej2.syncfusion.com/react/documentation/api/gantt/pdfExportProperties/#footer">footer</a>
-              properties,which allowing us to include relevant information of exported PDF.
-            </li>
-            <li>
-              <strong>Taskbar and Task Label Styling</strong>:Taskbar and Task Label appearance can be customized in
-              the exported PDF using the
-              <a target="_blank"
-                href="https://ej2.syncfusion.com/react/documentation/api/gantt/pdfQueryTaskbarInfoEventArgs">pdfQueryTaskbarInfoEvent</a>.
-            </li>
-            <li>
-              <strong> Event marker and holiday</strong>:Event marker and holiday can be cusotmized in exported PDF
-              using
-              <a target="_blank"
-                href="https://helpej2.syncfusion.com/documentation/api/gantt/pdfExportProperties/#ganttstyle">ganttstyle</a>
-              in <a target="_blank"
-                href="https://ej2.syncfusion.com/react/documentation/api/gantt/pdfExportProperties">pdfExportProperties</a>.
-            </li>
-            <li>
-              <strong>Fit-to-Width Support</strong>: This feature allows the Gantt component's rows to be auto-fitted
-              to the width of the PDF document's page using the
-              <a target="_blank"
-                href="https://ej2.syncfusion.com/react/documentation/api/gantt/pdfExportProperties/#fittowidthsettings">fitToWidthSettings</a>
-              in <a target="_blank"
-                href="https://ej2.syncfusion.com/react/documentation/api/gantt/pdfExportProperties">pdfExportProperties</a>.
-            </li>
+              <li>
+                  <strong>Custom Headers and Footers</strong>: The headers and footers in the exported PDF can be
+                  customized using the
+                  <a target="_blank"
+                      href="https://ej2.syncfusion.com/react/documentation/api/gantt/pdfExportProperties/#header"> header </a>
+                  and
+                  <a target="_blank"
+                      href="https://ej2.syncfusion.com/react/documentation/api/gantt/pdfExportProperties/#footer"> footer </a>
+                  properties,which allowing us to include relevant information of exported PDF.
+              </li>
+              <li>
+                  <strong>Taskbar and Task Label Styling</strong>:Taskbar and Task Label appearance can be customized in
+                  the exported PDF using the
+                  <a target="_blank"
+                      href="https://ej2.syncfusion.com/react/documentation/api/gantt/pdfQueryTaskbarInfoEventArgs"> pdfQueryTaskbarInfoEvent </a>.
+              </li>
+              <li>
+                  <strong> Event marker and holiday</strong>:Event marker and holiday can be cusotmized in exported PDF
+                  using
+                  <a target="_blank"
+                      href="https://helpej2.syncfusion.com/documentation/api/gantt/pdfExportProperties/#ganttstyle"> ganttstyle </a>
+                  in <a target="_blank"
+                      href="https://ej2.syncfusion.com/react/documentation/api/gantt/pdfExportProperties"> pdfExportProperties </a>.
+              </li>
+              <li>
+                  <strong>Fit-to-Width Support</strong>: This feature allows the Gantt component's rows to be auto-fitted
+                  to the width of the PDF document's page using the
+                  <a target="_blank"
+                      href="https://ej2.syncfusion.com/react/documentation/api/gantt/pdfExportProperties/#fittowidthsettings"> fitToWidthSettings </a>
+                  in <a target="_blank"
+                      href="https://ej2.syncfusion.com/react/documentation/api/gantt/pdfExportProperties"> pdfExportProperties </a>.
+              </li>
           </ul>
-
           <p>More information about advanced PDF exporting features in Gantt can be found in the <a target="_blank"
-            href="https://ej2.syncfusion.com/javascript/documentation/gantt/pdf-export/pdf-export">documentation
-            section</a>.</p>
-            <p>Injecting Module:</p>
-        
+              href="https://ej2.syncfusion.com/react/documentation/gantt/pdf-export/pdf-export"> documentation
+              section </a>.</p>
+          <p>Injecting Module:</p>
           <p>To use PDF export feature, we need to inject
               <code><a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#pdfexport">
-              pdfExport
+                  pdfExport
               </a></code> module into the <code>services</code>. </p>
+          <br></br>
+            <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/getting-started#adding-gantt-component">documentation section</a>.</p>
         </div>
       </div>
     )

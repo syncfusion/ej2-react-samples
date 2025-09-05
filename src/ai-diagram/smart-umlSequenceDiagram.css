@@ -23,7 +23,7 @@
     content: '\e724';
 }
 
-.e-connector::before {
+#uml-aidiagarm .e-connector::before {
     content: '\e725';
 }
 

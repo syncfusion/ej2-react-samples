@@ -2,7 +2,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { useEffect, useRef } from 'react';
 import { GanttComponent, Inject, Selection, ColumnsDirective, ColumnDirective, Toolbar, CriticalPath, Edit } from '@syncfusion/ej2-react-gantt';
-import { projectNewData } from './data';
+import { criticalPathData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
 const Critical = () => {
@@ -17,7 +17,7 @@ const Critical = () => {
         duration: 'Duration',
         progress: 'Progress',
         dependency: 'Predecessor',
-        child: 'subtasks'
+        parentID: 'ParentId'
     };
     const editSettings: any = {
         allowAdding: true,
@@ -30,13 +30,13 @@ const Critical = () => {
     const labelSettings: any = {
         leftLabel: 'TaskName'
     };
-    const projectStartDate: Date = new Date('03/24/2024');
-    const projectEndDate: Date = new Date('07/06/2024');
+    const projectStartDate: Date = new Date('03/26/2025');
+    const projectEndDate: Date = new Date('06/01/2025');
     return (
         <div className='control-pane'>
             <div className='control-section'>
-                <GanttComponent id='Critical' dataSource={projectNewData} treeColumnIndex={1}
-                    taskFields={taskFields} labelSettings={labelSettings} height='410px'
+                <GanttComponent id='Critical' dataSource={criticalPathData} treeColumnIndex={1}
+                    taskFields={taskFields} labelSettings={labelSettings} height='650px' taskbarHeight={25} rowHeight={46}
                     projectStartDate={projectStartDate} projectEndDate={projectEndDate}
                     enableCriticalPath={true} editSettings={editSettings} toolbar={toolbar}>
                     <ColumnsDirective>
@@ -67,10 +67,8 @@ const Critical = () => {
                     Gantt control features are segregated into individual feature-wise modules. To use a critical path, inject the
                     <code>CriticalPath</code> module.
                 </p>
-                <p>More information on the Critical Path feature can be found in this
-                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/critical-path/">
-                        documentation section</a>.
-                </p>
+                <br />
+                <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/critical-path/">documentation section</a>.</p>
             </div>
         </div>
     )

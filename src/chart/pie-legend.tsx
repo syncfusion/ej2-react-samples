@@ -36,7 +36,7 @@ export class Doughnut extends SampleBase<{}, {}> {
       <div className='control-pane'>
       <style>{SAMPLE_CSS}</style>
       <div className='control-section'>
-          <AccumulationChartComponent id='pie-chart2' load={this.load.bind(this)} legendSettings={{ visible: true, toggleVisibility: false, position: 'Bottom', textWrap: 'Wrap' }} enableBorderOnMouseMove={false} selectionMode='Point' tooltip={{ enable: true, format: '<b>${point.x}</b><br>Percentage: <b>${point.y}%</b>', header: "" }}>
+          <AccumulationChartComponent id='pie-chart2' load={this.load.bind(this)} legendSettings={{ visible: true, toggleVisibility: false, position: 'Bottom', textWrap: 'Wrap' }} enableBorderOnMouseMove={false} selectionMode='Point' tooltip={{ enable: true, format: '<b>${point.x}</b><br>Percentage: <b>${point.y}%</b>', header: "", enableHighlight: true }}>
               <Inject services={[AccumulationLegend, PieSeries, AccumulationDataLabel, AccumulationTooltip, AccumulationSelection, Selection, ChartAnnotation, AccumulationAnnotation]} />
               <AccumulationSeriesCollectionDirective>
               <AccumulationSeriesDirective dataSource={data1} xName='x' yName='y' innerRadius='50%' borderRadius={3} border={{ width: 1, color: '#ffffff' }} dataLabel={{ visible: false }} />

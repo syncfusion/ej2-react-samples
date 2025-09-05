@@ -17,21 +17,21 @@ const Holidays = () => {
     duration: 'Duration',
     progress: 'Progress',
     dependency: 'Predecessor',
-    child: 'subtasks'
+    parentID:'ParentId'
   };
   const labelSettings: any = {
-    leftLabel: 'TaskName'
+    rightLabel: 'TaskName'
   };
-  const projectStartDate: Date = new Date('03/24/2024');
-  const projectEndDate: Date = new Date('07/06/2024');
+  const projectStartDate: Date = new Date('03/25/2025');
+  const projectEndDate: Date = new Date('07/20/2025');
   return (
     <div className='control-pane'>
       <div className='control-section'>
         <GanttComponent id='Holidays' dataSource={projectNewData} highlightWeekends={true} treeColumnIndex={1}
-          taskFields={taskFields} labelSettings={labelSettings} height='410px'
+          taskFields={taskFields} labelSettings={labelSettings} height='650px' taskbarHeight={25} rowHeight={46}
           projectStartDate={projectStartDate} projectEndDate={projectEndDate}>
           <ColumnsDirective>
-            <ColumnDirective field='TaskID' width='80' ></ColumnDirective>
+            <ColumnDirective field='TaskID' visible={false} width='80' ></ColumnDirective>
             <ColumnDirective field='TaskName' width='250'></ColumnDirective>
             <ColumnDirective field='StartDate'></ColumnDirective>
             <ColumnDirective field='EndDate'></ColumnDirective>
@@ -40,9 +40,10 @@ const Holidays = () => {
             <ColumnDirective field='Progress'></ColumnDirective>
           </ColumnsDirective>
           <HolidaysDirective>
-            <HolidayDirective from='04/04/2024' to='04/04/2024' label='Local Holiday'></HolidayDirective>
-            <HolidayDirective from='04/19/2024' to='04/19/2024' label='Good Friday'></HolidayDirective>
-            <HolidayDirective from='04/30/2024' to='04/30/2024' label='Release Holiday'></HolidayDirective>
+            <HolidayDirective from='03/28/2025' to='03/28/2025' label='Good Friday'></HolidayDirective>
+            <HolidayDirective from='03/30/2025' to='03/30/2025' label='Easter Sunday'></HolidayDirective>
+            <HolidayDirective from='05/26/2025' to='05/26/2025' label='Memorial Day'></HolidayDirective>
+            <HolidayDirective from='07/04/2025' to='07/04/2025' label='Independence Day'></HolidayDirective>
           </HolidaysDirective>
           <Inject services={[Selection, DayMarkers]} />
         </GanttComponent>
@@ -61,6 +62,8 @@ const Holidays = () => {
           Gantt component features are segregated into individual feature-wise modules. To use a selection support and event markers we need to inject the
           <code>Selection</code>, <code>DayMarkers</code> modules.
         </p>
+        <br/>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/holidays">documentation section</a>.</p>
       </div>
     </div>
   )

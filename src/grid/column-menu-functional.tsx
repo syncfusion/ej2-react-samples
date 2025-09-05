@@ -61,8 +61,7 @@ function ColumnMenuSample() {
                         <ColumnDirective field='OrderID' headerText='Order ID' width='200' textAlign='Right' showInColumnChooser={false} validationRules={orderidRules} isPrimaryKey={true}></ColumnDirective>
                         <ColumnDirective field='CustomerName' headerText='Customer Name' width='200' validationRules={customeridRule}></ColumnDirective>
                         <ColumnDirective field='Freight' headerText='Freight' width='150' format='C2' textAlign='Right' validationRules={freightRules} editType='numericedit'/>
-                        <ColumnDirective field='ShipName' headerText='Ship Name' visible={false} width='200'></ColumnDirective>
-                        <ColumnDirective field='ShipCountry' headerText='Ship Country' editType='dropdownedit'></ColumnDirective>
+                        <ColumnDirective field='ShipCountry' headerText='Ship Country' width='200' editType='dropdownedit'></ColumnDirective>
                         <ColumnDirective field='ShipCity' headerText='Ship City' width='200'></ColumnDirective>
                     </ColumnsDirective>
                     <Inject services={[Resize, Group, Sort, ColumnMenu, Filter, Page, Edit, Toolbar]} />

@@ -132,8 +132,7 @@ const CardTemplate = () => {
                                                                         Ready to Serve
                                                                     </div>
                                                                 )}
-                                                                {(props.Category == "Delivered"
-                                                                   ) && (
+                                                                {(props.Category == "Delivered") && (
                                                                         <div className="e-deliveredText e-tooltip-text">
                                                                             Delivered
                                                                         </div>
@@ -171,7 +170,7 @@ const CardTemplate = () => {
             "Menu",
             "Order",
             "Ready to Serve",
-            "Delivered",
+            "Delivered"
         ];
         const [state, setState] = React.useState(extend({}, {}, props, true));
         const onChange = (args: any): void => {

@@ -27,7 +27,7 @@ export class Overview extends SampleBase<{}, {}> {
   private items: any = [
     'Undo', 'Redo', '|', 'ImportWord', 'ExportWord', 'ExportPdf', '|',
     'Bold', 'Italic', 'Underline', 'StrikeThrough', 'InlineCode', '|', 'CreateLink', 'Image', 'CreateTable', 'CodeBlock',
-    'HorizontalLine', 'Blockquote', '|', 'BulletFormatList', 'NumberFormatList', '|', 'Formats', 'Alignments', '|', 'Outdent', 'Indent', '|',
+    'HorizontalLine', 'Blockquote', '|', 'BulletFormatList', 'NumberFormatList', 'Checklist', '|', 'Formats', 'Alignments', '|', 'Outdent', 'Indent', '|',
     'FontColor', 'BackgroundColor', 'FontName', 'FontSize', '|', 'LowerCase', 'UpperCase', '|', 'SuperScript', 'SubScript', '|',
     'EmojiPicker', 'FileManager', 'Video', 'Audio', '|', 'FormatPainter', 'ClearFormat',
     '|', 'Print', 'FullScreen', '|', 'SourceCode']
@@ -63,7 +63,7 @@ export class Overview extends SampleBase<{}, {}> {
   }
 
   private quickToolbarSettings: QuickToolbarSettingsModel = {
-    table: ['Tableheader', 'TableRemove', '|', 'TableRows', 'TableColumns', 'TableCell', '|' , 'Styles', 'BackgroundColor', 'Alignments', 'TableCellVerticalAlign'],
+    table: ['Tableheader', 'TableRemove', '|', 'TableRows', 'TableColumns', 'TableCell', '|', 'TableEditProperties', 'Styles', 'BackgroundColor', 'Alignments', 'TableCellVerticalAlign'],
     text: ['Formats', '|', 'Bold', 'Italic', 'Fontcolor', 'BackgroundColor', '|', 'CreateLink', 'Image', 'CreateTable', 'Blockquote', '|' , 'Unorderedlist', 'Orderedlist', 'Indent', 'Outdent'],
     showOnRightClick: true,
   }
@@ -123,13 +123,14 @@ export class Overview extends SampleBase<{}, {}> {
     } else {
       rteContainer.classList.add('e-rte-code-mirror-enabled');
       rteContainer.classList.remove('e-source-code-enabled');
+      const editorVlaue: string = (this.editor.element.querySelector('.e-rte-srctextarea') as HTMLTextAreaElement).value;
       if (!mirrorView) {
         mirrorView = createElement('div', { className: 'rte-code-mirror', id: id, styles: 'display: none;' });
         rteContainer.appendChild(mirrorView);
-        this.renderCodeMirror(mirrorView, this.editor.value === null ? '' : this.editor.value);
+        this.renderCodeMirror(mirrorView, editorVlaue === null ? '' : editorVlaue);
       }
       else {
-        this.codeMirror.setValue(this.editor.value);
+        this.codeMirror.setValue(editorVlaue);
       }
       this.codeMirror.focus();
     }
@@ -230,7 +231,7 @@ export class Overview extends SampleBase<{}, {}> {
         <div id="description">
           <p>This sample used <code>Code mirror</code> plugins helps to highlight the HTML content and when changes happens in code view, the same has been reflected in preview mode. </p>
           <p>The quick toolbar provides a convenient way to customize Image, Video, Audio, Table, and Link elements. Simply right-click on the desired element, utilizing the <code>showOnRightClick</code> property, and the quick toolbar will appear, providing an easy way for customization.</p>
-          <p>The editor’s toolbar contains commands to format the content. The toolbar consists of:</p>
+          <p>The editor's toolbar includes tools for formatting content. The toolbar consists of:</p>
           <ul>
             <li><code>Lists</code> - NumberFormat list and BulletFormat list types.</li>
             <li><code>Links</code> - A hyperlink can be inserted into the this.editor for quick access to related information.</li>
@@ -241,7 +242,7 @@ export class Overview extends SampleBase<{}, {}> {
             <li><code>Indent/ Outdent</code> - Increases/decreases the indent level of the content.</li>
             <li><code>Font</code> - Able to do styling on text like font family, size, fore color and background color.</li>
             <li><code>Lower / Upper case</code> – Changes the casing of the selected text.</li>
-            <li><code>SubScript / SuperScript</code> - Makes the selected text as subscript (lower)/superscript(upper).</li>
+            <li><code>Subscript / Superscript</code> - Makes the selected text as subscript (lower)/superscript(upper).</li>
             <li><code>FullScreen</code> - Stretches the this.editor to the maximum width and height of the browser window.</li>
             <li><code>Format</code> – Formats the sentence in different ways such as heading level, quotation, and code snippet</li>
             <li><code>Styles</code> – Allows you to apply inline styles to the selected content like bold, italic, and more.</li>
@@ -254,8 +255,10 @@ export class Overview extends SampleBase<{}, {}> {
               editor.</li>
             <li><code>Import / Export</code> - The Import/Export feature enables users to import content from Word documents
               into the editor and export the editor's content into Word and PDF files.</li>
-              <li><code>Code Block</code> - The Code Block feature allows you to insert and display blocks of code with preserved formatting and syntax highlighting, making it ideal for sharing code snippets clearly and accurately.</li>
-              <li><code>HorizontalLine</code> - A horizontal line can be inserted into the editor to visually separate sections of content.</li>
+            <li><code>Code Block</code> - The Code Block feature allows you to insert and display blocks of code with preserved formatting and syntax highlighting, making it ideal for sharing code snippets clearly and accurately.</li>
+            <li><code>Horizontal Line</code> - A horizontal line can be inserted into the editor to visually separate sections of content.</li>
+            <li><code>Inline Code</code> - Formats selected text as inline code, highlighting code snippets within the text.</li>
+            <li><code>Checklist</code> - Creates interactive lists with checkable items that users can mark as complete or incomplete.</li>
           </ul>
           <p><b>Injecting Module</b></p>
           <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, Count, HtmlEditor, QuickToolbar, Table, EmojiPicker, Video, Audio, FormatPainter, PasteCleanup, SlashMenu, ImportExport, CodeBlock</code> modules into the services.</p>

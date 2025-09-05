@@ -16,7 +16,6 @@ const SortingAPI = () => {
   let dropdownColumns = useRef<DropDownListComponent>(null);
   let dropdownDirection = useRef<DropDownListComponent>(null);
   const dropdownColumnsData: { [key: string]: Object }[] = [
-    { id: 'TaskID', type: 'TaskID' },
     { id: 'TaskName', type: 'TaskName' },
     { id: 'StartDate', type: 'StartDate' },
     { id: 'EndDate', type: 'EndDate' },
@@ -44,7 +43,7 @@ const SortingAPI = () => {
     duration: 'Duration',
     progress: 'Progress',
     dependency: 'Predecessor',
-    child: 'subtasks'
+    parentID:'ParentId'
   };
   const labelSettings: any = {
     leftLabel: 'TaskName'
@@ -52,18 +51,18 @@ const SortingAPI = () => {
   const splitterSettings: any = {
     columnIndex: 2
   };
-  const projectStartDate: Date = new Date('03/25/2024');
-  const projectEndDate: Date = new Date('07/28/2024');
+  const projectStartDate: Date = new Date('03/26/2025');
+  const projectEndDate: Date = new Date('09/01/2025');
   return (
     <div className='control-pane'>
       <div className='control-section'>
         <div className='col-lg-9'>
           <GanttComponent id='SortingAPI' ref={ganttInstance} dataSource={editingData} highlightWeekends={true}
             allowSorting={true} treeColumnIndex={1} allowSelection={true} splitterSettings={splitterSettings}
-            taskFields={taskFields} labelSettings={labelSettings} height='410px'
+            taskFields={taskFields} labelSettings={labelSettings} height='650px' taskbarHeight={25} rowHeight={46}
             projectStartDate={projectStartDate} projectEndDate={projectEndDate}>
             <ColumnsDirective>
-              <ColumnDirective field='TaskID' headerText='ID' width='80' ></ColumnDirective>
+              <ColumnDirective field='TaskID' visible={false} headerText='ID' width='80' ></ColumnDirective>
               <ColumnDirective field='TaskName' headerText='TaskName' width='250'></ColumnDirective>
               <ColumnDirective field='StartDate' headerText='StartDate'></ColumnDirective>
               <ColumnDirective field='EndDate' headerText='EndDate'></ColumnDirective>
@@ -88,7 +87,7 @@ const SortingAPI = () => {
                 <td style={{ width: '100%', paddingRight: '10px' }}>
                   <div>
                     <DropDownListComponent ref={dropdownColumns} id='columns' width="150px" tabIndex={1} dataSource={dropdownColumnsData} fields={{ text: 'type', value: 'id' }}
-                      value='TaskID'></DropDownListComponent>
+                      value='TaskName'></DropDownListComponent>
                   </div>
                 </td>
               </tr>
@@ -134,6 +133,8 @@ const SortingAPI = () => {
           <code>Selection</code> module using the <code>Gantt.Inject(Selection)</code> method.To use sort, inject the
           <code>Sort</code> module using the <code>Gantt.Inject(Sort)</code> method.To use markers, inject the
           <code>DayMarkers</code> module using the <code>Gantt.Inject(DayMarkers)</code> method.</p>
+        <br/>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/sorting">documentation section</a>.</p>
       </div>
     </div>
   )

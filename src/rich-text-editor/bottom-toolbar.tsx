@@ -64,18 +64,38 @@ export class BottomToolbar extends SampleBase<{}, {}> {
     );
   }
 
+  isValidContent = (html) => {
+
+    if (!html || html.trim().length === 0)
+        return false;
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = html;
+    // Check for meaningful text
+    const textContent = tempDiv.innerHTML.replace(/<br\s*\/?>/gi, '').replace(/&nbsp;/gi, '').replace(/<[^>]*>/g, '').trim();
+    if (textContent.length > 0)
+        return true;
+    // Check for media elements
+    const mediaTags = ['img', 'table', 'audio', 'video', 'iframe'];
+    for (var tag of mediaTags) {
+        if (tempDiv.getElementsByTagName(tag).length > 0)
+            return true;
+        }
+    return false;
+  }
+
   sendMessage = () => {
     if (this.chatRTE && this.chatRTE.value && this.chatRTE.value.length > 0) {
       const message = this.chatRTE.value;
-      this.chatRTE.value = '';
-      this.chatRTE.dataBind();
-      this.chatUIRef.current?.addMessage({
-        author: this.currentUserModel,
-        text: message,
-      });
-      this.chatRTE.clearUndoRedo();
-      this.chatRTE.focusIn();
-     
+      if (this.isValidContent(message)) {
+        this.chatRTE.value = '';
+        this.chatRTE.dataBind();
+        this.chatUIRef.current?.addMessage({
+          author: this.currentUserModel,
+          text: message,
+        });
+        this.chatRTE.clearUndoRedo();
+        this.chatRTE.focusIn();
+      }
     }
   };
 

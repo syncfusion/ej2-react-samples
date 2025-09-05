@@ -210,7 +210,7 @@ export class LeftPane extends React.Component<{}, {}> {
                 isPc = window.matchMedia('(min-width:850px)').matches;
                 sampleOverlay();
                 let theme: string = location.hash.split('/')[1] || 'material';
-                if (arg.item && ((isMobile && !select('#left-sidebar').classList.contains('sb-hide')) ||
+                if ((arg.node || arg.item) && ((isMobile && !select('#left-sidebar').classList.contains('sb-hide')) ||
                     ((isTablet || (Browser.isDevice && isPc)) && isLeftPaneOpen()))) {
                     toggleLeftPane();
                 }

@@ -262,7 +262,7 @@ export class FIFAStatistics extends SampleBase<{}, {}> {
 
   queryCellInfo(args: QueryCellInfoEventArgs) {
     if (args.column?.field === 'BestPlayerAward') {
-      let rowIndex: number = parseInt(args.cell?.getAttribute('index') as string);
+      let rowIndex: number = parseInt(args.cell?.getAttribute('data-index') as string);
       if (rowIndex > 0) {
         if ((this.fifaGridIns?.currentViewData[rowIndex - 1] as FifaDetails)[args.column.field] !== (args.data as FifaDetails)[args.column.field]) {
           args.rowSpan = this.calculateRowspan(args, rowIndex);

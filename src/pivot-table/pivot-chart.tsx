@@ -20,7 +20,7 @@ let dataSourceSettings: IDataOptions = {
     valueSortSettings: { headerDelimiter: ' - ' },
     dataSource: Pivot_Data,
     expandAll: false,
-    drilledMembers: [{ name: 'Year', items: ['FY 2015'] }],
+    drilledMembers: [{ name: 'Year', items: ['FY 2022'] }],
     formatSettings: [{ name: "Amount", format: "C" }],
     values: [{ name: "Amount", caption: "Sales Amount" }],
     filters: []

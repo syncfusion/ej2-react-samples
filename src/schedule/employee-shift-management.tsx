@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import * as ReactDOM from 'react-dom/client';
 import './employee-shift-management.css';
 import { ScheduleComponent, TimelineViews, Inject, ResourceDirective, ResourcesDirective, ViewsDirective, ViewDirective, Agenda, EventRenderedArgs, NavigatingEventArgs, ActionEventArgs, ToolbarItemsDirective, ToolbarItemDirective, CellClickEventArgs, PopupCloseEventArgs, EventClickArgs } from '@syncfusion/ej2-react-schedule';
 import { closest, remove, Internationalization, extend, isNullOrUndefined } from '@syncfusion/ej2-base';
@@ -55,7 +55,8 @@ export class EmployeeShiftManagement extends SampleBase<{}, EmployeeShiftManagem
   private staffsTreeRef: React.RefObject<TreeViewComponent> = React.createRef();
   private externalChipsRef: React.RefObject<ChipListComponent> = React.createRef();
   private toolbarChipsRef: React.RefObject<ChipListComponent> = React.createRef();
-
+  private agendaToolbarRoot: ReturnType<typeof ReactDOM.createRoot> | null = null;
+  private tooltipRootsMapRef: React.RefObject<Map<HTMLElement, { root: ReactDOM.Root; container: HTMLElement }>> = React.createRef();
   private eventsData: Record<string, any>[] = extend([], (dataSource as Record<string, any>).employeeShiftData, null, true) as Record<string, any>[];
   private selectedDate: Date = new Date(2025, 2, 5);
   private intl: Internationalization = new Internationalization();
@@ -162,7 +163,9 @@ export class EmployeeShiftManagement extends SampleBase<{}, EmployeeShiftManagem
       dialogVisible: false,
       shiftsData: []
     };
-
+    if (!this.tooltipRootsMapRef.current) {
+      (this.tooltipRootsMapRef as any).current = new Map();
+    }
     // Bind methods to the class instance
     this.majorSlotTemplate = this.majorSlotTemplate.bind(this);
     this.getTimeString = this.getTimeString.bind(this);
@@ -287,10 +290,11 @@ export class EmployeeShiftManagement extends SampleBase<{}, EmployeeShiftManagem
     if (!eventsData || !appointmnet) {
       return;
     }
-    const tooltipElement = appointmnet.querySelector('.e-icon-element');
-    if (tooltipElement) {
-      ReactDOM.unmountComponentAtNode(tooltipElement);
-      tooltipElement.remove();
+    const tooltipData = this.tooltipRootsMapRef.current?.get(appointmnet);
+    if (tooltipData) {
+      tooltipData.root.unmount();
+      tooltipData.container.remove();
+      this.tooltipRootsMapRef.current?.delete(appointmnet);
     }
     const eventDetails: Record<string, any> = this.scheduleRef.getEventDetails(appointmnet);
     if (!eventDetails) {
@@ -434,7 +438,9 @@ export class EmployeeShiftManagement extends SampleBase<{}, EmployeeShiftManagem
           </TooltipComponent>
         );
       };
-      ReactDOM.render(<IconWithTooltipRenderer />, reactContainer);
+      const root = ReactDOM.createRoot(reactContainer);
+      root.render(<IconWithTooltipRenderer />);
+      this.tooltipRootsMapRef.current?.set(element, { root, container: reactContainer as HTMLElement });
     };
     // Handling leave events
     if (data.Description?.toLowerCase().includes('leave')) {
@@ -452,7 +458,7 @@ export class EmployeeShiftManagement extends SampleBase<{}, EmployeeShiftManagem
       element.classList.remove('event-leave');
       if (this.scheduleRef.currentView !== 'Agenda') {
         appendTooltipIcon(
-          'e-replaced sf-icon-user-replace',
+          'e-replaced sf-employee-shift-icons-user-replace',
           'Leave covered by replacement'
         );
       }
@@ -462,10 +468,10 @@ export class EmployeeShiftManagement extends SampleBase<{}, EmployeeShiftManagem
       !data.Subject?.toLowerCase().includes('swapped') &&
       this.scheduleRef.currentView !== 'Agenda') {
       element.classList.add('event-swap');
-      appendTooltipIcon('e-swap sf-icon-replace-request', 'Click here to swap shift',
+      appendTooltipIcon('e-swap sf-employee-shift-icons-replace-request', 'Click here to swap shift',
         (event) => {
           const target = event.target as HTMLElement;
-          if (target.classList.contains('sf-icon-replace-request') ||
+          if (target.classList.contains('sf-employee-shift-icons-replace-request') ||
             target.classList.contains('e-swap') ||
             target.closest('.e-icons')) {
             this.requestShiftSwap(args);
@@ -478,7 +484,7 @@ export class EmployeeShiftManagement extends SampleBase<{}, EmployeeShiftManagem
       element.classList.remove('event-swap');
       element.classList.add('event-swapped');
       if (this.scheduleRef.currentView !== 'Agenda') {
-        appendTooltipIcon('e-swapped sf-icon-replace-accepted', 'This shift has been swapped');
+        appendTooltipIcon('e-swapped sf-employee-shift-icons-replace-accepted', 'This shift has been swapped');
       }
     }
   }
@@ -536,7 +542,7 @@ export class EmployeeShiftManagement extends SampleBase<{}, EmployeeShiftManagem
     const toolbarElement = document.createElement('div');
     toolbarElement.id = 'agenda-toolbar-container';
     scheduleToolbar.appendChild(toolbarElement);
-    const toolbarComponent = ReactDOM.render(
+    const toolbarJSX = (
       <ToolbarComponent
         cssClass='agenda-toolbar'
         overflowMode="Scrollable"
@@ -545,9 +551,10 @@ export class EmployeeShiftManagement extends SampleBase<{}, EmployeeShiftManagem
           <ItemDirective cssClass='tooltip-chips' type="Input" template={this.getAgendaToolbarChips} overflow="Show" align="Left" />
           <ItemDirective cssClass='tooltip-ddl' type="Input" template={this.getAgendaToolbarDropDownList} overflow="Show" align="Right" />
         </ItemsDirective>
-      </ToolbarComponent>,
-      toolbarElement
-    ) as any;
+      </ToolbarComponent>
+    );
+    this.agendaToolbarRoot = ReactDOM.createRoot(toolbarElement);
+    this.agendaToolbarRoot.render(toolbarJSX);
   }
 
   private handleChipBeforeClick(args: ClickEventArgs, isExternalChipClick?: boolean): void {
@@ -585,7 +592,10 @@ export class EmployeeShiftManagement extends SampleBase<{}, EmployeeShiftManagem
     } else {
       const toolbarContainer = scheduleToolbar.querySelector('#agenda-toolbar-container');
       if (toolbarContainer) {
-        ReactDOM.unmountComponentAtNode(toolbarContainer);
+        if (this.agendaToolbarRoot) {
+          this.agendaToolbarRoot.unmount();
+          this.agendaToolbarRoot = null;
+        }
         toolbarContainer.remove();
       }
       if (this.scheduleRef.eventSettings.query) {
@@ -790,7 +800,7 @@ export class EmployeeShiftManagement extends SampleBase<{}, EmployeeShiftManagem
               popupClose={this.onPopupClose}
               cellClick={this.onCellClick}
               eventClick={this.onEventClick}
-              actionComplete={this.onActionComplete}
+              actionComplete={this.onActionComplete.bind(this)}
             >
               <ViewsDirective>
                 <ViewDirective option="TimelineWeek" />

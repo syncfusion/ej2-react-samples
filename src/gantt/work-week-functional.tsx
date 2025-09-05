@@ -68,14 +68,14 @@ const WorkWeek = () => {
     duration: 'Duration',
     progress: 'Progress',
     dependency: 'Predecessor',
-    child: 'subtasks'
+    parentID:'ParentId'
   };
   const labelSettings: any = {
     leftLabel: 'TaskName'
   };
   const workWeek: any = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
-  const projectStartDate: Date = new Date('03/24/2024');
-  const projectEndDate: Date = new Date('07/06/2024');
+  const projectStartDate: Date = new Date('03/26/2025');
+  const projectEndDate: Date = new Date('07/20/2025');
   const splitterSettings: any = {
     columnIndex: 1
   };
@@ -84,10 +84,10 @@ const WorkWeek = () => {
       <div className='control-section'>
         <div className='col-lg-8'>
           <GanttComponent id='WorkWeek' ref={ganttInstance} dataSource={projectNewData} treeColumnIndex={1}
-            highlightWeekends={true} taskFields={taskFields} labelSettings={labelSettings} splitterSettings={splitterSettings} height='410px'
+            highlightWeekends={true} taskFields={taskFields} labelSettings={labelSettings} splitterSettings={splitterSettings} height='650px' taskbarHeight={25} rowHeight={46}
             projectStartDate={projectStartDate} projectEndDate={projectEndDate}>
             <ColumnsDirective>
-              <ColumnDirective field='TaskID' width='80' ></ColumnDirective>
+              <ColumnDirective field='TaskID' visible={false} width='80' ></ColumnDirective>
               <ColumnDirective field='TaskName' width='250'></ColumnDirective>
               <ColumnDirective field='StartDate'></ColumnDirective>
               <ColumnDirective field='EndDate'></ColumnDirective>
@@ -167,6 +167,8 @@ const WorkWeek = () => {
           Gantt component features are segregated into individual feature-wise modules. To use a selection support and event markers we need to inject the
           <code>Selection</code>, <code>DayMarkers</code> modules.
         </p>
+        <br/>
+    <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/task-scheduling#weekendnon-working-days">documentation section</a>.</p>
       </div>
     </div>
   );

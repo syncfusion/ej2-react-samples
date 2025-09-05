@@ -34,8 +34,8 @@ const Timeline = () => {
   let bottomTierCount = useRef<NumericTextBoxComponent>(null);
   let timelineUnitSize = useRef<NumericTextBoxComponent>(null);
   let multitaskbarcheckbox = useRef<CheckBoxComponent>(null);
-  const projectStartDate = new Date('02/03/2024');
-  const projectEndDate = new Date('03/23/2024');
+  const projectStartDate = new Date('02/05/2025');
+  const projectEndDate = new Date('03/23/2025');
   const timelineSettings: any = {
     topTier: {
       format: 'MMM dd, yyyy',
@@ -211,7 +211,7 @@ const Timeline = () => {
           <GanttComponent id='Timeline' ref={ganttInstance} dataSource={projectData} renderBaseline={true} allowSorting={true}
             treeColumnIndex={1} allowSelection={true} projectStartDate={projectStartDate} projectEndDate={projectEndDate}
             taskFields={taskFields} timelineSettings={timelineSettings} highlightWeekends={true}
-            height='463px' labelSettings={labelSettings} splitterSettings={splitterSettings}>
+            height='650px' taskbarHeight={25} rowHeight={46} labelSettings={labelSettings} splitterSettings={splitterSettings}>
             <ColumnsDirective>
               <ColumnDirective field='taskID' visible={false} ></ColumnDirective>
               <ColumnDirective field='taskName' headerText='Name' width='250'></ColumnDirective>
@@ -363,6 +363,8 @@ const Timeline = () => {
           Gantt component features are segregated into individual feature-wise modules. To use a selection support, inject the
           <code>Selection</code> module. To use markers in Gantt, inject the <code>DayMarkers</code> module.
         </p>
+      <br/>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/timeline/timeline">documentation section</a>.</p>
       </div>
     </div>
   )

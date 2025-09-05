@@ -33,7 +33,7 @@ const Default = () => {
             <DropDownTreeComponent fields={fields} change={onChange.bind(this)} changeOnBlur={false} placeholder="Select a folder or file" popupHeight="200px" />
           </div>
         </div>
-        <div className='col-lg-3 property-section'>
+        <div className='col-lg-4 property-section'>
           <PropertyPane title='Properties'>
             <table id='property' title='Properties' style={{ width: '100%', margin: '10px' }}>
               <tbody>

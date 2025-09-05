@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useEffect, useRef } from 'react';
 import { updateSampleSection } from '../common/sample-base';
-import { ChatUIComponent, UserModel, MessageToolbarSettingsModel, MessageToolbarItemClickedEventArgs } from '@syncfusion/ej2-react-interactive-chat';
+import { ChatUIComponent, UserModel, MessageToolbarSettingsModel, MessageToolbarItemClickedEventArgs,MessageModel } from '@syncfusion/ej2-react-interactive-chat';
 import { SwitchComponent } from '@syncfusion/ej2-react-buttons';
 import { DropDownListComponent, MultiSelectComponent } from '@syncfusion/ej2-react-dropdowns';
 import './api.css';
@@ -14,6 +14,14 @@ const API = () => {
     }, []);
     const chatUiInst = useRef(null);
 
+    const mentionUsersData: { [key: string]: UserModel } = {
+        "Alice Brown": (data as any)["communityMessageAdmin"],
+        "Michale Suyama": (data as any)["communityMessageUser1"],
+        "Charlie": (data as any)["communityMessageUser2"],
+        "Janet": (data as any)["communityMessageUser3"],
+        "Jordan Peele": (data as any)["communityMessageUser4"],
+    };
+
     const handleSwitchChange = (property, checked) => {
         chatUiInst.current[property] = checked;
     };
@@ -22,21 +30,32 @@ const API = () => {
         chatUiInst.current[property] = value;
     };
 
-    const handleMultiSelectChange = (args, action) => {
-        const user: UserModel = { user: args.itemData, avatarBgColor: '#87cefa' };
-        if (['Laura', 'Charlie'].includes(args.itemData)) {
-            user.avatarBgColor = args.itemData === 'Charlie' ? '#e6cdde' : '#dec287';
-            user.avatarUrl = `./src/chat-ui/images/${args.itemData.toLowerCase()}.png`;
-        }
-        if (action === 'select') {
-            chatUiInst.current.typingUsers = [...chatUiInst.current.typingUsers, user];
-        } else {
-            chatUiInst.current.typingUsers = chatUiInst.current.typingUsers.filter(user => user.user !== args.itemData);
+    const handleMultiSelectChange = (args: any, action: string, type: 'typingUsers' | 'mentionUsers') => {
+        if (type === 'typingUsers') {
+            const user: UserModel = { user: args.itemData, avatarBgColor: '#87cefa' };
+            if (['Laura', 'Charlie'].includes(args.itemData)) {
+                user.avatarBgColor = args.itemData === 'Charlie' ? '#e6cdde' : '#dec287';
+                user.avatarUrl = `./src/chat-ui/images/${args.itemData.toLowerCase()}.png`;
+            }
+            if (action === 'select') {
+                chatUiInst.current!.typingUsers = [...chatUiInst.current!.typingUsers, user];
+            } else {
+                chatUiInst.current!.typingUsers = chatUiInst.current!.typingUsers.filter(user => user.user !== args.itemData);
+            }
+        } else if (type === 'mentionUsers') {
+            const user: UserModel = mentionUsersData[args.itemData];
+            if (action === 'select') {
+                chatUiInst.current!.mentionUsers = [...chatUiInst.current!.mentionUsers, user];
+                chatUiInst.current!.dataBind();
+            } else if (action === 'removed') {
+                chatUiInst.current!.mentionUsers = chatUiInst.current!.mentionUsers.filter(user => user.user !== args.itemData);
+                chatUiInst.current!.dataBind();
+            }
         }
     };
 
     // Parse the date strings in the JSON data to Date objects
-    const messages = data["communityMessagedata"].map(message => ({
+    const messages = (data as any)["communityMessagedata"].map((message: any) => ({
         ...message,
         timeStamp: (message.timeStamp ? new Date(message.timeStamp) : new Date())
     }));
@@ -50,13 +69,25 @@ const API = () => {
         ],
         itemClicked: (args: MessageToolbarItemClickedEventArgs) => {
             if (args.item.prefixIcon === 'e-icons e-chat-forward') {
-                const newMessageObj = args.message;
-                newMessageObj.isForwarded = true;
-                newMessageObj.id = 'chat-message-' + (chatUiInst?.current.messages.length + 1).toString();
+                const newMessageObj : MessageModel = {
+                    id: 'chat-message-' + (chatUiInst?.current.messages.length + 1).toString(),
+                    isForwarded: true,
+                    isPinned: args.message.isPinned,
+                    author: args.message.author,
+                    mentionUsers: args.message.mentionUsers,
+                    text: args.message.text,
+                    timeStamp: args.message.timeStamp,
+                    timeStampFormat: args.message.timeStampFormat,
+                    status: args.message.status,
+                    replyTo: args.message.replyTo
+                };
                 chatUiInst?.current.addMessage(newMessageObj);
             }
         }
     };
+
+    const initialMentionUsers = Object.values(mentionUsersData);
+    const mentionUsersList = Object.keys(mentionUsersData);
 
     return (
         <div className='control-pane'>
@@ -66,6 +97,7 @@ const API = () => {
                         ref={chatUiInst}
                         messages={messages}
                         user={{ user: 'Alice', id: 'admin' }}
+                        mentionUsers={initialMentionUsers}
                         headerIconCss="chat_header_icon"
                         headerText="Design Community"
                         showTimeBreak={true}
@@ -150,8 +182,21 @@ const API = () => {
                                         id="chat_typingUsers"
                                         dataSource={['Michale', 'Laura', 'Charlie', 'Jordan']}
                                         placeholder="Typing users..."
-                                        select={(e) => handleMultiSelectChange(e, 'select')}
-                                        removed={(e) => handleMultiSelectChange(e, 'removed')}
+                                        select={(e) => handleMultiSelectChange(e, 'select', 'typingUsers')}
+                                        removed={(e) => handleMultiSelectChange(e, 'removed', 'typingUsers')}
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><div>Mention users</div></td>
+                                <td style={{ paddingRight: "10px" }}>
+                                    <MultiSelectComponent
+                                        id="chat_mentionUsers"
+                                        dataSource={mentionUsersList}
+                                        placeholder="Mention users..."
+                                        value={mentionUsersList}
+                                        select={(e) => handleMultiSelectChange(e, 'select', 'mentionUsers')}
+                                        removed={(e) => handleMultiSelectChange(e, 'removed', 'mentionUsers')}
                                     />
                                 </td>
                             </tr>
@@ -172,6 +217,7 @@ const API = () => {
                     <li><code>showFooter</code>: Toggles the visibility of the chat footer.</li>
                     <li><code>enableCompactMode</code>: Reduces spacing and left-aligns all messages to display more content within the visible chat area. </li>
                     <li><code>typingUsers</code>: Allows users to manage the list of users who are typing, updated through the multi-select options in the property pane.</li>
+                    <li><code>mentionUsers</code>: Configurable list of users that can be tagged using '@' in chat messages.</li>
                     <li><code>statusIconCss</code>: Defines a CSS class for the status bar icon, with built-in styles for Online, Offline, Away, and Busy statuses, while allowing further customization.</li>
                     <li><code>messageToolbarSettings</code>: Configures the toolbar that appears on individual messages, allowing customization such as copy, forward, reply, pin and delete. Supports adding, removing, or reordering toolbar items based on application needs.</li>
                 </ul>

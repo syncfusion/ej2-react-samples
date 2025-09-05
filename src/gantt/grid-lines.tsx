@@ -29,7 +29,7 @@ export class GridLines extends SampleBase<{}, {}> {
     duration: 'Duration',
     progress: 'Progress',
     dependency: 'Predecessor',
-    child: 'subtasks'
+    parentID: 'ParentId'
   };
   public labelSettings: any = {
     leftLabel: 'TaskName'
@@ -37,8 +37,8 @@ export class GridLines extends SampleBase<{}, {}> {
   public splitterSettings: any = {
     columnIndex: 2
   };
-  public projectStartDate: Date = new Date('03/24/2024');
-  public projectEndDate: Date = new Date('07/06/2024');
+  public projectStartDate: Date = new Date('03/26/2025');
+  public projectEndDate: Date = new Date('07/20/2025');
 
   render() {
     return (
@@ -46,7 +46,7 @@ export class GridLines extends SampleBase<{}, {}> {
         <div className='control-section'>
           <div className='col-lg-9'>
             <GanttComponent id='GridLines' ref={gantt => this.ganttInstance = gantt} dataSource={projectNewData}
-              highlightWeekends={true} taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'
+              highlightWeekends={true} taskFields={this.taskFields} labelSettings={this.labelSettings} height='650px' taskbarHeight={25} rowHeight={46}
               treeColumnIndex={1} gridLines={this.gridLines} splitterSettings={this.splitterSettings}
               projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>
               <ColumnsDirective>
@@ -101,6 +101,8 @@ export class GridLines extends SampleBase<{}, {}> {
           <p> In this demo, you can modify the visibility of gridlines by selecting values in dropdown.</p>
           <p>Gantt component features are segregated into individual feature-wise modules.To use a selection, inject the <code>Selection</code> module using the <code>Gantt.Inject(Selection)</code>
             method.To use markers, inject the <code>DayMarkers</code> module using the <code>Gantt.Inject(DayMarkers)</code> method.</p>
+          <br/>
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/nextjs-getting-started#add-syncfusion-react-component">documentation section</a>.</p>
         </div>
       </div>
     )

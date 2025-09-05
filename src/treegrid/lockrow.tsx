@@ -203,7 +203,7 @@ export class LockRow extends SampleBase<{}, {}> {
                       <div style={{ paddingLeft: '10px' }}> Disable Rows </div>
                     </td>
                     <td style={{ width: '100%' }}>
-                      <div className="Multiselectlockrow">
+                      <div className="Multiselectlockrow" style={{ paddingLeft: '10px' }}>
                         <MultiSelectComponent width="150px" id="lockrows" mode="CheckBox" value={this.rowValues}
                           dataSource={lockRowDropDownData} showDropDownIcon={true} popupHeight='350px'
                           select={this.select.bind(this)} removed={this.removed.bind(this)}

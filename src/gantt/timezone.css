@@ -1,0 +1,75 @@
+.e-bigger .previous-timespan, .e-bigger .next-timespan {
+    height: 38px !important;
+    width: 38px !important;
+    padding: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.previous-timespan,
+.next-timespan {
+    height: 32px !important;
+    width: 32px !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+#timezone .e-chevron-left-fill, #timezone .e-chevron-right-fill{
+    margin-top: 1px !important;
+}
+#timezone .e-gantt-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 5px;
+    flex-wrap: nowrap;
+}
+.showhide {
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0;
+}
+.e-bigger .showhide {
+    font-size: 16px;
+    font-weight: 700;
+}
+.timezone-label {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+.timezone-dropdown {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    min-width: 300px;
+}
+.timeline-section {
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+}
+.timeline-dropdown {
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+    min-width: 100px;
+}
+#timezone .e-toolbar-item.e-separator {
+    margin: 0 4px !important;
+}
+#timezone .e-separator{
+    padding: 0px;
+}
+#timezone .e-toolbar-item.e-template{
+    padding: 0px !important;
+    min-width: 0px !important;
+}
+.bootstrap5_3 #previous-timespan .e-icons, .bootstrap5_3-dark #previous-timespan .e-icons,
+.bootstrap5_3 #next-timespan .e-icons, .bootstrap5_3-dark #next-timespan .e-icons{
+    color: white !important;
+}

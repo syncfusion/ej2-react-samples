@@ -32,11 +32,11 @@ const AdvancedFiltering = () => {
     duration: 'Duration',
     progress: 'Progress',
     dependency: 'Predecessor',
-    child: 'subtasks'
+    parentID:'ParentId'
   };
-  const projectStartDate = new Date('04/01/2024');
-  const projectEndDate = new Date('07/06/2024');
-  const splitterSettings: any = { columnIndex: 3 };
+  const projectStartDate = new Date('03/30/2025');
+  const projectEndDate = new Date('07/20/2025');
+  const splitterSettings: any = { columnIndex: 2 };
   const labelSettings: any = { rightLabel: 'TaskName' };
   const target = '#ganttsidebar-parent';
 
@@ -116,7 +116,7 @@ const handleApply = () => {
   return (
     <div className='control-pane'>
       <div className='control-section' style={{ paddingTop: '0px' }}>
-        <div id='ganttsidebar-parent' style={{overflow: 'hidden', height:'460px'}}>
+        <div id='ganttsidebar-parent' style={{overflow: 'hidden'}}>
           <ButtonComponent id='filter-btn' onClick={triggerSidebar}>
             <span className='e-quickfilter' style={{padding: '3px'}} ></span>
             Advanced Filters
@@ -151,15 +151,15 @@ const handleApply = () => {
             projectStartDate={projectStartDate} projectEndDate={projectEndDate} taskFields={taskFields}
             splitterSettings={splitterSettings}
             labelSettings={labelSettings}
-            height='410px' rowSelected={rowSelected}>
+            height='650px' taskbarHeight={25} rowHeight={46} rowSelected={rowSelected}>
             <ColumnsDirective>
-              <ColumnDirective field='TaskID' headerText='Task ID' width='80' ></ColumnDirective>
+              <ColumnDirective field='TaskID' headerText='Task ID' width='120' ></ColumnDirective>
               <ColumnDirective field='TaskName' headerText='Task Name' width='250' clipMode='EllipsisWithTooltip'></ColumnDirective>
               <ColumnDirective field='StartDate' headerText='Start Date'></ColumnDirective>
               <ColumnDirective field='Duration' headerText='Duration'></ColumnDirective>
               <ColumnDirective field='EndDate' headerText='End Date'></ColumnDirective>
               <ColumnDirective field='Progress' headerText='End Date'></ColumnDirective>
-              <ColumnDirective field='Predecessor' headerText='Predecessor'></ColumnDirective>
+              <ColumnDirective field='Predecessor' headerText='Predecessor' width={190}></ColumnDirective>
             </ColumnsDirective>
             <Inject services={[Filter, Selection]} />
           </GanttComponent>
@@ -174,6 +174,8 @@ const handleApply = () => {
         component and subsequently integrating it into the Gantt Chart by updating its <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#query">Query</a> Property.
         The QueryBuilder component tool is located in a <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/sidebar/getting-started">SideBar</a> component that appears when you click on the toolbar.
         </p>
+        <br></br>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/filtering/filtering">documentation section</a>.</p>
       </div>
     </div>
   );

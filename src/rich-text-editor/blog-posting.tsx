@@ -110,14 +110,16 @@ export class Forums extends SampleBase<{}, {}> {
                             <div className='questionSection'>
                                 <div className='raiser'>
                                     <table>
-                                        <tr>
-                                            <td>
-                                                <div className='questionar blog-avatar'> </div>
-                                            </td>
-                                            <td>
-                                                <div className='Questionarname'>Kimberly</div>
-                                            </td>
-                                        </tr>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div className='questionar blog-avatar'> </div>
+                                                </td>
+                                                <td>
+                                                    <div className='Questionarname'>Kimberly</div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
                                     </table>
                                 </div>
                                 <div className='questionHeader'>
@@ -131,32 +133,36 @@ export class Forums extends SampleBase<{}, {}> {
                                     <div className='tags'>
                                         <div className='tagSection'>
                                             <table>
-                                                <tr>
-                                                    <td>
-                                                        <div className='tag'> HTML </div>
-                                                    </td>
-                                                    <td>
-                                                        <div className='tag'> JavaScript </div>
-                                                    </td>
-                                                </tr>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <div className='tag'> HTML </div>
+                                                        </td>
+                                                        <td>
+                                                            <div className='tag'> JavaScript </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
                                             </table>
                                         </div>
                                         <div className='questionLikes'>
                                             <table>
-                                                <tr>
-                                                    <td>
-                                                        <span className='e-icon e-like questionSide'>
-                                                            <img className='e-icon' src='./src/rich-text-editor/images/like.svg' alt='like'/>
-                                                            <span>Like</span>
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span className='e-icon e-dislike'>
-                                                            <img className='e-icon' src='./src/rich-text-editor/images/dislike.svg' alt='dislike'/>
-                                                            <span>Dislike</span>
-                                                        </span>
-                                                    </td>
-                                                </tr>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <span className='e-icon e-like questionSide'>
+                                                                <img className='e-icon' src='./src/rich-text-editor/images/like.svg' alt='like'/>
+                                                                <span>Like</span>
+                                                            </span>
+                                                        </td>
+                                                        <td>
+                                                            <span className='e-icon e-dislike'>
+                                                                <img className='e-icon' src='./src/rich-text-editor/images/dislike.svg' alt='dislike'/>
+                                                                <span>Dislike</span>
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
                                             </table>
                                         </div>
                                     </div>
@@ -166,39 +172,43 @@ export class Forums extends SampleBase<{}, {}> {
                                 <div className='answerCount' ref={this.answerCountRef} >1 Answer</div>
                                 <div className='answer' ref={this.answerRef} >
                                     <table>
-                                        <tr>
-                                            <td rowSpan={2}>
-                                                <div className='logos blog-avatar'> </div>
-                                            </td>
-                                            <td>
-                                                <div className='authorname'>Mabel Weber</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div className='detailsAnswer'>Answered on May 7, 2018 6.30 PM</div>
-                                            </td>
-                                        </tr>
+                                        <tbody>
+                                            <tr>
+                                                <td rowSpan={2}>
+                                                    <div className='logos blog-avatar'> </div>
+                                                </td>
+                                                <td>
+                                                    <div className='authorname'>Mabel Weber</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div className='detailsAnswer'>Answered on May 7, 2018 6.30 PM</div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
                                     </table>
                                     <div className='posting'>
                                         To add a custom icon <b>code-mirror</b> to the toolbar, you have to use template option of the <b>toolbarSettings</b>. To know more about adding custom icons, refer to <a href='https://ej2.syncfusion.com/home/' target='_blank'>custom tool</a> sample of Rich Text Editor.
                                     </div>
                                     <div className='likeAnswer'>
                                         <table>
-                                            <tr>
-                                                <td>
-                                                    <span className='e-icon e-like'>
-                                                        <img className='e-icon' src='./src/rich-text-editor/images/like.svg' />
-                                                        <span>Like</span>
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <span className='e-icon e-dislike'>
-                                                        <img className='e-icon' src='./src/rich-text-editor/images/dislike.svg' />
-                                                        <span>Dislike</span>
-                                                    </span>
-                                                </td>
-                                            </tr>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <span className='e-icon e-like'>
+                                                            <img className='e-icon' src='./src/rich-text-editor/images/like.svg' />
+                                                            <span>Like</span>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span className='e-icon e-dislike'>
+                                                            <img className='e-icon' src='./src/rich-text-editor/images/dislike.svg' />
+                                                            <span>Dislike</span>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
                                         </table>
                                     </div>
                                 </div>

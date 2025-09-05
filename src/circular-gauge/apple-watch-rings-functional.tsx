@@ -377,7 +377,7 @@ const AppleWatchGauge = () => {
             </div>
         </div>
             <section id="action-description" aria-label="Description of Circular Gauge sample">
-                <p>This sample resembles the appearance of Apple watch rings. This is similar to an activity tracker, which records the specifics of each move, exercise, and stand.</p>
+                <p>This sample resembles the appearance of Apple watch rings. This is similar to an activity tracker, which records the specifics of each move, exercise, and stand. </p>
             </section>
             <section id="description" aria-label="Description of the Circular Gauge features demonstrated in this sample">
                 <p>In this example, you can see how to make the circular gauge look like the Apple watch rings. Ranges have rounded corners and annotations are used to indicate the move, exercise, and stand values.</p>

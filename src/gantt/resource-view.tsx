@@ -38,8 +38,8 @@ export class ResourceView extends SampleBase<{}, {}> {
   public splitterSettings: any = {
     columnIndex: 3
   };
-  public projectStartDate: Date = new Date('03/28/2024');
-  public projectEndDate: Date = new Date('05/18/2024');
+  public projectStartDate: Date = new Date('03/26/2025');
+  public projectEndDate: Date = new Date('05/18/2025');
   public labelSettings: any = {
     rightLabel: 'resources',
     taskLabel: 'Progress'
@@ -57,7 +57,7 @@ export class ResourceView extends SampleBase<{}, {}> {
             allowSelection={true}  allowResizing={true} highlightWeekends={true} toolbar={this.toolbar} toolbarClick={this.toolbarClick.bind(this)} editSettings={this.editSettings}
             projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate} resourceFields={this.resourceFields}
             taskFields={this.taskFields} taskType={this.taskType} labelSettings={this.labelSettings} splitterSettings={this.splitterSettings}
-            height='410px' resources={resourceCollection} showOverAllocation= {true} ref={gantt => this.ganttInstance = gantt}>
+            height='650px' taskbarHeight={25} rowHeight={46} resources={resourceCollection} showOverAllocation= {true} ref={gantt => this.ganttInstance = gantt}>
             <ColumnsDirective>
               <ColumnDirective field='TaskID' visible ={false} ></ColumnDirective>
               <ColumnDirective field='TaskName' headerText='Name' width= '250'></ColumnDirective>
@@ -96,6 +96,8 @@ export class ResourceView extends SampleBase<{}, {}> {
           To edit,  inject the <code>Toolbar</code> module using the <code>Gantt.Inject(Toolbar)</code> method and <code>Edit</code> module
           using the <code>Gantt.Inject(Edit)</code> method.
         </p>
+          <br/>
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/resource-view">documentation section</a>.</p>
         </div>
       </div>
     )

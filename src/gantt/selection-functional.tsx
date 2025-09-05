@@ -6,13 +6,15 @@ import { projectNewData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import { DropDownListComponent, DropDownList } from '@syncfusion/ej2-react-dropdowns';
-import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
+import { ButtonComponent, CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
+import './selection.css'
 const GanttSelection = () => {
   useEffect(() => {
     updateSampleSection();
   }, [])
   let ganttInstance = useRef<GanttComponent>(null);
   let dropdownModeList = useRef<DropDownListComponent>(null);
+  let checkBoxHover = useRef<CheckBoxComponent>(null);
   let dropdownTypeList = useRef<DropDownListComponent>(null);
   let dropdownToggleList = useRef<DropDownListComponent>(null);
   const dropdownModeListData: { [key: string]: Object }[] = [
@@ -41,7 +43,7 @@ const GanttSelection = () => {
     duration: 'Duration',
     progress: 'Progress',
     dependency: 'Predecessor',
-    child: 'subtasks'
+    parentID: 'ParentId'
   };
   const labelSettings: any = {
     leftLabel: 'TaskName'
@@ -54,23 +56,38 @@ const GanttSelection = () => {
     type: 'Single',
     enableToggle: false
   };
-  const projectStartDate: Date = new Date('03/27/2024');
-  const projectEndDate: Date = new Date('07/06/2024');
+  const projectStartDate: Date = new Date('03/26/2025');
+  const projectEndDate: Date = new Date('07/20/2025');
+  const onclick =()=>{
+    if (checkBoxHover.current.checked) {
+            ganttInstance.current.enableHover = true;
+        } else {
+             ganttInstance.current.enableHover = false;
+        }
+  }
   return (
     <div className='control-pane'>
       <div className='control-section'>
-        <div className='col-lg-9'>
+        <div className='col-lg-9' style={{paddingLeft:"0px"}}>
           <GanttComponent id='GanttSelection' ref={ganttInstance} dataSource={projectNewData} highlightWeekends={true}
             treeColumnIndex={1} allowSelection={true} splitterSettings={splitterSettings} selectionSettings={selectionSettings}
-            taskFields={taskFields} labelSettings={labelSettings} height='410px'
+            taskFields={taskFields} labelSettings={labelSettings} height='650px' taskbarHeight={25} rowHeight={46} enableHover={true}
             projectStartDate={projectStartDate} projectEndDate={projectEndDate}>
-            <Inject services={[Selection]} />
+            <Inject services={[Selection]} /> 
           </GanttComponent>
         </div>
-        <div className='col-lg-3 property-section'>
+        <div className='col-lg-3 property-section' style={{width: '21%'}}>
           <PropertyPane title='Properties'>
-            <table id="property" className="property-panel-table" title="Properties" style={{ width: '100%' }}>
+            <table id="property" className="property-panel-table" title="Properties">
             <tbody>
+              <tr>
+                <td>
+                  <div id="hovercheckbox" style={{display: 'flex', alignItems: 'center', gap: '25px'}}>
+                  <label htmlFor='hover'style={{fontWeight: 400, marginBottom: '0px'}} >Enable Hover</label>
+                  <CheckBoxComponent ref={checkBoxHover} id="hover" className="checkbox" checked={true} style={{padding: '0px'}} onClick={onclick} />
+                  </div>
+                </td>
+            </tr>
               <tr>
                 <td style={{ width: '100%' }}>
                   <div style={{ fontSize: '15px' }}>
@@ -129,31 +146,32 @@ const GanttSelection = () => {
         </div>
       </div>
       <div id="action-description">
-        <p> The selection feature enables you to highlight row or cell. It can be enabled by setting
-        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#allowselection">allowSelection</a> to <code>true</code>.</p>
-      </div>
+          <p> This sample showcases the selection feature in the Gantt Chart. It allows highlighting rows or cells.</p>
+        </div>
 
-      <div id="description">
-        <p>
-          The Gantt component supports two types of selection that can be set by using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/selectionSettingsModel/#type">selectionSettings.type</a> property.
-          They are:
-        </p>
-        <ul>
-          <li><code>Single</code> - Sets a single value by default and allows only selection of a single row or a cell.</li>
-          <li><code>Multiple</code> - Allows you to select multiple rows or cells. To perform the multi-selection, press and hold the CTRL key and click the desired rows or cells.</li>
-        </ul>
-        <p>
-          The Gantt component supports three types of selection modes that can be set by using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/selectionSettingsModel/#mode">selectionSettings.mode</a> property.
-          They are:
-        </p>
-        <ul>
-          <li><code>Row</code> - Allows you to select only rows, and the row value is set by default.</li>
-          <li><code>Cell</code> - Allows you to select only cells.</li>
-          <li><code>Both</code> - Allows you to select rows and cells at the same time..</li>
-        </ul>
-        <p>
-          The Gantt component supports toggle selection that can be set by using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/selectionSettingsModel/#enabletoggle">selectionSettings.enableToggle</a> property.
-        </p>
+        <div id="description">
+          <p>
+              In this demo sample, the selection functionality in the Gantt Chart. The selection type can be configured using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/selectionSettingsModel/#type">selectionSettings.type</a> property:
+          </p>
+          <ul>
+              <li><code>Single</code> - Allows selection of a single row or cell.</li>
+              <li><code>Multiple</code> - Enables selection of multiple rows or cells using Ctrl + click.</li>
+          </ul>
+          <p>
+              The selection mode is set using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/selectionSettingsModel/#mode">selectionSettings.mode</a> property:
+              They are:
+          </p>
+          <ul>
+                  <li><code>Row</code> - Allows selection of entire rows.</li>
+                  <li><code>Cell</code> - Allows selection of individual cells.</li>
+                  <li><code>Both</code> - Enables selection of both rows and cells simultaneously.</li>
+          </ul>
+          <p>
+             Toggle selection is supported through the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/selectionSettingsModel/#enabletoggle">selectionSettings.enableToggle</a> property, which allows deselecting a selected item by clicking it again.
+              The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#enablehover">enableHover</a> highlights the current row, header cell, and timeline cell on mouse hover, improving visual feedback during interaction.
+          </p>
+          <br />
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/selection/selection">documentation section</a>.</p>
       </div>
     </div>
   )

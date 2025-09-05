@@ -19,16 +19,18 @@ export class Zooming extends SampleBase<{}, {}> {
     leftLabel: 'TaskName'
   };
   public splitterSettings: any ={
-   position: "35%"
+   columnIndex: 3
   };
+  public projectStartDate: Date = new Date('03/26/2025');
+  public projectEndDate: Date = new Date('06/01/2025');
   public toolbar: any = ['ZoomIn','ZoomOut','ZoomToFit'];
   render() {
     return (
       <div className='control-pane'>
         <div className='control-section'>
           <GanttComponent id='Zooming' dataSource={zoomingData} toolbar={this.toolbar}
-            treeColumnIndex={1} splitterSettings={this.splitterSettings}
-            taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'>
+            treeColumnIndex={1} splitterSettings={this.splitterSettings} projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}
+            taskFields={this.taskFields} labelSettings={this.labelSettings} height='650px' taskbarHeight={25} rowHeight={46}>
             <ColumnsDirective>
               <ColumnDirective field='TaskID' width='80'></ColumnDirective>
               <ColumnDirective field='TaskName' width='250'></ColumnDirective>
@@ -66,6 +68,8 @@ export class Zooming extends SampleBase<{}, {}> {
     <p>
         To use a zoom support related icons, inject the <code>Toolbar</code> module into the <code>services</code>.
     </p>
+      <br/>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/timeline/zooming">documentation section</a>.</p>
     </div>
     </div>
     )

@@ -426,31 +426,6 @@
             "components-dialog":"Components inside Dialog"
         }
     },
-    "document-editor": {
-        "ControlName": "DocumentEditor",
-        "Samples": {
-            "default": "Default Functionalities",
-            "character-formatting": "Character Formatting",
-            "paragraph-formatting": "Paragraph Formatting",
-            "styles": "Styles",
-            "bullets-and-numbering": "Bullets and Numbering",
-            "links-and-bookmarks": "Hyperlinks and Bookmarks",
-            "table-formatting": "Table Formatting",
-            "section-formatting": "Section Formatting",
-            "headers-and-footers": "Headers and Footers",
-            "table-of-contents": "Table of Contents",
-            "print": "Print",
-            "right-to-left": "Right To Left",
-            "custom-context-menu": "Custom Context Menu",
-            "auto-save": "Auto Save",
-            "toolbar-customization":"Toolbar Customization",
-            "chart": "Chart Preservation",
-            "document-protection": "Document Protection",
-            "web-layout":"Web Layout",
-            "comments":"Comments",
-            "form-fields": "Form Fields"
-        }
-    },
     "image-editor": {
         "ControlName": "Image Editor",
         "Samples": {
@@ -810,28 +785,6 @@
              
         }
     },
-    "pdfviewer": {
-        "ControlName": "PDF Viewer",
-        "Samples": {
-            "default": "Default",
-            "read-only": "Read-Only",
-            "document-list": "Document List",
-            "multi-format-viewer": "Multi-Format Viewer",
-            "organize-pdf": "Organize Pages",
-            "redaction": "Redaction",
-            "custom-toolbar": "Custom Toolbar",
-            "custom-context-menu":"Context Menu",
-            "right-to-left": "Right To Left",
-            "form-filling": "Form Filling",
-            "form-designer": "Form Designer",
-            "esigning-form-designer": "eSigning Form Designer",
-            "esigning-pdf-forms": "eSigning PDF Forms",
-            "annotations": "Annotations",
-            "hand-written": "Handwritten Signature",
-            "invisible-signature": "Invisible Signature",
-            "programmatic-operations": "Programmatic Operations"
-        }
-    },
     "pivot-table": {
         "ControlName": "Pivot Table",
         "Samples": {
@@ -935,7 +888,7 @@
             "streaming": "Streaming Response",
             "attachments": "File Attachments",
             "template": "Template",
-	        "dialog": "Dialog"
+	        "dialog": "Notes Assistant"
         }
     },
     "chat-ui": {
@@ -1116,28 +1069,6 @@
             "details-view": "Details View",
             "outlook-style-layout": "Outlook-style Layout",
             "code-editor-layout": "Code Editor Layout"
-        }
-    },
-    "spreadsheet": {
-        "ControlName": "Spreadsheet",
-        "Samples": {
-            "default": "Default Functionalities",
-	   		"formula": "Formula",
-            "protect-sheet": "Protect Sheet",
-			"freeze-pane": "Freeze Panes",
-			"data-validation": "Data Validation",
-			"hyperlink": "Hyperlink",
-			"cell-data-binding": "Cell Data Binding",
-			"remote-data-binding": "Remote Data Binding",
-			"cell-formatting": "Cell Formatting",
-			"number-formatting": "Number Formatting",
-			"conditional-formatting": "Conditional Formatting",
-			"sorting-and-filtering": "Sorting and Filtering",
-			"chart": "Chart",
-			"image": "Image",
- 			"cell-template": "Cell Template",
-			"notes": "Note",
-			"print": "Print"
         }
     },
     "stock-chart": {

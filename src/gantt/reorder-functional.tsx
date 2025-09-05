@@ -21,7 +21,7 @@ const ReorderColumn = () => {
     duration: 'Duration',
     progress: 'Progress',
     dependency: 'Predecessor',
-    child: 'subtasks'
+    parentID: 'ParentId'
   };
   let ganttObj = useRef<GanttComponent>(null);
   let columnsDropdownObj = useRef<DropDownListComponent>(null);
@@ -63,20 +63,20 @@ const ReorderColumn = () => {
     }
   }
   const labelSettings: any = {
-    leftLabel: 'TaskName'
+    rightLabel: 'TaskName'
   };
   const splitterSettings: any = {
     columnIndex: 4
   };
-  const projectStartDate: Date = new Date('03/24/2024');
-  const projectEndDate: Date = new Date('07/06/2024');
+  const projectStartDate: Date = new Date('03/31/2025');
+  const projectEndDate: Date = new Date('07/20/2025');
   return (
     <div className='control-pane'>
       <div className='control-section'>
         <div className='col-md-9'>
           <GanttComponent id='ReorderColumn' treeColumnIndex={1} allowReordering={true}
             ref={ganttObj} splitterSettings={splitterSettings} actionComplete={actionComplete.bind(this)} dataSource={projectNewData} highlightWeekends={true}
-            taskFields={taskFields} labelSettings={labelSettings} height='410px'
+            taskFields={taskFields} labelSettings={labelSettings} height='650px' taskbarHeight={25} rowHeight={46}
             projectStartDate={projectStartDate} projectEndDate={projectEndDate}>
             <ColumnsDirective>
               <ColumnDirective field='TaskID' headerText='ID' width='100' ></ColumnDirective>
@@ -137,9 +137,8 @@ const ReorderColumn = () => {
         <b>Injecting Module:</b>
         <p>Gantt features are segregated into individual feature-wise modules. To use reordering feature, we need to
           inject <code>Reorder</code> module into the <code>services</code>.</p>
-        <p>
-          More information about Column Reorder can be found in this documentation section.
-        </p>
+        <br/>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/columns/column-reordering">documentation section</a>.</p>
       </div>
     </div>
   )

@@ -55,8 +55,8 @@ export class ResourceMultiTaskbar extends SampleBase<{}, {}> {
         this.ganttInstance.allowTaskbarOverlap = false;
       }
   }
-    public projectStartDate: Date = new Date('03/28/2024');
-    public projectEndDate: Date = new Date('05/18/2024');
+    public projectStartDate: Date = new Date('03/26/2025');
+    public projectEndDate: Date = new Date('05/30/2025');
     public labelSettings: any = {
         taskLabel: 'TaskName'
     };
@@ -84,7 +84,7 @@ export class ResourceMultiTaskbar extends SampleBase<{}, {}> {
                         allowSelection={true} allowResizing={true} highlightWeekends={true} toolbar={this.toolbar} editSettings={this.editSettings}
                         projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate} resourceFields={this.resourceFields}
                         taskFields={this.taskFields} taskType={this.taskType} labelSettings={this.labelSettings} splitterSettings={this.splitterSettings}
-                        height='410px' resources={resources} showOverAllocation= {true}>
+                        height='650px' taskbarHeight={25} rowHeight={46} resources={resources} showOverAllocation= {true}>
                         <ColumnsDirective>
                             <ColumnDirective field='TaskID' visible={false} ></ColumnDirective>
                             <ColumnDirective field='TaskName' headerText='Name' width='250'></ColumnDirective>
@@ -107,7 +107,7 @@ export class ResourceMultiTaskbar extends SampleBase<{}, {}> {
 
                 <div id="description">
                     <p>
-                        This example demonstrates how to enable taskbar drag-and-drop functionality for reassigning tasks between resources vertically by setting the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#allowtaskbardraganddrop">allowTaskbarDragAndDrop</a> property to <code>true</code>. Additionally, you can prevent taskbar overlap within a resource's tasks by disabling the <a target="_blank" href="https://ej2.syncfusion.com/javascript/documentation/api/gantt#allowtaskbaroverlap">allowTaskbarOverlap</a> property.
+                        This example demonstrates how to enable taskbar drag-and-drop functionality for reassigning tasks between resources vertically by setting the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#allowtaskbardraganddrop">allowTaskbarDragAndDrop</a> property to <code>true</code>. Additionally, you can prevent taskbar overlap within a resource's tasks by disabling the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#allowtaskbaroverlap">allowTaskbarOverlap</a> property.
                     </p>
                     <p>
                         In this example, resources are assigned to tasks using predefined resource IDs, allowing efficient task distribution. The resource details are displayed using the <code>labelSetting</code> property.
@@ -126,6 +126,8 @@ export class ResourceMultiTaskbar extends SampleBase<{}, {}> {
                     To edit,  inject the <code>Toolbar</code> module using the <code>Gantt.Inject(Toolbar)</code> method and <code>Edit</code> module
                     using the <code>Gantt.Inject(Edit)</code> method.
                 </p>
+                <br/>
+                <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/multi-taskbar">documentation section</a>.</p>
                 </div>
             </div>
         )

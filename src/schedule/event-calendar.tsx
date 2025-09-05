@@ -1,7 +1,7 @@
 import * as React from "react";
 import './event-calendar.css'
 import { ClickEventArgs, ItemDirective, ItemsDirective, SidebarComponent, ToolbarComponent } from '@syncfusion/ej2-react-navigations';
-import { ScheduleComponent, Day, Week, WorkWeek, Month, Agenda, Inject, ResourcesDirective, ResourceDirective, TimelineMonth, Year, resetTime, ViewsDirective, ViewDirective, EventRenderedArgs, getWeekFirstDate, getWeekLastDate, ActionEventArgs, addDays, addMonths, addYears, WEEK_LENGTH, EJ2Instance } from '@syncfusion/ej2-react-schedule';
+import { ScheduleComponent, Day, Week, WorkWeek, Month, Agenda, Inject, Resize, DragAndDrop, ResourcesDirective, ResourceDirective, TimelineMonth, Year, resetTime, ViewsDirective, ViewDirective, EventRenderedArgs, getWeekFirstDate, getWeekLastDate, ActionEventArgs, addDays, addMonths, addYears, WEEK_LENGTH, EJ2Instance } from '@syncfusion/ej2-react-schedule';
 import { CalendarComponent } from '@syncfusion/ej2-react-calendars';
 import { ListViewComponent, SelectEventArgs } from '@syncfusion/ej2-react-lists';
 import { ColumnDirective, ColumnsDirective, GridComponent } from "@syncfusion/ej2-react-grids";
@@ -499,7 +499,7 @@ export class EventCalendar extends SampleBase<{}, {}> {
                                         <ViewDirective option='TimelineMonth' group={{ resources: ['Resources'] }}  />
                                         <ViewDirective option='Year' />
                                     </ViewsDirective>
-                                    <Inject services={[Day, Week, WorkWeek, Month, Agenda, TimelineMonth, Year]} />
+                                    <Inject services={[Day, Week, WorkWeek, Month, Agenda, TimelineMonth, Year, Resize, DragAndDrop]} />
                                 </ScheduleComponent>
                             </div>
                             <div className="unplanned-container">

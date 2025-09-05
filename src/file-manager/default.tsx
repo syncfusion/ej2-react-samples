@@ -4,7 +4,7 @@ import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import {CheckBoxComponent, ChangeEventArgs} from '@syncfusion/ej2-react-buttons';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
-import { FileManagerComponent, Inject, NavigationPane, Toolbar } from '@syncfusion/ej2-react-filemanager';
+import { FileManagerComponent, Inject, NavigationPane, DetailsView, Toolbar } from '@syncfusion/ej2-react-filemanager';
 
 const defaultcss = `
 #all-property-table .property-panel-section .property-panel-content table#property tr {
@@ -81,7 +81,7 @@ export class Default extends SampleBase<{},{}> {
                     view = {"LargeIcons"}
                     navigationPaneSettings={{visible: false}}
                     enableRangeSelection={true}>
-                <Inject services={[ NavigationPane, Toolbar]} />
+                <Inject services={[ NavigationPane, DetailsView, Toolbar]} />
                     </FileManagerComponent>
                 </div>
                 <div id="all-property-table" className='col-lg-4 property-section'>

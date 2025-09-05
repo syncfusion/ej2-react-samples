@@ -43,7 +43,7 @@ export class Format extends SampleBase<{}, {}> {
       this.listObj.text === 'yyyy/MM/dd HH:mm' ? 'to' : '-';
   }
   public onChangeInputFormat(args: any) {
-    this.daterangepickerInstance.inputFormats = args.value;
+    this.inputFormats = args.value;
   }
 
   render() {

@@ -119,15 +119,15 @@ timelineUnitSize: 200,
     }
 
   }
-  public projectStartDate: Date = new Date('03/31/2024');
-  public projectEndDate: Date = new Date('04/23/2024');
+  public projectStartDate: Date = new Date('03/29/2025 01:00:00 PM');
+  public projectEndDate: Date = new Date('04/23/2025');
   render() {
     return (
       <div className='control-pane'>
         <div className='control-section'>
           <GanttComponent id='TimelineTemplate' dataSource={timelineTemplateData} highlightWeekends={true}
             splitterSettings={this.splitterSettings}
-            taskFields={this.taskFields} height='550px' labelSettings={this.labelSettings}
+            taskFields={this.taskFields} height='650px' taskbarHeight={25} rowHeight={46} labelSettings={this.labelSettings}
             projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate} timelineSettings={this.timelineSettings}
             timelineTemplate={this.timelineTemplate} treeColumnIndex={1} >
             <ColumnsDirective>
@@ -152,6 +152,8 @@ timelineUnitSize: 200,
             <li><code>value</code>: Defines the date value to display in the timeline.</li>
             <li><code>tier</code>: Defines the tier of timeline.</li>
           </p>
+          <br/>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/timeline/timeline#timeline-template">documentation section</a>.</p>
         </div>
       </div>
     );

@@ -5,8 +5,8 @@
     font-style: normal;
 }
 
-[class^="sf-icon-"],
-[class*=" sf-icon-"] {
+[class^="sf-employee-shift-icons-"],
+[class*=" sf-employee-shift-icons-"] {
     font-family: 'Employee Shift Management' !important;
     speak: none;
     font-size: 55px;
@@ -83,15 +83,15 @@
                                 content: '\e800';
                             }
 
-                            .sf-icon-user-replace:before {
+                            .sf-employee-shift-icons-user-replace:before {
                                 content: "\e700";
                             }
 
-                            .sf-icon-replace-accepted:before {
+                            .sf-employee-shift-icons-replace-accepted:before {
                                 content: "\e701";
                             }
 
-                            .sf-icon-replace-request:before {
+                            .sf-employee-shift-icons-replace-request:before {
                                 content: "\e702";
                             }
 
@@ -187,9 +187,9 @@
                                 }
                             }
 
-                            .sf-icon-replace-request,
-                            .sf-icon-replace-accepted,
-                            .sf-icon-user-replace {
+                            .sf-employee-shift-icons-replace-request,
+                            .sf-employee-shift-icons-replace-accepted,
+                            .sf-employee-shift-icons-user-replace {
                                 display: flex;
                             }
                         }
@@ -226,7 +226,7 @@
 
                             .staff-info,
                             .e-time,
-                            .sf-icon-replace-accepted {
+                            .sf-employee-shift-icons-replace-accepted {
                                 color: #1C1B1F !important;
                             }
                         }

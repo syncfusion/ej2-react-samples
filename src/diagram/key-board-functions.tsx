@@ -34,13 +34,17 @@ let shape: BasicShapeModel = {
 
 // Holds an instance of the DiagramComponent for global access within the class
 let diagramInstance: DiagramComponent;
-
+const sample_css = `
+  .diagram-keyboard .property-panel-content td{
+       padding: 2px 0px;
+  }`;
 // Class component for keyboard interaction with the diagram
 export class KeyBoardInteraction extends SampleBase<{}, {}> {
     // Renders the component UI.
     render() {
         return (
-            <div className="control-pane">
+            <div className="control-pane diagram-keyboard">
+                <style>{sample_css}</style>
                 <div className="col-lg-8 control-section">
                     <div  style={{ width: "100%" }}>
                         {/* Initializes and renders diagram control */}

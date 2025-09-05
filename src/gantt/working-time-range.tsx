@@ -103,8 +103,8 @@ public defaultValue: string = "Monday";
   public labelSettings: any = {
     leftLabel: 'TaskName'
   };
-  public projectStartDate: Date = new Date('04/02/2024');
-  public projectEndDate: Date = new Date('04/28/2024');
+  public projectStartDate: Date = new Date('04/02/2025');
+  public projectEndDate: Date = new Date('04/28/2025');
   public splitterSettings = {
     columnIndex: 1
 };
@@ -114,7 +114,7 @@ public defaultValue: string = "Monday";
         <div className='control-section'>
           <div className='col-lg-8'>
             <GanttComponent id='WorkingTimeRange' ref={gantt => this.ganttInstance = gantt} dataSource={workTimeRange}
-              highlightWeekends={true} taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'
+              highlightWeekends={true} taskFields={this.taskFields} labelSettings={this.labelSettings} height='650px' taskbarHeight={25} rowHeight={46}
               timelineSettings={this.timelineSettings} durationUnit={this.durationUnit} splitterSettings={this.splitterSettings}
               projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>
               <ColumnsDirective>
@@ -243,6 +243,8 @@ public defaultValue: string = "Monday";
           Gantt component features are segregated into individual feature-wise modules. To use a selection support and event markers we need to inject the
           <code>Selection</code>, <code>DayMarkers</code> modules.
         </p>
+        <br/>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/task-scheduling#working-time-range">documentation section</a>.</p>
       </div>
     </div>
     )

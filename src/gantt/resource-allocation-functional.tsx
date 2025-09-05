@@ -211,8 +211,8 @@ const ResourceAllocation = () => {
   const splitterSettings: any = {
     columnIndex: 2
   };
-  const projectStartDate: Date = new Date('03/28/2024');
-  const projectEndDate: Date = new Date('07/28/2024');
+  const projectStartDate: Date = new Date('03/26/2025');
+  const projectEndDate: Date = new Date('07/28/2025');
   const labelSettings: any = {
     rightLabel: 'resources',
     taskLabel: '${Progress}%'
@@ -225,15 +225,15 @@ const ResourceAllocation = () => {
           allowSelection={true} highlightWeekends={true} toolbar={toolbar} editSettings={editSettings}
           projectStartDate={projectStartDate} projectEndDate={projectEndDate} resourceFields={resourceFields}
           taskFields={taskFields} taskType={taskType} labelSettings={labelSettings} splitterSettings={splitterSettings}
-          height='450px' resources={resourceAllocationResources} workUnit={workUnit}  queryTaskbarInfo={queryTaskbarInfo}
+          height='650px' taskbarHeight={25} rowHeight={46} resources={resourceAllocationResources} workUnit={workUnit}  queryTaskbarInfo={queryTaskbarInfo}
           addDialogFields= {addDialogFields} editDialogFields={editDialogFields} actionBegin={actionBegin} actionComplete={actionComplete} cellEdit={cellEdit}>
           <ColumnsDirective>
             <ColumnDirective field='TaskID' visible={false} ></ColumnDirective>
             <ColumnDirective field='TaskName' headerText='Task Name' width='180'></ColumnDirective>
             <ColumnDirective field='resources' headerText='Resources' width='190' template={template} edit={dropdownlist}></ColumnDirective>
             <ColumnDirective field='work' width='110'></ColumnDirective>
-            <ColumnDirective field='Duration' width='100'></ColumnDirective>
-            <ColumnDirective field='taskType' headerText='Task Type' width='110'></ColumnDirective>
+            <ColumnDirective field='Duration' width='150'></ColumnDirective>
+            <ColumnDirective field='taskType' headerText='Task Type' width='150'></ColumnDirective>
           </ColumnsDirective>
           <Inject services={[Selection, DayMarkers, Toolbar, Edit]} />
         </GanttComponent>
@@ -261,6 +261,8 @@ const ResourceAllocation = () => {
           <code>Selection</code> module.To use markers, inject the <code>DayMarkers</code> module.
           To edit resource unit, task type and duration, inject the <code>Toolbar</code> and <code>Edit</code> module.
         </p>
+        <br/>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/nextjs-getting-started#add-syncfusion-react-component">documentation section</a>.</p>
       </div>
     </div>
   )

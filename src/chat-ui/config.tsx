@@ -56,7 +56,7 @@ export const ChatUISampleOrder: Object = [
     'name': 'Use Case',
     'description':'Displays the integration of other components setups for the ChatUI component, offering a clear view of initial configurations and preset options available.',
     'order': '02',
-    'category': 'Integration',
+    'category': 'Chat UI',
     'api':'{"ChatUIComponent":["messages", "user", "timeStampFormat", "showTimeStamp", "headerText", "headerIconCss"] }',
     'sourceFiles': [
       { 'displayName': 'chat-integration.tsx', 'path': 'src/chat-ui/chat-integration.tsx' },

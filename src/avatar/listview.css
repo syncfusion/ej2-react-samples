@@ -170,7 +170,9 @@ body.bootstrap-dark #letterAvatarList .e-list-item {
     top: calc(100% - 32px);
 }
 
-.bootstrap5_3 #letterAvatarList .e-list-item {
+.bootstrap5_3 #letterAvatarList .e-list-item,
+.tailwind3 #letterAvatarList .e-list-item,
+.tailwind3-dark #letterAvatarList .e-list-item {
     line-height: 32px;
 }
 

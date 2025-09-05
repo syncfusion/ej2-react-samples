@@ -17,7 +17,7 @@ const Sorting = () => {
     duration: 'Duration',
     progress: 'Progress',
     dependency: 'Predecessor',
-    child: 'subtasks'
+    parentID:'ParentId'
   };
   const labelSettings: any = {
     leftLabel: 'TaskName'
@@ -28,17 +28,17 @@ const Sorting = () => {
   const sortSettings: any = {
     columns: [{ field: 'TaskName', direction: 'Ascending' }, { field: 'TaskID', direction: 'Ascending' }]
   };
-  const projectStartDate: Date = new Date('03/25/2024');
-  const projectEndDate: Date = new Date('07/28/2024');
+  const projectStartDate: Date = new Date('03/26/2025');
+  const projectEndDate: Date = new Date('09/01/2025');
   return (
     <div className='control-pane'>
       <div className='control-section'>
         <GanttComponent id='Sorting' dataSource={editingData} highlightWeekends={true} allowSelection={true}
           taskFields={taskFields} splitterSettings={splitterSettings} treeColumnIndex={1}
-          labelSettings={labelSettings} height='410px' selectedRowIndex={0} sortSettings={sortSettings} allowSorting={true}
+          labelSettings={labelSettings} height='650px' taskbarHeight={25} rowHeight={46} selectedRowIndex={0} sortSettings={sortSettings} allowSorting={true}
           projectStartDate={projectStartDate} projectEndDate={projectEndDate}>
           <ColumnsDirective>
-            <ColumnDirective field='TaskID' width='80'></ColumnDirective>
+            <ColumnDirective field='TaskID' visible={false} width='80'></ColumnDirective>
             <ColumnDirective field='TaskName' width='250'></ColumnDirective>
             <ColumnDirective field='StartDate'></ColumnDirective>
             <ColumnDirective field='EndDate' ></ColumnDirective>
@@ -62,6 +62,8 @@ const Sorting = () => {
           <code>Selection</code> module using the <code>Gantt.Inject(Selection)</code> method. To use sort, inject the
           <code>Sort</code> module using the <code>Gantt.Inject(Sort)</code> method.To use markers, inject the
           <code>DayMarkers</code> module using the <code>Gantt.Inject(DayMarkers)</code> method.</p>
+        <br/>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/sorting">documentation section</a>.</p>
       </div>
     </div>
   )

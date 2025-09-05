@@ -27,10 +27,10 @@ export class LoadOnDemand extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section'>
           <GanttComponent id='LoadOnDemand' dataSource={this.dataSource} treeColumnIndex={1}
-            taskFields={this.taskFields} enableVirtualization={true} loadChildOnDemand={true} height='460px'
+            taskFields={this.taskFields} enableVirtualization={true} loadChildOnDemand={true} height='650px' taskbarHeight={25} rowHeight={46}
             projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>
               <ColumnsDirective>
-              <ColumnDirective field='taskId' width='80' headerText='Task ID' ></ColumnDirective>
+              <ColumnDirective field='taskId' width='120' headerText='Task ID' ></ColumnDirective>
               <ColumnDirective field='taskName' headerText='Task Name' width='250' allowReordering ={false}></ColumnDirective>
               <ColumnDirective field='startDate' headerText='Start Date' allowSorting={false}></ColumnDirective>
               <ColumnDirective field='duration' headerText='Duration' allowEditing={false}></ColumnDirective>
@@ -56,6 +56,8 @@ export class LoadOnDemand extends SampleBase<{}, {}> {
         <p>
         When expanding the root parent node or scrolling vertically, the corresponding tasks are dynamically fetched from the remote server and then updated in the DOM based on the current viewport position.
         </p>
+          <br/>
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/nextjs-getting-started#add-syncfusion-react-component">documentation section</a>.</p>
         </div>
       </div>
     )

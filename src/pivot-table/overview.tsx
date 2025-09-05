@@ -9,7 +9,7 @@ import {
 import * as dataSource from './pivot-data/universitydata.json';
 import { SampleBase } from '../common/sample-base';
 import { ChartTheme } from '@syncfusion/ej2-react-charts';
-import { select, createElement } from '@syncfusion/ej2-base';
+import { select, createElement, Browser } from '@syncfusion/ej2-base';
 import { ExcelQueryCellInfoEventArgs } from '@syncfusion/ej2-grids';
 import './overview.css';
 
@@ -241,6 +241,11 @@ export class PivotOverview extends SampleBase<{}, {}> {
             args.style.numberFormat = undefined;
         }
     }
+    load(args): void {
+        if (Browser.isDevice) {
+            args.dataSourceSettings.rows = [{ name: 'rank_display', caption: 'Rank', expandAll: true, allowDragAndDrop: false }];
+        }
+    }
     render() {
         return (
             <div className='control-pane'>
@@ -254,7 +259,7 @@ export class PivotOverview extends SampleBase<{}, {}> {
                                 queryCellInfo: this.queryCellInfo.bind(this)
                             }} allowExcelExport={true} allowNumberFormatting={true} allowConditionalFormatting={true} allowPdfExport={true} showToolbar={true} allowCalculatedField={true} displayOption={{ view: 'Both' }} toolbar={this.toolbarOptions}
                             newReport={this.newReport.bind(this)} renameReport={this.renameReport.bind(this)} removeReport={this.removeReport.bind(this)} loadReport={this.loadReport.bind(this)} fetchReport={this.fetchReport.bind(this)}
-                            saveReport={this.saveReport.bind(this)} toolbarRender={this.beforeToolbarRender.bind(this)} chartSettings={{ title: 'Top Universities Analysis', load: this.chartOnLoad.bind(this) }} chartSeriesCreated={this.chartSeriesCreated.bind(this)} enableFieldSearching={true}>
+                            saveReport={this.saveReport.bind(this)} toolbarRender={this.beforeToolbarRender.bind(this)} load={this.load.bind(this)} chartSettings={{ title: 'Top Universities Analysis', load: this.chartOnLoad.bind(this) }} chartSeriesCreated={this.chartSeriesCreated.bind(this)} enableFieldSearching={true}>
                             <Inject services={[FieldList, CalculatedField, Toolbar, PDFExport, ExcelExport, ConditionalFormatting, NumberFormatting, GroupingBar, Grouping, VirtualScroll, DrillThrough]} />
                         </PivotViewComponent>
                     </div>

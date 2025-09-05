@@ -312,7 +312,7 @@ export class HyperLink extends SampleBase<{}, {}> {
                                         <td>
                                             <div className="textcls">
                                                 <MaskedTextBoxComponent id="text" ref={(scope) => { textInput = scope; }} value={''}
-                                                    width={'100%'} placeholder='Example: "FY 2015.In Stock"'>
+                                                    width={'100%'} placeholder='Example: "FY 2022.In Stock"'>
                                                 </MaskedTextBoxComponent>
                                             </div>
                                         </td>

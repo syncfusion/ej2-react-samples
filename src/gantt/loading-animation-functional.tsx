@@ -51,11 +51,11 @@ const LoadingAnimation = () => {
       <div className='col-md-9'>
         <GanttComponent id='Filtering' ref={ganttInstance} dataSource={virtualData} treeColumnIndex={1} labelSettings={labelSettings}
           allowSelection={true} allowFiltering={true} allowSorting={true} highlightWeekends={true} enableVirtualization={true}
-          taskFields={taskFields} splitterSettings={splitterSettings} height='450px' loadingIndicator = {loadingIndicator}>
+          taskFields={taskFields} splitterSettings={splitterSettings} height='650px' taskbarHeight={25} rowHeight={46} loadingIndicator = {loadingIndicator}>
           <ColumnsDirective>
-            <ColumnDirective field='TaskID' />
+            <ColumnDirective field='TaskID' width={100}/>
             <ColumnDirective field='TaskName' headerText='Task Name' />
-            <ColumnDirective field='StartDate' />
+            <ColumnDirective field='StartDate' width={170}/>
             <ColumnDirective field='Duration' />
             <ColumnDirective field='Progress' />
           </ColumnsDirective>
@@ -103,6 +103,8 @@ const LoadingAnimation = () => {
           <p>
             By default <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#enablevirtualmaskrow">enableVirtualMaskRow</a> is set to true which renders Shimmer during virtual scrolling.
           </p>
+        <br/>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/nextjs-getting-started#add-syncfusion-react-component">documentation section</a>.</p>
       </div>
     </div>
   )

@@ -6,6 +6,7 @@ import { WBSData } from './data';
 import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import {GanttComponent,Inject,Selection,ColumnsDirective,ColumnDirective,Toolbar,DayMarkers,Edit,Filter,Sort,ContextMenu, EventMarkersDirective, EventMarkerDirective,} from "@syncfusion/ej2-react-gantt";
+import './wbs-column.css'
 
 const EnableWbs = () => {
   useEffect(() => {
@@ -23,7 +24,7 @@ const EnableWbs = () => {
 
   };
   let ganttInstance = useRef<GanttComponent>(null);
-  const eventMarkerDay1: Date = new Date('04/02/2024');
+  const eventMarkerDay1: Date = new Date('04/02/2025');
   const autoUpdateWBSChange = (args: ChangeEventArgs): void => {
     if (args.checked) {
       ganttInstance.current.enableAutoWbsUpdate = true;
@@ -53,8 +54,8 @@ const EnableWbs = () => {
   const labelSettings: any = {
     taskLabel: '${Progress}%'
   };
-  const projectStartDate: Date = new Date("03/31/2024");
-  const projectEndDate: Date = new Date("05/30/2024");
+  const projectStartDate: Date = new Date("03/30/2025");
+  const projectEndDate: Date = new Date("05/30/2025");
   const splitterSettings: any = {
     columnIndex: 4
   };
@@ -80,8 +81,8 @@ const EnableWbs = () => {
       <div className="control-section">
         <div className="col-lg-12">
           <div style={{ display: "flex" }}>
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <label htmlFor="autoUpdateWBS" style={{ fontSize: "15px", marginRight: "5px" }}>
+            <div id='wbsswitch' style={{ display: "flex", alignItems: "center" }}>
+              <label htmlFor="autoUpdateWBS" style={{ fontSize: "15px", marginRight: "5px" , marginTop: "5px"}}>
                 Auto Update WBS
               </label>
               <SwitchComponent
@@ -116,9 +117,7 @@ const EnableWbs = () => {
               allowFiltering={true}
               gridLines={"Both"}
               labelSettings={labelSettings}
-              taskbarHeight={20}
-              rowHeight={40}
-              height={"550px"}
+              height='650px' taskbarHeight={25} rowHeight={46}
               allowUnscheduledTasks={true}
               projectStartDate={projectStartDate}
               projectEndDate={projectEndDate}
@@ -169,6 +168,8 @@ const EnableWbs = () => {
   <p>
     This example showcases how enabling WBS along with automatic updates enhances task tracking and provides a clear, organized project view.
   </p>
+      <br/>
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/columns/wbs-column">documentation section</a>.</p>
       </div>
     </div>
   );

@@ -54,10 +54,6 @@
     visibility: visible;
 }
 
-.e-visbile-layer {
-    visibility: visible;
-}
-
 .material3-dark .layout #list-container .e-listview .e-active .e-icon,
 .bootstrap4 .layout #list-container .e-listview .e-active .e-icon,
 .bootstrap5 .layout #list-container .e-listview .e-active .e-icon,

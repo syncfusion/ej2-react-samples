@@ -53,17 +53,17 @@ const ColumnTemplate = () => {
   const splitterSettings: any = {
     columnIndex: 3
   };
-  const projectStartDate: Date = new Date('03/24/2024');
-  const projectEndDate: Date = new Date('07/06/2024');
+  const projectStartDate: Date = new Date('03/24/2025');
+  const projectEndDate: Date = new Date('07/06/2025');
   return (
     <div className='control-pane'>
       <div className='control-section'>
         <GanttComponent id='ColumnMenu' rowHeight={60} resourceFields={resourceFields} resources={editingResources}
           dataSource={templateData} highlightWeekends={true} treeColumnIndex={1} splitterSettings={splitterSettings}
-          taskFields={taskFields} labelSettings={labelSettings} height='410px'
+          taskFields={taskFields} labelSettings={labelSettings} height='650px' taskbarHeight={25}
           projectStartDate={projectStartDate} projectEndDate={projectEndDate}>
           <ColumnsDirective>
-            <ColumnDirective field='TaskID' headerText='Task ID' width='80' textAlign="Left"></ColumnDirective>
+            <ColumnDirective field='TaskID' headerText='Task ID' width='100' textAlign="Left"></ColumnDirective>
             <ColumnDirective field='TaskName' headerText='Name' width='250'></ColumnDirective>
             <ColumnDirective field='resources' headerText='Resources' width='250' template={template}></ColumnDirective>
             <ColumnDirective field='StartDate' width='150'></ColumnDirective>
@@ -81,6 +81,8 @@ const ColumnTemplate = () => {
       <div id="description">
         <p>The Gantt provides a way to use a custom layout for each cell using the column template feature. The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/columnModel/#template">columns -&gt; template</a> property accepts the template for the cell.</p>
         <p>In this demo, using column template, resource column has been presented with employee photo</p>
+        <br />
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/columns/column-template">documentation section</a>.</p>
       </div>
     </div>
   )

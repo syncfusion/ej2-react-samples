@@ -507,7 +507,7 @@ const EventCalendar = () => {
                                     <ViewDirective option='TimelineMonth' group={{ resources: ['Resources'] }} />
                                     <ViewDirective option='Year' />
                                 </ViewsDirective>
-                                <Inject services={[Day, Week, WorkWeek, Month, Agenda, TimelineMonth, Year]} />
+                                <Inject services={[Day, Week, WorkWeek, Month, Agenda, TimelineMonth, Year, Resize, DragAndDrop]} />
                             </ScheduleComponent>
                         </div>
                         <div className="unplanned-container">

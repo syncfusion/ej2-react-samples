@@ -48,11 +48,11 @@ export class LoadingAnimation extends SampleBase<{}, {}> {
         <div className='col-md-9'>
             <GanttComponent id='Filtering' ref={gantt => this.ganttInstance = gantt} dataSource={virtualData} treeColumnIndex={1} labelSettings={this.labelSettings}
             allowSelection={true} allowFiltering={true} allowSorting={true} highlightWeekends={true} enableVirtualization={true}
-            taskFields={this.taskFields} splitterSettings={this.splitterSettings} height='450px' loadingIndicator = {this.loadingIndicator}>
+            taskFields={this.taskFields} splitterSettings={this.splitterSettings} height='650px' taskbarHeight={25} rowHeight={46} loadingIndicator = {this.loadingIndicator}>
               <ColumnsDirective>
-                  <ColumnDirective field='TaskID'/>
+                  <ColumnDirective field='TaskID' width={100}/>
                   <ColumnDirective field='TaskName' headerText='Task Name'/>
-                  <ColumnDirective field='StartDate'/>
+                  <ColumnDirective field='StartDate' width={170}/>
                   <ColumnDirective field='Duration'/>
                   <ColumnDirective field='Progress'/>
               </ColumnsDirective>
@@ -100,6 +100,8 @@ export class LoadingAnimation extends SampleBase<{}, {}> {
           <p>
             By default <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#enablevirtualmaskrow">enableVirtualMaskRow</a> is set to true which renders Shimmer during virtual scrolling.
           </p>
+          <br/>
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/nextjs-getting-started#add-syncfusion-react-component">documentation section</a>.</p>
         </div>
       </div>
     )

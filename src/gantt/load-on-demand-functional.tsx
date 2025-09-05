@@ -32,10 +32,10 @@ const LoadOnDemand = () => {
     <div className='control-pane'>
       <div className='control-section'>
         <GanttComponent id='LoadOnDemand' dataSource={dataSource} treeColumnIndex={1}
-          taskFields={taskFields} enableVirtualization={true} loadChildOnDemand={true} height='460px'
+          taskFields={taskFields} enableVirtualization={true} loadChildOnDemand={true} height='650px' taskbarHeight={25} rowHeight={46}
           projectStartDate={projectStartDate} projectEndDate={projectEndDate}>
           <ColumnsDirective>
-            <ColumnDirective field='taskId' width='80' ></ColumnDirective>
+            <ColumnDirective field='taskId' width='120' ></ColumnDirective>
             <ColumnDirective field='taskName' headerText='Job Name' width='250' clipMode='EllipsisWithTooltip'></ColumnDirective>
             <ColumnDirective field='startDate'></ColumnDirective>
             <ColumnDirective field='duration'></ColumnDirective>
@@ -61,6 +61,8 @@ const LoadOnDemand = () => {
         <p>
           When expanding the root parent node or scrolling vertically, the corresponding tasks are dynamically fetched from the remote server and then updated in the DOM based on the current viewport position.
         </p>
+        <br/>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/nextjs-getting-started#add-syncfusion-react-component">documentation section</a>.</p>
       </div>
     </div>
   )

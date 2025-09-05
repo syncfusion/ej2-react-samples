@@ -9,7 +9,6 @@ import { addClass, isNullOrUndefined } from '@syncfusion/ej2-base';
 import './treegrid-overview.css';
 import { updateSampleSection } from '../common/sample-base';
 import { RatingComponent } from '@syncfusion/ej2-react-inputs';
-
 const Overview = () => {
   useEffect(() => {
     updateSampleSection();
@@ -27,13 +26,12 @@ const Overview = () => {
             alt = {flagIconLocation}
           ></img>
         </div>
-        <div style={{ display: "inline-block", paddingLeft: "6px", verticalAlign: 'middle' }}>
+        <div style={{ display: "inline-block", padding: "0px 6px", verticalAlign: 'middle' }}>
           {props.name}
         </div>
       </div>
     );
   };
-
   const treegridTemplate = (props: any): any => {
     if (props.gdp < 2) {
     return (
@@ -50,11 +48,9 @@ const Overview = () => {
       );
     }
   };
-
   const treeratingTemplate = (props: any): any => {
     return (<div><RatingComponent value={props.rating} cssClass={'custom-rating'} readOnly={true}/></div>);
   };
-
   const treeunemployTemplate = (props: any): any => {
     return (<div id="myProgress" className="pbar">
     {props.unemployment <=4 ?
@@ -66,7 +62,6 @@ const Overview = () => {
     </div>}
     </div>);
   };
-
   const treelocationTemplate = (props): any => {
     var locationsrc = "src/treegrid/images/Map.png";
     return (
@@ -78,7 +73,6 @@ const Overview = () => {
       </div>
     );
   };
-
   const treeareaTemplate = (props): any => {
     return (
       <span>
@@ -86,7 +80,6 @@ const Overview = () => {
       </span>
     );
   };
-
   const treezoneTemplate = (props): any => {
     let classValue = "";
     if (props.timezone.indexOf("-") !== -1) {
@@ -104,7 +97,6 @@ const Overview = () => {
       </div>
     );
   };
-
   const populationValue = (field: string, data: Object) => {
     return data[field] / 1000000;
   };
@@ -115,12 +107,10 @@ const Overview = () => {
   let locationtemplate: any = treelocationTemplate;
   let areatemplate: any = treeareaTemplate;
   let timezonetemplate: any = treezoneTemplate;
-
   const provinceFilter: IFilter = {
     type: "Excel",
     itemTemplate: flagtemplate,
   };
-
   return (
     <div className="control-pane" role="control" aria-label="Tree Grid Control">
       <div className="control-section">
@@ -144,14 +134,14 @@ const Overview = () => {
             <ColumnDirective
               field="population"
               headerText="Population (Million)"
-              allowFiltering={false}
               valueAccessor={populationValue}
               textAlign="Right"
-              width="200"
+              width="250"
             ></ColumnDirective>
             <ColumnDirective
               field="gdp"
               headerText="GDP Rate %"
+              allowFiltering={false}
               width="155"
               template={gdptemplate}
             />
@@ -215,7 +205,7 @@ const Overview = () => {
           to columns or self-referential datasource.
         </p>
         <p>
-          In this demo, Tree Grid features such as{" "}
+          In this demo,Tree Grid features such as{" "}
           <code>
             sorting, filtering, conditional formatting, column template and
             scrolling

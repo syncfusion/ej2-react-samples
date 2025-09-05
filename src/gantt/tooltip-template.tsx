@@ -149,15 +149,15 @@ export class TooltipTemplate extends SampleBase<{}, {}> {
   public splitterSettings: any = {
     columnIndex: 2
   };
-  public projectStartDate: Date = new Date('03/24/2024');
-  public projectEndDate: Date = new Date('05/04/2024');
+  public projectStartDate: Date = new Date('03/26/2025');
+  public projectEndDate: Date = new Date('06/01/2025');
   render() {
     return (
       <div className='control-pane'>
         <div className='control-section'>
           <GanttComponent id='TooltipTemplate' ref={gantt => this.ganttInstance = gantt} dataSource={tooltipData} highlightWeekends={true}
             renderBaseline={true} treeColumnIndex={1} tooltipSettings={this.tooltipSettings}
-            splitterSettings={this.splitterSettings} taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'
+            splitterSettings={this.splitterSettings} taskFields={this.taskFields} labelSettings={this.labelSettings} height='650px' taskbarHeight={25} rowHeight={46}
             projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate} resourceFields={this.resourceFields} resources={editingResources}>
             <ColumnsDirective>
               <ColumnDirective field='TaskID' width='80'></ColumnDirective>
@@ -167,8 +167,8 @@ export class TooltipTemplate extends SampleBase<{}, {}> {
               <ColumnDirective field='Duration' ></ColumnDirective>
               <ColumnDirective field='Predecessor' ></ColumnDirective>
               <ColumnDirective field='Progress' ></ColumnDirective>
-              <ColumnDirective field='BaselineStartDate' ></ColumnDirective>
-              <ColumnDirective field='BaselineEndDate' ></ColumnDirective>
+              <ColumnDirective field='BaselineStartDate' width={200} ></ColumnDirective>
+              <ColumnDirective field='BaselineEndDate' width={200}></ColumnDirective>
               <ColumnDirective field='resources' ></ColumnDirective>
             </ColumnsDirective>
             <Inject services={[Selection, DayMarkers]} />
@@ -189,6 +189,8 @@ export class TooltipTemplate extends SampleBase<{}, {}> {
         <p>Gantt component features are segregated into individual feature-wise modules.To use a selection, inject the
           <code>Selection</code> module using the <code>Gantt.Inject(Selection)</code> method.To use markers, inject the
           <code>DayMarkers</code> module using the <code>Gantt.Inject(DayMarkers)</code> method.</p>
+          <br/>
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/tooltip#enable-tooltip">documentation section</a>.</p>
         </div>
       </div>
     )

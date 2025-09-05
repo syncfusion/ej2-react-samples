@@ -20,7 +20,7 @@ const Events = () => {
     duration: "Duration",
     progress: "Progress",
     dependency: "Predecessor",
-    child: "subtasks",
+    parentID: 'ParentId'
   };
   const columns: any = [
     { field: "TaskID", width: 80 },
@@ -53,8 +53,8 @@ const Events = () => {
   const splitterSettings: any = {
     columnIndex: 2,
   };
-  const projectStartDate: Date = new Date("03/24/2024");
-  const projectEndDate: Date = new Date("07/06/2024");
+  const projectStartDate: Date = new Date("03/26/2025");
+  const projectEndDate: Date = new Date("07/20/2025");
   const created = (): void => {
     appendElement('Gantt <b>created</b> event called<hr>');
   };
@@ -187,7 +187,7 @@ const Events = () => {
             splitterSettings={splitterSettings}
             taskFields={taskFields}
             labelSettings={labelSettings}
-            height="410px"
+            height='650px' taskbarHeight={25} rowHeight={46}
             created={created.bind(this)}
             load={load.bind(this)}
             dataBound={dataBound.bind(this)}
@@ -226,12 +226,12 @@ const Events = () => {
             projectEndDate={projectEndDate}
           >
             <ColumnsDirective>
-              <ColumnDirective field="TaskID" width="80"></ColumnDirective>
+              <ColumnDirective field="TaskID" width="100"></ColumnDirective>
               <ColumnDirective field="TaskName" width="250"></ColumnDirective>
               <ColumnDirective field="StartDate"></ColumnDirective>
               <ColumnDirective field="EndDate"></ColumnDirective>
               <ColumnDirective field="Duration"></ColumnDirective>
-              <ColumnDirective field="Predecessor"></ColumnDirective>
+              <ColumnDirective field="Predecessor" width={190}></ColumnDirective>
               <ColumnDirective field="Progress"></ColumnDirective>
             </ColumnsDirective>
             <Inject
@@ -338,6 +338,8 @@ const Events = () => {
           <code>DayMarkers</code> module using the{" "}
           <code>Gantt.Inject(DayMarkers)</code> method.
         </p>
+        <br/>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/getting-started#adding-gantt-component">documentation section</a>.</p>
       </div>
     </div>
   );

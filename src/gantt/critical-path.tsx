@@ -13,7 +13,7 @@ export class Critical extends SampleBase<{}, {}> {
         duration: 'Duration',
         progress: 'Progress',
         dependency: 'Predecessor',
-        child: 'subtasks'
+         parentID: 'ParentId'
     };
     public editSettings: any = {
         allowAdding: true,
@@ -26,14 +26,14 @@ export class Critical extends SampleBase<{}, {}> {
     public labelSettings: any = {
         leftLabel: 'TaskName'
     };
-    public projectStartDate: Date = new Date('03/24/2024');
-    public projectEndDate: Date = new Date('07/06/2024');
+    public projectStartDate: Date = new Date('03/26/2025');
+    public projectEndDate: Date = new Date('06/01/2025');
     render() {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
                     <GanttComponent id='Critical' dataSource={projectNewData} treeColumnIndex={1}
-                        taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'
+                        taskFields={this.taskFields} labelSettings={this.labelSettings} height='650px' taskbarHeight={25} rowHeight={46}
                         projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}
                         enableCriticalPath={true} editSettings={this.editSettings} toolbar={this.toolbar}>
                         <ColumnsDirective>
@@ -50,7 +50,6 @@ export class Critical extends SampleBase<{}, {}> {
                 <div id="action-description">
                     <p>This sample demonstrates the rendering of critical path to the Gantt control.</p>
                 </div>
-
                 <div id="description">
                     <p>
                         In this example, you can see how to render a Gantt Chart with critical path. The default timeline
@@ -65,10 +64,8 @@ export class Critical extends SampleBase<{}, {}> {
                         Gantt control features are segregated into individual feature-wise modules. To use a critical path, inject the
                         <code>CriticalPath</code> module.
                     </p>
-                    <p>More information on the Critical Path feature can be found in this
-                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/critical-path/">
-                            documentation section</a>.
-                    </p>
+                    <br />
+                    <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/critical-path/">documentation section</a>.</p>
                 </div>
             </div>
         )

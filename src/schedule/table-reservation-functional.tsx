@@ -701,18 +701,25 @@ const TableReservation = () => {
   const onTreeDragging = (event: DragAndDropEventArgs): void => {
     document.body.classList.add('table-reservation-dragging');
     const targetElement: HTMLElement = event.target;
-    if (targetElement && (closest(targetElement, '.e-appointment.e-cancelled') || (targetElement.classList.contains('e-work-cells') && !targetElement.classList.contains('e-resource-group-cells')))) {
-      targetElement.classList.remove('cursor-not-allowed');
+    const cancelledAppointment: Element = closest(targetElement, '.e-appointment.e-cancelled');
+    const allElements: NodeListOf<Element> = document.querySelectorAll('.not-allowed-cursor');
+    allElements.forEach(el => el.classList.remove('not-allowed-cursor'));
+    if ((targetElement.classList.contains('e-work-cells') && !targetElement.classList.contains('e-resource-group-cells')) ||
+      cancelledAppointment) {
+      if (cancelledAppointment) {
+        const allChildren: NodeListOf<Element> = cancelledAppointment.querySelectorAll('*');
+        allChildren.forEach(child => child.classList.remove('not-allowed-cursor'));
+      }
     } else {
-      targetElement.classList.add('cursor-not-allowed');
+      targetElement.classList.add('not-allowed-cursor');
     }
   }
 
   const onTreeDragStop = (event: any) => {
     document.body.classList.remove('table-reservation-dragging');
-    const dropNotAllowedElements: NodeListOf<Element> = document.querySelectorAll('.cursor-not-allowed');
+    const dropNotAllowedElements: NodeListOf<Element> = document.querySelectorAll('.not-allowed-cursor');
     dropNotAllowedElements.forEach(element => {
-      element.classList.remove('cursor-not-allowed');
+      element.classList.remove('not-allowed-cursor');
     });
     let treeElement: Element = closest(event.target, '.e-treeview');
     let classElement: HTMLElement = scheduleRef.current!.element.querySelector('.e-device-hover');

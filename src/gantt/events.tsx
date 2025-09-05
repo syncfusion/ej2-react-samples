@@ -15,7 +15,7 @@ export class Events extends SampleBase<{}, {}> {
     duration: 'Duration',
     progress: 'Progress',
     dependency: 'Predecessor',
-    child: 'subtasks'
+    parentID: 'ParentId'
   };
   public columns: any = [
     { field: 'TaskID', width: 80 },
@@ -39,8 +39,8 @@ export class Events extends SampleBase<{}, {}> {
   public splitterSettings: any = {
     columnIndex: 2
   };
-  public projectStartDate: Date = new Date('03/24/2024');
-  public projectEndDate: Date = new Date('07/06/2024');
+  public projectStartDate: Date = new Date('03/26/2025');
+  public projectEndDate: Date = new Date('07/20/2025');
   public created(): void {
     this.appendElement('Gantt <b>created</b> event called<hr>');
   }
@@ -163,7 +163,7 @@ export class Events extends SampleBase<{}, {}> {
               treeColumnIndex={1} allowSelection={true} allowSorting={true} allowReordering={true}
               allowResizing={true} enableContextMenu={true} showColumnMenu={true}
               columns={this.columns} toolbar={this.toolbar} editSettings={this.editSettings} splitterSettings={this.splitterSettings}
-              taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'
+              taskFields={this.taskFields} labelSettings={this.labelSettings} height='650px' taskbarHeight={25} rowHeight={46}
               created={this.created.bind(this)} load={this.load.bind(this)} dataBound={this.dataBound.bind(this)} toolbarClick={this.toolbarClick.bind(this)}
               beforeTooltipRender={this.beforeTooltipRender.bind(this)} actionBegin={this.actionBegin.bind(this)}
               actionComplete={this.actionComplete.bind(this)} cellEdit={this.cellEdit.bind(this)} endEdit={this.endEdit.bind(this)}
@@ -179,12 +179,12 @@ export class Events extends SampleBase<{}, {}> {
               recordDoubleClick={this.recordDoubleClick.bind(this)} onTaskbarClick={this.onTaskbarClick.bind(this)}
               projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>
               <ColumnsDirective>
-              <ColumnDirective field='TaskID' width='80'></ColumnDirective>
+              <ColumnDirective field='TaskID' width='100'></ColumnDirective>
               <ColumnDirective field='TaskName' width='250'></ColumnDirective>
               <ColumnDirective field='StartDate'></ColumnDirective>
               <ColumnDirective field='EndDate' ></ColumnDirective>
               <ColumnDirective field='Duration' ></ColumnDirective>
-              <ColumnDirective field='Predecessor' ></ColumnDirective>
+              <ColumnDirective field='Predecessor' width={190}></ColumnDirective>
               <ColumnDirective field='Progress' ></ColumnDirective>
             </ColumnsDirective>
               <Inject services={[Selection, DayMarkers, ContextMenu, Reorder, Resize, ColumnMenu, Toolbar, Edit, Filter, Sort]} />
@@ -220,23 +220,25 @@ export class Events extends SampleBase<{}, {}> {
         <div id="description">
           <p>The Gantt triggers events based on its actions. The events can be used as an extension point to perform custom operations.</p>
           <p>In this demo, perform Gantt actions such as load, created, dataBound, toolbarClick, beforeTooltipRender, actionBegin, actionComplete, cellEdit,
-        endEdit, taskbarEditing, taskbarEdited, rowSelecting, rowSelected, rowDeselecting, rowDeselected, columnDragStart, columnDrag,
-        columnDrop, expanding, expanded, collapsing, collapsed, columnMenuClick, columnMenuOpen, contextMenuClick, contextMenuOpen, resizeStart,
-        resizing, resizeStop, splitterResizeStart, splitterResizing, splitterResized, recordDoubleClick, onTaskbarClick and
-        see the <strong>Event Trace</strong> panel for the events emitted.</p>
+          endEdit, taskbarEditing, taskbarEdited, rowSelecting, rowSelected, rowDeselecting, rowDeselected, columnDragStart, columnDrag,
+          columnDrop, expanding, expanded, collapsing, collapsed, columnMenuClick, columnMenuOpen, contextMenuClick, contextMenuOpen, resizeStart,
+          resizing, resizeStop, splitterResizeStart, splitterResizing, splitterResized, recordDoubleClick, onTaskbarClick and
+          see the <strong>Event Trace</strong> panel for the events emitted.</p>
 
-        <p>
-            Gantt component features are segregated into individual feature-wise modules. To use a selection, inject the
-        <code>Selection</code> module using the <code>Gantt.Inject(Selection)</code> method.To use a sorting, inject the
-        <code>Sort</code> module using the <code>Gantt.Inject(Sort)</code> method.To reorder column, inject the
-        <code>Reorder</code> module using the <code>Gantt.Inject(Reorder)</code> method.To resize column width, inject the
-        <code>Resize</code> module using the <code>Gantt.Inject(Resize)</code> method.To use a contextmenu, inject the
-        <code>Contextmenu</code> module using the <code>Gantt.Inject(Contextmenu)</code> method.To use a columnmenu, inject the
-        <code>ColumnMenu</code> module using the <code>Gantt.Inject(ColumnMenu)</code> method.To use a toolbar, inject the
-        <code>Toolbar</code> module using the <code>Gantt.Inject(Toolbar)</code> method.To use a edit, inject the
-        <code>Edit</code> module using the <code>Gantt.Inject(Edit)</code> method.To use markers, inject the
-        <code>DayMarkers</code> module using the <code>Gantt.Inject(DayMarkers)</code> method.
-    </p>
+          <p>
+              Gantt component features are segregated into individual feature-wise modules. To use a selection, inject the
+          <code>Selection</code> module using the <code>Gantt.Inject(Selection)</code> method.To use a sorting, inject the
+          <code>Sort</code> module using the <code>Gantt.Inject(Sort)</code> method.To reorder column, inject the
+          <code>Reorder</code> module using the <code>Gantt.Inject(Reorder)</code> method.To resize column width, inject the
+          <code>Resize</code> module using the <code>Gantt.Inject(Resize)</code> method.To use a contextmenu, inject the
+          <code>Contextmenu</code> module using the <code>Gantt.Inject(Contextmenu)</code> method.To use a columnmenu, inject the
+          <code>ColumnMenu</code> module using the <code>Gantt.Inject(ColumnMenu)</code> method.To use a toolbar, inject the
+          <code>Toolbar</code> module using the <code>Gantt.Inject(Toolbar)</code> method.To use a edit, inject the
+          <code>Edit</code> module using the <code>Gantt.Inject(Edit)</code> method.To use markers, inject the
+          <code>DayMarkers</code> module using the <code>Gantt.Inject(DayMarkers)</code> method.
+          </p>
+          <br/>
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/getting-started#adding-gantt-component">documentation section</a>.</p>
         </div>
       </div>
     )

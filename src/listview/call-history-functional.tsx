@@ -7,7 +7,6 @@ import * as React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
 import { TabComponent, SelectEventArgs, TabItemsDirective, TabItemDirective } from '@syncfusion/ej2-react-navigations';
-import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import { callHistoryData } from './listData';
 import './call-history.css';
@@ -17,8 +16,6 @@ const CallHistory = () => {
        updateSampleSection();
    }, [])
 
-   const [deviceLayout, setDeviceLayout] = useState("layoutWrapper");
-   const [visibleLayer, setVisibleLayer] = useState("tabContainer");
    //Map the appropriate columns to fields property
    let fields: Object = { text: 'text', groupBy: 'category' };
    let styleNone = { display: "none" };
@@ -51,14 +48,6 @@ const CallHistory = () => {
        });
        return newData;
    }
-   // EventHandler to check the device mode
-   const onCreated = () => {
-       if (!Browser.isDevice) {
-           setDeviceLayout("layoutWrapper e-device-layout");
-       } else {
-           setVisibleLayer("tabContainer e-visbile-layer");
-       }
-   }
    // EventHandler to select the tab
    const selectedHanlder = (args: SelectEventArgs) => {
        if (allInstance !== undefined) {
@@ -72,15 +61,15 @@ const CallHistory = () => {
    return (
        <div className='control-pane'>
            <div className='slider-call-history col-lg-12 control-section'>
-               <div className={deviceLayout}>
+               <div className="layoutWrapper e-device-layout">
                    <div className="speaker">
                        <div className="camera"></div>
                    </div>
                    <div className="layout">
                        <div id="list-container">
-                           <div className={visibleLayer}>
+                           <div className="tabContainer">
                                {/* Tab element */}
-                               <TabComponent id="tab" selected={selectedHanlder.bind(this)} created={onCreated}>
+                               <TabComponent id="tab" selected={selectedHanlder.bind(this)}>
                                    <TabItemsDirective>
                                        <TabItemDirective header={headerText[0]} content={"#all"} />
                                        <TabItemDirective header={headerText[1]} content={"#received"} />

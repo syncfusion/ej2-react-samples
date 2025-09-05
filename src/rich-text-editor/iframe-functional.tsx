@@ -4,7 +4,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { RichTextEditorComponent, Toolbar, Inject, Image, Table, Link, HtmlEditor, QuickToolbar, IFrameSettingsModel, Audio, Video, FormatPainter, EmojiPicker, PasteCleanup, CodeBlock, ImportExport } from '@syncfusion/ej2-react-richtexteditor';
-import { ToolbarSettingsModel, FileManager, FileManagerSettingsModel, ExportWordModel, ExportPdfModel, ImportWordModel } from '@syncfusion/ej2-react-richtexteditor';
+import { ToolbarSettingsModel, FileManager, FileManagerSettingsModel, ExportWordModel, ExportPdfModel, ImportWordModel, QuickToolbarSettingsModel } from '@syncfusion/ej2-react-richtexteditor';
 import { updateSampleSection } from '../common/sample-base';
 import { addClass, removeClass, Browser } from '@syncfusion/ej2-base';
 import './iframe.css';
@@ -20,7 +20,7 @@ function IFrame() {
     // Rich Text Editor items list
     const items: string[] = ['Undo', 'Redo', '|', 'ImportWord', 'ExportWord', 'ExportPdf', '|',
                 'Bold', 'Italic', 'Underline', 'StrikeThrough', 'InlineCode', '|', 'CreateLink', 'Image', 'CreateTable', 'CodeBlock',
-                'HorizontalLine', 'Blockquote', '|', 'BulletFormatList', 'NumberFormatList', '|', 'Formats', 'Alignments', '|', 'Outdent', 'Indent', '|',
+                'HorizontalLine', 'Blockquote', '|', 'BulletFormatList', 'NumberFormatList', 'Checklist', '|', 'Formats', 'Alignments', '|', 'Outdent', 'Indent', '|',
                 'FontColor', 'BackgroundColor', 'FontName', 'FontSize', '|', 'LowerCase', 'UpperCase', '|', 'SuperScript', 'SubScript', '|',
                 'EmojiPicker', 'FileManager', 'Video', 'Audio', '|', 'FormatPainter', 'ClearFormat',
                 '|', 'Print', 'FullScreen', '|', 'SourceCode'];
@@ -33,6 +33,11 @@ function IFrame() {
             uploadUrl: hostUrl + 'api/FileManager/Upload',
             downloadUrl: hostUrl + 'api/FileManager/Download'
         }
+    }
+    const quickToolbarSettings: QuickToolbarSettingsModel = {
+        table: ['Tableheader', 'TableRemove', '|', 'TableRows', 'TableColumns', 'TableCell', '|', 'TableEditProperties', 'Styles', 'BackgroundColor', 'Alignments', 'TableCellVerticalAlign'],
+        text: ['Formats', '|', 'Bold', 'Italic', 'Fontcolor', 'BackgroundColor', '|', 'CreateLink', 'Image', 'CreateTable', 'Blockquote', '|' , 'Unorderedlist', 'Orderedlist', 'Indent', 'Outdent'],
+        showOnRightClick: true,
     }
     //Rich Text Editor ToolbarSettings
     const toolbarSettings: ToolbarSettingsModel = {
@@ -105,7 +110,7 @@ function IFrame() {
                 <div className="content-wrapper">
                     <RichTextEditorComponent id="iframeRTE" ref={(richtexteditor) => { rteObj = richtexteditor }}
                         height={'500px'} actionBegin={handleFullScreen.bind(this)} actionComplete={actionCompleteHandler.bind(this)} toolbarSettings={toolbarSettings}
-                        iframeSettings={iframeSetting} fileManagerSettings={fileManagerSettings} exportPdf={exportPdf} exportWord={exportWord} importWord={importWord}>
+                        iframeSettings={iframeSetting} fileManagerSettings={fileManagerSettings} quickToolbarSettings={quickToolbarSettings} exportPdf={exportPdf} exportWord={exportWord} importWord={importWord}>
                         <p>The Rich Text Editor component is a WYSIWYG ("what you see is what you get") editor that provides the best user experience to create and update the content.
                             Users can format their content using standard toolbar commands.</p>
 

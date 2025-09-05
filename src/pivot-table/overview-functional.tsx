@@ -9,7 +9,7 @@ import {
 import * as dataSource from './pivot-data/universitydata.json';
 import { updateSampleSection } from '../common/sample-base';
 import { ChartTheme } from '@syncfusion/ej2-react-charts';
-import { select, createElement } from '@syncfusion/ej2-base';
+import { select, createElement, Browser } from '@syncfusion/ej2-base';
 import { ExcelQueryCellInfoEventArgs } from '@syncfusion/ej2-grids';
 import './overview.css';
 
@@ -247,6 +247,11 @@ function PivotToolbar() {
             args.style.numberFormat = undefined;
         }
     }
+    function load(args): void {
+        if (Browser.isDevice) {
+            args.dataSourceSettings.rows = [{ name: 'rank_display', caption: 'Rank', expandAll: true, allowDragAndDrop: false }];
+        }
+    }
     return (
         <div className='control-pane'>
             <meta name="referrer" content="never"></meta>
@@ -260,7 +265,7 @@ function PivotToolbar() {
                             queryCellInfo: queryCellInfo.bind(this)
                         }} allowExcelExport={true} allowNumberFormatting={true} allowConditionalFormatting={true} allowPdfExport={true} showToolbar={true} allowCalculatedField={true} displayOption={{ view: 'Both' }} toolbar={toolbarOptions}
                         newReport={newReport.bind(this)} renameReport={renameReport.bind(this)} removeReport={removeReport.bind(this)} loadReport={loadReport.bind(this)} fetchReport={fetchReport.bind(this)}
-                        saveReport={saveReport.bind(this)} toolbarRender={beforeToolbarRender.bind(this)} chartSettings={{ title: 'Top Universities Analysis', load: chartOnLoad.bind(this) }} chartSeriesCreated={chartSeriesCreated.bind(this)} enableFieldSearching={true}>
+                        saveReport={saveReport.bind(this)} toolbarRender={beforeToolbarRender.bind(this)} load={load.bind(this)} chartSettings={{ title: 'Top Universities Analysis', load: chartOnLoad.bind(this) }} chartSeriesCreated={chartSeriesCreated.bind(this)} enableFieldSearching={true}>
                         <Inject services={[FieldList, CalculatedField, Toolbar, PDFExport, ExcelExport, ConditionalFormatting, NumberFormatting, GroupingBar, Grouping, VirtualScroll, DrillThrough]} />
                     </PivotViewComponent>
                 </div>

@@ -17,7 +17,7 @@ const DragAndDrop = () => {
     duration: 'Duration',
     progress: 'Progress',
     dependency: 'Predecessor',
-    child: 'subtasks'
+    parentID: 'ParentId'
   };
   const selectionSettings: any = {
     type: 'Multiple'
@@ -32,15 +32,15 @@ const DragAndDrop = () => {
     allowTaskbarEditing: true,
     showDeleteConfirmDialog: true
   };
-  const projectStartDate: Date = new Date('03/25/2024');
-  const projectEndDate: Date = new Date('07/06/2024');
+  const projectStartDate: Date = new Date('03/26/2025');
+  const projectEndDate: Date = new Date('07/20/2025');
   const labelSettings: any = {
     leftLabel: 'TaskName'
   };
   return (
     <div className='control-pane'>
       <div className='control-section'>
-        <GanttComponent id='DragandDrop' dataSource={projectNewData} taskFields={taskFields} height='410px'
+        <GanttComponent id='DragandDrop' dataSource={projectNewData} taskFields={taskFields} height='650px' taskbarHeight={25} rowHeight={46}
           treeColumnIndex={1} allowRowDragAndDrop={true} highlightWeekends={true} labelSettings={labelSettings}
           projectStartDate={projectStartDate} projectEndDate={projectEndDate} allowTaskbarDragAndDrop={true}
           splitterSettings={splitterSettings} editSettings={editSettings} selectionSettings={selectionSettings}>
@@ -64,6 +64,8 @@ const DragAndDrop = () => {
         <p>
           Gantt component features are segregated into individual feature-wise modules. To use row, drag and drop feature we need to inject <code>RowDD</code> and <code>Edit</code> modules.
         </p>
+        <br/>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/drag-and-drop">documentation section</a>.</p>
       </div>
     </div>
   )

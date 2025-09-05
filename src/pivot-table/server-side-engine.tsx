@@ -1,10 +1,10 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { IDataOptions, PivotViewComponent, VirtualScroll, Inject, FieldList, GroupingBar, Toolbar, PDFExport, ExcelExport, ToolbarArgs, BeforeExportEventArgs, ToolbarItems } from '@syncfusion/ej2-react-pivotview';
+import { IDataOptions, PivotViewComponent, Inject, FieldList, GroupingBar, Toolbar, PDFExport, ExcelExport, ToolbarArgs, BeforeExportEventArgs, ToolbarItems } from '@syncfusion/ej2-react-pivotview';
 import { SampleBase } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
 import './server-side-engine.css';
-import { ItemModel, Menu } from '@syncfusion/ej2-navigations';
+import { Menu } from '@syncfusion/ej2-navigations';
 import { ExcelExportProperties, PdfExportProperties } from '@syncfusion/ej2-grids';
 
 /**
@@ -19,7 +19,7 @@ export class ServerSideEngine extends SampleBase<{}, {}> {
     private toolbarOptions: ToolbarItems[] = ['Export', 'FieldList'];
 
     private dataSourceSettings: IDataOptions = {
-        url: 'https://ej2services.syncfusion.com/react/release/api/pivot/post',
+        url: 'https://ej2services.syncfusion.com/react/development/api/pivot/post',
         mode: 'Server',
         expandAll: false,
         enableSorting: true,
@@ -27,12 +27,16 @@ export class ServerSideEngine extends SampleBase<{}, {}> {
         ],
         values: [
             { name: 'Sold', caption: 'Units Sold' },
-            { name: 'Price', caption: 'Sold Amount' }
+            { name: 'Amount', caption: 'Sold Amount' }
         ],
-        rows: [{ name: 'ProductID', caption: 'Product ID' }, {name: 'Country'}],
-        drilledMembers: [{ name: 'ProductID', items: ['PRO-10001', 'PRO-10002', 'PRO-10003'] }],
-        formatSettings: [{ name: 'Price', format: 'C0' }, { name: 'Sold', format: 'N0' }],
-        filters: []
+        rows: [{ name: 'Country' }, {name: 'Products'}],
+        drilledMembers: [{ name: 'Country', items: ['France', 'Germany'] }],
+        formatSettings: [{ name: 'Amount', format: 'C0' }, { name: 'Sold', format: 'N0' }],
+        filters: [],
+        fieldMapping: [
+            { name: 'Product_Categories', groupName: 'Product Details'},
+            { name: 'Products', groupName: 'Product Details' }
+        ]
     };
 
     onDataBound(): void {
@@ -57,7 +61,7 @@ export class ServerSideEngine extends SampleBase<{}, {}> {
     }
 
     gridToolbarClicked(args: any): void {
-        if (this.pivotObj && this.pivotObj.gridSettings && this.pivotObj.gridSettings.layout !== args.item.id) {
+        if (this.pivotObj && this.pivotObj.gridSettings && this.pivotObj.gridSettings.layout !== args.item.id && (args.item.id == 'Compact' || args.item.id == 'Tabular')) {
             this.pivotObj.setProperties({
                 gridSettings: {
                     layout: args.item.id
@@ -182,10 +186,10 @@ export class ServerSideEngine extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section'>
                     <PivotViewComponent id='PivotView' ref={d => this.pivotObj = d} dataSourceSettings={this.dataSourceSettings} showFieldList={true} showGroupingBar={true}
-                        width={'100%'} height={'450'} dataBound={this.onDataBound} enableVirtualization={true} allowDataCompression={true} showToolbar={true}
+                        width={'100%'} height={'450'} dataBound={this.onDataBound} allowDataCompression={true} showToolbar={true}
                         allowPdfExport={true} allowExcelExport={true} gridSettings={{ columnWidth: Browser.isDevice ? 100 : 120, layout: 'Tabular' }} toolbarRender={this.beforeToolbarRender.bind(this)}
                         toolbar={this.toolbarOptions} beforeExport={this.beforeExport.bind(this)}>
-                        <Inject services={[VirtualScroll, FieldList, GroupingBar, Toolbar, PDFExport, ExcelExport]} />
+                        <Inject services={[FieldList, GroupingBar, Toolbar, PDFExport, ExcelExport]} />
                     </PivotViewComponent>
                 </div>
                 <div id="action-description">
@@ -196,7 +200,7 @@ export class ServerSideEngine extends SampleBase<{}, {}> {
                 <div id="description">
                     <p>
                         The Pivot Table's server-side pivot engine (external pivot engine) uses the Syncfusion<sup>®</sup> package <a
-                        target="_blank" href="https://www.nuget.org/packages/Syncfusion.Pivot.Engine/"> Syncfusion<sup>®</sup>.Pivot.Engine</a> to
+                            target="_blank" href="https://www.nuget.org/packages/Syncfusion.Pivot.Engine/"> Syncfusion<sup>®</sup>.Pivot.Engine</a> to
                         gather data from the data source and perform all pivot operations such as <a target="_blank"
                             href="https://ej2.syncfusion.com/react/documentation/pivotview/aggregation/#aggregation">
                             aggregation</a>, <a target="_blank"
@@ -211,11 +215,15 @@ export class ServerSideEngine extends SampleBase<{}, {}> {
                         connected to the pivot table.
                     </p>
                     <p>
-                        In this demo, the pivot table is shown with the virtualization option enabled through the <a target="_blank"
+                        In this demo, the Pivot Table is rendered using an external server-side engine, which significantly enhances
+                        performance when handling large datasets. By offloading data processing to the server, client-side rendering becomes
+                        faster and more efficient—ensuring a smoother user experience even with complex or high-volume data.
+                    </p>
+                    <p>
+                        For further performance improvements when working with large data volumes, we recommend enabling <a target="_blank"
                             href="https://ej2.syncfusion.com/react/documentation/api/pivotview/#enablevirtualization">
-                            enableVirtualization</a> property
-                        and an external server engine. This would improve pivot table rendering performance when working with large
-                        amounts of data.
+                            virtualization</a> or <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/pivotview/paging">
+                            paging</a> features.
                     </p>
                     <p>
                         The built-in toolbar includes export options for Excel, CSV, and PDF documents. These export features support
@@ -224,14 +232,6 @@ export class ServerSideEngine extends SampleBase<{}, {}> {
                     <p>
                         Additionally, a custom toolbar menu is provided to switch between <strong>Compact</strong> and
                         <strong>Tabular</strong> layouts at runtime, offering flexibility in how the summarized data is displayed.
-                    </p>
-                    <br />
-                    <p>
-                        <strong>Injecting Module:</strong>
-                    </p>
-                    <p>
-                        The pivot table features are segregated into individual modules. To use the virtual scrolling option,
-                        we need to inject the <code>VirtualScroll</code> module using the <code> services</code> tag.
                     </p>
                     <br />
                     <p>

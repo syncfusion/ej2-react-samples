@@ -1,3 +1,4 @@
+
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {DialogUtility} from '@syncfusion/ej2-react-popups';
@@ -20,8 +21,7 @@ export class DefaultFunctionalities extends SampleBase<{}, { }> {
                 content: '10% of battery remaining',
                 okButton: { click:this.alertOkAction.bind(this)},
                 position: { X: 'center', Y: 'center' },
-                closeOnEscape: true,
-                close : this.alertOkAction ,
+                closeOnEscape: true
           });
         }
        
@@ -33,8 +33,7 @@ export class DefaultFunctionalities extends SampleBase<{}, { }> {
                 okButton: { click:this.confirmOkAction.bind(this)},
                 cancelButton: { click:this.confirmCancelAction.bind(this)},
                 position: { X: 'center', Y: 'center' },
-                closeOnEscape: true,
-                close : this.confirmCancelAction ,
+                closeOnEscape: true
             });
         }
         else if(args.target.textContent.toLowerCase() == 'prompt') {
@@ -45,8 +44,7 @@ export class DefaultFunctionalities extends SampleBase<{}, { }> {
             okButton: {  click:this.promptOkAction.bind(this)},
             cancelButton: {  click:this.promptCancelAction.bind(this)},
             position: { X: 'center', Y: 'center' },
-            closeOnEscape: true,
-            close : this.promptOkAction ,
+            closeOnEscape: true
           });
         }
     }

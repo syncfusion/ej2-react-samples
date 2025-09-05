@@ -42,8 +42,8 @@ const ResourceView = () => {
   const splitterSettings: any = {
     columnIndex: 3
   };
-  const projectStartDate: Date = new Date('03/28/2024');
-  const projectEndDate: Date = new Date('05/18/2024');
+  const projectStartDate: Date = new Date('03/26/2025');
+  const projectEndDate: Date = new Date('05/18/2025');
   const labelSettings: any = {
     rightLabel: 'resources',
     taskLabel: 'Progress'
@@ -60,7 +60,7 @@ const ResourceView = () => {
           allowSelection={true} allowResizing={true} highlightWeekends={true} toolbar={toolbar} toolbarClick={toolbarClick.bind(this)} editSettings={editSettings}
           projectStartDate={projectStartDate} projectEndDate={projectEndDate} resourceFields={resourceFields}
           taskFields={taskFields} taskType={taskType} labelSettings={labelSettings} splitterSettings={splitterSettings}
-          height='410px' resources={resourceCollection} showOverAllocation={true} ref={ganttInstance}>
+          height='650px' taskbarHeight={25} rowHeight={46} resources={resourceCollection} showOverAllocation={true} ref={ganttInstance}>
           <ColumnsDirective>
             <ColumnDirective field='TaskID' visible={false} ></ColumnDirective>
             <ColumnDirective field='TaskName' headerText='Name' width='250'></ColumnDirective>
@@ -99,6 +99,8 @@ const ResourceView = () => {
           To edit,  inject the <code>Toolbar</code> module using the <code>Gantt.Inject(Toolbar)</code> method and <code>Edit</code> module
           using the <code>Gantt.Inject(Edit)</code> method.
         </p>
+        <br/>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/resource-view">documentation section</a>.</p>
       </div>
     </div>
   )

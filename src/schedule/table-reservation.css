@@ -35,8 +35,8 @@
 
         .e-timeline-view {
             .e-resource-left-td,
-            .e-date-header-container {
-                height: 92px;
+            .e-resource-column-wrap .e-resource-cells {
+                width: 165px;
             }
 
             .e-date-header-wrap .custom-slot-template .meal-period-indicator {
@@ -45,7 +45,7 @@
 
             .e-resource-column-wrap {
                 .e-resource-cells.e-child-node {
-                    height: 75px !important;
+                    height: 72px !important;
 
                     .table-name {
                         line-height: 22px;
@@ -64,7 +64,7 @@
 
             .e-content-wrap {
                 .e-work-cells:not(.e-resource-group-cells) {
-                    height: 75px !important;
+                    height: 72px !important;
                 }
 
                 .e-appointment.e-cancelled {
@@ -213,12 +213,20 @@
 
                         .notes-details {
                             margin-bottom: 12px;
-                            overflow: hidden;
-                            text-overflow: ellipsis;
 
                             .notes-icon::before {
                                 content: '\e8f7';
                             }
+
+                            .notes {
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                            }
+                        }
+
+                        .notes {
+                            overflow: hidden;
+                            text-overflow: ellipsis;
                         }
                     }
                 }
@@ -836,16 +844,11 @@
     }
 }
 
-.table-reservation-dragging .e-work-cells:not(.e-resource-group-cells),
-.table-reservation-dragging .e-appointment.e-cancelled {
-    cursor: default !important;
+.table-reservation-dragging .e-content-wrap {
+    overflow: hidden !important;
 }
 
-.cursor-not-allowed {
-    cursor: not-allowed !important;
-}
-
-@media (max-width: 768px) {
+@media (max-width: 550px) {
     .table-reservation-wrapper {
         display: block;
         height: auto;

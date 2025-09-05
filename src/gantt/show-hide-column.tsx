@@ -67,7 +67,7 @@ export class ShowHideColumn extends SampleBase<{}, {}> {
     duration: 'Duration',
     progress: 'Progress',
     dependency: 'Predecessor',
-    child: 'subtasks'
+    parentID: 'ParentId'
   };
   public labelSettings: any = {
     leftLabel: 'TaskName'
@@ -75,8 +75,8 @@ export class ShowHideColumn extends SampleBase<{}, {}> {
   public splitterSettings: any = {
     columnIndex: 4
 };
-  public projectStartDate: Date = new Date('03/24/2024');
-  public projectEndDate: Date = new Date('07/06/2024');
+  public projectStartDate: Date = new Date('03/26/2025');
+  public projectEndDate: Date = new Date('07/20/2025');
   render() {
     return (
       <div className='control-pane'>
@@ -84,7 +84,7 @@ export class ShowHideColumn extends SampleBase<{}, {}> {
         
           <GanttComponent id='ColumnMenu' treeColumnIndex={1} allowFiltering={true} allowSorting={true}
            ref={gantt => this.ganttObj = gantt} allowResizing={true} dataSource={projectNewData} highlightWeekends={true} splitterSettings={this.splitterSettings}
-            taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'
+            taskFields={this.taskFields} labelSettings={this.labelSettings} height='650px' taskbarHeight={25} rowHeight={46}
             projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>
             <Inject services={[Selection]} />
           </GanttComponent>
@@ -150,6 +150,8 @@ export class ShowHideColumn extends SampleBase<{}, {}> {
         <p>The <a target="_blank" href="https://ej2.syncfusion.com/raect/documentation/api/gantt/columnModel/#visible">columns -&gt; visible</a> property specifies the visibility of a column.
           To hide a column at the initial rendering, set the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/columnModel/#visible">columns -&gt; visible</a> property to false.
         </p>
+          <br/>
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/nextjs-getting-started#add-syncfusion-react-component">documentation section</a>.</p>
         </div>
     </div>
     )

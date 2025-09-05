@@ -247,7 +247,7 @@ function AiSmartUmlSequenceDiagram() {
                             </ToolbarComponent>
                         </div>
                     </div>
-                    <div style={{ marginTop: '5px', marginLeft: '5px', marginRight: '5px', border: '1px solid #b0b0b0' }}>
+                    <div id="uml-aidiagarm" style={{ marginTop: '5px', marginLeft: '5px', marginRight: '5px', border: '1px solid #b0b0b0' }}>
                         <DiagramComponent
                             ref={(diagramObj: DiagramComponent) => diagram = diagramObj as DiagramComponent}
                             id="diagram"

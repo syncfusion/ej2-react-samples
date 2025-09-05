@@ -30,8 +30,8 @@ export class Timeline extends SampleBase<{}, {}> {
   private bottomTierCount: NumericTextBoxComponent;
   private timelineUnitSize: NumericTextBoxComponent;
   private multitaskbarcheckbox: CheckBoxComponent;
-  public projectStartDate = new Date('02/03/2024');
-  public projectEndDate = new Date('03/23/2024');
+  public projectStartDate = new Date('02/05/2025');
+  public projectEndDate = new Date('03/23/2025');
   public timelineSettings: any = {
     topTier: {
       format: 'MMM dd, yyyy',
@@ -178,7 +178,7 @@ export class Timeline extends SampleBase<{}, {}> {
             <GanttComponent id='Timeline' ref={gantt => this.ganttInstance = gantt} dataSource={projectData} renderBaseline={true} allowSorting={true}
               treeColumnIndex={1} allowSelection={true} projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}
               taskFields={this.taskFields} timelineSettings={this.timelineSettings} highlightWeekends={true}
-              height='463px' labelSettings={this.labelSettings} splitterSettings={this.splitterSettings}>
+              height='650px' taskbarHeight={25} rowHeight={46} labelSettings={this.labelSettings} splitterSettings={this.splitterSettings}>
               <ColumnsDirective>
                 <ColumnDirective field='taskID' visible={false} ></ColumnDirective>
                 <ColumnDirective field='taskName' headerText='Name' width='250'></ColumnDirective>
@@ -331,6 +331,8 @@ export class Timeline extends SampleBase<{}, {}> {
             Gantt component features are segregated into individual feature-wise modules. To use a selection support, inject the
             <code>Selection</code> module. To use markers in Gantt, inject the <code>DayMarkers</code> module.
           </p>
+          <br/>
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/timeline/timeline">documentation section</a>.</p>
         </div>
       </div>
     )

@@ -13,6 +13,7 @@ import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
 import { extend } from '@syncfusion/ej2-base';
 import { SliderComponent } from '@syncfusion/ej2-react-inputs';
 import { ClickEventArgs } from '@syncfusion/ej2-navigations';
+import { PdfColor } from '@syncfusion/ej2-pdf-export';
 
 export class Overview extends SampleBase<{}, {}> {
     private ganttInstance: GanttComponent;
@@ -29,6 +30,11 @@ export class Overview extends SampleBase<{}, {}> {
     public height: any;
     public background: any;
     public borderRadius: any;
+    public marginTop: any;
+    public marginLeft: any;
+    public IconClass: any;
+    public border: any;
+    public justifyContent: any;
     public color: any;
     public fontStyle: any;
     public fontWeight: any;
@@ -57,17 +63,19 @@ export class Overview extends SampleBase<{}, {}> {
         progress: 'Progress',
         dependency: 'Predecessor',
         parentID: 'ParentId',
-        resourceInfo: 'Assignee'
+        constraintType: 'ConstraintType',
+        constraintDate: 'ConstraintDate',
+        resourceInfo: 'resource'
     };
     public resourceFields: any = {
         id: 'resourceId',
         name: 'resourceName'
     };
     public splitterSettings: any = {
-        position: "57%"
+        columnIndex: 4
     };
-    public projectStartDate: Date = new Date('12/17/2023');
-    public projectEndDate: Date = new Date('10/26/2024');
+    public projectStartDate: Date = new Date('01/25/2025');
+    public projectEndDate: Date = new Date('01/30/2026');
     public gridLines: any = 'Vertical';
     public toolbarOptions: any = ['ExpandAll', 'CollapseAll', 'ZoomIn', 'ZoomOut', 'ZoomToFit', 'ExcelExport', 'CsvExport', 'PdfExport']
 
@@ -95,9 +103,18 @@ export class Overview extends SampleBase<{}, {}> {
             format: 'dd'
         },
     };
+    public rightLabel =(props: any) =>{
+        if(props.ganttProperties.resourceInfo && props.ganttProperties.resourceInfo.length !==0)
+        {
+            <div id = "rightLabel">
+                <img src="src/gantt/images/${ganttProperties.resourceNames}.png" style={{height:'25px', width:'25px'}} />
+                <span style={{marginLeft:'3px'}}> ${props.Assignee}</span>  
+            </div>
+        }
+    }
     public labelSettings: any = {
         taskLabel: '${Progress}%',
-        rightLabel: 'Assignee'
+        rightLabel: this.rightLabel
     };
     public toolbarClick(args: ClickEventArgs): void {
         debugger
@@ -112,9 +129,10 @@ export class Overview extends SampleBase<{}, {}> {
         }
       }
     
-    public eventMarkerDay1: Date = new Date('04/04/2024');
-    public eventMarkerDay2: Date = new Date('06/30/2024');
-    public eventMarkerDay3: Date = new Date('09/29/2024');
+    public eventMarkerDay1: Date = new Date('2025-03-13');
+    public eventMarkerDay2: Date = new Date('2025-04-18');
+    public eventMarkerDay3: Date = new Date('2025-05-30');
+    public eventMarkerDay4: Date = new Date('2025-11-25');
 
     public statustemplate(props: any) {
         let sts = this.Status(props.taskData.Status);
@@ -123,12 +141,11 @@ export class Overview extends SampleBase<{}, {}> {
             return (
                 <div className='columnTemplate'>
                     <div style={{
-                        "display": `${sts.display}`, "padding": `${sts.padding}`, "gap": `${sts.gap}`, "width": `${sts.width}`, "height": `${sts.height}`,
-                        "background": `${sts.background}`, "borderRadius": `${sts.borderRadius}`
+                        "display": `${sts.display}`, "padding": `${sts.padding}`, "gap": `${sts.gap}`, "width": `${sts.width}`, "height": `${sts.height}`, "border": `${sts.border}`, "justifyContent": `${sts.justifyContent}`
                     }} >
                         <span style={{
                             "width": `${stsCon.width}`, "height": `${stsCon.height}`, "fontStyle": `${stsCon.fontStyle}`, "fontWeight": `${stsCon.fontWeight}`, "fontSize": `${stsCon.fontSize}`,
-                            "lineHeight": `${stsCon.lineHeight}`, "borderRadius": `${stsCon.borderRadius}`, "color": `${stsCon.color}`, "padding": `${stsCon.pad}`
+                            "lineHeight": `${stsCon.lineHeight}`, "color": `${stsCon.color}`, "padding": `${stsCon.pad}`, "textAlign": "center"
                         }} >{props.taskData.Status}</span>
                     </div>
                 </div>);
@@ -136,25 +153,25 @@ export class Overview extends SampleBase<{}, {}> {
     };
 
     public prioritytemplate(props: any) {
-        let pri = this.Priority(props.taskData.Priority);
+        let pri = this.PriorityIconStyle(props.taskData.Priority);
         let priCon = this.PriorityContent(props.taskData.Priority);
+        let priClass=this.PriorityIcon(props.taskData.Priority);
         if (props.taskData.Priority) {
             return (
-                <div className='columnTemplate1'>
-                    <div style={{
-                        "display": `${pri.display}`, "padding": `${pri.padding}`, "gap": `${pri.gap}`, "width": `${pri.width}`, "height": `${pri.height}`,
-                        "background": `${pri.backgroundPri}`, "borderRadius": `${pri.borderRadius}`
+                <div className='columnTemplate1' style={{display:'flex'}}>
+                    <div className={priClass} style={{
+                        "color": `${pri.backgroundPri} !important`, "marginTop": `${pri.marginTop}`
                     }} >
                         <span style={{
-                            "width": `${priCon.width}`, "height": `${priCon.height}`, "fontStyle": `${priCon.fontStyle}`, "fontWeight": `${priCon.fontWeight}`, "fontSize": `${priCon.fontSize}`,
-                            "lineHeight": `${priCon.lineHeight}`, "color": `${priCon.color}`
+                            "width": `${priCon.width}`, "height": `${priCon.height}`, "fontStyle": `${priCon.fontStyle}`,  "fontSize": `${priCon.fontSize}`,
+                            "lineHeight": `${priCon.lineHeight}`, "color": `${priCon.color}`, "textAlign": "center", "marginLeft": `${priCon.marginLeft}`
                         }}>{props.taskData.Priority}</span>
                     </div>
                 </div>);
         }
     };
 
-    public columnTemplate(props: { ganttProperties: { resourceNames: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | null | undefined; }; }): any {
+    public columnTemplate(props:any): any {
         var src = 'src/gantt/images/' + props.ganttProperties.resourceNames + '.png';
         if ((props.ganttProperties.resourceNames)) {
             let gantt = (document.getElementsByClassName('e-gantt')[0] as any).ej2_instances[0];
@@ -167,9 +184,12 @@ export class Overview extends SampleBase<{}, {}> {
             }
             else {
                 return (
-                    <div className='columnTemplate'>
-                        <img src={src} height='25px' width='25px' />
-                        <div style={{ display: "inline-block", width: '100%', position: "relative", left: "8px" }}>{props.ganttProperties.resourceNames}</div>
+                    <div className='columnTemplate' style={{display: 'flex', alignItems: 'center',gap: '8px',height: '100%'}}>
+                        <div><img src={src} height='25px' width='25px' /></div>
+                        <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', lineHeight: '16px'}}>
+                            <span style={{  fontSize:'12px' }}>{props.Assignee}</span>
+                            <span style={{fontSize: '9px', textAlign:'left'}} >{props.taskData.Department}</span>
+                        </div>
                     </div>);
             }
         } else {
@@ -178,27 +198,35 @@ export class Overview extends SampleBase<{}, {}> {
     }
 
     public load(): void {
-        let themeCollection: any = ['bootstrap5', 'bootstrap', 'bootstrap4', 'fluent', 'fabric', 'fusionnew', 'material3', 'material', 'highcontrast', 'tailwind','fluent2','tailwind3','bootstrap5.3'];
-        let cls: any = document.body.className.split(' ');
-        this.theme = cls.indexOf('bootstrap5') > 0 ? 'bootstrap5' : cls.indexOf('bootstrap') > 0 ? 'bootstrap' : cls.indexOf('tailwind') > 0 ? 'tailwind' :
-            cls.indexOf('fluent') > 0 ? 'fluent' : cls.indexOf('fabric') > 0 ? 'fabric' :
-                cls.indexOf('material3') > 0 ? 'material3' : cls.indexOf('bootstrap4') > 0 ? 'bootstrap4' : cls.indexOf('material') > 0 ? 'material' :
-                    cls.indexOf('fusionnew') > 0 ? 'fusionnew' : cls.indexOf('highcontrast') > 0 ? 'highcontrast' : cls.indexOf('bootstrap5.3') > 0 ? 'bootstrap5.3' :
-                        cls.indexOf('fluent2') > 0 ? 'fluent2' : cls.indexOf('tailwind3') > 0 ? 'tailwind3' : ''
-        let check: any = themeCollection.indexOf(this.theme);
-        if (check >= 0) {
-            this.CurrentTheme = true;
-        }
-        else {
-            this.CurrentTheme = false;
-        }
+        let themeCollection: any = ['bootstrap5', 'bootstrap', 'bootstrap4', 'fluent', 'fabric', 'fusionnew', 'material3', 'material', 'highcontrast', 'tailwind','fluent2','tailwind3','bootstrap5_3'];
+        let theme = document.body.className.split(' ').find(function(cls) { return themeCollection.includes(cls); }) || '';
+        this.CurrentTheme = theme ? true : false;
     };
 
-    public pdfQueryCellInfo(args: any): void {
-        if (args.column.headerText === 'Assignee' && args.data.taskData.resourcesImage) {
-            {
-                args.image = { height:25,width:25, base64: args.data.taskData.resourcesImage };
+    public pdfQueryCellInfo = (args): void => {
+        if(args.data.ganttProperties.resourceNames){
+            if (args.column.headerText === 'Assignee' && args.data.taskData.resourcesImage) {
+                args.image = { height: 30, width: 30, base64: args.data.taskData.resourcesImage};
+                args.value = `${args.data.Assignee}\n${args.data.taskData.Department}`; 
             }
+        }
+
+        // Set font color for Status or Priority columns
+        if (args.column.field === 'Status' || args.column.field === 'Priority') {
+            const style = args.column.field === 'Status' ?this.StatusContent(args.value) : this.PriorityContent(args.value);// args.value is the cell's value (e.g., "Completed" for Status, "High" for Priority)
+            const rgbMatch = style.color.match(/rgb\(\d+,\s*\d+,\s*\d+\)/);
+            if (rgbMatch) {
+                const rgbValues = rgbMatch[0].slice(4, -1).split(', ').map(Number);
+                args.style.fontColor = new PdfColor(rgbValues[0], rgbValues[1], rgbValues[2]);
+            }   
+        }
+    };
+    
+    public pdfQueryTaskbarInfo=(args: any): void=>{
+        if(this.ganttInstance.labelSettings.rightLabel && args.data.taskData.resourcesImage)
+        {
+            args.labelSettings.rightLabel.image= [{base64: args.data.taskData.resourcesImage, height: 25, width: 25}];
+            args.labelSettings.rightLabel.value=args.data.ganttProperties.resourceNames;
         }
     };
 
@@ -206,101 +234,110 @@ export class Overview extends SampleBase<{}, {}> {
         switch (status) {
             case "In Progress":
                 this.statusStyleColor = (this.CurrentTheme) ? "#DFECFF" : "#2D3E57";
-                this.display = 'flex'; this.padding = '0px 12px'; this.gap = '10px'; this.width = '96px'; this.height = '24px'; this.borderRadius = '24px'; this.background = this.statusStyleColor;
+                this.display = 'flex'; this.padding = '2px 10px'; this.gap = '10px'; this.width = '96px'; this.height = '24px'; this.border = 'solid 1px ${this.statusStyleColor}';
                 break;
             case "Open":
-                this.background = "red"; this.color = "white"; this.borderRadius = '15px'; this.padding = '6px';
+                this.display= 'flex'; this.justifyContent='center'; this.gap= '10px'; this.width= '96px'; this.height= '24px'; this.border = 'solid 1px red';
                 break;
             case "On Hold":
-                this.statusStyleColor = (this.CurrentTheme) ? "#E4E4E7" : "#3C3B43";
-                this.display = 'flex'; this.padding = '0px 12px'; this.gap = '10px'; this.width = '78px';
-                this.height = '24px'; this.borderRadius = '24px'; this.background = this.statusStyleColor;
+                this.statusStyleColor = (this.CurrentTheme) ? "#766B7C" : "#CDCBD7";
+                this.display = 'flex'; this.justifyContent = 'center'; this.gap= '10px'; this.width= '96px'; this.height = '24px'; this.border = 'solid 1px ${statusStyleColor}';
                 break;
             case "Completed":
-                this.statusStyleColor = (this.CurrentTheme) ? "#DFFFE2" : "#16501C";
-                this.display = 'flex'; this.padding = '0px 12px'; this.gap = '10px'; this.width = '98px'; this.height = '24px'; this.borderRadius = '24px'; this.background = this.statusStyleColor;
+                this.statusStyleColor = (this.CurrentTheme) ? "#00A653" : "#92FFC8";
+                this.display = 'flex'; this.padding = '2px 10px'; this.gap = '10px'; this.width = '96px'; this.height = '24px'; this.border = 'solid 1px ${statusStyleColor}';
                 break;
-            case "High":
-                this.statusStyleColor = (this.CurrentTheme) ? "#FFEBE9" : "#48211D";
-                this.display = 'flex'; this.padding = '0px 12px'; this.gap = '10px'; this.width = '55px'; this.height = '24px'; this.borderRadius = '24px'; this.background = this.statusStyleColor;
-                break;
+            
         }
-        return { display: this.display, padding: this.padding, gap: this.gap, width: this.width, height: this.height, borderRadius: this.borderRadius, background: this.background, color: this.color };
+        return { display: this.display, padding: this.padding, gap: this.gap, width: this.width, height: this.height, border: this.border, justifyContent: this.justifyContent, color: this.color };
     };
 
     public StatusContent(status: any) {
         switch (status) {
             case "In Progress":
-                this.statusContentstyleColor = (this.CurrentTheme) ? "#006AA6" : "#34B6FF";
-                this.width = "72px"; this.height = "22px"; this.fontStyle = 'normal'; this.fontWeight = '500'; this.fontSize = '14px'; this.lineHeight = '20px'; this.textAlign = 'center'; this.color = this.statusContentstyleColor;
+                this.statusContentstyleColor = (this.CurrentTheme) ? "rgb(0, 106, 166)" : "rgb(52, 182, 255)";
+                this.width = "72px"; this.height = "22px"; this.fontStyle = 'normal'; this.fontWeight = '400'; this.fontSize = '14px'; this.lineHeight = '20px'; this.textAlign = 'center'; this.color = this.statusContentstyleColor;
                 break;
             case "Open":
-                this.backgroundColor = 'red'; this.color = 'white'; this.borderRadius = '15px'; this.pad = '6px'
+                this.width = "54px"; this.height = "22px"; this.fontStyle = 'normal'; this.fontWeight = '400'; this.fontSize = '14px'; this.lineHeight = '22px'; this.textAlign = 'center'; this.color = 'rgb(255, 0, 0)';
                 break;
             case "On Hold":
-                this.statusContentstyleColor = (this.CurrentTheme) ? "#766B7C" : "#CDCBD7";
-                this.width = "54px"; this.height = "22px"; this.fontStyle = 'normal'; this.fontWeight = '500'; this.fontSize = '14px'; this.lineHeight = '20px'; this.textAlign = 'center'; this.color = this.statusContentstyleColor;
+                this.statusContentstyleColor = (this.CurrentTheme) ? "rgb(118, 107, 124)" : "rgb(205, 203, 215)"
+                this.width = "54px"; this.height = "22px"; this.fontStyle = 'normal'; this.fontWeight = '400'; this.fontSize = '14px'; this.lineHeight = '20px'; this.textAlign = 'center'; this.color = this.statusContentstyleColor;
                 break;
             case "Completed":
-                this.statusContentstyleColor = (this.CurrentTheme) ? "#00A653" : "#92FFC8";
-                this.width = "74px"; this.height = "22px"; this.fontStyle = 'normal'; this.fontWeight = '500'; this.fontSize = '14px'; this.lineHeight = '20px'; this.textAlign = 'center'; this.color = this.statusContentstyleColor;
-                break;
-            case "High":
-                this.statusContentstyleColor = (this.CurrentTheme) ? "#FF3740" : "#FFB5B8";
-                this.width = "31px"; this.height = "22px"; this.fontStyle = 'normal'; this.fontWeight = '500'; this.fontSize = '14px'; this.lineHeight = '20px'; this.textAlign = 'center'; this.color = this.statusContentstyleColor;
-                break;
+                this.statusContentstyleColor = (this.CurrentTheme) ? "rgb(0, 166, 83)" : "rgb(146, 255, 200)";
+                this.width = "74px"; this.height = "22px"; this.fontStyle = 'normal'; this.fontWeight = '400'; this.fontSize = '14px'; this.lineHeight = '20px'; this.textAlign = 'center'; this.color = this.statusContentstyleColor;
+          
         }
         return {
             width: this.width, height: this.height, fontStyle: this.fontStyle, fontWeight: this.fontWeight, fontSize: this.fontSize, lineHeight: this.lineHeight, textAlign: this.textAlign, color: this.color,
-            backgroundColor: this.backgroundColor, borderRadius: this.borderRadius, pad: this.pad
+            backgroundColor: this.backgroundColor, pad: this.pad
         };
     };
 
-    public Priority(priority: any) {
+    public PriorityIconStyle(priority: any) {
         switch (priority) {
             case "Low":
-                this.priorityStyle = (this.CurrentTheme) ? "#FFF6D1" : "#473F1E";
-                this.display = 'flex'; this.padding = '0px 12px'; this.gap = '10px'; this.width = '52px'; this.height = '24px'; this.borderRadius = '24px'; this.backgroundPri = this.priorityStyle;
+                this.priorityStyle = (this.CurrentTheme) ? "#00A653" : "#FDFF88";
+                this.marginTop = '2px'; this.backgroundPri = this.priorityStyle;
                 break;
             case "Normal":
-                this.priorityStyle = (this.CurrentTheme) ? "#F5DFFF" : "#4D2F5A";
-                this.display = 'flex'; this.padding = '0px 12px'; this.gap = '10px'; this.width = '73px'; this.height = '24px'; this.borderRadius = '24px'; this.backgroundPri = this.priorityStyle;
+                this.priorityStyle = (this.CurrentTheme) ? "#7100A6" : "#E3A9FF";
+                this.marginTop = '2px'; this.backgroundPri = this.priorityStyle;
                 break;
             case "Critical":
-                this.priorityStyle = (this.CurrentTheme) ? "#FFEBE9" : "#48211D";
-                this.display = 'flex'; this.padding = '0px 12px'; this.gap = '10px'; this.width = '72px'; this.height = '24px'; this.borderRadius = '24px'; this.backgroundPri = this.priorityStyle;
+                this.priorityStyle = (this.CurrentTheme) ? "#FF3740" : "#FFB5B8";
+                this.marginTop = '2px'; this.backgroundPri = this.priorityStyle;
                 break;
             case "High":
-                this.priorityStyle = (this.CurrentTheme) ? "#FFEBE9" : "#48211D";
-                this.display = 'flex'; this.padding = '0px 12px'; this.gap = '10px'; this.width = '55px'; this.height = '24px'; this.borderRadius = '24px'; this.backgroundPri = this.priorityStyle;
+                this.priorityStyle = (this.CurrentTheme) ? "#f35620" : "#FFB5B8";
+                this.marginTop = '2px'; this.backgroundPri = this.priorityStyle;
                 break;
         }
-        return { display: this.display, padding: this.padding, gap: this.gap, width: this.width, height: this.height, borderRadius: this.borderRadius, backgroundPri: this.backgroundPri };
+        return { marginTop:this.marginTop,display: this.display, padding: this.padding, gap: this.gap, width: this.width, height: this.height, backgroundPri: this.backgroundPri };
     };
 
     public PriorityContent(priority: any) {
         switch (priority) {
             case "Low":
-                this.priorityContentStyle = (this.CurrentTheme) ? "#70722B" : "#FDFF88";
-                this.width = "28px"; this.height = "22px"; this.fontStyle = 'normal'; this.fontWeight = '500'; this.fontSize = '14px'; this.lineHeight = '20px'; this.textAlign = 'center'; this.color = this.priorityContentStyle;
+                this.priorityContentStyle = (this.CurrentTheme) ? "rgb(0, 166, 83)" : "rgb(253, 255, 136)";
+                this.width = "28px"; this.height = "22px"; this.fontStyle = 'normal'; this.marginLeft ='3px'; this.fontSize = '14px'; this.lineHeight = '20px'; this.textAlign = 'center'; this.color = this.priorityContentStyle;
                 break;
             case "Normal":
-                this.priorityContentStyle = (this.CurrentTheme) ? "#7100A6" : "#E3A9FF";
-                this.width = "49px"; this.height = "22px"; this.fontStyle = 'normal'; this.fontWeight = '500'; this.fontSize = '14px'; this.lineHeight = '20px'; this.textAlign = 'center'; this.color = this.priorityContentStyle;
+                this.priorityContentStyle = (this.CurrentTheme) ? "rgb(113, 0, 166)" : "#rgb(227, 169, 255)";
+                this.width = "28px"; this.height = "22px"; this.fontStyle = 'normal'; this.marginLeft ='3px'; this.fontSize = '14px'; this.lineHeight = '20px'; this.textAlign = 'center'; this.color = this.priorityContentStyle;
                 break;
             case "Critical":
-                this.priorityContentStyle = (this.CurrentTheme) ? "#FF3740" : "#FFB5B8";
-                this.width = "48px"; this.height = "22px"; this.fontStyle = 'normal'; this.fontWeight = '500'; this.fontSize = '14px'; this.lineHeight = '20px'; this.textAlign = 'center'; this.color = this.priorityContentStyle;
+                this.priorityContentStyle = (this.CurrentTheme) ? "rgb(255, 55, 64)" : "rgb(255, 181, 184)";
+                this.width = "48px"; this.height = "22px"; this.fontStyle = 'normal'; this.marginLeft = '3px'; this.fontSize = '14px'; this.lineHeight = '20px'; this.textAlign = 'center'; this.color = this.priorityContentStyle;
                 break;
             case "High":
-                this.priorityContentStyle = (this.CurrentTheme) ? "#FF3740" : "#FFB5B8";
-                this.width = "31px"; this.height = "22px"; this.fontStyle = 'normal'; this.fontWeight = '500'; this.fontSize = '14px'; this.lineHeight = '20px'; this.textAlign = 'center'; this.color = this.priorityContentStyle;
+                this.priorityContentStyle = (this.CurrentTheme) ? "rgb(235, 99, 67)" : "rgb(255, 181, 184)";
+                this.width = "31px"; this.height = "22px"; this.fontStyle = 'normal'; this.marginLeft = '3px'; this.fontSize = '14px'; this.lineHeight = '20px'; this.textAlign = 'center'; this.color = this.priorityContentStyle;
                 break;
         }
         return {
-            width: this.width, height: this.height, fontStyle: this.fontStyle, fontWeight: this.fontWeight, fontSize: this.fontSize, lineHeight: this.lineHeight, textAlign: this.textAlign, color: this.color
+            width: this.width, height: this.height, fontStyle: this.fontStyle, marginLeft: this.marginLeft, fontSize: this.fontSize, lineHeight: this.lineHeight, textAlign: this.textAlign, color: this.color
         };
     };
+    public PriorityIcon =(priority):any=>{
+        switch (priority) {
+            case "Low":
+                this.IconClass = "e-icons e-arrow-down e-icon-style";
+                break;
+            case "Normal":
+                this.IconClass = "e-icons e-arrow-right e-icon-style";
+                break;
+            case "Critical":
+                this.IconClass = "e-icons e-arrow-up e-icon-style";
+                break;
+            case "High":
+                this.IconClass = "e-icons e-arrow-up e-icon-style";
+                break;
+        }
+        return this.IconClass;
+    }
 
     public sidebarobj: SidebarComponent;
     public triggerSidebar() {
@@ -607,28 +644,32 @@ export class Overview extends SampleBase<{}, {}> {
                         </div>
                         <div id='sidebar-gantt'>
                             <GanttComponent id='Overview' ref={gantt => this.ganttInstance = gantt} dataSource={overviewData}
-                                treeColumnIndex={1} allowSelection={true} highlightWeekends={true}
+                                treeColumnIndex={0} allowSelection={true} highlightWeekends={true}
                                 projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate} load={this.load.bind(this)} pdfQueryCellInfo={this.pdfQueryCellInfo.bind(this)}
                                 taskFields={this.taskFields} timelineSettings={this.timelineSettings} labelSettings={this.labelSettings} splitterSettings={this.splitterSettings}
-                                height='500px' gridLines={this.gridLines} allowFiltering={true} allowSorting={true} allowResizing={true} showColumnMenu={true}
-                                toolbar={this.toolbarOptions} resourceFields={this.resourceFields} resources={editingResources}>
+                                height='650px' taskbarHeight={25} rowHeight={46} gridLines={this.gridLines} allowFiltering={true} allowSorting={true} allowResizing={true} showColumnMenu={true}
+                                toolbar={this.toolbarOptions} resourceFields={this.resourceFields} resources={editingResources} pdfQueryTaskbarInfo={this.pdfQueryTaskbarInfo.bind(this)}>
                                 <ColumnsDirective>
-                                    <ColumnDirective field='TaskId' headerText='Task Id' width='180' visible={false}></ColumnDirective>
+                                    <ColumnDirective field='WBSCode' headerText='WBS ID' width='120'></ColumnDirective>
                                     <ColumnDirective field='TaskName' headerText='Product Release' width='250'></ColumnDirective>
-                                    <ColumnDirective field='Assignee' headerText='Assignee' allowSorting={false} width='170' template={this.template}></ColumnDirective>
+                                    <ColumnDirective field='Assignee' headerText='Assignee' allowSorting={false} width='150' template={this.template}></ColumnDirective>
                                     <ColumnDirective field='Status' headerText='Status' minWidth="100" width="120" template={this.statusTemplate}></ColumnDirective>
                                     <ColumnDirective field='Priority' headerText='Priority' minWidth='80' width='100' template={this.priorityTemplate}></ColumnDirective>
-                                    <ColumnDirective field='Work' headerText='Planned Hours' width='120'></ColumnDirective>
-                                    <ColumnDirective field='TimeLog' headerText='Work Log' width='120'></ColumnDirective>
+                                    <ColumnDirective field='WBSPredecessor' headerText='WBS Predecessor' width='190' />
+                                    <ColumnDirective field='ConstraintType' headerText='Constraint Type' width='200' />
+                                    <ColumnDirective field='ConstraintDate' headerText='Constraint Date' width='200' />
+                                    <ColumnDirective field='Progress' headerText='Completion(%)' width='200' />
+                                    <ColumnDirective field='TimeLog' headerText='Work Log' width='130' />
                                 </ColumnsDirective>
                                 <EventMarkersDirective>
-                                    <EventMarkerDirective day={this.eventMarkerDay1} label='Q-1 Release' ></EventMarkerDirective>
-                                    <EventMarkerDirective day={this.eventMarkerDay2} label='Q-2 Release' ></EventMarkerDirective>
-                                    <EventMarkerDirective day={this.eventMarkerDay3} label='Q-3 Release' ></EventMarkerDirective>
+                                    <EventMarkerDirective day={this.eventMarkerDay1} label='Project Initiative' ></EventMarkerDirective>
+                                    <EventMarkerDirective day={this.eventMarkerDay2} label='Requirement Gathering' ></EventMarkerDirective>
+                                    <EventMarkerDirective day={this.eventMarkerDay3} label='Design Phase' ></EventMarkerDirective>
+                                    <EventMarkerDirective day={this.eventMarkerDay4} label='Deployment' ></EventMarkerDirective>
                                 </EventMarkersDirective>
                                 <HolidaysDirective>
-                                    <HolidayDirective from={new Date('01/01/2024')} to={new Date('01/01/2024')} label='New year Holiday'></HolidayDirective>
-                                    <HolidayDirective from={new Date('12/25/2023')} to={new Date('12/26/2023')} label='Christmas Holidays'></HolidayDirective>
+                                    <HolidayDirective from={new Date('01/01/2025')} to={new Date('01/01/2025')} label='New year Holiday'></HolidayDirective>
+                                    <HolidayDirective from={new Date('12/25/2024')} to={new Date('12/26/2024')} label='Christmas Holidays'></HolidayDirective>
                                 </HolidaysDirective>
                                 <Inject services={[Edit, Selection, Toolbar, DayMarkers, ColumnMenu, Filter, Sort, Resize, ExcelExport, PdfExport]} />
                             </GanttComponent>
@@ -640,12 +681,19 @@ export class Overview extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>This sample shows an overview of the EJ2 Gantt Chart features that visualize the progress of each feature of the product towards its release and make it easier to monitor the scheduling of the dependent items.</p>
+                    <p>This sample provides an overview of the React Gantt Chart, showcasing its key features through an e-commerce platform redesign project 
+                        timeline. It visualizes task hierarchies, dependencies, milestones, and resource allocations, enabling efficient project tracking from planning to deployment.
+                    </p>
                 </div>
 
                 <div id="description">
-                    <p>This example shows the three-quarter release planning of product features rendered in the EJ2 Gantt Chart. It tracks the quarterly release planning of product status, resources, and task scheduling.</p>
-                    <p>EJ2 Gantt Chart features such as Sorting, Filtering, Column resizing, Column menu, column template and so on are used in this demo.</p>
+                    <p>This demo presents an e-commerce platform redesign project, demonstrating key features such as task organization, customizable timeline views, 
+                        resource management, and interactive controls. Users can <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/sorting">sort</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/filtering/filtering">filter tasks</a>, <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/columns/column-resizing"> resize</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/columns/column-reordering">reorder columns</a>, track progress with <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/baseline"> baselines</a>, 
+                        and highlight key dates with <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/event-markers">event markers</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/holidays"> holidays</a>. The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/tool-bar"> toolbar </a> offers intuitive options to add, edit, delete, search, and expand or 
+                        collapse tasks. Additionally, users can configure <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#workweek"> working days</a>, <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/scheduling-tasks#weekendnon-working-days"> highlight weekends</a>, set <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#projectstartdate"> project date ranges</a>.
+                    </p>
+                    <br/>
+                    <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/getting-started#adding-gantt-component">documentation section</a>.</p>
                 </div>
             </div>
         )

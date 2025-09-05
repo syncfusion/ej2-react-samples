@@ -49,7 +49,6 @@ import { SmithChartOrder } from '../smith-chart/config';
 import { TreemapOrder } from '../treemap/config';
 import { ColorPickerSampleOrder } from '../color-picker/config';
 import { HeatmapSampleOrder } from '../heatmap-chart/config';
-import { DocumentEditorSampleOrder } from '../document-editor/config';
 import { RichTextEditorSampleOrder } from '../rich-text-editor/config';
 import { MarkdownEditorSampleOrder } from '../markdown-editor/config';
 import { InPlaceEditorSampleOrder } from '../inplace-editor/config';
@@ -59,12 +58,10 @@ import { StockChartSampleOrder } from '../stock-chart/config';
 import { BulletChartSampleOrder } from '../bullet-chart/config';
 import { ProgressBarSampleOrder } from '../progress-bar/config';
 import { TreeGridSampleOrder } from '../treegrid/config';
-import { PdfViewerSampleOrder } from '../pdfviewer/config';
 import { QueryBuilderSampleOrder } from '../query-builder/config';
 import { DashboardLayoutSampleOrder } from '../dashboard-layout/config';
 import { FileManagerSampleOrder } from '../file-manager/config';
 import { GanttSampleOrder } from '../gantt/config';
-import { SpreadsheetSampleOrder } from '../spreadsheet/config';
 import { ListBoxSampleOrder } from '../list-box/config';
 import { BreadcrumbSampleOrder } from '../breadcrumb/config';
 import { CarouselSampleOrder } from '../carousel/config';
@@ -90,7 +87,6 @@ import { SmartTextAreaSampleOrder } from '../ai-smart-textarea/config';
 import { ComboBoxAISampleOrder } from '../ai-combo-box/config';
 import { AIGridSampleOrder } from '../ai-grid/config';
 import { AITreeGridSampleOrder } from '../ai-tree-grid/config';
-import { AISpreadsheetSampleOrder } from '../ai-spreadsheet/config';
 import { AIQuerybuilderSampleOrder } from '../ai-querybuilder/config';
 import { AIImageEditorSampleOrder } from '../ai-image-editor/config';
 import { AIPivotTableSampleOrder } from '../ai-pivot-table/config';
@@ -98,10 +94,8 @@ import { AIRichTextEditorSampleOrder } from '../ai-rich-text-editor/config';
 import { AIKanbanSampleOrder } from '../ai-kanban/config';
 import { AISchedulerSampleOrder } from '../ai-schedule/config';
 import { AIMapsSampleOrder } from '../ai-maps/config';
-import { AIDocumentEditorSampleOrder } from '../ai-document-editor/config';
 import { AIDiagramSampleOrder } from '../ai-diagram/config';
 import { AIGanttSampleOrder } from '../ai-gantt/config';
-import { AIPdfViewerSampleOrder } from '../ai-pdfviewer/config';
 import {SpeechToTextSampleOrder } from '../speech-to-text/config';
 import { BlockEditorSampleOrder } from '../block-editor/config';
 
@@ -131,9 +125,6 @@ export let samplesList: any = [
         'name': 'Tree Grid', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-tree-grid', 'samples': AITreeGridSampleOrder
     },
     {
-        'name': 'Spreadsheet', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-spreadsheet', 'samples': AISpreadsheetSampleOrder
-    },
-    {
         'name': 'Gantt Chart', 'category': 'Smart AI Solutions', 'order': '01',  'path': 'ai-gantt', 'samples': AIGanttSampleOrder
     },
     {
@@ -152,12 +143,6 @@ export let samplesList: any = [
         'name': 'Maps', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-maps', 'samples': AIMapsSampleOrder
     },
     {
-        'name': 'PDF Viewer', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-pdfviewer', 'samples': AIPdfViewerSampleOrder
-    },
-    {
-        'name': 'Word Processor', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-document-editor', 'samples': AIDocumentEditorSampleOrder
-    },
-    {
         'name': 'Data Grid', 'type':'update', 'category': 'Grids', 'order': '03', 'path': 'grid', 'samples': GridSampleOrder
     },
     {
@@ -167,10 +152,7 @@ export let samplesList: any = [
         'name': 'Tree Grid', 'category': 'Grids', 'order': '03', 'path': 'treegrid', 'samples': TreeGridSampleOrder, 'ftName' :'treegrid', 'type':'update'
     },
     {
-        'name': 'Spreadsheet', 'category': 'Grids', 'order': '03', 'path': 'spreadsheet', 'samples': SpreadsheetSampleOrder
-    },
-    {
-        'name': 'AI AssistView', 'category': 'Interactive Chat', 'order': '06', 'path': 'ai-assistview', 'samples': AIAssistViewSampleOrder, 'ftName': 'ai-assistview', 'type':'update'
+        'name': 'AI AssistView', 'category': 'Interactive Chat', 'order': '06', 'path': 'ai-assistview', 'samples': AIAssistViewSampleOrder, 'ftName': 'ai-assistview'
     },
     {
         'name': 'Block Editor', 'category': 'File Viewers & Editors', 'order': '01', 'path': 'block-editor', 'samples': BlockEditorSampleOrder, 'ftName' :'block-editor', 'type':'preview'
@@ -188,7 +170,7 @@ export let samplesList: any = [
         'name': '3D Circular Chart', 'category': 'Data Visualization', 'order': '03', 'path': 'three-dimension-circular-chart', 'samples': Circular3DOrderList,
     },
     {
-        'name': 'Stock Chart', 'category': 'Data Visualization', 'order': '02', 'path': 'stock-chart', 'samples': StockChartSampleOrder, 'type':'update'
+        'name': 'Stock Chart', 'category': 'Data Visualization', 'order': '02', 'path': 'stock-chart', 'samples': StockChartSampleOrder
     },
     {
         'name': 'Arc Gauge', 'category': 'Data Visualization', 'order': '04', 'path': 'arc-gauge', 'samples': ArcGaugeSampleOrder, 
@@ -227,13 +209,10 @@ export let samplesList: any = [
         'name': 'Bullet Chart', 'category': 'Data Visualization', 'order': '08', 'path': 'bullet-chart', 'samples': BulletChartSampleOrder,
     },
     {
-        'name': 'Kanban', 'category': 'Data Visualization', 'order': '08', 'path': 'kanban', 'samples': KanbanSampleOrder, 'ftName': 'kanban'
+        'name': 'Kanban', 'category': 'Data Visualization', 'order': '08', 'path': 'kanban', 'samples': KanbanSampleOrder, 'ftName': 'kanban', 'type': 'update'
     },
     {
         'name': 'Query Builder', 'category': 'Forms', 'path': 'query-builder', 'samples': QueryBuilderSampleOrder      
-    },
-    {
-        'name': 'PDF Viewer', 'type': 'update', 'category': 'File Viewers & Editors', 'order': '01', 'path': 'pdfviewer', 'samples': PdfViewerSampleOrder, 'ftName': 'pdfviewer'
     },
     {
         'name': 'Rich Text Editor', 'type':'update', 'category': 'File Viewers & Editors', 'order': '04', 'path': 'rich-text-editor', 'samples': RichTextEditorSampleOrder
@@ -242,13 +221,10 @@ export let samplesList: any = [
         'name': 'Markdown Editor', 'category': 'File Viewers & Editors', 'order': '04', 'path': 'markdown-editor', 'samples': MarkdownEditorSampleOrder
     },
     {
-        'name': 'Word Processor', 'category': 'File Viewers & Editors', 'order': '04', 'path': 'document-editor', 'samples': DocumentEditorSampleOrder,  'type': 'update'
+        'name': 'Image Editor', 'category': 'File Viewers & Editors', 'ftName': 'image-editor', 'order': '04', 'path': 'image-editor', 'samples': ImageEditorSampleOrder
     },
     {
-        'name': 'Image Editor', 'category': 'File Viewers & Editors', 'ftName': 'image-editor', 'order': '04', 'path': 'image-editor', 'samples': ImageEditorSampleOrder, 'type': 'update'
-    },
-    {
-        'name': 'Scheduler', 'category': 'Calendars', 'order': '02', 'path': 'schedule', 'samples': ScheduleSampleOrder, 'ftName': 'scheduler', 'type': 'update'
+        'name': 'Scheduler', 'category': 'Calendars', 'order': '02', 'path': 'schedule', 'samples': ScheduleSampleOrder, 'ftName': 'scheduler'
     },
     {
         'name': 'Gantt Chart', 'category': 'Calendars', 'order': '02', 'type':'update', 'path': 'gantt', 'samples': GanttSampleOrder
@@ -260,7 +236,7 @@ export let samplesList: any = [
         'name': 'DatePicker', 'category': 'Calendars', 'order': '04', 'path': 'datepicker', 'samples': DatePickerSampleOrder
     },
     {
-        'name': 'DateRangePicker', 'type':'update' , 'category': 'Calendars', 'order': '04', 'path': 'daterangepicker', 'samples': DateRangePickerSampleOrder
+        'name': 'DateRangePicker', 'category': 'Calendars', 'order': '04', 'path': 'daterangepicker', 'samples': DateRangePickerSampleOrder
     },
     {
         'name': 'DateTimePicker', 'category': 'Calendars', 'order': '04', 'path': 'datetimepicker', 'samples': DateTimeOrder
@@ -281,19 +257,19 @@ export let samplesList: any = [
         'name': 'SpeedDial', 'category': 'Buttons', 'order': '04', 'path': 'speed-dial', 'samples': SpeedDialSampleOrder
     },
     {
-        'name': 'AutoComplete', 'type':'update' , 'category': 'Dropdowns', 'order': '04', 'path': 'auto-complete', 'samples': AutoCompleteSampleOrder
+        'name': 'AutoComplete',  'category': 'Dropdowns', 'order': '04', 'path': 'auto-complete', 'samples': AutoCompleteSampleOrder
     },
     {
-        'name': 'ComboBox', 'type':'update' , 'category': 'Dropdowns', 'order': '04', 'path': 'combo-box', 'samples': ComboBoxSampleOrder
+        'name': 'ComboBox',  'category': 'Dropdowns', 'order': '04', 'path': 'combo-box', 'samples': ComboBoxSampleOrder
     },
     {
-        'name': 'Dropdown List', 'type':'update' , 'category': 'Dropdowns',  'order': '04', 'path': 'drop-down-list', 'samples': DropDownListSampleOrder
+        'name': 'Dropdown List',  'category': 'Dropdowns',  'order': '04', 'path': 'drop-down-list', 'samples': DropDownListSampleOrder
     },
     {
         'name': 'Dropdown Tree', 'category': 'Dropdowns', 'order': '04', 'path': 'drop-down-tree', 'samples': DropDownTreeSampleOrder
     },
     {
-        'name': 'MultiSelect Dropdown', 'type':'update' , 'category': 'Dropdowns', 'order': '04', 'path': 'multi-select', 'samples': MultiSelectSampleOrder
+        'name': 'MultiSelect Dropdown',  'category': 'Dropdowns', 'order': '04', 'path': 'multi-select', 'samples': MultiSelectSampleOrder
     },
     {
         'name': 'List Box', 'category': 'Dropdowns', 'ftName': 'list-box', 'order': '04', 'path': 'list-box', 'samples': ListBoxSampleOrder

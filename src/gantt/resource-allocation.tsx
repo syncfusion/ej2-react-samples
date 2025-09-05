@@ -206,8 +206,8 @@ public ganttInstance: GanttComponent;
   public splitterSettings: any = {
     columnIndex: 2
   };
-  public projectStartDate: Date = new Date('03/28/2024');
-  public projectEndDate: Date = new Date('07/28/2024');
+  public projectStartDate: Date = new Date('03/26/2025');
+  public projectEndDate: Date = new Date('07/28/2025');
   public labelSettings: any = {
     rightLabel: 'resources',
     taskLabel: '${Progress}%'
@@ -221,15 +221,15 @@ public ganttInstance: GanttComponent;
             allowSelection={true} highlightWeekends={true} toolbar={this.toolbar} editSettings={this.editSettings}
             projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate} resourceFields={this.resourceFields}
             taskFields={this.taskFields} taskType={this.taskType} labelSettings={this.labelSettings} splitterSettings={this.splitterSettings}
-            height='450px' resources={resourceAllocationResources} workUnit={this.workUnit} queryTaskbarInfo={this.queryTaskbarInfo}
+            height='650px' taskbarHeight={25} rowHeight={46} resources={resourceAllocationResources} workUnit={this.workUnit} queryTaskbarInfo={this.queryTaskbarInfo}
             editDialogFields={this.editDialogFields} addDialogFields={this.addDialogFields} actionBegin={this.actionBegin} actionComplete={this.actionComplete} cellEdit={this.cellEdit}>
             <ColumnsDirective>
               <ColumnDirective field='TaskID' visible ={false} ></ColumnDirective>
               <ColumnDirective field='TaskName' headerText='Task Name' width='180'></ColumnDirective>
               <ColumnDirective field='resources' headerText='Resources' width='190' template={this.template} edit={this.dropdownlist}></ColumnDirective>
               <ColumnDirective field='work' width= '110'></ColumnDirective>
-              <ColumnDirective field='Duration' width= '100'></ColumnDirective>
-              <ColumnDirective field='taskType' headerText='Task Type' width= '110'></ColumnDirective>
+              <ColumnDirective field='Duration' width= '150'></ColumnDirective>
+              <ColumnDirective field='taskType' headerText='Task Type' width= '150'></ColumnDirective>
             </ColumnsDirective>
             <Inject services={[Selection, DayMarkers, Toolbar, Edit]} />
           </GanttComponent>
@@ -258,6 +258,8 @@ public ganttInstance: GanttComponent;
           <code>Selection</code> module.To use markers, inject the <code>DayMarkers</code> module.
           To edit resource unit, task type and duration, inject the <code>Toolbar</code> and <code>Edit</code> module.
         </p> 
+          <br/>
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/nextjs-getting-started#add-syncfusion-react-component">documentation section</a>.</p>
         </div>
       </div>
     )

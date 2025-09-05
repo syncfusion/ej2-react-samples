@@ -20,7 +20,7 @@ const ToolbarTemplate = () => {
     duration: 'Duration',
     progress: 'Progress',
     dependency: 'Predecessor',
-    child: 'subtasks'
+    parentID: 'ParentId'
   };
   const toolbar: any = ['ExpandAll', 'CollapseAll', { text: 'Quick Filter', tooltipText: 'Quick Filter', id: 'Quick Filter', prefixIcon: 'e-quickfilter' }, { text: 'Clear Filter', tooltipText: 'Clear Filter', id: 'Clear Filter' }];
   const splitterSettings: any = {
@@ -29,8 +29,8 @@ const ToolbarTemplate = () => {
   const labelSettings: any = {
     leftLabel: 'TaskName'
   };
-  const projectStartDate: Date = new Date('03/24/2024');
-  const projectEndDate: Date = new Date('07/06/2024');
+  const projectStartDate: Date = new Date('03/26/2025');
+  const projectEndDate: Date = new Date('07/20/2025');
 
   const toolbarClick = (args: ClickEventArgs): void => {
     if (args.item.text === 'Quick Filter') {
@@ -46,15 +46,15 @@ const ToolbarTemplate = () => {
           <GanttComponent id='ToolbarTemplate' ref={ganttInstance} dataSource={projectNewData} highlightWeekends={true}
             allowFiltering={true} treeColumnIndex={1} splitterSettings={splitterSettings}
             toolbar={toolbar} toolbarClick={toolbarClick.bind(this)}
-            taskFields={taskFields} labelSettings={labelSettings} height='410px'
+            taskFields={taskFields} labelSettings={labelSettings} height='650px' taskbarHeight={25} rowHeight={46}
             projectStartDate={projectStartDate} projectEndDate={projectEndDate}>
             <ColumnsDirective>
-              <ColumnDirective field='TaskID' width='80' ></ColumnDirective>
+              <ColumnDirective field='TaskID' width='100' ></ColumnDirective>
               <ColumnDirective field='TaskName' width='250'></ColumnDirective>
               <ColumnDirective field='StartDate'></ColumnDirective>
               <ColumnDirective field='EndDate'></ColumnDirective>
               <ColumnDirective field='Duration'></ColumnDirective>
-              <ColumnDirective field='Predecessor'></ColumnDirective>
+              <ColumnDirective field='Predecessor' width={190}></ColumnDirective>
               <ColumnDirective field='Progress'></ColumnDirective>
             </ColumnsDirective>
             <Inject services={[Selection, DayMarkers, Filter, Toolbar]} />
@@ -73,6 +73,8 @@ const ToolbarTemplate = () => {
         <code>Filter</code> module using the <code>Gantt.Inject(Filter)</code> method.To use a toolbar, inject the
         <code>Toolbar</code> module using the <code>Gantt.Inject(Toolbar)</code> method.To use markers, inject the
         <code>DayMarkers</code> module using the <code>Gantt.Inject(DayMarkers)</code> method.</p>
+        <br/>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/tool-bar">documentation section</a>.</p>
         </div>
       </div>
     )

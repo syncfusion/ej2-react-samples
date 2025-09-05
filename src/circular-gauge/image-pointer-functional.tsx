@@ -56,7 +56,7 @@ const Image = () => {
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-lg-12'>
-                    <CircularGaugeComponent load={load.bind(this)} title='Shot Put Distance' background='transparent' loaded={onChartLoad.bind(this)} id='image-container' enablePointerDrag={true} titleStyle={{ fontFamily: 'inherit' }} centerY="57%'">
+                    <CircularGaugeComponent load={load.bind(this)} title='Shot Put Distance' background='transparent' loaded={onChartLoad.bind(this)} id='image-container' titleStyle={{ fontFamily: 'inherit' }} centerY="57%'">
                         <Inject services={[Annotations]} />
                         <AxesDirective>
                             <AxisDirective startAngle={200} endAngle={130} radius='80%' minimum={0} maximum={14} lineStyle={{ width: 0 }} majorTicks={{ width: 0 }} minorTicks={{ width: 0 }} labelStyle={{ font: { size: '0px' } }}>

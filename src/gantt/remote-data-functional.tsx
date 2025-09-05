@@ -1,73 +1,109 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { useEffect } from 'react';
-import { GanttComponent, Inject, Selection, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
+import { useEffect,useState,useRef  } from 'react';
+import { GanttComponent, Inject, Selection, ColumnsDirective, ColumnDirective,VirtualScroll  } from '@syncfusion/ej2-react-gantt';
 import { DataManager, WebApiAdaptor } from '@syncfusion/ej2-data';
 import { updateSampleSection } from '../common/sample-base';
+import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 
 const RemoteData = () => {
   useEffect(() => {
     updateSampleSection();
   }, [])
-
+  const recordCount = useRef<string>("1000");
+  const dataSource: DataManager = new DataManager({
+    url: `https://services.syncfusion.com/react/production/api/GanttWebApiRemoteData?count=${recordCount.current}`,
+    adaptor: new WebApiAdaptor,
+    crossDomain: true
+  });
+  const [loadTime, setLoadTime] = useState<string>("");
+  const [startLoadTime, setStartLoadTime] = useState<Date | null>(new Date());
+  const shouldCalculateLoadTime = useRef<Boolean>(true);
+  const dropdownData = [
+    { Text: "1,000 Rows", Value: "1000" },
+    { Text: "2,500 Rows", Value: "2500" },
+    { Text: "5,000 Rows", Value: "5000" },
+  ];
+  const dropdownFields = { text: "Text", value: "Value" };
   const taskFields: any = {
-    id: 'TaskId',
-    name: 'TaskName',
-    startDate: 'StartDate',
-    duration: 'Duration',
-    dependency: 'Predecessor',
-    child: 'SubTasks'
+    id: "TaskId",
+    name: "TaskName",
+    startDate: "StartDate",
+    endDate: "EndDate",
+    duration: "Duration",
+    progress: "Progress",
+    parentID: "ParentId",
+    dependency: "Predecessor",
   };
-  const projectStartDate = new Date('02/24/2021');
-  const projectEndDate = new Date('06/10/2021');
-  const gridLines: any = 'Both';
+  const projectStartDate = new Date("12/29/2024");
+  const projectEndDate = new Date("03/19/2025");
+  const gridLines: any = "Horizontal";
   const timelineSettings: any = {
     timelineUnitSize: 50,
     topTier: {
-      unit: 'Month',
+      unit: 'Week',
       format: 'MMM dd, y',
     },
     bottomTier: {
       unit: 'Day',
-      formatter: (date: Date) => {
-        let month: number = date.getMonth();
-        if (month === 1) {
-          return '';
-        } else {
-          let presentDate: Date = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-          let start: Date = new Date(presentDate.getFullYear(), 0, 0);
-          let diff: number = Number(presentDate) - Number(start);
-          let oneDay: number = 1000 * 60 * 60 * 24;
-          let day: number = Math.floor(diff / oneDay);
-          return 'day ' + (day - 59);
-        }
-      },
+      format: 'dd'
     },
   };
-  const dataSource: DataManager = new DataManager({
-    url: 'https://services.syncfusion.com/react/production/api/GanttData',
-    adaptor: new WebApiAdaptor,
-    crossDomain: true
-  });
+  
   const labelSettings: any = {
-    leftLabel: 'TaskName'
+    rightLabel: "TaskName",
+    taskLabel: "Progress"
   };
-
+  const loadGanttData = () => {
+    setStartLoadTime(new Date());
+    shouldCalculateLoadTime.current = true;
+  };
+  const splitterSettings: any={
+    columnIndex: 2
+  };
+  const onDropdownChange = (e: any) => {
+    recordCount.current = e.value;
+    loadGanttData();
+  };
+  const onDataBound = () => {
+    if (shouldCalculateLoadTime.current && startLoadTime) {
+      shouldCalculateLoadTime.current = false;
+      const endLoadTime = new Date();
+      const diff = endLoadTime.getTime() - startLoadTime.getTime();
+      setLoadTime((diff/1000).toFixed(2));  
+    }
+  };
   return (
     <div className='control-pane'>
       <div className='control-section'>
+        <div
+          style={{display: "flex",}}>
+         <div style={{ width: "130px",paddingBottom: "10px" }}>
+            <DropDownListComponent
+              dataSource={dropdownData}
+              fields={dropdownFields}
+              value={recordCount}
+              change={onDropdownChange}
+              placeholder="1,000 Rows"
+            />
+          </div>
+          <span style={{ paddingLeft: "20px", fontSize: "15px", marginTop: "5px"}}>
+          <b>Data initial load time:</b> {loadTime} sec
+          </span>
+        </div>
         <GanttComponent id='RemoteData' dataSource={dataSource} allowSorting={true} dateFormat={'MMM dd, y'}
-          treeColumnIndex={1} allowSelection={true} highlightWeekends={false} includeWeekend={true}
-          allowUnscheduledTasks={true} projectStartDate={projectStartDate} projectEndDate={projectEndDate}
+          treeColumnIndex={1} allowSelection={true} highlightWeekends={false} includeWeekend={true} splitterSettings={splitterSettings}
+          allowUnscheduledTasks={true} projectStartDate={projectStartDate} projectEndDate={projectEndDate} enableVirtualization= {true} enableTimelineVirtualization={true}
           taskFields={taskFields} gridLines={gridLines} timelineSettings={timelineSettings} labelSettings={labelSettings}
-          height='410px'>
+          dataBound={onDataBound} height='650px' rowHeight={46} taskbarHeight={25} >
           <ColumnsDirective>
-            <ColumnDirective field='TaskId' visible={false}></ColumnDirective>
-            <ColumnDirective field='TaskName' headerText='Task Name' width='250' clipMode='EllipsisWithTooltip'></ColumnDirective>
-            <ColumnDirective field='StartDate'></ColumnDirective>
-            <ColumnDirective field='Duration'></ColumnDirective>
+            <ColumnDirective field='TaskId'></ColumnDirective>
+            <ColumnDirective field='TaskName' headerText="Project Activity" width='250' clipMode='EllipsisWithTooltip'></ColumnDirective>
+            <ColumnDirective field='StartDate' headerText="Planned Start Date"></ColumnDirective>
+            <ColumnDirective field="Duration" headerText="Duration"></ColumnDirective>
+            <ColumnDirective field="Progress"headerText="Completion (%)"></ColumnDirective>
           </ColumnsDirective>
-          <Inject services={[Selection]} />
+          <Inject services={[Selection, VirtualScroll]} />
         </GanttComponent>
         <div style={{ float: 'right', margin: '10px' }}>Source:
           <a href="https://en.wikipedia.org/wiki/Cereal_growth_staging_scales"
@@ -108,6 +144,8 @@ const RemoteData = () => {
           Gantt component features are segregated into individual feature-wise modules. To use a selection feature, inject the
           <code>Selection</code> module.
         </p>
+        <br/>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/data-binding#remote-data">documentation section</a>.</p>
       </div>
     </div>
   )

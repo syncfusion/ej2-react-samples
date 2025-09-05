@@ -19,7 +19,7 @@ export class Taskbar extends SampleBase<{}, {}> {
   };
   private dayWorkingTime: any = [{ from: 0, to: 24 }];
   public timelineSettings: any = {
-    timelineUnitSize: 60,
+    timelineUnitSize: 70,
     topTier: {
       unit: 'Hour',
       format: 'MMM dd, yyyy'
@@ -30,13 +30,13 @@ export class Taskbar extends SampleBase<{}, {}> {
       format: 'h:mm a'
     },
   }
-  public eventMarkerDay1: Date = new Date('03/05/2024 07:09:00 PM');
-  public eventMarkerDay2: Date = new Date('03/05/2024 07:46:00 PM');
-  public eventMarkerDay3: Date = new Date('03/05/2024 07:59:00 PM');
-  public eventMarkerDay4: Date = new Date('03/05/2024 08:08:00 PM');
-  public eventMarkerDay5: Date = new Date('03/05/2024 08:24:00 PM');
-  public eventMarkerDay6: Date = new Date('03/05/2024 08:31:00 PM');
-  public eventMarkerDay7: Date = new Date('03/05/2024 08:47:00 PM');
+  public eventMarkerDay1: Date = new Date('03/05/2025 07:09:00 PM');
+  public eventMarkerDay2: Date = new Date('03/05/2025 07:46:00 PM');
+  public eventMarkerDay3: Date = new Date('03/05/2025 07:59:00 PM');
+  public eventMarkerDay4: Date = new Date('03/05/2025 08:08:00 PM');
+  public eventMarkerDay5: Date = new Date('03/05/2025 08:24:00 PM');
+  public eventMarkerDay6: Date = new Date('03/05/2025 08:31:00 PM');
+  public eventMarkerDay7: Date = new Date('03/05/2025 08:47:00 PM');
   public labelSettings: any = {
     leftLabel: 'TaskName',
   };
@@ -67,10 +67,24 @@ export class Taskbar extends SampleBase<{}, {}> {
             <img className="moments" src="src/gantt/images/moments.svg" height="32" width="32" alt='Oscar Moment svg'/> :
             <div>
               <img className="moments" src="src/gantt/images/moments.svg" height="32" width="32" alt='Oscar Moment svg'/>
-              <span className="e-task-label" style={{ position: "absolute", top: "15px", fontSize: "12px", textOverflow: "ellipsis", height: "90%", overflow: "hidden" }}>{props.Performance}</span>
-            </div>
+              <span className="e-task-label"
+                style={{
+                position: "absolute",
+                top: "15px",
+                left: "40px",
+                right: "5px",
+                fontSize: "12px",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                height: "90%",
+                lineHeight: "1.2",
+                }}
+              >
+                {props.Performance}
+              </span>
+           </div>
         }
-
       </div>);
     }
     else if (props.TaskName == 'Oscar performance') {
@@ -80,10 +94,24 @@ export class Taskbar extends SampleBase<{}, {}> {
             <img className="face-mask" src="src/gantt/images/face-mask.svg" height="32" width="32" alt='Oscar Performance svg'/> :
             <div>
               <img className="face-mask" src="src/gantt/images/face-mask.svg" height="32" width="32" alt='Oscar Performance svg'/>
-              <span className="e-task-label e-oscar-performance" style={{ position: "absolute", top: "5px", fontSize: "12px", textOverflow: "ellipsis", height: "90%", overflow: "hidden" }}>{props.Performance}</span>
+              <span className="e-task-label e-oscar-performance" 
+                style={{
+                  position: "absolute",
+                  top: "15px",
+                  left: "40px",
+                  right: "5px",
+                  fontSize: "12px",
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  height: "90%",
+                  lineHeight: "1.2",
+                }}
+              >
+                {props.Performance}
+              </span>
             </div>
         }
-
       </div>);
     } else {
       return (
@@ -93,14 +121,53 @@ export class Taskbar extends SampleBase<{}, {}> {
             props.Winner && props.Movie ?
               <div>
                 <img className="oscar" src="src/gantt/images/oscar.svg" height="32" width="32" alt='Oscar svg'/>
-                <span className="e-task-label" style={{ position: "absolute", top: "13px", fontSize: "14px" }} >{props.Winner}</span>
-                <span className="e-task-label" style={{ position: "absolute", top: "33px", fontSize: "10px", textOverflow: "ellipsis" }}>{props.Movie}</span>
+                <span className="e-task-label"
+                  style={{
+                    position: "absolute",
+                    top: "8px",
+                    left: "40px",
+                    right: "5px",
+                    fontSize: "14px",
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                  }}
+                >
+                  {props.Winner}
+                </span>
+                <span className="e-task-label"
+                  style={{
+                    position: "absolute",
+                    top: "28px",
+                    left: "40px",
+                    right: "5px",
+                    fontSize: "10px",
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                  }}
+                >
+                  {props.Movie}
+                </span>
               </div> : props.Movie ?
                 <div>
                   <img className="oscar" src="src/gantt/images/oscar.svg" height="32" width="32" alt='Oscar svg'/>
-                  <span className="e-task-label e-oscar-movie" style={{ position: "absolute", top: "24px", fontSize: "12px", textOverflow: "ellipsis" }}>{props.Movie} </span>
+                  <span className="e-task-label e-oscar-movie" 
+                    style={{
+                      position: "absolute",
+                      top: "15px",
+                      left: "40px",
+                      right: "5px",
+                      fontSize: "12px",
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                    }}
+                  >
+                    {props.Movie} 
+                  </span>
                 </div> :
-                <span className="e-task-label"></span>
+              <span className="e-task-label"></span>
           }
         </div>
       );
@@ -139,27 +206,27 @@ export class Taskbar extends SampleBase<{}, {}> {
 }
 
   public milestone: any = this.milstoneTemplate.bind(this);
-  public projectStartDate: any = new Date('03/05/2024 06:00 PM');
-  public projectEndDate: any = new Date('03/05/2024 09:50 PM');
+  public projectStartDate: any = new Date('03/05/2025 06:00 PM');
+  public projectEndDate: any = new Date('03/05/2025 09:50 PM');
 
   render() {
     return (
       <div className='control-pane'>
         <div className='control-section'>
           <GanttComponent id='TaskbarTemplate' dataSource={customizedData} dateFormat={'hh:mm a'}
-            taskFields={this.taskFields} height='410px' splitterSettings={this.splitterSettings}
+            taskFields={this.taskFields} height='650px' splitterSettings={this.splitterSettings}
             treeColumnIndex={1} rowHeight={75} taskbarHeight={65} dayWorkingTime={this.dayWorkingTime}
             durationUnit={'Minute'} timelineSettings={this.timelineSettings} labelSettings={this.labelSettings}
             tooltipSettings={this.tooltipSettings} milestoneTemplate={this.milestone} taskbarTemplate={this.childTaskbarTemplate}
             projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate} allowSelection={true}>
             <ColumnsDirective>
-              <ColumnDirective field='TaskId' headerText='Event Id' ></ColumnDirective>
+              <ColumnDirective field='TaskId' headerText='Event Id' width={130}></ColumnDirective>
               <ColumnDirective field='TaskName' headerText='Event Name' width='250' clipMode='EllipsisWithTooltip'></ColumnDirective>
               <ColumnDirective field='StartDate' headerText='Start time' ></ColumnDirective>
               <ColumnDirective field='EndDate' headerText='End time' ></ColumnDirective>
               <ColumnDirective field='Winner' headerText='Winner' ></ColumnDirective>
               <ColumnDirective field='Movie' headerText='Movie' ></ColumnDirective>
-              <ColumnDirective field='Performance' headerText='Moments / Performance Details' ></ColumnDirective>
+              <ColumnDirective field='Performance' headerText='Moments / Performance Details' width={250}></ColumnDirective>
             </ColumnsDirective>
             <EventMarkersDirective>
               <EventMarkerDirective day={this.eventMarkerDay1} label='Performance' ></EventMarkerDirective>
@@ -196,6 +263,8 @@ export class Taskbar extends SampleBase<{}, {}> {
             <code>DayMarkers</code> module. To use a selection, inject the
             <code>Selection</code> module.
           </p>
+          <br/>
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/appearance-customization#taskbar-template">documentation section</a>.</p>
         </div>
       </div>
     )

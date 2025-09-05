@@ -37,10 +37,10 @@ export class Filtering extends SampleBase<{}, {}> {
     dependency: 'Predecessor',
     child: 'subtasks'
   };
-  public projectStartDate = new Date('07/16/2024 01:00:00 AM');
-  public projectEndDate = new Date('07/25/2024');
+  public projectStartDate = new Date('07/16/2025 02:00:00 AM');
+  public projectEndDate = new Date('07/25/2025');
   public timelineSettings: any = {
-    timelineUnitSize: 60,
+    timelineUnitSize: 70,
     topTier: {
       format: 'MMM dd, yyyy',
       unit: 'Day',
@@ -60,8 +60,8 @@ export class Filtering extends SampleBase<{}, {}> {
   public actionCompleteEvent(args): any {
     if (args.requestType == "filterafteropen" && (args.columnName === "StartDate" || args.columnName === "EndDate") 
     && this.ganttInstance.filterSettings.type === "Menu") {
-      args.filterModel.dlgDiv.querySelector('.e-datetimepicker').ej2_instances[0].min = new Date(2024, 5, 1);
-      args.filterModel.dlgDiv.querySelector('.e-datetimepicker').ej2_instances[0].max = new Date(2024, 8, 30);
+      args.filterModel.dlgDiv.querySelector('.e-datetimepicker').ej2_instances[0].min = new Date(2025, 5, 1);
+      args.filterModel.dlgDiv.querySelector('.e-datetimepicker').ej2_instances[0].max = new Date(2025, 8, 30);
       args.filterModel.dlgDiv.querySelector('.e-datetimepicker').ej2_instances[0].showTodayButton = false;
       args.filterModel.dlgDiv.querySelector('.e-datetimepicker').ej2_instances[0].dataBind();
     }
@@ -75,13 +75,13 @@ export class Filtering extends SampleBase<{}, {}> {
               projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate} taskFields={this.taskFields}
               timelineSettings={this.timelineSettings} splitterSettings={this.splitterSettings}
               labelSettings={this.labelSettings} filterSettings={{ type: 'Menu', hierarchyMode:'Parent' }} dayWorkingTime={this.dayWorkingTime}
-              height='410px' actionComplete={this.actionCompleteEvent.bind(this)}>
+              height='650px' taskbarHeight={25} rowHeight={46} actionComplete={this.actionCompleteEvent.bind(this)}>
               <ColumnsDirective>
                 <ColumnDirective field='TaskName' headerText='Task Name' width='250' clipMode='EllipsisWithTooltip'></ColumnDirective>
                 <ColumnDirective field='StartDate' headerText='Start Date'></ColumnDirective>
                 <ColumnDirective field='Duration' headerText='Duration'></ColumnDirective>
                 <ColumnDirective field='EndDate' headerText='End Date'></ColumnDirective>
-                <ColumnDirective field='Predecessor' headerText='Predecessor'></ColumnDirective>
+                <ColumnDirective field='Predecessor' headerText='Predecessor' width={190}></ColumnDirective>
               </ColumnsDirective>
               <Inject services={[Filter, Selection]} />
             </GanttComponent>
@@ -156,6 +156,8 @@ export class Filtering extends SampleBase<{}, {}> {
             to inject <code>Filter</code> module, and use the toolbar support we need to inject <code>Toolbar</code> module.
             To use a selection, inject the <code>Selection</code> module.
           </p>
+          <br/>
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/filtering/filtering">documentation section</a>.</p>
         </div>
       </div>
     )

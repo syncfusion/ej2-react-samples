@@ -25,8 +25,8 @@ import {
 } from "@syncfusion/ej2-react-diagrams";
 import { updateSampleSection } from "../common/sample-base";
 import "./font-icons.css";
-import { ToolbarComponent } from "@syncfusion/ej2-react-navigations";
-import { DropDownButton } from "@syncfusion/ej2-react-splitbuttons";
+import { ItemDirective, ItemsDirective, ToolbarComponent } from "@syncfusion/ej2-react-navigations";
+import { DropDownButton, DropDownButtonComponent } from "@syncfusion/ej2-react-splitbuttons";
 import { UploaderComponent } from "@syncfusion/ej2-react-inputs";
 
 
@@ -81,7 +81,7 @@ function createConnector(
   annotations = [],
   type = 'Straight',
   segments = [],
-  style={}
+  style = {}
 ) {
   return {
     id,
@@ -106,7 +106,7 @@ let connectors: any = [
   createConnector("connector9", "Payment_method", "Meeting", [], 'Orthogonal', [{ direction: "Top", type: 'Orthogonal', length: 120 }]),
   createConnector("connector10", "End", "Payment_method", [{ content: "No", style: { fill: "white" } }], 'Orthogonal', [{ direction: "Right", type: 'Orthogonal', length: 100 }]),
   createConnector("connector11", "Project", "Payment_method", [{ content: "No", style: { fill: "white" } }]),
-  createConnector("connector12", "transaction_entered", "Reconcile_entries", [], 'Straight', [],{ strokeDashArray: "2,2"})
+  createConnector("connector12", "transaction_entered", "Reconcile_entries", [], 'Straight', [], { strokeDashArray: "2,2" })
 ];
 
 //Initialize the flowshapes for the symbol palatte
@@ -187,59 +187,120 @@ let gridlines: GridlinesModel = {
 let selectedItems: any[];
 let diagramInstance: DiagramComponent;
 let toolbarEditor: ToolbarComponent;
-let toolbarItems: any = [
-  { prefixIcon: 'e-icons e-circle-add', tooltipText: 'New Diagram', id: 'New_Diagram' },
-  { prefixIcon: 'e-icons e-folder-open', tooltipText: 'Open Diagram', id: 'Open_diagram' },
-  { prefixIcon: 'e-icons e-save', tooltipText: 'Save Diagram', id: 'Save' },
-  { prefixIcon: 'e-print e-icons', tooltipText: 'Print Diagram', id: 'Print' },
-  { type: 'Input', tooltipText: 'Export Diagram', template: '<button id="diagramexportBtn" style="width:100%;"></button>', id: 'Export' },
-
-  { type: 'Separator' },
-
-  { disabled: true, prefixIcon: 'e-cut e-icons', tooltipText: 'Cut', cssClass: 'tb-item-middle tb-item-lock-category', id: 'Cut' },
-  { disabled: true, prefixIcon: 'e-copy e-icons', tooltipText: 'Copy', cssClass: 'tb-item-middle tb-item-lock-category', id: 'Copy' },
-  { prefixIcon: 'e-icons e-paste', tooltipText: 'Paste', disabled: true, id: 'Paste' },
-
-  { type: 'Separator' },
-
-  { disabled: true, prefixIcon: 'e-icons e-undo', tooltipText: 'Undo', id: 'Undo' },
-  { disabled: true, prefixIcon: 'e-icons e-redo', tooltipText: 'Redo', id: 'Redo' },
-
-  { type: 'Separator', },
-
-  { prefixIcon: 'e-pan e-icons', tooltipText: 'Pan Tool', cssClass: 'tb-item-start pan-item', id: 'Pan_tool' },
-  { prefixIcon: 'e-mouse-pointer e-icons', tooltipText: 'Select Tool', cssClass: 'tb-item-middle tb-item-selected', id: 'Select_tool' },
-  { tooltipText: 'Change Connector Type', template: '<button id="conTypeBtn" style="width:100%;"></button>', cssClass: 'tb-item-middle', id: 'Draw_con' },
-  { tooltipText: 'Draw Shapes', template: '<button id="shapesBtn" style="width:100%;"></button>', cssClass: 'tb-item-middle', id: 'Draw_shapes' },
-  { prefixIcon: 'e-caption e-icons', tooltipText: 'Text Tool', cssClass: 'tb-item-end', id: 'Text_tool' },
-
-  { type: 'Separator', },
-
-  { disabled: true, prefixIcon: 'e-icons e-lock', tooltipText: 'Lock', cssClass: 'tb-item-middle tb-item-lock-category', id: 'Lock' },
-  { disabled: true, prefixIcon: 'e-trash e-icons', tooltipText: 'Delete', cssClass: 'tb-item-middle tb-item-lock-category', id: 'Delete' },
-
-  { type: 'Separator', align: 'Center' },
-
-  { disabled: true, type: 'Input', tooltipText: 'Align Objects', template: '<button id="alignBtn" style="width:100%;"></button>', cssClass: 'tb-item-middle  tb-item-align-category', id: 'Align_objects' },
-  { disabled: true, type: 'Input', tooltipText: 'Distribute Objects', template: '<button id="distributeBtn" style="width:100%;"></button>', cssClass: 'tb-item-middle tb-item-space-category', id: 'Distribute_objects' },
-
-  { type: 'Separator', },
-
-  { disabled: true, type: 'Input', tooltipText: 'Order Commands', template: '<button id="orderBtn" style="width:100%;"></button>', cssClass: 'tb-item-middle tb-item-lock-category', id: 'Order' },
-
-  { type: 'Separator' },
-
-  { disabled: true, type: 'Input', tooltipText: 'Group/Ungroup', template: '<button id="groupBtn" style="width:100%;"></button>', cssClass: 'tb-item-middle tb-item-align-category', id: 'Group' },
-  { type: 'Separator' },
-  { disabled: true, type: 'Input', tooltipText: 'Rotate', template: '<button id="rotateBtn" style="width:100%;"></button>', cssClass: 'tb-item-middle tb-item-lock-category', id: 'Rotate' },
-  { type: 'Separator' },
-  { disabled: true, type: 'Input', tooltipText: 'Flip', template: '<button id="flipBtn" style="width:100%;"></button>', cssClass: 'tb-item-middle tb-item-lock-category', id: 'Flip' },
-  { type: 'Separator' },
-  {
-    cssClass: 'tb-item-end tb-zoom-dropdown-btn', id: 'Zoom', template: '<button id="btnZoomIncrement"></button>',
-  },
-];
+let data = [{ text: 'JPG' }, { text: 'PNG' }, { text: 'SVG' },]
+let connectorData = [
+  { text: 'Straight', iconCss: 'e-icons e-line' },
+  { text: 'Orthogonal', iconCss: 'sf-diagram-icon-orthogonal' },
+  { text: 'Bezier', iconCss: 'sf-diagram-icon-bezier' }
+]
+let shapeData = [
+  { text: 'Rectangle', iconCss: 'e-rectangle e-icons' },
+  { text: 'Ellipse', iconCss: ' e-circle e-icons' },
+  { text: 'Polygon', iconCss: 'e-line e-icons' }
+]
+let alignData = [
+  { iconCss: 'sf-diagram-icon-align-left-1', text: 'Align Left', },
+  { iconCss: 'sf-diagram-icon-align-center-1', text: 'Align Center', },
+  { iconCss: 'sf-diagram-icon-align-right-1', text: 'Align Right', },
+  { iconCss: 'sf-diagram-icon-align-top-1', text: 'Align Top', },
+  { iconCss: 'sf-diagram-icon-align-middle-1', text: 'Align Middle', },
+  { iconCss: 'sf-diagram-icon-align-bottom-1', text: 'Align Bottom', },
+]
+let distributeData = [
+  { iconCss: 'sf-diagram-icon-distribute-horizontal', text: 'Distribute Objects Vertically', },
+  { iconCss: 'sf-diagram-icon-distribute-vertical', text: 'Distribute Objects Horizontally', },
+]
+let orderData = [
+  { iconCss: 'e-icons e-bring-forward', text: 'Bring Forward' },
+  { iconCss: 'e-icons e-bring-to-front', text: 'Bring To Front' },
+  { iconCss: 'e-icons e-send-backward', text: 'Send Backward' },
+  { iconCss: 'e-icons e-send-to-back', text: 'Send To Back' }
+]
+let groupData = [
+  { iconCss: 'sf-diagram-icon-align-left-1', text: 'Align Left', },
+  { iconCss: 'sf-diagram-icon-align-center-1', text: 'Align Center', },
+  { iconCss: 'sf-diagram-icon-align-right-1', text: 'Align Right', },
+  { iconCss: 'sf-diagram-icon-align-top-1', text: 'Align Top', },
+  { iconCss: 'sf-diagram-icon-align-middle-1', text: 'Align Middle', },
+  { iconCss: 'sf-diagram-icon-align-bottom-1', text: 'Align Bottom', },
+]
+let rotateData = [
+  { iconCss: 'e-icons e-transform-right', text: 'Rotate Clockwise' },
+  { iconCss: 'e-icons e-transform-left', text: 'Rotate Counter-Clockwise' }
+]
+let flipData = [
+  { iconCss: 'e-icons e-flip-horizontal', text: 'Flip Horizontal' },
+  { iconCss: 'e-icons e-flip-vertical', text: 'Flip Vertical' }
+]
+let zoomData = [
+  { text: 'Zoom In' }, { text: 'Zoom Out' }, { text: 'Zoom to Fit' }, { text: 'Zoom to 50%' },
+  { text: 'Zoom to 100%' }, { text: 'Zoom to 200%' }
+]
 function Default() {
+  const dropDown = () => {
+    return (<div><DropDownButtonComponent items={data}
+      cssClass="custom-export-dropdown"
+      iconCss="e-icons e-export" select={onselectExport}></DropDownButtonComponent ></div>);
+  };
+  const connector = () => {
+    return (<div><DropDownButtonComponent
+      items={connectorData}
+      cssClass="tb-item-middle"
+      iconCss="e-diagram-icons1 e-diagram-connector e-icons"
+
+      select={onConnectorSelect}></DropDownButtonComponent ></div>);
+  };
+  const shapes = () => {
+    return (<div><DropDownButtonComponent
+      items={shapeData}
+      cssClass="tb-item-middle"
+      iconCss="e-shapes e-icons"
+      select={onShapesSelect}></DropDownButtonComponent ></div>);
+  };
+  const alignments = () => {
+    return (<div><DropDownButtonComponent
+      items={alignData}
+      iconCss="e-icons e-restart-at-1"
+      select={onSelectAlignObjects}></DropDownButtonComponent ></div>);
+  };
+  const distribute = () => {
+    return (<div><DropDownButtonComponent
+      items={distributeData}
+      iconCss="e-icons e-stroke-width"
+      select={onSelectDistributeObjects}></DropDownButtonComponent ></div>);
+  };
+  const order = () => {
+    return (<div><DropDownButtonComponent
+      items={orderData}
+      iconCss="e-icons e-order"
+      select={onSelectOrder}></DropDownButtonComponent ></div>);
+  };
+  const group = () => {
+    return (<div><DropDownButtonComponent
+      items={groupData}
+      iconCss="e-icons e-group-1"
+      select={onSelectGroup}></DropDownButtonComponent ></div>);
+  };
+  const rotate = () => {
+    return (<div><DropDownButtonComponent
+      items={rotateData}
+      iconCss="e-icons e-repeat"
+      select={onSelectRotate}></DropDownButtonComponent ></div>);
+  };
+  const flip = () => {
+    return (<div><DropDownButtonComponent
+      items={flipData}
+      iconCss="e-icons e-flip-horizontal"
+      select={onSelectFlip}></DropDownButtonComponent ></div>);
+  };
+  const zoom = () => {
+    return (<div><DropDownButtonComponent
+      id="btnZoomIncrement"
+      items={zoomData}
+      content={Math.round(diagramInstance.scrollSettings.currentZoom * 100) + ' %'}
+      select={zoomChange}
+    ></DropDownButtonComponent ></div>);
+  }
   React.useEffect(() => {
     updateSampleSection();
     rendereComplete();
@@ -326,20 +387,20 @@ function Default() {
     if (selectedItems && selectedItems.length > 0) {
       var obj = selectedItems[0];
       if (obj instanceof Node) {
-          if (obj.constraints === (NodeConstraints.PointerEvents | NodeConstraints.Select | NodeConstraints.ReadOnly)) {
-              updateToolbarState(true);
-          }
-          else {
-              updateToolbarState(false);
-          }
+        if (obj.constraints === (NodeConstraints.PointerEvents | NodeConstraints.Select | NodeConstraints.ReadOnly)) {
+          updateToolbarState(true);
+        }
+        else {
+          updateToolbarState(false);
+        }
       }
       else if (obj instanceof Connector) {
-          if (obj.constraints === (ConnectorConstraints.PointerEvents | ConnectorConstraints.Select | ConnectorConstraints.ReadOnly)) {
-              updateToolbarState(true);
-          }
-          else {
-              updateToolbarState(false);
-          }
+        if (obj.constraints === (ConnectorConstraints.PointerEvents | ConnectorConstraints.Select | ConnectorConstraints.ReadOnly)) {
+          updateToolbarState(true);
+        }
+        else {
+          updateToolbarState(false);
+        }
       }
     }
     diagramInstance.dataBind();
@@ -361,20 +422,20 @@ function Default() {
     let isSelectedItemLocked: boolean;
     let obj = selectedItems[0];
     if (obj instanceof Node) {
-        if (obj.constraints === (NodeConstraints.PointerEvents | NodeConstraints.Select | NodeConstraints.ReadOnly)) {
-            isSelectedItemLocked = true;
-        }
-        else {
-            isSelectedItemLocked = false;
-        }
+      if (obj.constraints === (NodeConstraints.PointerEvents | NodeConstraints.Select | NodeConstraints.ReadOnly)) {
+        isSelectedItemLocked = true;
+      }
+      else {
+        isSelectedItemLocked = false;
+      }
     }
     else if (obj instanceof Connector) {
-        if (obj.constraints === (ConnectorConstraints.PointerEvents | ConnectorConstraints.Select | ConnectorConstraints.ReadOnly)) {
-            isSelectedItemLocked = true;
-        }
-        else {
-            isSelectedItemLocked = false;
-        }
+      if (obj.constraints === (ConnectorConstraints.PointerEvents | ConnectorConstraints.Select | ConnectorConstraints.ReadOnly)) {
+        isSelectedItemLocked = true;
+      }
+      else {
+        isSelectedItemLocked = false;
+      }
     }
     const itemIds = ['Cut', 'Copy', 'Lock', 'Delete', 'Order', 'Rotate', 'Flip'];
     itemIds.forEach(itemId => {
@@ -624,12 +685,7 @@ function Default() {
       }
     }
   }
-  //To refresh the overflow of the toolbar after a delay.
-  function refreshOverflow() {
-    setTimeout(() => {
-      toolbarEditor.refreshOverflow();
-    }, 100);
-  }
+
   asyncSettings = {
     saveUrl: 'https://services.syncfusion.com/react/production/api/FileUploader/Save',
     removeUrl: 'https://services.syncfusion.com/react/production/api/FileUploader/Remove'
@@ -676,95 +732,76 @@ function Default() {
             <ToolbarComponent
               ref={(toolbar) => (toolbarEditor = toolbar)}
               id="toolbar_diagram"
-              created={() => {
-                if (diagramInstance !== undefined) {
-                  let conTypeBtn: any = new DropDownButton({
-                    items: [
-                      { text: 'Straight', iconCss: 'e-icons e-line' },
-                      { text: 'Orthogonal', iconCss: 'sf-diagram-icon-orthogonal' },
-                      { text: 'Bezier', iconCss: 'sf-diagram-icon-bezier' }
-                    ], iconCss: 'e-diagram-icons1 e-diagram-connector e-icons',
-                    select: function (args) { onConnectorSelect(args) }
-                  });
-                  conTypeBtn.appendTo('#conTypeBtn');
-                  let btnZoomIncrement: any = new DropDownButton({
-                    items: [
-                      { text: 'Zoom In' }, { text: 'Zoom Out' }, { text: 'Zoom to Fit' }, { text: 'Zoom to 50%' },
-                      { text: 'Zoom to 100%' }, { text: 'Zoom to 200%' }], content: Math.round(diagramInstance.scrollSettings.currentZoom * 100) + ' %', select: zoomChange,
-                  });
-                  btnZoomIncrement.appendTo('#btnZoomIncrement');
-                  let shapesBtn: any = new DropDownButton({
-                    items: [
-                      { text: 'Rectangle', iconCss: 'e-rectangle e-icons' },
-                      { text: 'Ellipse', iconCss: ' e-circle e-icons' },
-                      { text: 'Polygon', iconCss: 'e-line e-icons' }
-                    ], iconCss: 'e-shapes e-icons',
-                    select: function (args) { onShapesSelect(args) }
-                  });
-                  shapesBtn.appendTo('#shapesBtn');
-                  let exportBtn: any = new DropDownButton({
-                    items: [
-                      { text: 'JPG' }, { text: 'PNG' }, { text: 'SVG' }
-                    ], iconCss: 'e-icons e-export', select: function (args) { onselectExport(args) },
-                  });
-                  exportBtn.appendTo('#diagramexportBtn');
-
-                  let groupBtn: any = new DropDownButton({
-                    items: [
-                      { text: 'Group', iconCss: 'e-icons e-group-1' }, { text: 'Ungroup', iconCss: 'e-icons e-ungroup-1' }
-                    ], iconCss: 'e-icons e-group-1', select: function (args) { onSelectGroup(args) }
-                  })
-                  groupBtn.appendTo('#groupBtn');
-                  let alignBtn: any = new DropDownButton({
-                    items: [
-                      { iconCss: 'sf-diagram-icon-align-left-1', text: 'Align Left', },
-                      { iconCss: 'sf-diagram-icon-align-center-1', text: 'Align Center', },
-                      { iconCss: 'sf-diagram-icon-align-right-1', text: 'Align Right', },
-                      { iconCss: 'sf-diagram-icon-align-top-1', text: 'Align Top', },
-                      { iconCss: 'sf-diagram-icon-align-middle-1', text: 'Align Middle', },
-                      { iconCss: 'sf-diagram-icon-align-bottom-1', text: 'Align Bottom', },
-                    ], iconCss: 'e-icons e-restart-at-1', select: function (args) { onSelectAlignObjects(args) }
-                  })
-                  alignBtn.appendTo('#alignBtn');
-
-                  let distributeBtn: any = new DropDownButton({
-                    items: [
-                      { iconCss: 'sf-diagram-icon-distribute-horizontal', text: 'Distribute Objects Vertically', },
-                      { iconCss: 'sf-diagram-icon-distribute-vertical', text: 'Distribute Objects Horizontally', },
-                    ], iconCss: 'e-icons e-stroke-width', select: function (args) { onSelectDistributeObjects(args) }
-                  });
-                  distributeBtn.appendTo('#distributeBtn');
-                  let orderBtn: any = new DropDownButton({
-                    items: [
-                      { iconCss: 'e-icons e-bring-forward', text: 'Bring Forward' },
-                      { iconCss: 'e-icons e-bring-to-front', text: 'Bring To Front' },
-                      { iconCss: 'e-icons e-send-backward', text: 'Send Backward' },
-                      { iconCss: 'e-icons e-send-to-back', text: 'Send To Back' }
-                    ], iconCss: 'e-icons e-order', select: function (args) { onSelectOrder(args) }
-                  });
-                  orderBtn.appendTo('#orderBtn');
-                  let rotateBtn: any = new DropDownButton({
-                    items: [
-                      { iconCss: 'e-icons e-transform-right', text: 'Rotate Clockwise' },
-                      { iconCss: 'e-icons e-transform-left', text: 'Rotate Counter-Clockwise' }
-                    ], iconCss: 'e-icons e-repeat', select: function (args) { onSelectRotate(args) }
-                  });
-                  rotateBtn.appendTo('#rotateBtn');
-                  let flipBtn: any = new DropDownButton({
-                    items: [
-                      { iconCss: 'e-icons e-flip-horizontal', text: 'Flip Horizontal' },
-                      { iconCss: 'e-icons e-flip-vertical', text: 'Flip Vertical' }
-                    ], iconCss: 'e-icons e-flip-horizontal', select: function (args) { onSelectFlip(args) }
-                  });
-                  flipBtn.appendTo('#flipBtn');
-                  refreshOverflow();
-                }
-              }}
               clicked={toolbarClick}
-              items={toolbarItems}
               overflowMode={'Scrollable'}
               width={'100%'}
             >
+              <ItemsDirective>
+                <ItemDirective prefixIcon='e-icons e-circle-add' tooltipText='New Diagram' align="Left" id="New_Diagram" />
+                <ItemDirective prefixIcon='e-icons e-folder-open' tooltipText='Open Diagram' align="Left" id="Open_diagram" />
+                <ItemDirective prefixIcon='e-icons e-save' tooltipText='Save Diagram' align="Left" id="Save" />
+                <ItemDirective prefixIcon='e-print e-icons' tooltipText='Print Diagram' align="Left" id="Print" />
+                <ItemDirective prefixIcon="e-icons e-export" type="Input" tooltipText='Export Diagram' align="Left" id="Export" template={dropDown} />
+                <ItemDirective type='Separator' />
+                <ItemDirective disabled={true} prefixIcon='e-cut e-icons' tooltipText='Cut'
+                  cssClass='tb-item-middle tb-item-lock-category'
+                  align="Left" id="Cut" />
+                <ItemDirective disabled={true} prefixIcon='e-copy e-icons' tooltipText='Copy'
+                  cssClass='tb-item-middle tb-item-lock-category'
+                  align="Left" id="Copy" />
+                <ItemDirective disabled={true} prefixIcon='e-icons e-paste' tooltipText='Paste' cssClass='tb-item-middle tb-item-lock-category'
+                  align="Left" id="Paste" />
+                <ItemDirective type='Separator' />
+                <ItemDirective prefixIcon='e-icons e-undo' tooltipText='Undo'
+                  align="Left" id="Undo" />
+                <ItemDirective prefixIcon='e-icons e-redo' tooltipText='Redo'
+                  align="Left" id="Redo" />
+                <ItemDirective type='Separator' />
+                <ItemDirective prefixIcon='e-pan e-icons' tooltipText='Pan Tool'
+                  cssClass='tb-item-start pan-item'
+                  align="Left" id="Pan_tool" />
+                <ItemDirective prefixIcon='e-mouse-pointer e-icons' tooltipText='Select Tool'
+                  cssClass='tb-item-middle tb-item-selected'
+                  align="Left" id="Select_tool" />
+                <ItemDirective type="Input" tooltipText='Change Connector Type' align="Left" id="Draw_con" template={connector} />
+                <ItemDirective type="Input" tooltipText='Draw Shapes' align="Left" id="Draw_shapes" template={shapes} />
+                <ItemDirective prefixIcon='e-caption e-icons' tooltipText='Text Tool' align="Left" id="Text_tool" cssClass='tb-item-end' />
+                <ItemDirective type='Separator' />
+                <ItemDirective disabled={true} prefixIcon='e-icons e-lock' tooltipText='Lock'
+                  cssClass='tb-item-middle tb-item-lock-category'
+                  align="Left" id="Lock" />
+                <ItemDirective disabled={true} prefixIcon='e-trash e-icons' tooltipText='Delete'
+                  cssClass='tb-item-middle tb-item-lock-category'
+                  align="Left" id="Delete" />
+                <ItemDirective type='Separator' align='Center' />
+
+                <ItemDirective disabled={true} type="Input" tooltipText='Align Objects'
+                  cssClass='tb-item-middle tb-item-lock-category'
+                  align="Left" id="Align_objects" template={alignments} />
+                <ItemDirective disabled={true} type="Input" tooltipText='Distribute Objects'
+                  cssClass='tb-item-middle tb-item-lock-category'
+                  align="Left" id="Distribute_objects" template={distribute} />
+                <ItemDirective type='Separator' />
+                <ItemDirective disabled={true} type="Input" tooltipText='Order Commands'
+                  cssClass='tb-item-middle tb-item-lock-category'
+                  align="Left" id="Order" template={order} />
+                <ItemDirective type='Separator' />
+                <ItemDirective disabled={true} type="Input" tooltipText='Group/Ungroup'
+                  cssClass='tb-item-middle tb-item-lock-category'
+                  align="Left" id="Group" template={group} />
+                <ItemDirective type='Separator' />
+                <ItemDirective disabled={true} type="Input" tooltipText='Rotate'
+                  cssClass='tb-item-middle tb-item-lock-category'
+                  align="Left" id="Rotate" template={rotate} />
+                <ItemDirective type='Separator' />
+                <ItemDirective disabled={true} type="Input" tooltipText='Flip'
+                  cssClass='tb-item-middle tb-item-lock-category'
+                  align="Left" id="Flip" template={flip} />
+                <ItemDirective type='Separator' />
+                <ItemDirective type="Input"
+                  cssClass='tb-item-end tb-zoom-dropdown-btn'
+                  align="Left" id="Zoom" template={zoom} />
+              </ItemsDirective>
             </ToolbarComponent>
           </div>
           <div className="sb-mobile-palette-bar">
@@ -847,7 +884,7 @@ function Default() {
                 if (node.width === undefined) {
                   node.width = 145;
                 }
-                if (node.shape.type !=='Text') {
+                if (node.shape.type !== 'Text') {
                   node.style = { fill: '#357BD2', strokeColor: 'white' };
                 }
                 for (let i: number = 0; i < node.annotations.length; i++) {
@@ -956,8 +993,8 @@ function Default() {
                 }
               }}
               textEdit={(args: any): void => {
-                  var obj: any = args.element;
-                  obj.annotations[0].style = { color: 'white', fill: 'transparent' }
+                var obj: any = args.element;
+                obj.annotations[0].style = { color: 'white', fill: 'transparent' }
               }}
             >
               <Inject services={[PrintAndExport, UndoRedo]} />

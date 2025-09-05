@@ -17,23 +17,35 @@ const EventMarkers = () => {
     duration: 'Duration',
     progress: 'Progress',
     dependency: 'Predecessor',
-    child: 'subtasks'
+    parentID: 'ParentId'
   };
-  const eventMarkerDay1: Date = new Date('04/02/2024');
-  const eventMarkerDay2: Date = new Date('04/09/2024');
-  const eventMarkerDay3: Date = new Date('04/19/2024');
-  const eventMarkerDay4: Date = new Date('05/23/2024');
-  const eventMarkerDay5: Date = new Date('06/20/2024');
+  const eventMarkerDay1: Date = new Date('04/07/2025');
+  const eventMarkerDay2: Date = new Date('04/17/2025');
+  const eventMarkerDay3: Date = new Date('05/23/2025');
+  const eventMarkerDay4: Date = new Date('06/27/2025');
   const labelSettings: any = {
     leftLabel: 'TaskName'
   };
-  const projectStartDate: Date = new Date('03/24/2024');
-  const projectEndDate: Date = new Date('07/06/2024');
+  const timelineSettings : any= {
+      topTier: {
+          unit: 'Week',
+          format: 'EEE MMM dd'
+      },
+      bottomTier: {
+          unit: 'Day',
+          format: ''
+      }
+  };
+  const splitterSettings:any={
+    columnIndex: 2,
+  };
+  const projectStartDate: Date = new Date('03/23/2025');
+  const projectEndDate: Date = new Date('07/20/2025');
   return (
     <div className='control-pane'>
       <div className='control-section'>
-        <GanttComponent id='EventMarkers' dataSource={projectNewData} highlightWeekends={true}
-          taskFields={taskFields} labelSettings={labelSettings} height='410px'
+        <GanttComponent id='EventMarkers' dataSource={projectNewData} highlightWeekends={true} timelineSettings={timelineSettings}
+          taskFields={taskFields} labelSettings={labelSettings} height='650px' taskbarHeight={25} rowHeight={46} splitterSettings={splitterSettings}
           projectStartDate={projectStartDate} projectEndDate={projectEndDate}>
           <ColumnsDirective>
             <ColumnDirective field='TaskID' width='80' ></ColumnDirective>
@@ -44,11 +56,10 @@ const EventMarkers = () => {
             <ColumnDirective field='Predecessor'></ColumnDirective>
           </ColumnsDirective>
           <EventMarkersDirective>
-            <EventMarkerDirective day={eventMarkerDay1}></EventMarkerDirective>
+            <EventMarkerDirective day={eventMarkerDay1} label='Research phase'></EventMarkerDirective>
             <EventMarkerDirective day={eventMarkerDay2} label='Design phase' ></EventMarkerDirective>
-            <EventMarkerDirective day={eventMarkerDay3} label='Research phase' ></EventMarkerDirective>
-            <EventMarkerDirective day={eventMarkerDay4} label='Production phase' ></EventMarkerDirective>
-            <EventMarkerDirective day={eventMarkerDay5} label='Sales and marketing phase' ></EventMarkerDirective>
+            <EventMarkerDirective day={eventMarkerDay3} label='Production phase' ></EventMarkerDirective>
+            <EventMarkerDirective day={eventMarkerDay4} label='Sales and marketing phase' ></EventMarkerDirective>
           </EventMarkersDirective>
           <Inject services={[Selection, DayMarkers]} />
         </GanttComponent>
@@ -67,6 +78,8 @@ const EventMarkers = () => {
           Gantt component features are segregated into individual feature-wise modules. To use a selection support and event markers we need to inject the
           <code>Selection</code>, <code>DayMarkers</code> modules.
         </p>
+         <br/>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/event-markers">documentation section</a>.</p>
       </div>
     </div>
   )

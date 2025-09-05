@@ -14,6 +14,8 @@
 
 .dropdowntree-default .property-section{
     padding-bottom: 15px;
-    width: 200px;
-    left: 80px;
+}
+
+.dropdowntree-default .property-panel-section {
+    padding-left: 0;
 }

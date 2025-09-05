@@ -20,7 +20,7 @@ export class Paging extends SampleBase<{}, {}> {
     private pagerViewData: string[] = ['Row', 'Column', 'Both'];
 
     private remoteData: DataManager = new DataManager({
-        url: 'https://ej2services.syncfusion.com/react/release/api/order',
+        url: 'https://ej2services.syncfusion.com/react/development/api/order',
         adaptor: new WebApiAdaptor,
         crossDomain: true
     });

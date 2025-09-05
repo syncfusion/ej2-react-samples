@@ -8,18 +8,29 @@ import './insert-media.css';
 // Rich Text Editor items list
 export class InsertMedia extends SampleBase<{}, {}> {
     private rteObj: RichTextEditorComponent;
+    private hostUrl: string = 'https://services.syncfusion.com/react/production/';
      // Rich Text Editor items list
     private items: string[] = ['Bold', 'Italic', 'Underline', '|', 'Formats', 'Alignments', 'Blockquote', 'OrderedList', 'UnorderedList', '|', 'CreateLink', 'Image', 'Audio', 'Video', '|', 'SourceCode', 'Undo', 'Redo'];
       //Rich Text Editor ToolbarSettings
     private toolbarSettings: ToolbarSettingsModel = {
         items: this.items
     };
+    private insertVideoSettings: any = {
+        saveUrl: this.hostUrl + 'api/RichTextEditor/SaveFile',
+        removeUrl: this.hostUrl + 'api/RichTextEditor/DeleteFile',
+        path: this.hostUrl + 'RichTextEditor/'
+    };
+    private insertAudioSettings: any = {
+        saveUrl: this.hostUrl + 'api/RichTextEditor/SaveFile',
+        removeUrl: this.hostUrl + 'api/RichTextEditor/DeleteFile',
+        path: this.hostUrl + 'RichTextEditor/'
+    };
     render() {
         return(
             <div className='control-pane'>
                 <div className='control-section' id="insertMediaRTE">
                     <div className="content-wrapper">
-                        <RichTextEditorComponent id="insertMedia" ref={(richtexteditor) => { this.rteObj = richtexteditor; }} toolbarSettings={this.toolbarSettings}>
+                        <RichTextEditorComponent id="insertMedia" ref={(richtexteditor) => { this.rteObj = richtexteditor; }} toolbarSettings={this.toolbarSettings} insertAudioSettings={this.insertAudioSettings} insertVideoSettings={this.insertVideoSettings}>
                         
                         <p>Rich Text Editor allows inserting video and audio from online sources and the local computers where you want to insert a video and audio into your content.</p>
                             <p><b>Get started with Quick Toolbar to click on a video</b></p>
@@ -37,7 +48,7 @@ export class InsertMedia extends SampleBase<{}, {}> {
                     </div>
                 </div> 
                 <div id="action-description">
-                    <p>This sample demonstrates the option to insert the media into the Rich Text Editor content. Click the audio and video button from the toolbar item to insert the media.</p>
+                    <p>This sample demonstrates the option to insert the media into the Rich Text Editor content. Click the audio and video button from the toolbar item to insert the media, or drag and drop audio and video files directly into the editor.</p>
                 </div>
                 <div id="description">
                     <p>Video tools are used to insert a video into the Rich Text Editor and click on the video to customize the video using a quick toolbar. The quick toolbar has the following items:</p>

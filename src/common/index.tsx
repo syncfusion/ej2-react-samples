@@ -48,7 +48,7 @@ let isTablet: boolean = window.matchMedia('(min-width:600px) and (max-width: 850
  * PC mode
  */
 let isPc: boolean = window.matchMedia('(min-width:850px)').matches;
-
+let isUpdatingFromUrl = false;
 let resizeManualTrigger: boolean = false;
 /**
  * Themes to be redirect
@@ -182,7 +182,7 @@ if (isTablet || (Browser.isDevice && isPc)) {
   select('.sb-right-pane').classList.add('control-fullview');
 }
 changeMouseOrTouch(switchText);
-localStorage.removeItem('ej2-switch');
+// localStorage.removeItem('ej2-switch');
 enableRipple((selectedTheme && selectedTheme.indexOf('material') !== -1) || !selectedTheme);
 loadTheme(selectedTheme);
 
@@ -274,7 +274,7 @@ function renderSbPopups(): void {
   switcherPopup.hide();
   themeSwitherPopup.hide();
   themeDropDown = new DropDownList({
-    index: themeCollection.indexOf(selectedTheme.split('-')[0]),
+        index: themeCollection.indexOf(selectedTheme.replace('-dark', '')),
     change: (e: any) => {
       if (selectedTheme.includes('-dark') && !e.value.includes('highcontrast')) {
         switchTheme(e.value + '-dark');
@@ -285,17 +285,30 @@ function renderSbPopups(): void {
      }
   });
   themeModeDropDown = new DropDownList({
-    index: selectedTheme.includes('-dark') ? 1 : 0,
-    change: (e: any) => {
-      const mode = e.value;
-      if (mode === 'Dark' && !selectedTheme.includes('highcontrast')) {
-        switchTheme(selectedTheme + '-dark');
-      }
-      else {
-        switchTheme(selectedTheme.replace('-dark', ''))
+  index: selectedTheme.includes('-dark') ? 1 : 0,
+  change: (e: any) => {
+    //PREVENT infinite loop - ignore if updating from URL
+    if (isUpdatingFromUrl) {
+      return;
+    }
+    const mode = e.value;
+
+    // Only toggle if not highcontrast
+    if (!selectedTheme.includes('highcontrast')) {
+      toggleDarkMode();
+      applyBodyClass(selectedTheme);
+      refreshCurrentControl();
+      if (isMobile) {
+        const isDark = selectedTheme.includes('-dark');
+        const iconClass = `sb-icons pane-${isDark ? 'light-theme' : 'dark-theme'}`;
+        const iconElement = document.getElementById('mobile-mode-icon');
+        if (iconElement) {
+          iconElement.className = iconClass;
+        }
       }
     }
-  });
+  }
+});
   cultureDropDown = new DropDownList({
     index: 0,
     change: (e: any) => {
@@ -358,17 +371,38 @@ function changeTheme(e: MouseEvent): void {
   }
   // loadTheme(themeName);
 }
+function parseTheme(themeRaw: string): string {
+  return themeRaw.includes('_') ? themeRaw.replace('_', '.') : themeRaw;
+}
 
-function switchTheme(str: string): void {
-  str = str.includes('_') ? str.replace('_', '.') : str;
-  let hash: string[] = location.hash.split('/');
-  if (hash[1] !== str) {
-    hash[1] = str;
-    location.hash = hash.join('/');
-    localStorage.setItem('ej2-switch', select('.active', setResponsiveElement).id);
-    location.reload();
-    setSbLink();
+function persistTheme(theme: string): void {
+  localStorage.setItem('selectedTheme', theme);
+  selectedTheme = theme;
+}
+
+function updateHash(theme: string, samplePath = ''): void {
+  const newHash = `#/${theme}/${samplePath}`;
+  if (location.hash !== newHash) {
+    location.hash = newHash;
   }
+}
+function highlightActiveTheme(base: string): void {
+  themeList.querySelector('.active')?.classList.remove('active');
+  themeList.querySelector(`#${base}`)?.classList.add('active');
+}
+function switchTheme(themeRaw: string): void {
+  const theme = parseTheme(themeRaw);
+  persistTheme(theme);
+
+  const parts = location.hash.replace(/^#\//, '').split('/');
+  if (parts[0] !== theme) {
+    parts[0] = theme;
+    location.hash = '#/' + parts.join('/');
+  }
+
+  // loadTheme(theme);
+  location.reload();
+  setSbLink();
 }
 searchOverlay.addEventListener('click', searchOverlayClick);
 function searchOverlayClick() {
@@ -846,74 +880,198 @@ function processResize(e: any): void {
     removeMobileOverlay();
   }
 }
+function applyBodyClass(theme: string): void {
+  UpdatedCss(theme);
+  const themeCollection: string[] = [
+    'material3', 'bootstrap5', 'fluent2', 'tailwind3',
+    'fluent2-highcontrast', 'highcontrast', 'tailwind', 'fluent'
+  ];
 
+  const isDark = theme.endsWith('-dark');
+
+  let baseTheme = theme.replace('-dark', '');
+  if (baseTheme.includes('bootstrap5')) {
+    baseTheme = baseTheme.replace('bootstrap5', 'bootstrap5_3');
+  }
+
+  const themeClass = isDark ? `${baseTheme}-dark` : baseTheme;
+
+  const currentClasses = document.body.className.trim().split(/\s+/);
+
+  const updatedClasses: string[] = [];
+  let themeReplaced = false;
+
+  for (let i = 0; i < currentClasses.length; i++) {
+    const c = currentClasses[i];
+    const normalized = c.replace('-dark', '');
+    if (themeCollection.includes(normalized) || normalized === 'bootstrap5_3') {
+      updatedClasses.push(themeClass);
+      if (isDark) {
+        updatedClasses.push('e-dark-mode');
+      }
+      themeReplaced = true;
+    } else if (c !== 'e-dark-mode') {
+      updatedClasses.push(c);
+    }
+    // If it's 'e-dark-mode' and we're switching to light, we skip it
+  }
+
+  if (!themeReplaced) {
+    updatedClasses.push(themeClass);
+    if (isDark) {
+      updatedClasses.push('e-dark-mode');
+    }
+  }
+
+  document.body.className = updatedClasses.join(' ').trim();
+}
 /**
  * Theme Loading
  */
-function loadTheme(theme: string): void {
-  theme = themesToRedirect.indexOf(theme) !== -1 ? 'tailwind3': theme;
-  let body: HTMLElement = document.body;
-  if (body.classList.length > 0) {
-    for (let themeItem of themeCollection) {
-      body.classList.remove(themeItem);
-    }
-  }
-  body.classList.add(theme.includes('bootstrap5') ? theme.replace('bootstrap5', 'bootstrap5_3') : theme);
-  const activeTheme: string = theme.replace('-dark', '');
-  themeList.querySelector('#' + activeTheme).classList.add('active');
-  let ajax: Ajax = new Ajax('./styles/' + (theme.includes('bootstrap5') ? theme.replace('bootstrap5', 'bootstrap5.3') : theme ) + '.css', 'GET', true);
-  ajax.send().then((result: any) => {
-    let doc: HTMLFormElement = document.getElementById('themelink') as HTMLFormElement;
-    doc.innerHTML = result;
-    selectedTheme = theme;
-    //renderPopups
-    renderSbPopups();
-    bindEvents();
-    /**
-     * load elastic lunr
-     */
-    (elasticlunr as any).clearStopWords();
-    searchInstance = (elasticlunr as any).Index.load(searchJson);
+function loadTheme(themeRaw: string): void {
+  const theme = themesToRedirect.includes(themeRaw) ? 'tailwind3' : themeRaw;
+  UpdatedCss(theme);
+  persistTheme(theme);
 
-    createRoot(document.getElementById('left-pane-component')).render(<LeftPane />);
-    setTimeout(()=>{
-    setSelectList();
-    //removeOverlay();
-    createRoot(document.getElementById('tab-component')).render(<Content />);
-    if (!isMobile) {
-      document.querySelector('.sb-right-pane').scrollTop = 0;
-    }
-    }, 400);
-    
-  });
+  const base = theme.replace('-dark', '');
+  const isDark = theme.endsWith('-dark');
+
+  applyBodyClass(theme);
+  highlightActiveTheme(base);
 }
-
 if ('serviceWorker' in navigator){
   navigator.serviceWorker.register('/src/service-worker.js');
   }
+function UpdatedCss(theme:string)
+{
+  const cssName = theme.includes('bootstrap5')
+    ? theme.replace('bootstrap5', 'bootstrap5.3')
+    : theme;
+  const href = `./styles/${cssName}.css`;
+  const linkEl = document.getElementById('themelink') as HTMLLinkElement;
 
+  if (linkEl) {
+    linkEl.onload = () => {
+      renderSbPopups();
+      bindEvents();
+      (elasticlunr as any).clearStopWords();
+      searchInstance = (elasticlunr as any).Index.load(searchJson);
+
+      createRoot(document.getElementById('left-pane-component')!).render(<LeftPane />);
+      setTimeout(() => {
+        setSelectList();
+        createRoot(document.getElementById('tab-component')!).render(<Content />);
+        if (!isMobile) {
+          document.querySelector('.sb-right-pane')!.scrollTop = 0;
+        }
+      }, 100);
+    };
+    linkEl.href = href;
+  }
+}
 /**
  *  themeChangebutton
  */
 function ThemeChangeButton() {
-  const [isVisible, setIsVisible] = useState(!selectedTheme.includes('highcontrast'));
-  const handleButton = () => {
-    const isDark = selectedTheme.includes('-dark');
-    const isNewThemeDark = isDark ? selectedTheme.replace('-dark', '') : (selectedTheme + '-dark');
-    switchTheme(isNewThemeDark);
-  }
-  useEffect(() => {
-    setIsVisible(!selectedTheme.includes('highcontrast'));
-  }, [selectedTheme])
-  const buttonClasses = `sb-themeswitch-btn ${!isVisible ? 'hidden' : ''}`;
-  return (
-    <button className={buttonClasses} onClick={handleButton}><span className={`sb-icons ${selectedTheme.includes('-dark') ? 'dark-theme' : 'light-theme'}`}></span>{selectedTheme.includes('-dark') ? 'LIGHT' : 'DARK'}</button>
-  )
-}
+  const getInitialTheme = () => {
+    const parts = location.hash.replace(/^#\//, '').split('/');
+    return parts[0] || localStorage.getItem('selectedTheme') || 'bootstrap5';
+  };
 
-if (!isMobile) {
-  createRoot(document.getElementById('dark-light-content')).render(<ThemeChangeButton />);
+  const [theme, setTheme] = useState(getInitialTheme());
+  const [isVisible, setIsVisible] = useState(!theme.includes('highcontrast'));
+
+  useEffect(() => {
+    const handleHash = () => {
+      const parts = location.hash.replace(/^#\//, '').split('/');
+      const newTheme = parts[0] || 'bootstrap5';
+      setTheme(newTheme);
+      setIsVisible(!newTheme.includes('highcontrast'));
+      selectedTheme = newTheme;
+      persistTheme(newTheme);
+      applyBodyClass(newTheme);
+      refreshCurrentControl();
+      if (isMobile && themeModeDropDown) {
+        const isDark = newTheme.includes('-dark');
+        
+        // Update mobile icon
+        const mobileModeIcon = document.getElementById('mobile-mode-icon');
+        if (mobileModeIcon) {
+          mobileModeIcon.className = `sb-icons pane-${isDark ? 'light-theme' : 'dark-theme'}`;
+        }
+        isUpdatingFromUrl = true;  // Set flag BEFORE updating
+        // Update the Syncfusion dropdown index
+        themeModeDropDown.index = isDark ? 1 : 0;
+        setTimeout(() => {
+          isUpdatingFromUrl = false;  // Reset flag AFTER update
+        }, 10);
+      }
+    };
+
+    window.addEventListener('hashchange', handleHash);
+    return () => {
+      window.removeEventListener('hashchange', handleHash);
+    };
+  }, []);
+
+  const isDark = theme.endsWith('-dark');
+  const label = isDark ? 'LIGHT' : 'DARK';
+  const iconClass = `sb-icons ${isDark ? 'dark-theme' : 'light-theme'}`;
+
+  if (isMobile) {
+    return <span style={{display: 'none'}}></span>;
+  }
+  return (
+    <button
+      className={`sb-themeswitch-btn ${!isVisible ? 'hidden' : ''}`}
+      onClick={toggleDarkMode}
+    >
+      <span className={iconClass}></span>
+      {label}
+    </button>
+  );
+}
+function toggleDarkMode(): void {
+  const parts = location.hash.replace(/^#\//, '').split('/');
+  const current = parts[0] || localStorage.getItem('selectedTheme') || 'bootstrap5';
+  const samplePath = parts.slice(1).join('/');
+
+  const isDark = current.endsWith('-dark');
+  const base = isDark ? current.slice(0, -5) : current;
+  const newTheme = isDark ? base : `${base}-dark`;
+
+  persistTheme(newTheme);
+  updateHash(newTheme, samplePath); 
+}
+const doControls: string[] = [
+  "chart", "three-dimension-chart", "three-dimension-circular-chart", "stock-chart", "arc-gauge", "circular-gauge",
+  "diagram", "heatmap-chart", "linear-gauge", "maps", "range-navigator", "smith-chart",
+  "barcode", "sparkline", "treemap", "bullet-chart", "kanban"
+];
+
+const refreshCurrentControl = () => {
+  const currentControl = window.location.hash.split('/')[2];
+  if (doControls.includes(currentControl)) {
+    const demo = document.querySelector('.sb-demo-section');
+    if (demo) {
+      const controls = demo.getElementsByClassName('e-control e-lib');
+      for (let i = 0; i < controls.length; i++) {
+        const instance = (controls[i] as any).ej2_instances;
+        if (instance?.[0]?.refresh instanceof Function) {
+          instance[0].refresh();
+        }
+      }
+    }
+  }
+};
+
+// **UPDATED: Render for both mobile and desktop 
+createRoot(document.getElementById('dark-light-content')).render(<ThemeChangeButton />);
+// **UPDATED: Hide theme mode button based on theme
+if (selectedTheme.includes('highcontrast')) {
   thememode.classList.add('hidden');
+} else {
+  thememode.classList.remove('hidden');
 }
 
 select('.close-button').addEventListener('click', () => {

@@ -34,6 +34,8 @@ function Clipboard() {
                 let withHeader: boolean = args.item.id === 'copyHeader' ? true : false;
                 gridInstance.copy(withHeader);
             } else {
+                alertDialogInstance.content = args.item.id === 'copyHeader' ? 'Atleast one row should be selected to copy with header' : 'Atleast one row should be selected to copy';
+                alertDialogInstance.header = args.item.id === 'copyHeader' ? 'Copy with Header' : 'Copy';
                 alertDialogInstance.show();
             }
         }

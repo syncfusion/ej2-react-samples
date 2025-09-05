@@ -21,15 +21,15 @@ export class SelfReferenceData extends SampleBase<{}, {}> {
   public splitterSettings: any = {
     columnIndex: 2
   };
-  public projectStartDate: Date = new Date('01/28/2024');
-  public projectEndDate: Date = new Date('03/10/2024');
+  public projectStartDate: Date = new Date('01/28/2025');
+  public projectEndDate: Date = new Date('03/30/2025');
   render() {
     return (
       <div className='control-pane'>
         <div className='control-section'>
           <GanttComponent id='SelfReferenceData' dataSource={selfData} highlightWeekends={true}
             allowSelection={true} treeColumnIndex={1} splitterSettings={this.splitterSettings}
-            taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'
+            taskFields={this.taskFields} labelSettings={this.labelSettings} height='650px' taskbarHeight={25} rowHeight={46}
             projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>
             <ColumnsDirective>
               <ColumnDirective field='taskID' width='80'></ColumnDirective>
@@ -54,6 +54,8 @@ export class SelfReferenceData extends SampleBase<{}, {}> {
           <p>Gantt component features are segregated into individual feature-wise modules. To use a selection, inject the
         <code>Selection</code> module using the <code>Gantt.Inject(Selection)</code> method.To use markers, inject the
         <code>DayMarkers</code> module using the <code>Gantt.Inject(DayMarkers)</code> method.</p>
+          <br/>
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/data-binding#self-referential-data-binding-flat-data">documentation section</a>.</p>
         </div>
       </div>
     )

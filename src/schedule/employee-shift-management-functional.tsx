@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import * as ReactDOM from 'react-dom/client';
 import { updateSampleSection } from '../common/sample-base';
 import { useRef, useState, useEffect } from 'react';
 import './employee-shift-management.css';
@@ -45,10 +45,9 @@ const EmployeeShiftManagement = () => {
     updateSampleSection();
   }, [])
   const scheduleRef = useRef<ScheduleComponent>(null);
-  const swapRequestDialogRef = useRef<DialogComponent>(null);
-  const employeeNameDropdownListRef = useRef<DropDownListComponent>(null);
   const shiftDropdownListRef = useRef<DropDownListComponent>(null);
-  const agendaToolbarRef = useRef<ToolbarComponent>(null);
+  const agendaToolbarRef = useRef<ReactDOM.Root | null>(null);
+  const tooltipRootsMapRef = useRef(new Map());
   const dropdownListRef = useRef<DropDownListComponent>(null);
   const allStaffsTreeRef = useRef<TreeViewComponent>(null);
   const doctorsTreeRef = useRef<TreeViewComponent>(null);
@@ -67,11 +66,15 @@ const EmployeeShiftManagement = () => {
   const allowDragAndDrop = true;
   const filteredQuery = new Query();
   const rolesData = ['', 'Doctors', 'Nurses', 'Support Staffs'];
+
+  const [employeeNamesList, setEmployeeNamesList] = useState<any[]>([]);
+  const [shiftList, setShiftList] = useState<any[]>([]);
+  const [selectedEmployee, setSelectedEmployee] = useState<any>(null);
+  const [selectedShift, setSelectedShift] = useState<any>(null);
+  const [requestedShift, setRequestedShift] = useState<any>(null);
+  const [dialogVisible, setDialogVisible] = useState<boolean>(false);
+  const [shiftsData, setShiftsData] = useState<any[]>([]);
   const [draggedItemId, setDraggedItemId] = useState<string>('');
-  let shiftsData: Record<string, any>[];
-  let requestedShift: Record<string, any>;
-  let selectedEmployee: Record<string, any>;
-  let selectedShift: Record<string, any>;
 
   // Static Data
   const imageMap: ImageMap = {
@@ -186,7 +189,7 @@ const EmployeeShiftManagement = () => {
     return [
       {
         click: () => {
-          swapRequestDialogRef.current.hide();
+          setDialogVisible(false);
         },
         buttonModel: {
           content: 'Cancel',
@@ -221,7 +224,9 @@ const EmployeeShiftManagement = () => {
           dataSource[approvedEventIndex] = approvedEvent[0];
           scheduleRef.current!.eventSettings.dataSource = dataSource;
           scheduleRef.current!.refreshEvents();
-          swapRequestDialogRef.current.hide();
+          setEmployeeNamesList([]);
+          setShiftList([]);
+          setDialogVisible(false);
         },
         buttonModel: {
           content: 'Swap Shift',
@@ -232,8 +237,13 @@ const EmployeeShiftManagement = () => {
   };
 
   const dialogClose = (): void => {
-    employeeNameDropdownListRef.current.dataSource = [];
-    shiftDropdownListRef.current.dataSource = [];
+    setEmployeeNamesList([]);
+    setShiftList([]);
+    setDialogVisible(false);
+  }
+
+  const dialogOpen = (): void => {
+    setDialogVisible(true);
   }
 
   const requestShiftSwap = (args: { element: HTMLElement }): void => {
@@ -242,6 +252,12 @@ const EmployeeShiftManagement = () => {
       args.element : closest(args.element, '.e-appointment')) as HTMLElement;
     if (!eventsData || !appointmnet) {
       return;
+    }
+    const tooltipData = tooltipRootsMapRef.current.get(appointmnet);
+    if (tooltipData) {
+      tooltipData.root.unmount();
+      tooltipData.container.remove();
+      tooltipRootsMapRef.current.delete(appointmnet);
     }
     const eventDetails: Record<string, any> = scheduleRef.current!.getEventDetails(appointmnet);
     if (!eventDetails) {
@@ -270,10 +286,10 @@ const EmployeeShiftManagement = () => {
         eventId: item.Id,
       });
     });
-    requestedShift = { id: eventDetails.Id, name: employeeName };
-    shiftsData = newShiftsData;
-    employeeNameDropdownListRef.current.dataSource = employeesData;
-    swapRequestDialogRef.current.show();
+    setRequestedShift({ id: eventDetails.Id, name: employeeName });
+    setShiftsData(newShiftsData);
+    setEmployeeNamesList(employeesData);
+    setDialogVisible(true);
   };
 
   const employeeNameChange = (args: ChangeEventArgs): void => {
@@ -282,16 +298,13 @@ const EmployeeShiftManagement = () => {
         item.designationId === (args.itemData as any).id &&
         item.employeeId === (args.itemData as any).employeeId
       );
-      shiftDropdownListRef.current.dataSource = shiftColl;
-      selectedEmployee = args.itemData;
+      setShiftList(shiftColl);
+      setSelectedEmployee(args.itemData);
     }
   };
 
   const shiftChange = (args: ChangeEventArgs): void => {
-    selectedShift = args.itemData;
-    const updatedButtons = getButtons();
-    swapRequestDialogRef.current.buttons = updatedButtons;
-    swapRequestDialogRef.current.dataBind();
+    setSelectedShift(args.itemData);
   };
 
   // Generating appointment element
@@ -388,7 +401,9 @@ const EmployeeShiftManagement = () => {
           </TooltipComponent>
         );
       };
-      ReactDOM.render(<IconWithTooltipRenderer />, reactContainer);
+      const root = ReactDOM.createRoot(reactContainer);
+      root.render(<IconWithTooltipRenderer />);
+      tooltipRootsMapRef.current.set(element, { root, container: reactContainer });
     };
     // Handling leave events
     if (data.Description?.toLowerCase().includes('leave')) {
@@ -406,7 +421,7 @@ const EmployeeShiftManagement = () => {
       element.classList.remove('event-leave');
       if (scheduleRef.current!.currentView !== 'Agenda') {
         appendTooltipIcon(
-          'e-replaced sf-icon-user-replace',
+          'e-replaced sf-employee-shift-icons-user-replace',
           'Leave covered by replacement'
         );
       }
@@ -416,12 +431,12 @@ const EmployeeShiftManagement = () => {
       !data.Subject?.toLowerCase().includes('swapped') &&
       scheduleRef.current!.currentView !== 'Agenda') {
       element.classList.add('event-swap');
-      appendTooltipIcon('e-swap sf-icon-replace-request', 'Click here to swap shift',
+      appendTooltipIcon('e-swap sf-employee-shift-icons-replace-request', 'Click here to swap shift',
         (event: Event) => {
           event.preventDefault();
           event.stopPropagation();
           const target = event.target as HTMLElement;
-          if (target.classList.contains('sf-icon-replace-request') ||
+          if (target.classList.contains('sf-employee-shift-icons-replace-request') ||
             target.classList.contains('e-swap') ||
             target.closest('.e-icons')) {
             requestShiftSwap(args as { element: HTMLElement });
@@ -434,7 +449,7 @@ const EmployeeShiftManagement = () => {
       element.classList.remove('event-swap');
       element.classList.add('event-swapped');
       if (scheduleRef.current!.currentView !== 'Agenda') {
-        appendTooltipIcon('e-swapped sf-icon-replace-accepted', 'This shift has been swapped');
+        appendTooltipIcon('e-swapped sf-employee-shift-icons-replace-accepted', 'This shift has been swapped');
       }
     }
   };
@@ -498,7 +513,7 @@ const EmployeeShiftManagement = () => {
     const toolbarElement = document.createElement('div');
     toolbarElement.id = 'agenda-toolbar-container';
     scheduleToolbar.appendChild(toolbarElement);
-    const toolbarComponent = ReactDOM.render(
+    const toolbarJSX = (
       <ToolbarComponent
         cssClass='agenda-toolbar'
         overflowMode="Scrollable"
@@ -507,10 +522,11 @@ const EmployeeShiftManagement = () => {
           <ItemDirective cssClass='tooltip-chips' type="Input" template={getAgendaToolbarChips} overflow="Show" align="Left" />
           <ItemDirective cssClass='tooltip-ddl' type="Input" template={getAgendaToolbarDropDownList} overflow="Show" align="Right" />
         </ItemsDirective>
-      </ToolbarComponent>,
-      toolbarElement
-    ) as any;
-    agendaToolbarRef.current = toolbarComponent;
+      </ToolbarComponent>
+    );
+    const root = ReactDOM.createRoot(toolbarElement);
+    root.render(toolbarJSX);
+    agendaToolbarRef.current = root;
   };
 
   const handleChipBeforeClick = (args: ClickEventArgs, isExternalChipClick?: boolean): void => {
@@ -545,7 +561,9 @@ const EmployeeShiftManagement = () => {
     } else {
       const toolbarContainer = scheduleToolbar.querySelector('#agenda-toolbar-container');
       if (toolbarContainer) {
-        ReactDOM.unmountComponentAtNode(toolbarContainer);
+        if (agendaToolbarRef.current) {
+          agendaToolbarRef.current.unmount();
+        }
         toolbarContainer.remove();
       }
       if (scheduleRef.current!.eventSettings.query) {
@@ -851,10 +869,10 @@ const EmployeeShiftManagement = () => {
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            zIndex: 9999
+            zIndex: 9999,
+            display: dialogVisible ? 'block' : 'none'
           }}>
             <DialogComponent
-              ref={swapRequestDialogRef}
               id="modalDialog"
               cssClass='swap-dialog'
               height='240px'
@@ -862,17 +880,17 @@ const EmployeeShiftManagement = () => {
               isModal={true}
               buttons={getButtons()}
               header="Shift swap"
-              visible={false}
+              visible={dialogVisible}
               showCloseIcon={true}
               animationSettings={animationSettings}
+              open={dialogOpen}
               close={dialogClose}
             >
               <div className='e-shift-swap'>
                 <div>
                   <label>Select an employee(Available for swapping)</label>
                   <DropDownListComponent
-                    ref={employeeNameDropdownListRef}
-                    dataSource={[]}
+                    dataSource={employeeNamesList}
                     fields={{ text: 'name', value: 'id' }}
                     change={employeeNameChange}
                     placeholder="Select an employee"
@@ -882,7 +900,7 @@ const EmployeeShiftManagement = () => {
                   <label>Select shift</label>
                   <DropDownListComponent
                     ref={shiftDropdownListRef}
-                    dataSource={[]}
+                    dataSource={shiftList}
                     fields={{ text: 'name', value: 'id' }}
                     placeholder="Select shift"
                     change={shiftChange}

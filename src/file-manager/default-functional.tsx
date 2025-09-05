@@ -5,7 +5,7 @@ import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import {CheckBoxComponent, ChangeEventArgs} from '@syncfusion/ej2-react-buttons';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
-import { FileManagerComponent, Inject, NavigationPane, Toolbar } from '@syncfusion/ej2-react-filemanager';
+import { FileManagerComponent, Inject, NavigationPane, DetailsView, Toolbar } from '@syncfusion/ej2-react-filemanager';
 
 const defaultcss = `
     #all-property-table .property-panel-section .property-panel-content table#property tr {
@@ -74,7 +74,7 @@ const Default = () => {
             <style>{defaultcss}</style>
             <div className="col-lg-8 control-section">
                 <FileManagerComponent id="api_filemanager" ref={fmObj} ajaxSettings = {{ url: hostUrl + "api/FileManager/FileOperations", getImageUrl: hostUrl + "api/FileManager/GetImage", uploadUrl: hostUrl + 'api/FileManager/Upload', downloadUrl: hostUrl + 'api/FileManager/Download' }} toolbarSettings={{items: ['NewFolder', 'SortBy', 'Cut', 'Copy', 'Paste', 'Delete', 'Refresh', 'Download', 'Rename', 'Selection', 'View', 'Details'], visible: isVisible}} contextMenuSettings={{file: [ 'Cut', 'Copy', '|', 'Delete', 'Download', 'Rename', '|', 'Details'], layout: ['SortBy', 'View', 'Refresh', '|', 'Paste', '|', 'NewFolder', '|', 'Details', '|', 'SelectAll'], visible: true }} view={"LargeIcons"} navigationPaneSettings={{visible: false}} allowMultiSelection={isAllowMultiselect} showFileExtension={isShowFileExtension} showThumbnail={isShowThumbnail} enableRangeSelection={isEnableRangeSelection}>
-                    <Inject services={[ NavigationPane, Toolbar]} />
+                    <Inject services={[ NavigationPane, DetailsView, Toolbar]} />
                 </FileManagerComponent>
             </div>
             <div id="all-property-table" className='col-lg-4 property-section'>
