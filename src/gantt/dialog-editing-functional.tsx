@@ -165,6 +165,7 @@ const GanttDialogEditing = () => {
                     field: 'resourceName',
                     headerText: 'Resource Name',
                     width: 180,
+                    template: '<div class="image"><img src="src/gantt/images/${resourceName}.png" style="height:25px;width:25px" /><div style="display:inline-block;width:100%;position:relative;left:5px">${resourceName}</div></div>',
                   },
                   { field: 'unit', width: 92 },
                   {
@@ -207,6 +208,7 @@ const GanttDialogEditing = () => {
                     field: 'resourceName',
                     headerText: 'Resource Name',
                     width: 180,
+                    template: '<div class="image"><img src="src/gantt/images/${resourceName}.png" style="height:25px;width:25px" /><div style="display:inline-block;width:100%;position:relative;left:5px">${resourceName}</div></div>',
                   },
                   { field: 'unit', width: 92 },
                   {

@@ -34,7 +34,6 @@ export class AdvancedExporting extends SampleBase<{}, {}> {
     columnIndex: 3,
   };
   public projectStartDate: Date = new Date('03/25/2025');
-  public projectEndDate: Date = new Date('06/25/2025');
   public gridLines: any = 'Both';
   public toolbar: any = ['PdfExport'];
   public timelineSettings: any = {
@@ -236,7 +235,7 @@ checkHighContrastMode() {
         </div>
           <GanttComponent id='AdvancedExporting' ref={gantt => this.ganttInstance = gantt} dataSource={pdfExport} dateFormat={'MMM dd, y'} enableCriticalPath={true}
             treeColumnIndex={1} allowExcelExport={true} allowPdfExport={true} allowSelection={true} showColumnMenu={false} highlightWeekends={true}
-            allowUnscheduledTasks={true} projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate} splitterSettings={this.splitterSettings}
+            allowUnscheduledTasks={true} projectStartDate={this.projectStartDate} splitterSettings={this.splitterSettings}
             taskFields={this.taskFields} timelineSettings={this.timelineSettings} labelSettings={this.labelSettings} toolbarClick={this.toolbarClick.bind(this)}
             height='650px' taskbarHeight={25} rowHeight={46} gridLines={this.gridLines} holidays={this.holidays} eventMarkers={this.eventMarkers} toolbar={this.toolbar} resourceFields={this.resourceFields} resources={editingResources}
             pdfQueryTaskbarInfo = {this.pdfQueryTaskbarInfo} queryTaskbarInfo={this.queryTaskbarInfo}>

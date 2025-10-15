@@ -74,6 +74,7 @@ public toolbar: any = [ "Add", "Edit", "Update", "Delete", "Cancel",
     const redoCount = this.ganttInstance.getRedoActions().length;
     if (undoBtn) {
       if (undoCount === 0) {
+        undoBtn.classList.add("e-overlay");
         undoBtn.style.cursor = "default";
         undoBtn.style.pointerEvents = "none";
       } else {

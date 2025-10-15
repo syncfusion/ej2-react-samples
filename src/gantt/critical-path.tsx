@@ -27,14 +27,13 @@ export class Critical extends SampleBase<{}, {}> {
         leftLabel: 'TaskName'
     };
     public projectStartDate: Date = new Date('03/26/2025');
-    public projectEndDate: Date = new Date('06/01/2025');
     render() {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
                     <GanttComponent id='Critical' dataSource={projectNewData} treeColumnIndex={1}
                         taskFields={this.taskFields} labelSettings={this.labelSettings} height='650px' taskbarHeight={25} rowHeight={46}
-                        projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}
+                        projectStartDate={this.projectStartDate}
                         enableCriticalPath={true} editSettings={this.editSettings} toolbar={this.toolbar}>
                         <ColumnsDirective>
                             <ColumnDirective field='TaskID' width='80' ></ColumnDirective>

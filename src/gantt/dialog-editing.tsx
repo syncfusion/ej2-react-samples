@@ -6,8 +6,8 @@ import { getUniqueID, isNullOrUndefined } from '@syncfusion/ej2-base';
 import { dialogData, dataResources } from './data';
 import { SampleBase } from '../common/sample-base';
 
-class GanttDialogEditing extends SampleBase<{}, {}> {
-  private ganttInstance: GanttComponent;
+export class GanttDialogEditing extends SampleBase<{}, {}> {
+  public ganttInstance: GanttComponent;
 
   private taskFields: any = {
     id: 'TaskID',
@@ -164,6 +164,7 @@ class GanttDialogEditing extends SampleBase<{}, {}> {
                       field: 'resourceName',
                       headerText: 'Resource Name',
                       width: 180,
+                      template: '<div class="image"><img src="src/gantt/images/${resourceName}.png" style="height:25px;width:25px" /><div style="display:inline-block;width:100%;position:relative;left:5px">${resourceName}</div></div>',
                     },
                     { field: 'unit', width: 92 },
                     {
@@ -209,6 +210,7 @@ class GanttDialogEditing extends SampleBase<{}, {}> {
                       field: 'resourceName',
                       headerText: 'Resource Name',
                       width: 180,
+                      template: '<div class="image"><img src="src/gantt/images/${resourceName}.png" style="height:25px;width:25px" /><div style="display:inline-block;width:100%;position:relative;left:5px">${resourceName}</div></div>',
                     },
                     { field: 'unit', width: 92 },
                     {

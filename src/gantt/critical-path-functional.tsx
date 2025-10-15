@@ -31,13 +31,12 @@ const Critical = () => {
         leftLabel: 'TaskName'
     };
     const projectStartDate: Date = new Date('03/26/2025');
-    const projectEndDate: Date = new Date('06/01/2025');
     return (
         <div className='control-pane'>
             <div className='control-section'>
                 <GanttComponent id='Critical' dataSource={criticalPathData} treeColumnIndex={1}
                     taskFields={taskFields} labelSettings={labelSettings} height='650px' taskbarHeight={25} rowHeight={46}
-                    projectStartDate={projectStartDate} projectEndDate={projectEndDate}
+                    projectStartDate={projectStartDate}
                     enableCriticalPath={true} editSettings={editSettings} toolbar={toolbar}>
                     <ColumnsDirective>
                         <ColumnDirective field='TaskID' width='80' ></ColumnDirective>

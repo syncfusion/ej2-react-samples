@@ -38,7 +38,6 @@ const AdvancedExporting = () => {
     columnIndex: 3,
   };
   const projectStartDate: Date = new Date('03/25/2025');
-  const projectEndDate: Date = new Date('06/25/2025');
   const gridLines: any = 'Both';
   const toolbar: any = ['PdfExport'];
   const timelineSettings: any = {
@@ -236,7 +235,7 @@ const LeftLabelTemplate = (props) => {
         </div>
         <GanttComponent id='AdvancedExporting' ref={ganttInstance} dataSource={pdfExport} dateFormat={'MMM dd, y'} enableCriticalPath={true}
           treeColumnIndex={1} allowExcelExport={true} allowPdfExport={true} allowSelection={true} showColumnMenu={false} highlightWeekends={true}
-          allowUnscheduledTasks={true} projectStartDate={projectStartDate} projectEndDate={projectEndDate} splitterSettings={splitterSettings}
+          allowUnscheduledTasks={true} projectStartDate={projectStartDate} splitterSettings={splitterSettings}
           taskFields={taskFields} timelineSettings={timelineSettings} labelSettings={labelSettings} toolbarClick={toolbarClick.bind(this)}
           height='650px' taskbarHeight={25} rowHeight={46} gridLines={gridLines} toolbar={toolbar} resourceFields={resourceFields} holidays={holidays} eventMarkers={eventMarkers} resources={editingResources}
           pdfQueryTaskbarInfo = {pdfQueryTaskbarInfo} queryTaskbarInfo={queryTaskbarInfo}>
