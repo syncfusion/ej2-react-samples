@@ -2,7 +2,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
-import { FileManagerComponent, Inject, NavigationPane, Toolbar } from '@syncfusion/ej2-react-filemanager';
+import { FileManagerComponent, Inject, NavigationPane, Toolbar, DetailsView } from '@syncfusion/ej2-react-filemanager';
 import './custom-thumbnail.css';
 
 /**
@@ -18,7 +18,7 @@ const CustomThumbnail = () => {
         <div>
             <div className="control-section">
                 <FileManagerComponent id="Thumbnail_filemanager" ajaxSettings = {{url: hostUrl + "api/FileManager/FileOperations", getImageUrl: hostUrl + "api/FileManager/GetImage", uploadUrl: hostUrl + 'api/FileManager/Upload', downloadUrl: hostUrl + 'api/FileManager/Download'}} toolbarSettings={{items: ['NewFolder', 'SortBy', 'Cut', 'Copy', 'Paste', 'Delete', 'Refresh', 'Download', 'Rename', 'Selection', 'View', 'Details']}} contextMenuSettings={{file: [ 'Cut', 'Copy', '|', 'Delete', 'Download', 'Rename', '|', 'Details'], layout: ['SortBy', 'View', 'Refresh', '|', 'Paste', '|', 'NewFolder', '|', 'Details', '|', 'SelectAll'], visible: true }} view={"LargeIcons"} showThumbnail = {false}>
-                    <Inject services={[ NavigationPane, Toolbar]} />
+                    <Inject services={[ NavigationPane, Toolbar, DetailsView]} />
                 </FileManagerComponent>
             </div>
             <div id="action-description">

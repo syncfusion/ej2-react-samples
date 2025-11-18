@@ -119,7 +119,7 @@ export let samplesList: any = [
         'name': 'Kanban', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-kanban', 'samples': AIKanbanSampleOrder
     },
     {
-        'name': 'Data Grid', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-grid', 'samples': AIGridSampleOrder
+        'name': 'Data Grid', 'category': 'Smart AI Solutions','type':'update', 'order': '01', 'path': 'ai-grid', 'samples': AIGridSampleOrder
     },
     {
         'name': 'Tree Grid', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-tree-grid', 'samples': AITreeGridSampleOrder

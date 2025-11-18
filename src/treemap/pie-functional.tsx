@@ -80,7 +80,7 @@ const Pie = () => {
         let chart: AccumulationChart = new AccumulationChart({
             background: "transparent",
             tooltip: {
-                enable: true,
+                enable: false,
                 format: "${point.x} : ${point.y}%",
             },
             series: [

@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
-import { FileManagerComponent, Inject, NavigationPane, Toolbar } from '@syncfusion/ej2-react-filemanager';
+import { FileManagerComponent, Inject, NavigationPane, Toolbar, DetailsView } from '@syncfusion/ej2-react-filemanager';
 import './custom-thumbnail.css';
 
 /**
@@ -27,7 +27,7 @@ export class CustomThumbnail extends SampleBase<{},{}> {
                         visible: true
                     }}
                     view={"LargeIcons"} showThumbnail = {false}>
-                <Inject services={[ NavigationPane, Toolbar]} />
+                <Inject services={[ NavigationPane, Toolbar, DetailsView]} />
                     </FileManagerComponent>
                 </div>
                 <div id="action-description">

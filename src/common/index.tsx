@@ -1,5 +1,5 @@
 import * as ReactDOM from 'react-dom';
-import { createRoot } from 'react-dom/client';
+import { createRoot,Root } from 'react-dom/client';
 import * as React from 'react';
 import { Ajax, Animation, L10n, setCulture, setCurrencyCode, loadCldr, Browser, createElement, closest, enableRipple, select, selectAll, registerLicense, getComponent } from '@syncfusion/ej2-base';
 import { Button } from '@syncfusion/ej2-react-buttons';
@@ -50,6 +50,13 @@ let isTablet: boolean = window.matchMedia('(min-width:600px) and (max-width: 850
 let isPc: boolean = window.matchMedia('(min-width:850px)').matches;
 let isUpdatingFromUrl = false;
 let resizeManualTrigger: boolean = false;
+//dropdown rendered flag
+let dropdownsRendered: boolean = false;
+//events bound flag
+let eventsBound: boolean = false;
+//mount samples flag
+let leftPaneRoot: Root | null = null;
+let tabRoot: Root | null = null;
 /**
  * Themes to be redirect
  */
@@ -235,6 +242,9 @@ function changeMouseOrTouch(str: string): void {
  * Render Sample Browser Popups
  */
 function renderSbPopups(): void {
+            if (dropdownsRendered) {
+    return;
+  }
   switcherPopup = new Popup(document.getElementById('sb-switcher-popup'), {
     relateTo: select('.sb-header-text-right') as HTMLElement, position: { X: 'left' },
     collision: { X: 'flip', Y: 'flip' },
@@ -340,6 +350,7 @@ function renderSbPopups(): void {
       iconCss: 'sb-icons sb-icon-Next',
       cssClass: 'e-flat', iconPosition: 'Right'
     }, '#mobile-next-sample');
+    dropdownsRendered=true;
 }
 function closeRightSidebar(args: EventArgs): void {
   let targetEle: HTMLElement | null = args.event ? args.event.target as HTMLElement : null;
@@ -494,6 +505,10 @@ function resetInput(arg: MouseEvent): void {
  * Binding events for sample browser operations
  */
 function bindEvents(): void {
+            if (eventsBound) {
+    return;
+  }
+  eventsBound = true;
   document.getElementById('sb-switcher').addEventListener('click', (e: MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -957,17 +972,41 @@ function UpdatedCss(theme:string)
       (elasticlunr as any).clearStopWords();
       searchInstance = (elasticlunr as any).Index.load(searchJson);
 
-      createRoot(document.getElementById('left-pane-component')!).render(<LeftPane />);
-      setTimeout(() => {
-        setSelectList();
-        createRoot(document.getElementById('tab-component')!).render(<Content />);
-        if (!isMobile) {
-          document.querySelector('.sb-right-pane')!.scrollTop = 0;
-        }
-      }, 100);
+      // createRoot(document.getElementById('left-pane-component')!).render(<LeftPane />);
+      // setTimeout(() => {
+      //   setSelectList();
+      //   createRoot(document.getElementById('tab-component')!).render(<Content />);
+      //   if (!isMobile) {
+      //     document.querySelector('.sb-right-pane')!.scrollTop = 0;
+      //   }
+      // }, 100);
+      mountSamples();
     };
     linkEl.href = href;
   }
+}
+function mountSamples(): void {
+  if (!leftPaneRoot) {
+    const host = document.getElementById('left-pane-component');
+    if (host) {
+      leftPaneRoot = createRoot(host);
+    }
+  }
+  if (leftPaneRoot) {
+    leftPaneRoot.render(<LeftPane />);
+  }
+
+  if (!tabRoot) {
+    const host = document.getElementById('tab-component');
+    if (host) {
+      tabRoot = createRoot(host);
+    }
+  }
+  if (tabRoot) {
+    tabRoot.render(<Content key={selectedTheme} />); // key forces remount when theme changes
+  }
+
+  setTimeout(() => setSelectList(), 100);
 }
 /**
  *  themeChangebutton
@@ -1060,11 +1099,12 @@ const refreshCurrentControl = () => {
         if (instance?.[0]?.refresh instanceof Function) {
           instance[0].refresh();
         }
+                    if (instance && instance[0] && instance[0].getModuleName() !== 'DashboardLayout')
+                    break;
       }
     }
   }
 };
-
 // **UPDATED: Render for both mobile and desktop 
 createRoot(document.getElementById('dark-light-content')).render(<ThemeChangeButton />);
 // **UPDATED: Hide theme mode button based on theme
