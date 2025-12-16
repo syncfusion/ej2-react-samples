@@ -22,8 +22,6 @@ function RowSpanning() {
                 } else if (args.column.field === '4:30') {
                     args.colSpan = 2;
                     args.rowSpan = 2;
-                } else if (args.column.field === 'EmployeeName') {
-                    args.rowSpan = 2;
                 }
                 break;
             case 10002:

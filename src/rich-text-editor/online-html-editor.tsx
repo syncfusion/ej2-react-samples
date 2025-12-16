@@ -5,7 +5,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { PaneDirective, PanesDirective, SplitterComponent } from '@syncfusion/ej2-react-layouts';
 import { RichTextEditorComponent, Toolbar, Inject, Image, Link, HtmlEditor } from '@syncfusion/ej2-react-richtexteditor';
-import { QuickToolbar, Table, ToolbarSettingsModel, ToolbarType, Count, PasteCleanup, EmojiPicker, Audio ,Video, FormatPainter } from '@syncfusion/ej2-react-richtexteditor';
+import { QuickToolbar, Table, ToolbarSettingsModel, ToolbarType, Count, PasteCleanup, EmojiPicker, Audio ,Video, FormatPainter, ClipBoardCleanup, AutoFormat } from '@syncfusion/ej2-react-richtexteditor';
 import { createElement, KeyboardEventArgs, Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 import * as CodeMirror from 'codemirror';
@@ -114,7 +114,7 @@ export class OnlineHtmlEditor extends SampleBase<{}, {}> {
             <p>Create and edit the valid HTML code simply! You don't worry about the HTML syntax to format your text content. The WYSIWYG editor (left side view) provided the toolbar to make format text and insert images, tables, and more options.</p>
             <h4>Don't worry about syntax</h4>
             <p>The content editing works bi-directional, you can write the HTML code on the right-side view (code view), and changes will reflect in the WYSIWYG editor.</p>
-          <Inject services={[Toolbar, Image, Link, HtmlEditor, QuickToolbar, Table, Count, PasteCleanup, EmojiPicker, Audio ,Video, FormatPainter]} />
+          <Inject services={[Toolbar, Image, Link, HtmlEditor, QuickToolbar, Table, Count, PasteCleanup, EmojiPicker, Audio ,Video, FormatPainter, ClipBoardCleanup, AutoFormat]} />
         </RichTextEditorComponent>
       </div>
     );

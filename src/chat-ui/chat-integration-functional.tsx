@@ -87,13 +87,13 @@ const ChatIntegration = () => {
         <div className='control-pane'>
             <div className="control-section chat-integration">
                 <div className="integration-chatui">
-                    <SplitterComponent paneSettings={[{ size: 'auto', resizable: false, cssClass: "chat-leftContent" }, { size: '80%', resizable: false, cssClass: "chat-rightContent" }]} created={() => { onCreated()}}>
+                    <SplitterComponent paneSettings={[{ size: 'auto', resizable: false, cssClass: "chat-leftContent" }, { size: '80%', resizable: false, cssClass: "chat-rightContent" }]} created={() => { onCreated() }}>
                         <div id="buttonsPane">
                             <div className="chat-options-container">
-                            <ButtonComponent iconCss="e-icons e-stamp" cssClass="e-flat chat_options" iconPosition="Top"><span>Activity</span></ButtonComponent>
-                            <ButtonComponent iconCss="e-icons e-comment-show" cssClass="e-flat chat_options chat_interactable" iconPosition="Top" style={{ borderLeft: '2px solid #0f6cbd' }} onClick={toggleListView}><span>Chat</span></ButtonComponent>
-                            <ButtonComponent iconCss="e-icons e-month" cssClass="e-flat chat_options" iconPosition="Top"><span>Calendar</span></ButtonComponent>
-                            <ButtonComponent iconCss="e-icons e-people" cssClass="e-flat chat_options" iconPosition="Top"><span>Teams</span></ButtonComponent>
+                                <ButtonComponent iconCss="e-icons e-stamp" cssClass="e-flat chat_options" iconPosition="Top"><span>Activity</span></ButtonComponent>
+                                <ButtonComponent iconCss="e-icons e-comment-show" cssClass="e-flat chat_options chat_interactable" iconPosition="Top" style={{ borderLeft: '2px solid #0f6cbd' }} onClick={toggleListView}><span>Chat</span></ButtonComponent>
+                                <ButtonComponent iconCss="e-icons e-month" cssClass="e-flat chat_options" iconPosition="Top"><span>Calendar</span></ButtonComponent>
+                                <ButtonComponent iconCss="e-icons e-people" cssClass="e-flat chat_options" iconPosition="Top"><span>Teams</span></ButtonComponent>
                             </div>
                             <div id="toggle-chat-list" className="toggle-chat-listview e-card">
                                 <div id="listview_template" tabIndex={1} style={{ border: 'none' }}>
@@ -104,23 +104,23 @@ const ChatIntegration = () => {
                                         headerTitle="Chats"
                                         cssClass="e-list-template"
                                         showHeader={true}
-                                        select={(args) => { handleSelect (args)}}
+                                        select={(args) => { handleSelect(args) }}
                                     />
                                 </div>
                             </div>
                         </div>
                         <div id="integration-chat">
-                                <ChatUIComponent
-                                    id="integration-chat"
-                                    style={{ border: 'none' }}
-                                    ref={chatUiInst}
-                                    headerText="Albert"
-                                    headerIconCss="chat_user1_avatar"
-                                    messages={messages}
-                                    user={{ id: 'user1', user: 'Albert', avatarUrl: './src/chat-ui/images/andrew.png' }}
-                                    headerToolbar={userToolbarSettings}
-                                    messageSend={(args) => { handleMessageSend(args) }}
-                                />
+                            <ChatUIComponent
+                                id="integration-chat"
+                                style={{ border: 'none' }}
+                                ref={chatUiInst}
+                                headerText="Albert"
+                                headerIconCss="chat_user1_avatar"
+                                messages={messages}
+                                user={{ id: 'user1', user: 'Albert', avatarUrl: './src/chat-ui/images/andrew.png' }}
+                                headerToolbar={userToolbarSettings}
+                                messageSend={(args) => { handleMessageSend(args) }}
+                            />
                         </div>
                     </SplitterComponent>
                 </div>
@@ -133,7 +133,7 @@ const ChatIntegration = () => {
                     This example demonstrates how to use the Chat UI component to display chat messages for multiple users. The chat interface allows switching between users' conversations, with bot responses triggered by user input. A header toolbar is included, and a splitter layout displays the chat alongside a list view for easy navigation.
                 </p>
                 <p>
-                    The chat UI dynamically updates to reflect the selected user's conversation, providing an interactive experience with seamless switching between different chats. The responsive design ensures that the interface adapts to various screen sizes, making it user-friendly across devices.
+                    The Chat UI dynamically updates to reflect the selected user's conversation, providing an interactive experience with seamless switching between different chats. The responsive design ensures that the interface adapts to various screen sizes, making it user-friendly across devices.
                 </p>
             </div>
         </div>

@@ -40,6 +40,7 @@ const RemoteVirtual = () => {
             <ColumnDirective
               field="TaskID"
               headerText="Task ID"
+              isPrimaryKey={true}
               width="80"
               textAlign="Right"
             ></ColumnDirective>

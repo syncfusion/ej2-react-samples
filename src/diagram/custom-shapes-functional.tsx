@@ -181,12 +181,14 @@ function HtmlNode() {
     var template = diagramTemplate;
     let gtemplate: any = gridTemplate;
     let datachange = onDateRangeChange;
+    const [diagramCreated, setCreated] = React.useState(false);
     
     function rendereComplete() {
         updateSampleSection();
         initialRenderr();
         onGridLoad();
         onChartLoaded();
+        setCreated(true);
         diagramInstance.fitToPage(); 
     }
 
@@ -533,10 +535,15 @@ function HtmlNode() {
           )
         }
       }
+      function load() {
+        if(diagramCreated){
+          diagramInstance.fitToPage();
+        }
+      }
     return (
         <div className="control-pane">
         <div id="custom-diagram" className="control-section">
-          <DiagramComponent id="diagram" ref={diagram => (diagramInstance = diagram)} width={"100%"} backgroundColor='#f5f5f5' height={"1100px"} nodes={nodes} created={(args) => {rendereComplete();}} nodeTemplate={template.bind(this)} />
+          <DiagramComponent id="diagram" ref={diagram => (diagramInstance = diagram)} width={"100%"} backgroundColor='#f5f5f5' height={"1100px"} nodes={nodes} created={(args) => {rendereComplete();}} nodeTemplate={template.bind(this)} load={() => { load();}} />
         </div>
         <div id="action-description">
           <p>

@@ -35,7 +35,7 @@ const ChunkUpload = () => {
     };
     autoUpload = false;
     const onChange = (args: ChangeEventArgs): void => {
-        setChunkSize(parseInt(args.itemData.value, 10));
+        setChunkSize((args.value, 10));
     }
     const onRemoveFile = (args: RemovingEventArgs): void => {
         args.postRawFile = false;

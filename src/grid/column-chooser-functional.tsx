@@ -19,7 +19,7 @@ function ColChooser() {
             <div className='control-section'>
                 <GridComponent dataSource={data} toolbar={toolbarOptions} allowPaging={true} showColumnChooser={true} allowSorting={true} pageSettings={{ pageCount: 5 }} editSettings={editSettings} allowFiltering={true} filterSettings={filterSettings}>
                     <ColumnsDirective>
-                        <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={orderidRules} isPrimaryKey={true}></ColumnDirective>
+                        <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' showInColumnChooser={false} validationRules={orderidRules} isPrimaryKey={true}></ColumnDirective>
                         <ColumnDirective field='CustomerName' headerText='Customer Name' width='150' showInColumnChooser={false} validationRules={customeridRule}></ColumnDirective>
                         <ColumnDirective field='OrderDate' headerText='Order Date' width='130' format='yMd' textAlign='Right' editType='datepickeredit'/>
                         <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='130' format='yMd' textAlign='Right' editType='datepickeredit'/>

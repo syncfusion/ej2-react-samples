@@ -182,7 +182,7 @@ const ColumnFormat = () => {
         </p>
         <p>
           More information about Column Formatting can be found in this
-          documentation section.
+          <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/columns/columns">documentation</a> section.
         </p>
       </div>
     </div>

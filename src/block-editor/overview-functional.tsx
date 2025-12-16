@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
-import { BlockEditorComponent } from '@syncfusion/ej2-react-blockeditor';
+import { BlockEditorComponent, InlineToolbarSettingsModel } from '@syncfusion/ej2-react-blockeditor';
 import './overview.css';
 import * as data from './blockData.json';
 
@@ -11,10 +11,17 @@ const Overview = () => {
     updateSampleSection();
   }, []);
 
+    const customToolbarItems: string[] = [
+      'Bold', 'Italic', 'Underline', 'Strikethrough', 'Uppercase', 'Lowercase', 'Subscript', 'Superscript', 'Color', 'Backgroundcolor'
+    ];
+    const inlineToolbar: InlineToolbarSettingsModel = {
+      items: customToolbarItems,
+    };
+
   return (
-    <div className='control-section'>
-        <div className="overview-blockeditor">
-            <BlockEditorComponent id='block-editor' blocks={data["blockDataOverview"]}></BlockEditorComponent>
+     <div className='control-pane'>
+        <div className="control-section overview-blockeditor">
+            <BlockEditorComponent id='block-editor' blocks={data["blockDataOverview"]} users={data["users"]}  inlineToolbarSettings={inlineToolbar}></BlockEditorComponent>
         </div>
 
         <div id="action-description">
@@ -29,7 +36,7 @@ const Overview = () => {
             </p>
             <p>Key features demonstrated in this sample:</p>
             <ul>
-                <li>Multiple block types including <code>Heading1-4</code>, <code>Paragraph</code>, <code>BulletList</code>, <code>NumberedList</code>, <code>Checklist</code>, <code>Quote</code>, <code>Callout</code>, <code>Divider</code>, <code>Code</code>, <code>ToggleParagraph</code>, and more.</li>
+                <li>Multiple block types including <code>Heading1-4</code>, <code>Paragraph</code>, <code>Table</code>, <code>BulletList</code>, <code>NumberedList</code>, <code>Checklist</code>, <code>Quote</code>, <code>Callout</code>, <code>Divider</code>, <code>Code</code>, <code>ToggleParagraph</code>, and more.</li>
                 <li>Rich text formatting with styles like <code>Bold</code>, <code>Italic</code>, <code>Underline</code>, <code>Strikethrough</code>, <code>Uppercase</code>, and more.</li>
                 <li>Interactive <code>Slash ("/") commands</code> for quick block insertion and transformation.</li>
                 <li>Hierarchical organization with expandable <code>Toggle Blocks</code>.</li>

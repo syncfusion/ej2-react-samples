@@ -138,7 +138,7 @@ const Timeline = () => {
     } else {
       topTierformat.current.dataSource = hourformat;
     }
-    topTierformat.current.refresh();
+    topTierformat.current.value = topTierformat.current.dataSource[0].id;
     updateUnitWidth(unit, 'top');
     ganttInstance.current.timelineSettings.topTier.unit = unit as TimelineViewMode;
   }
@@ -156,7 +156,7 @@ const Timeline = () => {
     } else {
       bottomTierformat.current.dataSource = hourformat;
     }
-    bottomTierformat.current.refresh();
+    bottomTierformat.current.value = bottomTierformat.current.dataSource[0].id;
     updateUnitWidth(unit, 'bottom');
     ganttInstance.current.timelineSettings.bottomTier.unit = unit as TimelineViewMode;
   }

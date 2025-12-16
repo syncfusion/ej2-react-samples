@@ -99,7 +99,7 @@ export class Default extends SampleBase<{}, {}> {
               messageSend={(args) => this.handleMessageSend(args, 'user2')}
               ref={chatUI => (this.chatUser2Ref = chatUI)}
             />
-            </div>
+          </div>
         </div>
 
         <div id="action-description">
@@ -107,11 +107,11 @@ export class Default extends SampleBase<{}, {}> {
         </div>
         <div id="description">
           <p>
-            In this example, two Chat UI web components are used to represent users <b>Albert</b> and <b>Reena</b>, each with a unique header, avatar, and toolbar. Messages are instantly synchronized between the two users through the <code>messageSend</code> event, while typing indicators are shown in the other chat interface via the <code>userTyping</code> event, adding a more interactive feel.
-            This example demonstrates how to use the Chat UI component to display chat messages for multiple users. The chat interface allows switching between users' conversations, with bot responses triggered by user input. A header toolbar is included, and a splitter layout displays the chat alongside a list view for easy navigation.
+            In this example, two Chat UI web component are used to represent users <b>Albert</b> and <b>Reena</b>, each with a unique header, avatar, and toolbar. Messages are instantly synchronized between the two users through the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chat-ui/#messagesend">messageSend</a> event, while typing indicators are shown in the other chat interface via the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chat-ui/#usertyping">userTyping</a> event, adding a more interactive feel.
+            The toolbar for each chat includes a dropdown menu with options like muting and deleting messages, demonstrating the component’s ability to customize and control the chat experience.
           </p>
         </div>
       </div>
-      )
-    }
+    )
+  }
 }

@@ -10,25 +10,25 @@ import * as data from './promptResponseData.json';
 export class Template extends SampleBase<{}, {}> {
   promptSuggestionsHeader: 'Hello! Ask Questions, to better understand how your prompt interacts with AI AssistView!';
 
-  prompts: { [key: string]: string | string[] } [] = data["defaultPromptResponseData"];
+  prompts: { [key: string]: string | string[] }[] = data["defaultPromptResponseData"];
 
-  suggestion: string [] = data["defaultSuggestions"];
+  suggestion: string[] = data["defaultSuggestions"];
 
   templateAiAssistView: AIAssistViewComponent;
   assistViewCarousel: CarouselComponent;
 
   buttonVisible: CarouselButtonVisibility = 'Visible';
   dataSource = [
-    { imagePath: 'src/ai-assistview/images/moscow.jpg', title:'Moscow', suggestion: 'How do I prioritize tasks effectively?'  },
-    { imagePath: 'src/ai-assistview/images/bridge.jpg', title:'Bridge', suggestion: 'How do I set daily goals in my work day?'  },
-    { imagePath: 'src/ai-assistview/images/london.jpg', title:'London', suggestion: 'Steps to publish a e-book with marketing strategy'  },
-    { imagePath: 'src/ai-assistview/images/tokyo.jpg', title:'Tokyo', suggestion: 'What tools or apps can help me prioritize tasks?'  }
+    { imagePath: 'src/ai-assistview/images/moscow.jpg', title: 'Moscow', suggestion: 'How do I prioritize tasks effectively?' },
+    { imagePath: 'src/ai-assistview/images/bridge.jpg', title: 'Bridge', suggestion: 'How do I set daily goals in my work day?' },
+    { imagePath: 'src/ai-assistview/images/london.jpg', title: 'London', suggestion: 'Steps to publish a e-book with marketing strategy' },
+    { imagePath: 'src/ai-assistview/images/tokyo.jpg', title: 'Tokyo', suggestion: 'What tools or apps can help me prioritize tasks?' }
   ];
 
   productTemplate = (data: any) => {
     return (
       <div className="carousel-template">
-        <img src={data.imagePath} alt={data.title}/>
+        <img src={data.imagePath} alt={data.title} />
         <div className="e-card">
           <div className="e-card-header">
             {data.suggestion}
@@ -66,7 +66,7 @@ export class Template extends SampleBase<{}, {}> {
           <span className="e-icons e-assistview-icon"></span>
           AI Assist
         </div>
-        <div className="assist-response-content" dangerouslySetInnerHTML={{ __html: props.response}}></div>
+        <div className="assist-response-content" dangerouslySetInnerHTML={{ __html: props.response }}></div>
       </div>
     );
   };
@@ -77,7 +77,7 @@ export class Template extends SampleBase<{}, {}> {
         <span className="e-icons e-circle-info"></span>
         <div className="assist-suggestion-content">{props.promptSuggestion}</div>
       </div>
-  );
+    );
   };
 
   toolbarSettings: ToolbarSettingsModel = {
@@ -86,13 +86,13 @@ export class Template extends SampleBase<{}, {}> {
     ]
   };
 
-  handleAction= (e) => {
+  handleAction = (e) => {
     var target = e.target as any;
     var prompt = '';
     if (target.tagName === 'IMG') {
-        prompt = target.nextElementSibling.textContent;
+      prompt = target.nextElementSibling.textContent;
     } else if (target.className === 'e-card-header') {
-        prompt = target.textContent;
+      prompt = target.textContent;
     }
     if (prompt) { this.templateAiAssistView.executePrompt(prompt); }
   }
@@ -109,9 +109,9 @@ export class Template extends SampleBase<{}, {}> {
 
     new DropDownButton({
       items: [
-          { text: 'Settings', iconCss: 'e-icons e-settings' },
-          { separator: true },
-          { text: 'Log out' }
+        { text: 'Settings', iconCss: 'e-icons e-settings' },
+        { separator: true },
+        { text: 'Log out' }
       ],
       iconCss: 'e-icons e-user',
       cssClass: 'e-caret-hide',
@@ -124,7 +124,7 @@ export class Template extends SampleBase<{}, {}> {
       var defaultResponse = 'For real-time prompt processing, connect the AI AssistView control to your preferred AI service, such as OpenAI or Azure Cognitive Services. Ensure you obtain the necessary API credentials to authenticate and enable seamless integration.';
 
       this.templateAiAssistView.addPromptResponse(foundPrompt ? foundPrompt.response : defaultResponse);
-      this.templateAiAssistView.promptSuggestions = foundPrompt?.suggestions as string [] || this.suggestion;
+      this.templateAiAssistView.promptSuggestions = foundPrompt?.suggestions as string[] || this.suggestion;
     }, 2000);
   };
 
@@ -141,10 +141,10 @@ export class Template extends SampleBase<{}, {}> {
           <p>This sample demonstrates the template functionality of the AI AssistView component.</p>
         </div>
         <div id="description">
-          <p>In this example, the AI AssistView component uses customizable templates for the banner, prompts, responses, and suggestions. We have used the <code>bannerViewTemplate</code>, <code>promptItemTemplate</code>, <code>responseItemTemplate</code> and <code>promptSuggestionItemTemplate</code> to define the structure and appearance of these elements.
+          <p>In this example, the AI AssistView component uses customizable templates for the banner, prompts, responses, and suggestions. We have used the  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/ai-assistview#bannertemplate">bannerTemplate</a>,  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/ai-assistview#promptitemtemplate">promptItemTemplate</a>,  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/ai-assistview#responseitemtemplate">responseItemTemplate</a> and  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/ai-assistview#promptsuggestionitemtemplate">promptSuggestionItemTemplate</a> to define the structure and appearance of these elements.
           </p>
           <p>
-            By using the <code>executePrompt</code> method you can trigger the prompt request externally and generate the output based on the <code>promptRequest</code> data returned. If found, the response will be displayed and suggestions updated.
+            By using the  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/ai-assistview#executeprompt">executePrompt</a> method you can trigger the prompt request externally and generate the output based on the  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/ai-assistview#promptrequest">promptRequest</a> data returned. If found, the response will be displayed and suggestions updated.
           </p>
         </div>
       </div>

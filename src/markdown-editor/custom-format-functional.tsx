@@ -3,7 +3,7 @@
  */
 import { createElement, KeyboardEventArgs } from '@syncfusion/ej2-base';
 import { Image, Inject, ToolbarSettingsModel, IToolbarItems, Link, MarkdownEditor, MarkdownFormatter, RichTextEditorComponent, Toolbar, Table} from '@syncfusion/ej2-react-richtexteditor';
-import * as Marked from 'marked';
+import { MarkdownConverter } from '@syncfusion/ej2-markdown-converter';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { updateSampleSection } from '../common/sample-base';
@@ -44,7 +44,7 @@ function CustomFormat() {
         if (mdsource.classList.contains('e-active')) {
             let id: string = rteObj.getID() + 'html-view';
             let htmlPreview: HTMLElement = rteObj.element.querySelector('#' + id);
-            htmlPreview.innerHTML = Marked.marked((rteObj.contentModule.getEditPanel() as HTMLTextAreaElement).value);
+            htmlPreview.innerHTML = MarkdownConverter.toHtml((rteObj.contentModule.getEditPanel() as HTMLTextAreaElement).value) as string;
         }
     }
     function fullPreview(): void {
@@ -67,7 +67,7 @@ function CustomFormat() {
             textArea.style.display = 'none';
             htmlPreview.style.display = 'block';
             tooltipObj.content = "Codeview";
-            htmlPreview.innerHTML = Marked.marked((rteObj.contentModule.getEditPanel() as HTMLTextAreaElement).value);
+            htmlPreview.innerHTML = MarkdownConverter.toHtml((rteObj.contentModule.getEditPanel() as HTMLTextAreaElement).value) as string;
         }
     }
     function rendereComplete(): void {
@@ -109,7 +109,7 @@ function CustomFormat() {
                 markdown syntax using the <code>formatter</code>property
                 <p><b>Injecting Module</b></p>
                 <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, MarkdownEditor</code> modules into the services.</p>
-                <p>The third-party library <code>Marked</code> is used in this sample to convert markdown into HTML content.</p>
+                <p>Syncfusion's <code>Markdown Converter</code> is used in this sample to convert markdown into HTML content.</p>
             </div>
         </div>
     );

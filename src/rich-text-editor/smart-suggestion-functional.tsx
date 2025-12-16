@@ -2,7 +2,7 @@
  * Rich Text Editor Smart Suggestion sample
  */
 import * as React from 'react';
-import { HtmlEditor, Image, Audio, Video, Table, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar, ToolbarSettingsModel, EmojiPicker, PasteCleanup, FormatPainter, SlashMenu, SlashMenuSettingsModel, SlashMenuItemSelectArgs, CodeBlock } from '@syncfusion/ej2-react-richtexteditor';
+import { HtmlEditor, Image, Audio, Video, Table, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar, ToolbarSettingsModel, EmojiPicker, PasteCleanup, FormatPainter, SlashMenu, SlashMenuSettingsModel, SlashMenuItemSelectArgs, CodeBlock, ClipBoardCleanup, AutoFormat } from '@syncfusion/ej2-react-richtexteditor';
 import { updateSampleSection } from '../common/sample-base';
 
 function SmartSuggestion() {
@@ -56,7 +56,7 @@ function SmartSuggestion() {
     <div className='control-pane'>
       <div className='control-section' id="mentionFormat">
         <RichTextEditorComponent id="MentionInlineFormat" ref={(scope) => { formatRTE = scope }} toolbarSettings={toolbarSettings} placeholder="Type '/' and choose format" slashMenuSettings={slashMenuSettings} slashMenuItemSelect={slashMenuItemSelect.bind(this)}>
-          <Inject services={[HtmlEditor, Toolbar, Image, Audio, Table, Video, Link, QuickToolbar, EmojiPicker, PasteCleanup, FormatPainter, SlashMenu, CodeBlock]} />
+          <Inject services={[HtmlEditor, Toolbar, Image, Audio, Table, Video, Link, QuickToolbar, EmojiPicker, PasteCleanup, FormatPainter, SlashMenu, CodeBlock, ClipBoardCleanup, AutoFormat]} />
         </RichTextEditorComponent>
       </div>
       <div id="action-description">

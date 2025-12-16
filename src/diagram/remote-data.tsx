@@ -18,51 +18,83 @@ export interface DataInfo {
 }
 
 export class RemoteData extends SampleBase<{}, {}> {
+    // Keep stable identities across renders
+    private dataManager: DataManager;
+    private layout: {
+        type: "HierarchicalTree";
+        margin: { left: number; right: number; top: number; bottom: number };
+        verticalSpacing: number;
+    };
+    private getNodeDefaults: (node: Node) => void;
+    private getConnectorDefaults: (connector: Connector) => void;
+    private doBinding: (nodeModel: NodeModel, data: DataInfo) => void;
+    private dataSourceSettings: {
+        id: string;
+        parentId: string;
+        dataSource: DataManager;
+        doBinding: (nodeModel: NodeModel, data: DataInfo) => void;
+    };
+
+    constructor(props: {}) {
+        super(props);
+
+        // 1) Create DataManager once
+        this.dataManager = new DataManager({
+            url: "https://services.syncfusion.com/react/production/api/RemoteData",
+            crossDomain: true
+        });
+
+        // 2) Create layout once
+        this.layout = {
+            type: "HierarchicalTree",
+            margin: { left: 0, right: 0, top: 100, bottom: 0 },
+            verticalSpacing: 40
+        };
+
+        // 3) Stable callbacks
+        this.getNodeDefaults = (node: Node) => {
+            node.width = 80;
+            node.height = 40;
+            node.shape = { type: "Basic", shape: "Rectangle" };
+            node.style = { fill: "#048785", strokeColor: "Transparent" };
+        };
+
+        this.getConnectorDefaults = (connector: Connector) => {
+            connector.type = "Orthogonal";
+            connector.style.strokeColor = "#048785";
+            connector.targetDecorator.shape = "None";
+        };
+
+        this.doBinding = (nodeModel: NodeModel, data: DataInfo) => {
+            nodeModel.annotations = [
+                {
+                    content: data["Label"],
+                    style: { color: "white" }
+                }
+            ];
+        };
+
+        // 4) dataSourceSettings with stable identity
+        this.dataSourceSettings = {
+            id: "Id",
+            parentId: "ParentId",
+            dataSource: this.dataManager,
+            doBinding: this.doBinding
+        };
+    }
+
     render() {
         return (
             <div className="control-pane">
                 <div className="control-section">
-                    {/* Initializes and renders diagram control */}
                     <DiagramComponent
                         id="diagram"
                         width={"100%"}
                         height={"490"}
-                        layout={{
-                            type: "HierarchicalTree",
-                            margin: { left: 0, right: 0, top: 100, bottom: 0 },
-                            verticalSpacing: 40,
-                        }}
-                        // Set default properties for nodes
-                        getNodeDefaults={(node: Node) => {
-                            node.width = 80;
-                            node.height = 40;
-                            // Initialize node shape
-                            node.shape = { type: "Basic", shape: "Rectangle" };
-                            node.style = { fill: "#048785", strokeColor: "Transparent" };
-                        }}
-                        // Set default properties for connectors
-                        getConnectorDefaults={(connector: Connector) => {
-                            connector.type = "Orthogonal";
-                            connector.style.strokeColor = "#048785";
-                            connector.targetDecorator.shape = "None";
-                        }}
-                        // Configure the data source for the diagram
-                        dataSourceSettings={{
-                            id: "Id",
-                            parentId: "ParentId",
-                            dataSource: new DataManager({
-                                url: "https://services.syncfusion.com/react/production/api/RemoteData",
-                                crossDomain: true
-                            }),
-                            // Bind external data to node properties
-                            doBinding: (nodeModel: NodeModel, data: DataInfo) => {
-                                nodeModel.annotations = [{
-                                    content: data["Label"],
-                                    style: { color: "white" }
-                                }];
-                            }
-                        }}
-                        // Disable all interactions except zoom/pan
+                        layout={this.layout}
+                        getNodeDefaults={this.getNodeDefaults}
+                        getConnectorDefaults={this.getConnectorDefaults}
+                        dataSourceSettings={this.dataSourceSettings}
                         tool={DiagramTools.ZoomPan}
                         snapSettings={{ constraints: 0 }}
                     >

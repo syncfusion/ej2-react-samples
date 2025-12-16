@@ -1,4 +1,4 @@
-import { HtmlEditor, Image, Inject, IToolbarItems, Link, QuickToolbar, RichTextEditorComponent, ToolbarSettingsModel, Toolbar, NodeSelection, ActionCompleteEventArgs, ActionBeginEventArgs, Table, PasteCleanup } from '@syncfusion/ej2-react-richtexteditor';
+import { HtmlEditor, Image, Inject, IToolbarItems, Link, QuickToolbar, RichTextEditorComponent, ToolbarSettingsModel, Toolbar, NodeSelection, ActionCompleteEventArgs, ActionBeginEventArgs, Table, PasteCleanup, ClipBoardCleanup, AutoFormat } from '@syncfusion/ej2-react-richtexteditor';
 import * as React from 'react';
 import { DropDownButtonComponent, MenuEventArgs } from '@syncfusion/ej2-react-splitbuttons';
 import { MentionComponent } from '@syncfusion/ej2-react-dropdowns';
@@ -156,7 +156,7 @@ function MailMerge() {
     return (
         <div>
             <RichTextEditorComponent ref={(richtexteditor) => { rteObj = richtexteditor; }} value={value} id="mailMergeEditor" toolbarSettings={toolbarSettings} placeholder="Type @ and tag the name" blur={blur} actionBegin={actionBegin} actionComplete={actionComplete} saveInterval={1}>
-                <Inject services={[HtmlEditor, Toolbar, Image, Link, QuickToolbar, Table, PasteCleanup]} />
+                <Inject services={[HtmlEditor, Toolbar, Image, Link, QuickToolbar, Table, PasteCleanup, ClipBoardCleanup, AutoFormat]} />
             </RichTextEditorComponent>
             <button
                 className="e-control e-lib e-btn e-formats-tbar-btn e-rte-elements e-tbar-btn"

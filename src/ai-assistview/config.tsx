@@ -69,12 +69,54 @@ export const AIAssistViewSampleOrder: Object = [
     'name': 'Notes Assistant',
     'description':'Shows the AiAssistView component integrated with Dialog, Fab and Splitter components, demonstrating how it interacts and fits within a larger system.',
     'order': '02',
-    'category': 'Integration',
+    'category': 'Use Cases',
     'api':'{"AIAssistViewComponent":["promptSuggestions", "prompts", "promptRequest", "toolbarSettings", "bannerTemplate", "responseToolbarSettings", "cssClass"] }',
     'sourceFiles': [
       { 'displayName': 'dialog.tsx', 'path': 'src/ai-assistview/dialog.tsx' },
       { 'displayName': 'dialog.jsx', 'path': 'src/ai-assistview/dialog.jsx' },
       { 'displayName': 'promptResponseData.json', 'path': 'src/ai-assistview/promptResponseData.json' }
+    ]
+  },
+  { 'path': 'ai-assistview/ai-models',
+    'component': 'AIAssistIntegrations',
+    'name': 'Multiple AI Models',
+    'type': 'new',
+    'description':'Showcases the AiAssistView control to integrate with Multiple AI models and demonstrates how it interacts and generate dynamic response.',
+    'order': '02',
+    'category': 'Use Cases',
+    'api':'{"AIAssistViewComponent":["promptSuggestions", "prompts", "responseToolbarSettings", "cssClass"] }',
+    'sourceFiles': [
+      { 'displayName': 'ai-models.tsx', 'path': 'src/ai-assistview/ai-models.tsx' },
+      { 'displayName': 'ai-models.jsx', 'path': 'src/ai-assistview/ai-models.jsx' },
+      { 'displayName': 'ai-services.ts', 'path': 'src/ai-assistview/ai-services.ts' }
+    ]
+  },
+  { 'path': 'ai-assistview/speech-to-text',
+    'component': 'SpeechToText',
+    'name': 'Speech to Text',
+    'type': 'new',
+    'description':'Demonstrates the AI AssistView component integrated with Speech-to-Text functionality, enabling users to interact using voice input transcribed into text.',
+    'order': '03',
+    'category': 'Speech',
+    'api':'{"AIAssistViewComponent":["promptRequest", "toolbarSettings", "bannerTemplate", "footerTemplate", "promptToolbarSettings", "stopRespondingClick"] }',
+    'sourceFiles': [
+      { 'displayName': 'speech-to-text.tsx', 'path': 'src/ai-assistview/speech-to-text.tsx' },
+      { 'displayName': 'speech-to-text.jsx', 'path': 'src/ai-assistview/speech-to-text.jsx' },
+      { 'displayName': 'ai-service.ts', 'path': 'src/ai-assistview/ai-service.ts' }
+    ]
+  },
+  { 'path': 'ai-assistview/text-to-speech',
+    'component': 'TextToSpeech',
+    'name': 'Text to Speech',
+    'type': 'new',
+    'description':'Demonstrates the AiAssistView component integrated with Text-to-Speech functionality, allowing AI-generated responses to be vocalized for voice-based interaction.',
+    'order': '03',
+    'category': 'Speech',
+    'api':'{"AIAssistViewComponent":["promptRequest", "toolbarSettings", "bannerTemplate", "responseToolbarSettings", "stopRespondingClick"] }',
+    'sourceFiles': [
+      { 'displayName': 'text-to-speech.tsx', 'path': 'src/ai-assistview/text-to-speech.tsx' },
+      { 'displayName': 'text-to-speech.jsx', 'path': 'src/ai-assistview/text-to-speech.jsx' },
+      { 'displayName': 'ai-service.ts', 'path': 'src/ai-assistview/ai-service.ts' }
     ]
   }
 ]

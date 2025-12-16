@@ -117,7 +117,8 @@ if (Browser.isDevice || isMobile) {
     showBackdrop: false,
     closeOnDocumentClick: false,
     enableGestures: false,
-    change:resizeFunction
+    change:resizeFunction,
+    created: resizeFunction
   });
   sidebar.appendTo('#left-sidebar');
 }
@@ -242,7 +243,7 @@ function changeMouseOrTouch(str: string): void {
  * Render Sample Browser Popups
  */
 function renderSbPopups(): void {
-            if (dropdownsRendered) {
+          if (dropdownsRendered) {
     return;
   }
   switcherPopup = new Popup(document.getElementById('sb-switcher-popup'), {
@@ -505,7 +506,7 @@ function resetInput(arg: MouseEvent): void {
  * Binding events for sample browser operations
  */
 function bindEvents(): void {
-            if (eventsBound) {
+          if (eventsBound) {
     return;
   }
   eventsBound = true;
@@ -830,8 +831,9 @@ function processResize(e: any): void {
   if (isTablet) {
     resizeManualTrigger = false;
   }
-
-
+  // Keep Light/Dark dropdown mobile-only on resize
+  const isMobileView = Browser.isDevice || window.matchMedia('(max-width:550px)').matches;
+  document.getElementById('theme-mode')?.classList.toggle('hidden', !isMobileView || selectedTheme.includes('highcontrast'));
   if (resizeManualTrigger || (isMobile && select('#right-sidebar').classList.contains('sb-hide'))) {
     return;
   }
@@ -1045,8 +1047,9 @@ function ThemeChangeButton() {
           isUpdatingFromUrl = false;  // Reset flag AFTER update
         }, 10);
       }
+      const isMobileView = Browser.isDevice || window.matchMedia('(max-width:550px)').matches;
+      document.getElementById('theme-mode')?.classList.toggle('hidden', !isMobileView || newTheme.includes('highcontrast'));
     };
-
     window.addEventListener('hashchange', handleHash);
     return () => {
       window.removeEventListener('hashchange', handleHash);
@@ -1107,12 +1110,9 @@ const refreshCurrentControl = () => {
 };
 // **UPDATED: Render for both mobile and desktop 
 createRoot(document.getElementById('dark-light-content')).render(<ThemeChangeButton />);
-// **UPDATED: Hide theme mode button based on theme
-if (selectedTheme.includes('highcontrast')) {
-  thememode.classList.add('hidden');
-} else {
-  thememode.classList.remove('hidden');
-}
+// Show Light/Dark dropdown only on mobile (and hide for highcontrast)
+const isMobileView = Browser.isDevice || window.matchMedia('(max-width:550px)').matches;
+thememode.classList.toggle('hidden', !isMobileView || selectedTheme.includes('highcontrast'));
 
 select('.close-button').addEventListener('click', () => {
   let banner = document.querySelector('.sb-token-header');

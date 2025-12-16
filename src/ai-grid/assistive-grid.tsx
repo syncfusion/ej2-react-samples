@@ -2,7 +2,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
 import { updateAISampleSection } from '../common/sample-base';
-import { AIAssistiveGrid } from './ai-assistive-grid';
+import { AIAssistiveGrid } from './frontend/ai-assistive-grid';
 /* custom code start*/
 import AIToast from '../common/ai-toast';
 /* custom code end*/

@@ -3,7 +3,7 @@
  */
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { RichTextEditorComponent, Toolbar, Inject, Image, Link, HtmlEditor, QuickToolbar, Table, PasteCleanup, ImportExport } from '@syncfusion/ej2-react-richtexteditor';
+import { RichTextEditorComponent, Toolbar, Inject, Image, Link, HtmlEditor, QuickToolbar, Table, PasteCleanup, ImportExport, ClipBoardCleanup, AutoFormat } from '@syncfusion/ej2-react-richtexteditor';
 import { ToolbarSettingsModel, ExportWordModel, ExportPdfModel } from '@syncfusion/ej2-react-richtexteditor';
 import { updateSampleSection } from '../common/sample-base';
 function ExportDocument() {
@@ -92,7 +92,7 @@ function ExportDocument() {
             <div className='control-section' id="rteTools">
                 <div className='rte-control-section'>
                     <RichTextEditorComponent id="exportDocument" exportPdf={exportPdf} exportWord={exportWord} value={rteValue} toolbarSettings={toolbarSettings} enableXhtml={true} insertImageSettings={insertImageSettings}>
-                        <Inject services={[Toolbar, Image, Link, HtmlEditor, QuickToolbar, Table, PasteCleanup, ImportExport]} />
+                        <Inject services={[Toolbar, Image, Link, HtmlEditor, QuickToolbar, Table, PasteCleanup, ImportExport, ClipBoardCleanup, AutoFormat]} />
                     </RichTextEditorComponent>
                 </div>
             </div>

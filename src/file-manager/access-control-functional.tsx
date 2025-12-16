@@ -25,11 +25,7 @@ const Default = () => {
                         url: hostUrl + 'api/FileManagerAccess/FileOperations'
                     }}
                     toolbarSettings={{items: ['NewFolder', 'SortBy', 'Cut', 'Copy', 'Paste', 'Delete', 'Refresh', 'Download', 'Rename', 'Selection', 'View', 'Details']}}
-                    contextMenuSettings={{
-                        file: [ 'Cut', 'Copy', '|', 'Delete', 'Download', 'Rename', '|', 'Details'],
-                        layout: ['SortBy', 'View', 'Refresh', '|', 'Paste', '|', 'NewFolder', '|', 'Details', '|', 'SelectAll'],
-                        visible: true
-                    }}>
+                    uploadSettings={{ directoryUpload: true }}>
                     <Inject services={[NavigationPane, Toolbar]} />
                 </FileManagerComponent>
             </div>
@@ -40,7 +36,9 @@ const Default = () => {
                 <div id="description">
                     <p>The access control feature allows you to define access permissions for folders and files using a set of access rule properties based on user’s role.
                         Refer to the <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/file-manager/access-control#access-rules'>Access Rules</a> and <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/file-manager/access-control#permissions'>Permissions</a> UG for more details on this.</p>
-
+                    <p>
+                        In the <code>music</code> folder, uploading folders (directory uploads) is restricted while individual file uploads remain allowed. This ensures users can add files to the <code>music</code> directory without creating nested folder structures.
+                    </p>
                     <p><b>Note: </b>File Manager’s upload functionality is restricted in the online demos for security reasons. If you need to test upload functionality, please install
                         <a target="_blank" href="https://www.syncfusion.com/downloads">Syncfusion Essential Studio </a>on your machine and run the demo.</p>
                 </div>

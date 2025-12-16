@@ -17,7 +17,7 @@ export class ColChooser extends SampleBase<{}, {}> {
                 <div className='control-section'>
                     <GridComponent dataSource={data} toolbar={this.toolbarOptions} allowPaging={true} showColumnChooser={true} pageSettings={{ pageCount: 5 }} allowSorting={true} editSettings={this.editSettings} allowFiltering={true} filterSettings={this.filterSettings}>
                         <ColumnsDirective>
-                            <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={this.orderidRules} isPrimaryKey={true}></ColumnDirective>
+                            <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' showInColumnChooser={false} validationRules={this.orderidRules} isPrimaryKey={true}></ColumnDirective>
                             <ColumnDirective field='CustomerName' headerText='Customer Name' width='150' showInColumnChooser={false} validationRules={this.customeridRule}></ColumnDirective>
                             <ColumnDirective field='OrderDate' headerText='Order Date' width='130' format='yMd' textAlign='Right' editType='datepickeredit'/>
                             <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='130' format='yMd' textAlign='Right' editType='datepickeredit' />

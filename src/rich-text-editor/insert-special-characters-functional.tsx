@@ -2,7 +2,7 @@
  * Rich Text Editor custom toolbar sample
  */
 import { DialogComponent, ButtonPropsModel } from '@syncfusion/ej2-react-popups';
-import { HtmlEditor, Image, Inject, IToolbarItems, Link, NodeSelection, QuickToolbar, RichTextEditorComponent, Toolbar, ToolbarSettingsModel, PasteCleanup, Table, Video, Audio } from '@syncfusion/ej2-react-richtexteditor';
+import { HtmlEditor, Image, Inject, IToolbarItems, Link, NodeSelection, QuickToolbar, RichTextEditorComponent, Toolbar, ToolbarSettingsModel, PasteCleanup, Table, Video, Audio, ClipBoardCleanup, AutoFormat } from '@syncfusion/ej2-react-richtexteditor';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { updateSampleSection } from '../common/sample-base';
@@ -108,7 +108,7 @@ function InsertSpecialCharacters() {
                     <RichTextEditorComponent id="specialCharRTE" ref={(scope) => { rteObj = scope }}
                         toolbarSettings={toolbarSettings} actionComplete={actionCompleteHandler.bind(this)} created={onCreate.bind(this)}>
                         <div style={{ display: 'block' }}><p style={{ marginRight: '10px' }}>The custom command "insert special character" is configured as the last item of the toolbar. Click on the command and choose the special character you want to include from the popup.</p></div>
-                        <Inject services={[HtmlEditor, Toolbar, Link, Image, QuickToolbar, PasteCleanup, Table, Video, Audio]} />
+                        <Inject services={[HtmlEditor, Toolbar, Link, Image, QuickToolbar, PasteCleanup, Table, Video, Audio, ClipBoardCleanup, AutoFormat]} />
                     </RichTextEditorComponent>
                     <DialogComponent id='customTbarDlg' ref={(scope) => { dialogObj = scope }}
                         buttons={dlgButtons} overlayClick={dialogOverlay.bind(this)} header={header} visible={false}

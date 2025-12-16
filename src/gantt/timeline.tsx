@@ -127,7 +127,7 @@ export class Timeline extends SampleBase<{}, {}> {
     } else {
       this.topTierformat.dataSource = this.hourformat;
     }
-    this.topTierformat.refresh();
+    this.topTierformat.value = this.topTierformat.dataSource[0].id;
     this.updateUnitWidth(unit, 'top');
     this.ganttInstance.timelineSettings.topTier.unit = unit as TimelineViewMode;
   }
@@ -145,7 +145,7 @@ export class Timeline extends SampleBase<{}, {}> {
     } else {
       this.bottomTierformat.dataSource = this.hourformat;
     }
-    this.bottomTierformat.refresh();
+    this.bottomTierformat.value = this.bottomTierformat.dataSource[0].id;
     this.updateUnitWidth(unit, 'bottom');
     this.ganttInstance.timelineSettings.bottomTier.unit = unit as TimelineViewMode;
   }

@@ -217,12 +217,8 @@ let orderData = [
   { iconCss: 'e-icons e-send-to-back', text: 'Send To Back' }
 ]
 let groupData = [
-  { iconCss: 'sf-diagram-icon-align-left-1', text: 'Align Left', },
-  { iconCss: 'sf-diagram-icon-align-center-1', text: 'Align Center', },
-  { iconCss: 'sf-diagram-icon-align-right-1', text: 'Align Right', },
-  { iconCss: 'sf-diagram-icon-align-top-1', text: 'Align Top', },
-  { iconCss: 'sf-diagram-icon-align-middle-1', text: 'Align Middle', },
-  { iconCss: 'sf-diagram-icon-align-bottom-1', text: 'Align Bottom', },
+  { iconCss: 'e-icons e-group-1', text: 'Group' }, 
+  { iconCss: 'e-icons e-ungroup-1', text: 'Ungroup' }
 ]
 let rotateData = [
   { iconCss: 'e-icons e-transform-right', text: 'Rotate Clockwise' },

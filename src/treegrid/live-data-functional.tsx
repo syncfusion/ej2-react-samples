@@ -227,7 +227,7 @@ function LiveStream() {
                         <ColumnDirective
                             field="Ltp"
                             headerText="Last Traded Price"
-                            width="150"
+                            width="180"
                             format="C2"
                             textAlign="Right"
                         />
@@ -239,7 +239,7 @@ function LiveStream() {
                             type="number"
                             textAlign="Right"
                         />
-                        <ColumnDirective field="PercentageChange" width="110" headerText="% Change" format="N0" textAlign="Right" />
+                        <ColumnDirective field="PercentageChange" width="130" headerText="% Change" format="N0" textAlign="Right" />
                         <ColumnDirective
                             field="Open"
                             headerText="Open Price"

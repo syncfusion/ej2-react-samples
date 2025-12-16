@@ -36,8 +36,7 @@ const Critical = () => {
             <div className='control-section'>
                 <GanttComponent id='Critical' dataSource={criticalPathData} treeColumnIndex={1}
                     taskFields={taskFields} labelSettings={labelSettings} height='650px' taskbarHeight={25} rowHeight={46}
-                    projectStartDate={projectStartDate}
-                    enableCriticalPath={true} editSettings={editSettings} toolbar={toolbar}>
+                    projectStartDate={projectStartDate} enableCriticalPath={true} editSettings={editSettings} toolbar={toolbar}>
                     <ColumnsDirective>
                         <ColumnDirective field='TaskID' width='80' ></ColumnDirective>
                         <ColumnDirective field='TaskName' headerText='Job Name' width='250' clipMode='EllipsisWithTooltip'></ColumnDirective>

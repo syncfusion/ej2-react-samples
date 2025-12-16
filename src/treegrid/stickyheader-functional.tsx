@@ -16,6 +16,7 @@ const StickyHeader = () => {
                     dataSource={sampleData}
                     childMapping="subtasks"
                     treeColumnIndex={1}
+                    clipMode='EllipsisWithTooltip'
                     enableStickyHeader={true}
                     
                 >

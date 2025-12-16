@@ -1,7 +1,8 @@
+
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/client';
 import { updateSampleSection } from '../common/sample-base';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useMemo, useCallback } from 'react';
 import './employee-shift-management.css';
 import { ScheduleComponent, TimelineViews, Inject, ResourceDirective, ResourcesDirective, ViewsDirective, ViewDirective, Agenda, EventRenderedArgs, NavigatingEventArgs, ActionEventArgs, ToolbarItemsDirective, ToolbarItemDirective, CellClickEventArgs, PopupCloseEventArgs, EventClickArgs } from '@syncfusion/ej2-react-schedule';
 import { closest, remove, Internationalization, extend, isNullOrUndefined } from '@syncfusion/ej2-base';
@@ -56,16 +57,20 @@ const EmployeeShiftManagement = () => {
   const externalChipsRef = useRef<ChipListComponent>(null);
   const toolbarChipsRef = useRef<ChipListComponent>(null);
 
-  const intl = new Internationalization();
-  const eventsData = extend([], (dataSource as Record<string, any>).employeeShiftData, null, true) as Record<string, any>[];
+  const intlRef = useRef<Internationalization>(new Internationalization());
+  const eventsDataMemo = useMemo(
+    () => extend([], (dataSource as Record<string, any>).employeeShiftData, null, true) as Record<string, any>[],
+    []
+  );
   const selectedDate = new Date(2025, 2, 5);
   const styleNone = { display: "none" };
   const animationSettings: AnimationSettingsModel = { effect: 'None' };
-  const group = { resources: ['Roles', 'Designations'] };
-  const workHours = { start: '00:00', end: '23:59' };
+  const groupMemo = useMemo(() => ({ resources: ['Roles', 'Designations'] }), []);
+  const workHoursMemo = useMemo(() => ({ start: '00:00', end: '23:59' }), []);
   const allowDragAndDrop = true;
-  const filteredQuery = new Query();
+  const filteredQueryRef = useRef<Query>(new Query());
   const rolesData = ['', 'Doctors', 'Nurses', 'Support Staffs'];
+  const eventSettingsMemo = useMemo(() => ({ dataSource: eventsDataMemo, query: filteredQueryRef.current }), [eventsDataMemo]);
 
   const [employeeNamesList, setEmployeeNamesList] = useState<any[]>([]);
   const [shiftList, setShiftList] = useState<any[]>([]);
@@ -158,32 +163,31 @@ const EmployeeShiftManagement = () => {
   const staffsTreeFields = { dataSource: staffsData, id: 'Id', text: 'Name' };
 
   // Time scale setup
-  const majorSlotTemplate = (props: any): JSX.Element => {
+  const majorSlotTemplate = useCallback((props: any): JSX.Element => {
     return (<div>{props.date.getHours() === 7 ? 'Morning Shift' : 'Evening Shift'}</div>);
-  };
+  }, []);
 
-  const timeScale = {
+  const timeScaleMemo = useMemo(() => ({
     interval: 480,
     slotCount: 3,
     majorSlotTemplate: majorSlotTemplate
-  };
+  }), [majorSlotTemplate]);
 
   const getTimeString = (value: Date): string => {
-    return intl.formatDate(value, { skeleton: 'h' });
+    return intlRef.current.formatDate(value, { skeleton: 'h' });
   };
 
   const getShortTimeString = (value: Date): string => {
-    return intl.formatDate(value, { type: 'time', skeleton: 'short' });
+    return intlRef.current.formatDate(value, { type: 'time', skeleton: 'short' });
   };
 
   const getDayString = (value: Date): string => {
-    return intl.formatDate(value, { skeleton: 'E' });
+    return intlRef.current.formatDate(value, { skeleton: 'E' });
   };
 
   const filterData = (dataSource: any, value: string) => {
     return dataSource.filter((data: any) => data.role === value);
   };
-
   // Button actions for the Shift Swap dialog
   const getButtons = (): ButtonPropsModel[] => {
     return [
@@ -217,10 +221,10 @@ const EmployeeShiftManagement = () => {
             return false;
           });
           requestingEvent[0].Description = requestingEvent[0].Description.replace(' - Swap-Request', '');
-          requestingEvent[0].Subject = requestedShift.name + ' swapped the shift with ' + selectedEmployee.name + "'s shift scheduled from " + (intl.formatDate(new Date(approvedEvent[0].StartTime), { skeleton: 'MMMd' }) + ', ' + getTimeString(new Date(approvedEvent[0].StartTime)) + ' to ' + getTimeString(new Date(approvedEvent[0].EndTime)));
+          requestingEvent[0].Subject = requestedShift.name + ' swapped the shift with ' + selectedEmployee.name + "'s shift scheduled from " + (intlRef.current.formatDate(new Date(approvedEvent[0].StartTime), { skeleton: 'MMMd' }) + ', ' + getTimeString(new Date(approvedEvent[0].StartTime)) + ' to ' + getTimeString(new Date(approvedEvent[0].EndTime)));
           dataSource[requestingEventIndex] = requestingEvent[0];
           approvedEvent[0].Description = approvedEvent[0].Description.replace(' - Swap-Request', '');
-          approvedEvent[0].Subject = selectedEmployee.name + ' swapped the shift with ' + requestedShift.name + "'s shift scheduled from " + (intl.formatDate(new Date(requestingEvent[0].StartTime), { skeleton: 'MMMd' }) + ', ' + getTimeString(new Date(requestingEvent[0].StartTime)) + ' to ' + getTimeString(new Date(requestingEvent[0].EndTime)));
+          approvedEvent[0].Subject = selectedEmployee.name + ' swapped the shift with ' + requestedShift.name + "'s shift scheduled from " + (intlRef.current.formatDate(new Date(requestingEvent[0].StartTime), { skeleton: 'MMMd' }) + ', ' + getTimeString(new Date(requestingEvent[0].StartTime)) + ' to ' + getTimeString(new Date(requestingEvent[0].EndTime)));
           dataSource[approvedEventIndex] = approvedEvent[0];
           scheduleRef.current!.eventSettings.dataSource = dataSource;
           scheduleRef.current!.refreshEvents();
@@ -246,7 +250,7 @@ const EmployeeShiftManagement = () => {
     setDialogVisible(true);
   }
 
-  const requestShiftSwap = (args: { element: HTMLElement }): void => {
+  const requestShiftSwap = useCallback((args: { element: HTMLElement }): void => {
     const eventsData: Record<string, any>[] = scheduleRef.current!.eventSettings.dataSource as Record<string, any>[];
     const appointmnet: HTMLElement = (args.element && args.element.classList.contains('e-appointment') ?
       args.element : closest(args.element, '.e-appointment')) as HTMLElement;
@@ -280,7 +284,7 @@ const EmployeeShiftManagement = () => {
       }
       newShiftsData.push({
         id: newShiftsData.length + 1,
-        name: `${intl.formatDate(new Date(item.StartTime), { skeleton: 'MMMd' })} ${getDayString(new Date(item.StartTime))} ${getShortTimeString(new Date(item.StartTime))} - ${getShortTimeString(new Date(item.EndTime))}`,
+        name: `${intlRef.current.formatDate(new Date(item.StartTime), { skeleton: 'MMMd' })} ${getDayString(new Date(item.StartTime))} ${getShortTimeString(new Date(item.StartTime))} - ${getShortTimeString(new Date(item.EndTime))}`,
         designationId: item.DesignationId,
         employeeId: item.EmployeeId,
         eventId: item.Id,
@@ -290,7 +294,7 @@ const EmployeeShiftManagement = () => {
     setShiftsData(newShiftsData);
     setEmployeeNamesList(employeesData);
     setDialogVisible(true);
-  };
+  }, []);
 
   const employeeNameChange = (args: ChangeEventArgs): void => {
     if (args.itemData) {
@@ -351,7 +355,7 @@ const EmployeeShiftManagement = () => {
     return templateWrap;
   };
 
-  const onEventRendered = (args: EventRenderedArgs): void => {
+  const onEventRendered = useCallback((args: EventRenderedArgs): void => {
     const data: any = args.data;
     const element: HTMLElement = args.element;
     const startHour = data.StartTime.getHours();
@@ -383,12 +387,13 @@ const EmployeeShiftManagement = () => {
         React.useEffect(() => {
           const el = iconRef.current;
           if (el && onClick) {
-            el.addEventListener('click', (e: Event) => {
+            const handler = (e: Event) => {
               e.preventDefault();
               e.stopPropagation();
               onClick(e);
-            });
-            return () => el.removeEventListener('click', onClick);
+            };
+            el.addEventListener('click', handler);
+            return () => el.removeEventListener('click', handler);
           }
         }, []);
         return (
@@ -452,7 +457,7 @@ const EmployeeShiftManagement = () => {
         appendTooltipIcon('e-swapped sf-employee-shift-icons-replace-accepted', 'This shift has been swapped');
       }
     }
-  };
+  }, []);
 
   const treeTemplate = (props: any): JSX.Element => {
     return (
@@ -553,7 +558,7 @@ const EmployeeShiftManagement = () => {
     }
   };
 
-  const onNavigating = (args: NavigatingEventArgs): void => {
+  const onNavigating = useCallback((args: NavigatingEventArgs): void => {
     const scheduleToolbar = scheduleRef.current!.element.querySelector('.e-schedule-toolbar-container') as HTMLElement;
     if (!scheduleToolbar || args.action !== 'view') return;
     if (args.currentView === 'Agenda') {
@@ -570,7 +575,7 @@ const EmployeeShiftManagement = () => {
         scheduleRef.current!.eventSettings.query.queries = [];
       }
     }
-  };
+  }, []);
 
   const onDropDownListChange = (args: ChangeEventArgs): void => {
     const employeeName = args.itemData?.value;
@@ -648,13 +653,12 @@ const EmployeeShiftManagement = () => {
     scheduleRef.current!.eventSettings.query = query;
   };
 
-  const editorHeaderTemplate = (props: any): JSX.Element => {
+  const editorHeaderTemplate = useCallback((props: any): JSX.Element => {
     return (
       <div id="event-header">Leave Replacement</div>
     );
-  };
-
-  const agendaTemplate = (props: any): JSX.Element => {
+  }, []);
+  const agendaTemplate = useCallback((props: any): JSX.Element => {
     const roleItem: any = employeeRole.find((item) => item.id === parseInt(props.RoleId, 10));
     const designationItem: any = designationsData.find((item) => item.id === parseInt(props.DesignationId, 10));
     const role: string = roleItem?.role;
@@ -683,9 +687,9 @@ const EmployeeShiftManagement = () => {
         </div>
       </div>
     );
-  };
+  }, []);
 
-  const onPopupOpen = (args: any): void => {
+  const onPopupOpen = useCallback((args: any): void => {
     const isEditorPopup = args.type === 'Editor';
     if (isEditorPopup) {
       if (!isDraggedItemDropped) {
@@ -694,9 +698,9 @@ const EmployeeShiftManagement = () => {
       }
       args.element.classList.add('shift-management-editor-popup');
     }
-  };
+  }, []);
 
-  const onPopupClose = (args: PopupCloseEventArgs): void => {
+  const onPopupClose = useCallback((args: PopupCloseEventArgs): void => {
     if (args.type === 'Editor') {
       if ((args.event.target as HTMLElement).classList.contains('e-event-save')) {
         let treeRefs = [allStaffsTreeRef, doctorsTreeRef, nursesTreeRef, staffsTreeRef];
@@ -719,17 +723,17 @@ const EmployeeShiftManagement = () => {
       }
       isDraggedItemDropped = false;
     }
-  };
+  }, []);
 
-  const onCellClick = (args: CellClickEventArgs): void => {
+  const onCellClick = useCallback((args: CellClickEventArgs): void => {
     args.cancel = true;
-  }
+  }, [])
 
-  const onEventClick = (args: EventClickArgs): void => {
+  const onEventClick = useCallback((args: EventClickArgs): void => {
     if ((args.event as Record<string, any>).IsReadonly) {
       args.cancel = true;
     }
-  }
+  }, [])
 
   const setAgendaContentHeight = (): void => {
     const agendaContentElement: HTMLElement = scheduleRef.current!.element.querySelector('.e-table-wrap.e-agenda-view .e-schedule-table .e-content-wrap');
@@ -739,7 +743,7 @@ const EmployeeShiftManagement = () => {
     }
   }
 
-  const onActionComplete = (args: ActionEventArgs): void => {
+  const onActionComplete = useCallback((args: ActionEventArgs): void => {
     if (args.requestType === 'viewNavigate' || args.requestType === 'dateNavigate') {
       setAgendaContentHeight();
     } else if (args.requestType === "toolBarItemRendered" && scheduleRef.current!.currentView === 'Agenda') {
@@ -748,7 +752,7 @@ const EmployeeShiftManagement = () => {
         setAgendaContentHeight();
       });
     }
-  }
+  }, [])
 
   return (
     <div className='schedule-control-section shift-management-control-section'>
@@ -762,12 +766,12 @@ const EmployeeShiftManagement = () => {
             cssClass='schedule-shift-management'
             width='100%'
             height='550px'
-            group={group}
+            group={groupMemo}
             startHour="07:00"
             endHour='23:00'
-            eventSettings={{ dataSource: eventsData, query: filteredQuery }}
-            timeScale={timeScale}
-            workHours={workHours}
+            eventSettings={eventSettingsMemo}
+            timeScale={timeScaleMemo}
+            workHours={workHoursMemo}
             showTimeIndicator={true}
             eventRendered={onEventRendered}
             navigating={onNavigating}

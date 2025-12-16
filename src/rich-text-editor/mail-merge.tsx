@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { RichTextEditorComponent, Inject, IToolbarItems, HtmlEditor, Toolbar, ToolbarSettingsModel, Image, Link, NodeSelection, QuickToolbar, ActionCompleteEventArgs, ActionBeginEventArgs, Table, PasteCleanup } from '@syncfusion/ej2-react-richtexteditor';
+import { RichTextEditorComponent, Inject, IToolbarItems, HtmlEditor, Toolbar, ToolbarSettingsModel, Image, Link, NodeSelection, QuickToolbar, ActionCompleteEventArgs, ActionBeginEventArgs, Table, PasteCleanup, ClipBoardCleanup, AutoFormat } from '@syncfusion/ej2-react-richtexteditor';
 import { DropDownButtonComponent } from '@syncfusion/ej2-react-splitbuttons';
 import { MentionComponent } from '@syncfusion/ej2-react-dropdowns';
 import * as ReactDOM from 'react-dom';
@@ -171,7 +171,7 @@ export class MailMerge extends SampleBase<{}, {}>  {
                     actionBegin={this.actionBegin}
                     saveInterval={1}
                 >
-                    <Inject services={[HtmlEditor, Toolbar, Image, Link, QuickToolbar, Table, PasteCleanup]} />
+                    <Inject services={[HtmlEditor, Toolbar, Image, Link, QuickToolbar, Table, PasteCleanup, ClipBoardCleanup, AutoFormat]} />
                 </RichTextEditorComponent>
                 <button
                     className="e-control e-lib e-btn e-formats-tbar-btn e-rte-elements e-tbar-btn"

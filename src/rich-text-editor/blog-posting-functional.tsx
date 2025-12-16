@@ -4,7 +4,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
-import { RichTextEditorComponent, HtmlEditor, Inject, Toolbar, Image, Link, QuickToolbar, PasteCleanup, Table, Video, Audio } from '@syncfusion/ej2-react-richtexteditor';
+import { RichTextEditorComponent, HtmlEditor, Inject, Toolbar, Image, Link, QuickToolbar, PasteCleanup, Table, Video, Audio, ClipBoardCleanup, AutoFormat } from '@syncfusion/ej2-react-richtexteditor';
 import { updateSampleSection } from '../common/sample-base';
 import { isNullOrUndefined as isNOU } from '@syncfusion/ej2-base';
 import './blog-posting.css';
@@ -206,7 +206,7 @@ function Forums() {
                         <div id="createpostholder">
                             <form>
                                 <RichTextEditorComponent id="blogpost" ref={(richtexteditor) => { rteObj = richtexteditor }}>
-                                    <Inject services={[Toolbar, Image, Link, HtmlEditor, QuickToolbar, PasteCleanup, Table, Video, Audio]} />
+                                    <Inject services={[Toolbar, Image, Link, HtmlEditor, QuickToolbar, PasteCleanup, Table, Video, Audio, ClipBoardCleanup, AutoFormat]} />
                                 </RichTextEditorComponent>
                                 <div id='buttonSection'>
                                     <ButtonComponent id="rteCancel" onClick={resetMessage.bind(this)} type='button'>Cancel</ButtonComponent>

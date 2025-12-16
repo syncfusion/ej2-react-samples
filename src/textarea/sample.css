@@ -88,3 +88,61 @@
     padding: 8px;
     width: auto;
 }
+
+.content-wrapper-adornments {
+    width: 100% !important;
+    min-width: 250px !important;
+}
+
+.content-wrapper div.multiline-row {
+    margin: 0 auto;
+    padding: 40px 0px 0px;
+}
+
+.property-panel-content .multiline-property td {
+    padding: 10px 0px;
+    width: 50%;
+}
+
+.material3 .e-textarea-adornments .e-textarea,
+.material3-dark .e-textarea-adornments .e-textarea {
+    margin-top: 8px !important;
+}
+
+.e-bigger.fluent2-highcontrast .e-textarea-adornments .e-outline label.e-float-text.e-label-bottom {
+    top: -11px !important;
+}
+
+.e-bigger .e-textarea-adornments .e-prepend-template {
+    padding-right: 0 !important;
+}
+
+.e-bigger.material3 .e-textarea-adornments .e-input-separator,
+.e-bigger.material3-dark .e-textarea-adornments .e-input-separator {
+    margin-top: 3px !important;
+}
+
+.e-bigger.material3 div.e-input-group.e-prepend-wrapper.e-outline.e-float-input.e-control-wrapper label.e-label-bottom,
+.e-bigger.material3-dark div.e-input-group.e-prepend-wrapper.e-outline.e-float-input.e-control-wrapper label.e-label-bottom {
+    top: -10px !important;
+}
+
+.e-bigger.fluent2 .e-textarea-adornments .e-input-separator,
+.e-bigger.fluent2-dark .e-textarea-adornments .e-input-separator,
+.e-bigger.fluent2-highcontrast .e-textarea-adornments .e-input-separator {
+    margin-top: 3px !important;
+}
+
+.e-bigger.fluent2-highcontrast .e-textarea-adornments .e-outline label.e-float-text.e-label-bottom {
+    top: 8px !important;
+}
+
+.e-bigger.tailwind3 .e-textarea-adornments .e-outline.e-float-input:not(.e-error):not(.e-valid-input):not(.e-input-focus) textarea:not(:focus):valid ~ label.e-float-text.e-label-bottom,
+.e-bigger.tailwind3-dark .e-textarea-adornments .e-outline.e-float-input:not(.e-error):not(.e-valid-input):not(.e-input-focus) textarea:not(:focus):valid ~ label.e-float-text.e-label-bottom {
+    top: -7px !important;
+}
+ 
+.e-bigger.tailwind3 .e-textarea-adornments div.e-input-group.e-prepend-wrapper.e-multi-line-input.e-outline.e-float-input.e-control-wrapper Label.e-label-top,
+.e-bigger.tailwind3-dark .e-textarea-adornments div.e-input-group.e-prepend-wrapper.e-multi-line-input.e-outline.e-float-input.e-control-wrapper Label.e-label-top {
+    top: -26px !important;
+}

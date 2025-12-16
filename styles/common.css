@@ -2786,3 +2786,7 @@ RTE toolbar not visible in fullscreen
   width: 95vw !important;
 } 
 }
+.bootstrap5_3.e-bigger .ai-toast .e-toast .e-toast-message .e-toast-content {
+    padding-left: 12px !important;
+    padding-bottom: 12px !important;
+}

@@ -101,10 +101,10 @@ import { BlockEditorSampleOrder } from '../block-editor/config';
 
 export let samplesList: any = [
     {
-        'name': 'Smart Paste', 'category': 'Smart Components', 'order': '01', 'path': 'ai-smart-paste', 'samples': SmartPasteSampleOrder, 'type':'preview'
+        'name': 'Smart Paste', 'category': 'Smart Components', 'order': '01', 'path': 'ai-smart-paste', 'samples': SmartPasteSampleOrder
     },
     {
-        'name': 'Smart TextArea', 'category': 'Smart Components', 'order': '01', 'path': 'ai-smart-textarea', 'samples': SmartTextAreaSampleOrder, 'type':'preview'
+        'name': 'Smart TextArea', 'category': 'Smart Components', 'order': '01', 'path': 'ai-smart-textarea', 'samples': SmartTextAreaSampleOrder
     },
     {
         'name': 'Diagram', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-diagram', 'samples': AIDiagramSampleOrder
@@ -113,13 +113,13 @@ export let samplesList: any = [
         'name': 'Query Builder', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-querybuilder', 'samples': AIQuerybuilderSampleOrder
     },
     {
-        'name': 'Rich Text Editor', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-rich-text-editor', 'samples': AIRichTextEditorSampleOrder
+        'name': 'Rich Text Editor', 'type': 'update', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-rich-text-editor', 'samples': AIRichTextEditorSampleOrder
     },
     {
         'name': 'Kanban', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-kanban', 'samples': AIKanbanSampleOrder
     },
     {
-        'name': 'Data Grid', 'category': 'Smart AI Solutions','type':'update', 'order': '01', 'path': 'ai-grid', 'samples': AIGridSampleOrder
+        'name': 'Data Grid', 'category': 'Smart AI Solutions', 'type':'update', 'order': '01', 'path': 'ai-grid', 'samples': AIGridSampleOrder
     },
     {
         'name': 'Tree Grid', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-tree-grid', 'samples': AITreeGridSampleOrder
@@ -152,13 +152,13 @@ export let samplesList: any = [
         'name': 'Tree Grid', 'category': 'Grids', 'order': '03', 'path': 'treegrid', 'samples': TreeGridSampleOrder, 'ftName' :'treegrid', 'type':'update'
     },
     {
-        'name': 'AI AssistView', 'category': 'Interactive Chat', 'order': '06', 'path': 'ai-assistview', 'samples': AIAssistViewSampleOrder, 'ftName': 'ai-assistview'
+        'name': 'AI AssistView', 'category': 'Interactive Chat', 'order': '06', 'path': 'ai-assistview', 'samples': AIAssistViewSampleOrder, 'ftName': 'ai-assistview', 'type':'update'
     },
     {
         'name': 'Block Editor', 'category': 'File Viewers & Editors', 'order': '01', 'path': 'block-editor', 'samples': BlockEditorSampleOrder, 'ftName' :'block-editor', 'type':'preview'
     },
     {
-        'name': 'Chat UI', 'category': 'Interactive Chat', 'order': '06', 'path': 'chat-ui', 'samples': ChatUISampleOrder, 'ftName': 'chat-ui', 'type':'preview'
+        'name': 'Chat UI', 'type':'update', 'category': 'Interactive Chat', 'order': '06', 'path': 'chat-ui', 'samples': ChatUISampleOrder, 'ftName': 'chat-ui'
     },
     {
         'name': 'Charts', 'category': 'Data Visualization', 'order': '01', 'path': 'chart', 'samples': ChartSampleOrder, 'ftName': 'chart', 'type':'update'
@@ -218,7 +218,7 @@ export let samplesList: any = [
         'name': 'Rich Text Editor', 'type':'update', 'category': 'File Viewers & Editors', 'order': '04', 'path': 'rich-text-editor', 'samples': RichTextEditorSampleOrder
     },
     {
-        'name': 'Markdown Editor', 'category': 'File Viewers & Editors', 'order': '04', 'path': 'markdown-editor', 'samples': MarkdownEditorSampleOrder
+        'name': 'Markdown Editor', 'type':'update', 'category': 'File Viewers & Editors', 'order': '04', 'path': 'markdown-editor', 'samples': MarkdownEditorSampleOrder
     },
     {
         'name': 'Image Editor', 'category': 'File Viewers & Editors', 'ftName': 'image-editor', 'order': '04', 'path': 'image-editor', 'samples': ImageEditorSampleOrder
@@ -311,7 +311,7 @@ export let samplesList: any = [
         'name': 'TreeView', 'category': 'Navigation', 'path': 'treeview', 'samples': TreeViewSampleOrder
     },
     {
-        'name': 'File Manager', 'category': 'Navigation', 'path':'file-manager', 'samples': FileManagerSampleOrder, 'ftName': 'file-manager'
+        'name': 'File Manager', 'category': 'Navigation',"type": "update", 'path':'file-manager', 'samples': FileManagerSampleOrder, 'ftName': 'file-manager'
     },
     {
         'name': 'Ribbon', 'category': 'Navigation', 'path':'ribbon', 'samples': RibbonSampleOrder, 'ftName': 'ribbon'
@@ -335,16 +335,16 @@ export let samplesList: any = [
         'name': "Skeleton", 'category': 'Notifications' , 'order': '04', 'path': "skeleton", 'samples': SkeletonSampleOrder
     },
     {
-        'name': 'TextBox', 'category': 'Inputs', 'order': '04', 'path': 'textboxes', 'samples': TextBoxSampleOrder, 'ftName' :'textbox'
+        'name': 'TextBox', 'category': 'Inputs', 'order': '04', 'path': 'textboxes', 'samples': TextBoxSampleOrder, 'ftName' :'textbox', 'type': 'update'
     },
     {
-        'name': 'TextArea', 'category': 'Inputs', 'order': '04', 'path': 'textarea', 'samples': TextAreaSampleOrder, 'ftName' :'textarea',
+        'name': 'TextArea', 'category': 'Inputs', 'order': '04', 'path': 'textarea', 'samples': TextAreaSampleOrder, 'ftName' :'textarea', 'type': 'update'
     },
     {
-        'name': 'Input Mask', 'category': 'Inputs', 'order': '04', 'path': 'maskedtextbox', 'samples': MaskedTextBoxOrder
+        'name': 'Input Mask', 'category': 'Inputs', 'order': '04', 'path': 'maskedtextbox', 'samples': MaskedTextBoxOrder, 'type': 'update'
     },
     {
-        'name': 'Numeric Textbox', 'category': 'Inputs', 'order': '04', 'path': 'numerictextbox', 'samples': NumericTextBoxOrder
+        'name': 'Numeric Textbox', 'category': 'Inputs', 'order': '04', 'path': 'numerictextbox', 'samples': NumericTextBoxOrder, 'type': 'update'
     },
     {
         'name': 'Color Picker', 'category': 'Inputs', 'order': '04', 'path': 'color-picker', 'samples': ColorPickerSampleOrder, 'ftName': 'color-picker'

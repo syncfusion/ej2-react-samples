@@ -61,10 +61,11 @@ function GridChartIntegration() {
   };
 
   const productTemplate = (props: any): any => {
+    const src: string = 'src/grid/images/product/' + props.Image + '.png';
     return (
       <div className="e-product-info">
         <img
-          src={`src/grid/images/product/${props.Image}.png`}
+          src={src}
           alt={props.Product}
         />
         <span>{props.Product}</span>

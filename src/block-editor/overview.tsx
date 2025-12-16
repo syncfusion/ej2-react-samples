@@ -1,15 +1,21 @@
 import * as React from 'react';
-import { BlockEditorComponent } from '@syncfusion/ej2-react-blockeditor';
+import { BlockEditorComponent, InlineToolbarSettingsModel } from '@syncfusion/ej2-react-blockeditor';
 import './overview.css';
 import * as data from './blockData.json';
 import { SampleBase } from '../common/sample-base';
 
 export class Overview extends SampleBase<{}, {}> {
+  private customToolbarItems: string[] = [
+      'Bold', 'Italic', 'Underline', 'Strikethrough', 'Uppercase', 'Lowercase', 'Subscript', 'Superscript', 'Color', 'Backgroundcolor'
+    ];
+    private inlineToolbar: InlineToolbarSettingsModel = {
+      items: this.customToolbarItems,
+    };
   render() {
     return (
-      <div className='control-section'>
-        <div className="overview-blockeditor">
-          <BlockEditorComponent id='block-editor' blocks={data["blockDataOverview"]}></BlockEditorComponent>
+      <div className='control-pane'>
+        <div className="control-section overview-blockeditor">
+          <BlockEditorComponent id='block-editor' blocks={data["blockDataOverview"]} users={data["users"]} inlineToolbarSettings={this.inlineToolbar}></BlockEditorComponent>
         </div>
 
         <div id="action-description">
@@ -24,7 +30,7 @@ export class Overview extends SampleBase<{}, {}> {
             </p>
             <p>Key features demonstrated in this sample:</p>
             <ul>
-                <li>Multiple block types including <code>Heading1-4</code>, <code>Paragraph</code>, <code>BulletList</code>, <code>NumberedList</code>, <code>Checklist</code>, <code>Quote</code>, <code>Callout</code>, <code>Divider</code>, <code>Code</code>, <code>ToggleParagraph</code>, and more.</li>
+                <li>Multiple block types including <code>Heading1-4</code>, <code>Paragraph</code>, <code>Table</code>, <code>BulletList</code>, <code>NumberedList</code>, <code>Checklist</code>, <code>Quote</code>, <code>Callout</code>, <code>Divider</code>, <code>Code</code>, <code>ToggleParagraph</code>, and more.</li>
                 <li>Rich text formatting with styles like <code>Bold</code>, <code>Italic</code>, <code>Underline</code>, <code>Strikethrough</code>, <code>Uppercase</code>, and more.</li>
                 <li>Interactive <code>Slash ("/") commands</code> for quick block insertion and transformation.</li>
                 <li>Hierarchical organization with expandable <code>Toggle Blocks</code>.</li>

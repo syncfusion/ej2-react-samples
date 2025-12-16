@@ -20,9 +20,8 @@ const TimelineView = () => {
     const scheduleObj = useRef<ScheduleComponent>(null);
     const workDays: number[] = [0, 1, 2, 3, 4, 5];
     const data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).scheduleData.concat((dataSource as Record<string, any>).timelineData), null, true) as Record<string, any>[];
-    const [selectedDate, setSelectedDate] = useState<Date>(new Date(2021, 0, 10));
     const change = (args: ChangeEventArgs): void => {
-        setSelectedDate(args.value);
+        scheduleObj.current.selectedDate = args.value;
         scheduleObj.current.dataBind();
     }
 
@@ -30,7 +29,7 @@ const TimelineView = () => {
         <div className='schedule-control-section'>
             <div className='col-lg-9 control-section'>
                 <div className='control-wrapper'>
-                    <ScheduleComponent height='650px' ref={scheduleObj} selectedDate={selectedDate} workDays={workDays} eventSettings={{ dataSource: data }}>
+                    <ScheduleComponent height='650px' ref={scheduleObj} selectedDate={new Date(2021, 0, 10)} workDays={workDays} eventSettings={{ dataSource: data }}>
                         <ViewsDirective>
                             <ViewDirective option='TimelineDay' />
                             <ViewDirective option='TimelineWeek' />
@@ -49,7 +48,7 @@ const TimelineView = () => {
                             <tr style={{ height: '50px' }}>
                                 <td style={{ width: '100%' }}>
                                     <div className='datepicker-control-section'>
-                                        <DatePickerComponent value={selectedDate} showClearButton={false} change={change} placeholder='Current Date' floatLabelType='Always' />
+                                        <DatePickerComponent value={new Date(2021, 0, 10)} showClearButton={false} change={change} placeholder='Current Date' floatLabelType='Always' />
                                     </div>
                                 </td>
                             </tr>

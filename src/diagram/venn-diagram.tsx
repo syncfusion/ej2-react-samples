@@ -296,7 +296,7 @@ export class VennDiagram extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>
-                        This sample uses nodes with both path and basic shapes, including annotations and Bezier connectors, and enables zoom and pan through the control's <code><b>Tool</b></code> property.
+                        This sample uses nodes with both path and basic shapes, including annotations and bezier connectors, and enables zoom and pan through the control's <code><b>Tool</b></code> property.
                     </p>
                     <br />
                 </div>

@@ -131,6 +131,7 @@
 		"dropdown-button",
 		"virtualize",
 		"textarea",
-		"keytip"
+		"keytip",
+		null
 	]
 }

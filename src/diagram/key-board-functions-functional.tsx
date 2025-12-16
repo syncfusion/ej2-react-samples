@@ -146,16 +146,18 @@ function renderCommandTable(title, commands) {
             <h4 className="property-panel-header">{title}</h4>
             <div className="property-panel-content">
                 <table style={{ fontSize: "12px" }}>
-                    <tr>
-                        <td style={{ width: "70%" }}><h5>Command</h5></td>
-                        <td style={{ width: "30%" }}><h5>Gesture</h5></td>
-                    </tr>
-                    {commands.map((cmd, index) => (
-                        <tr key={index}>
-                            <td style={{ width: "70%" }}>{cmd.command}</td>
-                            <td style={{ width: "30%" }}>{cmd.gesture}</td>
+                    <tbody>
+                        <tr>
+                            <td style={{ width: "70%" }}><h5>Command</h5></td>
+                            <td style={{ width: "30%" }}><h5>Gesture</h5></td>
                         </tr>
-                    ))}
+                        {commands.map((cmd, index) => (
+                            <tr key={index}>
+                                <td style={{ width: "70%" }}>{cmd.command}</td>
+                                <td style={{ width: "30%" }}>{cmd.gesture}</td>
+                            </tr>
+                        ))}
+                    </tbody>
                 </table>
             </div>
         </div>

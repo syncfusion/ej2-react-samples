@@ -89,7 +89,7 @@ export class EmployeeTreeGrid extends SampleBase<{}, { viewer: string }> {
                         template: (props: any) => (
                             <div className="flag-container">
                                 <img
-                                    src={`//ej2.syncfusion.com/javascript/demos/src/tree-grid/images/${props.Location}.png`}
+                                    src={`src/treegrid/images/${props.Location}.png`}
                                     className="flag-img"
                                     alt={props.Location}
                                 />
@@ -108,7 +108,7 @@ export class EmployeeTreeGrid extends SampleBase<{}, { viewer: string }> {
                     {
                         field: 'Salary per month',
                         headerText: 'Salary',
-                        format: 'c0',
+                        format: 'C0',
                         textAlign: 'Right',
                         width: 240,
                         clipMode: 'EllipsisWithTooltip',
@@ -326,8 +326,7 @@ export class EmployeeTreeGrid extends SampleBase<{}, { viewer: string }> {
                     </p>
 
                     <p>
-                        <br /> More information about Tree Grid instantiation can be found in this
-                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/getting-started"> documentation section</a>.
+                        <br /> More information about Tree Grid instantiation can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/getting-started">documentation section</a>.
                     </p>
                 </div>
             </div>

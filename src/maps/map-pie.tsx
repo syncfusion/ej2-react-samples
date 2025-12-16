@@ -68,46 +68,15 @@ export class PieMaps extends SampleBase<{}, {}> {
                                             }
                                         ]
                     
-                                    }}
-                                   
+                                    }}                                   
                                 >
                                 <MarkersDirective>
-                                <MarkerDirective visible={true} animationDuration={0}
-                                    template='<div id="marker4" style="top:-5px;left:55px;height:150px;width:200px;position: absolute !important;"></div>'
-                                    dataSource={[
-                                        { 'latitude': 9.774059122564566, 'longitude': 108.77498325892299 },
-                                    ]}
-                                    ></MarkerDirective>
-                                    <MarkerDirective visible={true} animationDuration={0}
-                                    template='<div id="marker1" style="top:45px;left:65px;height:150px;width:200px;position: absolute !important;"></div>'
-                                    dataSource={[
-                                        { 'latitude': 61.938950426660604, 'longitude': 97.03125 },
-                                    ]}
-                                    ></MarkerDirective>
-                                    <MarkerDirective visible={true} animationDuration={0}
-                                    template='<div id="marker2" style="top:35px;left:65px;height:150px;width:200px;position: absolute !important;"></div>'
-                                    dataSource={[
-                                        { 'latitude': 57.70414723434193, 'longitude': -114.08203125 }
-                                    ]}
-                                    ></MarkerDirective>
-                                    <MarkerDirective visible={true} animationDuration={0}
-                                    template='<div id="marker3" style="top:-5px;left:10px;height:150px;width:200px;position: absolute !important;"></div>'
-                                    dataSource={[
-                                        { 'latitude': 10.555037013237452, 'longitude': -64.1160548956648 }
-                                    ]}
-                                    ></MarkerDirective>
-                                    <MarkerDirective visible={true} animationDuration={0}
-                                    template='<div id="marker5" style="top:-40px;left:85px;height:130px;width:200px;position: absolute !important;"></div>'
-                                    dataSource={[
-                                        { 'latitude': -52.313430655959614, 'longitude': -66.26827567737013 },
-                                    ]}
-                                    ></MarkerDirective>
-                                    <MarkerDirective visible={true} animationDuration={0}
-                                    template='<div id="marker6" style="top:35px;left:65px;height:150px;width:200px;position: absolute !important;"></div>'
-                                    dataSource={[
-                                        { 'latitude': -23.725011735951796, 'longitude': 132.978515625}
-                                    ]}
-                                    ></MarkerDirective>
+                                    <MarkerDirective visible={true} animationDuration={0} template='<div id="marker1" style="top:45px;left:65px;height:150px;width:200px;position: absolute !important;"></div>' dataSource={[{ 'latitude': 61.938950426660604, 'longitude': 97.03125 }]}/>
+                                    <MarkerDirective visible={true} animationDuration={0} template='<div id="marker2" style="top:0px;left:65px;height:100px;width:200px;position: absolute !important;"></div>' dataSource={[{ 'latitude': 57.70414723434193, 'longitude': -114.08203125 }]}/>
+                                    <MarkerDirective visible={true} animationDuration={0} template='<div id="marker3" style="top:-5px;left:10px;height:150px;width:200px;position: absolute !important;"></div>' dataSource={[{ 'latitude': 10.555037013237452, 'longitude': -64.1160548956648 }]}/>
+                                    <MarkerDirective visible={true} animationDuration={0} template='<div id="marker4" style="top:-5px;left:55px;height:150px;width:200px;position: absolute !important;"></div>' dataSource={[ { 'latitude': 9.774059122564566, 'longitude': 108.77498325892299 }]}/>
+                                    <MarkerDirective visible={true} animationDuration={0} template='<div id="marker5" style="top:-40px;left:85px;height:130px;width:200px;position: absolute !important;"></div>' dataSource={[{ 'latitude': -52.313430655959614, 'longitude': -66.26827567737013 }]}/>
+                                    <MarkerDirective visible={true} animationDuration={0} template='<div id="marker6" style="top:35px;left:65px;height:150px;width:200px;position: absolute !important;"></div>' dataSource={[{ 'latitude': -23.725011735951796, 'longitude': 132.978515625 }]}/>
                                 </MarkersDirective>
                                 </LayerDirective>
                             </LayersDirective>
@@ -155,11 +124,13 @@ export class PieMaps extends SampleBase<{}, {}> {
                 explode: true,
                 explodeIndex: 0,
                 explodeOffset: '20%',
-                name: 'China',
+                name: 'Russia',
                 palettes: ['#634D6F', '#B34D6D', '#557C5C', '#5E55E2', '#7C744D'],
                 dataSource: [
-                    { 'x': '0-14 years', y: 17.2 }, { 'x': '15-24 years', y: 15.4 },
-                    { 'x': '25-54 years', y: 46.9 }, { 'x': '55-64 years', y: 11.3 },
+                    { 'x': '0-14 years', y: 16 },
+                    { 'x': '15-24 years', y: 11.5 },
+                    { 'x': '25-54 years', y: 45.9 },
+                    { 'x': '55-64 years', y: 13.5 },
                 ],
                 type: 'Pie',
                 xName: 'x',
@@ -183,11 +154,13 @@ export class PieMaps extends SampleBase<{}, {}> {
                 explode: true,
                 explodeIndex: 0,
                 explodeOffset: '20%',
-                name: 'Russia',
+                name: 'Canada',
                 palettes: ['#634D6F', '#B34D6D', '#557C5C', '#5E55E2', '#7C744D'],
                 dataSource: [
-                    { 'x': '0-14 years', y: 16 }, { 'x': '15-24 years', y: 11.5 },
-                    { 'x': '25-54 years', y: 45.9 }, { 'x': '55-64 years', y: 13.5 },
+                    { 'x': '0-14 years', y: 15.5 },
+                    { 'x': '15-24 years', y: 12.9 },
+                    { 'x': '25-54 years', y: 41.4 },
+                    { 'x': '55-64 years', y: 13.3 },
                 ],
                 type: 'Pie',
                 xName: 'x',
@@ -211,11 +184,13 @@ export class PieMaps extends SampleBase<{}, {}> {
                     explode: true,
                     explodeIndex: 0,
                     explodeOffset: '20%',
-                    name: 'Canada',
+                    name: 'USA',
                     palettes: ['#634D6F', '#B34D6D', '#557C5C', '#5E55E2', '#7C744D'],
                     dataSource: [
-                        { 'x': '0-14 years', y: 15.5 }, { 'x': '15-24 years', y: 12.9 },
-                        { 'x': '25-54 years', y: 41.4 }, { 'x': '55-64 years', y: 13.3 },
+                        { 'x': '0-14 years', y: 20 },
+                        { 'x': '15-24 years', y: 13.7 },
+                        { 'x': '25-54 years', y: 40.2 }, 
+                        { 'x': '55-64 years', y: 12.3 },
                     ],
                     type: 'Pie',
                     xName: 'x',
@@ -239,11 +214,13 @@ export class PieMaps extends SampleBase<{}, {}> {
                     explode: true,
                     explodeIndex: 0,
                     explodeOffset: '20%',
-                    name: 'USA',
+                    name: 'China',
                     palettes: ['#634D6F', '#B34D6D', '#557C5C', '#5E55E2', '#7C744D'],
                     dataSource: [
-                        { 'x': '0-14 years', y: 20 }, { 'x': '15-24 years', y: 13.7 },
-                        { 'x': '25-54 years', y: 40.2 }, { 'x': '55-64 years', y: 12.3 },
+                        { 'x': '0-14 years', y: 17.2 },
+                        { 'x': '15-24 years', y: 15.4 },
+                        { 'x': '25-54 years', y: 46.9 },
+                        { 'x': '55-64 years', y: 11.3 },
                     ],
                     type: 'Pie',
                     xName: 'x',
@@ -270,8 +247,10 @@ export class PieMaps extends SampleBase<{}, {}> {
                 name: 'Brazil',
                 palettes: ['#634D6F', '#B34D6D', '#557C5C', '#5E55E2', '#7C744D'],
                 dataSource: [
-                    { 'x': '0-14 years', y: 24.2 }, { 'x': '15-24 years', y: 16.7 },
-                    { 'x': '25-54 years', y: 43.6 }, { 'x': '55-64 years', y: 8.2 },
+                    { 'x': '0-14 years', y: 24.2 },
+                    { 'x': '15-24 years', y: 16.7 },
+                    { 'x': '25-54 years', y: 43.6 },
+                    { 'x': '55-64 years', y: 8.2 },
                 ],
                 type: 'Pie',
                 xName: 'x',

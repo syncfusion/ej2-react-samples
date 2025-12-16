@@ -17,55 +17,75 @@ export interface DataInfo {
     [key: string]: string;
 }
 
+
 function RemoteData() {
     React.useEffect(() => {
         updateSampleSection();
-    }, [])
+    }, []);
+
+    // 1) Memoize DataManager so it is not recreated on re-renders
+    const dataManager = React.useMemo(() => {
+        return new DataManager({
+            url: "https://services.syncfusion.com/react/production/api/RemoteData",
+            crossDomain: true
+        });
+    }, []);
+
+    // 2) Memoize layout object to keep stable identity
+    const layout = React.useMemo(
+        () => ({
+            type: "HierarchicalTree" as const,
+            margin: { left: 0, right: 0, top: 100, bottom: 0 },
+            verticalSpacing: 40
+        }),
+        []
+    );
+
+    // 3) Stable callbacks for defaults/binding
+    const getNodeDefaults = React.useCallback((node: Node) => {
+        node.width = 80;
+        node.height = 40;
+        node.shape = { type: "Basic", shape: "Rectangle" };
+        node.style = { fill: "#048785", strokeColor: "Transparent" };
+    }, []);
+
+    const getConnectorDefaults = React.useCallback((connector: Connector) => {
+        connector.type = "Orthogonal";
+        connector.style.strokeColor = "#048785";
+        connector.targetDecorator.shape = "None";
+    }, []);
+
+    const doBinding = React.useCallback((nodeModel: NodeModel, data: DataInfo) => {
+        nodeModel.annotations = [
+            {
+                content: data["Label"],
+                style: { color: "white" }
+            }
+        ];
+    }, []);
+
+    // 4) Memoize dataSourceSettings so its identity is stable
+    const dataSourceSettings = React.useMemo(
+        () => ({
+            id: "Id",
+            parentId: "ParentId",
+            dataSource: dataManager,
+            doBinding
+        }),
+        [dataManager, doBinding]
+    );
 
     return (
         <div className="control-pane">
             <div className="control-section">
-                {/* Initializes and renders diagram control */}
                 <DiagramComponent
                     id="diagram"
                     width={"100%"}
                     height={"490"}
-                    layout={{
-                        type: "HierarchicalTree",
-                        margin: { left: 0, right: 0, top: 100, bottom: 0 },
-                        verticalSpacing: 40,
-                    }}
-                    // Set default properties for nodes
-                    getNodeDefaults={(node: Node) => {
-                        node.width = 80;
-                        node.height = 40;
-                        // Initialize node shape
-                        node.shape = { type: "Basic", shape: "Rectangle" };
-                        node.style = { fill: "#048785", strokeColor: "Transparent" };
-                    }}
-                    // Set default properties for connectors
-                    getConnectorDefaults={(connector: Connector) => {
-                        connector.type = "Orthogonal";
-                        connector.style.strokeColor = "#048785";
-                        connector.targetDecorator.shape = "None";
-                    }}
-                    // Configure the data source for the diagram
-                    dataSourceSettings={{
-                        id: "Id",
-                        parentId: "ParentId",
-                        dataSource: new DataManager({
-                            url: "https://services.syncfusion.com/react/production/api/RemoteData",
-                            crossDomain: true
-                        }),
-                        // Bind external data to node properties
-                        doBinding: (nodeModel: NodeModel, data: DataInfo) => {
-                            nodeModel.annotations = [{
-                                content: data["Label"],
-                                style: { color: "white" }
-                            }];
-                        }
-                    }}
-                    // Disable all interactions except zoom/pan
+                    layout={layout}
+                    getNodeDefaults={getNodeDefaults}
+                    getConnectorDefaults={getConnectorDefaults}
+                    dataSourceSettings={dataSourceSettings}
                     tool={DiagramTools.ZoomPan}
                     snapSettings={{ constraints: 0 }}
                 >

@@ -193,10 +193,9 @@ const CellAlign = () => {
           header text dynamically by select the column and text align value from
           property panel.
         </p>
-        <p>
-          More information about Cell Alignment can be found in this
-          documentation section.
-        </p>
+           <p>
+              More information about Cell Alignment can be found in this <a href="https://ej2.syncfusion.com/react/documentation/treegrid/columns/columns">documentation</a> section
+           </p>
       </div>
     </div>
   );

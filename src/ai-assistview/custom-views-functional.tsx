@@ -15,7 +15,7 @@ const CustomViews = () => {
 
     const promptsData: PromptModel[] = [];
 
-    const prompts:{ [key: string]: string | string[] } [] = data["defaultPromptResponseData"];
+    const prompts: { [key: string]: string | string[] }[] = data["defaultPromptResponseData"];
 
     const assistInstance = useRef<AIAssistViewComponent>(null);
 
@@ -33,9 +33,9 @@ const CustomViews = () => {
             }
         });
         textareaObj.appendTo('#promptTextarea');
-        var generateBtn: Button = new Button({ cssClass: 'e-primary generate-btn', content:'Generate Prompt', disabled: true });
+        var generateBtn: Button = new Button({ cssClass: 'e-primary generate-btn', content: 'Generate Prompt', disabled: true });
         generateBtn.appendTo('#generateBtn');
-        generateBtn.element.addEventListener('click',() => {
+        generateBtn.element.addEventListener('click', () => {
             var promptValue = textareaObj.value;
             if (promptValue) {
                 textareaObj.value = '';
@@ -46,7 +46,7 @@ const CustomViews = () => {
             }
         });
 
-        assistInstance.current.element.querySelector('.view-container .suggestions').addEventListener('click',(e) => {
+        assistInstance.current.element.querySelector('.view-container .suggestions').addEventListener('click', (e) => {
             if ((e.target as any).classList.contains('suggestion-item')) {
                 textareaObj.value = (e.target as any).textContent;
                 textareaObj.dataBind();
@@ -61,9 +61,9 @@ const CustomViews = () => {
         var responseItemElem = `<div class="responseItemContent e-card">
                                     <div class="response-header"><b>Prompt:</b> ${prompt}</div>${separatorElem}
                                     <div class="assist-loading-content">
-                                        <div class="e-skeleton e-shimmer-wave" style="width: 100%; height: 20px;"></div>
-                                        <div class="e-skeleton e-shimmer-wave" style="width: 80%; height: 20px;"></div>
-                                        <div class="e-skeleton e-shimmer-wave" style="width: 100%; height: 20px;"></div>
+                                        <div class="e-skeleton e-skeleton-text e-shimmer-wave" style="width: 100%; height: 20px;"></div>
+                                        <div class="e-skeleton e-skeleton-text e-shimmer-wave" style="width: 80%; height: 20px;"></div>
+                                        <div class="e-skeleton e-skeleton-text e-shimmer-wave" style="width: 100%; height: 20px;"></div>
                                     </div>
                                     ${separatorElem}
                                     <div class="options">
@@ -83,7 +83,7 @@ const CustomViews = () => {
             responseView.children[0].querySelector('.assist-loading-content').innerHTML = response as string;
             var copyBtn = responseView.children[0].querySelector('#copyBtn');
             copyBtn.classList.remove('e-skeleton', 'e-shimmer-wave');
-            copyBtn.addEventListener('click',(e) => {
+            copyBtn.addEventListener('click', (e) => {
                 var textToCopy = (e.target as any).parentElement.parentElement.querySelector('.assist-loading-content').textContent;
                 navigator.clipboard.writeText(textToCopy).then(() => {
                     copyBtn.textContent = 'Copied!';
@@ -115,10 +115,10 @@ const CustomViews = () => {
                 </div>`;
     };
 
-    return(
+    return (
         <div className='control-pane'>
             <div className="control-section">
-                <div className="views-aiassistview"> 
+                <div className="views-aiassistview">
                     <AIAssistViewComponent id="aiAssistView" ref={assistInstance} created={created}>
                         <ViewsDirective>
                             <ViewDirective type='Assist' name='Prompt' viewTemplate={promptViewContent()}></ViewDirective>
@@ -133,7 +133,7 @@ const CustomViews = () => {
                 <p>This sample demonstrates the different view available for the AI AssistView component.</p>
             </div>
             <div id="description">
-                <p>In this example, the AI AssistView component is configured with three distinct views using the <code>views</code> property.</p>
+                <p>In this example, the AI AssistView component is configured with three distinct views using the  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/ai-assistview#views">views</a> property.</p>
                 <p>Each view displays its own unique content:</p>
                     <ul>
                         <li>The <code>prompt</code> view includes a textarea with a <code>Generate</code> button and displays a list of suggestions</li>

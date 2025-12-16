@@ -21,7 +21,7 @@ export class EditType extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section'>
           <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' height='400'
-            editSettings={this.editSettings} pageSettings={this.pageSettings} toolbar={this.toolbarOptions}>
+            editSettings={this.editSettings} pageSettings={this.pageSettings} toolbar={this.toolbarOptions} clipMode='EllipsisWithTooltip'>
             <ColumnsDirective>
               <ColumnDirective field='taskID' headerText='Task ID' width='80' textAlign='Right' validationRules={this.validationRule}
                 isPrimaryKey={true}></ColumnDirective>

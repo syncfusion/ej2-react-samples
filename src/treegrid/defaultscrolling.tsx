@@ -18,7 +18,7 @@ export class DefaultScrolling extends SampleBase<{}, {}> {
                             <ColumnDirective field='duration' headerText='Duration' width='110' textAlign='Right'></ColumnDirective>
                             <ColumnDirective field='progress' headerText='Progress' width='110' textAlign='Right'></ColumnDirective>
                             <ColumnDirective field='priority' headerText='Priority' width='110'></ColumnDirective>
-                            <ColumnDirective field='approved' headerText='Approved' textAlign='Center' width='110'></ColumnDirective>
+                            <ColumnDirective field='approved' headerText='Approved' textAlign='Center' width='120'></ColumnDirective>
                         </ColumnsDirective>
                     </TreeGridComponent>
                 </div>

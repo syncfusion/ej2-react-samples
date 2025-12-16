@@ -10,7 +10,7 @@ export class StickyHeader extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks' enableStickyHeader={true}>
+          <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks' enableStickyHeader={true} clipMode='EllipsisWithTooltip'>
             <ColumnsDirective>
               <ColumnDirective field='taskID' headerText='Task ID' width='70' textAlign='Right'></ColumnDirective>
               <ColumnDirective field='taskName' headerText='Task Name' width='200'></ColumnDirective>

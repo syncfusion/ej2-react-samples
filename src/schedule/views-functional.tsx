@@ -27,9 +27,8 @@ const Views = () => {
     { text: 'Month', value: 'Month' }
   ];
   const fields: Record<string, any> = { text: 'text', value: 'value' };
-  const [currentView, setCurrentView] = useState<any>("Week");
   const onViewChange = (args: ChangeEventArgs): void => {
-    setCurrentView(args.value as View);
+    scheduleObj.current.currentView = args.value as View;
     scheduleObj.current?.dataBind();
   }
 
@@ -41,7 +40,7 @@ const Views = () => {
     <div className='schedule-control-section'>
       <div className='col-lg-9 control-section'>
         <div className='control-wrapper'>
-          <ScheduleComponent width='100%' height='650px' ref={scheduleObj} selectedDate={new Date(2021, 1, 15)} eventSettings={{ dataSource: data }} eventRendered={onEventRendered} currentView={currentView}>
+          <ScheduleComponent width='100%' height='650px' ref={scheduleObj} selectedDate={new Date(2021, 1, 15)} eventSettings={{ dataSource: data }} eventRendered={onEventRendered}>
             <ViewsDirective>
               <ViewDirective option='Day' />
               <ViewDirective option='Week' />
@@ -59,7 +58,7 @@ const Views = () => {
               <tr style={{ height: '50px' }}>
                 <td style={{ width: '100%' }}>
                   <div>
-                    <DropDownListComponent style={{ padding: '6px' }} value={currentView} fields={fields} dataSource={viewOptions} change={onViewChange} placeholder='Current View' floatLabelType='Always' />
+                    <DropDownListComponent style={{ padding: '6px' }} value={'Week'} fields={fields} dataSource={viewOptions} change={onViewChange} placeholder='Current View' floatLabelType='Always' />
                   </div>
                 </td>
               </tr>

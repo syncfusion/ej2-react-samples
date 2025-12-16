@@ -64,8 +64,7 @@ export class LoadOnDemand extends SampleBase<{}, LoadOnDemandState> {
                 </div>
                 <div id="description">
                     <p>
-                        In this example, the chat <code>messages</code> are the list of conversations between two users allowing to scroll through their conversation history.
-                        The <code>loadOnDemand</code> property allows you to load more messages on demand, improving the performance and reducing load times, particularly in long conversations. Only the visible conversations are render, reducing the amount of DOM elements and improving the overall performance.It highlights the improving performance and reducing load times, particularly in long conversations.
+                        In this example, the chat <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chat-ui/#messages">messages</a> are the list of conversations between two users allowing to scroll through their conversation history. The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chat-ui/#loadondemand">loadOnDemand</a> property allows you to load more messages on demand, improving the performance and reducing load times, particularly in long conversations. Only the visible conversations are render, reducing the amount of DOM elements and improving the overall performance.
                     </p>
                 </div>
             </div>

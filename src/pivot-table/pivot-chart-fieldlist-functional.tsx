@@ -96,6 +96,10 @@ let dataSourceSettings: IDataOptions = {
 };
 
 function PivotChartFieldList () {
+    let fieldlistObj: PivotFieldListComponent;
+    let pivotObj: PivotViewComponent;
+    let isInitial = false;
+    let isChecked = true;
     React.useEffect(() => {
         updateSampleSection();
         rendereComplete();
@@ -110,11 +114,7 @@ function PivotChartFieldList () {
             }
         }, 700);
     }, [])
-
-    let fieldlistObj: PivotFieldListComponent;
-    let pivotObj: PivotViewComponent;
-    let isInitial = false;
-    let isChecked = true;
+    
     let toolbarOptions: any = ['Grid', 'Chart'];
     let toolbarItems: any = [
       {

@@ -412,6 +412,10 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to arrange the labels smartly without overlapping with each other.'
     },
     {
+        'path': 'chart/axis-label-template', 'component': 'AxisLabelTemplate', 'name': 'Axis Label Template', 'order': '14', 'category': 'Chart Axes', 'type': 'new',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the axis label template in charts.'
+    },
+    {
         'path': 'chart/multi-level-label', 'component': 'Multilevellabels', 'name': 'Multi Level Labels', 'order': '14', 'category': 'Chart Axes',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to group the axis labels. '
     },
@@ -456,7 +460,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the empty points.'
     },
     {
-        'path': 'chart/no-data-template', 'component': 'NodataTemplate', 'name': 'No Data Template', 'order': '15', 'category': 'Chart Customization', 'type': 'new',
+        'path': 'chart/no-data-template', 'component': 'NodataTemplate', 'name': 'No Data Template', 'order': '15', 'category': 'Chart Customization',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the no data tempalate.'
     },
     {

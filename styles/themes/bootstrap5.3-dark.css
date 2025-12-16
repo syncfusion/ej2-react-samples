@@ -268,6 +268,12 @@ body.bootstrap5_3-dark,
     margin-top: 6px;
 }
 
+.bootstrap5_3-dark .e-samplestatus.new.tree,
+.bootstrap5_3-dark .e-samplestatus.update.tree,
+.bootstrap5_3-dark .e-samplestatus.preview.tree {
+    margin-top: 0px !important;
+}
+
 .bootstrap5_3-dark .sb-theme-popup li:hover .sb-theme-select {
     color: transparent !important;
 }

@@ -81,7 +81,7 @@ const DragAndDropBetween = () => {
             Selection </a></code>feature. Selecting multiple rows within the Tree Grid is as simple as clicking and dragging them.</p>
         <p>The Row drag and drop feature is enabled in both TreeGrids in this demo. Drag and drop rows between TreeGrids by selecting the rows and dragging them to the adjacent TreeGrid.</p>
         <p>
-            More information on the row drag and drop can be found in this
+            More information on the row drag and drop can be found in this 
             <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/row/row-drag-and-drop#drag-and-drop-to-another-tree-grid">
             documentation </a>section.
         </p>   

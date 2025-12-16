@@ -188,7 +188,7 @@ export class Port extends SampleBase<{}, {}> {
     // This method is called after the component is rendered.
     // It fits the diagram content within the diagram viewport and selects the first node.
     rendereComplete() {
-        diagramInstance.fitToPage();
+        setTimeout(() => diagramInstance.fitToPage(), 100);
         diagramInstance.select([diagramInstance.nodes[0]]);
     }
 

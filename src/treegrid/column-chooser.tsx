@@ -38,8 +38,8 @@ export class TreeGridColumnChooser extends SampleBase<{}, {}> {
           <p>Tree Grid features are segregated into individual feature-wise modules. To use column chooser 
              feature, we need to inject <code>ColumnChooser</code> module into the <code>services</code>.</p>
           <p>More information about Column Chooser can be found in this
-            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/columns/column-chooser.html">
-            documentation section.</a></p>
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/columns/columns">
+            documentation</a> section</p>
         </div>
       </div>
     )

@@ -517,15 +517,22 @@ function diagramTemplate(props) {
 }
 // Class for HTML node with rendering complete function
 export class HtmlNode extends SampleBase<{}, {}> {
+  private diagramCreated: boolean = false;
   rendereComplete() {
     initialRenderr();
+    this.diagramCreated = true;
     diagramInstance.fitToPage();
   }
   render() {
     return (
       <div className="control-pane">
         <div id="custom-diagram" className="control-section">
-          <DiagramComponent id="diagram" ref={diagram => (diagramInstance = diagram)} width={"100%"} backgroundColor='#f5f5f5' height={"1100px"} nodes={nodes} nodeTemplate={template.bind(this)} />
+          <DiagramComponent id="diagram" ref={diagram => (diagramInstance = diagram)} width={"100%"} backgroundColor='#f5f5f5' height={"1100px"} nodes={nodes} nodeTemplate={template.bind(this)}
+            load={() => {
+              if (this.diagramCreated) {
+                diagramInstance.fitToPage();
+              }
+            }} />
         </div>
         <div id="action-description">
           <p>

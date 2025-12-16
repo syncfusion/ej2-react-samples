@@ -274,27 +274,25 @@ const RestaurantMenu = () => {
   return (
     <div className="control-pane">
       <div className="control-section">
-        <div className="content-wrapper">
-          <div className="treegrid-center-container">
-            <div className="resmenu-toolbar-search">
-              <AutoCompleteComponent dataSource={Array.from(new Set(foodMenu.map(i => (i as any).FoodName)))} placeholder="Search for dishes" width='800px' highlight={true} filterType='Contains' change={onSearchChange} id='search-autocomplete' />
-            </div>
+        <div className="treegrid-center-container">
+          <div className="resmenu-toolbar-search">
+            <AutoCompleteComponent dataSource={Array.from(new Set(foodMenu.map(i => (i as any).FoodName)))} placeholder="Search for dishes" width='800px' highlight={true} filterType='Contains' change={onSearchChange} id='search-autocomplete' />
+          </div>
 
-            <div id="res-menu">
-              <DialogComponent id="cartDialog" ref={dialogRef} header='Bill Summary' width='400px' showCloseIcon={true} isModal={true} visible={false} animationSettings={{ effect: 'Zoom' }} buttons={[
-                { click: () => clearCart(), buttonModel: { content: 'Cancel' } },
-                { click: () => printCartDialogContent(), buttonModel: { content: 'Print', isPrimary: true } },
-              ]} target='#RestaurantTreeGrid' beforeOpen={beforeOpen}></DialogComponent>
+          <div id="res-menu">
+            <DialogComponent id="cartDialog" ref={dialogRef} header='Bill Summary' width='400px' showCloseIcon={true} isModal={true} visible={false} animationSettings={{ effect: 'Zoom' }} buttons={[
+              { click: () => clearCart(), buttonModel: { content: 'Cancel' } },
+              { click: () => printCartDialogContent(), buttonModel: { content: 'Print', isPrimary: true } },
+            ]} target='#RestaurantTreeGrid' beforeOpen={beforeOpen}></DialogComponent>
 
-              <TreeGridComponent id='RestaurantTreeGrid' ref={treegridRef} allowKeyboard={false} dataSource={treeData} dataBound={databound} idMapping='FoodId' parentIdMapping='CategoryId' treeColumnIndex={0} rowTemplate={rowTemplate} toolbar={toolbarOptions} toolbarClick={toolbarClick}
+            <TreeGridComponent id='RestaurantTreeGrid' ref={treegridRef} allowKeyboard={false} dataSource={treeData} dataBound={databound} idMapping='FoodId' parentIdMapping='CategoryId' treeColumnIndex={0} rowTemplate={rowTemplate} toolbar={toolbarOptions} toolbarClick={toolbarClick}
 
-                height={400} width={800}>
-                <ColumnsDirective>
-                  <ColumnDirective field='FoodName' headerText='Explore Our Menu' width='150' />
-                </ColumnsDirective>
-                <Inject services={[Toolbar]} />
-              </TreeGridComponent>
-            </div>
+              height={400} width={800}>
+              <ColumnsDirective>
+                <ColumnDirective field='FoodName' headerText='Explore Our Menu' width='150' />
+              </ColumnsDirective>
+              <Inject services={[Toolbar]} />
+            </TreeGridComponent>
           </div>
         </div>
       </div>

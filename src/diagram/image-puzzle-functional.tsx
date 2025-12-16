@@ -48,9 +48,9 @@ function initializeImageCollections(): void {
     for (let i = 1; i <= 16; i++) {
         const row = Math.ceil(i / 4);
         const col = ((i - 1) % 4) + 1;
-        bridgeTheme[i] = `./src/diagram/Images/puzzle/bridge${col}x${row}.png`;
-        natureTheme[i] = `./src/diagram/Images/puzzle/image${col}x${row}.png`;
-        manTheme[i] = `./src/diagram/Images/puzzle/man${col}x${row}.png`;
+        bridgeTheme[i] = `src/diagram/Images/puzzle/bridge${col}x${row}.png`;
+        natureTheme[i] = `src/diagram/Images/puzzle/image${col}x${row}.png`;
+        manTheme[i] = `src/diagram/Images/puzzle/man${col}x${row}.png`;
     }
 
     imageCollections = [bridgeTheme, natureTheme, manTheme];

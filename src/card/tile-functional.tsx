@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom/client';
 import * as React from 'react';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { cardBook } from './data-source';
 import { MultiSelect, SelectEventArgs, RemoveEventArgs } from '@syncfusion/ej2-dropdowns';
@@ -45,10 +45,8 @@ const cardRendering = (cards: cardData[]) => {
             const cardId = `card_sample_${index + 1}`;
             const cardEle = document.getElementById(cardId);
             if (cardEle) {
-                let root: ReactDOM.Root;
-                if (rootMap.has(cardId)) {
-                    root = rootMap.get(cardId)!;
-                } else {
+                let root = rootMap.get(cardId);
+                if (!root) {
                     root = ReactDOM.createRoot(cardEle);
                     rootMap.set(cardId, root);
                 }
@@ -69,10 +67,27 @@ const destroyAllCard = () => {
 };
 
 const Tile = () => {
-       useEffect(() => {
+    const isMounted = useRef(false);
+    useEffect(() => {
+        if (isMounted.current) return;
+        isMounted.current = true;
         updateSampleSection();
         rendereComplete();
-    }, [])
+        return () => {
+            const cleanup = () => {
+                destroyAllCard();
+                if (multiselectComp && !multiselectComp.isDestroyed) {
+                    multiselectComp.destroy();
+                }
+            };
+
+            if (typeof requestIdleCallback !== 'undefined') {
+                requestIdleCallback(cleanup);
+            } else {
+                setTimeout(cleanup, 0);
+            }
+        };
+    }, []);
     const rendereComplete = (): void => {
         multiselectComp = new MultiSelect({
             // set the local data to dataSource property

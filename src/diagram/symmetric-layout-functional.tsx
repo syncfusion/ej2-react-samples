@@ -129,12 +129,13 @@ function SymmetricLayout() {
                 <div className="property-panel-header">Properties</div>
                 {/* Numeric text boxes for layout properties */}
                 <table id="property">
+                    <tbody>
                     {[
                         { label: 'Spring Length', id: 'springLength', format: '###.##', min:1, value: 90, step: 1 },
                         { label: 'Spring Factor', id: 'springFactor', format: '###.##', min:0, max: 3.5, value: 0.8, step: 0.1 },
                         { label: 'Maximum Iteration', id: 'maxIteration', format: '###.##', min:0, value: 500, step: 1 },
                     ].map((property) => (
-                        <tr style={{ height: '40px' }}>
+                        <tr key={property.id} style={{ height: '40px' }}>
                             <td style={{ width: '30%' }}>{property.label}</td>
                             <td style={{ width: '60%' }}>
                                 <NumericTextBoxComponent
@@ -159,6 +160,7 @@ function SymmetricLayout() {
                             <ButtonComponent id="refresh">Refresh</ButtonComponent>
                         </td>
                     </tr>
+                    </tbody>
                 </table>
 
             </div>

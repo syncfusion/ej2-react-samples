@@ -2,7 +2,7 @@ import * as React from 'react';
 import './bottom-toolbar.css';
 import { ChatUIComponent } from '@syncfusion/ej2-react-interactive-chat';
 import { updateSampleSection } from '../common/sample-base';
-import { RichTextEditorComponent, ToolbarSettingsModel, Toolbar, Link, Image, HtmlEditor, QuickToolbar, Table, EmojiPicker,Inject } from '@syncfusion/ej2-react-richtexteditor';
+import { RichTextEditorComponent, ToolbarSettingsModel, Toolbar, Link, Image, HtmlEditor, QuickToolbar, Table, EmojiPicker,Inject, ClipBoardCleanup, AutoFormat } from '@syncfusion/ej2-react-richtexteditor';
 
 export const BottomToolbar = () => {
   React.useEffect(() => {
@@ -118,7 +118,7 @@ export const BottomToolbar = () => {
           } as ToolbarSettingsModel
         }
     >
-       <Inject services={[Toolbar, Link, Image, HtmlEditor, QuickToolbar, Table, EmojiPicker]} />
+       <Inject services={[Toolbar, Link, Image, HtmlEditor, QuickToolbar, Table, EmojiPicker, ClipBoardCleanup, AutoFormat]} />
       </RichTextEditorComponent>
       <button id="sendMessage" className="e-btn e-primary e-icons e-send e-send-1 e-icon-btn e-small" style={{ float: 'right', margin: '4px' }} onClick={sendMessage}></button>
       <button id="cancelMessage" className="e-btn e-secondary e-icons e-trash e-icon-btn e-small" style={{ float: 'right', margin: '4px' }} onClick={cancelMessage}></button>

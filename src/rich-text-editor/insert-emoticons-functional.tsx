@@ -1,7 +1,7 @@
 /**
  * Rich Text Editor insert emoticons sample
  */
-import { HtmlEditor, Image, Inject, IToolbarItems, Link, NodeSelection, QuickToolbar, RichTextEditorComponent, Toolbar, ToolbarSettingsModel, EmojiPicker, PasteCleanup, Table, Video, Audio } from '@syncfusion/ej2-react-richtexteditor';
+import { HtmlEditor, Image, Inject, IToolbarItems, Link, NodeSelection, QuickToolbar, RichTextEditorComponent, Toolbar, ToolbarSettingsModel, EmojiPicker, PasteCleanup, Table, Video, Audio, ClipBoardCleanup, AutoFormat } from '@syncfusion/ej2-react-richtexteditor';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { updateSampleSection } from '../common/sample-base';
@@ -33,7 +33,7 @@ function InsertEmoticons() {
                     <RichTextEditorComponent id="EmotionIconstRTE" ref={(scope) => { rteObj = scope }}
                         toolbarSettings={toolbarSettings}>
                             <div style={{display: 'block;' }}><p style={{ marginRight: '10px' }}>An emoji picker in a Rich Text Editor is a tool that allows users to easily add emojis or emoticons to their text. Typically, it is a small window or panel that displays a variety of emojis, arranged in different categories, such as smileys, animals, food, and so on. Users can select the desired emoji by clicking on it or by typing its name in a search bar. </p></div>  
-                        <Inject services={[HtmlEditor, Toolbar, Link, Image, QuickToolbar, EmojiPicker, PasteCleanup, Table, Video, Audio]} />
+                        <Inject services={[HtmlEditor, Toolbar, Link, Image, QuickToolbar, EmojiPicker, PasteCleanup, Table, Video, Audio, ClipBoardCleanup, AutoFormat]} />
                     </RichTextEditorComponent>
                 </div>
             </div>

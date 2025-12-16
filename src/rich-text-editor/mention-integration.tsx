@@ -1,7 +1,7 @@
 /**
  * Rich Text Editor Mention integration sample
  */
-import { HtmlEditor, Image, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar, PasteCleanup } from '@syncfusion/ej2-react-richtexteditor';
+import { HtmlEditor, Image, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar, PasteCleanup, ClipBoardCleanup, AutoFormat } from '@syncfusion/ej2-react-richtexteditor';
 import { MentionComponent } from '@syncfusion/ej2-react-dropdowns';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
@@ -67,7 +67,7 @@ export class MentionIntegration extends SampleBase<{}, {}> {
             <RichTextEditorComponent id="mention_integration" placeholder="Type @ and tag the name"  actionBegin={this.actionBegineHandler.bind(this)}  >
             <p>Hello <span contentEditable={false} className='e-mention-chip'><a href="mailto:maria@gmail.com" title="maria@gmail.com">@Maria</a></span>&#8203;</p>
             <p>Welcome to the mention integration with rich text editor demo. Type <code>@</code> character and tag user from the suggestion list. </p>
-              <Inject services={[HtmlEditor, Toolbar, Image, Link, QuickToolbar, PasteCleanup]} />
+              <Inject services={[HtmlEditor, Toolbar, Image, Link, QuickToolbar, PasteCleanup, ClipBoardCleanup, AutoFormat]} />
             </RichTextEditorComponent>
           </div>
         </div>

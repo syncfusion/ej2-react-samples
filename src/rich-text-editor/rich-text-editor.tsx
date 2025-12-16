@@ -1,7 +1,7 @@
 /**
  * Rich Text Editor default sample
  */
-import { HtmlEditor, Image, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar, Table, Video, Audio } from '@syncfusion/ej2-react-richtexteditor';
+import { HtmlEditor, Image, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar, Table, Video, Audio, ClipBoardCleanup, AutoFormat } from '@syncfusion/ej2-react-richtexteditor';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { SampleBase } from '../common/sample-base';
@@ -18,7 +18,7 @@ export class Default extends SampleBase<{}, {}> {
           <div className='rte-control-section'>
             <RichTextEditorComponent id="defaultRTE" ref={(richtexteditor) => { this.rteObj = richtexteditor }} >
             <h2>Welcome to the Rich Text Editor Demo!</h2><p>The Rich Text Editor control is a WYSIWYG ("what you see is what you get") editor that provides the best user experience to create and update the content. Users can format their content using standard toolbar commands.</p><h4>Flexible Editing!</h4><p>For a better editing experience, the Angular Rich Text Editor component offers a variety of tools and choices. So, you can quickly insert <strong>images</strong>, <strong>videos</strong>, <strong>hyperlinks</strong>, and <strong>tables</strong>; <strong>merge table cells</strong>; and configure.</p><p>You can easily format the text and paragraphs by setting the editor’s foreground and <strong>background colors</strong>, <strong>font type</strong>, <strong>italicization</strong>, <strong>adding ordered </strong>and <strong>unordered custom lists</strong>, <strong>underlining</strong>, <strong>strikethrough</strong>, and <strong>bolding</strong>.<br/><br/></p><p><img alt="Editor Features Overview" src="https://cdn.syncfusion.com/ej2/richtexteditor-resources/RTE-Overview.png" width="400" height="200" className="e-img-left"/></p>  
-              <Inject services={[HtmlEditor, Toolbar, Image, Link, QuickToolbar, Table, Video, Audio]} />
+              <Inject services={[HtmlEditor, Toolbar, Image, Link, QuickToolbar, Table, Video, Audio, ClipBoardCleanup, AutoFormat]} />
             </RichTextEditorComponent>
           </div>
         </div>

@@ -3,7 +3,7 @@
  */
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { RichTextEditorComponent, HtmlEditor, Inject, Image, Link, Toolbar, QuickToolbar, PasteCleanup, Table, Video, Audio } from '@syncfusion/ej2-react-richtexteditor';
+import { RichTextEditorComponent, HtmlEditor, Inject, Image, Link, Toolbar, QuickToolbar, PasteCleanup, Table, Video, Audio, ClipBoardCleanup, AutoFormat } from '@syncfusion/ej2-react-richtexteditor';
 import { updateSampleSection } from '../common/sample-base';
 import { Fetch } from '@syncfusion/ej2-base';
 import './ajax-load.css';
@@ -25,7 +25,7 @@ function AjaxContent() {
             <div className='control-section' id="rteAjax">
                 <div className="content-wrapper">
                     <RichTextEditorComponent id="ajaxloadRTE" ref={(richtexteditor) => { rteObj = richtexteditor }}>
-                        <Inject services={[HtmlEditor, Toolbar, Image, Link, QuickToolbar, PasteCleanup, Table, Video, Audio]} />
+                        <Inject services={[HtmlEditor, Toolbar, Image, Link, QuickToolbar, PasteCleanup, Table, Video, Audio, ClipBoardCleanup, AutoFormat]} />
                     </RichTextEditorComponent>
                 </div>
             </div>

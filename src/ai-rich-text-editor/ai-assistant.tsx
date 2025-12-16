@@ -1,502 +1,181 @@
-import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { Inject, RichTextEditorComponent, Toolbar, Link, Image, QuickToolbar, HtmlEditor, Table, ToolbarClickEventArgs } from '@syncfusion/ej2-react-richtexteditor';
-import { enableRipple } from '@syncfusion/ej2-base';
-import './rich-text-editor.css';
-import { DropDownButton } from '@syncfusion/ej2-react-splitbuttons';
-import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
-import { ButtonComponent, ChipListComponent } from '@syncfusion/ej2-react-buttons';
-import { SkeletonComponent, ToastComponent } from '@syncfusion/ej2-react-notifications';
-import { Dialog, DialogComponent } from '@syncfusion/ej2-react-popups';
-import { useEffect } from 'react';
-import { getOpenAiModelRTE } from '../common/ai-service';
+import { SampleBase, updateSampleSection } from '../common/sample-base';
+import { AIAssistant, AIAssistantPromptRequestArgs, AIAssistantSettingsModel, HtmlEditor, Image, Inject, Link, PasteCleanup, QuickToolbar, QuickToolbarSettingsModel, RichTextEditorComponent, Table, Toolbar, ToolbarSettingsModel, CodeBlock } from '@syncfusion/ej2-react-richtexteditor';
+import { AI_SERVICE_URL, getUserID } from '../common/ai-service';
+import AIToast from '../common/ai-toast';
 
-enableRipple(true);
+export class AIAssistantClassComponent extends SampleBase<{}, {}> {
+    private editorRef: RichTextEditorComponent;
+    private userID?: string;
+    private abortController?: AbortController;
 
-function AISmartRichTextEditor() {
-    useEffect(() => {
-        regenerateButton!.element.addEventListener('click', () => {
-            updateAISugesstions();
-        });
-        copyButton!.element.addEventListener('click', () => {
-            copyTextToClipboard(AIResult);
-        });
-        replaceButton!.element.addEventListener('click', () => {
-            let range: Range = (defaultRTE as any).formatter.editorManager.nodeSelection?.getRange((defaultRTE as any).contentModule.getDocument());
-            (defaultRTE as any).formatter.editorManager.nodeSelection?.restore(range);
-            (defaultRTE as any).executeCommand('insertHTML', AIResult, { undo: true });
-            closeDialog();
-        });
-    }, []);
-    let toolbarSettings = {
-        items: [
-            {
-                tooltipText: 'AI Assistant',
-                command: 'Custom',
-                template:
-                    '<button class="e-tbar-btn e-btn" tabindex="-1" id="ai_assistant_button_tbar" style="width:100%"><div class="e-rte-dropdown-btn-text">AIAssistant</div></button>'
-            },
-            {
-                tooltipText: 'Rephrase',
-                command: 'Custom',
-                template:
-                    '<button class="e-tbar-btn e-btn" tabindex="-1" id="ai_rephrase_button_tbar" style="width:100%"><div class="e-tbar-btn-text">Rephrase</div></button>'
-            },
-            'Bold',
-            'Italic',
-            'Underline',
-            '|',
-            'FontName',
-            'FontSize',
-            'FontColor',
-            '|',
-            'BackgroundColor',
-            'Formats',
-            'Alignments',
-            '|',
-            'OrderedList',
-            'BulletFormatList',
-            'CreateLink',
-            'Image',
-            '|',
-            'createTable',
-            'SourceCode',
-            'Undo',
-            'Redo',
-        ],
+    private toolbarSettings: ToolbarSettingsModel = {
+        items: ['AICommands', 'AIQuery', '|', 'Bold', 'Italic', 'Underline', 'StrikeThrough', '|',
+            'Alignments', 'Formats', 'OrderedList', 'UnorderedList', 'CheckList', 'CodeBlock',
+            'Blockquote', 'CreateLink', 'Image', 'CreateTable', '|', 'SourceCode', '|', 'Undo', 'Redo']
     };
-    const queryList: { ID: string; Text: string }[] = [
-        { ID: "Rephrase", Text: "Rephrase" },
-        { ID: "Grammar", Text: "Correct Grammar" },
-        { ID: "Summarize", Text: "Summarize" },
-        { ID: "Elaborate", Text: "Elaborate" },
-        { ID: "Translate", Text: "Translate" },
-        { ID: "SentimentAnalysis", Text: "Sentiment Analysis" }
-    ];
 
-    const languageList: { ID: string; Text: string }[] = [
-        { ID: "EN", Text: "English" },
-        { ID: "ZH", Text: "Chinese (Simplified)" },
-        { ID: "ZHT", Text: "Chinese (Traditional)" },
-        { ID: "ES", Text: "Spanish" },
-        { ID: "HI", Text: "Hindi" },
-        { ID: "AR", Text: "Arabic" },
-        { ID: "BN", Text: "Bengali" },
-        { ID: "PT", Text: "Portuguese" },
-        { ID: "RU", Text: "Russian" },
-        { ID: "JA", Text: "Japanese" },
-        { ID: "DE", Text: "German" },
-        { ID: "KO", Text: "Korean" },
-        { ID: "FR", Text: "French" },
-        { ID: "IT", Text: "Italian" },
-        { ID: "TR", Text: "Turkish" }
-    ];
+    private quickToolbarSettings: QuickToolbarSettingsModel = {
+        text: ['AICommands', 'AIQuery', '|', 'Bold', 'Italic', 'Underline', 'StrikeThrough',
+            'Fontcolor', 'BackgroundColor', '|', 'Unorderedlist', 'Orderedlist']
+    };
 
-    let subQuery = '';
-    let promptQuery = '';
-    let isSentimentCheck: boolean = false;
-    let resultData: string = '';
-    let defaultRTE: RichTextEditorComponent;
-    let leftRte: RichTextEditorComponent;
-    let rightRte: RichTextEditorComponent;
-    let aiassistantButton: DropDownButton;
-    let dropValIndex = 0;
-    let queryCategory: DropDownListComponent;
-    let regenerateButton: ButtonComponent;
-    let copyButton: ButtonComponent;
-    let replaceButton: ButtonComponent;
-    let sentimentButton: ButtonComponent
-    let apiResultData: any;
-    let AIResult: string;
-    let toastObj: ToastComponent;
-    let chipList: ChipListComponent;
-    let languageCategory: DropDownListComponent;
-    let translatelanguage: string;
-    let chipValue: string[] = ['Standard'];
-    let dialog: DialogComponent;
+    private aiAssistantSettings: AIAssistantSettingsModel = {
+        popupWidth: '550px'
+    };
 
-    function aiQuerySelectedMenu(args: any): void {
-        dialogueOpen(args.item.text);
+    componentDidMount(): void {
+        updateSampleSection();
     }
 
-    function onToolbarClick(args: ToolbarClickEventArgs): void {
-        if (args.item.tooltipText === 'Rephrase') {
-            dialogueOpen("Rephrase");
-        }
-    }
-
-    function dialogueOpen(selectedQuery: string): void {
-        var selectionText = defaultRTE.getSelectedHtml();
-        if (selectionText) {
-            let range: Range = (defaultRTE as any).formatter.editorManager.nodeSelection?.getRange((defaultRTE as any).contentModule.getDocument());
-            (defaultRTE as any).formatter.editorManager.nodeSelection?.save(range, (defaultRTE as any).contentModule.getDocument());
-            dropValIndex = queryList.findIndex(q => q.Text.toLowerCase() === selectedQuery.toLowerCase());
-            queryCategory.index = dropValIndex;
-            leftRte.value = promptQuery = selectionText;
-            leftRte.refreshUI();
-            dialog.show();
-            updateAISugesstionsData(selectedQuery);
-        } else {
-            toastObj.timeOut = 2000;
-            toastObj.content = 'Please select the content to perform the AI operation.';
-            toastObj.show();
-        }
-    }
-
-    function updateAISugesstionsData(selectedQuery: string): void {
-        (document.getElementById('language') as HTMLElement).style.display = 'none';
-        (document.getElementById('chips-container') as HTMLElement).style.display = 'none';
-        isSentimentCheck = false;
-        switch (selectedQuery) {
-            case "Summarize":
-                subQuery = "Summarize the upcoming sentence shortly.";
-                break;
-            case "Elaborate":
-                subQuery = "Elaborate on the upcoming sentence.";
-                break;
-            case "Rephrase":
-                (document.getElementById('chips-container') as HTMLElement).style.display = '';
-                subQuery = chipValue[0] + " rephrase the upcoming sentence.";
-                break;
-            case "Correct Grammar":
-                subQuery = "Correct the grammar of the upcoming sentence.";
-                break;
-            case "Translate":
-                (document.getElementById('language') as HTMLElement).style.display = '';
-                subQuery = "Translate the upcoming sentence to " + translatelanguage + ".";
-                break;
-            case "Sentiment Analysis":
-                isSentimentCheck = true;
-                subQuery = "Analyze the sentiment and grammar of the following paragraphs and provide the expression score with an emoji followed by the sentiment in the format: \"😊 Neutral\". \n\nNOTE: Avoid any additional text or explanation:";
-                break;
-        }
-        updateAISugesstions();
-    }
-
-    function updateAISugesstions(): void {
+    async onAIAssistantPromptRequest(args: AIAssistantPromptRequestArgs): Promise<void> {
+        this.userID = await getUserID();
         try {
-            if (promptQuery) {
-                (document.getElementById('skeletonId') as HTMLElement).style.display = '';
-                (document.getElementById('rightRte') as HTMLElement).style.display = 'none';
-                sentimentButton.element.style.display = 'none';
-                regenerateButton.disabled = true;
-                copyButton.disabled = true;
-                replaceButton.disabled = true;
-                apiResultData = getResponseFromOpenAI(subQuery, promptQuery);
-                apiResultData.then((result: any) => {
-                    AIResult = isSentimentCheck ? promptQuery : result;
-                    sentimentButton.content = result.toLowerCase().includes("positive") ? "😊 Positive" : result.toLowerCase().includes("negative") ? "😞 Negative" : "😐 Neutral";
-                    sentimentButton.element.style.display = !isSentimentCheck ? 'none' : '';
-                    rightRte.value = AIResult;
-                    var noResultsFound = !(AIResult || promptQuery);
-                    (document.getElementById('no-results-found') as HTMLElement).style.display = noResultsFound ? '' : 'none';
-                    regenerateButton.disabled = noResultsFound;
-                    copyButton.disabled = noResultsFound;
-                    replaceButton.disabled = noResultsFound;
-                    (document.getElementById('skeletonId') as HTMLElement).style.display = 'none';
-                    (document.getElementById('rightRte') as HTMLElement).style.display = noResultsFound ? 'none' : '';
-                });
+            this.abortController = new AbortController();
+            const response: Response = await fetch(AI_SERVICE_URL + '/api/stream', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': this.userID ?? ''
+                },
+                body: JSON.stringify({ message: args.prompt + (args.text) }),
+                signal: this.abortController.signal
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || `HTTP Error ${response.status}`);
             }
-        } catch {
-            toastObj.show();
-        }
-    }
-
-    async function getResponseFromOpenAI(subQuery: string, promptQuery: string): Promise<string> {
-        const content = await getOpenAiModelRTE(subQuery, promptQuery);
-        return content ? content as string : '';
-    }
-
-    function onCreate(): void {
-        if (!aiassistantButton) {
-            aiassistantButton = new DropDownButton({
-                items: [
-                    { text: 'Rephrase' },
-                    { text: 'Correct Grammar' },
-                    { text: 'Summarize' },
-                    { text: 'Elaborate' },
-                    { text: 'Translate' },
-                    { text: 'Sentiment Analysis' }
-                ],
-                cssClass: 'menubutton e-tbar-btn e-tbar-btn-text',
-                select: aiQuerySelectedMenu
-            });
-            aiassistantButton.appendTo('#ai_assistant_button_tbar');
-        }
-        dialog.hide();
-    }
-
-    function dialogShow(): void {
-        (dialog as Dialog).element.style.display = '';
-    }
-
-    function closeDialog(): void {
-        dialog.hide();
-        rightRte.value = '';
-        leftRte.value = '';
-        promptQuery = '';
-        chipValue[0] = 'Standard';
-        AIResult = '';
-        dropValIndex = 0;
-        (document.getElementById('chips-container') as HTMLElement).style.display = '';
-        (document.getElementById('language') as HTMLElement).style.display = 'none';
-        sentimentButton.content = '😊 Neutral';
-    }
-
-    function copyTextToClipboard(text: string): void {
-        if (navigator.clipboard) {
-            navigator.clipboard.writeText(text).then(() => {
-                console.log('Text copied to clipboard successfully!');
-            }).catch(err => {
-                console.error('Failed to copy text: ', err);
-            });
-        } else {
-            // Fallback for browsers that do not support the Clipboard API
-            const textarea = document.createElement('textarea');
-            textarea.value = text;
-            document.body.appendChild(textarea);
-            textarea.select();
-            try {
-                document.execCommand('copy');
-                console.log('Text copied to clipboard using execCommand');
-            } catch (err) {
-                console.error('Failed to copy text: ', err);
-            } finally {
-                document.body.removeChild(textarea);
+            const stream: ReadableStream<string> = response.body.pipeThrough(new TextDecoderStream());
+            let fullText: string = '';
+            for await (const chunk of stream as unknown as AsyncIterable<string>) {
+                fullText += chunk;
+                this.editorRef.addAIPromptResponse(fullText, false);
+            }
+            this.editorRef.addAIPromptResponse(fullText, true);
+        } catch (error: any) {
+            if (error.name === 'AbortError') {
+                console.log('AI Request aborted by user.');
+                return;
+            } else if (typeof error.message === 'string' && error.message.includes('token limit')) {
+                this.editorRef.addAIPromptResponse(error.message, false);
+                this.editorRef.addAIPromptResponse(error.message, true);
+                const banner = document.querySelector('.banner-message') as HTMLElement | null;
+                const header = document.querySelector('.sb-header1') as HTMLElement | null;
+                if (banner) banner.innerHTML = error.message;
+                if (header) header.classList.remove('sb-hide');
+            } else {
+                console.error('There was a problem with your fetch operation:', error);
             }
         }
     }
 
-    return (
-        <>
-            <div id='container' className='e-rte-custom-tbar-section'>
-                <RichTextEditorComponent
-                    ref={richtexteditor => defaultRTE = richtexteditor as RichTextEditorComponent}
-                    id='defaultRTE'
-                    height={550}
-                    saveInterval={0}
-                    autoSaveOnIdle={true}
-                    value={`<h2><span>Integrate AI with the Editor</span></h2><p>Integrate the AI assistant into the rich text editor by capturing the content from the editor, sending it to the AI service, and displaying the results or suggestions back in the editor.</p><h3>Summarize</h3><p>This function condenses the selected content into a brief summary, capturing the main points succinctly.</p><h3>Elaborate</h3><p>This function expands the selected content, adding additional details and context.</p><h3>Rephrase</h3><p>This function rewrites the selected content to convey the same meaning using different words or structures. It also enables rephrase options and disables language selection.</p><h3>Correct Grammar</h3><p>This function reviews and corrects the grammar of the selected content, ensuring it adheres to standard grammatical rules.</p><h3>Translate</h3><p>This function translates the selected content into the specified language, enabling language selection and disabling rephrase options.</p>`}
-                    toolbarSettings={toolbarSettings}
-                    created={onCreate}
-                    toolbarClick={onToolbarClick}
-                >
-                    <Inject services={[Toolbar, Link, Image, QuickToolbar, HtmlEditor, Table]} />
-                </RichTextEditorComponent>
-                <DialogComponent
-                    id="dialog"
-                    ref={dialogObj => dialog = dialogObj as DialogComponent}
-                    className="modal"
-                    style={{ display: "none" }}
-                    header="AI Assistant"
-                    content={document.getElementById('dialog-content') as HTMLElement}
-                    target={document.getElementById('defaultRTE') as HTMLElement}
-                    showCloseIcon={true}
-                    isModal={true}
-                    height="100%"
-                    width="80%"
-                    cssClass="e-rte-elements custom-dialog-rte"
-                    zIndex={1000}
-                    footerTemplate={document.getElementById('dialog-footer-content') as HTMLElement}
-                    close={closeDialog}
-                    overlayClick={() => {
-                        let activeEle: HTMLElement = dialog.element.querySelector('.char_block.e-active') as HTMLElement;
-                        if (activeEle) {
-                            activeEle.classList.remove('e-active');
-                        }
-                        closeDialog();
-                    }}
-                    open={dialogShow}
-                >
-                    <div id="dialog-content" className="dialog-content" style={{ height: "100%" }}>
-                        <div className="custom-row-0">
-                            <div className="cuscol-0" style={{ width: "100%", alignItems: "center", justifyContent: "left" }}>
-                                <div style={{ width: '75%', textAlign: 'left' }}>
-                                    <DropDownListComponent
-                                        ref={query => queryCategory = query as DropDownListComponent}
-                                        id="queryCategory"
-                                        index={0}
-                                        dataSource={queryList}
-                                        fields={{ text: 'Text', value: 'ID' }}
-                                        cssClass="e-e-round-corner"
-                                        select={(args: any) => {
-                                            chipList.selectedChips = 0;
-                                            languageCategory.index = 0;
-                                            translatelanguage = "EN";
-                                            updateAISugesstionsData(args.itemData.Text);
-                                        }}
-                                    >
-                                        Rephrase
-                                    </DropDownListComponent>
-                                </div>
-                            </div>
-                            <div className="cuscol-1" style={{ justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-                                <div id="language" style={{ width: '100%', display: 'none' }}>
-                                    <div style={{ display: 'flex', justifyContent: 'right', alignItems: 'center' }}>
-                                        <div style={{ textAlign: 'end', paddingRight: '20px' }}>
-                                            <span>Target Language</span>
-                                        </div>
-                                        <div style={{ textAlign: 'right' }}>
-                                            <DropDownListComponent
-                                                ref={language => languageCategory = language as DropDownListComponent}
-                                                id="language-Category"
-                                                index={0}
-                                                dataSource={languageList}
-                                                fields={{ text: 'Text', value: 'ID' }}
-                                                cssClass="e-e-round-corner"
-                                                select={(args: any) => {
-                                                    translatelanguage = args.itemData.ID;
-                                                    updateAISugesstionsData("Translate");
-                                                }}
-                                            ></DropDownListComponent>
-                                        </div>
-                                    </div>
-                                </div>
-                                <ChipListComponent
-                                    id="chips-container"
-                                    ref={chip => chipList = chip as ChipListComponent}
-                                    style={{ justifyContent: 'right', alignItems: 'center', width: '100%', display: 'none' }}
-                                    chips={['Standard', 'Fluent', 'Professional']}
-                                    selection="Single"
-                                    cssClass="e-outline"
-                                    selectedChips={[0]}
-                                    click={(args: any) => {
-                                        chipValue[0] = args.text;
-                                        updateAISugesstionsData("Rephrase");
-                                    }}
-                                ></ChipListComponent>
-                            </div>
-                        </div>
-                        <div className="custom-row-1" style={{ height: "74%" }}>
-                            <div className="cuscol-0" style={{ width: "100%", height: "100%", alignItems: "center", justifyContent: "left" }}>
-                                <div style={{ textAlign: 'left' }}>
-                                    <RichTextEditorComponent
-                                        ref={richtexteditor => leftRte = richtexteditor as RichTextEditorComponent}
-                                        id="leftRte"
-                                        height={310}
-                                        value={resultData}
-                                        toolbarSettings={{
-                                            enable: false,
-                                        }}
-                                        placeholder="Analysis of AI Support"
-                                        width="100%"
-                                        cssClass="e-outline"
-                                    >
-                                        <Inject services={[HtmlEditor]} />
-                                    </RichTextEditorComponent>
-                                </div>
-                            </div>
-                            <div className="cuscol-1" style={{ display: 'flex', justifyContent: 'space-between', width: '100%', height: '100%' }}>
-                                <div style={{ textAlign: 'left', width: '100%' }}>
-                                    <RichTextEditorComponent
-                                        ref={richtexteditor => rightRte = richtexteditor as RichTextEditorComponent}
-                                        id="rightRte"
-                                        style={{ display: 'none' }}
-                                        height={310}
-                                        value={resultData}
-                                        toolbarSettings={{
-                                            enable: false,
-                                        }}
-                                        placeholder="Analysis of AI Support"
-                                        width="100%"
-                                        cssClass="e-outline"
-                                    >
-                                        <Inject services={[HtmlEditor]} />
-                                    </RichTextEditorComponent>
-                                    <div className="no-results-found" id="no-results-found" style={{ height: '244px', alignContent: 'center', display: 'none' }}>
-                                        <img height="50" width="50" src="https://storage.googleapis.com/cdn-bolddesk/agent-angular-app/images/light/no-records-warning.svg" />
-                                        <div>No results found</div>
-                                    </div>
-                                    <div id='skeletonId' style={{ display: 'none' }}>
-                                        <SkeletonComponent
-                                            id='skeletonId1'
-                                            shape="Rectangle"
-                                            height="20px"
-                                            width="100%"
-                                        ></SkeletonComponent><br />
-                                        <SkeletonComponent
-                                            id='skeletonId2'
-                                            shape="Rectangle"
-                                            height="20px"
-                                            width="90%"
-                                        ></SkeletonComponent><br />
-                                        <SkeletonComponent
-                                            id='skeletonId3'
-                                            shape="Rectangle"
-                                            height="20px"
-                                            width="70%"
-                                        ></SkeletonComponent>
-                                        <br />
-                                        <SkeletonComponent
-                                            id='skeletonId4'
-                                            shape="Rectangle"
-                                            height="20px"
-                                            width="50%"
-                                        ></SkeletonComponent><br />
-                                        <SkeletonComponent
-                                            id='skeletonId5'
-                                            shape="Rectangle"
-                                            height="20px"
-                                            width="30%"
-                                        ></SkeletonComponent><br />
-                                        <SkeletonComponent
-                                            id='skeletonId6'
-                                            shape="Rectangle"
-                                            height="20px"
-                                            width="10%"
-                                        ></SkeletonComponent><br />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="dialog-footer-content">
-                            <div className="custom-row-0">
-                                <div className="cuscol-0" style={{ width: "100%", alignItems: "center", justifyContent: "left" }}>
-                                    <div style={{ textAlign: 'right' }}>
-                                        <ButtonComponent
-                                            ref={button => regenerateButton = button as ButtonComponent}
-                                            content="Regenerate"
-                                            isPrimary={true}
-                                            disabled={true}
-                                        ></ButtonComponent>
-                                    </div>
-                                </div>
-                                <div className="cuscol-1" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '100%' }}>
-                                    <div style={{ textAlign: 'right', width: '100%' }}>
-                                        <ButtonComponent
-                                            ref={button => sentimentButton = button as ButtonComponent}
-                                            content="😊 Neutral"
-                                            disabled={true}
-                                            cssClass="sentiment"
-                                        />
-                                        <ButtonComponent
-                                            ref={button => copyButton = button as ButtonComponent}
-                                            content="Copy"
-                                            disabled={true}
-                                        />
-                                        <ButtonComponent
-                                            ref={button => replaceButton = button as ButtonComponent}
-                                            content="Replace"
-                                            isPrimary={true}
-                                            disabled={true}
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </DialogComponent>
-                <ToastComponent
-                    id="toast_default"
-                    ref={toast => toastObj = toast as ToastComponent}
-                    showCloseButton={true}
-                    timeOut={0}
-                    content="An error occurred during the AI process, Please try again."
-                    position={{ X: 'Right', Y: 'Top' }}
-                ></ToastComponent>
+    render(): React.ReactNode {
+        return (
+            <div className='control-pane'>
+                <div className='control-section'>
+                    <RichTextEditorComponent id='editor' ref={richtexteditor => { this.editorRef = richtexteditor; }} toolbarSettings={this.toolbarSettings} 
+                        quickToolbarSettings={this.quickToolbarSettings} aiAssistantSettings={this.aiAssistantSettings} aiAssistantPromptRequest={this.onAIAssistantPromptRequest.bind(this)}>
+                        <p>
+                            <strong>Editing and Improving</strong>
+                        </p>
+                        <p>
+                            In today's competitive landscape, effective marketing focuses on building lasting customer relationships
+                            rather than just selling products. Brands are expected to provide personalized experiences through data
+                            analytics and consumer insights. As expectations evolve, marketers must stay agile and proactive in their
+                            strategies.
+                        </p>
+                        <p>
+                            <strong>Tone and style</strong>
+                        </p>
+                        <p>
+                            Agile methodologies are essential in modern project management, particularly in software development.
+                            They enable teams to adapt quickly and deliver greater customer value through iterative processes and
+                            collaboration. Successful Agile implementation requires fostering a culture of adaptability, trust,
+                            and shared ownership.
+                        </p>
+                        <p>
+                            <strong>Grammar</strong>
+                        </p>
+                         <p>
+                            Strong leadership is more than directing a team—it's about inspiring people toward a common vision.
+                            Effective leaders cultivate transparency, empathy, and accountability within their organizations.
+                            They empower others by encouraging autonomy and providing opportunities for growth. In times of
+                            uncertainty or rapid change, it's the leaders who stay grounded and lead with clarity who build the
+                            most resilient and high-performing teams.
+                        </p>
+                        <p>
+                            <strong>Summarization, simplification, or elaboration</strong>
+                        </p>
+                        <p>
+                            Strong leadership inspires a team toward a shared vision while promoting transparency, empathy,
+                            and accountability. Effective leaders empower others through autonomy and growth. In times of
+                            uncertainty or change, clear leaders build resilient, high-performing teams.
+                        </p>
+                        <Inject services={[AIAssistant, Toolbar, HtmlEditor, QuickToolbar, Image, Table, Link, PasteCleanup, CodeBlock]} />
+                    </RichTextEditorComponent>
+                </div>
+                <div id='action-description'>
+                    <p>
+                        The AI Assistant feature provides a user interface such as an AssistView inside a popup, nested dropdown with predefined prompts, and a toolbar button for interacting with an
+                        AI model.
+                    </p>
+                </div>
+                <div id='description'>
+                    <p>
+                        The <b>AI Assistant</b> feature provides a predefined user interface for integrating AI capabilities into the Rich Text Editor, enabling users to create, edit, and enhance
+                        content more efficiently.
+                    </p>
+                    <ul>
+                        <li>
+                            The AI Assistant can be accessed via the keyboard shortcut (<code>Alt + Enter or ⌥ + Enter</code>) or toolbar.
+                        </li>
+                        <li>
+                            The <b>AI Commands</b> menu provides a predefined list of prompts useful for performing common content-related actions such as improving, shortening, elaborating,
+                            simplifying, summarizing, and checking grammar.
+                        </li>
+                        <li>
+                            The <b>AI Query </b>button helps to open the AI Assistant with the flexibility to provide a user defined prompt when processing the content.
+                        </li>
+                    </ul>
+                    <p>In this sample the AI Assistant feature is enabled by </p>
+                    <ul>
+                        <li>
+                            Injecting the <code>AIAssistant</code> Service in to the Component <code>providers</code> section.
+                        </li>
+                        <li>
+                            Adding the <code>AICommands</code>, <code>AIQuery</code> into the <code>toolbarSettings</code> items property.
+                        </li>
+                    </ul>
+                    <p>
+                        <b>Processing of the Prompt:</b>
+                    </p>
+                    <ul>
+                        <li>
+                            When a prompt is executed the <code>aiAssistantPromptRequest</code> event is triggered, followed by a<code>fetch</code> request to the backend service to process the query.
+                        </li>
+                        <li>
+                            The response from the LLM is streamed back into the editor’s Assistant view using the
+                            <code>addAIPromptResponse</code> public method.
+                        </li>
+                        <li>
+                            When the Stop Responding button is clicked the streaming process is cancelled by setting the
+                            <code>stopStreaming</code> boolean to false.
+                        </li>
+                    </ul>
+                    <p>
+                        <b>Injectible Modules:</b>
+                    </p>
+                    <p>
+                        The AI Assistant feature is built as an injectable module to be modular and then tree-shaken and opted in only when needed. It can be used by injecting the module in the{" "}
+                        <code>Inject</code> component.
+                        <br />
+                        For example: The <code>AIAssistant</code> service can be injected by using the <code>Inject</code>
+                        component with the services array:
+                    </p>
+                </div>
+                <AIToast></AIToast>
             </div>
-        </>
-    )
+        );
+    }
 }
-
-export default AISmartRichTextEditor

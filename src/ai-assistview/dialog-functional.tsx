@@ -22,7 +22,7 @@ const Dialog = () => {
             response: "Ask Questions, to better understand how your prompt interacts with AI-generated or default data responses..!"
         }
     ];
-    const prompts:{ [key: string]: string | string[] } [] = data["defaultPromptResponseData"];
+    const prompts: { [key: string]: string | string[] }[] = data["defaultPromptResponseData"];
     const suggestion: string[] = data["defaultSuggestions"];
 
     const bannerTemplate: string = `<div class="banner-content">
@@ -37,30 +37,30 @@ const Dialog = () => {
                 <div className="header">Quick Notes</div>
                 <hr />
                 <div className="content e-card">
-                <div className="note-title">
-                    <div className="heading">Planning and Requirements</div>
-                    <div className="sub-heading">Outline the process of gathering input from stakeholders</div>
-                </div>
-                <div className="note-title e-skeleton e-skeleton-text">
-                    <div className="heading">Meeting with Stakeholders</div>
-                    <div className="sub-heading">Discuss strategies for conducting productive meetings with stakeholders</div>
-                </div>
-                <div className="note-title">
-                    <div className="heading">Risk Management and Problem-Solving</div>
-                    <div className="sub-heading">Offer tips on how to proactively manage challenges, including regular</div>
-                </div>
-                <div className="note-title">
-                    <div className="heading e-skeleton e-skeleton-text"></div>
-                    <div className="sub-heading e-skeleton e-skeleton-text"></div>
-                </div>
-                <div className="note-title">
-                    <div className="heading e-skeleton e-skeleton-text"></div>
-                </div>
+                    <div className="note-title">
+                        <div className="heading">Planning and Requirements</div>
+                        <div className="sub-heading">Outline the process of gathering input from stakeholders</div>
+                    </div>
+                    <div className="note-title e-skeleton e-skeleton-text">
+                        <div className="heading">Meeting with Stakeholders</div>
+                        <div className="sub-heading">Discuss strategies for conducting productive meetings with stakeholders</div>
+                    </div>
+                    <div className="note-title">
+                        <div className="heading">Risk Management and Problem-Solving</div>
+                        <div className="sub-heading">Offer tips on how to proactively manage challenges, including regular</div>
+                    </div>
+                    <div className="note-title">
+                        <div className="heading e-skeleton e-skeleton-text"></div>
+                        <div className="sub-heading e-skeleton e-skeleton-text"></div>
+                    </div>
+                    <div className="note-title">
+                        <div className="heading e-skeleton e-skeleton-text"></div>
+                    </div>
                 </div>
             </div>
         );
     };
-    
+
     const rightContent = () => {
         return (
             <div className="right-content">
@@ -92,7 +92,7 @@ const Dialog = () => {
 
     const assistViewToolbarSettings: ToolbarSettingsModel = {
         itemClicked: toolbarItemClicked,
-        items: [ { iconCss: 'e-icons e-close', align: 'Right' } ]
+        items: [{ iconCss: 'e-icons e-close', align: 'Right' }]
     };
 
     const responseToolbarsettings: ResponseToolbarSettingsModel = {
@@ -113,7 +113,7 @@ const Dialog = () => {
 
         }, 2000);
     };
-    return(
+    return (
         <div className='control-pane'>
             <div className="control-section">
                 <div className="dialog-aiassistview">
@@ -130,12 +130,12 @@ const Dialog = () => {
                 <FabComponent id="fabElem" iconCss='e-icons e-assistview-icon' content='AI Assist' target='.dialog-aiassistview' onClick={fabClicked}></FabComponent>
             </div>
             <div id="action-description">
-                <p>This example demonstrates the usage of dialogs in the AI AssistView component. You can display the generated responses in the notes view.</p>
+                <p>This example showcases the integration of AI AssistView within the Syncfusion<sup>®</sup> dialog component, allowing you to display generated responses in the notes view.</p>
             </div>
             <div id="description">
                 <p>In this example, the AI AssistView is shown inside a dialog component, which opens with a floating action button (FAB) click.
-                    It uses predefined <code>promptSuggestions</code> that are displayed based on user configuration and a custom toolbar item as a close icon to close the dialog.
-                    The <code>promptRequest</code> event finds matching prompts and displays the responses.
+                    It uses predefined  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/ai-assistview#promptsuggestions">promptSuggestions</a> that are displayed based on user configuration and a custom toolbar item as a close icon to close the dialog.
+                    The  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/ai-assistview#promptrequest">promptRequest</a> event finds matching prompts and displays the responses.
                 </p>
             </div>
         </div>

@@ -24,6 +24,19 @@ export const ChatUISampleOrder: Object = [
       { 'displayName': 'loadOn-demand.jsx', 'path': 'src/chat-ui/loadOn-demand.jsx' }
     ]
   },
+  { 'path': 'chat-ui/attachments',
+    'component': 'Attachments',
+    'name': 'File Attachments',
+    'description':'Displays the attachment support for the ChatUI component, Showcases the chat component integration with other Chat UI control.',
+    'order': '01',
+    'category': 'Chat UI',
+    'type': 'new',
+    'api':'{"ChatUIComponent":["user", "attachmentSettings", "enableAttachments", "headerText", "headerIconCss", "emptyChatTemplate", "headerToolbar", "messages"] }',
+    'sourceFiles': [
+      { 'displayName': 'attachments.tsx', 'path': 'src/chat-ui/attachments.tsx' },
+      { 'displayName': 'attachments.jsx', 'path': 'src/chat-ui/attachments.jsx' }
+    ]
+  },
   { 'path': 'chat-ui/template',
     'component': 'Template',
     'name': 'Template',
@@ -43,7 +56,6 @@ export const ChatUISampleOrder: Object = [
     'description':'Displays the all the API of the ChatUI component, offering a different purposes and use-cases of the property options available.',
     'order': '01',
     'category': 'Chat UI',
-    'type': 'update',
     'api':'{"ChatUIComponent":["suggestions", "headerText", "headerIconCss", "messages", "user"] }',
     'sourceFiles': [
       { 'displayName': 'api.tsx', 'path': 'src/chat-ui/api.tsx' },

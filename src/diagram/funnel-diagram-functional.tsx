@@ -63,289 +63,129 @@ function getStageLabel(content: string): ShapeAnnotationModel {
     };
 }
 
+// Title node factory
+function createTitleNode(): NodeModel {
+    return {
+        id: 'title',
+        offsetX: 150, offsetY: -40,
+        width: 250, height: 50,
+        annotations: [
+            {
+                content: 'Marketing Funnel', offset: { x: 0.5, y: 0.2 },
+                style: { color: '#111827', fontSize: 24, fontFamily: 'Segoe UI' }
+            },
+            {
+                content: 'Measuring Campaign Effectiveness', offset: { x: 0.5, y: 0.7 },
+                style: { color: '#6B7280', fontSize: 16, fontFamily: 'Segoe UI' }
+            }
+        ],
+        constraints: NodeConstraints.None,
+        style: { strokeColor: 'transparent' }
+    } as NodeModel;
+}
+
+// Stage node factory
+function createNode(
+    id: string, width: number, height: number, fill: string,
+    offsetX: number, offsetY: number, pathData: string, valueText: string,
+    iconClass: string, description: string, cumulativeRate: number,
+    conversionRate?: number, portX: number = 0.9
+): NodeModel {
+    return {
+        id,
+        offsetX,
+        offsetY,
+        width,
+        height,
+        annotations: [{
+            content: valueText,
+            style: { color: '#FFFFFF', fontSize: 18, fontFamily: 'Segoe UI', bold: true }
+        }],
+        shape: { type: 'Path', data: pathData },
+        style: { fill: fill, strokeColor: 'transparent' },
+        constraints: NodeConstraints.PointerEvents | NodeConstraints.Tooltip | NodeConstraints.ReadOnly,
+        tooltip: {
+            relativeMode: 'Mouse',
+            position: 'TopCenter',
+            content: getToolTemplate(iconClass, fill, description, cumulativeRate, conversionRate)
+        },
+        ports: [{ id: 'port', offset: { x: portX, y: 0.8 } }],
+    } as NodeModel;
+}
+
+// Label node factory
+function createLabelNode(
+    id: string, width: number, height: number, fill: string,
+    offsetX: number, offsetY: number, iconClass: string, description: string
+): NodeModel {
+    return {
+        id,
+        offsetX, offsetY,
+        width, height,
+        annotations: [
+            { template: getIconTemplate(iconClass) },
+            getStageLabel(description)
+        ],
+        shape: { type: 'Basic', shape: 'Ellipse' },
+        style: { fill: fill, strokeColor: fill },
+        constraints: NodeConstraints.InConnect
+    } as NodeModel;
+}
+
 const getNodes = (): NodeModel[] => {
     return [
         // Title Node
-        {
-            id: 'title',
-            offsetX: 150, offsetY: -40,
-            width: 250, height: 50,
-            annotations: [
-                {
-                    content: 'Marketing Funnel', offset: { x: 0.5, y: 0.2 },
-                    style: { color: '#111827', fontSize: 24, fontFamily: 'Segoe UI' }
-                },
-                {
-                    content: 'Measuring Campaign Effectiveness', offset: { x: 0.5, y: 0.7 },
-                    style: { color: '#6B7280', fontSize: 16, fontFamily: 'Segoe UI', }
-                }
-            ],
-            constraints: NodeConstraints.None,
-            style: { strokeColor: 'transparent' }
-        },
+        createTitleNode(),
         // First level of the funnel.
-        {
-            // Unique identifier for the node.
-            id: 'awareness',
-            offsetX: 150,
-            offsetY: 100,
-            width: 560,
-            height: 80,
-            annotations: [{
-                content: '10,000',
-                style: { color: '#FFFFFF', fontSize: 18, fontFamily: 'Segoe UI', bold: true }
-            }],
-            // Trapezoidal shape defined by SVG path data.
-            shape: { type: 'Path', data: 'M560 0H0L56.7194 80H503.281L560 0Z' },
-            // Visual style for the node.
-            style: { fill: LEVEL_COLORS.level1, strokeColor: 'transparent' },
-            // Tooltip for showing conversion rates
-            constraints: NodeConstraints.PointerEvents | NodeConstraints.Tooltip,
-            tooltip: {
-                relativeMode: 'Mouse',
-                position: 'TopCenter',
-                content: getToolTemplate('sf-icon-ads-exposure', LEVEL_COLORS.level1, 'Ad Exposure', 100)
-            },
-            // Port for connecting label
-            ports: [{ id: 'port', offset: { x: 0.9, y: 0.8 } }],
-        },
+        createNode('awareness', 560, 80, LEVEL_COLORS.level1, 150, 100, 'M560 0H0L56.7194 80H503.281L560 0Z', '10,000', 'sf-icon-ads-exposure', 'Ad Exposure', 100, undefined, 0.9),
         // Second level of the funnel.
-        {
-            id: 'interest',
-            offsetX: 150,
-            offsetY: 180,
-            width: 446,
-            height: 80,
-            annotations: [{
-                content: '6,500',
-                style: { color: '#FFFFFF', fontSize: 18, fontFamily: 'Segoe UI', bold: true }
-            }],
-            shape: { type: 'Path', data: 'M503 80H57L113.648 160H446.352L503 80Z' },
-            style: { fill: LEVEL_COLORS.level2, strokeColor: 'transparent' },
-            constraints: NodeConstraints.PointerEvents | NodeConstraints.Tooltip,
-            tooltip: {
-                relativeMode: 'Mouse',
-                position: 'TopCenter',
-                content: getToolTemplate('sf-icon-page-visits', LEVEL_COLORS.level2, 'Page Visits', 65, 65.00)
-            },
-            ports: [{ id: 'port', offset: { x: 0.89, y: 0.8 } }],
-        },
+        createNode('interest', 446, 80, LEVEL_COLORS.level2, 150, 180, 'M503 80H57L113.648 160H446.352L503 80Z', '6,500', 'sf-icon-page-visits', 'Page Visits', 65, 65.00, 0.89),
         // Third level of the funnel.
-        {
-            id: 'consideration',
-            offsetX: 150,
-            offsetY: 260,
-            width: 334,
-            height: 80,
-            annotations: [{
-                content: '3,800',
-                style: { color: '#FFFFFF', fontSize: 18, fontFamily: 'Segoe UI', bold: true }
-            }],
-            shape: { type: 'Path', data: 'M447 160H113L169.869 240H390.131L447 160Z' },
-            style: { fill: LEVEL_COLORS.level3, strokeColor: 'transparent' },
-            constraints: NodeConstraints.PointerEvents | NodeConstraints.Tooltip,
-            tooltip: {
-                relativeMode: 'Mouse',
-                position: 'TopCenter',
-                content: getToolTemplate('sf-icon-sign-up', LEVEL_COLORS.level3, 'Sign Ups', 38, 58.46)
-            },
-            ports: [{ id: 'port', offset: { x: 0.85, y: 0.8 } }],
-        },
+        createNode('consideration', 334, 80, LEVEL_COLORS.level3, 150, 260, 'M447 160H113L169.869 240H390.131L447 160Z', '3,800', 'sf-icon-sign-up', 'Sign Ups', 38, 58.46, 0.85),
         // Fourth level of the funnel.
-        {
-            id: 'intent',
-            offsetX: 150,
-            offsetY: 340,
-            width: 220,
-            height: 80,
-            annotations: [{
-                content: '2,000',
-                style: { color: '#FFFFFF', fontSize: 18, fontFamily: 'Segoe UI', bold: true }
-            }],
-            shape: { type: 'Path', data: 'M170 240L226.801 320H333.199L390 240H170Z' },
-            style: { fill: LEVEL_COLORS.level4, strokeColor: 'transparent' },
-            constraints: NodeConstraints.PointerEvents | NodeConstraints.Tooltip,
-            tooltip: {
-                relativeMode: 'Mouse',
-                position: 'TopCenter',
-                content: getToolTemplate('sf-icon-demo-request', LEVEL_COLORS.level4, 'Demo Requests', 20, 52.63)
-            },
-            ports: [{ id: 'port', offset: { x: 0.8, y: 0.8 } }],
-        },
+        createNode('intent', 220, 80, LEVEL_COLORS.level4, 150, 340, 'M170 240L226.801 320H333.199L390 240H170Z', '2,000', 'sf-icon-demo-request', 'Demo Requests', 20, 52.63, 0.8),
         // Fifth level of the funnel.
-        {
-            id: 'purchase',
-            offsetX: 150,
-            offsetY: 420,
-            width: 106,
-            height: 80,
-            annotations: [{
-                content: '1,200',
-                style: { color: '#FFFFFF', fontSize: 18, fontFamily: 'Segoe UI', bold: true }
-            }],
-            shape: { type: 'Path', data: 'M333 320H227V400H333V320Z' },
-            style: { fill: LEVEL_COLORS.level5, strokeColor: 'transparent' },
-            constraints: NodeConstraints.PointerEvents | NodeConstraints.Tooltip,
-            tooltip: {
-                relativeMode: 'Mouse',
-                position: 'TopCenter',
-                content: getToolTemplate('sf-icon-orders', LEVEL_COLORS.level5, 'Orders', 12, 60.00)
-            },
-            ports: [{ id: 'port', offset: { x: 0.9, y: 0.8 } }],
-        },
+        createNode('purchase', 106, 80, LEVEL_COLORS.level5, 150, 420, 'M333 320H227V400H333V320Z', '1,200', 'sf-icon-orders', 'Orders', 12, 60.00, 0.9),
         // Sixth and final level of the funnel.
-        {
-            id: 'retention',
-            offsetX: 150,
-            offsetY: 500,
-            width: 106,
-            height: 80,
-            annotations: [{
-                content: '800',
-                style: { color: '#FFFFFF', fontSize: 18, fontFamily: 'Segoe UI', bold: true }
-            }],
-            shape: { type: 'Path', data: 'M227 480H333V400H227V480Z' },
-            style: { fill: LEVEL_COLORS.level6, strokeColor: 'transparent' },
-            constraints: NodeConstraints.PointerEvents | NodeConstraints.Tooltip,
-            tooltip: {
-                relativeMode: 'Mouse',
-                position: 'TopCenter',
-                content: getToolTemplate('sf-icon-engagement', LEVEL_COLORS.level6, 'Subscribed Users', 8, 66.67)
-            },
-            ports: [{ id: 'port', offset: { x: 0.9, y: 0.8 } }],
-        },
+        createNode('retention', 106, 80, LEVEL_COLORS.level6, 150, 500, 'M227 480H333V400H227V480Z', '800', 'sf-icon-engagement', 'Subscribed Users', 8, 66.67, 0.9),
         // Labels
-        {
-            id: 'awareness_label', offsetX: 620, offsetY: 100, width: 60, height: 60,
-            annotations: [
-                { template: getIconTemplate('sf-icon-ads-exposure') },
-                getStageLabel('Ad Exposure')
-            ],
-            shape: { type: 'Basic', shape: 'Ellipse' },
-            style: { fill: LEVEL_COLORS.level1, strokeColor: LEVEL_COLORS.level1 },
-            constraints: NodeConstraints.InConnect
-        },
-        {
-            id: 'interest_label', offsetX: 620, offsetY: 180, width: 60, height: 60,
-            annotations: [
-                { template: getIconTemplate('sf-icon-page-visits') },
-                getStageLabel('Page Visits')
-            ],
-            shape: { type: 'Basic', shape: 'Ellipse' },
-            style: { fill: LEVEL_COLORS.level2, strokeColor: LEVEL_COLORS.level2 },
-            constraints: NodeConstraints.InConnect
-        },
-        {
-            id: 'consideration_label', offsetX: 620, offsetY: 260, width: 60, height: 60,
-            annotations: [
-                { template: getIconTemplate('sf-icon-sign-up') },
-                getStageLabel('Sign Ups')
-            ],
-            shape: { type: 'Basic', shape: 'Ellipse' },
-            style: { fill: LEVEL_COLORS.level3, strokeColor: LEVEL_COLORS.level3 },
-            constraints: NodeConstraints.InConnect
-        },
-        {
-            id: 'intent_label', offsetX: 620, offsetY: 340, width: 60, height: 60,
-            annotations: [
-                { template: getIconTemplate('sf-icon-demo-request') },
-                getStageLabel('Demo Requests')
-            ],
-            shape: { type: 'Basic', shape: 'Ellipse' },
-            style: { fill: LEVEL_COLORS.level4, strokeColor: LEVEL_COLORS.level4 },
-            constraints: NodeConstraints.InConnect
-        },
-        {
-            id: 'purchase_label', offsetX: 620, offsetY: 420, width: 60, height: 60,
-            annotations: [
-                { template: getIconTemplate('sf-icon-orders') },
-                getStageLabel('Orders')
-            ],
-            shape: { type: 'Basic', shape: 'Ellipse' },
-            style: { fill: LEVEL_COLORS.level5, strokeColor: LEVEL_COLORS.level5 },
-            constraints: NodeConstraints.InConnect
-        },
-        {
-            id: 'retention_label', offsetX: 620, offsetY: 500, width: 60, height: 60,
-            annotations: [
-                { template: getIconTemplate('sf-icon-engagement') },
-                getStageLabel('Subscribed Users')
-            ],
-            shape: { type: 'Basic', shape: 'Ellipse' },
-            style: { fill: LEVEL_COLORS.level6, strokeColor: LEVEL_COLORS.level6 },
-            constraints: NodeConstraints.InConnect
-        },
+        createLabelNode('awareness_label', 60, 60, LEVEL_COLORS.level1, 620, 100, 'sf-icon-ads-exposure', 'Ad Exposure'),
+        createLabelNode('interest_label', 60, 60, LEVEL_COLORS.level2, 620, 180, 'sf-icon-page-visits', 'Page Visits'),
+        createLabelNode('consideration_label', 60, 60, LEVEL_COLORS.level3, 620, 260, 'sf-icon-sign-up', 'Sign Ups'),
+        createLabelNode('intent_label', 60, 60, LEVEL_COLORS.level4, 620, 340, 'sf-icon-demo-request', 'Demo Requests'),
+        createLabelNode('purchase_label', 60, 60, LEVEL_COLORS.level5, 620, 420, 'sf-icon-orders', 'Orders'),
+        createLabelNode('retention_label', 60, 60, LEVEL_COLORS.level6, 620, 500, 'sf-icon-engagement', 'Subscribed Users'),
     ];
 }
 // Connectors
+// Connector factory
+function createConnector(
+    sourceID: string, targetID: string, strokeColor: string,
+    p1x: number, p1y: number, p2x: number, p2y: number,
+    sourcePortID: string = 'port'
+): ConnectorModel {
+    return {
+        sourceID,
+        sourcePortID,
+        targetID,
+        targetDecorator: { shape: 'None' },
+        style: { strokeColor },
+        segments: [
+            { type: 'Straight', point: { x: p1x, y: p1y } },
+            { type: 'Straight', point: { x: p2x, y: p2y } },
+        ],
+        constraints: ConnectorConstraints.None
+    } as ConnectorModel;
+}
+
 const getConnectors = (): ConnectorModel[] => {
     return [
-        {
-            sourceID: 'awareness', sourcePortID: 'port',
-            targetID: 'awareness_label',
-            targetDecorator: { shape: 'None' },
-            style: { strokeColor: LEVEL_COLORS.level1 },
-            segments: [
-                { type: 'Straight', point: { x: 430, y: 124 } },
-                { type: 'Straight', point: { x: 455, y: 98 } },
-            ],
-            constraints: ConnectorConstraints.None
-        },
-        {
-            sourceID: 'interest', sourcePortID: 'port',
-            targetID: 'interest_label',
-            targetDecorator: { shape: 'None' },
-            style: { strokeColor: LEVEL_COLORS.level2 },
-            segments: [
-                { type: 'Straight', point: { x: 430, y: 204 } },
-                { type: 'Straight', point: { x: 455, y: 178 } },
-            ],
-            constraints: ConnectorConstraints.None
-        },
-        {
-            sourceID: 'consideration', sourcePortID: 'port',
-            targetID: 'consideration_label',
-            targetDecorator: { shape: 'None' },
-            style: { strokeColor: LEVEL_COLORS.level3 },
-            segments: [
-                { type: 'Straight', point: { x: 430, y: 284 } },
-                { type: 'Straight', point: { x: 455, y: 258 } },
-            ],
-            constraints: ConnectorConstraints.None
-        },
-        {
-            sourceID: 'intent', sourcePortID: 'port',
-            targetID: 'intent_label',
-            targetDecorator: { shape: 'None' },
-            style: { strokeColor: LEVEL_COLORS.level4 },
-            segments: [
-                { type: 'Straight', point: { x: 430, y: 364 } },
-                { type: 'Straight', point: { x: 455, y: 338 } },
-            ],
-            constraints: ConnectorConstraints.None
-        },
-        {
-            sourceID: 'purchase', sourcePortID: 'port',
-            targetID: 'purchase_label',
-            targetDecorator: { shape: 'None' },
-            style: { strokeColor: LEVEL_COLORS.level5 },
-            segments: [
-                { type: 'Straight', point: { x: 430, y: 444 } },
-                { type: 'Straight', point: { x: 455, y: 418 } },
-            ],
-            constraints: ConnectorConstraints.None
-        },
-        {
-            sourceID: 'retention', sourcePortID: 'port',
-            targetID: 'retention_label',
-            targetDecorator: { shape: 'None' },
-            style: { strokeColor: LEVEL_COLORS.level6 },
-            segments: [
-                { type: 'Straight', point: { x: 430, y: 524 } },
-                { type: 'Straight', point: { x: 455, y: 498 } },
-            ],
-            constraints: ConnectorConstraints.None
-        },
+        createConnector('awareness', 'awareness_label', LEVEL_COLORS.level1, 430, 124, 455, 98),
+        createConnector('interest', 'interest_label', LEVEL_COLORS.level2, 430, 204, 455, 178),
+        createConnector('consideration', 'consideration_label', LEVEL_COLORS.level3, 430, 284, 455, 258),
+        createConnector('intent', 'intent_label', LEVEL_COLORS.level4, 430, 364, 455, 338),
+        createConnector('purchase', 'purchase_label', LEVEL_COLORS.level5, 430, 444, 455, 418),
+        createConnector('retention', 'retention_label', LEVEL_COLORS.level6, 430, 524, 455, 498),
     ];
 }
 
@@ -389,7 +229,7 @@ function FunnelDiagram() {
             </div>
             <div id="action-description">
                 <p>
-                    The funnel diagram is built using the Syncfusion<sup>®</sup> EJ2 React Diagram component, and it visually represents the conversion flow of users through a marketing campaign. The diagram is structured as a vertically stacked funnel, narrowing from top to bottom to indicate decreasing user counts at each stage of the customer journey.
+                    The funnel diagram is built using the Syncfusion<sup>®</sup> EJ2 React Diagram, and it visually represents the conversion flow of users through a marketing campaign. The diagram is structured as a vertically stacked funnel, narrowing from top to bottom to indicate decreasing user counts at each stage of the customer journey.
                 </p>
             </div>
             <div id="description">

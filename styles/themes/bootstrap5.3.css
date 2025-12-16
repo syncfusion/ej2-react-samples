@@ -55,3 +55,8 @@
 .bootstrap5_3 .sb-badge {
     padding: 6px 8px;
 }
+.bootstrap5_3 .e-samplestatus.new.tree,
+.bootstrap5_3 .e-samplestatus.update.tree,
+.bootstrap5_3 .e-samplestatus.preview.tree {
+    margin-top: 0px !important;
+}

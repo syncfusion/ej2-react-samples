@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { PropertyPane } from '../common/property-pane';
-import { PivotViewComponent, IDataOptions, IDataSet, FieldList } from '@syncfusion/ej2-react-pivotview';
+import { PivotViewComponent, IDataOptions, IDataSet, FieldList, ExcelExport } from '@syncfusion/ej2-react-pivotview';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { DropDownListComponent, Inject } from '@syncfusion/ej2-react-dropdowns';
 import { ChangeEventArgs as Args } from '@syncfusion/ej2-buttons';
@@ -61,7 +61,7 @@ export class Exporting extends SampleBase<{}, {}> {
                 <div className='control-section'>
                     <div className='col-lg-8 adaptive'>
                         <PivotViewComponent id='PivotView' ref={(pivotview) => { this.pivotObj = pivotview }} dataSourceSettings={dataSourceSettings} allowExcelExport={true} allowPdfExport={true} showFieldList={true} width={'100%'} height={'300'} gridSettings={{columnWidth: 140}}>
-                            <Inject services={[FieldList]} />
+                            <Inject services={[FieldList, ExcelExport]} />
                         </PivotViewComponent>
                     </div>
                     <div className='col-lg-4 property-section' style={{ paddingRight: 0 }}>

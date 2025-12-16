@@ -1,8 +1,16 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { useEffect } from 'react';
-import { TreeGridComponent, ColumnsDirective, ColumnDirective, Inject, Page } from '@syncfusion/ej2-react-treegrid';
-import { textWrapData } from './data';
+import {
+  TreeGridComponent,
+  ColumnsDirective,
+  ColumnDirective,
+  Inject,
+  Page,
+  Sort,
+  Filter,
+} from '@syncfusion/ej2-react-treegrid';
+import { wrapData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
 const SAMPLE_CSS = `
@@ -14,88 +22,102 @@ const SAMPLE_CSS = `
 const AutoWrap = () => {
   useEffect(() => {
     updateSampleSection();
-  }, [])
+  }, []);
   return (
     <div className="control-pane">
       <style>{SAMPLE_CSS}</style>
       <div className="control-section">
         <TreeGridComponent
-          dataSource={textWrapData}
+          dataSource={wrapData}
           treeColumnIndex={1}
           allowPaging={true}
+          allowSorting={true}
           childMapping="subtasks"
           allowTextWrap={true}
+          height='400'
           pageSettings={{ pageSize: 11 }}
+          allowFiltering={true}
+          filterSettings={{ type: 'Excel', hierarchyMode: 'Parent' }}
         >
           <ColumnsDirective>
             <ColumnDirective
               field="taskID"
               headerText="Task ID"
-              width="80"
+              width="140"
               textAlign="Right"
             ></ColumnDirective>
             <ColumnDirective
               field="taskName"
-              headerText="Task Name"
-              width="98"
+              headerText="Title"
+              width="240"
             ></ColumnDirective>
             <ColumnDirective
-              field="startDate"
-              headerText="Start Date"
-              width="90"
-              format="yMd"
-              textAlign="Right"
+              field="description"
+              headerText="Description (Comprehensive Objectives for Deliverables)"
+              width="370"
             />
             <ColumnDirective
-              field="duration"
-              headerText="Duration"
-              width="90"
-              textAlign="Right"
-            />
-            <ColumnDirective
-              field="progress"
-              headerText="Progress"
-              width="90"
-              textAlign="Right"
+              field="employeeName"
+              headerText="Assigned To"
+              width="180"
             />
             <ColumnDirective
               field="priority"
               headerText="Priority"
-              width="90"
+              width="150"
+              textAlign="Center"
+            />
+            <ColumnDirective
+              field="status"
+              headerText="Status"
+              width="130"
+              textAlign="Center"
+            />
+            <ColumnDirective
+              field="startDate"
+              headerText="Start Date"
+              width="160"
+              type="date"
+              format="yMd"
+              textAlign="Right"
+            />
+            <ColumnDirective
+              field="endDate"
+              headerText="End Date"
+              width="160"
+              type="date"
+              format="yMd"
+              textAlign="Right"
             />
           </ColumnsDirective>
-          <Inject services={[Page]} />
+          <Inject services={[Page, Filter, Sort]} />
         </TreeGridComponent>
       </div>
       <div id="action-description">
-        <p>
-          This sample demonstrates the Tree Grid component with the auto wrap
-          column cell feature. In this sample, you can see that Task Name column
-          cell content exceeded the available width hence it has been wrapped
-          into multiple lines.
-        </p>
+        <p>This sample demonstrates the Tree Grid with the text wrap option enabled
+          for both headers and cell content. This setting ensures that long header
+          text and cell values are fully visible by wrapping onto multiple lines
+          instead of being truncated with an ellipsis. </p>
       </div>
+
       <div id="description">
+        <p>In this demo, the <strong>"Title"</strong> and <strong>"Description"</strong> columns
+          exceeds the available width, so its header and cell content are wrapped
+          across multiple lines for better readability. Text wrapping is enabled
+          by setting the Tree Grid's <code><a aria-label="API link for documentation"
+            target="_blank" className="code"
+            href="https://ej2.syncfusion.com/react/documentation/api/treegrid/index-default#allowtextwrap">allowTextWrap</a></code>
+          property to <strong>true</strong>, which automatically applies wrapping
+          to both header and cell content.</p>
         <p>
-          Auto wrap cell content can be enabled using <code>allowTextWrap</code>{" "}
-          property of the Tree Grid. Setting this property will wrap cell text
-          on multiple lines.This feature is useful to view the cell content when
-          it exceeds the cell width.
+          More information about text wrap can be found in this 
+          <a target="_blank"
+            href="https://ej2.syncfusion.com/react/documentation/treegrid/cell/cell#autowrap-the-treegrid-content">
+            documentation
+          </a> section.
         </p>
-        <p>
-          Setting this property will wrap the text in both content cell and
-          header cell.
-        </p>
-        <p>
-          In this demo, the <code>allowTextWrap</code> property is enabled, and
-          you can also see that the Task Name column whose content exceeded the
-          cell width is wrapped into multiple lines.
-        </p>
-        <p>
-          More information about Auto wrap cells can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/cell/auto-wrap">documentation section</a>.
-         </p>
       </div>
     </div>
   );
-}
+};
 export default AutoWrap;

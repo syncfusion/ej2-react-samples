@@ -175,6 +175,7 @@ export class ComplexHierarchicalModel extends SampleBase<{}, {}> {
                                 <div
                                     className={`image-pattern-style${index === 0 ? "e-selected-style" : ""}`}
                                     id={id}
+                                    key={id}
                                     style={{
                                         backgroundImage: `url('src/diagram/Images/common-orientation/${id}.png')`,
                                         marginRight: "3px",
@@ -202,7 +203,7 @@ export class ComplexHierarchicalModel extends SampleBase<{}, {}> {
                             { id: "horizontalSpacing", label: "Horizontal Spacing", value: 40, min: 20, max: 60 },
                             { id: "verticalSpacing", label: "Vertical Spacing", value: 40, min: 20, max: 60 },
                         ].map(({ id, label, value, min, max }) => (
-                            <div className="row" style={{ paddingTop: "8px" }}>
+                            <div key={id} className="row" style={{ paddingTop: "8px" }}>
                                 <div style={{ display: "table", height: "35px", paddingLeft: "0px" }} className="col-xs-5">
                                     <div style={{ display: "table-cell", verticalAlign: "middle" }}>{label}</div>
                                 </div>
@@ -211,7 +212,7 @@ export class ComplexHierarchicalModel extends SampleBase<{}, {}> {
                                         id={id}
                                         value={value}
                                         min={min}
-                                        max={max}                  
+                                        max={max}
                                         step={1}
                                         format={"##.##"}
                                         change={(args: ChangeEventArgs) => {

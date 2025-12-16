@@ -134,7 +134,7 @@ export class ExternalDragDrop extends SampleBase<{}, {}> {
           <div className='control-wrapper drag-sample-wrapper'>
             <div className="schedule-container">
               <div className="title-container">
-                <h1 className="title-text">Doctor's Appointments</h1>
+                <div className="title-text">Doctor's Appointments</div>
               </div>
               <ScheduleComponent ref={schedule => this.scheduleObj = schedule} cssClass='schedule-drag-drop' width='100%' height='650px' selectedDate={new Date(2021, 7, 2)}
                 currentView='TimelineDay' resourceHeaderTemplate={this.resourceHeaderTemplate.bind(this)}
@@ -166,7 +166,7 @@ export class ExternalDragDrop extends SampleBase<{}, {}> {
             </div>
             <div className="treeview-container">
               <div className="title-container">
-                <h1 className="title-text">Waiting List</h1>
+                <div className="title-text">Waiting List</div>
               </div>
               <TreeViewComponent ref={tree => this.treeObj = tree} cssClass='treeview-external-drag' dragArea=".drag-sample-wrapper" nodeTemplate={this.treeTemplate.bind(this)} fields={this.fields} nodeDragStop={this.onTreeDragStop.bind(this)} nodeDragging={this.onTreeDrag.bind(this)} nodeDragStart={this.onTreeDragStart} nodeSelecting={this.onItemSelecting.bind(this)} allowDragAndDrop={this.allowDragAndDrops} />
             </div>

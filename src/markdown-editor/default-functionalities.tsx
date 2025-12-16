@@ -3,7 +3,7 @@
  */
 import { createElement, KeyboardEventArgs } from '@syncfusion/ej2-base';
 import { Image, Inject, IToolbarItems, Link, MarkdownEditor, MarkdownFormatter, RichTextEditorComponent, Table, Toolbar, ToolbarSettingsModel } from '@syncfusion/ej2-react-richtexteditor';
-import * as Marked from 'marked';
+import { MarkdownConverter } from '@syncfusion/ej2-markdown-converter';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { SampleBase } from '../common/sample-base';
@@ -14,13 +14,25 @@ export class MarkDown extends SampleBase<{}, {}> {
     private rteObj: RichTextEditorComponent;
 
     // set the value to Rich Text Editor
-    private template: string = `The sample is added to showcase **markdown editing**.
+    private template: string = `# 🚀 My Project
+A simple yet powerful project that does amazing things.  
+**Bold text** for emphasis, *italic* for subtlety, ~~strikethrough~~ for corrections, and <u>underline</u> for highlights.
 
-Type or edit the content and apply formatting to view markdown formatted content.
-    
-We can add our own custom formation syntax for the Markdown formation, [sample link](https://ej2.syncfusion.com/home/).
-    
-The third-party library <b>Marked</b> is used in this sample to convert markdown into HTML content`;
+## ✨ Features
+- Fast and efficient  
+- Easy to use  
+- Fully customizable  
+
+## 🛠️ How to Use
+1. Download the file  
+2. Open it directly  
+3. Start using immediately  
+
+## 🤝 Contributing
+Check out our **Contributing Guide** for details.
+
+## 📄 License
+This project is licensed under the **MIT License** – see the LICENSE file for details.`;
     private placeholder: string = 'Enter your text here...';
     // Rich Text Editor items list
     private items: (string | IToolbarItems)[] = ['Bold', 'Italic', 'StrikeThrough', '|',
@@ -48,7 +60,7 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
         if (this.mdsource.classList.contains('e-active')) {
             let id: string = this.rteObj.getID() + 'html-view';
             let htmlPreview: HTMLElement = this.rteObj.element.querySelector('#' + id);
-            htmlPreview.innerHTML = Marked.marked((this.rteObj.contentModule.getEditPanel() as HTMLTextAreaElement).value);
+            htmlPreview.innerHTML = MarkdownConverter.toHtml((this.rteObj.contentModule.getEditPanel() as HTMLTextAreaElement).value) as string;
         }
     }
     public fullPreview(): void {
@@ -68,7 +80,7 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
             }
             this.textArea.style.display = 'none';
             htmlPreview.style.display = 'block';
-            htmlPreview.innerHTML = Marked.marked((this.rteObj.contentModule.getEditPanel() as HTMLTextAreaElement).value);
+            htmlPreview.innerHTML = MarkdownConverter.toHtml((this.rteObj.contentModule.getEditPanel() as HTMLTextAreaElement).value) as string;
             this.mdsource.parentElement.title = 'Code View';
         }
     }
@@ -96,7 +108,7 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
                     <div className="content-wrapper">
                         <RichTextEditorComponent id="markdownRTE"
                             ref={(richtexteditor) => { this.rteObj = richtexteditor }} editorMode='Markdown'
-                            height='250px' valueTemplate={this.template} formatter={this.formatter} toolbarSettings={this.toolbarSettings} >
+                            height='520px' valueTemplate={this.template} formatter={this.formatter} toolbarSettings={this.toolbarSettings} >
                             <Inject services={[MarkdownEditor, Toolbar, Image, Link, Table]} />
                         </RichTextEditorComponent>
                     </div>
@@ -119,7 +131,7 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
                     </ul>
                     <p><b>Injecting Module</b></p>
                     <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, MarkdownEditor, Table</code> modules into the services.</p>
-                    <p>The third-party library <code>Marked</code> is used in this sample to convert markdown into HTML content.</p>
+                    <p>Syncfusion's <code>Markdown Converter</code> is used in this sample to convert markdown into HTML content.</p>
                 </div>
             </div>
         );

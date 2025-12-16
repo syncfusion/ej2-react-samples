@@ -39,6 +39,12 @@ export class DataMatrix extends SampleBase<{}, {}> {
   rendereComplete() {
     let div: HTMLElement = (document.getElementsByClassName('sb-property-border')[0] as HTMLElement);
     this.formObject = new FormValidator('#form1', options);
+    let input = document.getElementById("textbox_0");
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault()
+      }
+    });
     if (div) div.style.left = '63%';
 
   }

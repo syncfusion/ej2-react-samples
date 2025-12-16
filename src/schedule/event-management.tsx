@@ -3,7 +3,7 @@ import './event-management.css';
 import {
   ScheduleComponent, ViewsDirective, ViewDirective, ResourcesDirective, ResourceDirective, TimelineViews, Week, Day, Agenda, Inject, ExcelExport, Print,
   ToolbarItemsDirective, ToolbarItemDirective, PopupOpenEventArgs, PopupCloseEventArgs, EventRenderedArgs,
-  ResourcesModel, CellClickEventArgs, ResourceDetails
+  ResourcesModel, ActionEventArgs, CellClickEventArgs, ResourceDetails
 } from '@syncfusion/ej2-react-schedule';
 import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import { AnimationSettingsModel, DialogComponent } from '@syncfusion/ej2-react-popups';
@@ -81,6 +81,7 @@ export class EventManagement extends SampleBase<{}, {}> {
     // Bind methods to this
     this.onEventRendered = this.onEventRendered.bind(this);
     this.onRoomChange = this.onRoomChange.bind(this);
+    this.onActionBegin = this.onActionBegin.bind(this);
     this.onPopupOpen = this.onPopupOpen.bind(this);
     this.onPopupClose = this.onPopupClose.bind(this);
     this.onTreeDragStart = this.onTreeDragStart.bind(this);
@@ -232,6 +233,23 @@ export class EventManagement extends SampleBase<{}, {}> {
     }
   }
 
+  onActionBegin(args: ActionEventArgs): void {
+    if (args.requestType === 'eventCreate') {
+      const data: Record<string, any> = args.data;
+      const roomId: number = data[0].RoomId;
+      const startTime: Date = data[0].StartTime;
+      const endTime: Date = data[0].EndTime;
+      const isRoomFiltered: boolean = (this.scheduleRef.current?.resourceCollection[0].dataSource as Record<string, any>[]).length === 1;
+      const isRoomAvailable: boolean = this.scheduleRef.current?.isSlotAvailable(startTime, endTime, !isRoomFiltered ? roomId - 1 : 0);
+      if (!isRoomAvailable) {
+        args.cancel = true;
+        this.alertDialogRef.current.content = 'Room is already booked for the selected time slot.';
+        this.alertDialogRef.current.show();
+        return;
+      }
+    }
+  }
+
   onPopupOpen(args: PopupOpenEventArgs): void {
     const isQuickInfoPopup: boolean = args.type === 'QuickInfo' || args.type === 'ViewEventInfo';
     const isEditorPopup: boolean = args.type === 'Editor';
@@ -286,10 +304,9 @@ export class EventManagement extends SampleBase<{}, {}> {
         const startTime: Date = args.data.StartTime;
         const endTime: Date = args.data.EndTime;
         const capacity: number = args.data.Capacity;
-        const isRoomFiltered: boolean = (this.scheduleRef.current?.resourceCollection[0].dataSource as Record<string, any>[]).length === 1;
-        const isRoomAvailable: boolean = this.scheduleRef.current?.isSlotAvailable(startTime, endTime, !isRoomFiltered ? roomId - 1 : 0) && startTime.getHours() >= 8 && (endTime.getHours() < 18 || (endTime.getHours() === 18 && endTime.getMinutes() === 0));
+        const isAvailableTime: boolean = startTime.getHours() >= 8 && (endTime.getHours() < 18 || (endTime.getHours() === 18 && endTime.getMinutes() === 0));
         const isCapacityAvailable: boolean = this.checkRoomCapacity(capacity, roomId);
-        if (!isRoomAvailable) {
+        if (!isAvailableTime) {
           let timeElement: Element = args.element.querySelector('.e-start-end-row');
           if (!args.element.querySelector('.time-alert')) {
             const newDiv: Element = document.createElement('div');
@@ -315,7 +332,7 @@ export class EventManagement extends SampleBase<{}, {}> {
             args.element.querySelector('.capacity-alert').remove();
           }
         }
-        if (!isRoomAvailable || !isCapacityAvailable) {
+        if (!isAvailableTime || !isCapacityAvailable) {
           args.cancel = true;
         } else {
           let unplannedEventsTreeViewRefs = [this.allUnplannedEventsTreeViewRef, this.CloudSecurityEventTreeViewRef, this.AIAutomationEventTreeViewRef];
@@ -607,7 +624,6 @@ export class EventManagement extends SampleBase<{}, {}> {
             startHour="08:00"
             endHour="18:00"
             timeScale={{ slotCount: 3 }}
-            allowOverlap={false}
             eventSettings={{
               dataSource: this.eventsData,
               fields: {
@@ -626,6 +642,7 @@ export class EventManagement extends SampleBase<{}, {}> {
             eventRendered={this.onEventRendered}
             resourceHeaderTemplate={this.resourceHeaderTemplate}
             cellClick={this.onCellClick}
+            actionBegin={this.onActionBegin}
             popupClose={this.onPopupClose}
             popupOpen={this.onPopupOpen}
             quickInfoTemplates={{ header: this.quickInfoHeader, content: this.quickInfoContent }}

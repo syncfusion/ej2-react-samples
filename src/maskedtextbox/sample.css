@@ -1,27 +1,68 @@
  .control-section .content-wrapper.sample-mask {
-        width: 30%;
-        margin: 0 auto;
-        min-width: 185px;
-        max-width: 350px;
-    }
-    
-  .sample-mask .control-label {
-        padding: 24px 0px 10px 0px;
-        font-size: 12px;
-        opacity: 1;
-    }
-    #input-mask .property-panel-content{
-        overflow: auto;
-    }
-    
-    .control-section .col-lg-8 .content-wrapper.sample-mask {
-        width: 45%;
-    }
-    
-    .mask-wrap:first-child {
-        margin-top: 50px;
-    }
-    
-    .mask-wrap {
-        margin-top: 35px;
-    }
+    width: 30%;
+    margin: 0 auto;
+    min-width: 185px;
+    max-width: 350px;
+}
+
+.sample-mask .control-label {
+    padding: 24px 0px 10px 0px;
+    font-size: 12px;
+    opacity: 1;
+}
+#input-mask .property-panel-content{
+    overflow: auto;
+}
+
+.control-section .col-lg-8 .content-wrapper.sample-mask {
+    width: 45%;
+}
+
+.mask-wrap:first-child {
+    margin-top: 50px;
+}
+
+.mask-wrap {
+    margin-top: 35px;
+}
+
+.content-wrapper div.mask-row {
+    max-width: 250px;
+    margin: 0 auto;
+    padding: 40px 0px 0px;
+}
+
+div.mask-row label.e-float-text,
+div.mask-row .e-float-input:not(.e-error):not(.e-input-focus) input:not(:focus):valid~label.e-float-text.e-label-bottom,
+div.mask-row .e-float-input.e-control-wrapper:not(.e-error):not(.e-input-focus) input:not(:focus):valid~label.e-float-text.e-label-bottom {
+    margin-top: -2px;
+}
+
+.bootstrap5_3 .mask-row .e-prepend-template,
+.bootstrap5_3-dark .mask-row .e-prepend-template,
+.tailwind3 .mask-row .e-prepend-template,
+.tailwind3-dark .mask-row .e-prepend-template {
+    padding-right: 0 !important;
+}
+
+.fluent2 .mask-row label.e-float-text.e-label-bottom,
+.fluent2-dark .mask-row label.e-float-text.e-label-bottom,
+.fluent2-highcontrast .mask-row label.e-float-text.e-label-bottom {
+    top: -8px !important;
+}
+
+.e-bigger.material3 .mask-row label.e-float-text,
+.e-bigger.material3-dark .mask-row label.e-float-text {
+    top: -4px !important;
+}
+
+.e-bigger.bootstrap5_3 .mask-row label.e-float-text.e-label-bottom,
+.e-bigger.bootstrap5_3-dark .mask-row label.e-float-text.e-label-bottom {
+    top: 20px !important;
+}
+
+.e-bigger.fluent2 .mask-row label.e-float-text.e-label-bottom,
+.e-bigger.fluent2-dark .mask-row label.e-float-text.e-label-bottom,
+.e-bigger.fluent2-highcontrast .mask-row label.e-float-text.e-label-bottom {
+    top: -7px !important;
+}

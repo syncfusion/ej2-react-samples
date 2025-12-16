@@ -1,7 +1,7 @@
  .control-section .content-wrapper.sample-numeric {
         width: 30%;
         margin: 0 auto;
-        min-width: 185px;
+        min-width: 250px;
     }
 
 .format-wrapper .e-float-input.e-numeric.e-input-group { 
@@ -67,4 +67,35 @@
 .fluent-dark #step {
     background-color: rgb(27, 26, 25);
     color: rgb(255, 255, 255);
+}
+
+.content-wrapper.sample-numeric-icon {
+    width: 35%;
+    margin: 0 auto;
+    min-width: 250px;
+}
+.sample-numeric-icon .custom-margin {
+    margin: 25px 0;
+}
+.sample-numeric-icon .custom-margin-row {
+    padding: 0 !important;
+}
+.e-numeric.e-control-wrapper.e-input-group .e-input-group-icon {
+    background-color: rgba(0,0,0,0) !important;
+}
+.bootstrap5_3 .sample-numeric-icon .e-prepend-template,
+.bootstrap5_3-dark .sample-numeric-icon .e-prepend-template,
+.tailwind3 .sample-numeric-icon .e-prepend-template,
+.tailwind3-dark .sample-numeric-icon .e-prepend-template {
+    padding-right: 0 !important;
+}
+.fluent2 .sample-numeric-icon .e-prepend-template,
+.fluent2-dark .sample-numeric-icon .e-prepend-template,
+.fluent2-highcontrast .sample-numeric-icon .e-prepend-template {
+    padding-left: 11px !important;
+}
+.sample-numeric-icon .e-icons.e-reset,
+.sample-numeric-icon .e-icons.e-horizontal-line,
+.sample-numeric-icon .e-icons.e-plus {
+    cursor: pointer;
 }

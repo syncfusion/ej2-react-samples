@@ -316,7 +316,7 @@ const Annotation = () => {
                         <AnnotationDirective content='<div class="box-top-left" > Reta Oposta </div>' x='0.700' y='292' coordinateUnits='Point' />
                         <AnnotationDirective content='<div class="box-bottom" > Bico de Pato </div>' x='2.750' y='80' coordinateUnits='Point' />
                         <AnnotationDirective content='<div class="box-top" > Mergulho </div>' x='3.136' y='284' coordinateUnits='Point' />
-                        <AnnotationDirective content= { Browser.isDevice  ? '' : '<div class="third-box-bottom" > Junção </div>'} x='3.270' y='98' coordinateUnits='Point' />
+                        <AnnotationDirective content= { Browser.isDevice  ? '' : '<div class="third-box-bottom" > Juncao </div>'} x='3.270' y='98' coordinateUnits='Point' />
                         <AnnotationDirective content= { Browser.isDevice  ? '' : '<div class="box-top" > Subida dos <br /> Boxes </div>'} x='3.800' y='312' coordinateUnits='Point' />
                         <AnnotationDirective content= { Browser.isDevice  ? '' :'<div style="font-family: sans-serif" > Max, accelertion <br /> 5.00 g at 5th gear </div>'} x='1.65' y='300' coordinateUnits='Point' />
                         <AnnotationDirective content= { Browser.isDevice  ? '' :'<div style="font-family: sans-serif" > Max, accelertion <br /> 4.58 g at 5th gear </div>'} x='2.60' y='250' coordinateUnits='Point' />

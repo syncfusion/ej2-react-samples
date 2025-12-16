@@ -64,24 +64,26 @@ const OutlookLayout = () => {
                 <div className='splitter-content'>
                     <div style={{ width: '100%', padding: '15px' }}>
                         <table>
-                            <tr>
-                                <td><button className='e-btn e-flat e-outline'>To...</button></td>
-                                <td id='firstname-target'>
-                                    <TextBoxComponent id="firstname" aria-label="firstname" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><button className='e-btn e-flat e-outline'>Cc...</button></td>
-                                <td id='lastname-target'>
-                                    <TextBoxComponent id="lastname" aria-label="lastname" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><div id='subject-text'>Subject</div></td>
-                                <td id='subject-target'>
-                                    <TextBoxComponent id="subject" aria-label="subject" />
-                                </td>
-                            </tr>
+                            <tbody>
+                                <tr>
+                                    <td><button className='e-btn e-flat e-outline'>To...</button></td>
+                                    <td id='firstname-target'>
+                                        <TextBoxComponent id="firstname" aria-label="firstname" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><button className='e-btn e-flat e-outline'>Cc...</button></td>
+                                    <td id='lastname-target'>
+                                        <TextBoxComponent id="lastname" aria-label="lastname" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><div id='subject-text'>Subject</div></td>
+                                    <td id='subject-target'>
+                                        <TextBoxComponent id="subject" aria-label="subject" />
+                                    </td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
                     <div className='forum'>

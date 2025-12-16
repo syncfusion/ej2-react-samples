@@ -2,7 +2,7 @@ import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
 import './bottom-toolbar.css';
 import { ChatUIComponent, MessageModel } from '@syncfusion/ej2-react-interactive-chat';
-import { RichTextEditorComponent, ToolbarSettingsModel, Toolbar, Link, Image, HtmlEditor, QuickToolbar, Table, EmojiPicker, Inject } from '@syncfusion/ej2-react-richtexteditor';
+import { RichTextEditorComponent, ToolbarSettingsModel, Toolbar, Link, Image, HtmlEditor, QuickToolbar, Table, EmojiPicker, Inject, ClipBoardCleanup, AutoFormat } from '@syncfusion/ej2-react-richtexteditor';
 
 export class BottomToolbar extends SampleBase<{}, {}> {
   private chatRTE: RichTextEditorComponent | null = null;
@@ -56,7 +56,7 @@ export class BottomToolbar extends SampleBase<{}, {}> {
           }}
           placeholder="Type something..."
         >
-        <Inject services={[Toolbar, Link, Image, HtmlEditor, QuickToolbar, Table, EmojiPicker]} />
+        <Inject services={[Toolbar, Link, Image, HtmlEditor, QuickToolbar, Table, EmojiPicker, ClipBoardCleanup, AutoFormat]} />
         </RichTextEditorComponent>
         <button id="sendMessage" className="e-btn e-primary e-icons e-send e-send-1 e-icon-btn e-small" style={{ float: 'right', margin: '4px' }} onClick={this.sendMessage}></button>
         <button id="cancelMessage" className="e-btn e-secondary e-icons e-trash e-icon-btn e-small" style={{ float: 'right', margin: '4px' }} onClick={this.cancelMessage}></button>

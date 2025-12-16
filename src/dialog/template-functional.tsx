@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import { DialogComponent } from '@syncfusion/ej2-react-popups';
+import { SanitizeHtmlHelper } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import './template.css';
 
@@ -68,11 +69,10 @@ const Template = () => {
       'dialogText'
     )[0] as HTMLElement;
     if (enteredVal.value !== '') {
-      dialogTextElement.innerHTML = enteredVal.value;
+      dialogTextElement.innerHTML = SanitizeHtmlHelper.sanitize(enteredVal.value);
     }
     enteredVal.value = '';
   }
-
   const rendereComplete = (): void => {
     dialogInstance.current.target = document.getElementById('target');
     (document.getElementById('sendButton') as HTMLElement).onkeydown = (e: any) => {

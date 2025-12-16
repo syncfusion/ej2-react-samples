@@ -1,4 +1,4 @@
-import { RichTextEditorComponent, HtmlEditor, Toolbar, FormatPainter, QuickToolbar, Link, Image, Table, Audio, Video, ToolbarSettingsModel, Inject } from "@syncfusion/ej2-react-richtexteditor";
+import { RichTextEditorComponent, HtmlEditor, Toolbar, FormatPainter, QuickToolbar, Link, Image, Table, Audio, Video, ToolbarSettingsModel, Inject, ClipBoardCleanup, AutoFormat } from "@syncfusion/ej2-react-richtexteditor";
 import { TextBoxComponent, FocusOutEventArgs } from "@syncfusion/ej2-react-inputs";
 import * as React from 'react';
 import { PropertyPane } from '../common/property-pane';
@@ -28,7 +28,7 @@ export class FormatPainterRTE extends SampleBase<{}, {}> {
                         <RichTextEditorComponent id="formatPainterRTE" ref={(richtexteditor) => { this.formatPainterRTE = richtexteditor }}
                             toolbarSettings={this.toolbarSettings}>
                                 <h3>Format Painter in Rich Text Editor</h3><p>The <strong data-start="50" data-end="68">Format Painter</strong> allows you to quickly copy and apply text formatting within the editor, saving time and ensuring consistency.</p><h5>How to Use Format Painter?</h5><ul><li><strong>Select the text</strong> with the formatting you want to copy.</li><li>Click the <strong>Format Painter</strong> button (paintbrush icon) in the toolbar.</li><li>The cursor changes to a <strong>paintbrush</strong> icon.</li><li><strong>Click and drag</strong> over the text where you want to apply the copied format.</li><li>Release the mouse button, and the formatting will be applied.</li></ul><h5>Why Use Format Painter?</h5><ul><li><strong>Saves time</strong> when formatting large documents.</li><li><strong>Ensures consistency</strong> in text styles. </li><li><strong>Easy to use</strong> for writers, editors, and content creators.</li></ul>
-                            <Inject services={[HtmlEditor, Toolbar, FormatPainter, QuickToolbar, Image, Link, Table, Audio, Video]} />
+                            <Inject services={[HtmlEditor, Toolbar, FormatPainter, QuickToolbar, Image, Link, Table, Audio, Video, ClipBoardCleanup, AutoFormat]} />
                         </RichTextEditorComponent>
                     </div>
                 </div>

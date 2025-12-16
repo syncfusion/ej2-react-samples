@@ -25,7 +25,7 @@ const Template = () => {
     const emptyChatTemplate = () => (
         <div className="emptychat-content">
             <h3><span className="e-icons e-comment-show"></span></h3>
-            <div className="emptyChatText" style={{fontSize: '16px'}}>Just a second, we're preparing your chat...</div>
+            <div className="emptyChatText" style={{ fontSize: '16px' }}>Just a second, we're preparing your chat...</div>
         </div>
     );
 
@@ -46,7 +46,7 @@ const Template = () => {
                 <div className='message-template'>
                     {userImage}
                     <div className="message-items e-card">
-                        <div className="message-text" dangerouslySetInnerHTML={{ __html: context.message.text}}></div>
+                        <div className="message-text" dangerouslySetInnerHTML={{ __html: context.message.text }}></div>
                     </div>
                 </div>
                 <div className="suggestion-container">
@@ -104,7 +104,7 @@ const Template = () => {
             };
             chatUiInst.current.addMessage(message);
         }, 500);
-      };
+    };
 
     return (
         <div className='control-pane'>
@@ -125,17 +125,17 @@ const Template = () => {
                     />
                 </div>
             </div>
-                <div id="action-description">
-                    <p>This sample demonstrates the template functionality of the Chat UI component, showing how you can customize various elements of the chat interface. It highlights the ability to adjust the appearance of message items, time breaks, and empty chat screens using templates.</p>
-                </div>
-                <div id="description">
-                    <p>
-                        In this example, a bot provides order tracking updates by customizing each message using the templates. The <code>messageTemplate</code> property controls the layout of messages, including the avatar, message content, and suggestions. The <code>timeBreakTemplate</code> adjusts the display of time breaks, showing either "Today" or the specific date.
-                    </p>
-                    <p>
-                        The bot sends a default response when a message is sent, and suggestions appear below the message. When a suggestion is clicked, the bot replies with a new message or set of suggestions, demonstrating how templates enhance the interaction flow within the Chat UI component.
-                    </p>
-                </div>
+            <div id="action-description">
+                <p>This sample demonstrates the template functionality of the Chat UI component, showing how you can customize various elements of the chat interface. It highlights the ability to adjust the appearance of message items, time breaks, and empty chat screens using templates.</p>
+            </div>
+            <div id="description">
+                <p>
+                    In this example, a bot provides order tracking updates by customizing each message using the templates. The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chat-ui/#messagetemplate">messageTemplate</a> property controls the layout of messages, including the avatar, message content, and suggestions. The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chat-ui/#timebreaktemplate">timeBreakTemplate</a> adjusts the display of time breaks, showing either "Today" or the specific date.
+                </p>
+                <p>
+                    The bot sends a default response when a message is sent, and suggestions appear below the message. When a suggestion is clicked, the bot replies with a new message or set of suggestions, demonstrating how templates enhance the interaction flow within the Chat UI component.
+                </p>
+            </div>
         </div>
     );
 };

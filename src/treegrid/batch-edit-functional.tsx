@@ -137,10 +137,10 @@ const Batch = () => {
           <code>
             <a
               target="_blank"
-              href="https://ej2.syncfusion.com/react/documentation/treegrid/edit/#batch"
+              href="https://ej2.syncfusion.com/react/documentation/treegrid/editing/batch-editing"
             >
-              documentation section.
-            </a>
+              documentation
+            </a> section
           </code>
         </p>
       </div>

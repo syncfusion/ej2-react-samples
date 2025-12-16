@@ -43,13 +43,13 @@ const Default = () => {
 
   const user1ToolbarSettings: ToolbarSettingsModel = {
     items: [
-        { type: 'Input', template: '<button id="dduser1Menu" style="border: none; background: none !important;"></button>', align: 'Right' }
+      { type: 'Input', template: '<button id="dduser1Menu" style="border: none; background: none !important;"></button>', align: 'Right' }
     ]
   };
 
   const user2ToolbarSettings: ToolbarSettingsModel = {
     items: [
-        { type: 'Input', template: '<button id="dduser2Menu" style="border: none; background: none !important;"></button>', align: 'Right' }
+      { type: 'Input', template: '<button id="dduser2Menu" style="border: none; background: none !important;"></button>', align: 'Right' }
     ]
   };
 
@@ -83,7 +83,7 @@ const Default = () => {
             user={{ id: 'user2', user: 'Reena', avatarUrl: './src/chat-ui/images/reena.png' }}
             messages={data["chatMessagedata"]}
             userTyping={(args) => handleUserTyping(args, chatUser2Ref.current)}
-            headerToolbar={ user1ToolbarSettings }
+            headerToolbar={user1ToolbarSettings}
             messageSend={(args) => handleMessageSend(args, 'user1')}
           />
           <ChatUIComponent
@@ -94,7 +94,7 @@ const Default = () => {
             messages={data["chatMessagedata"]}
             suggestions={data["defaultChatSuggestions"]}
             userTyping={(args) => handleUserTyping(args, chatUser1Ref.current)}
-            headerToolbar={ user2ToolbarSettings }
+            headerToolbar={user2ToolbarSettings}
             messageSend={(args) => handleMessageSend(args, 'user2')}
           />
         </div>
@@ -105,8 +105,8 @@ const Default = () => {
       </div>
       <div id="description">
         <p>
-           In this example, two Chat UI web components are used to represent users <b>Albert</b> and <b>Reena</b>, each with a unique header, avatar, and toolbar. Messages are instantly synchronized between the two users through the <code>messageSend</code> event, while typing indicators are shown in the other chat interface via the <code>userTyping</code> event, adding a more interactive feel.
-           This example demonstrates how to use the Chat UI component to display chat messages for multiple users. The chat interface allows switching between users' conversations, with bot responses triggered by user input. A header toolbar is included, and a splitter layout displays the chat alongside a list view for easy navigation.
+          In this example, two Chat UI web component are used to represent users <b>Albert</b> and <b>Reena</b>, each with a unique header, avatar, and toolbar. Messages are instantly synchronized between the two users through the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chat-ui/#messagesend">messageSend</a> event, while typing indicators are shown in the other chat interface via the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chat-ui/#usertyping">userTyping</a> event, adding a more interactive feel.
+          The toolbar for each chat includes a dropdown menu with options like muting and deleting messages, demonstrating the component’s ability to customize and control the chat experience.
         </p>
       </div>
     </div>

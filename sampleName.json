@@ -71,8 +71,11 @@
         "ControlName": "Block Editor",
         "Samples": {
             "overview":"Overview",
+            "pasteSettings":"Paste Cleanup",
 	        "api": "API",
-            "events": "Events"
+            "events": "Events",
+            "template": "Template Gallery",
+            "markdown":"Markdown Blocks"
         }
     },
     "bullet-chart": {
@@ -201,15 +204,15 @@
             "smartlabels": "Smart Labels",
             "drilldown": "Drilldown",
             "grouping": "Grouping",
-            "pie-empty-point": "Empty Points",
-            "polar-line": "Line",
-            "polar-spline": "Spline",
-            "polar-area": "Area",
-            "polar-stackedarea": "Stacked Area",
-            "polar-scatter": "Scatter",
-            "polar-column": "Column",
+            "pie-empty-point": "Pie Empty Points",
+            "polar-line": "Polar Line",
+            "polar-spline": "Polar Spline",
+            "polar-area": "Polar Area",
+            "polar-stackedarea": "Polar Stacked Area",
+            "polar-scatter": "Polar Scatter",
+            "polar-column": "Polar Column",
             "polar-stackedcolumn": "Wind Rose",
-            "polar-rangecolumn": "Range Column",
+            "polar-rangecolumn": "Polar Range Column",
             "local-data": "Local Data",
             "remote-data": "Remote Data",
             "lazy-loading": "Lazy Loading",
@@ -223,7 +226,7 @@
             "inversed": "Inversed Axis",
             "stripline": "Strip Line",
             "strip-line-recurrence": "Strip Line Recurrence",
-            "smart-axis-labels": "Smart Labels",
+            "smart-axis-labels": "Smart Axis Labels",
             "multi-level-label": "Multi Level Labels",
             "axis-crossing": "Axes Crossing",
             "sorting": "Sorting",
@@ -852,7 +855,7 @@
             "double": "Numeric Axis",
             "logarithmic": "Logarithmic Axis",
             "multilevel": "Multilevel Labels",
-            "period-selector": "Default",
+            "period-selector": "Period Selector",
             "period-selector-stocks": "Stock Chart",
             "empty-data": "Empty Points",
             "filter": "Filter",
@@ -888,7 +891,8 @@
             "streaming": "Streaming Response",
             "attachments": "File Attachments",
             "template": "Template",
-	        "dialog": "Notes Assistant"
+	        "dialog": "Notes Assistant",
+            "ai-models": "Multiple AI Models"
         }
     },
     "chat-ui": {
@@ -896,6 +900,7 @@
         "Samples": {
             "default":"Default Functionalities",
             "loadOn-demand": "Load On-demand",
+            "attachments": "File Attachments",
             "template": "Template",
 	        "api": "API",
             "chat-integration": "Use Case"
@@ -967,7 +972,7 @@
             "group-by-child": "Hierarchical Grouping",
             "cell-template": "Cell",
             "date-header-template": "Date Header",
-            "event-template": "Events",
+            "event-template": "Event Template",
             "tooltip": "Tooltip",
             "quick-info-template":"Quick Info Template",
             "editor-validation": "Field Validation",
@@ -1017,8 +1022,8 @@
             "events": "Events",
             "thumb-customization": "Thumb",
             "selection-bar-customization": "Bar",
-            "ticks-customization": "Ticks",
-            "tooltip-customization": "Tooltip",
+            "ticks-customization": "Ticks Customization",
+            "tooltip-customization": "Tooltip Customization",
             "azure-pricing": "Cloud Pricing"
         }
     },

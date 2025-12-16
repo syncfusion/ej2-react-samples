@@ -2,7 +2,7 @@
  * Rich Text Editor Paste Cleanup sample
  */
 import { DropDownListComponent, FieldSettingsModel } from '@syncfusion/ej2-react-dropdowns';
-import { HtmlEditor, Image, Inject, Link, PasteCleanup, PasteCleanupSettingsModel, QuickToolbar, RichTextEditorComponent, Toolbar, Table, Video, Audio } from '@syncfusion/ej2-react-richtexteditor';
+import { HtmlEditor, Image, Inject, Link, PasteCleanup, PasteCleanupSettingsModel, QuickToolbar, RichTextEditorComponent, Toolbar, Table, Video, Audio, ClipBoardCleanup, AutoFormat } from '@syncfusion/ej2-react-richtexteditor';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { PropertyPane } from '../common/property-pane';
@@ -102,7 +102,7 @@ function PasteCleanupRTE() {
                                     </li>
                                 </ul>
                                 <p><span><strong>Try It Out!</strong></span></p><p>Copy content from a web page or document and paste it here. The editor will display a prompt and allow you to input your options.</p>
-                            <Inject services={[Toolbar, Image, Link, HtmlEditor, QuickToolbar, PasteCleanup, Table, Video, Audio]} />
+                            <Inject services={[Toolbar, Image, Link, HtmlEditor, QuickToolbar, PasteCleanup, Table, Video, Audio, ClipBoardCleanup, AutoFormat]} />
                         </RichTextEditorComponent>
                     </div>
                 </div>

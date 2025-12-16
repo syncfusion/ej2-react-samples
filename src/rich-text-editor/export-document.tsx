@@ -3,7 +3,7 @@
  */
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { RichTextEditorComponent, Toolbar, Inject, Image, Link, HtmlEditor, QuickToolbar, Table, PasteCleanup, ImportExport } from '@syncfusion/ej2-react-richtexteditor';
+import { RichTextEditorComponent, Toolbar, Inject, Image, Link, HtmlEditor, QuickToolbar, Table, PasteCleanup, ImportExport, ClipBoardCleanup, AutoFormat } from '@syncfusion/ej2-react-richtexteditor';
 import { ToolbarSettingsModel, ExportWordModel, ExportPdfModel } from '@syncfusion/ej2-react-richtexteditor';
 import { SampleBase } from '../common/sample-base';;
 
@@ -91,7 +91,7 @@ export class ExportDocument extends SampleBase<{}, {}> {
                 <div className='control-section' id="rteTools">
                     <div className='rte-control-section'>
                         <RichTextEditorComponent id="exportDocument" exportPdf={this.exportPdf} exportWord={this.exportWord} value={this.rteValue} toolbarSettings={this.toolbarSettings} enableXhtml={true} insertImageSettings={this.insertImageSettings}>
-                            <Inject services={[Toolbar, Image, Link, HtmlEditor, QuickToolbar, Table, PasteCleanup, ImportExport]} />
+                            <Inject services={[Toolbar, Image, Link, HtmlEditor, QuickToolbar, Table, PasteCleanup, ImportExport, ClipBoardCleanup, AutoFormat]} />
                         </RichTextEditorComponent>
                     </div>
                 </div>

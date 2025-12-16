@@ -33,8 +33,7 @@ export class Critical extends SampleBase<{}, {}> {
                 <div className='control-section'>
                     <GanttComponent id='Critical' dataSource={projectNewData} treeColumnIndex={1}
                         taskFields={this.taskFields} labelSettings={this.labelSettings} height='650px' taskbarHeight={25} rowHeight={46}
-                        projectStartDate={this.projectStartDate}
-                        enableCriticalPath={true} editSettings={this.editSettings} toolbar={this.toolbar}>
+                        projectStartDate={this.projectStartDate} enableCriticalPath={true} editSettings={this.editSettings} toolbar={this.toolbar}>
                         <ColumnsDirective>
                             <ColumnDirective field='TaskID' width='80' ></ColumnDirective>
                             <ColumnDirective field='TaskName' headerText='Job Name' width='250' clipMode='EllipsisWithTooltip'></ColumnDirective>

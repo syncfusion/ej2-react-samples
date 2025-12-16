@@ -8,7 +8,7 @@ import { FabComponent } from '@syncfusion/ej2-react-buttons';
 import { PaneDirective, PanesDirective, SplitterComponent } from '@syncfusion/ej2-react-layouts';
 import * as data from './promptResponseData.json';
 
-export class Dialog extends SampleBase<{}, {dialogVisibility: boolean}> {
+export class Dialog extends SampleBase<{}, { dialogVisibility: boolean }> {
 
   assistInstance: AIAssistViewComponent;
   constructor(props: {}) {
@@ -22,9 +22,9 @@ export class Dialog extends SampleBase<{}, {dialogVisibility: boolean}> {
       response: "Ask Questions, to better understand how your prompt interacts with AI-generated or default data responses..!"
     }
   ];
-  prompts: { [key: string]: string | string[] } [] = data["defaultPromptResponseData"];
+  prompts: { [key: string]: string | string[] }[] = data["defaultPromptResponseData"];
 
-  suggestion: string [] = data["defaultSuggestions"];
+  suggestion: string[] = data["defaultSuggestions"];
 
   bannerTemplate = `<div class="banner-content">
     <div class="e-icons e-assistview-icon"></div>
@@ -95,7 +95,7 @@ export class Dialog extends SampleBase<{}, {dialogVisibility: boolean}> {
 
   assistViewToolbarSettings: ToolbarSettingsModel = {
     itemClicked: this.toolbarItemClicked,
-    items: [ { iconCss: 'e-icons e-close', align: 'Right' } ]
+    items: [{ iconCss: 'e-icons e-close', align: 'Right' }]
   };
 
   responseToolbarsettings: ResponseToolbarSettingsModel = {
@@ -137,12 +137,12 @@ export class Dialog extends SampleBase<{}, {dialogVisibility: boolean}> {
         </div>
 
         <div id="action-description">
-          <p>This example demonstrates the usage of dialogs in the AI AssistView component. You can display the generated responses in the notes view.</p>
+          <p>This example showcases the integration of AI AssistView within the Syncfusion<sup>®</sup> dialog component, allowing you to display generated responses in the notes view.</p>
         </div>
         <div id="description">
           <p>In this example, the AI AssistView is shown inside a dialog component, which opens with a floating action button (FAB) click.
-            It uses predefined <code>promptSuggestions</code> that are displayed based on user configuration and a custom toolbar item as a close icon to close the dialog.
-            The <code>promptRequest</code> event finds matching prompts and displays the responses.
+            It uses predefined  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/ai-assistview#promptsuggestions">promptSuggestions</a> that are displayed based on user configuration and a custom toolbar item as a close icon to close the dialog.
+            The  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/ai-assistview#promptrequest">promptRequest</a> event finds matching prompts and displays the responses.
           </p>
         </div>
       </div>

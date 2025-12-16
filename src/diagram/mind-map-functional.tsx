@@ -502,13 +502,6 @@ function MindMap() {
               services={[DataBinding, MindMapModule, HierarchicalTree]}
             />
           </DiagramComponent>
-          <input
-            id="palette"
-            style={{ visibility: "hidden", position: "absolute" }}
-            type="color"
-            name="favcolor"
-            value="#000000"
-          />
         </div>
       </div>
       <div id="action-description">

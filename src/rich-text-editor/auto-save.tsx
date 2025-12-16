@@ -3,7 +3,7 @@
  */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { RichTextEditorComponent, HtmlEditor, Inject, Toolbar, Image, Link, QuickToolbar, ToolbarSettingsModel, PasteCleanup, Table, Video, Audio } from '@syncfusion/ej2-react-richtexteditor';
+import { RichTextEditorComponent, HtmlEditor, Inject, Toolbar, Image, Link, QuickToolbar, ToolbarSettingsModel, PasteCleanup, Table, Video, Audio, ClipBoardCleanup, AutoFormat } from '@syncfusion/ej2-react-richtexteditor';
 import { SampleBase } from '../common/sample-base';
 import './auto-save.css';
 import { SwitchComponent } from '@syncfusion/ej2-react-buttons';
@@ -117,8 +117,8 @@ export class AutoSave extends SampleBase<{}, {}> {
                                 </p>
                                 <p><br /></p>
                                 <p style={{ textAlign: 'center' }}><b>"Great writing begins with a great editor."</b><b> ✍️</b> <br /></p>
-                                <Inject services={[Link, Image, HtmlEditor, Toolbar, QuickToolbar, PasteCleanup, Table, Video, Audio]} />
-                                <Inject services={[Link, Image, HtmlEditor, Toolbar, QuickToolbar, PasteCleanup, Table, Video, Audio]} />
+                                <Inject services={[Link, Image, HtmlEditor, Toolbar, QuickToolbar, PasteCleanup, Table, Video, Audio, ClipBoardCleanup, AutoFormat]} />
+                                <Inject services={[Link, Image, HtmlEditor, Toolbar, QuickToolbar, PasteCleanup, Table, Video, Audio, ClipBoardCleanup, AutoFormat]} />
                             </RichTextEditorComponent>
                             <div id='statusEle' className='current-status'>
                                 <div id='saving' ref={this.savingRef} style={{ display: 'none' }}>

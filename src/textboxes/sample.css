@@ -170,3 +170,50 @@
 .fluent-dark .e-float-input.e-control-wrapper.e-filled {
     margin-top: 0px;
 }
+
+.adornment-textbox .content-wrapper {
+    width: 35%;
+    margin: 5% auto;
+    min-width: 250px;
+}
+
+.material3 .adornment-textbox .row {
+    margin: 7% 0;
+}
+
+.adornment-textbox .custom-margin-row {
+    padding: 0 !important;
+}
+
+.e-float-input span:not([class]):not(.e-float-text):not(.e-input-separator):not(.e-delete-text) {
+    line-height: 1; 
+    padding-right: 5px;
+}
+
+.material3 .e-eye-icon label.e-label-bottom,
+.material3-dark .e-eye-icon label.e-label-bottom {
+    top: -3px !important;
+}
+
+.bootstrap5_3 .adornment-textbox .e-prepend-template,
+.bootstrap5_3-dark .adornment-textbox .e-prepend-template,
+.tailwind3 .adornment-textbox .e-prepend-template,
+.tailwind3-dark .adornment-textbox .e-prepend-template {
+    padding-right: 0 !important;
+}
+
+.tailwind3 .adornment-textbox label.e-label-bottom,
+.tailwind3-dark .adornment-textbox label.e-label-bottom {
+    top: 50% !important;
+}
+
+.e-bigger.material3 .adornment-textbox label.e-label-bottom,
+.e-bigger.material3-dark .adornment-textbox label.e-label-bottom {
+    top: -5px !important;
+}
+
+.adornment-textbox .e-eye-icon .e-icons.e-eye,
+.adornment-textbox .e-eye-icon .e-icons.e-eye-slash,
+.adornment-textbox .e-icon-textbox .e-icons.e-trash {
+    cursor: pointer;
+}

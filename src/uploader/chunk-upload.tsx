@@ -34,7 +34,7 @@ constructor(props: {}) {
 this.autoUpload = false;
 }
   public onChange(args: ChangeEventArgs): void {
-    this.uploadObj.asyncSettings.chunkSize = parseInt(args.itemData.value, 10);
+    this.uploadObj.asyncSettings.chunkSize = args.value as number;
   }
   private onRemoveFile(args: RemovingEventArgs): void {
       args.postRawFile = false;

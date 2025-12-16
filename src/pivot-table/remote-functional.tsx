@@ -22,7 +22,7 @@ function Remote () {
     ];
 
     let remoteData: DataManager = new DataManager({
-        url: 'https://ej2services.syncfusion.com/react/development/api/order',
+        url: 'https://services.syncfusion.com/react/production/api/order',
         adaptor: new WebApiAdaptor,
         crossDomain: true
     });
@@ -39,7 +39,7 @@ function Remote () {
     };
 
     let csvReport: IDataOptions = {
-        url: 'https://ej2services.syncfusion.com/react/development/api/product',
+        url: 'https://services.syncfusion.com/react/production/api/product',
         type: 'CSV',
         expandAll: false,
         enableSorting: true,

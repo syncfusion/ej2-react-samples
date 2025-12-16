@@ -3,7 +3,7 @@
  */
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { RichTextEditorComponent, Inject, QuickToolbar, Image, Link, HtmlEditor, Toolbar, InlineModeModel, FormatModel, FontFamilyModel, ToolbarSettingsModel, PasteCleanup, Table, Video, Audio} from '@syncfusion/ej2-react-richtexteditor';
+import { RichTextEditorComponent, Inject, QuickToolbar, Image, Link, HtmlEditor, Toolbar, InlineModeModel, FormatModel, FontFamilyModel, ToolbarSettingsModel, PasteCleanup, Table, Video, Audio, ClipBoardCleanup, AutoFormat } from '@syncfusion/ej2-react-richtexteditor';
 import { SampleBase } from '../common/sample-base';
 import { CheckBoxComponent, ChangeEventArgs } from '@syncfusion/ej2-react-buttons';
 import { PropertyPane } from '../common/property-pane';
@@ -43,7 +43,7 @@ export class Inline extends SampleBase<{}, {}> {
               <RichTextEditorComponent id="inlineRTE" ref={(richtexteditor) => { this.rteObj = richtexteditor }}
                 inlineMode={this.inlineMode} toolbarSettings={this.toolbarSettings} format={this.format} fontFamily={this.fontFamily}>
                 <h2>Inline Rich Text Editor!</h2><p>Click on this text to edit dynamically. The formatting toolbar will appear only when you select the content.</p><h5>Features:</h5><ul><li><strong>Minimal UI:</strong> The editor is clean and distraction-free.</li><li><strong>Contextual Toolbar:</strong> The toolbar appears only when text is selected.</li><li><strong>Rich Formatting:</strong> Supports bold, italic, underline, lists, links, and more.</li><li><strong>Seamless Editing:</strong> Works like a native text field but with powerful styling options.</li></ul><blockquote><p>Try selecting this text to see the toolbar in action!</p></blockquote>
-                <Inject services={[Image, Link, QuickToolbar, HtmlEditor, Toolbar, PasteCleanup, Table, Video, Audio]} />
+                <Inject services={[Image, Link, QuickToolbar, HtmlEditor, Toolbar, PasteCleanup, Table, Video, Audio, ClipBoardCleanup, AutoFormat]} />
               </RichTextEditorComponent>
             </div>
           </div>

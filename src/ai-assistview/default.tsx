@@ -11,19 +11,19 @@ export class Default extends SampleBase<{}, {}> {
       response: "Ask Questions, to better understand how your prompt interacts with AI-generated or default data responses..!"
     }
   ];
-  prompts: { [key: string]: string | string[] } [] = data["defaultPromptResponseData"];
+  prompts: { [key: string]: string | string[] }[] = data["defaultPromptResponseData"];
 
-  suggestion: string [] = data["defaultSuggestions"];
+  suggestion: string[] = data["defaultSuggestions"];
 
   toolbarItemClicked = (args) => {
     if (args.item.iconCss === 'e-icons e-refresh') {
-        this.assistInstance.prompts = [];
-        this.assistInstance.promptSuggestions = this.suggestion;
+      this.assistInstance.prompts = [];
+      this.assistInstance.promptSuggestions = this.suggestion;
     }
   }
 
   assistViewToolbarSettings: ToolbarSettingsModel = {
-    items: [ { iconCss: 'e-icons e-refresh', align: 'Right' } ],
+    items: [{ iconCss: 'e-icons e-refresh', align: 'Right' }],
     itemClicked: this.toolbarItemClicked
   };
 
@@ -41,7 +41,7 @@ export class Default extends SampleBase<{}, {}> {
       var defaultResponse = 'For real-time prompt processing, connect the AI AssistView control to your preferred AI service, such as OpenAI or Azure Cognitive Services. Ensure you obtain the necessary API credentials to authenticate and enable seamless integration.';
 
       this.assistInstance.addPromptResponse(foundPrompt ? foundPrompt.response : defaultResponse);
-      this.assistInstance.promptSuggestions = foundPrompt?.suggestions as string []|| this.suggestion;
+      this.assistInstance.promptSuggestions = foundPrompt?.suggestions as string[] || this.suggestion;
     }, 2000);
   };
   render() {
@@ -49,16 +49,16 @@ export class Default extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className="control-section">
-            <div className="default-aiassistview"> 
-                <AIAssistViewComponent id="aiAssistView" toolbarSettings={this.assistViewToolbarSettings} bannerTemplate={this.bannerTemplate} promptSuggestions={this.suggestion} promptRequest={this.promptRequest} ref={aiassistView => (this.assistInstance = aiassistView)}></AIAssistViewComponent>
-            </div>
+          <div className="default-aiassistview">
+            <AIAssistViewComponent id="aiAssistView" toolbarSettings={this.assistViewToolbarSettings} bannerTemplate={this.bannerTemplate} promptSuggestions={this.suggestion} promptRequest={this.promptRequest} ref={aiassistView => (this.assistInstance = aiassistView)}></AIAssistViewComponent>
+          </div>
         </div>
 
         <div id="action-description">
           <p>This sample demonstrates the default functionalities of the AI AssistView component. The AI AssistView creates an interface through which users can interact with AI-driven suggestions and prompts.</p>
         </div>
         <div id="description">
-          <p>In this example, the <code>bannerTemplate</code> customizes the banner content, and <code>toolbarSettings</code> adds custom toolbar items like a right-aligned <code>Refresh</code> button. The <code>promptSuggestions</code> provides AI prompt suggestions, and <code>promptRequest</code> handles prompt requests when triggered.</p>
+          <p>In this example, the  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/ai-assistview#bannertemplate">bannerTemplate</a> customizes the banner content, and  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/ai-assistview#toolbarsettings">toolbarSettings</a> adds custom toolbar items like a right-aligned <code>Refresh</code> button. The  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/ai-assistview#promptsuggestions">promptSuggestions</a> provides AI prompt suggestions, and  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/ai-assistview#promptrequest">promptRequest</a> handles prompt requests when triggered.</p>
         </div>
       </div>
     )

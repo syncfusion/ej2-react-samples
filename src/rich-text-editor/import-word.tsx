@@ -2,7 +2,7 @@
  * Rich Text Editor import-word sample
  */
 import * as React from 'react';
-import { RichTextEditorComponent, Toolbar, Inject, Image, Link, HtmlEditor, QuickToolbar, Table, PasteCleanup, ImportExport } from '@syncfusion/ej2-react-richtexteditor';
+import { RichTextEditorComponent, Toolbar, Inject, Image, Link, HtmlEditor, QuickToolbar, Table, PasteCleanup, ImportExport, ClipBoardCleanup, AutoFormat } from '@syncfusion/ej2-react-richtexteditor';
 import { ToolbarSettingsModel, ImportWordModel } from '@syncfusion/ej2-react-richtexteditor';
 import { SampleBase } from '../common/sample-base';
 
@@ -65,7 +65,7 @@ export class ImportWord extends SampleBase<{}, {}> {
                 <div className='control-section' id="rteTools">
                     <div className='rte-control-section'>
                         <RichTextEditorComponent id="importDocument" importWord={this.importWord} toolbarSettings={this.toolbarSettings} insertImageSettings={this.insertImageSettings} value={this.rteValue} enableXhtml={true}>
-                            <Inject services={[Toolbar, Image, Link, HtmlEditor, QuickToolbar, Table, PasteCleanup, ImportExport]} />
+                            <Inject services={[Toolbar, Image, Link, HtmlEditor, QuickToolbar, Table, PasteCleanup, ImportExport, ClipBoardCleanup, AutoFormat]} />
                         </RichTextEditorComponent>
                     </div>
                 </div>

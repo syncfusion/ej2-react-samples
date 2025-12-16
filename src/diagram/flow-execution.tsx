@@ -114,7 +114,7 @@ export class FlowExecution extends SampleBase<{}, {}> {
                                 { id: "NodesConnected", label: "Incoming and outgoing nodes" },
                                 { id: "NodesReachable", label: "Flow of Execution" },
                             ].map(({ id, label, checked }, index) => (
-                                <div className="row" style={{ paddingTop: index === 0 ? "0px" : "8px" }}>
+                                <div key={id} className="row" style={{ paddingTop: index === 0 ? "0px" : "8px" }}>
                                     <div className="col-xs-7">
                                         <RadioButtonComponent
                                             id={id}

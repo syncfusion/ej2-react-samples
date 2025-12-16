@@ -36,7 +36,6 @@ const TimeZone = () => {
     { text: '(UTC+08:00) Western Time - Perth', value: 'Australia/Perth' }
   ];
   const fields: Record<string, any> = { text: 'text', value: 'value' };
-  const [schedulerTimezone, setSchedulerTimezone] = useState<string>('UTC');
   // Here remove the local offset from events
 
   useEffect(() => {
@@ -53,7 +52,7 @@ const TimeZone = () => {
   }
 
   const onTimeZoneChange = (args: ChangeEventArgs): void => {
-    setSchedulerTimezone(args.value as string)
+    scheduleObj.current.timezone = args.value as string;
     scheduleObj.current?.dataBind();
   }
 
@@ -76,7 +75,7 @@ const TimeZone = () => {
               </tr>
             </tbody>
           </table>
-          <ScheduleComponent width='100%' height='650px' ref={scheduleObj} selectedDate={new Date(2021, 5, 20)} timezone={schedulerTimezone} workHours={{ start: '11:00' }} eventSettings={{ dataSource: fifaEvents }}  eventRendered={onEventRendered}>
+          <ScheduleComponent width='100%' height='650px' ref={scheduleObj} selectedDate={new Date(2021, 5, 20)} timezone={'UTC'} workHours={{ start: '11:00' }} eventSettings={{ dataSource: fifaEvents }}  eventRendered={onEventRendered}>
             <Inject services={[Day, Week, WorkWeek, Month, Agenda, Resize, DragAndDrop]} />
           </ScheduleComponent>
         </div>

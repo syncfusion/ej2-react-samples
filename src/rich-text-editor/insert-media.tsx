@@ -2,7 +2,7 @@
 * Rich Text Editor Insert Media sample
 */
 import * as React from 'react';
-import { RichTextEditorComponent, Toolbar, Inject, Image, Table, Link, HtmlEditor, QuickToolbar, ToolbarSettingsModel, Audio, Video, PasteCleanup } from '@syncfusion/ej2-react-richtexteditor';
+import { RichTextEditorComponent, Toolbar, Inject, Image, Table, Link, HtmlEditor, QuickToolbar, ToolbarSettingsModel, Audio, Video, PasteCleanup, ClipBoardCleanup, AutoFormat } from '@syncfusion/ej2-react-richtexteditor';
 import { SampleBase } from '../common/sample-base';
 import './insert-media.css';
 // Rich Text Editor items list
@@ -43,7 +43,7 @@ export class InsertMedia extends SampleBase<{}, {}> {
                             <p><b>Get started with Quick Toolbar to click on an audio</b></p>
                             <p>Using the quick toolbar, users can replace, display, and delete the selected audio.</p>
                             <p><audio controls><source src="https://cdn.syncfusion.com/ej2/richtexteditor-resources/RTE-Audio.wav" type="audio/mp3" /></audio></p>
-                            <Inject services={[Link, Image, HtmlEditor, Toolbar, QuickToolbar, Audio, Video, PasteCleanup, Table]}/>
+                            <Inject services={[Link, Image, HtmlEditor, Toolbar, QuickToolbar, Audio, Video, PasteCleanup, Table, ClipBoardCleanup, AutoFormat]}/>
                         </RichTextEditorComponent>
                     </div>
                 </div> 

@@ -5,7 +5,7 @@ import { ChangeEventArgs as checked } from '@syncfusion/ej2-buttons';
 import { ChangeEventArgs } from '@syncfusion/ej2-inputs';
 import { ButtonComponent, CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
 import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
-import { Count, HtmlEditor, Image, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar, PasteCleanup, Table, Video, Audio } from '@syncfusion/ej2-react-richtexteditor';
+import { Count, HtmlEditor, Image, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar, PasteCleanup, Table, Video, Audio, ClipBoardCleanup, AutoFormat } from '@syncfusion/ej2-react-richtexteditor';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { PropertyPane } from '../common/property-pane';
@@ -86,7 +86,7 @@ export class RTEApi extends SampleBase<{}, {}> {
                                         <p>selectAll - select all content in RTE.</p>
                                     </li>
                                 </ul>
-                                <Inject services={[Toolbar, Image, Link, HtmlEditor, Count, QuickToolbar, PasteCleanup, Table, Video, Audio]} />
+                                <Inject services={[Toolbar, Image, Link, HtmlEditor, Count, QuickToolbar, PasteCleanup, Table, Video, Audio, ClipBoardCleanup, AutoFormat]} />
                             </RichTextEditorComponent>
                         </div>
                     </div>

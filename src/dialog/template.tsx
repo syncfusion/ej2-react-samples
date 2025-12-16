@@ -1,6 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { DialogComponent } from '@syncfusion/ej2-react-popups';
+import { SanitizeHtmlHelper } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 import './template.css';
 
@@ -58,7 +59,7 @@ export class Template extends SampleBase<{}, {hideDialog: boolean}> {
         let enteredVal: HTMLInputElement = document.getElementById('inVal') as HTMLInputElement;
         let dialogTextElement: HTMLElement = document.getElementsByClassName('dialogText')[0] as HTMLElement;
         if ( enteredVal.value !== '') {
-            dialogTextElement.innerHTML = enteredVal.value;
+            dialogTextElement.innerHTML = SanitizeHtmlHelper.sanitize(enteredVal.value);
         }
         enteredVal.value = '';
     }

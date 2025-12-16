@@ -23,7 +23,7 @@ export class Template extends SampleBase<{}, {}> {
     emptyChatTemplate = () => (
         <div className="emptychat-content">
             <h3><span className="e-icons e-comment-show"></span></h3>
-            <div className="emptyChatText" style={{fontSize: '16px'}}>Just a second, we're preparing your chat...</div>
+            <div className="emptyChatText" style={{ fontSize: '16px' }}>Just a second, we're preparing your chat...</div>
         </div>
     );
 
@@ -44,7 +44,7 @@ export class Template extends SampleBase<{}, {}> {
                 <div className='message-template'>
                     {userImage}
                     <div className="message-items e-card">
-                        <div className="message-text" dangerouslySetInnerHTML={{ __html: context.message.text}}></div>
+                        <div className="message-text" dangerouslySetInnerHTML={{ __html: context.message.text }}></div>
                     </div>
                 </div>
                 <div className="suggestion-container">
@@ -108,19 +108,19 @@ export class Template extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className="control-section">
                     <div className="template-chatui">
-                            <ChatUIComponent
-                                headerText="Order Assistant"
-                                headerIconCss="chat-bot"
-                                showTimeBreak={true}
-                                showFooter={false}
-                                autoScrollToBottom={true}
-                                user={{ id: 'admin', user: 'Admin', avatarUrl: './src/chat-ui/images/bot.png' }}
-                                emptyChatTemplate={this.emptyChatTemplate}
-                                messageTemplate={this.messageTemplate}
-                                timeBreakTemplate={this.timeBreakTemplate}
-                                messageSend={() => this.handleMessageSend()}
-                                ref={chatUI => (this.chatUiInst = chatUI)}
-                            />
+                        <ChatUIComponent
+                            headerText="Order Assistant"
+                            headerIconCss="chat-bot"
+                            showTimeBreak={true}
+                            showFooter={false}
+                            autoScrollToBottom={true}
+                            user={{ id: 'admin', user: 'Admin', avatarUrl: './src/chat-ui/images/bot.png' }}
+                            emptyChatTemplate={this.emptyChatTemplate}
+                            messageTemplate={this.messageTemplate}
+                            timeBreakTemplate={this.timeBreakTemplate}
+                            messageSend={() => this.handleMessageSend()}
+                            ref={chatUI => (this.chatUiInst = chatUI)}
+                        />
                     </div>
                 </div>
 
@@ -129,7 +129,7 @@ export class Template extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>
-                        In this example, a bot provides order tracking updates by customizing each message using the templates. The <code>messageTemplate</code> property controls the layout of messages, including the avatar, message content, and suggestions. The <code>timeBreakTemplate</code> adjusts the display of time breaks, showing either "Today" or the specific date.
+                        In this example, a bot provides order tracking updates by customizing each message using the templates. The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chat-ui/#messagetemplate">messageTemplate</a> property controls the layout of messages, including the avatar, message content, and suggestions. The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chat-ui/#timebreaktemplate">timeBreakTemplate</a> adjusts the display of time breaks, showing either "Today" or the specific date.
                     </p>
                     <p>
                         The bot sends a default response when a message is sent, and suggestions appear below the message. When a suggestion is clicked, the bot replies with a new message or set of suggestions, demonstrating how templates enhance the interaction flow within the Chat UI component.

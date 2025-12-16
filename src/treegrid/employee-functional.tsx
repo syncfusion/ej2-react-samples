@@ -110,7 +110,7 @@ const EmployeeTreeGrid: React.FC = () => {
                         template: (props: EmployeeRecord) => (
                             <div className="flag-container">
                                 <img
-                                    src={`//ej2.syncfusion.com/javascript/demos/src/tree-grid/images/${props.Location}.png`}
+                                    src={`src/treegrid/images/${props.Location}.png`}
                                     className="flag-img"
                                     alt={props.Location}
                                 />
@@ -129,7 +129,7 @@ const EmployeeTreeGrid: React.FC = () => {
                     {
                         field: 'Salary',
                         headerText: 'Salary per month',
-                        format: 'c0',
+                        format: 'C0',
                         textAlign: 'Right',
                         width: 210,
                         clipMode: 'EllipsisWithTooltip',
@@ -343,10 +343,9 @@ const EmployeeTreeGrid: React.FC = () => {
                     for organizational data representation.
                 </p>
 
-                <p>
-                    <br /> More information about Tree Grid instantiation can be found in this
-                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/getting-started"> documentation section</a>.
-                </p>
+                    <p>
+                        <br /> More information about Tree Grid instantiation can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/getting-started">documentation section</a>.
+                    </p>
             </div>
         </div>
     );

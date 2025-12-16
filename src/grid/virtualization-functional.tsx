@@ -98,7 +98,7 @@ function Virtualization() {
                         <ColumnDirective field='SNo' headerText='S.No' width='140' validationRules={validationSno} isPrimaryKey={true}></ColumnDirective>
                         <ColumnDirective field='FIELD1' headerText='Player Name' width='130' ></ColumnDirective>
                         <ColumnDirective field='FIELD2' headerText='Year' width='100' ></ColumnDirective>
-                        <ColumnDirective field='FIELD3' headerText='Sports' width='160' validationRules={validationRule} editType='dropdownedit'></ColumnDirective>
+                        <ColumnDirective field='FIELD3' headerText='Sports' width='160' editType='dropdownedit'></ColumnDirective>
                         <ColumnDirective field='FIELD4' headerText='Country' width='160' editType='dropdownedit'></ColumnDirective>
                         <ColumnDirective field='FIELD5' headerText='LGID' width='120' ></ColumnDirective>
                         <ColumnDirective field='FIELD6' headerText='GP' width='120' ></ColumnDirective>

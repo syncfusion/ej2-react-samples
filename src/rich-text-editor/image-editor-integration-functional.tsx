@@ -1,7 +1,7 @@
 /**
  * Rich Text Editor Image Editor integration sample
  */
-import { HtmlEditor, Image, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar, NodeSelection, PasteCleanup, Table, Video, Audio} from '@syncfusion/ej2-react-richtexteditor';
+import { HtmlEditor, Image, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar, NodeSelection, PasteCleanup, Table, Video, Audio, ClipBoardCleanup, AutoFormat} from '@syncfusion/ej2-react-richtexteditor';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { DialogComponent } from '@syncfusion/ej2-react-popups';
@@ -162,7 +162,7 @@ function ImageEditorIntegration() {
                 It provides a variety of features, including image cropping, resizing, rotation, and more.
                 Additionally, it supports a wide range of image formats, including JPEG, PNG, and GIF.
                 </p>
-                <Inject services={[Toolbar, Image, Link, HtmlEditor, QuickToolbar, PasteCleanup, Table, Video, Audio]} />
+                <Inject services={[Toolbar, Image, Link, HtmlEditor, QuickToolbar, PasteCleanup, Table, Video, Audio, ClipBoardCleanup, AutoFormat]} />
             </RichTextEditorComponent>
             <DialogComponent
                 id="ImageEditorDialog"

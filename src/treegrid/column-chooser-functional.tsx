@@ -95,10 +95,10 @@ const TreeGridColumnChooser = () => {
           More information about Column Chooser can be found in this
           <a
             target="_blank"
-            href="https://ej2.syncfusion.com/react/documentation/treegrid/columns/column-chooser.html"
+            href="https://ej2.syncfusion.com/react/documentation/treegrid/columns/columns"
           >
-            documentation section.
-          </a>
+            documentation
+          </a> section
         </p>
       </div>
     </div>

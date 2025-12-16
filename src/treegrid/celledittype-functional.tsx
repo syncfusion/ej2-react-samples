@@ -35,6 +35,7 @@ const EditType = () => {
           childMapping="subtasks"
           height="400"
           editSettings={editSettings}
+          clipMode='EllipsisWithTooltip'
           pageSettings={pageSettings}
           toolbar={toolbarOptions}
         >

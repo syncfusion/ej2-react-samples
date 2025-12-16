@@ -20,9 +20,9 @@ import {
 } from "@syncfusion/ej2-react-diagrams";
 import { SampleBase } from "../common/sample-base";
 import { DataManager } from "@syncfusion/ej2-data";
-import { Point } from "@syncfusion/ej2-diagrams/src/diagram/primitives/point";
 import { NumericTextBoxComponent } from "@syncfusion/ej2-react-inputs";
 import { localBindData } from './diagram-data';
+import { CheckBoxComponent, ChangeEventArgs } from "@syncfusion/ej2-react-buttons";
 
 export interface EmployeeInfo {
   Role: string;
@@ -205,6 +205,21 @@ export class OrganizationModel extends SampleBase<{}, {}> {
       }
     };
   }
+  // Updates expand and collapse icons of nodes based on args.checked state
+  onExpandChange (args : ChangeEventArgs): void {
+    for (let node of diagramInstance.nodes) {
+        if (args.checked) {
+            node.expandIcon.shape = 'Minus';
+            node.collapseIcon.shape = 'Plus';
+        } else {
+            node.expandIcon.shape = 'None';
+            node.collapseIcon.shape = 'None';
+        }
+    }
+    diagramInstance.dataBind();
+    diagramInstance.doLayout();
+  }; 
+
   render() {
     return (
       <div className="control-pane diagram-organization">
@@ -451,6 +466,13 @@ export class OrganizationModel extends SampleBase<{}, {}> {
                 />
               </div>
             </div>
+            <div className="row" style={{ paddingTop: '8px' }}>
+              <CheckBoxComponent
+                checked={false}
+                label="Expandable"
+                change={this.onExpandChange.bind(this)}
+            ></CheckBoxComponent>
+          </div>
           </div>
         </div>
         <div id="action-description">
