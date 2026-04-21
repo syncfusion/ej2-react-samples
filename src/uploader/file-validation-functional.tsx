@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { updateSampleSection } from '../common/sample-base';
-import {UploaderComponent, SelectedEventArgs, FileInfo, RemovingEventArgs} from '@syncfusion/ej2-react-inputs';
+import {UploaderComponent, SelectedEventArgs, FileInfo, RemovingEventArgs, FailureEventArgs} from '@syncfusion/ej2-react-inputs';
 import './uploader.css';
 import { useEffect, useRef } from 'react';
 
@@ -31,7 +31,11 @@ const Validation = () => {
 		uploadObj.current.element.setAttribute('name', 'UploadFiles');
 		uploadObj.current.dataBind();
 	}
-
+    const onFailure = (args: FailureEventArgs): void => {
+      if (args.response && args.response.statusText !== '') {
+          args.statusText = args.response.statusText;
+      }
+    }
 	const onFileSelected = (args : SelectedEventArgs): void => {
 		args.filesData.splice(5);
 		let filesData : FileInfo[] = uploadObj.current.getFilesData();
@@ -55,7 +59,7 @@ const Validation = () => {
       	<div className = 'control-pane' ref={dropContainerRef}>
 			<div className='control-section col-lg-12 uploadpreview'>
 				<div className='upload_wrapper'>
-					<UploaderComponent id='validation' type = 'file' ref = {uploadObj} asyncSettings = {asyncSettings} selected={onFileSelected.bind(this)} minFileSize= {10000} autoUpload = {false} removing= {onRemoveFile.bind(this)} allowedExtensions= {allowedExtensions}></UploaderComponent>
+					<UploaderComponent id='UploadFiles' type = 'file' ref = {uploadObj} asyncSettings = {asyncSettings} failure={onFailure.bind(this)} selected={onFileSelected.bind(this)} minFileSize= {10000} autoUpload = {false} removing= {onRemoveFile.bind(this)} allowedExtensions= {allowedExtensions}></UploaderComponent>
 				</div>
 			</div>
 			<div id="action-description">
@@ -64,6 +68,11 @@ const Validation = () => {
 			<div id="description">
 				<p>The Uploader component allows to validate the file’s type, and limit the file size using allowedExtensions, minFileSize, and maxFileSize properties. You can also achieve limit the files count before uploading it using select event. </p> 
 				<p>For more information, you can refer to the Validation section from this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/validation/">documentation section</a>.</p>
+				<p>In this example, the backend service used in the saveUrl and removeUrl endpoints for saving and removing files is intended for demonstration purposes only. The uploaded files are subjected to thorough validation, including verification of file names and the application of security checks. Therefore, this service is not recommended for production use, and the configuration of a custom backend save and remove service is advised. Additional implementation details can be found in the
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/async#server-side-configuration-for-save-action">saveUrl</a> and
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/async#server-side-configuration-for-remove-action">removeUrl</a>
+            documentation.
+          </p>
 			</div>
       	</div>
     );

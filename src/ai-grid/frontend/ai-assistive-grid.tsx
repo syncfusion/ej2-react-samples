@@ -57,6 +57,7 @@ function AIAssistiveGrid() {
                     sortSettings: { columns: [] },
                     filterSettings: { columns: [] },
                     groupSettings: { columns: [] },
+                    pageSettings: { currentPage: 1, pageSize: 12 }
                 });
                 grid.refresh();
             }
@@ -90,31 +91,35 @@ function AIAssistiveGrid() {
         fetchAI(args.prompt, grid, assistView, columns);
     };
 
-    // Sets up suggestion list click handler.
-    const created = (): void => {
-        suggestionListRef.current.addEventListener('click', (event: any) => {
-            if (event.target.tagName === 'LI') {
-                const clickedPill = event.target;
-                const pillText = clickedPill.textContent;
-                assistView.executePrompt(pillText);
+    useEffect(() => {
+        const handleMouseDown = (event: MouseEvent) => {
+            if (!dialog.visible) return;
+            const dialogElement = document.querySelector('#ai-assist-dialog.e-dialog');
+            if (dialogElement && !dialogElement.contains(event.target as Node)) {
+                dialog.hide();
             }
-        });
-    }
+        };
+        document.addEventListener('mousedown', handleMouseDown);
+        return () => document.removeEventListener('mousedown', handleMouseDown);
+    }, []);
+
+    const suggestions = ["Filter iPhone 15 Pro", "Sort Amount from lowest to highest", "Filter Payment status completed",  "Group status column", "Clear Filtering", "Clear Sorting", "Remove Grouping"];
 
     // Renders footer template with suggestion list.
     const dialogFooterTemplate = () => {
+        const handleClick = (text: string) => {
+            assistView.executePrompt(text);
+        };
         return (
             <div className="e-suggestions">
                 <div className="e-suggestion-header">Suggestions</div>
                 <div className="e-suggestion-list">
                     <ul ref={suggestionListRef}>
-                        <li>Find iPhone 15 Pro</li>
-                        <li>Sort Amount from lowest to highest</li>
-                        <li>Payment status not completed</li>
-                        <li>Group status column</li>
-                        <li>Clear Filtering</li>
-                        <li>Clear Sorting</li>
-                        <li>Remove Grouping</li>
+                        {suggestions.map((suggestion, index) => (
+                        <li key={index} onClick={() => handleClick(suggestion)}>
+                            {suggestion}
+                        </li>
+                        ))}
                     </ul>
                 </div>
             </div>
@@ -123,17 +128,21 @@ function AIAssistiveGrid() {
 
     const filterSettings: FilterSettingsModel = { type: 'Excel' };
 
+    const handleKeyDown = (e: any) => {
+        e.stopImmediatePropagation()
+    }
+
     return (
         <div>
             <div id='assistive-grid'>
-                <DialogComponent ref={(dialogIns: DialogComponent) => dialog = dialogIns as DialogComponent} target='#ai-grid' id='ai-assist-dialog' width='500px' visible={false} height='500px' footerTemplate={dialogFooterTemplate} created={created}>
+                <DialogComponent ref={(dialogIns: DialogComponent) => dialog = dialogIns as DialogComponent} target='#ai-grid' id='ai-assist-dialog' width='500px' visible={false} height='500px' footerTemplate={dialogFooterTemplate}>
                     <AIAssistViewComponent id="ai-grid-aiassistview" ref={(assist: AIAssistViewComponent) => assistView = assist as AIAssistViewComponent} toolbarSettings={toolbarSettings} promptRequest={onPromptRequest} promptSuggestionsHeader='Suggestions' responseItemTemplate={responseTemplate} >
                         <ViewsDirective>
                             <ViewDirective type='Assist' name=' Ask AI'></ViewDirective>
                         </ViewsDirective>
                     </AIAssistViewComponent>
                 </DialogComponent>
-                <GridComponent ref={(gridIns: GridComponent) => grid = gridIns as GridComponent} id="ai-grid" height={650} dataSource={purchaseDetails} allowFiltering={true} allowSorting={true} allowGrouping={true} filterSettings={filterSettings} allowPaging={true} toolbar={toolbarOptions} toolbarClick={toolbarClick} >
+                <GridComponent ref={(gridIns: GridComponent) => grid = gridIns as GridComponent} id="ai-grid" keyPressed={handleKeyDown} height={650} dataSource={purchaseDetails} allowFiltering={true} allowSorting={true} allowGrouping={true} filterSettings={filterSettings} allowPaging={true} toolbar={toolbarOptions} toolbarClick={toolbarClick} pageSettings={{pageSize: 9}}>
                     <ColumnsDirective>
                         <ColumnDirective field="TransactionID" headerText="Transaction ID" width="160"
                         />
@@ -164,7 +173,7 @@ function AIAssistiveGrid() {
                             )}
                         />
                     </ColumnsDirective>
-                    <Inject services={[Toolbar, Sort, Filter, Group, Page, Search]} />
+                    <Inject services={[Toolbar, Sort, Filter, Group, Page]} />
                 </GridComponent>
             </div>
         </div>

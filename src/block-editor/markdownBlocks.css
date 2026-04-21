@@ -3,6 +3,7 @@ overflow: visible;
 margin-top: 20px;
 border: 1px solid #dee2e6;
 height: 95%;
+z-index: 20 !important;
 }
 .control-section.blockeditor-marked{
 height:680px;
@@ -100,5 +101,12 @@ display: none;
 display: none;
 }
 .tailwind3-dark .blockeditor-marked .sidebar-content #left-toc-closebtn {
-    background: rgb(73 76 80);
-  }
+  background: rgb(73 76 80);
+}
+.e-bigger.material3 .e-treeview .e-list-item .e-text-content,
+.e-bigger.fluent2 .e-treeview .e-list-item .e-ul,
+.e-bigger.fluent2 .e-treeview .e-list-item .e-text-content,
+.e-bigger.fluent2-highcontrast .e-treeview .e-list-item .e-ul,
+.e-bigger.fluent2-highcontrast .e-treeview .e-list-item .e-text-content{
+  padding-left: 20px;
+}

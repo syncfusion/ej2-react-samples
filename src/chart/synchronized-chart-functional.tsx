@@ -331,7 +331,7 @@ let SynchronizedChart = () => {
                             loaded={onChartLoad.bind(this)}
                             titleStyle={{ textAlignment: 'Near' }}
                             tooltip={{ enable: true, fadeOutDuration: Browser.isDevice ? 2500 : 1000, showNearestTooltip: true, header:'', format: '<b>€${point.y}</b><br>${point.x} 2023', enableMarker: false, enableHighlight: true }}
-                            crosshair={{ enable: true, lineType: 'Vertical', dashArray: '2,2' }}
+                            crosshair={{ enable: true, snapToData: true, lineType: 'Vertical', dashArray: '2,2' }}
                             title="US to Euro">
                             <Inject services={[AreaSeries, LineSeries, DataLabel, DateTime, Tooltip, Zoom, Highlight, Legend, Selection, Crosshair]} />
                             <SeriesCollectionDirective>
@@ -382,7 +382,7 @@ let SynchronizedChart = () => {
                             loaded={onChartLoad2.bind(this)}
                             titleStyle={{ textAlignment: 'Near' }}
                             tooltip={{ enable: true, fadeOutDuration: Browser.isDevice ? 2500 : 1000, showNearestTooltip: true, header:'', format: '<b>¥${point.y}</b><br>${point.x} 2023', enableMarker: false, enableHighlight: true }}
-                            crosshair={{ enable: true, lineType: 'Vertical', dashArray: '2,2' }}
+                            crosshair={{ enable: true, snapToData: true, lineType: 'Vertical', dashArray: '2,2' }}
                             title="US to Yen">
                             <Inject services={[AreaSeries, LineSeries, DataLabel, DateTime, Tooltip, Zoom, Highlight, Legend, Selection, Crosshair]} />
                             <SeriesCollectionDirective>
@@ -434,7 +434,7 @@ let SynchronizedChart = () => {
                             loaded={onChartLoad3.bind(this)}
                             titleStyle={{ textAlignment: 'Near' }}
                             tooltip={{ enable: true, fadeOutDuration: Browser.isDevice ? 2500 : 1000, showNearestTooltip: true, header:'', format: '<b>$${point.y}</b><br>${point.x} 2023', enableMarker: false }}
-                            crosshair={{ enable: true, lineType: 'Vertical', dashArray: '2,2' }}
+                            crosshair={{ enable: true, snapToData: true, lineType: 'Vertical', dashArray: '2,2' }}
                             title="US to SGD">
                             <Inject services={[AreaSeries, LineSeries, DataLabel, DateTime, Tooltip, Zoom, Highlight, Legend, Selection, Crosshair]} />
                             <SeriesCollectionDirective>
@@ -484,7 +484,7 @@ let SynchronizedChart = () => {
                             loaded={onChartLoad4.bind(this)}
                             titleStyle={{ textAlignment: 'Near' }}
                             tooltip={{ enable: true, fadeOutDuration: Browser.isDevice ? 2500 : 1000, showNearestTooltip: true, header:'', format: '<b>₹${point.y}</b><br>${point.x} 2023', enableMarker: false }}
-                            crosshair={{ enable: true, lineType: 'Vertical', dashArray: '2,2' }}
+                            crosshair={{ enable: true, snapToData: true, lineType: 'Vertical', dashArray: '2,2' }}
                             title="US to INR">
                             <Inject services={[AreaSeries, LineSeries, DataLabel, DateTime, Tooltip, Zoom, Highlight, Legend, Selection, Crosshair]} />
                             <SeriesCollectionDirective>

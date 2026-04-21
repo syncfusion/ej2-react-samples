@@ -696,7 +696,7 @@ export class TicketBookingDiagram extends SampleBase<{}, {}> {
         </div>
         <div id="action-description">
           <p>
-            This sample implements a functional movie ticket booking interface using the Syncfusion<sup>®</sup> EJ2 React Diagram component, providing an intuitive visual representation of a cinema hall's seating arrangement with real-time price updates and a complete booking workflow.
+            This sample implements a functional movie ticket booking interface using the Syncfusion<sup>®</sup> EJ2 React Diagram, providing an intuitive visual representation of a cinema hall's seating arrangement with real-time price updates and a complete booking workflow.
           </p>
         </div>
         <div id="description">

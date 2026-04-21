@@ -895,11 +895,18 @@
             "ai-models": "Multiple AI Models"
         }
     },
+    "inline-ai-assist": {
+        "ControlName": "Inline AI Assist",
+        "Samples": {
+            "ai-overview": "Overview",
+            "ai-rich-text-editor": "Rich Text Editor"
+        }
+    },
     "chat-ui": {
         "ControlName": "Chat UI",
         "Samples": {
             "default":"Default Functionalities",
-            "loadOn-demand": "Load On-demand",
+            "load-on-demand": "Load On-demand",
             "attachments": "File Attachments",
             "template": "Template",
 	        "api": "API",
@@ -935,6 +942,15 @@
             "markdown-editor": "Overview",
             "markdown-editor-preview": "Preview",
             "markdown-editor-custom-format": "Custom Format"
+        }
+    },
+    "sankey": {
+        "ControlName": "Sankey",
+        "Samples": {
+            "default": "Default",
+            "orientation": "Vertical",
+            "right-to-left": "RTL",
+            "print-export": "Print and Export"
         }
     },
     "schedule": {

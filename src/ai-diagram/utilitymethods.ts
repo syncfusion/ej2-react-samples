@@ -341,6 +341,16 @@ export function getOrientation() {
 
 }
 
+function changeToolbarSelection(tool: string) {
+    let items = toolbarObj.items;
+    for (let i = 0; i < items.length; i++) {
+        if (items[i].tooltipText === tool) {
+            items[i].cssClass = 'tb-item-selected';
+        } else {
+            items[i].cssClass = '';
+        }
+    }
+}
 export function toolbarClick(args: ClickEventArgs) {
     let item = args.item.tooltipText;
     switch (item) {
@@ -353,10 +363,12 @@ export function toolbarClick(args: ClickEventArgs) {
         case 'Select Tool':
             diagram.clearSelection();
             diagram.tool = DiagramTools.Default;
+            changeToolbarSelection('Select Tool');
             break;
         case 'Pan Tool':
             diagram.clearSelection();
             diagram.tool = DiagramTools.ZoomPan;
+            changeToolbarSelection('Pan Tool');
             break;
         case 'Add Child':
             var orientation = getOrientation();
@@ -398,40 +410,38 @@ export function zoomChange(args: MenuEventArgs) {
             zoomCurrentValue.content = (diagram.scrollSettings.currentZoom! * 100).toFixed() + '%';
             break;
         case 'Zoom to Fit':
-            zoom.zoomFactor = 1 / currentZoom - 1;
-            diagram.zoomTo(zoom);
-            zoomCurrentValue.content = diagram.scrollSettings.currentZoom as any;
+            diagram.fitToPage();
             break;
         case 'Zoom to 50%':
             if (currentZoom === 0.5) {
                 currentZoom = 0;
-                zoom.zoomFactor = (0.5 / currentZoom) - 1;
+                zoom.zoomFactor = (0.5 / currentZoom - 1);
                 diagram.zoomTo(zoom);
             }
             else {
-                zoom.zoomFactor = (0.5 / currentZoom) - 1;
+                zoom.zoomFactor = (0.5 / currentZoom - 1);
                 diagram.zoomTo(zoom);
             }
             break;
         case 'Zoom to 100%':
             if (currentZoom === 1) {
                 currentZoom = 0;
-                zoom.zoomFactor = (1 / currentZoom) - 1;
+                zoom.zoomFactor = (1 / currentZoom - 1);
                 diagram.zoomTo(zoom);
             }
             else {
-                zoom.zoomFactor = (1 / currentZoom) - 1;
+                zoom.zoomFactor = (1 / currentZoom - 1);
                 diagram.zoomTo(zoom);
             }
             break;
         case 'Zoom to 200%':
             if (currentZoom === 2) {
                 currentZoom = 0;
-                zoom.zoomFactor = (2 / currentZoom) - 1;
+                zoom.zoomFactor = (2 / currentZoom - 1);
                 diagram.zoomTo(zoom);
             }
             else {
-                zoom.zoomFactor = (2 / currentZoom) - 1;
+                zoom.zoomFactor = (2 / currentZoom - 1);
                 diagram.zoomTo(zoom);
             }
             break;

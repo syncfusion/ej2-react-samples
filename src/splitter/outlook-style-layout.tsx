@@ -84,7 +84,7 @@ export class OutlookLayout extends SampleBase<{}, {}> {
                                         <TextBoxComponent id="subject" />
                                     </td>
                                 </tr>
-                            </tbody> 
+                            </tbody>
                         </table>
                     </div>
                     <div className='forum'>

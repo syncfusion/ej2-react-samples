@@ -174,13 +174,13 @@ let connectors: ConnectorModel[] = [];
   }
 })();
 
-let diagramInstance: DiagramComponent;
 
 function NeuralNetworkDiagram() {
+  const diagramRef = React.useRef<DiagramComponent>(null);
   const [showDiagram, setShowDiagram] = React.useState(false);
   React.useEffect(() => {
     updateSampleSection();
-    if (diagramInstance) diagramInstance.fitToPage();
+    if (diagramRef.current) diagramRef.current.fitToPage();
   }, []);
 
   return (
@@ -189,7 +189,7 @@ function NeuralNetworkDiagram() {
         <div style={{ width: "100%" }}>
           <DiagramComponent
             id="diagram"
-            ref={(diagram: DiagramComponent) => (diagramInstance = diagram!)}
+            ref={diagramRef}
             width={"100%"}
             height={"600px"}
             nodes={nodes}
@@ -197,15 +197,15 @@ function NeuralNetworkDiagram() {
             snapSettings={{ constraints: SnapConstraints.None }}
             tool={DiagramTools.ZoomPan}
             created={() => {
-                if (diagramInstance) diagramInstance.fitToPage();
+                if (diagramRef.current) diagramRef.current.fitToPage();
                 setTimeout(()=>{
                     setShowDiagram(true);
                 }, 10)
             }}
             load={() => {
               setTimeout(() => {
-                  if (diagramInstance) {
-                      diagramInstance.fitToPage({
+                  if (diagramRef.current) {
+                      diagramRef.current.fitToPage({
                           canZoomIn: true,
                           margin: { left: 0, right: 20, top: 0, bottom: 90 }
                       });
@@ -217,7 +217,7 @@ function NeuralNetworkDiagram() {
       </div>
       <div id="action-description">
         <p>
-          This sample provides an interactive visualization of a neural network architecture using the Syncfusion<sup>®</sup> EJ2 React Diagram component. It displays multi-layered networks with configurable neurons, connections, and data flow patterns.
+          This sample provides an interactive visualization of a neural network architecture using the Syncfusion<sup>®</sup> EJ2 React Diagram. It displays multi-layered networks with configurable neurons, connections, and data flow patterns.
         </p>
       </div>
       <div id="description">

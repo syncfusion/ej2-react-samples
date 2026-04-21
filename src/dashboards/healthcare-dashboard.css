@@ -1,0 +1,429 @@
+#card-value {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.gauge-center {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Make Syncfusion circular gauge responsive */
+.gauge-center .e-circulargauge {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.gauge-label {
+    margin-top: 100px;
+}
+
+.hc-root {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.layout-title {
+    font-size: 18px;
+}
+
+.fluent-dark .layout-title,
+.fluent2-dark .layout-title,
+.fluent2-highcontrast .layout-title,
+.bootstrap5_3-dark .layout-title,
+.tailwind-dark .layout-title,
+.tailwind3-dark .layout-title,
+.material3-dark .layout-title,
+.bootstrap-dark .layout-title,
+.highcontrast .layout-title {
+    color: black;
+}
+
+.fluent-dark #main-div,
+.fluent2-dark #main-div,
+.fluent2-highcontrast #main-div,
+.bootstrap5_3-dark #main-div,
+.tailwind-dark #main-div,
+.tailwind3-dark #main-div,
+.material3-dark #main-div,
+.bootstrap-dark #main-div,
+.highcontrast #main-div,
+.fluent-dark .kpi-total-card,
+.fluent2-dark .kpi-total-card,
+.fluent2-highcontrast .kpi-total-card,
+.bootstrap5_3-dark .kpi-total-card,
+.tailwind-dark .kpi-total-card,
+.tailwind3-dark .kpi-total-card,
+.material3-dark .kpi-total-card,
+.bootstrap-dark .kpi-total-card,
+.highcontrast .kpi-total-card {
+    background-color: transparent;
+    color: white;
+}
+
+.fluent-dark .card-label,
+.fluent2-dark .card-label,
+.fluent2-highcontrast .card-label,
+.bootstrap5_3-dark .card-label,
+.tailwind-dark .card-label,
+.tailwind3-dark .card-label,
+.material3-dark .card-label,
+.bootstrap-dark .card-label,
+.highcontrast .card-label,
+.fluent-dark .card-totalvalue,
+.fluent2-dark .card-totalvalue,
+.fluent2-highcontrast .card-totalvalue,
+.bootstrap5_3-dark .card-totalvalue,
+.tailwind-dark .card-totalvalue,
+.tailwind3-dark .card-totalvalue,
+.material3-dark .card-totalvalue,
+.bootstrap-dark .card-totalvalue,
+.highcontrast .card-totalvalue,
+.fluent-dark .linear-gauge-value,
+.fluent2-dark .linear-gauge-value,
+.fluent2-highcontrast .linear-gauge-value,
+.bootstrap5_3-dark .linear-gauge-value,
+.tailwind-dark .linear-gauge-value,
+.tailwind3-dark .linear-gauge-value,
+.material3-dark .linear-gauge-value,
+.bootstrap-dark .linear-gauge-value,
+.highcontrast .linear-gauge-value,
+.fluent-dark .growth-indicator-label,
+.fluent2-dark .growth-indicator-label,
+.fluent2-highcontrast .growth-indicator-label,
+.bootstrap5_3-dark .growth-indicator-label,
+.tailwind-dark .growth-indicator-label,
+.tailwind3-dark .growth-indicator-label,
+.material3-dark .growth-indicator-label,
+.bootstrap-dark .growth-indicator-label,
+.highcontrast .growth-indicator-label {
+    color: white;
+}
+
+.gauge-center {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.linear-gauge-value {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1;
+    color: black;
+}
+
+/* Make Syncfusion circular gauge responsive */
+.gauge-center .e-circulargauge {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.gauge-label {
+    margin-top: 100px;
+}
+
+.healthcare-custom-rating.e-rating-container .e-rating-item-container,
+.e-bigger .healthcare-custom-rating.e-rating-container .e-rating-item-container .e-rating-icon,
+.e-bigger.healthcare-custom-rating.e-rating-container .e-rating-item-container .e-rating-icon {
+    font-size: 11px;
+}
+
+.healthcare-custom-rating.e-rating-container .e-rating-item-container .e-rating-icon {
+    -webkit-text-fill-color: lightgrey;
+    -webkit-text-stroke: 1px lightgrey;
+}
+
+.healthcare-custom-rating.e-rating-container .e-rating-item-container.e-rating-selected .e-rating-icon {
+    background: linear-gradient(to right, #ffa600 var(--rating-value), #ffa600 var(--rating-value));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px #ffa600;
+}
+
+#main-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    background-color: #f4f9ec;
+}
+
+#title-card {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+#chart-title-card {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.hc-content {
+    overflow: hidden;
+}
+
+.layout-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.layout-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.dashboard-title {
+    font-size: 18px;
+}
+
+/* Ensure Syncfusion tooltips render above cards/content */
+.e-tooltip-popup-container,
+.e-tooltip-wrap.e-popup {
+    z-index: 9999 !important;
+}
+
+.sf-kpi-card_spark {
+    width: 100%;
+    display: block;
+    position: relative;
+    overflow: visible;
+    /* allow tooltips to show */
+}
+
+.kpi-total-card {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f9ec;
+}
+
+.card-totalvalue {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spark-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding-left: 10px;
+}
+
+.card-label {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+#top-sold-bar0_AxisLabel_0,
+#top-sold-bar0_AxisLabel_1,
+#top-sold-bar0_AxisLabel_2,
+#top-sold-bar0_AxisLabel_3,
+#top-sold-bar0_AxisLabel_4,
+#least-sold-column0_AxisLabel_0,
+#least-sold-column0_AxisLabel_1,
+#least-sold-column0_AxisLabel_2,
+#least-sold-column0_AxisLabel_3,
+#least-sold-column0_AxisLabel_4 {
+    text-decoration: underline;
+    cursor: pointer;
+    fill: #0d6efd;
+}
+
+.growth-indicator,
+.button-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.growth-indicator-label {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.spark-content {
+    height: 50%;
+    width: 50%;
+}
+
+.dropdown-minwidth {
+    min-width: 60px;
+}
+
+.dropdown-filter {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-right: 5px;
+}
+
+.layout-container,
+.drilldown-layout-container {
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.map-container {
+    width: 100%;
+    height: 100%;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.drilldown-label {
+    font-weight: 600;
+    margin-left: 12px;
+}
+
+.drilldown-layout-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.material3-dark .e-card:hover {
+    background-color: #191c1f;
+}
+
+.fluent-dark .layout-title,
+.fluent2-dark .layout-title,
+.fluent2-highcontrast .layout-title,
+.bootstrap5_3-dark .layout-title,
+.tailwind-dark .layout-title,
+.tailwind3-dark .layout-title,
+.material3-dark .layout-title,
+.bootstrap-dark .layout-title,
+.highcontrast .layout-title {
+    color: #ffffff;
+}
+
+.layout-title {
+    color: #000000;
+}
+
+/* Sidebar */
+#dockHealthcareSideDash {
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    padding: 16px 0;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.08);
+}
+
+/* show icon + text normally, but hide text when docked */
+#dockHealthcareSideDash .hc-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#dockHealthcareSideDash .hc-nav-item .e-icons {
+    font-size: 16px;
+}
+
+/* Ensure text is visible in expanded state */
+#dockHealthcareSideDash .hc-nav-item .hc-nav-text {
+    display: inline;
+    white-space: nowrap;
+}
+
+/* Hide labels only when docked */
+#dockHealthcareSideDash.e-close .hc-nav-item .hc-nav-text {
+    display: none !important;
+}
+
+.hc-nav-item {
+    font-size: 15px;
+    padding: 12px 15px;
+    cursor: pointer;
+    user-select: none;
+    border-left: 3px solid transparent;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.hc-nav-item:hover {
+    background: rgba(21, 181, 249, 0.06);
+}
+
+.hc-nav-item.active {
+    background: rgb(150, 218, 247);
+    border-left-color: #6c8cff;
+}
+
+.dockToolbar {
+    border-bottom: 0px solid rgba(0, 0, 0, 0.12);
+    border-radius: 0px !important;
+}
+
+.fluent .e-panel-header,
+.fluent2 .e-panel-header,
+.bootstrap5_3 .e-panel-header,
+.tailwind .e-panel-header,
+.tailwind3 .e-panel-header,
+.material3 .e-panel-header,
+.bootstrap5_3 .e-panel-header {
+    background-color: #f9fafb;
+}
+
+
+.bootstrap5_3 .kpi-total-card,
+.material3 .kpi-total-card,
+.bootstrap5_3 .kpi-total-card,
+.bootstrap5_3 .main-div,
+.material3 .main-div,
+.bootstrap5_3 .main-div {
+    border-radius: 8px;
+}
+
+.fluent .kpi-total-card,
+.fluent2 .kpi-total-card,
+.tailwind .kpi-total-card,
+.tailwind3 .kpi-total-card,
+.fluent #main-div,
+.fluent2 #main-div,
+.tailwind #main-div,
+.tailwind3 #main-div {
+    border-radius: 3px;
+}
+
+.tailwind3 .hc-root .e-dashboardlayout.e-control .e-panel:active,
+.fluent2 .hc-root .e-dashboardlayout.e-control .e-panel:active,
+.tailwind3 .hc-root .e-dashboardlayout.e-control .e-panel:hover,
+.fluent2 .hc-root .e-dashboardlayout.e-control .e-panel:hover,
+.tailwind3 .hc-root .e-card:active,
+.tailwind3 .hc-root .e-card:hover,
+.fluent2 .hc-root .e-card:active,
+.fluent2 .hc-root .e-card:hover {
+    background: #ffffff !important;
+}

@@ -18,17 +18,12 @@ import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
 import { NumericTextBoxComponent, ColorPickerComponent, ColorPickerEventArgs } from "@syncfusion/ej2-react-inputs";
 import { SampleBase } from "../common/sample-base";
 
-Diagram.Inject(Snapping, UndoRedo, ConnectorBridging);
-
 let diagramInstance: DiagramComponent;
 let toolbarEditor: ToolbarComponent;
 let node: NodeModel;
 let fontFamily: DropDownListComponent;
 let fontSize: NumericTextBoxComponent;
 let fontColor: ColorPickerComponent;
-let bold: ButtonComponent;
-let italic: ButtonComponent;
-let underLine: ButtonComponent;
 let selectedItems: any[];
 
 function createNode(id: string, offsetX: number, offsetY: number, height: number, width: number,
@@ -194,7 +189,6 @@ let toolbarItems: any = [
   { id: 'Bold', tooltipText: 'Bold', prefixIcon: 'e-icons e-bold', disabled: true, cssClass: 'tb-item-start' },
   { id: 'Italic', tooltipText: 'Italic', prefixIcon: 'e-icons e-italic', disabled: true, cssClass: 'tb-item-middle' },
   { id: 'Underline', tooltipText: 'Underline', prefixIcon: 'e-icons e-underline', disabled: true, cssClass: 'tb-item-end' },
-  { id: 'FontColor', tooltipText: 'Font Color', align: 'Left', disabled: true, template: renderFontColorPicker }
 ];
 
 export class ContainerSample extends SampleBase<{}, {}> {

@@ -37,6 +37,11 @@ private onRemoveFile(args: RemovingEventArgs): void {
 private clearButtonClick(): void {
 	this.uploadObj.clearAll();
 }
+private onFailure(args: any): void {
+	if (args.response && args.response.statusText !== '') {
+		args.statusText = args.response.statusText;
+	}
+}
 
 public render(): JSX.Element {
     return (
@@ -44,9 +49,10 @@ public render(): JSX.Element {
 			<div className='control-section uploadpreview'>
 				<div className='col-lg-9'>
 					<div className='validation_wrapper'>
-						<UploaderComponent id='validation' type = 'file' ref = {(scope) => {this.uploadObj = scope}}
+						<UploaderComponent id='UploadFiles' type = 'file' ref = {(scope) => {this.uploadObj = scope}}
 							asyncSettings = {this.asyncSettings}
 							removing= { this.onRemoveFile.bind(this)}
+							 failure={this.onFailure.bind(this)}
 						>
 							<FilesDirective>
 								<UploadedFilesDirective name="Nature" size={25000} type=".png"></UploadedFilesDirective>
@@ -75,6 +81,12 @@ public render(): JSX.Element {
 				<p>For more information, you can refer to the Preload Files section from this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/async/#preload-files">documentation section</a>.</p>
 				
 				<p>To achieve state persistence, you can refer to this How-to section.</p>
+
+				<p>In this example, the backend service used in the saveUrl and removeUrl endpoints for saving and removing files is intended for demonstration purposes only. The uploaded files are subjected to thorough validation, including verification of file names and the application of security checks. Therefore, this service is not recommended for production use, and the configuration of a custom backend save and remove service is advised. Additional implementation details can be found in the
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/async#server-side-configuration-for-save-action">saveUrl</a> and
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/async#server-side-configuration-for-remove-action">removeUrl</a>
+            documentation.
+          </p>
 			</div>
       </div>
     );

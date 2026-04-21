@@ -306,7 +306,7 @@ export class Default extends SampleBase<{}, {}> {
           <div style={{ width: "100%" }}>
             <div style={{ display: 'none' }}>
               <UploaderComponent
-                id="fileUpload"
+                id= "UploadFiles" name="UploadFiles"
                 type="file"
                 showFileList={false}
                 asyncSettings={asyncSettings}
@@ -346,7 +346,7 @@ export class Default extends SampleBase<{}, {}> {
                     cssClass='tb-item-start pan-item'
                     align="Left" id="Pan_tool" />
                   <ItemDirective prefixIcon='e-mouse-pointer e-icons' tooltipText='Select Tool'
-                    cssClass='tb-item-middle tb-item-selected'
+                    cssClass='tb-item-middle'
                     align="Left" id="Select_tool" />
                   <ItemDirective type="Input" tooltipText='Change Connector Type' align="Left" id="Draw_con" template={this.connector} />
                   <ItemDirective type="Input" tooltipText='Draw Shapes' align="Left" id="Draw_shapes" template={this.shapes} />
@@ -637,26 +637,37 @@ function getPorts(): PointPortModel[] {
 }
 
 let isMobile: boolean;
-//Adds EventListener based on device's viewport width.
+// Adds EventListener for the palette toggle and keeps state in sync on resize.
 function addEvents(): void {
-  isMobile = window.matchMedia('(max-width:550px)').matches;
-  if (isMobile) {
-    let paletteIcon: HTMLElement = document.getElementById('palette-icon');
-    if (paletteIcon) {
-      paletteIcon.addEventListener('click', openPalette, false);
-    }
+  const mq = window.matchMedia('(max-width:550px)');
+  isMobile = mq.matches;
+  const paletteIcon: HTMLElement = document.getElementById('palette-icon');
+  if (paletteIcon && paletteIcon.getAttribute('data-palette-listener') !== 'true') {
+    paletteIcon.addEventListener('click', openPalette, false);
+    paletteIcon.setAttribute('data-palette-listener', 'true');
   }
-}
-//Toggles the visibility of the palette space on mobile devices when the palette icon is clicked.
-function openPalette(): void {
-  let paletteSpace: HTMLElement = document.getElementById('palette-space');
-  isMobile = window.matchMedia('(max-width:550px)').matches;
-  if (isMobile) {
-    if (!paletteSpace.classList.contains('sb-mobile-palette-open')) {
-      paletteSpace.classList.add('sb-mobile-palette-open');
-    } else {
+  // Keep isMobile updated and ensure palette is closed when switching to desktop
+  window.addEventListener('resize', () => {
+    isMobile = mq.matches;
+    const paletteSpace: HTMLElement = document.getElementById('palette-space');
+    if (!isMobile && paletteSpace && paletteSpace.classList.contains('sb-mobile-palette-open')) {
       paletteSpace.classList.remove('sb-mobile-palette-open');
     }
+  });
+}
+
+// Toggles the visibility of the palette space on mobile devices when the palette icon is clicked.
+function openPalette(): void {
+  const paletteSpace: HTMLElement = document.getElementById('palette-space');
+  isMobile = window.matchMedia('(max-width:550px)').matches;
+  if (!paletteSpace) {
+    return;
+  }
+  if (isMobile) {
+    paletteSpace.classList.add('sb-mobile-palette-open');
+  } else {
+    // Ensure the palette is closed on non-mobile view
+    paletteSpace.classList.remove('sb-mobile-palette-open');
   }
 }
 //To print diagram 
@@ -690,18 +701,17 @@ function enableItems() {
       isSelectedItemLocked = false;
     }
   }
-  const itemIds = ['Cut', 'Copy', 'Lock', 'Delete', 'Order', 'Rotate', 'Flip'];
+  const itemIds = ['Cut', 'Copy', 'Delete', 'Order', 'Rotate', 'Flip'];
   itemIds.forEach(itemId => {
     const item = toolbarEditor.items.find(item => item.id === itemId);
     if (item) {
-      if (!isSelectedItemLocked) {
-        item.disabled = false;
-      }
-      else {
-        item.disabled = true;
-      }
+      item.disabled = isSelectedItemLocked ? true : false;
     }
   });
+  const lockItem = toolbarEditor.items.find(item => item.id === 'Lock');
+  if (lockItem) {
+    lockItem.disabled = false;
+  }
 }
 
 //To disable toolbar items while multiselection.

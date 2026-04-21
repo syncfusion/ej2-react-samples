@@ -1409,7 +1409,7 @@ export class PipelineInstrumentationDiagram extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                       This sample visualizes a real-time chemical reactor system as an interactive Pipeline and Instrumentation Diagram (P&ID) using the Syncfusion<sup>®</sup> EJ2 React Diagram component, showcasing dynamic fluid flows, tank levels, pressure, and temperature.
+                       This sample visualizes a real-time chemical reactor system as an interactive Pipeline and Instrumentation Diagram (P&ID) using the Syncfusion<sup>®</sup> EJ2 React Diagram, showcasing dynamic fluid flows, tank levels, pressure, and temperature.
                     </p>
                 </div>
                 <div id="description">

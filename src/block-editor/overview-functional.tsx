@@ -12,21 +12,25 @@ const Overview = () => {
   }, []);
 
     const customToolbarItems: string[] = [
-      'Bold', 'Italic', 'Underline', 'Strikethrough', 'Uppercase', 'Lowercase', 'Subscript', 'Superscript', 'Color', 'Backgroundcolor'
+      'Transform' ,'Bold', 'Italic', 'Underline', 'Strikethrough', 'Uppercase', 'Lowercase', 'Subscript', 'Superscript', 'InlineCode', 'Link', 'Color', 'Backgroundcolor'
     ];
     const inlineToolbar: InlineToolbarSettingsModel = {
       items: customToolbarItems,
+    };
+    const imageBlockSettings: any = {
+        saveUrl: 'https://services.syncfusion.com/react/production/api/RichTextEditor/SaveFile',
+        path: 'https://services.syncfusion.com/react/production/RichTextEditor/'
     };
 
   return (
      <div className='control-pane'>
         <div className="control-section overview-blockeditor">
-            <BlockEditorComponent id='block-editor' blocks={data["blockDataOverview"]} users={data["users"]}  inlineToolbarSettings={inlineToolbar}></BlockEditorComponent>
+            <BlockEditorComponent id='block-editor' blocks={data["blockDataOverview"]} users={data["users"]}  inlineToolbarSettings={inlineToolbar} imageBlockSettings={imageBlockSettings}></BlockEditorComponent>
         </div>
 
         <div id="action-description">
             <p>
-                This sample demonstrates the features of the <code>Block Editor</code> control. 
+                This sample demonstrates the features of the <code>Block Editor</code> component. 
                 It showcases various block types, content formatting options, and interactive editing capabilities.
             </p>
         </div>

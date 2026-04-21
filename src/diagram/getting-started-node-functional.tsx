@@ -343,7 +343,7 @@ function GettingStartedNodes() {
               className="image-pattern-style"
               id="preview0"
               style={{
-                backgroundImage: "url('src/diagram/Images/node/Nodes_1.png')",
+                backgroundImage: "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/node/Nodes_1.png')",
                 marginRight: "3px"
               }}
             />
@@ -351,7 +351,7 @@ function GettingStartedNodes() {
               className="image-pattern-style"
               id="preview1"
               style={{
-                backgroundImage: "url('src/diagram/Images/node/Nodes_2.png')",
+                backgroundImage: "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/node/Nodes_2.png')",
                 marginRight: "0px 3px"
               }}
             />
@@ -359,7 +359,7 @@ function GettingStartedNodes() {
               className="image-pattern-style"
               id="preview2"
               style={{
-                backgroundImage: "url('src/diagram/Images/node/Nodes_3.png')",
+                backgroundImage: "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/node/Nodes_3.png')",
                 margin: "0px 3px"
               }}
             />
@@ -369,7 +369,7 @@ function GettingStartedNodes() {
               className="image-pattern-style"
               id="preview3"
               style={{
-                backgroundImage: "url('src/diagram/Images/node/Nodes_4.png')",
+                backgroundImage: "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/node/Nodes_4.png')",
                 marginRight: "3px"
               }}
             />
@@ -377,7 +377,7 @@ function GettingStartedNodes() {
               className="image-pattern-style"
               id="preview4"
               style={{
-                backgroundImage: "url('src/diagram/Images/node/Nodes_5.png')",
+                backgroundImage: "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/node/Nodes_5.png')",
                 margin: "3px"
               }}
             />

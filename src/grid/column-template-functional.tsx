@@ -37,7 +37,7 @@ function ColumnTemplate() {
     function assetTemplate(props):any {
         return (
             <div>
-              <ChipListComponent id='chip' chips={props.AssetKit.split(',')}></ChipListComponent>
+              <ChipListComponent id='chip' className={"grid-asset-kit"} chips={props.AssetKit.split(',')}></ChipListComponent>
             </div>
           )
     }

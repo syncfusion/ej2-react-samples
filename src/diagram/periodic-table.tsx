@@ -741,7 +741,7 @@ export class PeriodicTable extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                        This sample demonstrates an interactive Periodic Table of Elements built using the Syncfusion<sup>®</sup> EJ2 React Diagram component, displaying all known elements with categorization by color, detailed hover information, and highlighting by period or group.
+                        This sample demonstrates an interactive Periodic Table of Elements built using the Syncfusion<sup>®</sup> EJ2 React Diagram, displaying all known elements with categorization by color, detailed hover information, and highlighting by period or group.
                     </p>
                 </div>
                 <div id="description">

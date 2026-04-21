@@ -4,7 +4,7 @@ import {
     DiagramComponent, NodeModel, ConnectorModel,
     SymbolInfo, IDragEnterEventArgs, GridlinesModel, PaletteModel, Node,
     DataBinding, PrintAndExport, FlowchartLayout, Inject,
-    SymbolPaletteComponent
+    SymbolPaletteComponent, NodeConstraints
 } from '@syncfusion/ej2-react-diagrams';
 import {
     Connector, DiagramTools, FileFormats, FlowShapeModel,
@@ -21,6 +21,7 @@ import { DialogComponent } from '@syncfusion/ej2-react-popups';
 import { useEffect } from 'react';
 import './smart-flowchart.css';
 
+let toolbarObj: ToolbarComponent;
 function AiSmartFlowchart() {
     let diagram: DiagramComponent;
     let dialog: DialogComponent;
@@ -69,6 +70,7 @@ function AiSmartFlowchart() {
             symbol.width = 50;
             symbol.height = 50;
         }
+        symbol.constraints = NodeConstraints.Default | NodeConstraints.Tooltip;
     }
 
     function getSymbolInfo(): SymbolInfo {
@@ -80,6 +82,16 @@ function AiSmartFlowchart() {
 
     let gridlines: GridlinesModel = { lineColor: '#e0e0e0', lineIntervals: interval };
 
+    function changeToolbarSelection(tool: string) {
+        let items = toolbarObj.items;
+        for (let i = 0; i < items.length; i++) {
+            if (items[i].tooltipText === tool) {
+                items[i].cssClass = 'tb-item-selected';
+            } else {
+                items[i].cssClass = '';
+            }
+        }
+    }
     function printDiagram() {
         let options: IExportOptions = {};
         options.mode = 'Download';
@@ -95,10 +107,12 @@ function AiSmartFlowchart() {
             case 'Select Tool':
                 diagram.clearSelection();
                 diagram.tool = DiagramTools.Default;
+                changeToolbarSelection('Select Tool');
                 break;
             case 'Pan Tool':
                 diagram.clearSelection();
                 diagram.tool = DiagramTools.ZoomPan;
+                changeToolbarSelection('Pan Tool');
                 break;
             case 'New Diagram':
                 diagram.clear();
@@ -129,8 +143,7 @@ function AiSmartFlowchart() {
                 diagram.zoomTo({ type: 'ZoomOut', zoomFactor: 0.2 });
                 break;
             case 'Zoom to Fit':
-                zoomFactor = 1 / currentZoom - 1;
-                diagram.zoomTo({ zoomFactor });
+                diagram.fitToPage();
                 break;
             case 'Zoom to 50%':
                 zoomFactor = 0.5 / currentZoom - 1;
@@ -205,7 +218,7 @@ function AiSmartFlowchart() {
             <>
                 <p style={{ marginBottom: '10px', fontWeight: 'bold' }}>Suggested Prompts</p>
                 <ButtonComponent
-                    id="btn2" style={{ flex: 1, overflow: 'visible', borderRadius: '8px', marginBottom: '10px' }}
+                    id="btn1" style={{ flex: 1, overflow: 'visible', borderRadius: '8px', marginBottom: '10px' }}
                     onClick={() => {
                         dialog.hide();
                         convertTextToFlowchart("Flowchart for online shopping", diagram);
@@ -216,7 +229,7 @@ function AiSmartFlowchart() {
                         dialog.hide();
                         convertTextToFlowchart("Flowchart for Mobile banking registration", diagram);
                     }}
-                    id="btn1" style={{ flex: 1, overflow: 'visible', borderRadius: '8px', marginBottom: '10px' }}>Flowchart for Mobile banking registration</ButtonComponent>
+                    id="btn2" style={{ flex: 1, overflow: 'visible', borderRadius: '8px', marginBottom: '10px' }}>Flowchart for Mobile banking registration</ButtonComponent>
                 <ButtonComponent
                     onClick={() => {
                         dialog.hide();
@@ -228,7 +241,7 @@ function AiSmartFlowchart() {
                         ref={textboxObj => textBox = textboxObj as TextBoxComponent}
                         placeholder='Please enter your prompt here...' width={450} input={onTextBoxChange}
                     />
-                    <ButtonComponent id="db-send"
+                    <ButtonComponent id="diagram-db-send"
                         ref={btn => sendButton = btn as ButtonComponent}
                         onClick={() => {
                             if (textBox.value) {
@@ -263,6 +276,7 @@ function AiSmartFlowchart() {
                     <div className="db-toolbar-editor">
                         <div className="db-toolbar-container">
                             <ToolbarComponent id="toolbarEditor"
+                                ref={toolbarEditor => toolbarObj = toolbarEditor as ToolbarComponent}
                                 clicked={toolbarClick}
                                 width='100%' height={49}
                             >
@@ -313,7 +327,7 @@ function AiSmartFlowchart() {
                             rulerSettings={{ showRulers: true }}
                             tool={DiagramTools.Default}
                             snapSettings={{ horizontalGridlines: gridlines, verticalGridlines: gridlines }}
-                            scrollSettings={{ scrollLimit: 'Infinity' }}
+                            scrollSettings={{ scrollLimit: 'Diagram' }}
                             layout={{
                                 type: 'Flowchart',
                                 orientation: 'TopToBottom',
@@ -346,6 +360,7 @@ function AiSmartFlowchart() {
                                     node.width = 120;
                                     node.height = 100;
                                 }
+                                node.tooltip.content = "";
                                 return node;
                             }}
                             getConnectorDefaults={(connector: Connector): ConnectorModel => {
@@ -369,7 +384,7 @@ function AiSmartFlowchart() {
                         showCloseIcon={true}
                         isModal={true}
                         content={dialogContent}
-                        target={document.getElementById('control-section') as HTMLElement}
+                        target='#diagram-space'
                         width='540px'
                         visible={false}
                         height='310px'

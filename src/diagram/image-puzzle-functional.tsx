@@ -48,9 +48,9 @@ function initializeImageCollections(): void {
     for (let i = 1; i <= 16; i++) {
         const row = Math.ceil(i / 4);
         const col = ((i - 1) % 4) + 1;
-        bridgeTheme[i] = `src/diagram/Images/puzzle/bridge${col}x${row}.png`;
-        natureTheme[i] = `src/diagram/Images/puzzle/image${col}x${row}.png`;
-        manTheme[i] = `src/diagram/Images/puzzle/man${col}x${row}.png`;
+        bridgeTheme[i] = `https://ej2.syncfusion.com/react/demos/src/diagram/Images/puzzle/bridge${col}x${row}.png`;
+        natureTheme[i] = `https://ej2.syncfusion.com/react/demos/src/diagram/Images/puzzle/image${col}x${row}.png`;
+        manTheme[i] = `https://ej2.syncfusion.com/react/demos/src/diagram/Images/puzzle/man${col}x${row}.png`;
     }
 
     imageCollections = [bridgeTheme, natureTheme, manTheme];
@@ -707,7 +707,7 @@ function ImagePuzzle() {
             </div>
                 <div id="action-description">
                     <p>
-                        This sample showcases an interactive sliding image puzzle game built using the Syncfusion<sup>®</sup> EJ2 React Diagram component, transforming images into a 4x4 grid of draggable tiles, with features like move and time tracking.
+                        This sample showcases an interactive sliding image puzzle game built using the Syncfusion<sup>®</sup> EJ2 React Diagram, transforming images into a 4x4 grid of draggable tiles, with features like move and time tracking.
                     </p>
                 </div>
                 <div id="description">

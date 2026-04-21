@@ -23,7 +23,7 @@ declare let window: MyWindow;
 let samLength: number;
 // Regex for hidden code removal
 let reg: RegExp = /.*custom code start([\S\s]*?)custom code end.*/g;
-let aiControlRegex: RegExp = /ai-(?!assistview\b)[a-z-]+/;
+let aiControlRegex: RegExp = /^(?:ai-(?!assistview\b)[a-z-]+(?:\/[A-Za-z0-9-]+)?|dashboards(?:\/[A-Za-z0-9-]+)?)$/;
 let hash: string[];
 let catRegex: RegExp = /(-| )/g;
 let propRegex: RegExp = /-3/;

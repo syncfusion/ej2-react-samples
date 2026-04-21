@@ -98,6 +98,9 @@ import { AIDiagramSampleOrder } from '../ai-diagram/config';
 import { AIGanttSampleOrder } from '../ai-gantt/config';
 import {SpeechToTextSampleOrder } from '../speech-to-text/config';
 import { BlockEditorSampleOrder } from '../block-editor/config';
+import { InlineAIAssistSampleOrder } from '../inline-ai-assist/config';
+import { SankeyOrder } from '../sankey/config';
+import { DashboardsSampleOrder } from '../dashboards/config';
 
 export let samplesList: any = [
     {
@@ -113,13 +116,16 @@ export let samplesList: any = [
         'name': 'Query Builder', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-querybuilder', 'samples': AIQuerybuilderSampleOrder
     },
     {
-        'name': 'Rich Text Editor', 'type': 'update', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-rich-text-editor', 'samples': AIRichTextEditorSampleOrder
+        'name': 'Rich Text Editor', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-rich-text-editor', 'samples': AIRichTextEditorSampleOrder
     },
     {
         'name': 'Kanban', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-kanban', 'samples': AIKanbanSampleOrder
     },
     {
         'name': 'Data Grid', 'category': 'Smart AI Solutions', 'type':'update', 'order': '01', 'path': 'ai-grid', 'samples': AIGridSampleOrder
+    },
+    {
+        'name': 'Pivot Table', 'category': 'Smart AI Solutions', 'type':'update', 'order': '01', 'path': 'ai-pivot-table', 'samples': AIPivotTableSampleOrder
     },
     {
         'name': 'Tree Grid', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-tree-grid', 'samples': AITreeGridSampleOrder
@@ -132,9 +138,6 @@ export let samplesList: any = [
     },
     {
         'name': 'Image Editor', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-image-editor', 'samples': AIImageEditorSampleOrder
-    },
-    {
-        'name': 'Pivot Table', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-pivot-table', 'samples': AIPivotTableSampleOrder
     },
     {
         'name': 'Scheduler', 'category': 'Smart AI Solutions', 'order': '01', 'path': 'ai-schedule', 'samples': AISchedulerSampleOrder
@@ -155,15 +158,21 @@ export let samplesList: any = [
         'name': 'AI AssistView', 'category': 'Interactive Chat', 'order': '06', 'path': 'ai-assistview', 'samples': AIAssistViewSampleOrder, 'ftName': 'ai-assistview', 'type':'update'
     },
     {
-        'name': 'Block Editor', 'category': 'File Viewers & Editors', 'order': '01', 'path': 'block-editor', 'samples': BlockEditorSampleOrder, 'ftName' :'block-editor', 'type':'preview'
+        'name': 'Block Editor', 'category': 'File Viewers & Editors', 'order': '01', 'path': 'block-editor', 'samples': BlockEditorSampleOrder, 'ftName' :'block-editor', 'type':'update'
     },
     {
-        'name': 'Chat UI', 'type':'update', 'category': 'Interactive Chat', 'order': '06', 'path': 'chat-ui', 'samples': ChatUISampleOrder, 'ftName': 'chat-ui'
+        'name': 'Chat UI', 'category': 'Interactive Chat', 'order': '06', 'path': 'chat-ui', 'samples': ChatUISampleOrder, 'ftName': 'chat-ui'
+    },
+    {
+        'name': 'Inline AI Assist', 'category': 'Interactive Chat', 'order': '06', 'path': 'inline-ai-assist', 'samples': InlineAIAssistSampleOrder, 'ftName': 'inline-ai-assist', 'type':'preview'
     },
     {
         'name': 'Charts', 'category': 'Data Visualization', 'order': '01', 'path': 'chart', 'samples': ChartSampleOrder, 'ftName': 'chart', 'type':'update'
     },
-     {
+    {
+        'name': 'Dashboards', 'category': 'Data Visualization', 'order': '01', 'path': 'dashboards', 'samples': DashboardsSampleOrder, 'ftName': 'dashboards', 'type':'new'
+    },
+    {
          'name': '3D Chart', 'category': 'Data Visualization', 'order': '03', 'path': 'three-dimension-chart', 'samples': ThreeDimensionChartList,
     },
     {
@@ -209,7 +218,10 @@ export let samplesList: any = [
         'name': 'Bullet Chart', 'category': 'Data Visualization', 'order': '08', 'path': 'bullet-chart', 'samples': BulletChartSampleOrder,
     },
     {
-        'name': 'Kanban', 'category': 'Data Visualization', 'order': '08', 'path': 'kanban', 'samples': KanbanSampleOrder, 'ftName': 'kanban', 'type': 'update'
+        'name': 'Kanban', 'category': 'Data Visualization', 'order': '08', 'path': 'kanban', 'samples': KanbanSampleOrder, 'ftName': 'kanban'
+    },
+    {
+        'name': 'Sankey', 'category': 'Data Visualization', 'order': '08', 'path': 'sankey', 'samples': SankeyOrder, 'ftName': 'sankey', 'type': 'preview'
     },
     {
         'name': 'Query Builder', 'category': 'Forms', 'path': 'query-builder', 'samples': QueryBuilderSampleOrder      
@@ -218,7 +230,7 @@ export let samplesList: any = [
         'name': 'Rich Text Editor', 'type':'update', 'category': 'File Viewers & Editors', 'order': '04', 'path': 'rich-text-editor', 'samples': RichTextEditorSampleOrder
     },
     {
-        'name': 'Markdown Editor', 'type':'update', 'category': 'File Viewers & Editors', 'order': '04', 'path': 'markdown-editor', 'samples': MarkdownEditorSampleOrder
+        'name': 'Markdown Editor', 'category': 'File Viewers & Editors', 'order': '04', 'path': 'markdown-editor', 'samples': MarkdownEditorSampleOrder
     },
     {
         'name': 'Image Editor', 'category': 'File Viewers & Editors', 'ftName': 'image-editor', 'order': '04', 'path': 'image-editor', 'samples': ImageEditorSampleOrder
@@ -311,7 +323,7 @@ export let samplesList: any = [
         'name': 'TreeView', 'category': 'Navigation', 'path': 'treeview', 'samples': TreeViewSampleOrder
     },
     {
-        'name': 'File Manager', 'category': 'Navigation',"type": "update", 'path':'file-manager', 'samples': FileManagerSampleOrder, 'ftName': 'file-manager'
+        'name': 'File Manager', 'category': 'Navigation', 'path':'file-manager', 'samples': FileManagerSampleOrder, 'ftName': 'file-manager'
     },
     {
         'name': 'Ribbon', 'category': 'Navigation', 'path':'ribbon', 'samples': RibbonSampleOrder, 'ftName': 'ribbon'
@@ -335,16 +347,16 @@ export let samplesList: any = [
         'name': "Skeleton", 'category': 'Notifications' , 'order': '04', 'path': "skeleton", 'samples': SkeletonSampleOrder
     },
     {
-        'name': 'TextBox', 'category': 'Inputs', 'order': '04', 'path': 'textboxes', 'samples': TextBoxSampleOrder, 'ftName' :'textbox', 'type': 'update'
+        'name': 'TextBox', 'category': 'Inputs', 'order': '04', 'path': 'textboxes', 'samples': TextBoxSampleOrder, 'ftName' :'textbox'
     },
     {
-        'name': 'TextArea', 'category': 'Inputs', 'order': '04', 'path': 'textarea', 'samples': TextAreaSampleOrder, 'ftName' :'textarea', 'type': 'update'
+        'name': 'TextArea', 'category': 'Inputs', 'order': '04', 'path': 'textarea', 'samples': TextAreaSampleOrder, 'ftName' :'textarea'
     },
     {
-        'name': 'Input Mask', 'category': 'Inputs', 'order': '04', 'path': 'maskedtextbox', 'samples': MaskedTextBoxOrder, 'type': 'update'
+        'name': 'Input Mask', 'category': 'Inputs', 'order': '04', 'path': 'maskedtextbox', 'samples': MaskedTextBoxOrder
     },
     {
-        'name': 'Numeric Textbox', 'category': 'Inputs', 'order': '04', 'path': 'numerictextbox', 'samples': NumericTextBoxOrder, 'type': 'update'
+        'name': 'Numeric Textbox', 'category': 'Inputs', 'order': '04', 'path': 'numerictextbox', 'samples': NumericTextBoxOrder
     },
     {
         'name': 'Color Picker', 'category': 'Inputs', 'order': '04', 'path': 'color-picker', 'samples': ColorPickerSampleOrder, 'ftName': 'color-picker'

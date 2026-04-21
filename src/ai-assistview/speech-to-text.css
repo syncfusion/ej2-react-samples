@@ -16,89 +16,12 @@
     text-align: center;
 }
 
-.integration-speech-to-text-assist-section #assistview-sendButton:not(.e-assist-stop) {
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
-    border: none;
-    background: none;
-    cursor: pointer;
-}
-
-.e-bigger .integration-speech-to-text-assist-section #assistview-sendButton:not(.e-assist-stop) {
-    width: 52px;
-    height: 52px;
-    font-size: 24px;
-}
-
-.integration-speech-to-text-assist-section #assistview-sendButton.e-assist-stop {
-    width: 32px;
-    height: 32px;
-    margin: 4px;
-    border: none;
-    cursor: pointer;
-}
-
-.e-bigger .integration-speech-to-text-assist-section #assistview-sendButton.e-assist-stop {
-    width: 40px;
-    height: 40px;
-    margin: 6px;
-}
-
 .integration-speech-to-text-assist-section #assistview-sendButton {
     box-shadow: none;
     color: inherit;
 }
-
-.integration-speech-to-text-assist-section #speechToText.visible,
-.integration-speech-to-text-assist-section #assistview-sendButton.visible {
-    display: inline-block;
-}
-
-.integration-speech-to-text-assist-section #speechToText,
-.integration-speech-to-text-assist-section #assistview-sendButton {
-    display: none;
-}
-
-.integration-speech-to-text-assist-section #speechToText {
-    box-shadow: unset;
-    background: unset;
-    border: none;
-    color: #555555;
-  }
-  body[class*="dark"] .integration-speech-to-text-assist-section #speechToText,
-  body[class*="high"] .integration-speech-to-text-assist-section #speechToText {
-    color: #fff;
-  }
-
 @media only screen and (max-width: 750px) {
     .integration-speech-to-text-assist-section {
         width: 100%;
     }
-}
-
-.integration-speech-to-text-assist-section .e-footer-wrapper {
-    display: flex;
-    border: 1px solid #c1c1c1;
-    margin: 5px 5px 0 5px;
-    border-radius: 10px;
-}
-
-.integration-speech-to-text-assist-section .content-editor {
-    width: 100%;
-    overflow-y: auto;
-    font-size: 14px;
-    min-height: 25px;
-    max-height: 200px;
-    padding: 10px;
-}
-
-.integration-speech-to-text-assist-section .content-editor[contentEditable=true]:empty:before {
-    content: attr(placeholder);
-    font-style: italic;
-    font-weight: 200;
-}
-
-.integration-speech-to-text-assist-section .option-container {
-    align-self: flex-end;
 }

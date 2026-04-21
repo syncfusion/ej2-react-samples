@@ -3,6 +3,7 @@ export const BlockEditorSampleOrder: Object = [
       'path': 'block-editor/overview',
       'component': 'Overview',
       'name': 'Overview',
+      'type': 'update',
       'description':'This demo describes basic and advanced features of the Block Editor component with all its tools and functionalities.',
       'order': '01',
       'category': 'Block Editor',
@@ -17,7 +18,6 @@ export const BlockEditorSampleOrder: Object = [
       'path': 'block-editor/pasteSettings',
       'component': 'PasteSettings',
       'name': 'Paste Cleanup',
-      'type': 'new',
       'description':'This demo covers important API pasteSettings of the JS Block Editor includes deniedTags, allowedStyles, keepFormat and plainText .',
       'order': '01',
       'category': 'Block Editor',
@@ -60,7 +60,6 @@ export const BlockEditorSampleOrder: Object = [
       'path': 'block-editor/template',
       'component': 'TemplateGallery',
       'name': 'Template Gallery',
-      'type': 'new',
       'description':'This demo covers fully-featured Template Gallery built with block types and table blocks of the Block Editor component',
       'order': '02',
       'category': 'Use Cases',
@@ -75,14 +74,13 @@ export const BlockEditorSampleOrder: Object = [
       'path': 'block-editor/markdown',
       'component': 'MarkdownBlocks',
       'name': 'Markdown Blocks',
-      'type': 'new',
       'description':'This example demonstrates covers fully-featured documentation viewer built the markdown supports along with the Block Editor component',
       'order': '02',
       'category': 'Use Cases',
       'api':'{ "BlockEditorComponent": [ "blocks" ] }',
       'sourceFiles': [
-        { 'displayName': 'markdownBlocks.tsx', 'path':'src/block-editor/markdownBlocks.tsx' },
-        { 'displayName': 'markdownBlocks.jsx', 'path':'src/block-editor/markdownBlocks.jsx' },
+        { 'displayName': 'markdown.tsx', 'path':'src/block-editor/markdown.tsx' },
+        { 'displayName': 'markdown.jsx', 'path':'src/block-editor/markdown.jsx' },
         { 'displayName': 'blockData.json', 'path':'src/block-editor/blockData.json' }
       ]
     }

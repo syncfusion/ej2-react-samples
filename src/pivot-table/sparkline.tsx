@@ -103,7 +103,7 @@ export class SparkLine extends SampleBase<{}, {}> {
         let keys = Object.keys(obj);
         for (let i = 0; i < Object.keys(obj).length; i++) {
             sparkline = new SparklineComponent({
-                height: '30px',
+                height: '55px',
                 lineWidth: 1,
                 type: chartType as any,
                 valueType: 'Category',

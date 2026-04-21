@@ -227,7 +227,7 @@ function ComplexHierarchicalModel() {
                                 id={id}
                                 key={id}
                                 style={{
-                                    backgroundImage: `url('src/diagram/Images/common-orientation/${id}.png')`,
+                                    backgroundImage: `url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/common-orientation/${id}.png')`,
                                     marginRight: "3px",
                                 }}
                             />
@@ -239,7 +239,7 @@ function ComplexHierarchicalModel() {
                             id="righttoleft"
                             style={{
                                 backgroundImage:
-                                    "url('src/diagram/Images/common-orientation/righttoleft.png')",
+                                    "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/common-orientation/righttoleft.png')",
                                 marginRight: "3px"
                             }}
                         />

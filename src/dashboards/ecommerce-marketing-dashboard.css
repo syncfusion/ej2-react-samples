@@ -1,0 +1,538 @@
+#target_marketing_dash .card-content.text {
+  font-size: 15px;
+  text-align: center;
+  color: #66696b;
+}
+
+#target_marketing_dash .card-content.number {
+  font-size: 16px;
+  text-align: center;
+  font-weight: 600;
+  padding-top: 10px;
+}
+
+#target_marketing_dash .expand::before,
+#target_marketing_dash .expand::before {
+  margin-left: 18px;
+  position: absolute;
+  top: 12%;
+}
+
+#marketing_dashboard_sidebar_section {
+  padding: 0px !important;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+#target_marketing_dash .header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  height: 65px;
+}
+
+.ecommerce-dockToolbar {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 0px !important;
+}
+
+#target_marketing_dash .searchContent {
+  display: inline-block;
+  position: absolute;
+  left: 60px;
+  margin-top: 13px;
+}
+
+#target_marketing_dash .dashboard-commerce-title {
+  font-size: 18px;
+  font-weight: 600;
+  text-align: left;
+  vertical-align: middle;
+}
+
+#target_marketing_dash .dashboard-commerce-subtitle {
+  font-size: 14px;
+  font-weight: 400;
+  text-align: left;
+  vertical-align: middle;
+}
+
+/* Sidebar */
+#dockMarketingSideDash {
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 0;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.08);
+}
+
+/* show icon + text normally, but hide text when docked */
+#dockMarketingSideDash .commerce-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#dockMarketingSideDash .commerce-nav-item .e-icons {
+  font-size: 16px;
+}
+
+/* Ensure text is visible in expanded state */
+#dockMarketingSideDash .commerce-nav-item .commerce-nav-text {
+  display: inline;
+  white-space: nowrap;
+}
+
+/* Hide labels only when docked */
+#dockMarketingSideDash.e-close .commerce-nav-item .commerce-nav-text {
+  display: none !important;
+}
+
+.commerce-nav-item {
+  font-size: 15px;
+  padding: 12px 15px;
+  cursor: pointer;
+  user-select: none;
+  border-left: 3px solid transparent;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.commerce-nav-item:hover {
+  background: rgba(32, 185, 251, 0.06);
+}
+
+.commerce-nav-item.active {
+  background: rgb(150, 218, 247);
+  border-left-color: #6c8cff;
+}
+
+#revTrend,
+#demandChannelChart,
+#demandRegionChart,
+#marketShareChart {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Optional: ensure dropdowns fill their column */
+#yearFilter,
+#monthFilter {
+  width: 100%;
+}
+
+#target_marketing_dash {
+  height: 100%;
+  min-height: 80px;
+}
+
+/* Content area that the Sidebar pushes */
+.commerce-content {
+  flex: 1;
+  min-width: 0;
+  /* prevents overflow when charts/tables are wide */
+  background: #f5f6f8;
+}
+
+/* Horizontal layout: sidebar + content */
+.commerce-workarea {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+
+.commerce-listview .e-list-item {
+  display: flex;
+}
+
+#regionShareGrid.e-grid .e-content,
+#topItemsGrid.e-grid .e-content,
+#campaignPerfGrid.e-grid .e-content,
+#productTopItemsGrid.e-grid .e-content,
+#lowPerformingItemsGrid.e-grid .e-content {
+  overflow-y: auto !important;
+}
+
+#targetVsActualBullet,
+#marketTrendsChart,
+#smg_channel_donut,
+#smg_category_donut,
+#salesMixGrowthTrendTab,
+#demandOriginsMap,
+#demandOriginsDrillChart,
+#demandProductsByChannel,
+#promoEfficiencyChart,
+#revenueByCampaignChart,
+#funnelAdClickToPurchase,
+#ctrConversionTrend,
+#categorySalesTrendChart,
+#productMixDonutFiltered,
+#inventoryRevenueChart,
+#currentStockComposition,
+#forecastHealthRadar,
+#channelRevenueHeatmap,
+#salesMixGrowthTrend,
+#revenueByCampaignChart,
+#productSellThroughBullet,
+#marketShareGauge {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+/* ==== KPI cards: consistent header + polished visuals ==== */
+.kpi-commerce-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.kpi-card--hero {
+  /* Soft gradient for hero cards (Total Revenue) */
+  background: linear-gradient(180deg, #ECFDF5 0%, #FFFFFF 55%);
+}
+
+.kpi-commerce-card .e-card-header {
+  /* Force equal header alignment across all tiles */
+  display: flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 10px 12px;
+  border-bottom: none;
+}
+
+/* Body */
+.e-card .kpi-commerce-card-content.e-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  gap: 8px;
+}
+
+.kpi-text {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.kpi-text-roas {
+  font-size: 14px;
+  font-weight: 400;
+  align-self: center;
+}
+
+/* Values */
+.kpi-commerce-value {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.kpi-commerce-value--hero {
+  font-size: 40px;
+}
+
+/* Trend badge spacing */
+.kpi-commerce-card-content .trend-badge {
+  margin: 0 auto;
+}
+
+/* Progress bars (Syncfusion) */
+.kpi-progress {
+  margin-top: 6px;
+}
+
+.kpi-progress .e-progressbar {
+  width: 100%;
+}
+
+.kpi-commerce-card.e-card .e-card-header .e-card-header-caption .e-card-header-title {
+  font-weight: 400;
+  font-size: 14px;
+  color: #312B2A;
+}
+
+/* Segmented control (Revenue | Orders) */
+:root {
+  --seg-bg: #F3F4F6;
+  /* pill background */
+  --seg-border: #E5E7EB;
+  /* pill border */
+  --seg-active: #6C63FF;
+  /* active text color */
+  --seg-hover: rgba(108, 99, 255, 0.06);
+}
+
+/* Group container -> pill */
+.Container .e-btn-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px 6px;
+  border: 1px solid var(--seg-border);
+  background: var(--seg-bg);
+}
+
+/* Base buttons (neutral) */
+.Container .e-btn-group .e-btn {
+  background: transparent !important;
+  border: none !important;
+  padding: 6px 14px;
+  font-weight: 600;
+  box-shadow: none !important;
+}
+
+/* Hover */
+.Container .e-btn-group .e-btn:hover {
+  background: var(--seg-hover) !important;
+  color: #374151 !important;
+}
+
+/* Selected state (Syncfusion toggles .e-active / .e-primary) */
+.Container .e-btn-group .e-btn.e-active,
+.Container .e-btn-group .e-btn.e-primary {
+  background: #FFFFFF !important;
+  color: var(--seg-active) !important;
+  border: none !important;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.06) !important;
+}
+
+/* Focus ring */
+.Container .e-btn-group .e-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.25) !important;
+}
+
+/* Ensure global primary fill doesn’t override inside group */
+.Container .e-btn-group .e-btn.e-active.e-primary {
+  background: #FFFFFF !important;
+  border-color: transparent !important;
+}
+
+.commerce-section-title {
+  font-weight: 400;
+  font-size: 16px;
+  padding: 5px 9px 10px
+}
+
+.ecommerce-exclamation-container {
+  margin-top: 5px;
+}
+
+.kpi-commerce-info-icon {
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#marketing_dashboard_sidebar_section .kpi-commerce-info-icon::before {
+  font-size: 14px;
+}
+
+.tailwind-dark #analytic_head,
+.tailwind3-dark #analytic_head {
+  background: #111827;
+}
+
+.material3 #analytic_head,
+.material3-dark #analytic_head,
+.material3-dark #analytic_head,
+.material3-dark .commerce-dropdown {
+  background: linear-gradient(0deg, rgba(var(--color-sf-primary), 0.08), rgba(var(--color-sf-primary), 0.08)), rgba(var(--color-sf-surface));
+}
+
+.bootstrap5_3 #analytic_head {
+  background: rgb(248, 249, 250);
+}
+
+.bootstrap5_3-dark #analytic_head,
+.bootstrap-dark #analytic_head {
+  background: rgb(43, 48, 53);
+}
+
+.fluent2 #analytic_head {
+  background: rgb(250, 250, 250);
+}
+
+.fluent2-dark #analytic_head,
+.fluent-dark #analytic_head {
+  background: rgb(31, 31, 31);
+}
+
+.fluent2-highcontrast #analytic_head,
+.highcontrast #analytic_head {
+  background: rgb(0, 0, 0);
+}
+
+.fluent-dark .Container .e-btn-group,
+.fluent2-dark .Container .e-btn-group,
+.fluent2-highcontrast .Container .e-btn-group,
+.bootstrap5_3-dark .Container .e-btn-group,
+.tailwind-dark .Container .e-btn-group,
+.tailwind3-dark .Container .e-btn-group,
+.material3-dark .Container .e-btn-group,
+.material3-dark .Container .e-btn-group,
+.bootstrap-dark .Container .e-btn-group,
+.highcontrast .Container .e-btn-group {
+  background: #000000 !important;
+}
+
+.commerce-item-template-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fluent-dark .revenue-font,
+.fluent2-dark .revenue-font,
+.fluent2-highcontrast .revenue-font,
+.bootstrap5_3-dark .revenue-font,
+.tailwind-dark .revenue-font,
+.tailwind3-dark .revenue-font,
+.material3-dark .revenue-font,
+.material3-dark .revenue-font,
+.bootstrap-dark .revenue-font,
+.highcontrast .revenue-font {
+  color: rgb(241, 245, 249);
+}
+
+.fluent .revenue-font,
+.fluent2 .revenue-font,
+.bootstrap5_3 .revenue-font,
+.tailwind .revenue-font,
+.tailwind3 .revenue-font,
+.material .revenue-font,
+.material3 .revenue-font,
+.bootstrap .revenue-font {
+  color: #0F172A;
+}
+
+.fluent .kpi-commerce-info-icon,
+.fluent2 .kpi-commerce-info-icon,
+.bootstrap5_3 .kpi-commerce-info-icon,
+.tailwind .kpi-commerce-info-icon,
+.tailwind3 .kpi-commerce-info-icon,
+.material .kpi-commerce-info-icon,
+.material3 .kpi-commerce-info-icon,
+.bootstrap .kpi-commerce-info-icon {
+  color: #475467;
+}
+
+.fluent-dark .kpi-commerce-info-icon,
+.fluent2-dark .kpi-commerce-info-icon,
+.fluent2-highcontrast .kpi-commerce-info-icon,
+.bootstrap5_3-dark .kpi-commerce-info-icon,
+.tailwind-dark .kpi-commerce-info-icon,
+.tailwind3-dark .kpi-commerce-info-icon,
+.material3-dark .kpi-commerce-info-icon,
+.material3-dark .kpi-commerce-info-icon,
+.bootstrap-dark .kpi-commerce-info-icon,
+.highcontrast .kpi-commerce-info-icon {
+  color: #F8FAFC;
+}
+
+.tailwind .card-content-padding,
+.tailwind3 .card-content-padding,
+.tailwind-dark .card-content-padding,
+.tailwind3-dark .card-content-padding {
+  gap: 12px;
+}
+
+.material3 .card-content-padding,
+.material3-dark .card-content-padding,
+.fluent2 .card-content-padding,
+.fluent2-dark .card-content-padding,
+.bootstrap5_3 .card-content-padding,
+.bootstrap5_3-dark .card-content-padding,
+.fluent2-highcontrast .card-content-padding {
+  gap: 0px;
+}
+
+.material3 .kpi-commerce-value,
+.material3-dark .kpi-commerce-value,
+.fluent2 .kpi-commerce-value,
+.fluent2-dark .kpi-commerce-value,
+.bootstrap5_3 .kpi-commerce-value,
+.bootstrap5_3-dark .kpi-commerce-value,
+.fluent2-highcontrast .kpi-commerce-value {
+  font-size: 20px;
+}
+
+.material3 .e-card .kpi-commerce-card-content.e-card-content,
+.material3-dark .e-card .kpi-commerce-card-content.e-card-content,
+.fluent2 .e-card .kpi-commerce-card-content.e-card-content,
+.fluent2-dark .e-card .kpi-commerce-card-content.e-card-content,
+.bootstrap5_3 .e-card .kpi-commerce-card-content.e-card-content,
+.bootstrap5_3-dark .e-card .kpi-commerce-card-content.e-card-content,
+.fluent2-highcontrast .e-card .kpi-commerce-card-content.e-card-content {
+  gap: 0px;
+}
+
+.tailwind3 .commerce-listview .commerce-list-item,
+.tailwind3-dark .commerce-listview .commerce-list-item,
+.bootstrap5_3 .commerce-listview .commerce-list-item,
+.bootstrap5_3-dark .commerce-listview .commerce-list-item {
+  margin-left: 8px;
+}
+
+.material3 .commerce-listview .commerce-list-item,
+.material3-dark .commerce-listview .commerce-list-item {
+  margin-left: 2px;
+}
+
+.fluent2 .commerce-listview .commerce-list-item,
+.fluent2-dark .commerce-listview .commerce-list-item,
+.fluent2-highcontrast .commerce-listview .commerce-list-item {
+  margin-left: 14px;
+}
+
+.fluent2 .commerce-listview .e-list-item,
+.fluent2-dark .commerce-listview .e-list-item,
+.fluent2-highcontrast .commerce-listview .e-list-item {
+  padding: 7px 0;
+}
+
+.fluent-dark .ecommerce-meta,
+.fluent2-dark .ecommerce-meta,
+.fluent2-highcontrast .ecommerce-meta,
+.bootstrap5_3-dark .ecommerce-meta,
+.tailwind-dark .ecommerce-meta,
+.tailwind3-dark .ecommerce-meta,
+.material3-dark .ecommerce-meta,
+.bootstrap-dark .ecommerce-meta,
+.highcontrast .ecommerce-meta {
+  color: #ffffff;
+}
+
+#productMixDonutFiltered text[id^="productMixDonutFiltered_datalabel_Series_0_text_"],
+#smg_channel_donut text[id^="smg_channel_donut_datalabel_Series_0_text_"],
+#currentStockComposition0_AxisLabel_0,
+#currentStockComposition0_AxisLabel_1,
+#currentStockComposition0_AxisLabel_2,
+#currentStockComposition0_AxisLabel_3,
+#currentStockComposition0_AxisLabel_4 {
+  text-decoration: underline;
+  cursor: pointer;
+  fill: #0d6efd;
+}
+
+.ecommerce-dockToolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.fluent .e-panel-header,
+.fluent2 .e-panel-header,
+.bootstrap5_3 .e-panel-header,
+.tailwind .e-panel-header,
+.tailwind3 .e-panel-header,
+.material3 .e-panel-header,
+.bootstrap5_3 .e-panel-header {
+  background-color: #f9fafb;
+}
+
+.tailwind3 #marketing_dashboard_sidebar_section .e-dashboardlayout.e-control .e-panel:active ,
+.fluent2 #marketing_dashboard_sidebar_section .e-dashboardlayout.e-control .e-panel:active,
+.tailwind3 #marketing_dashboard_sidebar_section .e-dashboardlayout.e-control .e-panel:hover ,
+.fluent2 #marketing_dashboard_sidebar_section .e-dashboardlayout.e-control .e-panel:hover,
+.tailwind3 #marketing_dashboard_sidebar_section .e-card:active,
+.tailwind3 #marketing_dashboard_sidebar_section .e-card:hover,
+.fluent2 #marketing_dashboard_sidebar_section .e-card:active,
+.fluent2 #marketing_dashboard_sidebar_section .e-card:hover  {
+    background: #ffffff !important;
+}

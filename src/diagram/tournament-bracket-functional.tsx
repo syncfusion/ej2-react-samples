@@ -9,9 +9,6 @@ import {
 } from '@syncfusion/ej2-react-diagrams';
 import { updateSampleSection } from '../common/sample-base';
 
-// Declare a variable to hold the instance of the DiagramComponent.
-let diagramInstance: DiagramComponent;
-
 // Tournament match data interface
 interface TournamentMatch {
     id: string;
@@ -1059,6 +1056,7 @@ const connectors: ConnectorModel[] = [
 
 // Define the function TournamentBracket
 function TournamentBracket() {
+    const diagramRef = React.useRef<DiagramComponent>(null);
     const [isLoading, setIsLoading] = React.useState(true);
     const [showDiagram, setShowDiagram] = React.useState(false);
 
@@ -1091,7 +1089,7 @@ function TournamentBracket() {
                     {showDiagram && (
                         <DiagramComponent
                             id="footballResultDiagram"
-                            ref={diagram => (diagramInstance = diagram)}
+                            ref={diagramRef}
                             width={"100%"}
                             height={"100%"}
                             nodes={nodes}
@@ -1107,8 +1105,8 @@ function TournamentBracket() {
                             tool={DiagramTools.ZoomPan}
                             load={() => {
                                 setTimeout(() => {
-                                    if (diagramInstance) {
-                                        diagramInstance.fitToPage({
+                                    if (diagramRef.current) {
+                                        diagramRef.current.fitToPage({
                                             canZoomIn: true,
                                             margin: { left: 0, right: 20, top: 0, bottom: 90 }
                                         });
@@ -1116,8 +1114,8 @@ function TournamentBracket() {
                                 });
                             }}
                             created={() => {
-                                if (diagramInstance) {
-                                    diagramInstance.fitToPage({
+                                if (diagramRef.current) {
+                                    diagramRef.current.fitToPage({
                                         canZoomIn: true,
                                         margin: { left: 0, right: 20, top: 0, bottom: 90 }
                                     });
@@ -1129,7 +1127,7 @@ function TournamentBracket() {
             </div>
             <div id="action-description">
                 <p>
-                    This sample interactively visualizes a UEFA Champions League tournament bracket using the Syncfusion<sup>®</sup> EJ2 React Diagram component, showcasing team progression through match results, winning teams, flip-card animations, and informative tooltip.
+                    This sample interactively visualizes a UEFA Champions League tournament bracket using the Syncfusion<sup>®</sup> EJ2 React Diagram, showcasing team progression through match results, winning teams, flip-card animations, and informative tooltip.
                 </p>
             </div>
             <div id="description">

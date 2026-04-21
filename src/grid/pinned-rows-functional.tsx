@@ -130,7 +130,7 @@ function PinnedRows() {
     return (
         <div className='control-pane'>
             <div className='control-section'>
-                <GridComponent id="PinnedRows" dataSource={supportData} ref={grid => gridInstance = grid} enableVirtualization={true} contextMenuItems={contextMenuItems} height={300} isRowPinned={isRowPinned.bind(this)} allowSorting={true} allowFiltering={true} allowKeyboard={false} filterSettings={filterSettings} pageSettings={{ pageSize:20 }}>
+                <GridComponent id="PinnedRows" dataSource={supportData} ref={grid => gridInstance = grid} enableVirtualization={true} contextMenuItems={contextMenuItems} height={300} isRowPinned={isRowPinned.bind(this)} allowSorting={true} allowKeyboard={false} allowFiltering={true} filterSettings={filterSettings} pageSettings={{ pageSize:20 }}>
                     <ColumnsDirective>
                         <ColumnDirective field="TicketID" headerText="Ticket ID" width="140" isPrimaryKey={true}
                                         freeze="Left" />

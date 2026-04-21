@@ -39,7 +39,7 @@ export class TrackballChart extends SampleBase<{}, {}> {
                         }}
                         title='Average Sales per Person' loaded={this.onChartLoad.bind(this)}
                         tooltip={{ enable: true, shared: true }}
-                        crosshair={{ enable: true, lineType: 'Vertical' }}>
+                        crosshair={{ enable: true, snapToData: true, lineType: 'Vertical' }}>
                         <Inject services={[LineSeries, DateTime, Tooltip, Crosshair, Legend]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={john} xName='x' yName='y' width={2} name='John'

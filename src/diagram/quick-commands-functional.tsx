@@ -322,7 +322,7 @@ function UserHandle() {
   }
   function fixedUserHandleTemplate(props) {
       return(<div style={{ width: '100%', height: '100%' }}>
-      <button style={{backgroundColor: 'black', borderRadius: '50%', width: '25px', height: '25px', border: 'none', cursor: 'context-menu', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundImage: `url(./src/diagram/Images/user-handle/delete.png)`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
+      <button style={{backgroundColor: 'black', borderRadius: '50%', width: '25px', height: '25px', border: 'none', cursor: 'context-menu', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundImage: `url(https://ej2.syncfusion.com/react/demos/src/diagram/Images/user-handle/delete.png)`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
       </button>
       </div>)
   }
@@ -396,7 +396,7 @@ function UserHandle() {
               id="left"
               style={{
                 backgroundImage:
-                  "url('src/diagram/Images/user-handle/bottoml.png')",
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/user-handle/bottoml.png')",
                 marginRight: "4px"
               }}
             />
@@ -405,7 +405,7 @@ function UserHandle() {
               id="right"
               style={{
                 backgroundImage:
-                  "url('src/diagram/Images/user-handle/bottomr.png')",
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/user-handle/bottomr.png')",
                 margin: "0px 4px"
               }}
             />
@@ -414,7 +414,7 @@ function UserHandle() {
               id="topr"
               style={{
                 backgroundImage:
-                  "url('src/diagram/Images/user-handle/topr.png')"
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/user-handle/topr.png')"
               }}
             />
           </div>
@@ -427,7 +427,7 @@ function UserHandle() {
               id="pattern1"
               style={{
                 backgroundImage:
-                  "url('src/diagram/Images/user-handle/pattern1.png')",
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/user-handle/pattern1.png')",
                 marginRight: "4px"
               }}
             />
@@ -436,7 +436,7 @@ function UserHandle() {
               id="pattern2"
               style={{
                 backgroundImage:
-                  "url('src/diagram/Images/user-handle/pattern2.png')",
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/user-handle/pattern2.png')",
                 margin: "0px 4px"
               }}
             />
@@ -445,7 +445,7 @@ function UserHandle() {
               id="pattern3"
               style={{
                 backgroundImage:
-                  "url('src/diagram/Images/user-handle/pattern3.png')"
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/user-handle/pattern3.png')"
               }}
             />
           </div>

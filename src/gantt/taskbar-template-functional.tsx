@@ -166,35 +166,16 @@ const Taskbar = () => {
 
   };
   const childTaskbarTemplate: any = taskbarTemplate.bind(this);
-  const milstoneTemplate = (props): any => {
-  return (
-    <div style={{ marginTop: "3px" }}>
-      <div style={{ position: "absolute", left: "3px", top: "4px" }}>
-        <img
-          className="moments"
-          src="src/gantt/images/moments.svg"
-          height="24"
-          width="48"
-          style={{ zIndex: 1, left: "-4px", top: "12px", position: "absolute" }}
-          alt="Moments svg"
-        />
-        <div
-          className="e-gantt-milestone"
-          style={{
-            width: "41px",
-            height: "41px",
-            transform: "rotate(45deg)",
-            backgroundColor: "#7ab748",
-            border: "0",
-            position: "absolute",
-            left: "-5px",
-            top: "4px"
-          }}
-        ></div>
+  const milstoneTemplate = (props: any) => {
+    return (
+      <div className="e-gantt-milestone"  style={{ marginTop: "3px", width: "41px",
+        height: "41px", backgroundColor: "#7ab748", border: "0", position: "absolute", left: "-2px", top: "4px" }}>
+        <div style={{ position: "absolute", top: "4px" }}>
+          <img className="moments" src="src/gantt/images/moments.svg" height="24" width="48" style={{ zIndex: 1, top: '1.5px', left:'-3px',transform: 'rotate(-45deg)', position: "absolute" }} alt="Moments svg"/>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  };
 
   const milestone: any = milstoneTemplate.bind(this);
   const projectStartDate: any = new Date('03/05/2025 06:00 PM');

@@ -1,0 +1,2689 @@
+{
+    "companyshares": {
+        "initialInvestment": 1000000,
+        "assets": 3050000,
+        "liabilities": 2050000,
+        "equity": 1000000,
+        "companyshares_quarterly": [
+            {
+                "period": "2021-Q1",
+                "year": 2021,
+                "assettotal": 980000,
+                "liabilitiestotal": 295366,
+                "equitytotal": 684634,
+                "quarter": "Quarter 1",
+                "assets": [
+                    {
+                        "id": "cash",
+                        "name": "Cash",
+                        "amount": 85800
+                    },
+                    {
+                        "id": "ar",
+                        "name": "Accounts Receivable",
+                        "amount": 42900
+                    },
+                    {
+                        "id": "inventory",
+                        "name": "Inventory",
+                        "amount": 57200
+                    },
+                    {
+                        "id": "ppe",
+                        "name": "Property, Plant & Equipment (net)",
+                        "amount": 77000
+                    },
+                    {
+                        "id": "otherAssets",
+                        "name": "Other Non-current Assets",
+                        "amount": 23100
+                    }
+                ],
+                "liabilities": [
+                    {
+                        "id": "ap",
+                        "name": "Accounts Payable",
+                        "amount": 91563
+                    },
+                    {
+                        "id": "accrued",
+                        "name": "Accrued Expenses",
+                        "amount": 58482
+                    },
+                    {
+                        "id": "shortDebt",
+                        "name": "Short-term Debt / Credit Line",
+                        "amount": 47751
+                    },
+                    {
+                        "id": "longDebt",
+                        "name": "Long-term Debt",
+                        "amount": 97570
+                    }
+                ],
+                "equity": [
+                    {
+                        "id": "apic",
+                        "name": "Owner / Share Capital",
+                        "amount": 472397
+                    },
+                    {
+                        "id": "retained",
+                        "name": "Retained Earnings",
+                        "amount": 212237
+                    }
+                ]
+            },
+            {
+                "period": "2021-Q2",
+                "year": 2021,
+                "assettotal": 1010000,
+                "liabilitiestotal": 293153,
+                "equitytotal": 716847,
+                "quarter": "Quarter 2",
+                "assets": [
+                    {
+                        "id": "cash",
+                        "name": "Cash",
+                        "amount": 306030
+                    },
+                    {
+                        "id": "ar",
+                        "name": "Accounts Receivable",
+                        "amount": 158570
+                    },
+                    {
+                        "id": "inventory",
+                        "name": "Inventory",
+                        "amount": 194930
+                    },
+                    {
+                        "id": "ppe",
+                        "name": "Property, Plant & Equipment (net)",
+                        "amount": 271923
+                    },
+                    {
+                        "id": "otherAssets",
+                        "name": "Other Non-current Assets",
+                        "amount": 78547
+                    }
+                ],
+                "liabilities": [
+                    {
+                        "id": "ap",
+                        "name": "Accounts Payable",
+                        "amount": 86773
+                    },
+                    {
+                        "id": "accrued",
+                        "name": "Accrued Expenses",
+                        "amount": 60390
+                    },
+                    {
+                        "id": "shortDebt",
+                        "name": "Short-term Debt / Credit Line",
+                        "amount": 50031
+                    },
+                    {
+                        "id": "longDebt",
+                        "name": "Long-term Debt",
+                        "amount": 95959
+                    }
+                ],
+                "equity": [
+                    {
+                        "id": "apic",
+                        "name": "Owner / Share Capital",
+                        "amount": 505377
+                    },
+                    {
+                        "id": "retained",
+                        "name": "Retained Earnings",
+                        "amount": 211470
+                    }
+                ]
+            },
+            {
+                "period": "2021-Q3",
+                "year": 2021,
+                "assettotal": 1000000,
+                "liabilitiestotal": 302750,
+                "equitytotal": 697250,
+                "quarter": "Quarter 3",
+                "assets": [
+                    {
+                        "id": "cash",
+                        "name": "Cash",
+                        "amount": 305000
+                    },
+                    {
+                        "id": "ar",
+                        "name": "Accounts Receivable",
+                        "amount": 147000
+                    },
+                    {
+                        "id": "inventory",
+                        "name": "Inventory",
+                        "amount": 194000
+                    },
+                    {
+                        "id": "ppe",
+                        "name": "Property, Plant & Equipment (net)",
+                        "amount": 273231
+                    },
+                    {
+                        "id": "otherAssets",
+                        "name": "Other Non-current Assets",
+                        "amount": 80769
+                    }
+                ],
+                "liabilities": [
+                    {
+                        "id": "ap",
+                        "name": "Accounts Payable",
+                        "amount": 89917
+                    },
+                    {
+                        "id": "accrued",
+                        "name": "Accrued Expenses",
+                        "amount": 61156
+                    },
+                    {
+                        "id": "shortDebt",
+                        "name": "Short-term Debt / Credit Line",
+                        "amount": 52880
+                    },
+                    {
+                        "id": "longDebt",
+                        "name": "Long-term Debt",
+                        "amount": 98797
+                    }
+                ],
+                "equity": [
+                    {
+                        "id": "apic",
+                        "name": "Owner / Share Capital",
+                        "amount": 485286
+                    },
+                    {
+                        "id": "retained",
+                        "name": "Retained Earnings",
+                        "amount": 211964
+                    }
+                ]
+            },
+            {
+                "period": "2021-Q4",
+                "year": 2021,
+                "assettotal": 1060000,
+                "liabilitiestotal": 304466,
+                "equitytotal": 755534,
+                "quarter": "Quarter 4",
+                "assets": [
+                    {
+                        "id": "cash",
+                        "name": "Cash",
+                        "amount": 311764
+                    },
+                    {
+                        "id": "ar",
+                        "name": "Accounts Receivable",
+                        "amount": 166979
+                    },
+                    {
+                        "id": "inventory",
+                        "name": "Inventory",
+                        "amount": 218764
+                    },
+                    {
+                        "id": "ppe",
+                        "name": "Property, Plant & Equipment (net)",
+                        "amount": 284531
+                    },
+                    {
+                        "id": "otherAssets",
+                        "name": "Other Non-current Assets",
+                        "amount": 77962
+                    }
+                ],
+                "liabilities": [
+                    {
+                        "id": "ap",
+                        "name": "Accounts Payable",
+                        "amount": 90122
+                    },
+                    {
+                        "id": "accrued",
+                        "name": "Accrued Expenses",
+                        "amount": 60284
+                    },
+                    {
+                        "id": "shortDebt",
+                        "name": "Short-term Debt / Credit Line",
+                        "amount": 49526
+                    },
+                    {
+                        "id": "longDebt",
+                        "name": "Long-term Debt",
+                        "amount": 104534
+                    }
+                ],
+                "equity": [
+                    {
+                        "id": "apic",
+                        "name": "Owner / Share Capital",
+                        "amount": 535674
+                    },
+                    {
+                        "id": "retained",
+                        "name": "Retained Earnings",
+                        "amount": 219860
+                    }
+                ]
+            },
+            {
+                "period": "2022-Q1",
+                "year": 2022,
+                "quarter": "Quarter 1",
+                "assettotal": 1029000,
+                "liabilitiestotal": 311133,
+                "equitytotal": 717867,
+                "assets": [
+                    {
+                        "id": "cash",
+                        "name": "Cash",
+                        "amount": 302528
+                    },
+                    {
+                        "id": "ar",
+                        "name": "Accounts Receivable",
+                        "amount": 151263
+                    },
+                    {
+                        "id": "inventory",
+                        "name": "Inventory",
+                        "amount": 218148
+                    },
+                    {
+                        "id": "ppe",
+                        "name": "Property, Plant & Equipment (net)",
+                        "amount": 273949
+                    },
+                    {
+                        "id": "otherAssets",
+                        "name": "Other Non-current Assets",
+                        "amount": 83612
+                    }
+                ],
+                "liabilities": [
+                    {
+                        "id": "ap",
+                        "name": "Accounts Payable",
+                        "amount": 96452
+                    },
+                    {
+                        "id": "accrued",
+                        "name": "Accrued Expenses",
+                        "amount": 61605
+                    },
+                    {
+                        "id": "shortDebt",
+                        "name": "Short-term Debt / Credit Line",
+                        "amount": 50310
+                    },
+                    {
+                        "id": "longDebt",
+                        "name": "Long-term Debt",
+                        "amount": 102766
+                    }
+                ],
+                "equity": [
+                    {
+                        "id": "apic",
+                        "name": "Owner / Share Capital",
+                        "amount": 495328
+                    },
+                    {
+                        "id": "retained",
+                        "name": "Retained Earnings",
+                        "amount": 222539
+                    }
+                ]
+            },
+            {
+                "period": "2022-Q2",
+                "year": 2022,
+                "quarter": "Quarter 2",
+                "assettotal": 1060500,
+                "liabilitiestotal": 314721,
+                "equitytotal": 745779,
+                "assets": [
+                    {
+                        "id": "cash",
+                        "name": "Cash",
+                        "amount": 321331
+                    },
+                    {
+                        "id": "ar",
+                        "name": "Accounts Receivable",
+                        "amount": 166499
+                    },
+                    {
+                        "id": "inventory",
+                        "name": "Inventory",
+                        "amount": 204677
+                    },
+                    {
+                        "id": "ppe",
+                        "name": "Property, Plant & Equipment (net)",
+                        "amount": 285518
+                    },
+                    {
+                        "id": "otherAssets",
+                        "name": "Other Non-current Assets",
+                        "amount": 82475
+                    }
+                ],
+                "liabilities": [
+                    {
+                        "id": "ap",
+                        "name": "Accounts Payable",
+                        "amount": 93158
+                    },
+                    {
+                        "id": "accrued",
+                        "name": "Accrued Expenses",
+                        "amount": 64833
+                    },
+                    {
+                        "id": "shortDebt",
+                        "name": "Short-term Debt / Credit Line",
+                        "amount": 53722
+                    },
+                    {
+                        "id": "longDebt",
+                        "name": "Long-term Debt",
+                        "amount": 103008
+                    }
+                ],
+                "equity": [
+                    {
+                        "id": "apic",
+                        "name": "Owner / Share Capital",
+                        "amount": 525774
+                    },
+                    {
+                        "id": "retained",
+                        "name": "Retained Earnings",
+                        "amount": 220005
+                    }
+                ]
+            },
+            {
+                "period": "2022-Q3",
+                "year": 2022,
+                "quarter": "Quarter 3",
+                "assettotal": 1050000,
+                "liabilitiestotal": 324368,
+                "equitytotal": 725632,
+                "assets": [
+                    {
+                        "id": "cash",
+                        "name": "Cash",
+                        "amount": 320249
+                    },
+                    {
+                        "id": "ar",
+                        "name": "Accounts Receivable",
+                        "amount": 154350
+                    },
+                    {
+                        "id": "inventory",
+                        "name": "Inventory",
+                        "amount": 203700
+                    },
+                    {
+                        "id": "ppe",
+                        "name": "Property, Plant & Equipment (net)",
+                        "amount": 286892
+                    },
+                    {
+                        "id": "otherAssets",
+                        "name": "Other Non-current Assets",
+                        "amount": 84809
+                    }
+                ],
+                "liabilities": [
+                    {
+                        "id": "ap",
+                        "name": "Accounts Payable",
+                        "amount": 96337
+                    },
+                    {
+                        "id": "accrued",
+                        "name": "Accrued Expenses",
+                        "amount": 65522
+                    },
+                    {
+                        "id": "shortDebt",
+                        "name": "Short-term Debt / Credit Line",
+                        "amount": 56669
+                    },
+                    {
+                        "id": "longDebt",
+                        "name": "Long-term Debt",
+                        "amount": 105840
+                    }
+                ],
+                "equity": [
+                    {
+                        "id": "apic",
+                        "name": "Owner / Share Capital",
+                        "amount": 505039
+                    },
+                    {
+                        "id": "retained",
+                        "name": "Retained Earnings",
+                        "amount": 220593
+                    }
+                ]
+            },
+            {
+                "period": "2022-Q4",
+                "year": 2022,
+                "quarter": "Quarter 4",
+                "assettotal": 1113000,
+                "liabilitiestotal": 318173,
+                "equitytotal": 794827,
+                "assets": [
+                    {
+                        "id": "cash",
+                        "name": "Cash",
+                        "amount": 330000
+                    },
+                    {
+                        "id": "ar",
+                        "name": "Accounts Receivable",
+                        "amount": 175000
+                    },
+                    {
+                        "id": "inventory",
+                        "name": "Inventory",
+                        "amount": 230000
+                    },
+                    {
+                        "id": "ppe",
+                        "name": "Property, Plant & Equipment (net)",
+                        "amount": 300000
+                    },
+                    {
+                        "id": "otherAssets",
+                        "name": "Other Non-current Assets",
+                        "amount": 78000
+                    }
+                ],
+                "liabilities": [
+                    {
+                        "id": "ap",
+                        "name": "Accounts Payable",
+                        "amount": 90122
+                    },
+                    {
+                        "id": "accrued",
+                        "name": "Accrued Expenses",
+                        "amount": 60284
+                    },
+                    {
+                        "id": "shortDebt",
+                        "name": "Short-term Debt / Credit Line",
+                        "amount": 49526
+                    },
+                    {
+                        "id": "longDebt",
+                        "name": "Long-term Debt",
+                        "amount": 118241
+                    }
+                ],
+                "equity": [
+                    {
+                        "id": "apic",
+                        "name": "Owner / Share Capital",
+                        "amount": 536000
+                    },
+                    {
+                        "id": "retained",
+                        "name": "Retained Earnings",
+                        "amount": 258827
+                    }
+                ]
+            },
+            {
+                "period": "2023-Q1",
+                "year": 2023,
+                "assettotal": 1087800,
+                "liabilitiestotal": 325491,
+                "equitytotal": 762309,
+                "quarter": "Quarter 1",
+                "assets": [
+                    {
+                        "id": "cash",
+                        "name": "Cash",
+                        "amount": 319904
+                    },
+                    {
+                        "id": "ar",
+                        "name": "Accounts Receivable",
+                        "amount": 159943
+                    },
+                    {
+                        "id": "inventory",
+                        "name": "Inventory",
+                        "amount": 230507
+                    },
+                    {
+                        "id": "ppe",
+                        "name": "Property, Plant & Equipment (net)",
+                        "amount": 289552
+                    },
+                    {
+                        "id": "otherAssets",
+                        "name": "Other Non-current Assets",
+                        "amount": 87894
+                    }
+                ],
+                "liabilities": [
+                    {
+                        "id": "ap",
+                        "name": "Accounts Payable",
+                        "amount": 100902
+                    },
+                    {
+                        "id": "accrued",
+                        "name": "Accrued Expenses",
+                        "amount": 64447
+                    },
+                    {
+                        "id": "shortDebt",
+                        "name": "Short-term Debt / Credit Line",
+                        "amount": 52632
+                    },
+                    {
+                        "id": "longDebt",
+                        "name": "Long-term Debt",
+                        "amount": 107510
+                    }
+                ],
+                "equity": [
+                    {
+                        "id": "apic",
+                        "name": "Owner / Share Capital",
+                        "amount": 525993
+                    },
+                    {
+                        "id": "retained",
+                        "name": "Retained Earnings",
+                        "amount": 236316
+                    }
+                ]
+            },
+            {
+                "period": "2023-Q2",
+                "year": 2023,
+                "assettotal": 1121100,
+                "liabilitiestotal": 325453,
+                "equitytotal": 795647,
+                "quarter": "Quarter 2",
+                "assets": [
+                    {
+                        "id": "cash",
+                        "name": "Cash",
+                        "amount": 339805
+                    },
+                    {
+                        "id": "ar",
+                        "name": "Accounts Receivable",
+                        "amount": 176013
+                    },
+                    {
+                        "id": "inventory",
+                        "name": "Inventory",
+                        "amount": 216260
+                    },
+                    {
+                        "id": "ppe",
+                        "name": "Property, Plant & Equipment (net)",
+                        "amount": 301800
+                    },
+                    {
+                        "id": "otherAssets",
+                        "name": "Other Non-current Assets",
+                        "amount": 87222
+                    }
+                ],
+                "liabilities": [
+                    {
+                        "id": "ap",
+                        "name": "Accounts Payable",
+                        "amount": 96334
+                    },
+                    {
+                        "id": "accrued",
+                        "name": "Accrued Expenses",
+                        "amount": 67044
+                    },
+                    {
+                        "id": "shortDebt",
+                        "name": "Short-term Debt / Credit Line",
+                        "amount": 55544
+                    },
+                    {
+                        "id": "longDebt",
+                        "name": "Long-term Debt",
+                        "amount": 106531
+                    }
+                ],
+                "equity": [
+                    {
+                        "id": "apic",
+                        "name": "Owner / Share Capital",
+                        "amount": 560931
+                    },
+                    {
+                        "id": "retained",
+                        "name": "Retained Earnings",
+                        "amount": 234716
+                    }
+                ]
+            },
+            {
+                "period": "2023-Q3",
+                "year": 2023,
+                "assettotal": 1110000,
+                "liabilitiestotal": 335427,
+                "equitytotal": 774573,
+                "quarter": "Quarter 3",
+                "assets": [
+                    {
+                        "id": "cash",
+                        "name": "Cash",
+                        "amount": 338661
+                    },
+                    {
+                        "id": "ar",
+                        "name": "Accounts Receivable",
+                        "amount": 163170
+                    },
+                    {
+                        "id": "inventory",
+                        "name": "Inventory",
+                        "amount": 215229
+                    },
+                    {
+                        "id": "ppe",
+                        "name": "Property, Plant & Equipment (net)",
+                        "amount": 303252
+                    },
+                    {
+                        "id": "otherAssets",
+                        "name": "Other Non-current Assets",
+                        "amount": 89688
+                    }
+                ],
+                "liabilities": [
+                    {
+                        "id": "ap",
+                        "name": "Accounts Payable",
+                        "amount": 99622
+                    },
+                    {
+                        "id": "accrued",
+                        "name": "Accrued Expenses",
+                        "amount": 67756
+                    },
+                    {
+                        "id": "shortDebt",
+                        "name": "Short-term Debt / Credit Line",
+                        "amount": 58587
+                    },
+                    {
+                        "id": "longDebt",
+                        "name": "Long-term Debt",
+                        "amount": 109462
+                    }
+                ],
+                "equity": [
+                    {
+                        "id": "apic",
+                        "name": "Owner / Share Capital",
+                        "amount": 539103
+                    },
+                    {
+                        "id": "retained",
+                        "name": "Retained Earnings",
+                        "amount": 235470
+                    }
+                ]
+            },
+            {
+                "period": "2023-Q4",
+                "year": 2023,
+                "assettotal": 1176600,
+                "liabilitiestotal": 341277,
+                "equitytotal": 835323,
+                "quarter": "Quarter 4",
+                "assets": [
+                    {
+                        "id": "cash",
+                        "name": "Cash",
+                        "amount": 343680
+                    },
+                    {
+                        "id": "ar",
+                        "name": "Accounts Receivable",
+                        "amount": 185903
+                    },
+                    {
+                        "id": "inventory",
+                        "name": "Inventory",
+                        "amount": 243439
+                    },
+                    {
+                        "id": "ppe",
+                        "name": "Property, Plant & Equipment (net)",
+                        "amount": 316741
+                    },
+                    {
+                        "id": "otherAssets",
+                        "name": "Other Non-current Assets",
+                        "amount": 86837
+                    }
+                ],
+                "liabilities": [
+                    {
+                        "id": "ap",
+                        "name": "Accounts Payable",
+                        "amount": 101018
+                    },
+                    {
+                        "id": "accrued",
+                        "name": "Accrued Expenses",
+                        "amount": 67572
+                    },
+                    {
+                        "id": "shortDebt",
+                        "name": "Short-term Debt / Credit Line",
+                        "amount": 55514
+                    },
+                    {
+                        "id": "longDebt",
+                        "name": "Long-term Debt",
+                        "amount": 117173
+                    }
+                ],
+                "equity": [
+                    {
+                        "id": "apic",
+                        "name": "Owner / Share Capital",
+                        "amount": 592244
+                    },
+                    {
+                        "id": "retained",
+                        "name": "Retained Earnings",
+                        "amount": 243079
+                    }
+                ]
+            },
+            {
+                "period": "2024-Q1",
+                "year": 2024,
+                "quarter": "Quarter 1",
+                "assettotal": 1166200,
+                "liabilitiestotal": 344338,
+                "equitytotal": 821862,
+                "assets": [
+                    {
+                        "id": "cash",
+                        "name": "Cash",
+                        "amount": 342864
+                    },
+                    {
+                        "id": "ar",
+                        "name": "Accounts Receivable",
+                        "amount": 171431
+                    },
+                    {
+                        "id": "inventory",
+                        "name": "Inventory",
+                        "amount": 247234
+                    },
+                    {
+                        "id": "ppe",
+                        "name": "Property, Plant & Equipment (net)",
+                        "amount": 310478
+                    },
+                    {
+                        "id": "otherAssets",
+                        "name": "Other Non-current Assets",
+                        "amount": 94193
+                    }
+                ],
+                "liabilities": [
+                    {
+                        "id": "ap",
+                        "name": "Accounts Payable",
+                        "amount": 106745
+                    },
+                    {
+                        "id": "accrued",
+                        "name": "Accrued Expenses",
+                        "amount": 68179
+                    },
+                    {
+                        "id": "shortDebt",
+                        "name": "Short-term Debt / Credit Line",
+                        "amount": 55668
+                    },
+                    {
+                        "id": "longDebt",
+                        "name": "Long-term Debt",
+                        "amount": 113746
+                    }
+                ],
+                "equity": [
+                    {
+                        "id": "apic",
+                        "name": "Owner / Share Capital",
+                        "amount": 567085
+                    },
+                    {
+                        "id": "retained",
+                        "name": "Retained Earnings",
+                        "amount": 254777
+                    }
+                ]
+            },
+            {
+                "period": "2024-Q2",
+                "year": 2024,
+                "quarter": "Quarter 2",
+                "assettotal": 1201900,
+                "liabilitiestotal": 350941,
+                "equitytotal": 850959,
+                "assets": [
+                    {
+                        "id": "cash",
+                        "name": "Cash",
+                        "amount": 364176
+                    },
+                    {
+                        "id": "ar",
+                        "name": "Accounts Receivable",
+                        "amount": 188698
+                    },
+                    {
+                        "id": "inventory",
+                        "name": "Inventory",
+                        "amount": 231967
+                    },
+                    {
+                        "id": "ppe",
+                        "name": "Property, Plant & Equipment (net)",
+                        "amount": 323588
+                    },
+                    {
+                        "id": "otherAssets",
+                        "name": "Other Non-current Assets",
+                        "amount": 93471
+                    }
+                ],
+                "liabilities": [
+                    {
+                        "id": "ap",
+                        "name": "Accounts Payable",
+                        "amount": 103879
+                    },
+                    {
+                        "id": "accrued",
+                        "name": "Accrued Expenses",
+                        "amount": 72294
+                    },
+                    {
+                        "id": "shortDebt",
+                        "name": "Short-term Debt / Credit Line",
+                        "amount": 59894
+                    },
+                    {
+                        "id": "longDebt",
+                        "name": "Long-term Debt",
+                        "amount": 114874
+                    }
+                ],
+                "equity": [
+                    {
+                        "id": "apic",
+                        "name": "Owner / Share Capital",
+                        "amount": 599926
+                    },
+                    {
+                        "id": "retained",
+                        "name": "Retained Earnings",
+                        "amount": 251033
+                    }
+                ]
+            },
+            {
+                "period": "2024-Q3",
+                "year": 2024,
+                "quarter": "Quarter 3",
+                "assettotal": 1190000,
+                "liabilitiestotal": 364734,
+                "equitytotal": 825266,
+                "assets": [
+                    {
+                        "id": "cash",
+                        "name": "Cash",
+                        "amount": 362950
+                    },
+                    {
+                        "id": "ar",
+                        "name": "Accounts Receivable",
+                        "amount": 174930
+                    },
+                    {
+                        "id": "inventory",
+                        "name": "Inventory",
+                        "amount": 230860
+                    },
+                    {
+                        "id": "ppe",
+                        "name": "Property, Plant & Equipment (net)",
+                        "amount": 325145
+                    },
+                    {
+                        "id": "otherAssets",
+                        "name": "Other Non-current Assets",
+                        "amount": 96115
+                    }
+                ],
+                "liabilities": [
+                    {
+                        "id": "ap",
+                        "name": "Accounts Payable",
+                        "amount": 108326
+                    },
+                    {
+                        "id": "accrued",
+                        "name": "Accrued Expenses",
+                        "amount": 73676
+                    },
+                    {
+                        "id": "shortDebt",
+                        "name": "Short-term Debt / Credit Line",
+                        "amount": 63707
+                    },
+                    {
+                        "id": "longDebt",
+                        "name": "Long-term Debt",
+                        "amount": 119025
+                    }
+                ],
+                "equity": [
+                    {
+                        "id": "apic",
+                        "name": "Owner / Share Capital",
+                        "amount": 574385
+                    },
+                    {
+                        "id": "retained",
+                        "name": "Retained Earnings",
+                        "amount": 250881
+                    }
+                ]
+            },
+            {
+                "period": "2024-Q4",
+                "year": 2024,
+                "quarter": "Quarter 4",
+                "assettotal": 1261400,
+                "liabilitiestotal": 366373,
+                "equitytotal": 895027,
+                "assets": [
+                    {
+                        "id": "cash",
+                        "name": "Cash",
+                        "amount": 371000
+                    },
+                    {
+                        "id": "ar",
+                        "name": "Accounts Receivable",
+                        "amount": 198705
+                    },
+                    {
+                        "id": "inventory",
+                        "name": "Inventory",
+                        "amount": 260329
+                    },
+                    {
+                        "id": "ppe",
+                        "name": "Property, Plant & Equipment (net)",
+                        "amount": 338592
+                    },
+                    {
+                        "id": "otherAssets",
+                        "name": "Other Non-current Assets",
+                        "amount": 92774
+                    }
+                ],
+                "liabilities": [
+                    {
+                        "id": "ap",
+                        "name": "Accounts Payable",
+                        "amount": 108446
+                    },
+                    {
+                        "id": "accrued",
+                        "name": "Accrued Expenses",
+                        "amount": 72542
+                    },
+                    {
+                        "id": "shortDebt",
+                        "name": "Short-term Debt / Credit Line",
+                        "amount": 59597
+                    },
+                    {
+                        "id": "longDebt",
+                        "name": "Long-term Debt",
+                        "amount": 125788
+                    }
+                ],
+                "equity": [
+                    {
+                        "id": "apic",
+                        "name": "Owner / Share Capital",
+                        "amount": 634574
+                    },
+                    {
+                        "id": "retained",
+                        "name": "Retained Earnings",
+                        "amount": 260453
+                    }
+                ]
+            },
+            {
+                "period": "2025-Q1",
+                "year": 2025,
+                "quarter": "Quarter 1",
+                "assettotal": 1254400,
+                "liabilitiestotal": 372813,
+                "equitytotal": 881587,
+                "assets": [
+                    {
+                        "id": "cash",
+                        "name": "Cash",
+                        "amount": 368793
+                    },
+                    {
+                        "id": "ar",
+                        "name": "Accounts Receivable",
+                        "amount": 184397
+                    },
+                    {
+                        "id": "inventory",
+                        "name": "Inventory",
+                        "amount": 265933
+                    },
+                    {
+                        "id": "ppe",
+                        "name": "Property, Plant & Equipment (net)",
+                        "amount": 333960
+                    },
+                    {
+                        "id": "otherAssets",
+                        "name": "Other Non-current Assets",
+                        "amount": 101317
+                    }
+                ],
+                "liabilities": [
+                    {
+                        "id": "ap",
+                        "name": "Accounts Payable",
+                        "amount": 115572
+                    },
+                    {
+                        "id": "accrued",
+                        "name": "Accrued Expenses",
+                        "amount": 73817
+                    },
+                    {
+                        "id": "shortDebt",
+                        "name": "Short-term Debt / Credit Line",
+                        "amount": 60271
+                    },
+                    {
+                        "id": "longDebt",
+                        "name": "Long-term Debt",
+                        "amount": 123153
+                    }
+                ],
+                "equity": [
+                    {
+                        "id": "apic",
+                        "name": "Owner / Share Capital",
+                        "amount": 608295
+                    },
+                    {
+                        "id": "retained",
+                        "name": "Retained Earnings",
+                        "amount": 273292
+                    }
+                ]
+            },
+            {
+                "period": "2025-Q2",
+                "year": 2025,
+                "quarter": "Quarter 2",
+                "assettotal": 1292800,
+                "liabilitiestotal": 382530,
+                "equitytotal": 910270,
+                "assets": [
+                    {
+                        "id": "cash",
+                        "name": "Cash",
+                        "amount": 391718
+                    },
+                    {
+                        "id": "ar",
+                        "name": "Accounts Receivable",
+                        "amount": 202970
+                    },
+                    {
+                        "id": "inventory",
+                        "name": "Inventory",
+                        "amount": 249510
+                    },
+                    {
+                        "id": "ppe",
+                        "name": "Property, Plant & Equipment (net)",
+                        "amount": 348062
+                    },
+                    {
+                        "id": "otherAssets",
+                        "name": "Other Non-current Assets",
+                        "amount": 100540
+                    }
+                ],
+                "liabilities": [
+                    {
+                        "id": "ap",
+                        "name": "Accounts Payable",
+                        "amount": 113229
+                    },
+                    {
+                        "id": "accrued",
+                        "name": "Accrued Expenses",
+                        "amount": 78801
+                    },
+                    {
+                        "id": "shortDebt",
+                        "name": "Short-term Debt / Credit Line",
+                        "amount": 65285
+                    },
+                    {
+                        "id": "longDebt",
+                        "name": "Long-term Debt",
+                        "amount": 125215
+                    }
+                ],
+                "equity": [
+                    {
+                        "id": "apic",
+                        "name": "Owner / Share Capital",
+                        "amount": 641740
+                    },
+                    {
+                        "id": "retained",
+                        "name": "Retained Earnings",
+                        "amount": 268530
+                    }
+                ]
+            },
+            {
+                "period": "2025-Q3",
+                "year": 2025,
+                "quarter": "Quarter 3",
+                "assettotal": 1280000,
+                "liabilitiestotal": 394361,
+                "equitytotal": 885639,
+                "assets": [
+                    {
+                        "id": "cash",
+                        "name": "Cash",
+                        "amount": 390400
+                    },
+                    {
+                        "id": "ar",
+                        "name": "Accounts Receivable",
+                        "amount": 188160
+                    },
+                    {
+                        "id": "inventory",
+                        "name": "Inventory",
+                        "amount": 248320
+                    },
+                    {
+                        "id": "ppe",
+                        "name": "Property, Plant & Equipment (net)",
+                        "amount": 349735
+                    },
+                    {
+                        "id": "otherAssets",
+                        "name": "Other Non-current Assets",
+                        "amount": 103385
+                    }
+                ],
+                "liabilities": [
+                    {
+                        "id": "ap",
+                        "name": "Accounts Payable",
+                        "amount": 117125
+                    },
+                    {
+                        "id": "accrued",
+                        "name": "Accrued Expenses",
+                        "amount": 79661
+                    },
+                    {
+                        "id": "shortDebt",
+                        "name": "Short-term Debt / Credit Line",
+                        "amount": 68882
+                    },
+                    {
+                        "id": "longDebt",
+                        "name": "Long-term Debt",
+                        "amount": 128693
+                    }
+                ],
+                "equity": [
+                    {
+                        "id": "apic",
+                        "name": "Owner / Share Capital",
+                        "amount": 616405
+                    },
+                    {
+                        "id": "retained",
+                        "name": "Retained Earnings",
+                        "amount": 269234
+                    }
+                ]
+            },
+            {
+                "period": "2025-Q4",
+                "year": 2025,
+                "quarter": "Quarter 4",
+                "assettotal": 1356800,
+                "liabilitiestotal": 386776,
+                "equitytotal": 970024,
+                "assets": [
+                    {
+                        "id": "cash",
+                        "name": "Cash",
+                        "amount": 399058
+                    },
+                    {
+                        "id": "ar",
+                        "name": "Accounts Receivable",
+                        "amount": 213733
+                    },
+                    {
+                        "id": "inventory",
+                        "name": "Inventory",
+                        "amount": 280018
+                    },
+                    {
+                        "id": "ppe",
+                        "name": "Property, Plant & Equipment (net)",
+                        "amount": 364200
+                    },
+                    {
+                        "id": "otherAssets",
+                        "name": "Other Non-current Assets",
+                        "amount": 99791
+                    }
+                ],
+                "liabilities": [
+                    {
+                        "id": "ap",
+                        "name": "Accounts Payable",
+                        "amount": 114486
+                    },
+                    {
+                        "id": "accrued",
+                        "name": "Accrued Expenses",
+                        "amount": 76582
+                    },
+                    {
+                        "id": "shortDebt",
+                        "name": "Short-term Debt / Credit Line",
+                        "amount": 62916
+                    },
+                    {
+                        "id": "longDebt",
+                        "name": "Long-term Debt",
+                        "amount": 132792
+                    }
+                ],
+                "equity": [
+                    {
+                        "id": "apic",
+                        "name": "Owner / Share Capital",
+                        "amount": 687747
+                    },
+                    {
+                        "id": "retained",
+                        "name": "Retained Earnings",
+                        "amount": 282277
+                    }
+                ]
+            }
+        ]
+    },
+    "incomeStatement": {
+        "frequency": "annual",
+        "currency": "USD",
+        "series": [
+            {
+                "period": "2021",
+                "year": 2021,
+                "cogs": 18736,
+                "openingInventory": 0,
+                "closingInventory": 218764.00,
+                "purchase": 237500,
+                "grossProfit": 157500,
+                "revenue": 390000,
+                "interest":5000,
+                "taxes": 15000,
+                "operatingExpenses": 40000,
+                "label": "FY2021"
+            },
+            {
+                "period": "2022",
+                "year": 2022,
+                "cogs": 216164,
+                "openingInventory": 218764.00,
+                "closingInventory": 230000.00,
+                "purchase":227400,
+                "grossProfit": 159600,
+                "revenue": 416272,
+                "interest":12369,
+                "taxes": 37106,
+                "operatingExpenses": 111318,
+                "label": "FY2022"
+            },
+            {
+                "period": "2023",
+                "year": 2023,
+                "cogs": 242561,
+                "openingInventory": 230000.00,
+                "closingInventory": 243439.00,
+                "purchase":256000,
+                "grossProfit": 152000,
+                "revenue": 495458,
+                "interest":11059,
+                "taxes":44236,
+                "operatingExpenses": 110590,
+                "label": "FY2023"
+            },
+            {
+                "period": "2024",
+                "year": 2024,
+                "cogs": 191910,
+                "openingInventory": 243439.00,
+                "closingInventory": 260329.00,
+                "purchase":208800,
+                "grossProfit": 146200,
+                "revenue": 475006,
+                "interest":16210,
+                "taxes":48630,
+                "operatingExpenses": 129680,
+                "label": "FY2024"
+            },
+            {
+                "period": "2025",
+                "year": 2025,
+                "cogs": 315311,
+                "openingInventory": 260329.00,
+                "closingInventory": 280018.00,
+                "purchase":335000,
+                "grossProfit": 175000,
+                "revenue": 611765,
+                "interest":20374,
+                "taxes": 48897,
+                "operatingExpenses": 142617,
+                "label": "FY2025"
+            }
+        ]
+    },
+    "cashInFlows": {
+        "frequency": "annual",
+        "currency": "USD",
+        "series": [
+            {
+                "period": 1,
+                "amount": 390000,
+                "label": "Year 1 inflow",
+                "breakdown": [
+                    {
+                        "id": "sales",
+                        "name": "Sales",
+                        "amount": 260000
+                    },
+                    {
+                        "id": "services",
+                        "name": "Services",
+                        "amount": 70000
+                    },
+                    {
+                        "id": "royalties",
+                        "name": "Royalties",
+                        "amount": 34000
+                    },
+                    {
+                        "id": "interest",
+                        "name": "Interest Income",
+                        "amount": 15000
+                    },
+                    {
+                        "id": "commissions",
+                        "name": "Commissions",
+                        "amount": 11000
+                    }
+                ],
+                "monthlyseries": [
+                    {
+                        "monthIndex": 1,
+                        "year": 1,
+                        "month": 1,
+                        "amount": 33123.29,
+                        "label": "Year 1 inflow - M1"
+                    },
+                    {
+                        "monthIndex": 2,
+                        "year": 1,
+                        "month": 2,
+                        "amount": 29917.81,
+                        "label": "Year 1 inflow - M2"
+                    },
+                    {
+                        "monthIndex": 3,
+                        "year": 1,
+                        "month": 3,
+                        "amount": 33123.29,
+                        "label": "Year 1 inflow - M3"
+                    },
+                    {
+                        "monthIndex": 4,
+                        "year": 1,
+                        "month": 4,
+                        "amount": 32054.79,
+                        "label": "Year 1 inflow - M4"
+                    },
+                    {
+                        "monthIndex": 5,
+                        "year": 1,
+                        "month": 5,
+                        "amount": 33123.29,
+                        "label": "Year 1 inflow - M5"
+                    },
+                    {
+                        "monthIndex": 6,
+                        "year": 1,
+                        "month": 6,
+                        "amount": 32054.79,
+                        "label": "Year 1 inflow - M6"
+                    },
+                    {
+                        "monthIndex": 7,
+                        "year": 1,
+                        "month": 7,
+                        "amount": 33123.29,
+                        "label": "Year 1 inflow - M7"
+                    },
+                    {
+                        "monthIndex": 8,
+                        "year": 1,
+                        "month": 8,
+                        "amount": 33123.29,
+                        "label": "Year 1 inflow - M8"
+                    },
+                    {
+                        "monthIndex": 9,
+                        "year": 1,
+                        "month": 9,
+                        "amount": 32054.79,
+                        "label": "Year 1 inflow - M9"
+                    },
+                    {
+                        "monthIndex": 10,
+                        "year": 1,
+                        "month": 10,
+                        "amount": 33123.29,
+                        "label": "Year 1 inflow - M10"
+                    },
+                    {
+                        "monthIndex": 11,
+                        "year": 1,
+                        "month": 11,
+                        "amount": 32054.79,
+                        "label": "Year 1 inflow - M11"
+                    },
+                    {
+                        "monthIndex": 12,
+                        "year": 1,
+                        "month": 12,
+                        "amount": 33123.29,
+                        "label": "Year 1 inflow - M12"
+                    }
+                ]
+            },
+            {
+                "period": 2,
+                "amount": 416272,
+                "label": "Year 2 inflow",
+                "breakdown": [
+                    {
+                        "id": "sales",
+                        "name": "Sales",
+                        "amount": 247000,
+                        "share_pct": 59.34
+                    },
+                    {
+                        "id": "services",
+                        "name": "Services",
+                        "amount": 76000,
+                        "share_pct": 18.26
+                    },
+                    {
+                        "id": "royalties",
+                        "name": "Royalties",
+                        "amount": 30000,
+                        "share_pct": 7.21
+                    },
+                    {
+                        "id": "commission",
+                        "name": "Commission",
+                        "amount": 2000,
+                        "share_pct": 0.48
+                    },
+                    {
+                        "id": "interest",
+                        "name": "Interest Income",
+                        "amount": 61272,
+                        "share_pct": 14.72
+                    }
+                ],
+                "monthlyseries": [
+                    {
+                        "monthIndex": 13,
+                        "year": 2,
+                        "month": 1,
+                        "amount": 35354.61,
+                        "label": "Year 2 inflow - M1"
+                    },
+                    {
+                        "monthIndex": 14,
+                        "year": 2,
+                        "month": 2,
+                        "amount": 31933.19,
+                        "label": "Year 2 inflow - M2"
+                    },
+                    {
+                        "monthIndex": 15,
+                        "year": 2,
+                        "month": 3,
+                        "amount": 35354.61,
+                        "label": "Year 2 inflow - M3"
+                    },
+                    {
+                        "monthIndex": 16,
+                        "year": 2,
+                        "month": 4,
+                        "amount": 34214.14,
+                        "label": "Year 2 inflow - M4"
+                    },
+                    {
+                        "monthIndex": 17,
+                        "year": 2,
+                        "month": 5,
+                        "amount": 35354.61,
+                        "label": "Year 2 inflow - M5"
+                    },
+                    {
+                        "monthIndex": 18,
+                        "year": 2,
+                        "month": 6,
+                        "amount": 34214.14,
+                        "label": "Year 2 inflow - M6"
+                    },
+                    {
+                        "monthIndex": 19,
+                        "year": 2,
+                        "month": 7,
+                        "amount": 35354.61,
+                        "label": "Year 2 inflow - M7"
+                    },
+                    {
+                        "monthIndex": 20,
+                        "year": 2,
+                        "month": 8,
+                        "amount": 35354.61,
+                        "label": "Year 2 inflow - M8"
+                    },
+                    {
+                        "monthIndex": 21,
+                        "year": 2,
+                        "month": 9,
+                        "amount": 34214.14,
+                        "label": "Year 2 inflow - M9"
+                    },
+                    {
+                        "monthIndex": 22,
+                        "year": 2,
+                        "month": 10,
+                        "amount": 35354.61,
+                        "label": "Year 2 inflow - M10"
+                    },
+                    {
+                        "monthIndex": 23,
+                        "year": 2,
+                        "month": 11,
+                        "amount": 34214.14,
+                        "label": "Year 2 inflow - M11"
+                    },
+                    {
+                        "monthIndex": 24,
+                        "year": 2,
+                        "month": 12,
+                        "amount": 35354.59,
+                        "label": "Year 2 inflow - M12 (adjusted)"
+                    }
+                ]
+            },
+            {
+                "period": 3,
+                "amount": 495458,
+                "label": "Year 3 inflow",
+                "breakdown": [
+                    {
+                        "id": "sales",
+                        "name": "Sales",
+                        "amount": 330000
+                    },
+                    {
+                        "id": "services",
+                        "name": "Services",
+                        "amount": 80000
+                    },
+                    {
+                        "id": "royalties",
+                        "name": "Royalties",
+                        "amount": 70916
+                    },
+                    {
+                        "id": "commissions",
+                        "name": "Commissions",
+                        "amount": 14542
+                    }
+                ],
+                "monthlyseries": [
+                    {
+                        "monthIndex": 25,
+                        "year": 3,
+                        "month": 1,
+                        "amount": 41919.84,
+                        "label": "Year 3 inflow - M1"
+                    },
+                    {
+                        "monthIndex": 26,
+                        "year": 3,
+                        "month": 2,
+                        "amount": 40836.5,
+                        "label": "Year 3 inflow - M2"
+                    },
+                    {
+                        "monthIndex": 27,
+                        "year": 3,
+                        "month": 3,
+                        "amount": 41919.84,
+                        "label": "Year 3 inflow - M3"
+                    },
+                    {
+                        "monthIndex": 28,
+                        "year": 3,
+                        "month": 4,
+                        "amount": 40836.4,
+                        "label": "Year 3 inflow - M4"
+                    },
+                    {
+                        "monthIndex": 29,
+                        "year": 3,
+                        "month": 5,
+                        "amount": 41919.84,
+                        "label": "Year 3 inflow - M5"
+                    },
+                    {
+                        "monthIndex": 30,
+                        "year": 3,
+                        "month": 6,
+                        "amount": 40836.4,
+                        "label": "Year 3 inflow - M6"
+                    },
+                    {
+                        "monthIndex": 31,
+                        "year": 3,
+                        "month": 7,
+                        "amount": 41919.84,
+                        "label": "Year 3 inflow - M7"
+                    },
+                    {
+                        "monthIndex": 32,
+                        "year": 3,
+                        "month": 8,
+                        "amount": 41919.84,
+                        "label": "Year 3 inflow - M8"
+                    },
+                    {
+                        "monthIndex": 33,
+                        "year": 3,
+                        "month": 9,
+                        "amount": 40836.4,
+                        "label": "Year 3 inflow - M9"
+                    },
+                    {
+                        "monthIndex": 34,
+                        "year": 3,
+                        "month": 10,
+                        "amount": 41919.84,
+                        "label": "Year 3 inflow - M10"
+                    },
+                    {
+                        "monthIndex": 35,
+                        "year": 3,
+                        "month": 11,
+                        "amount": 40836.4,
+                        "label": "Year 3 inflow - M11"
+                    },
+                    {
+                        "monthIndex": 36,
+                        "year": 3,
+                        "month": 12,
+                        "amount": 41919.86,
+                        "label": "Year 3 inflow - M12"
+                    }
+                ]
+            },
+            {
+                "period": 4,
+                "amount": 475006,
+                "label": "Year 4 inflow",
+                "breakdown": [
+                    {
+                        "id": "sales",
+                        "name": "Sales",
+                        "amount": 238000,
+                        "share_pct": 50.10
+                    },
+                    {
+                        "id": "services",
+                        "name": "Services",
+                        "amount": 68000,
+                        "share_pct": 14.32
+                    },
+                    {
+                        "id": "royalties",
+                        "name": "Royalties",
+                        "amount": 12000,
+                        "share_pct": 2.53
+                    },
+                    {
+                        "id": "commission",
+                        "name": "Commission",
+                        "amount": 2000,
+                        "share_pct": 0.42
+                    },
+                    {
+                        "id": "interest",
+                        "name": "Interest Income",
+                        "amount": 155006,
+                        "share_pct": 32.63
+                    }
+                ],
+                "monthlyseries": [
+                    {
+                        "monthIndex": 37,
+                        "year": 4,
+                        "month": 1,
+                        "amount": 40232.75,
+                        "label": "Year 4 inflow - M1"
+                    },
+                    {
+                        "monthIndex": 38,
+                        "year": 4,
+                        "month": 2,
+                        "amount": 37637.09,
+                        "label": "Year 4 inflow - M2"
+                    },
+                    {
+                        "monthIndex": 39,
+                        "year": 4,
+                        "month": 3,
+                        "amount": 40232.75,
+                        "label": "Year 4 inflow - M3"
+                    },
+                    {
+                        "monthIndex": 40,
+                        "year": 4,
+                        "month": 4,
+                        "amount": 38934.92,
+                        "label": "Year 4 inflow - M4"
+                    },
+                    {
+                        "monthIndex": 41,
+                        "year": 4,
+                        "month": 5,
+                        "amount": 40232.75,
+                        "label": "Year 4 inflow - M5"
+                    },
+                    {
+                        "monthIndex": 42,
+                        "year": 4,
+                        "month": 6,
+                        "amount": 38934.92,
+                        "label": "Year 4 inflow - M6"
+                    },
+                    {
+                        "monthIndex": 43,
+                        "year": 4,
+                        "month": 7,
+                        "amount": 40232.75,
+                        "label": "Year 4 inflow - M7"
+                    },
+                    {
+                        "monthIndex": 44,
+                        "year": 4,
+                        "month": 8,
+                        "amount": 40232.75,
+                        "label": "Year 4 inflow - M8"
+                    },
+                    {
+                        "monthIndex": 45,
+                        "year": 4,
+                        "month": 9,
+                        "amount": 38934.92,
+                        "label": "Year 4 inflow - M9"
+                    },
+                    {
+                        "monthIndex": 46,
+                        "year": 4,
+                        "month": 10,
+                        "amount": 40232.75,
+                        "label": "Year 4 inflow - M10"
+                    },
+                    {
+                        "monthIndex": 47,
+                        "year": 4,
+                        "month": 11,
+                        "amount": 38934.92,
+                        "label": "Year 4 inflow - M11"
+                    },
+                    {
+                        "monthIndex": 48,
+                        "year": 4,
+                        "month": 12,
+                        "amount": 40232.73,
+                        "label": "Year 4 inflow - M12 (adjusted)"
+                    }
+                ]
+            },
+            {
+                "period": 5,
+                "amount": 611765,
+                "label": "Year 5 inflow",
+                "breakdown": [
+                    {
+                        "id": "sales",
+                        "name": "Sales",
+                        "amount": 398772
+                    },
+                    {
+                        "id": "services",
+                        "name": "Services",
+                        "amount": 105363
+                    },
+                    {
+                        "id": "royalties",
+                        "name": "Royalties",
+                        "amount": 92578
+                    },
+                    {
+                        "id": "oneoff",
+                        "name": "One-time / Asset Sale",
+                        "amount": 15052
+                    }
+                ],
+                "monthlyseries": [
+                    {
+                        "monthIndex": 49,
+                        "year": 5,
+                        "month": 1,
+                        "amount": 51797.97,
+                        "label": "Year 5 inflow - M1"
+                    },
+                    {
+                        "monthIndex": 50,
+                        "year": 5,
+                        "month": 2,
+                        "amount": 47591.68,
+                        "label": "Year 5 inflow - M2"
+                    },
+                    {
+                        "monthIndex": 51,
+                        "year": 5,
+                        "month": 3,
+                        "amount": 51797.97,
+                        "label": "Year 5 inflow - M3"
+                    },
+                    {
+                        "monthIndex": 52,
+                        "year": 5,
+                        "month": 4,
+                        "amount": 50395.88,
+                        "label": "Year 5 inflow - M4"
+                    },
+                    {
+                        "monthIndex": 53,
+                        "year": 5,
+                        "month": 5,
+                        "amount": 51797.97,
+                        "label": "Year 5 inflow - M5"
+                    },
+                    {
+                        "monthIndex": 54,
+                        "year": 5,
+                        "month": 6,
+                        "amount": 50395.88,
+                        "label": "Year 5 inflow - M6"
+                    },
+                    {
+                        "monthIndex": 55,
+                        "year": 5,
+                        "month": 7,
+                        "amount": 51797.97,
+                        "label": "Year 5 inflow - M7"
+                    },
+                    {
+                        "monthIndex": 56,
+                        "year": 5,
+                        "month": 8,
+                        "amount": 51797.97,
+                        "label": "Year 5 inflow - M8"
+                    },
+                    {
+                        "monthIndex": 57,
+                        "year": 5,
+                        "month": 9,
+                        "amount": 50395.88,
+                        "label": "Year 5 inflow - M9"
+                    },
+                    {
+                        "monthIndex": 58,
+                        "year": 5,
+                        "month": 10,
+                        "amount": 51797.97,
+                        "label": "Year 5 inflow - M10"
+                    },
+                    {
+                        "monthIndex": 59,
+                        "year": 5,
+                        "month": 11,
+                        "amount": 50395.88,
+                        "label": "Year 5 inflow - M11"
+                    },
+                    {
+                        "monthIndex": 60,
+                        "year": 5,
+                        "month": 12,
+                        "amount": 51797.98,
+                        "label": "Year 5 inflow - M12 (adjusted)"
+                    }
+                ]
+            }
+        ]
+    },
+    "cashOutFlows": {
+        "frequency": "annual",
+        "currency": "USD",
+        "series": [
+            {
+                "period": 1,
+                "amount": 370500,
+                "label": "Year 1 outflows (Opex, maintenance, taxes)",
+                "breakdown": [
+                    {
+                        "id": "payroll",
+                        "name": "Payroll & Benefits",
+                        "amount": 70000,
+                        "share_pct": 18.89
+                    },
+                    {
+                        "id": "opex",
+                        "name": "Operating Expenses",
+                        "amount": 40000,
+                        "share_pct": 10.80
+                    },
+                    {
+                        "id": "rent",
+                        "name": "Rent / Facilities",
+                        "amount": 10000,
+                        "share_pct": 2.70
+                    },
+                    {
+                        "id": "taxes",
+                        "name": "Taxes",
+                        "amount": 15000,
+                        "share_pct": 4.05
+                    },
+                    {
+                        "id": "interest",
+                        "name": "Interest Expense",
+                        "amount": 5000,
+                        "share_pct": 1.35
+                    },
+                    {
+                        "id": "capex",
+                        "name": "Capital Expenditure",
+                        "amount": 230500,
+                        "share_pct": 2.70
+                    }
+                ],
+                "monthlyseries": [
+                    {
+                        "monthIndex": 1,
+                        "year": 1,
+                        "month": 1,
+                        "amount": 31467.12,
+                        "label": "Year 1 outflow - M1"
+                    },
+                    {
+                        "monthIndex": 2,
+                        "year": 1,
+                        "month": 2,
+                        "amount": 28421.92,
+                        "label": "Year 1 outflow - M2"
+                    },
+                    {
+                        "monthIndex": 3,
+                        "year": 1,
+                        "month": 3,
+                        "amount": 31467.12,
+                        "label": "Year 1 outflow - M3"
+                    },
+                    {
+                        "monthIndex": 4,
+                        "year": 1,
+                        "month": 4,
+                        "amount": 30452.05,
+                        "label": "Year 1 outflow - M4"
+                    },
+                    {
+                        "monthIndex": 5,
+                        "year": 1,
+                        "month": 5,
+                        "amount": 31467.12,
+                        "label": "Year 1 outflow - M5"
+                    },
+                    {
+                        "monthIndex": 6,
+                        "year": 1,
+                        "month": 6,
+                        "amount": 30452.05,
+                        "label": "Year 1 outflow - M6"
+                    },
+                    {
+                        "monthIndex": 7,
+                        "year": 1,
+                        "month": 7,
+                        "amount": 31467.12,
+                        "label": "Year 1 outflow - M7"
+                    },
+                    {
+                        "monthIndex": 8,
+                        "year": 1,
+                        "month": 8,
+                        "amount": 31467.12,
+                        "label": "Year 1 outflow - M8"
+                    },
+                    {
+                        "monthIndex": 9,
+                        "year": 1,
+                        "month": 9,
+                        "amount": 30452.05,
+                        "label": "Year 1 outflow - M9"
+                    },
+                    {
+                        "monthIndex": 10,
+                        "year": 1,
+                        "month": 10,
+                        "amount": 31467.12,
+                        "label": "Year 1 outflow - M10"
+                    },
+                    {
+                        "monthIndex": 11,
+                        "year": 1,
+                        "month": 11,
+                        "amount": 30452.05,
+                        "label": "Year 1 outflow - M11"
+                    },
+                    {
+                        "monthIndex": 12,
+                        "year": 1,
+                        "month": 12,
+                        "amount": 31467.16,
+                        "label": "Year 1 outflow - M12"
+                    }
+                ]
+            },
+            {
+                "period": 2,
+                "amount": 395797,
+                "label": "Year 2 outflows",
+                "breakdown": [
+                    {
+                        "id": "payroll",
+                        "name": "Payroll & Benefits",
+                        "amount": 185530
+                    },
+                    {
+                        "id": "opex",
+                        "name": "Operating Expenses",
+                        "amount": 111318
+                    },
+                    {
+                        "id": "rent",
+                        "name": "Rent / Facilities",
+                        "amount": 24737
+                    },
+                    {
+                        "id": "taxes",
+                        "name": "Taxes",
+                        "amount": 37106
+                    },
+                    {
+                        "id": "interest",
+                        "name": "Interest Expense",
+                        "amount": 12369
+                    },
+                    {
+                        "id": "capex",
+                        "name": "Capital Expenditure",
+                        "amount": 24737
+                    }
+                ],
+                "monthlyseries": [
+                    {
+                        "monthIndex": 13,
+                        "year": 2,
+                        "month": 1,
+                        "amount": 33615.64,
+                        "label": "Year 2 outflow - M1"
+                    },
+                    {
+                        "monthIndex": 14,
+                        "year": 2,
+                        "month": 2,
+                        "amount": 30362.51,
+                        "label": "Year 2 outflow - M2"
+                    },
+                    {
+                        "monthIndex": 15,
+                        "year": 2,
+                        "month": 3,
+                        "amount": 33615.64,
+                        "label": "Year 2 outflow - M3"
+                    },
+                    {
+                        "monthIndex": 16,
+                        "year": 2,
+                        "month": 4,
+                        "amount": 32531.26,
+                        "label": "Year 2 outflow - M4"
+                    },
+                    {
+                        "monthIndex": 17,
+                        "year": 2,
+                        "month": 5,
+                        "amount": 33615.64,
+                        "label": "Year 2 outflow - M5"
+                    },
+                    {
+                        "monthIndex": 18,
+                        "year": 2,
+                        "month": 6,
+                        "amount": 32531.26,
+                        "label": "Year 2 outflow - M6"
+                    },
+                    {
+                        "monthIndex": 19,
+                        "year": 2,
+                        "month": 7,
+                        "amount": 33615.64,
+                        "label": "Year 2 outflow - M7"
+                    },
+                    {
+                        "monthIndex": 20,
+                        "year": 2,
+                        "month": 8,
+                        "amount": 33615.64,
+                        "label": "Year 2 outflow - M8"
+                    },
+                    {
+                        "monthIndex": 21,
+                        "year": 2,
+                        "month": 9,
+                        "amount": 32531.26,
+                        "label": "Year 2 outflow - M9"
+                    },
+                    {
+                        "monthIndex": 22,
+                        "year": 2,
+                        "month": 10,
+                        "amount": 33615.64,
+                        "label": "Year 2 outflow - M10"
+                    },
+                    {
+                        "monthIndex": 23,
+                        "year": 2,
+                        "month": 11,
+                        "amount": 32531.26,
+                        "label": "Year 2 outflow - M11"
+                    },
+                    {
+                        "monthIndex": 24,
+                        "year": 2,
+                        "month": 12,
+                        "amount": 33615.61,
+                        "label": "Year 2 outflow - M12 (adjusted)"
+                    }
+                ]
+            },
+            {
+                "period": 3,
+                "amount": 376007,
+                "label": "Year 3 outflows",
+                "breakdown": [
+                    {
+                        "id": "payroll",
+                        "name": "Payroll & Benefits",
+                        "amount": 176945
+                    },
+                    {
+                        "id": "opex",
+                        "name": "Operating Expenses",
+                        "amount": 110590
+                    },
+                    {
+                        "id": "rent",
+                        "name": "Rent / Facilities",
+                        "amount": 22118
+                    },
+                    {
+                        "id": "taxes",
+                        "name": "Taxes",
+                        "amount": 44236
+                    },
+                    {
+                        "id": "interest",
+                        "name": "Interest Expense",
+                        "amount": 11059
+                    },
+                    {
+                        "id": "capex",
+                        "name": "Capital Expenditure",
+                        "amount": 11059
+                    }
+                ],
+                "monthlyseries": [
+                    {
+                        "monthIndex": 25,
+                        "year": 3,
+                        "month": 1,
+                        "amount": 31934.84,
+                        "label": "Year 3 outflow - M1"
+                    },
+                    {
+                        "monthIndex": 26,
+                        "year": 3,
+                        "month": 2,
+                        "amount": 28844.37,
+                        "label": "Year 3 outflow - M2"
+                    },
+                    {
+                        "monthIndex": 27,
+                        "year": 3,
+                        "month": 3,
+                        "amount": 31934.84,
+                        "label": "Year 3 outflow - M3"
+                    },
+                    {
+                        "monthIndex": 28,
+                        "year": 3,
+                        "month": 4,
+                        "amount": 30904.68,
+                        "label": "Year 3 outflow - M4"
+                    },
+                    {
+                        "monthIndex": 29,
+                        "year": 3,
+                        "month": 5,
+                        "amount": 31934.84,
+                        "label": "Year 3 outflow - M5"
+                    },
+                    {
+                        "monthIndex": 30,
+                        "year": 3,
+                        "month": 6,
+                        "amount": 30904.68,
+                        "label": "Year 3 outflow - M6"
+                    },
+                    {
+                        "monthIndex": 31,
+                        "year": 3,
+                        "month": 7,
+                        "amount": 31934.84,
+                        "label": "Year 3 outflow - M7"
+                    },
+                    {
+                        "monthIndex": 32,
+                        "year": 3,
+                        "month": 8,
+                        "amount": 31934.84,
+                        "label": "Year 3 outflow - M8"
+                    },
+                    {
+                        "monthIndex": 33,
+                        "year": 3,
+                        "month": 9,
+                        "amount": 30904.68,
+                        "label": "Year 3 outflow - M9"
+                    },
+                    {
+                        "monthIndex": 34,
+                        "year": 3,
+                        "month": 10,
+                        "amount": 31934.84,
+                        "label": "Year 3 outflow - M10"
+                    },
+                    {
+                        "monthIndex": 35,
+                        "year": 3,
+                        "month": 11,
+                        "amount": 30904.68,
+                        "label": "Year 3 outflow - M11"
+                    },
+                    {
+                        "monthIndex": 36,
+                        "year": 3,
+                        "month": 12,
+                        "amount": 31934.87,
+                        "label": "Year 3 outflow - M12 (adjusted)"
+                    }
+                ]
+            },
+            {
+                "period": 4,
+                "amount": 453880,
+                "label": "Year 4 outflows",
+                "breakdown": [
+                    {
+                        "id": "payroll",
+                        "name": "Payroll & Benefits",
+                        "amount": 210730
+                    },
+                    {
+                        "id": "opex",
+                        "name": "Operating Expenses",
+                        "amount": 129680
+                    },
+                    {
+                        "id": "rent",
+                        "name": "Rent / Facilities",
+                        "amount": 32420
+                    },
+                    {
+                        "id": "taxes",
+                        "name": "Taxes",
+                        "amount": 48630
+                    },
+                    {
+                        "id": "interest",
+                        "name": "Interest Expense",
+                        "amount": 16210
+                    },
+                    {
+                        "id": "capex",
+                        "name": "Capital Expenditure",
+                        "amount": 16210
+                    }
+                ],
+                "monthlyseries": [
+                    {
+                        "monthIndex": 37,
+                        "year": 4,
+                        "month": 1,
+                        "amount": 38443.39,
+                        "label": "Year 4 outflow - M1"
+                    },
+                    {
+                        "monthIndex": 38,
+                        "year": 4,
+                        "month": 2,
+                        "amount": 35963.17,
+                        "label": "Year 4 outflow - M2"
+                    },
+                    {
+                        "monthIndex": 39,
+                        "year": 4,
+                        "month": 3,
+                        "amount": 38443.39,
+                        "label": "Year 4 outflow - M3"
+                    },
+                    {
+                        "monthIndex": 40,
+                        "year": 4,
+                        "month": 4,
+                        "amount": 37203.28,
+                        "label": "Year 4 outflow - M4"
+                    },
+                    {
+                        "monthIndex": 41,
+                        "year": 4,
+                        "month": 5,
+                        "amount": 38443.39,
+                        "label": "Year 4 outflow - M5"
+                    },
+                    {
+                        "monthIndex": 42,
+                        "year": 4,
+                        "month": 6,
+                        "amount": 37203.28,
+                        "label": "Year 4 outflow - M6"
+                    },
+                    {
+                        "monthIndex": 43,
+                        "year": 4,
+                        "month": 7,
+                        "amount": 38443.39,
+                        "label": "Year 4 outflow - M7"
+                    },
+                    {
+                        "monthIndex": 44,
+                        "year": 4,
+                        "month": 8,
+                        "amount": 38443.39,
+                        "label": "Year 4 outflow - M8"
+                    },
+                    {
+                        "monthIndex": 45,
+                        "year": 4,
+                        "month": 9,
+                        "amount": 37203.28,
+                        "label": "Year 4 outflow - M9"
+                    },
+                    {
+                        "monthIndex": 46,
+                        "year": 4,
+                        "month": 10,
+                        "amount": 38443.39,
+                        "label": "Year 4 outflow - M10"
+                    },
+                    {
+                        "monthIndex": 47,
+                        "year": 4,
+                        "month": 11,
+                        "amount": 37203.28,
+                        "label": "Year 4 outflow - M11"
+                    },
+                    {
+                        "monthIndex": 48,
+                        "year": 4,
+                        "month": 12,
+                        "amount": 38443.37,
+                        "label": "Year 4 outflow - M12 (adjusted)"
+                    }
+                ]
+            },
+            {
+                "period": 5,
+                "amount": 488972,
+                "label": "Year 5 outflows",
+                "breakdown": [
+                    {
+                        "id": "payroll",
+                        "name": "Payroll & Benefits",
+                        "amount": 224112
+                    },
+                    {
+                        "id": "opex",
+                        "name": "Operating Expenses",
+                        "amount": 142617
+                    },
+                    {
+                        "id": "rent",
+                        "name": "Rent / Facilities",
+                        "amount": 32598
+                    },
+                    {
+                        "id": "taxes",
+                        "name": "Taxes",
+                        "amount": 48897
+                    },
+                    {
+                        "id": "interest",
+                        "name": "Interest Expense",
+                        "amount": 20374
+                    },
+                    {
+                        "id": "capex",
+                        "name": "Capital Expenditure",
+                        "amount": 20374
+                    }
+                ],
+                "monthlyseries": [
+                    {
+                        "monthIndex": 49,
+                        "year": 5,
+                        "month": 1,
+                        "amount": 41529.13,
+                        "label": "Year 5 outflow - M1"
+                    },
+                    {
+                        "monthIndex": 50,
+                        "year": 5,
+                        "month": 2,
+                        "amount": 37510.18,
+                        "label": "Year 5 outflow - M2"
+                    },
+                    {
+                        "monthIndex": 51,
+                        "year": 5,
+                        "month": 3,
+                        "amount": 41529.13,
+                        "label": "Year 5 outflow - M3"
+                    },
+                    {
+                        "monthIndex": 52,
+                        "year": 5,
+                        "month": 4,
+                        "amount": 40189.48,
+                        "label": "Year 5 outflow - M4"
+                    },
+                    {
+                        "monthIndex": 53,
+                        "year": 5,
+                        "month": 5,
+                        "amount": 41529.13,
+                        "label": "Year 5 outflow - M5"
+                    },
+                    {
+                        "monthIndex": 54,
+                        "year": 5,
+                        "month": 6,
+                        "amount": 40189.48,
+                        "label": "Year 5 outflow - M6"
+                    },
+                    {
+                        "monthIndex": 55,
+                        "year": 5,
+                        "month": 7,
+                        "amount": 41529.13,
+                        "label": "Year 5 outflow - M7"
+                    },
+                    {
+                        "monthIndex": 56,
+                        "year": 5,
+                        "month": 8,
+                        "amount": 41529.13,
+                        "label": "Year 5 outflow - M8"
+                    },
+                    {
+                        "monthIndex": 57,
+                        "year": 5,
+                        "month": 9,
+                        "amount": 40189.48,
+                        "label": "Year 5 outflow - M9"
+                    },
+                    {
+                        "monthIndex": 58,
+                        "year": 5,
+                        "month": 10,
+                        "amount": 41529.13,
+                        "label": "Year 5 outflow - M10"
+                    },
+                    {
+                        "monthIndex": 59,
+                        "year": 5,
+                        "month": 11,
+                        "amount": 40189.48,
+                        "label": "Year 5 outflow - M11"
+                    },
+                    {
+                        "monthIndex": 60,
+                        "year": 5,
+                        "month": 12,
+                        "amount": 41529.12,
+                        "label": "Year 5 outflow - M12"
+                    }
+                ]
+            }
+        ]
+    }
+}

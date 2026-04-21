@@ -193,6 +193,11 @@ export class DrawingTools extends SampleBase<{}, {}> {
             }
         }
       }
+      if (target && target.id == "freehand") {
+        diagramInstance.snapSettings.constraints = SnapConstraints.ShowLines;
+      } else {
+        diagramInstance.snapSettings.constraints = (SnapConstraints.SnapToObject | SnapConstraints.SnapToLines) | SnapConstraints.ShowLines;
+      }
     };
   }
   render() {
@@ -531,7 +536,7 @@ function getImageNode(): void {
     | ImageModel
     | TextModel
     | ConnectorModel;
-  drawingshape = { type: "Image", source: "./src/diagram/employee.png" };
+  drawingshape = { type: "Image", source: "https://ej2.syncfusion.com/react/demos/src/diagram/employee.png" };
   node = {
     shape: drawingshape
   };

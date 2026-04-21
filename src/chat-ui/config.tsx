@@ -12,16 +12,16 @@ export const ChatUISampleOrder: Object = [
       { 'displayName': 'messageData.json', 'path': 'src/chat-ui/messageData.json' }
     ]
   },
-  { 'path': 'chat-ui/loadOn-demand',
+  { 'path': 'chat-ui/load-on-demand',
     'component': 'LoadOnDemand',
     'name': 'Load On-demand',
-    'description':'Displays the loadon-demand supports in the ChatUI component, displaying initial set of messages and loads dynamically when the scroll hits top.',
+    'description':'Displays the load-on-demand supports in the ChatUI component, displaying initial set of messages and loads dynamically when the scroll hits top.',
     'order': '01',
     'category': 'Chat UI',
     'api':'{"ChatUIComponent":["headerText", "headerIconCss", "messages", "user", "loadOnDemand"] }',
     'sourceFiles': [
-      { 'displayName': 'loadOn-demand.tsx', 'path': 'src/chat-ui/loadOn-demand.tsx' },
-      { 'displayName': 'loadOn-demand.jsx', 'path': 'src/chat-ui/loadOn-demand.jsx' }
+      { 'displayName': 'load-on-demand.tsx', 'path': 'src/chat-ui/load-on-demand.tsx' },
+      { 'displayName': 'load-on-demand.jsx', 'path': 'src/chat-ui/load-on-demand.jsx' }
     ]
   },
   { 'path': 'chat-ui/attachments',
@@ -30,7 +30,6 @@ export const ChatUISampleOrder: Object = [
     'description':'Displays the attachment support for the ChatUI component, Showcases the chat component integration with other Chat UI control.',
     'order': '01',
     'category': 'Chat UI',
-    'type': 'new',
     'api':'{"ChatUIComponent":["user", "attachmentSettings", "enableAttachments", "headerText", "headerIconCss", "emptyChatTemplate", "headerToolbar", "messages"] }',
     'sourceFiles': [
       { 'displayName': 'attachments.tsx', 'path': 'src/chat-ui/attachments.tsx' },
@@ -67,7 +66,7 @@ export const ChatUISampleOrder: Object = [
     'component': 'ChatIntegration',
     'name': 'Use Case',
     'description':'Displays the integration of other components setups for the ChatUI component, offering a clear view of initial configurations and preset options available.',
-    'order': '02',
+    'order': '01',
     'category': 'Chat UI',
     'api':'{"ChatUIComponent":["messages", "user", "timeStampFormat", "showTimeStamp", "headerText", "headerIconCss"] }',
     'sourceFiles': [

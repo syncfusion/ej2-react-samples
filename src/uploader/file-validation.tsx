@@ -2,7 +2,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
 import {PropertyPane} from '../common/property-pane';
-import {UploaderComponent, SelectedEventArgs, FileInfo, RemovingEventArgs} from '@syncfusion/ej2-react-inputs';
+import {UploaderComponent, SelectedEventArgs, FileInfo, RemovingEventArgs, FailureEventArgs} from '@syncfusion/ej2-react-inputs';
 import { ChangeEventArgs } from '@syncfusion/ej2-react-buttons';
 import './uploader.css';
 
@@ -54,18 +54,24 @@ private onFileSelected(args : SelectedEventArgs): void {
 private onRemoveFile(args: RemovingEventArgs): void {
     args.postRawFile = false;
 }
+private onFailure(args: FailureEventArgs): void {
+	if (args.response && args.response.statusText !== '') {
+		args.statusText = args.response.statusText;
+	}
+}
 
 public render(): JSX.Element {
     return (
       <div className = 'control-pane' ref={this.dropContainerRef}>
 			<div className='control-section col-lg-12 uploadpreview'>
 				<div className='upload_wrapper'>
-					<UploaderComponent id='validation' type = 'file' ref = {(scope) => {this.uploadObj = scope}}
+					<UploaderComponent id='UploadFiles' type = 'file' ref = {(scope) => {this.uploadObj = scope}}
 						asyncSettings = {this.asyncSettings}
 						selected={this.onFileSelected.bind(this)}
 						minFileSize= {this.minFileSize}
 						autoUpload = {this.autoUpload}
 						removing= { this.onRemoveFile.bind(this)}
+						failure={this.onFailure.bind(this)}
 						allowedExtensions= {this.allowedExtensions}
 					></UploaderComponent>
 				</div>
@@ -81,6 +87,12 @@ public render(): JSX.Element {
 				You can also achieve limit the files count before uploading it using select event. </p>
 				 
 				<p>For more information, you can refer to the Validation section from this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/validation/">documentation section</a>.</p>
+
+				<p>In this example, the backend service used in the saveUrl and removeUrl endpoints for saving and removing files is intended for demonstration purposes only. The uploaded files are subjected to thorough validation, including verification of file names and the application of security checks. Therefore, this service is not recommended for production use, and the configuration of a custom backend save and remove service is advised. Additional implementation details can be found in the
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/async#server-side-configuration-for-save-action">saveUrl</a> and
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/async#server-side-configuration-for-remove-action">removeUrl</a>
+            documentation.
+          </p>
 			</div>
       </div>
     );

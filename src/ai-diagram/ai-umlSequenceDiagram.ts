@@ -80,9 +80,11 @@ export async function convertTextToUmlSequenceDiagram(inputText: string, diagram
 
     try {
         const jsonResponse = await serverAIRequest(options);
-        diagram.model = {fragments:[],messages:[],participants:[]};
-        diagram.loadDiagramFromMermaid(jsonResponse as string);
-        diagram.dataBind();
+        if (jsonResponse) {
+            diagram.model = {fragments:[],messages:[],participants:[]};
+            diagram.loadDiagramFromMermaid(jsonResponse as string);
+            diagram.dataBind();
+        }
         hideLoading();
 
     } catch (error) {

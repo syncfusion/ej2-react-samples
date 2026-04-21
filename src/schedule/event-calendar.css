@@ -178,6 +178,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between; 
+    flex-grow: 1;
 }
 
 .e-checkbox.e-checkbox-left {
@@ -186,11 +187,11 @@
 }
 
 .event-calendar-control-section .calendars-list-header .header-text {
+    flex-grow: 1;
     font-size: 16px;
 }
 
 .event-calendar-control-section .calendars-list-header .header-icon {
-    padding-left: 150px;
     cursor: pointer; 
 }
 

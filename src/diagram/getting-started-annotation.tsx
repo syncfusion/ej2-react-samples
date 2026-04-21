@@ -358,7 +358,7 @@ export class GettingStartedAnnotation extends SampleBase<{}, {}> {
                       id="left"
                       style={{
                         backgroundImage:
-                          "url('src/diagram/Images/annotation/Annotation_1.png')",
+                          "url('(https://ej2.syncfusion.com/react/demos/diagram/Images/annotation/Annotation_1.png')",
                         marginRight: "4px"
                       }}
                     />
@@ -367,7 +367,7 @@ export class GettingStartedAnnotation extends SampleBase<{}, {}> {
                       id="right"
                       style={{
                         backgroundImage:
-                          "url('src/diagram/Images/annotation/Annotation_2.png')",
+                          "url('(https://ej2.syncfusion.com/react/demos/diagram/Images/annotation/Annotation_2.png')",
                         margin: "0px 4px"
                       }}
                     />
@@ -376,7 +376,7 @@ export class GettingStartedAnnotation extends SampleBase<{}, {}> {
                       id="bottomLeft"
                       style={{
                         backgroundImage:
-                          "url('src/diagram/Images/annotation/Annotation_3.png')"
+                          "url('(https://ej2.syncfusion.com/react/demos/diagram/Images/annotation/Annotation_3.png')"
                       }}
                     />
                   </div>
@@ -386,7 +386,7 @@ export class GettingStartedAnnotation extends SampleBase<{}, {}> {
                       id="bottomRight"
                       style={{
                         backgroundImage:
-                          "url('src/diagram/Images/annotation/Annotation_4.png')",
+                          "url('(https://ej2.syncfusion.com/react/demos/diagram/Images/annotation/Annotation_4.png')",
                         margin: "0px 4px"
                       }}
                     />
@@ -395,7 +395,7 @@ export class GettingStartedAnnotation extends SampleBase<{}, {}> {
                       id="center"
                       style={{
                         backgroundImage:
-                          "url('src/diagram/Images/annotation/Annotation_5.png')",
+                          "url('(https://ej2.syncfusion.com/react/demos/diagram/Images/annotation/Annotation_5.png')",
                         marginRight: "4px"
                       }}
                     />
@@ -404,7 +404,7 @@ export class GettingStartedAnnotation extends SampleBase<{}, {}> {
                       id="bottomCenter"
                       style={{
                         backgroundImage:
-                          "url('src/diagram/Images/annotation/Annotation_6.png')"
+                          "url('(https://ej2.syncfusion.com/react/demos/diagram/Images/annotation/Annotation_6.png')"
                       }}
                     />
                   </div>
@@ -597,7 +597,7 @@ function changed(value: string): void {
              node.annotations[0].width = 25;
              node.annotations[0].height = 25;
              node.annotations[0].template =
-                 '<img src="src/diagram/Images/annotation/' + templateData.value.toString() + '.svg" style="width:100%;height:100%" />';
+                 '<img src="(https://ej2.syncfusion.com/react/demos/diagram/Images/annotation/' + templateData.value.toString() + '.svg" style="width:100%;height:100%" />';
           }
       } else if (value === 'interaction') {
         let annotation: ShapeAnnotationModel = node.annotations[0];

@@ -1,0 +1,340 @@
+#customer-dashboard_sidebar_section {
+  padding: 0px !important;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+/* Top toolbar */
+.support-app-toolbar.e-toolbar {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 0px !important;
+}
+
+.customer-header-title {
+  font-size: 18px;
+  font-weight: 600;
+  cursor: auto;
+}
+
+/* Horizontal layout: sidebar + content */
+.cs-workarea {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+
+/* Content area that the Sidebar pushes */
+.cs-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.cs-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+.cs-title {
+  margin: 0;
+  color: #000000;
+}
+
+.cs-toolbar-right {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* KPI Card style */
+.kpi-title {
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+/* Panel header style */
+.customer-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.customer-panel-title {
+  font-weight: 600;
+}
+
+/* Chart responsive */
+.customer-chart-wrap {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* increase panel header height */
+.support-dashboard .e-panel-header {
+  height: 52px !important;
+}
+
+/* Make Syncfusion circular gauge fill its panel responsively */
+.gauge-center {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gauge-center .e-circulargauge {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* prevent grid default scrollbar */
+#surveyDetails.e-grid .e-content {
+  overflow-y: auto !important;
+}
+
+/* KPI cards */
+.support-kpi-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0px 30px;
+  height: 100%;
+  flex-wrap: wrap;
+}
+
+.kpi-card--tinted {
+  background: var(--kpi-tint, rgba(110, 87, 236, 0.08));
+}
+
+/* KPI inner layout */
+.kpi-item {
+  flex: 1 1 160px;
+}
+
+.kpi-divider {
+  width: 1px;
+  align-self: stretch;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.kpi-value {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.1;
+  margin-top: 10px;
+}
+
+.kpi-value-meta {
+  font-size: 14px;
+  font-weight: 600;
+  color: #475467;
+}
+
+.support-kpi-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.kpi-info-icon {
+  cursor: pointer;
+  font-size: 14px;
+}
+
+@media (max-width: 1000px) {
+  .kpi-card {
+    gap: 10px;
+  }
+
+  .kpi-value {
+    font-size: 22px;
+  }
+
+  .kpi-divider {
+    display: none;
+  }
+}
+
+.exclamation-container {
+  margin-top: 5px;
+}
+
+.kpi-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.kpi-badge-line {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.kpi-badge-delta {
+  display: inline-flex;
+  align-items: center;
+}
+
+.kpi-badge--up {
+  color: #16a34a;
+}
+
+/* color ONLY the delta */
+.kpi-badge--down {
+  color: #dc2626;
+}
+
+.kpi-badge--flat {
+  color: #6b7280;
+}
+
+.kpi-badge-icon {
+  font-size: 12px;
+  line-height: 1;
+}
+
+/* "vs Last Month" (or similar) always gray */
+.kpi-badge-vs {
+  color: #6b7280;
+  font-weight: 600;
+}
+
+/* show meta under the badge/value */
+.kpi-card .kpi-value-meta {
+  display: block !important;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #6b7280;
+  text-align: center;
+}
+
+.material3-dark .e-card:hover {
+  background-color: #191c1f;
+}
+
+.fluent-dark .cs-title,
+.fluent2-dark .cs-title,
+.fluent2-highcontrast .cs-title,
+.bootstrap5_3-dark .cs-title,
+.tailwind-dark .cs-title,
+.tailwind3-dark .cs-title,
+.material3-dark .cs-title,
+.bootstrap-dark .cs-title,
+.highcontrast .cs-title,
+.fluent-dark .support-kpi-label,
+.fluent2-dark .support-kpi-label,
+.fluent2-highcontrast .support-kpi-label,
+.bootstrap5_3-dark .support-kpi-label,
+.tailwind-dark .support-kpi-label,
+.tailwind3-dark .support-kpi-label,
+.material3-dark .support-kpi-label,
+.bootstrap-dark .support-kpi-label,
+.highcontrast .support-kpi-label,
+.fluent-dark .kpi-value-meta,
+.fluent2-dark .kpi-value-meta,
+.fluent2-highcontrast .kpi-value-meta,
+.bootstrap5_3-dark .kpi-value-meta,
+.tailwind-dark .kpi-value-meta,
+.tailwind3-dark .kpi-value-meta,
+.material3-dark .kpi-value-meta,
+.bootstrap-dark .kpi-value-meta,
+.highcontrast .kpi-value-meta,
+.fluent-dark .kpi-badge-vs,
+.fluent2-dark .kpi-badge-vs,
+.fluent2-highcontrast .kpi-badge-vs,
+.bootstrap5_3-dark .kpi-badge-vs,
+.tailwind-dark .kpi-badge-vs,
+.tailwind3-dark .kpi-badge-vs,
+.material3-dark .kpi-badge-vs,
+.bootstrap-dark .kpi-badge-vs,
+.highcontrast .kpi-badge-vs {
+  color: #ffffff;
+}
+
+.cs-title {
+  color: #000000;
+}
+
+/* Sidebar */
+#customer_support-sidebar {
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 0;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.08);
+}
+
+/* show icon + text normally, but hide text when docked */
+#customer_support-sidebar .customer-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#customer_support-sidebar .customer-nav-item .e-icons {
+  font-size: 16px !important;
+  line-height: 1 !important;
+}
+
+/* Ensure text is visible in expanded state */
+#customer_support-sidebar .customer-nav-item .customer-nav-text {
+  display: inline;
+  white-space: nowrap;
+}
+
+/* Hide labels only when docked */
+#customer_support-sidebar.e-close .customer-nav-item .customer-nav-text {
+  display: none !important;
+}
+
+.customer-nav-item {
+  font-size: 15px;
+  padding: 12px 15px;
+  cursor: pointer;
+  user-select: none;
+  border-left: 3px solid transparent;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.customer-nav-item:hover {
+  background: rgba(32, 185, 251, 0.06);
+}
+
+.customer-nav-item.active {
+  background: rgb(150, 218, 247);
+  border-left-color: #6c8cff;
+}
+
+.fluent .e-panel-header,
+.fluent2 .e-panel-header,
+.bootstrap5_3 .e-panel-header,
+.tailwind .e-panel-header,
+.tailwind3 .e-panel-header,
+.material3 .e-panel-header,
+.bootstrap5_3 .e-panel-header {
+  background-color: #f9fafb;
+}
+
+.tailwind3 #customer-dashboard_sidebar_section .e-dashboardlayout.e-control .e-panel:active,
+.fluent2 #customer-dashboard_sidebar_section .e-dashboardlayout.e-control .e-panel:active,
+.tailwind3 #customer-dashboard_sidebar_section .e-dashboardlayout.e-control .e-panel:hover,
+.fluent2 #customer-dashboard_sidebar_section .e-dashboardlayout.e-control .e-panel:hover,
+.tailwind3 #customer-dashboard_sidebar_section .e-card:active,
+.tailwind3 #customer-dashboard_sidebar_section .e-card:hover,
+.fluent2 #customer-dashboard_sidebar_section .e-card:active,
+.fluent2 #customer-dashboard_sidebar_section .e-card:hover {
+  background: #ffffff !important;
+}

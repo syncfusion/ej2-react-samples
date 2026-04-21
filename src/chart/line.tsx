@@ -2,7 +2,7 @@
  * Sample for Line Series
  */
 import * as React from 'react';
-import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ILoadedEventArgs, LineSeries, Legend, Double, Tooltip, Highlight } from '@syncfusion/ej2-react-charts';
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ILoadedEventArgs, LineSeries, Legend, Double, Tooltip, Highlight, SeriesLabel } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { loadChartTheme } from './theme-color';
 import { SampleBase } from '../common/sample-base';
@@ -81,13 +81,13 @@ export class Line extends SampleBase<{}, {}> {
                 <style>{SAMPLE_CSS}</style>
                 <div className="control-section">
                     <ChartComponent id="charts" style={{ textAlign: 'center' }} primaryXAxis={{ valueType: 'Double', edgeLabelPlacement: 'Shift', majorGridLines: { width: 0 } }} load={this.load.bind(this)} primaryYAxis={{ title: 'Volume in million metric tons', labelFormat: '{value}', rangePadding: 'None', minimum: 0, maximum: 25, interval: 5, lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 } }} chartArea={{ border: { width: 0 }, margin: { bottom: 12 } }} tooltip={{ enable: true, enableHighlight: true, showNearestTooltip: true, header: '<b>${series.name}</b>', format: '${point.x} : <b>${point.y}M</b>' }} legendSettings={{ enableHighlight: true }} width={Browser.isDevice ? '100%' : '75%'} title="Annual Crude Steel Production by Country (2016–2024)" subTitle="Source: wikipedia.org" loaded={this.onChartLoad.bind(this)}>
-                        <Inject services={[LineSeries, Double, Legend, Tooltip, Highlight]} />
+                        <Inject services={[LineSeries, Double, Legend, Tooltip, Highlight, SeriesLabel]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={vietnamData} xName="x" yName="y" name="Vietnam" width={2} marker={{ visible: true, width: 7, height: 7, shape: 'Circle', isFilled: true }} type="Line"></SeriesDirective>
-                            <SeriesDirective dataSource={indonesiaData} xName="x" yName="y" name="Indonesia" width={2} marker={{ visible: true, width: 6, height: 6, shape: 'Triangle', isFilled: true }} type="Line"></SeriesDirective>
-                            <SeriesDirective dataSource={franceData} xName="x" yName="y" name="France" width={2} marker={{ visible: true, width: 7, height: 7, shape: 'Diamond', isFilled: true }} type="Line"></SeriesDirective>
-                            <SeriesDirective dataSource={polandData} xName="x" yName="y" name="Poland" width={2} marker={{ visible: true, width: 5, height: 5, shape: 'Rectangle', isFilled: true }} type="Line"></SeriesDirective>
-                            <SeriesDirective dataSource={mexicoData} xName="x" yName="y" name="Mexico" width={2} marker={{ visible: true, width: 7, height: 7, shape: 'Pentagon', isFilled: true }} type="Line"></SeriesDirective>
+                            <SeriesDirective dataSource={vietnamData} xName="x" yName="y" name="Vietnam" width={2} marker={{ visible: true, width: 7, height: 7, shape: 'Circle', isFilled: true }} type="Line" labelSettings={{ visible: true }}></SeriesDirective>
+                            <SeriesDirective dataSource={indonesiaData} xName="x" yName="y" name="Indonesia" width={2} marker={{ visible: true, width: 6, height: 6, shape: 'Triangle', isFilled: true }} type="Line" labelSettings={{ visible: true }}></SeriesDirective>
+                            <SeriesDirective dataSource={franceData} xName="x" yName="y" name="France" width={2} marker={{ visible: true, width: 7, height: 7, shape: 'Diamond', isFilled: true }} type="Line" labelSettings={{ visible: true }}></SeriesDirective>
+                            <SeriesDirective dataSource={polandData} xName="x" yName="y" name="Poland" width={2} marker={{ visible: true, width: 5, height: 5, shape: 'Rectangle', isFilled: true }} type="Line" labelSettings={{ visible: true }}></SeriesDirective>
+                            <SeriesDirective dataSource={mexicoData} xName="x" yName="y" name="Mexico" width={2} marker={{ visible: true, width: 7, height: 7, shape: 'Pentagon', isFilled: true }} type="Line" labelSettings={{ visible: true }}></SeriesDirective>
                         </SeriesCollectionDirective>
                     </ChartComponent>
                 </div>
@@ -104,6 +104,9 @@ export class Line extends SampleBase<{}, {}> {
                     </p>
                     <p>
                         <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
+                    </p>
+                    <p>
+                        <code>SeriesLabel</code> is enabled in this example to display the name of each line series.
                     </p>
                     <p><b>Injecting Module</b></p>
                     <p>

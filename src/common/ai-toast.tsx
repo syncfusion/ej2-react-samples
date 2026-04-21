@@ -6,7 +6,7 @@ export default function AIToast() {
 
     function contentTemplate() {
         return (
-            <div
+            <div className='ai-toast-content-child'
                 style={{
                     display: 'flex',
                     justifyContent: 'space-between',

@@ -18,6 +18,7 @@ import {
 
 import { MarkdownConverter } from '@syncfusion/ej2-markdown-converter';
 import TurndownService from 'turndown';
+import { gfm } from 'turndown-plugin-gfm';
 import './markdownBlocks.css';
 
 interface State {
@@ -38,7 +39,16 @@ export class MarkdownBlocks extends React.PureComponent<{}, State> {
   private mediaQuery: string = '(min-width: 600px)';
   private target: string = '.blockeditor-marked';
   private sidebarHeaderText: string = 'Markdown Templates';
-  private turndownService = new TurndownService();
+  private turndownService = (() => {
+    const service = new TurndownService({
+      codeBlockStyle: 'fenced',
+      emDelimiter: '_',
+      bulletListMarker: '-',
+      headingStyle: 'atx'
+    });
+    service.use(gfm);
+    return service;
+  })();
 
   private customToolbarItems: string[] = [
     'Bold', 'Italic', 'Underline', 'Strikethrough'
@@ -184,6 +194,10 @@ export class MarkdownBlocks extends React.PureComponent<{}, State> {
     setTimeout(() => {
       this.loadContent('src/block-editor/mdfiles/Team Sessions.md');
       this.setState({ breadcrumbItems: [{ text: 'Team' }, { text: 'Team Sessions' }] });
+      if (this.closeBtnRef.element && window.innerWidth < 600) {
+        this.closeBtnRef.element.style.left = '18px';
+        this.closeBtnRef.element.classList.add('expand-mode');
+      }
     }, 100);
   }
 

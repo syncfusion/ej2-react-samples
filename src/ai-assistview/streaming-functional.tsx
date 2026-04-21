@@ -4,7 +4,6 @@ import { updateSampleSection } from '../common/sample-base';
 import './streaming.css';
 import { AIAssistViewComponent, PromptRequestEventArgs, ToolbarSettingsModel } from '@syncfusion/ej2-react-interactive-chat';
 import * as data from './promptResponseData.json';
-import { MarkdownConverter } from '@syncfusion/ej2-markdown-converter';
 
 const Streaming = () => {
     useEffect(() => {
@@ -12,7 +11,6 @@ const Streaming = () => {
     }, []);
 
     const streamingAIAssistView = useRef<AIAssistViewComponent>(null);
-    let stopStreaming: boolean = false;
     const bannerTemplate: string = `<div class="banner-content">
         <div class="e-icons e-assistview-icon"></div>
         <h3>AI Assistance</h3>
@@ -35,33 +33,12 @@ const Streaming = () => {
         itemClicked: toolbarItemClicked
     };
 
-    const handleStopResponse = () => {
-        stopStreaming = true
-    }
-
     const onPromptRequest = (args: PromptRequestEventArgs) => {
-        let lastResponse: string = "";
         let streamingResponse: any = prompts.find((data: any) => data.prompt === args.prompt);
         const defaultResponse = "For real-time prompt processing, connect the AI AssistView control to your preferred AI service, such as OpenAI or Azure Cognitive Services. Ensure you obtain the necessary API credentials to authenticate and enable seamless integration.";
-        const responseUpdateRate = 10;
-        async function streamResponse(response) {
-            let i = 0;
-            const responseLength = response.length;
-            while (i < responseLength && !stopStreaming) {
-                lastResponse += response[i];
-                i++;
-                if (i % responseUpdateRate === 0 || i === responseLength) {
-                    const htmlResponse = MarkdownConverter.toHtml(lastResponse);
-                    streamingAIAssistView.current.addPromptResponse(htmlResponse, i === responseLength);
-                    streamingAIAssistView.current.scrollToBottom();
-                }
-                await new Promise(resolve => setTimeout(resolve, 15)); // Delay before the next chunk
-            }
-            streamingAIAssistView.current.promptSuggestions = streamingResponse?.suggestions || suggestion;
-        }
         if (streamingResponse) {
-            stopStreaming = false;
-            streamResponse(streamingResponse.response);
+            streamingAIAssistView.current.addPromptResponse(streamingResponse.response, true);
+            streamingAIAssistView.current.promptSuggestions = streamingResponse?.suggestions || suggestion;
         } else {
             streamingAIAssistView.current.addPromptResponse(defaultResponse, true);
             streamingAIAssistView.current.promptSuggestions = suggestion;
@@ -72,7 +49,7 @@ const Streaming = () => {
         <div className='control-pane'>
             <div className="control-section">
                 <div className="stream-aiassistview">
-                    <AIAssistViewComponent id="streamAssistView" ref={streamingAIAssistView} promptSuggestions={suggestion} toolbarSettings={assistViewToolbarSettings} promptRequest={onPromptRequest} stopRespondingClick={handleStopResponse} bannerTemplate={bannerTemplate}></AIAssistViewComponent>
+                    <AIAssistViewComponent id="streamAssistView" ref={streamingAIAssistView} enableStreaming={true} promptSuggestions={suggestion} toolbarSettings={assistViewToolbarSettings} promptRequest={onPromptRequest} bannerTemplate={bannerTemplate}></AIAssistViewComponent>
                 </div>
             </div>
 
@@ -85,7 +62,7 @@ const Streaming = () => {
                 <p> In this example, the <code>AI AssistView</code> component dynamically updates responses in a streaming manner using the  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/ai-assistview#addpromptresponse">addPromptResponse</a> method, while the  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/ai-assistview#scrolltobottom">scrollToBottom</a> method ensures automatic scrolling. The  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/ai-assistview#bannertemplate">bannerTemplate</a> allows customization of the banner content, and  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/ai-assistview#toolbarsettings">toolbarSettings</a> enables custom toolbar items, including a right-aligned Refresh button. Additionally,  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/ai-assistview#promptsuggestions">promptSuggestions</a> offers AI-generated prompt suggestions, while  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/ai-assistview#promptrequest">promptRequest</a> processes prompt requests when triggered.
                 </p>
                 <p>
-                    This implementation provides an interactive AI chat experience with real-time streaming updates, enhanced by Markdown-to-HTML conversion using the <code>MarkdownConverter</code>.
+                    This implementation provides an interactive AI chat experience with real-time streaming updates, enhanced by built-in Markdown-to-HTML conversion using the syncfusion <code>MarkdownConverter</code>.
                 </p>
             </div>
         </div>

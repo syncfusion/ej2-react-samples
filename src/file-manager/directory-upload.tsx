@@ -10,10 +10,15 @@ import { DropDownButtonComponent, ItemModel } from '@syncfusion/ej2-react-splitb
 export class DirectoryUpload extends SampleBase<{},{}> {
     public fmObj: FileManagerComponent;
     private hostUrl: string = "https://ej2-aspcore-service.azurewebsites.net/";
-    private items: ItemModel[] = [{ text: 'Folder' }, { text: 'Files' }];
+    private getItems(): ItemModel[] {
+        return [
+        { text: this.fmObj?.localeObj.getConstant('Folder') },
+        { text: this.fmObj?.localeObj.getConstant('File') }
+        ];
+    }    
     private uploadTemplate(){
         return(
-            <DropDownButtonComponent id="dropButton" items={this.items} iconCss='e-icons e-fe-upload' cssClass= "e-tbar-btn e-tbtn-txt" select={this.onSelect.bind(this)} onClick={this.uploadClick.bind(this)}>
+            <DropDownButtonComponent id="dropButton" items={this.getItems()} iconCss='e-icons e-fe-upload' cssClass= "e-tbar-btn e-tbtn-txt" select={this.onSelect.bind(this)} onClick={this.uploadClick.bind(this)}>
                 <span className="e-tbar-btn-text">Upload</span>
             </DropDownButtonComponent>
         );
@@ -22,7 +27,7 @@ export class DirectoryUpload extends SampleBase<{},{}> {
         e.stopPropagation();
     }
     private onSelect(args){
-        if (args.item.text === 'Folder') {
+        if (args.item.text === this.fmObj?.localeObj.getConstant('Folder')) {
             this.fmObj.uploadSettings.directoryUpload = true;
           } else {
             this.fmObj.uploadSettings.directoryUpload = false;

@@ -516,7 +516,7 @@ export class WorkFlowEditor extends SampleBase<{}, {}> {
                 nodes={nodes}
                 connectors={connectors}
                 tool={DiagramTools.ZoomPan}
-                scrollSettings={{ scrollLimit: "Infinity", canAutoScroll: true }}
+                scrollSettings={{ scrollLimit: "Diagram", canAutoScroll: true }}
                 selectedItems={{ userHandles: userHandles }}
                 getNodeDefaults={(node: Node, diagram: Diagram) => {
                   // restrict rotation and hide thumbs
@@ -1057,13 +1057,4 @@ function applyModeState(isEditMode: boolean) {
     }
     diagramInstance.tool = isEditMode ? DiagramTools.MultipleSelect : DiagramTools.ZoomPan;
   }
-}
-
-// update the label color based on toolbar button color
-var toolbarButton = document.querySelector(".e-toolbar-item button");
-if (toolbarButton) {
-  var buttonStyle = window.getComputedStyle(toolbarButton);
-  var buttonColor = buttonStyle.color;
-  var editLabel = document.getElementById("editLabel");
-  editLabel.style.color = buttonColor;
 }

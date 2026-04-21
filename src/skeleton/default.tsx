@@ -10,14 +10,14 @@ export class Default extends SampleBase<{}, {}> {
                 <div className="row skeleton-row">
                     <div className="col-sm-6 container">
                         <p className='displayText'>Circle</p>
-                        <SkeletonComponent className='skeleton' id='skeletonCircleSmall' shape='Circle' width='1.875rem'></SkeletonComponent>
+                        <SkeletonComponent className='skeleton' id='skeletonCircleSmall' shape='Circle' width='3rem'></SkeletonComponent>
                         <SkeletonComponent className='skeleton' id='skeletonCircleMedium' shape='Circle' width='48px'></SkeletonComponent>
                         <SkeletonComponent className='skeleton' id='skeletonCircleLarge' shape='Circle' width='64px'></SkeletonComponent>
                         <SkeletonComponent className='skeleton' id='skeletonCircleLarger' shape='Circle' width='80px'></SkeletonComponent>
                     </div>
                     <div className="col-sm-6 container">
                         <p className='displayText'>Square</p>
-                        <SkeletonComponent className='skeleton' id='skeletonSquareSmall' shape='Square' width='1.875rem'></SkeletonComponent>
+                        <SkeletonComponent className='skeleton' id='skeletonSquareSmall' shape='Square' width='3rem'></SkeletonComponent>
                         <SkeletonComponent className='skeleton' id='skeletonSquareMedium' shape='Square' width='48px'></SkeletonComponent>
                         <SkeletonComponent className='skeleton' id='skeletonSquareLarge' shape='Square' width='64px'></SkeletonComponent>
                         <SkeletonComponent className='skeleton' id='skeletonSquareLarger' shape='Square' width='80px'></SkeletonComponent>

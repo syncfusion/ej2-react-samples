@@ -84,7 +84,6 @@ export const KanbanSampleOrder: Object = [
         'path': 'kanban/column-rearrangement', 'component': 'ColumnRearrange', 'name': 'Column Rearrangement', 'order': '04', 'category': 'Columns', 'api':
             '{"KanbanComponent": [ "dataSource", "keyField", "columns", "cardSettings"] }', 
         'description': 'This example demonstrates the column rearrangement of the Kanban control. You can drag and drop the columns to rearrange them across multiple stages of the Kanban board.'
-        , 'type': 'new'
     },
     {
         'path': 'kanban/wip-validation', 'component': 'WIPValidation', 'name': 'WIP Validation', 'order': '05', 'category': 'Validation', 'api':

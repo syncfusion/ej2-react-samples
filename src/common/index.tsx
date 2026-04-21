@@ -67,6 +67,20 @@ const themesToRedirect: string[] = ['material', 'material-dark', 'bootstrap4', '
  */
 export let selectedTheme: string = location.hash.split('/')[1] || localStorage.getItem('ej2-theme') || 'tailwind3';
 localStorage.removeItem('ej2-theme');
+const hashParts: string[] = location.hash.split('/');
+const control: string = hashParts[2];
+const specialControls: string[] = ['pdfviewer', 'spreadsheet', 'document-editor'];
+if (specialControls.indexOf(control) !== -1) {
+    const theme: string = selectedTheme; 
+     const folderMap: Record<string, string> = {
+        pdfviewer: 'pdf-viewer',
+        spreadsheet: 'spreadsheet-editor',
+        'document-editor': 'docx-editor'
+    };
+    const folder: string = folderMap[control];// Use the already parsed theme
+    const newUrl: string = `https://document.syncfusion.com/demos/${folder}/react/#/${theme}/${control}/default`;
+    window.location.href = newUrl;
+}
 const themeCollection: string[] = ['material3', 'bootstrap5', 'fluent2', 'tailwind3', 'fluent2-highcontrast', 'highcontrast', 'tailwind', 'fluent'];
 let themeList: HTMLElement = document.getElementById('themelist');
 
@@ -302,15 +316,26 @@ function renderSbPopups(): void {
     if (isUpdatingFromUrl) {
       return;
     }
-    const mode = e.value;
-
     // Only toggle if not highcontrast
     if (!selectedTheme.includes('highcontrast')) {
-      toggleDarkMode();
-      applyBodyClass(selectedTheme);
+      const parts = location.hash.replace(/^#\//, '').split('/');
+      const current = parts[0] || localStorage.getItem('selectedTheme') || 'tailwind3';
+      const samplePath = parts.slice(1).join('/');
+      const isDarkCurrent = current.endsWith('-dark');
+      const base = isDarkCurrent ? current.slice(0, -5) : current;
+      // Derive new theme from dropdown selection
+      const wantDark = e.value === 'Dark';
+      const newTheme = wantDark ? `${base}-dark` : base;
+      // No-op if theme hasn't actually changed
+      if (newTheme === current) {
+        return;
+      }
+      persistTheme(newTheme);
+      updateHash(newTheme, samplePath);
+      applyBodyClass(newTheme);
       refreshCurrentControl();
       if (isMobile) {
-        const isDark = selectedTheme.includes('-dark');
+        const isDark = newTheme.includes('-dark');
         const iconClass = `sb-icons pane-${isDark ? 'light-theme' : 'dark-theme'}`;
         const iconElement = document.getElementById('mobile-mode-icon');
         if (iconElement) {
@@ -1014,22 +1039,27 @@ function mountSamples(): void {
  *  themeChangebutton
  */
 function ThemeChangeButton() {
-  const getInitialTheme = () => {
-    const parts = location.hash.replace(/^#\//, '').split('/');
-    return parts[0] || localStorage.getItem('selectedTheme') || 'bootstrap5';
-  };
+  const [theme, setTheme] = useState(null);
+  const [isVisible, setIsVisible] = useState(null);
 
-  const [theme, setTheme] = useState(getInitialTheme());
-  const [isVisible, setIsVisible] = useState(!theme.includes('highcontrast'));
+  useEffect(()=>{
+        const getInitialTheme = () => {
+          const parts = location.hash.replace(/^#\//, '').split('/');
+          return parts[0] || localStorage.getItem('selectedTheme') || 'bootstrap5';
+        };
+         const initialTheme = getInitialTheme();
 
-  useEffect(() => {
-    const handleHash = () => {
+        const isVisible = !initialTheme.includes('highcontrast');
+        const isDark = initialTheme.endsWith('-dark');
+        const label = isDark ? 'LIGHT' : 'DARK';
+        // const iconClass = `sb-icons ${isDark ? 'dark-theme' : 'light-theme'}`;
+        setTheme(label);
+        setIsVisible(isVisible);
+  },[])
+
+  const handleHash = () => {
       const parts = location.hash.replace(/^#\//, '').split('/');
       const newTheme = parts[0] || 'bootstrap5';
-      setTheme(newTheme);
-      setIsVisible(!newTheme.includes('highcontrast'));
-      selectedTheme = newTheme;
-      persistTheme(newTheme);
       applyBodyClass(newTheme);
       refreshCurrentControl();
       if (isMobile && themeModeDropDown) {
@@ -1040,51 +1070,45 @@ function ThemeChangeButton() {
         if (mobileModeIcon) {
           mobileModeIcon.className = `sb-icons pane-${isDark ? 'light-theme' : 'dark-theme'}`;
         }
-        isUpdatingFromUrl = true;  // Set flag BEFORE updating
         // Update the Syncfusion dropdown index
         themeModeDropDown.index = isDark ? 1 : 0;
-        setTimeout(() => {
-          isUpdatingFromUrl = false;  // Reset flag AFTER update
-        }, 10);
       }
       const isMobileView = Browser.isDevice || window.matchMedia('(max-width:550px)').matches;
       document.getElementById('theme-mode')?.classList.toggle('hidden', !isMobileView || newTheme.includes('highcontrast'));
     };
-    window.addEventListener('hashchange', handleHash);
-    return () => {
-      window.removeEventListener('hashchange', handleHash);
-    };
-  }, []);
 
-  const isDark = theme.endsWith('-dark');
-  const label = isDark ? 'LIGHT' : 'DARK';
-  const iconClass = `sb-icons ${isDark ? 'dark-theme' : 'light-theme'}`;
+  function toggleDarkMode(): void {
+    setTheme(prev => prev === 'DARK' ? 'LIGHT' : 'DARK');
+    const parts = location.hash.replace(/^#\//, '').split('/');
+    const current = parts[0] || localStorage.getItem('selectedTheme') || 'bootstrap5';
+    const samplePath = parts.slice(1).join('/');
+
+    const isDark = current.endsWith('-dark');
+    const base = isDark ? current.slice(0, -5) : current;
+    const newTheme = isDark ? base : `${base}-dark`;
+
+    persistTheme(newTheme);
+    updateHash(newTheme, samplePath); 
+    handleHash();
+  }
 
   if (isMobile) {
     return <span style={{display: 'none'}}></span>;
   }
   return (
-    <button
-      className={`sb-themeswitch-btn ${!isVisible ? 'hidden' : ''}`}
+    isVisible ? (
+      <button
+      className={`sb-themeswitch-btn`}
       onClick={toggleDarkMode}
     >
-      <span className={iconClass}></span>
-      {label}
+      <span className={`sb-icons ${theme === 'DARK' ? 'light-theme' : 'dark-theme'}`}></span>
+      {theme}
     </button>
+    ) : null
   );
 }
-function toggleDarkMode(): void {
-  const parts = location.hash.replace(/^#\//, '').split('/');
-  const current = parts[0] || localStorage.getItem('selectedTheme') || 'bootstrap5';
-  const samplePath = parts.slice(1).join('/');
 
-  const isDark = current.endsWith('-dark');
-  const base = isDark ? current.slice(0, -5) : current;
-  const newTheme = isDark ? base : `${base}-dark`;
 
-  persistTheme(newTheme);
-  updateHash(newTheme, samplePath); 
-}
 const doControls: string[] = [
   "chart", "three-dimension-chart", "three-dimension-circular-chart", "stock-chart", "arc-gauge", "circular-gauge",
   "diagram", "heatmap-chart", "linear-gauge", "maps", "range-navigator", "smith-chart",

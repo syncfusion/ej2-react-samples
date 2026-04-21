@@ -127,7 +127,7 @@ export class PinnedRows extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <GridComponent id="PinnedRows" dataSource={supportData} ref={grid => this.gridInstance = grid} height={300} enableVirtualization={true} contextMenuItems={this.contextMenuItems} isRowPinned={this.isRowPinned.bind(this)} allowSorting={true} allowFiltering={true} allowKeyboard={false} filterSettings={this.filterSettings} pageSettings={{ pageSize:20 }}>
+                    <GridComponent id="PinnedRows" dataSource={supportData} ref={grid => this.gridInstance = grid} height={300} enableVirtualization={true} contextMenuItems={this.contextMenuItems} isRowPinned={this.isRowPinned.bind(this)} allowSorting={true} allowKeyboard={false} allowFiltering={true} filterSettings={this.filterSettings} pageSettings={{ pageSize:20 }}>
                         <ColumnsDirective>
                             <ColumnDirective field="TicketID" headerText="Ticket ID" width="140" isPrimaryKey={true}
                                 freeze="Left" />

@@ -12,6 +12,9 @@
     height: 453px !important;
     border: 1px solid rgb(204, 202, 200) !important;
 }
+.e-banner-top #ganttSidebar {
+    overflow: auto !important;
+}
 #ganttquerybuilder {
     margin: 12px;
 }
@@ -99,4 +102,7 @@ font-family: 'e-icons';
 .highcontrast .e-quickfilter::before {
     content: '\e21c';
     font-family: 'e-icons';
+}
+.bootstrap5_3 .ganttsidebar-header .e-close::before{
+    color: #000 !important;
 }

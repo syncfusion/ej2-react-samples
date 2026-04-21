@@ -3,7 +3,7 @@ import { SpeechToTextComponent } from '@syncfusion/ej2-react-inputs';
 import * as React from 'react';
 import './speech-to-text.css';
 import { SampleBase } from '../common/sample-base';
-import { AIAssistViewComponent, PromptRequestEventArgs, PromptToolbarSettingsModel, ToolbarItemClickedEventArgs, ToolbarSettingsModel } from '@syncfusion/ej2-react-interactive-chat';
+import { AIAssistViewComponent, PromptRequestEventArgs, ToolbarItemClickedEventArgs, ToolbarSettingsModel, FooterToolbarSettingsModel, AttachmentSettingsModel, SpeechToTextSettingsModel } from '@syncfusion/ej2-react-interactive-chat';
 import { getAzureOpenAIAssist, AzureOpenAIRequest } from './ai-service';
 import { marked } from 'marked';
 
@@ -28,15 +28,23 @@ export class SpeechToText extends SampleBase<{}, {}> {
         itemClicked: (args) => this.toolbarItemClicked(args)
     };
 
-    public promptToolbarSettings: PromptToolbarSettingsModel = {    
-        itemClicked: (args) => {
-            if (args.item.iconCss === "e-icons e-assist-edit") {
-                const assistviewFooter = document.querySelector('#assistview-footer') as HTMLElement;
-                assistviewFooter.innerHTML = this.aiAssistViewObj.prompts[args.dataIndex].prompt;
-                this.toggleButtons();
-            }
-        }
+    public footerToolbarSettings: FooterToolbarSettingsModel= {
+        toolbarPosition: 'Bottom',
+        items: [
+            { iconCss: 'e-icons e-assist-send', align: 'Right' },
+            { iconCss: 'e-icons e-assist-attachment-icon', align: 'Left', tooltip: 'Attach File' },
+            { iconCss: 'e-icons e-assist-speech-to-text', align: 'Left'}
+        ]
+    }
+
+    public enableAttachments: boolean = true;
+    public attachmentSettings : AttachmentSettingsModel = {
+        saveUrl: 'https://services.syncfusion.com/react/production/api/FileUploader/Save',
+        removeUrl: 'https://services.syncfusion.com/react/production/api/FileUploader/Remove'
     };
+    public speechToTextSettings: SpeechToTextSettingsModel = {
+        enable: true
+    }
 
     public bannerTemplate = () => {
         return (<div className="banner-info">
@@ -44,19 +52,7 @@ export class SpeechToText extends SampleBase<{}, {}> {
             <h3>Speech To Text</h3>
             <i>Click the below mic-button to convert your voice to text.</i>
         </div>)
-    }
-
-    public footerTemplate = () => {
-        return (
-            <div className="e-footer-wrapper">
-                <div id="assistview-footer" className="content-editor" contentEditable="true" placeholder="Click to speak or start typing..." onInput={this.toggleButtons} onKeyDown={this.handleKeyDown}></div>
-                <div className="option-container">
-                    <SpeechToTextComponent id="speechToText" ref={(speechtotext) => { this.speechToTextObj = speechtotext }} transcriptChanged={this.onTranscriptChange} onStop={this.onListeningStop} created={this.onCreated} />
-                    <ButtonComponent id="assistview-sendButton" className="e-assist-send e-icons" onClick={this.sendIconClicked} />
-                </div>
-            </div>
-        )
-    }
+        }
 
     public streamResponse = async (response: string) => {
         let lastResponse = "";
@@ -73,7 +69,6 @@ export class SpeechToText extends SampleBase<{}, {}> {
             }
             await new Promise(resolve => setTimeout(resolve, 15)); // Delay for streaming effect
         }
-        this.toggleButtons();
     };
 
     public onPromptRequest = async (args: PromptRequestEventArgs) => {
@@ -93,7 +88,6 @@ export class SpeechToText extends SampleBase<{}, {}> {
                 '⚠️ Something went wrong while connecting to the OpenAI service. Please check your API key or try again later.'
             );
             this.stopStreaming = true;
-            this.toggleButtons();
         }
     };
 
@@ -103,47 +97,8 @@ export class SpeechToText extends SampleBase<{}, {}> {
         }
     }
 
-    public sendIconClicked = () => {
-        const assistviewFooter = document.getElementById('assistview-footer') as HTMLElement;
-        this.aiAssistViewObj.executePrompt(assistviewFooter.innerText);
-        assistviewFooter.innerText = "";
-    };
-
-    public onTranscriptChange = (args) => {
-        const assistviewFooter = document.getElementById('assistview-footer') as HTMLElement;
-        assistviewFooter.innerText = args.transcript;
-    };
-
-    public onListeningStop = () => {
-        this.toggleButtons();
-    };
-
-    public onCreated = () => {
-        this.toggleButtons();
-    };
-
-    public toggleButtons = () => {
-        const assistviewFooter = document.querySelector('#assistview-footer') as HTMLElement;
-        const sendButton = document.querySelector('#assistview-sendButton') as HTMLElement;
-        const speechButton = document.querySelector('#speechToText') as HTMLElement;
-        const hasText = assistviewFooter.innerText.trim() !== '';
-        sendButton.classList.toggle('visible', hasText);
-        speechButton.classList.toggle('visible', !hasText);
-        if (!hasText && (assistviewFooter.innerHTML.trim() === '' || assistviewFooter.innerHTML === '<br>')) {
-            assistviewFooter.innerHTML = '';
-        }
-    };
-
-    public handleKeyDown = (e) => {
-        if (e.key === 'Enter' && !e.shiftKey) {
-            this.sendIconClicked();
-            e.preventDefault();
-        }
-    };
-
     public stopRespondingClick = () => {
         this.stopStreaming = true;
-        this.toggleButtons();
     };
 
     render() {
@@ -151,7 +106,7 @@ export class SpeechToText extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className="control-section">
                     <div className="integration-speech-to-text-assist-section">
-                        <AIAssistViewComponent id="aiAssistView" ref={(assistview) => { this.aiAssistViewObj = assistview }} promptRequest={this.onPromptRequest} bannerTemplate={this.bannerTemplate} footerTemplate={this.footerTemplate} toolbarSettings={this.toolbarSettings} promptToolbarSettings={this.promptToolbarSettings} stopRespondingClick={this.stopRespondingClick}></AIAssistViewComponent>
+                        <AIAssistViewComponent id="aiAssistView" ref={(assistview) => { this.aiAssistViewObj = assistview }} promptRequest={this.onPromptRequest} bannerTemplate={this.bannerTemplate}  toolbarSettings={this.toolbarSettings} stopRespondingClick={this.stopRespondingClick} footerToolbarSettings={this.footerToolbarSettings} enableAttachments={this.enableAttachments} attachmentSettings={this.attachmentSettings} speechToTextSettings={this.speechToTextSettings}></AIAssistViewComponent>
                     </div>
                 </div>
                 <div id="action-description">
@@ -161,17 +116,20 @@ export class SpeechToText extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>
-                        In this example, the AI AssistView component is integrated with the <code>SpeechToText</code> component to enable voice-based interaction.
+                        In this example, the AI AssistView component is integrated with the built-in <code>SpeechToText</code> component to enable voice-based interaction.
                     </p>
                     <p>
                         The sample demonstrates the following features:
                     </p>
                     <ul>
                         <li>
-                            The <code>SpeechToText</code> component captures voice input and transcribes it into text, which is then passed to the AI AssistView for generating contextual responses.
+                            The <code>footerToolbarSettings</code> to customize the footer options with speech to text, attachments and a send icon.
                         </li>
                         <li>
-                            The <code>footerTemplate</code> includes a content-editable area and a microphone button for initiating voice input.
+                            The <code>speechToTextSettings</code> adds the speech to text button at the footer to captures voice input and transcribes it into text.
+                        </li>
+                        <li>
+                            The <code>attachmentSettings</code> to allow file uploads for the attached files.
                         </li>
                         <li>
                             The <code>toolbarSettings</code> adds a right-aligned <code>Refresh</code> button to clear previous prompts.

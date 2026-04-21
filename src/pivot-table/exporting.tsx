@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { PropertyPane } from '../common/property-pane';
-import { PivotViewComponent, IDataOptions, IDataSet, FieldList, ExcelExport } from '@syncfusion/ej2-react-pivotview';
+import { PivotViewComponent, IDataOptions, IDataSet, FieldList, ExcelExport, ExcelExportProperties, PdfExportProperties, ConditionalFormatting, PDFExport } from '@syncfusion/ej2-react-pivotview';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { DropDownListComponent, Inject } from '@syncfusion/ej2-react-dropdowns';
 import { ChangeEventArgs as Args } from '@syncfusion/ej2-buttons';
@@ -21,10 +21,93 @@ let dataSourceSettings: IDataOptions = {
     filters: [{ name: 'Product_Categories', caption: 'Product Categories' }],
     enableSorting: true,
     rows: [{ name: 'Country' }, { name: 'Products' }],
-    formatSettings: [{ name: 'Amount', format: 'C' }],
-    columns: [{ name: 'Year' }, { name: 'Order_Source', caption: 'Order Source' }],
+    formatSettings: [
+        { name: 'Amount', format: 'C0' },
+        { name: 'In_Stock', format: 'N0' },
+        { name: 'Sold', format: 'N0' },
+    ],
+    columns: [{ name: 'Year', expandAll: true }, { name: 'Quarter' }],
     dataSource: Pivot_Data,
-    expandAll: false
+    expandAll: false,
+    conditionalFormatSettings: [
+        {
+            measure: 'In_Stock',
+            value1: 120,
+            conditions: 'LessThan',
+            style: {
+                backgroundColor: '#FF005C',
+                color: 'white',
+                fontFamily: 'Tahoma',
+                fontSize: '12px'
+            },
+            applyGrandTotals: false
+        },
+        {
+            value1: 150,
+            measure: 'In_Stock',
+            conditions: 'GreaterThan',
+            style: {
+                backgroundColor: '#35B65A',
+                color: 'white',
+                fontFamily: 'Tahoma',
+                fontSize: '12px'
+            },
+            applyGrandTotals: false
+        },
+        {
+            measure: 'Sold',
+            value1: 1000,
+            conditions: 'LessThan',
+            style: {
+                backgroundColor: '#FF005C',
+                color: 'white',
+                fontFamily: 'Tahoma',
+                fontSize: '12px'
+            },
+            applyGrandTotals: false
+        },
+        {
+            value1: 1100,
+            measure: 'Sold',
+            conditions: 'GreaterThan',
+            style: {
+                backgroundColor: '#35B65A',
+                color: 'white',
+                fontFamily: 'Tahoma',
+                fontSize: '12px'
+            },
+            applyGrandTotals: false
+        },
+        {
+            measure: 'Amount',
+            value1: 7000,
+            conditions: 'LessThan',
+            style: {
+                backgroundColor: '#FF005C',
+                color: 'white',
+                fontFamily: 'Tahoma',
+                fontSize: '12px'
+            },
+            applyGrandTotals: false
+        },
+        {
+            value1: 12000,
+            measure: 'Amount',
+            conditions: 'GreaterThan',
+            style: {
+                backgroundColor: '#35B65A',
+                color: 'white',
+                fontFamily: 'Segoe UI',
+                fontSize: '12px'
+            },
+            applyGrandTotals: false
+        }
+    ],
+    drilledMembers: [{ name: 'Country', items: ['France'] }],
+    filterSettings: [
+        { name: 'Year', type: 'Include', items: ['FY 2026'] },
+        { name: 'Products', type: 'Include', items: ['Gloves', 'Fenders'] },
+    ]
 };
 
 export class Exporting extends SampleBase<{}, {}> {
@@ -40,13 +123,79 @@ export class Exporting extends SampleBase<{}, {}> {
         { value: 'false', text: 'False' },
         { value: 'true', text: 'True' }
     ];
+    private today: string = new Date().toLocaleDateString('en-US', {
+        month: 'short',
+        day: '2-digit',
+        year: 'numeric'
+    });
     onClick(): void {
         if (this.mode.value === 'excel') {
-            this.pivotObj.excelExport();
+            let excelExportProperties: ExcelExportProperties = {
+                header: {
+                    headerRows: 4,
+                    rows: [
+                        { cells: [{ colSpan: 10, value: "Sales Performance Report - Q1 2026", style: { fontColor: '#1B4965', fontSize: 20, hAlign: 'Center', bold: true } }] },
+                        { cells: [{ colSpan: 10, value: "Region: Global | Currency: USD", style: { fontColor: '#35B65A', fontSize: 15, hAlign: 'Center', bold: true } }] }
+                    ]
+                },
+                footer: {
+                    footerRows: 4,
+                    rows: [
+                        { cells: [{ colSpan: 10, value: "Total In Stock: 1,863 | Total Units Sold: 6,327 | Total Sold Amount: $2,381,015", style: { fontColor: '#35B65A', fontSize: 15, hAlign: 'Center', bold: true } }] },
+                        { cells: [{ colSpan: 10, value: `Report generated on: ${this.today}`, style: { fontColor: '#1B4965', fontSize: 15, hAlign: 'Center', bold: true } }] }
+                    ]
+                }
+            };
+            this.pivotObj.excelExport(excelExportProperties);
         } else if (this.mode.value === 'csv') {
             this.pivotObj.csvExport();
         } else {
-            this.pivotObj.pdfExport();
+            let pdfExportProperties: PdfExportProperties = {
+                header: {
+                    fromTop: 0,
+                    height: 130,
+                    contents: [
+                        {
+                            type: 'Text',
+                            value: 'Sales Performance Report - Q1 2026',
+                            position: { x: 275, y: 30 },
+                            style: { textBrushColor: '#1B4965', fontSize: 35 }
+                        },
+                        {
+                            type: 'Text',
+                            value: 'Region: Global | Currency: USD',
+                            position: { x: 385, y: 80 },
+                            style: { textBrushColor: '#35B65A', fontSize: 22 }
+                        }
+                    ]
+                },
+                footer: {
+                    fromBottom: 160,
+                    height: 150,
+                    contents: [
+                        {
+                            type: 'Text',
+                            value: "Total In Stock: 1,863 | Total Units Sold: 6,327 | Total Sold Amount: $2,381,015",
+                            position: { x: 275, y: 0 },
+                            style: { textBrushColor: '#35B65A', fontSize: 18 }
+                        },
+                        {
+                            type: 'Text',
+                            value: `Report generated on: ${this.today}`,
+                            position: { x: 385, y: 25 },
+                            style: { textBrushColor: '#1B4965', fontSize: 18 }
+                        },
+                        {
+                            type: 'PageNumber',
+                            pageNumberType: 'Numeric',
+                            format: 'Page {$current} of {$total}',
+                            position: { x: 915, y: 120 },
+                            style: { textBrushColor: '#1B4965', fontSize: 20 }
+                        }
+                    ]
+                }
+            };
+            this.pivotObj.pdfExport(pdfExportProperties);
         }
     }
 
@@ -60,8 +209,8 @@ export class Exporting extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section'>
                     <div className='col-lg-8 adaptive'>
-                        <PivotViewComponent id='PivotView' ref={(pivotview) => { this.pivotObj = pivotview }} dataSourceSettings={dataSourceSettings} allowExcelExport={true} allowPdfExport={true} showFieldList={true} width={'100%'} height={'300'} gridSettings={{columnWidth: 140}}>
-                            <Inject services={[FieldList, ExcelExport]} />
+                        <PivotViewComponent id='PivotView' ref={(pivotview) => { this.pivotObj = pivotview }} dataSourceSettings={dataSourceSettings} allowExcelExport={true} allowPdfExport={true} showFieldList={true} width={'100%'} height={'350'} gridSettings={{ columnWidth: 140 }} allowConditionalFormatting={true}>
+                            <Inject services={[FieldList, ExcelExport, ConditionalFormatting, PDFExport]} />
                         </PivotViewComponent>
                     </div>
                     <div className='col-lg-4 property-section' style={{ paddingRight: 0 }}>
@@ -75,7 +224,7 @@ export class Exporting extends SampleBase<{}, {}> {
                                         <td>
                                             <div style={{ paddingLeft: 0 }}>
                                                 {/* Render the DropDownList Component */}
-                                                <DropDownListComponent width={'160px'} id="etype" value="pdf" ref={d => this.mode = d} dataSource={this.exportType} fields={{ text: 'text', value: 'value' }} placeholder="PDF" />
+                                                <DropDownListComponent id="etype" value="pdf" ref={d => this.mode = d} dataSource={this.exportType} fields={{ text: 'text', value: 'value' }} placeholder="PDF" />
                                             </div>
                                         </td>
                                     </tr>
@@ -96,21 +245,34 @@ export class Exporting extends SampleBase<{}, {}> {
                     <p>This sample demonstrates client-side exporting of the pivot table to Excel, CSV and PDF formats.</p>
                 </div>
                 <div id="description">
-                    <p>The pivot table supports client-side exporting and exports its data to the Excel, CSV and PDF formats data using
-                        the
+                    <p>
+                        The pivot table supports client-side exporting and allows data to be exported in Excel, CSV, and PDF formats
+                        using the
                         <code>excelExport</code>,
-                        <code>csvExport</code> and
+                        <code>csvExport</code>, and
                         <code>pdfExport</code> methods.
+                        To perform an export, the desired document type can be selected from the dropdown list in the property panel,
+                        followed by clicking the "Export" button.
                     </p>
+
                     <p>
-                        Choose the export document type in the dropdown list available inside the property panel and click the export button to export
-                        the pivot table to the selected document format.
-                    </p><br />
+                        Headers and footers can also be added during export.
+                        For Excel, the <code>header</code> and <code>footer</code> properties are defined in the
+                        <code>excelExportProperties</code> object and passed to the <code>excelExport</code> method.
+                        For PDF, the <code>header</code> and <code>footer</code> properties are defined in the
+                        <code>pdfExportProperties</code> object and passed to the <code>pdfExport</code> method.
+                    </p>
+
                     <p>
-                        More information on the exporting can be found in these <a target="_blank"
-                            href="https://ej2.syncfusion.com/react/documentation/pivotview/excel-export">Excel Export</a> , <a target="_blank"
-                            href="https://ej2.syncfusion.com/react/documentation/pivotview/excel-export#csv-export">CSV Export</a> & <a target="_blank"
-                            href="https://ej2.syncfusion.com/react/documentation/pivotview/pdf-export">PDF Export</a> documentation section.
+                        More information on exporting is available in the corresponding
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/pivotview/excel-export">Excel
+                            Export</a>,
+                        <a target="_blank"
+                            href="https://ej2.syncfusion.com/react/documentation/pivotview/excel-export#export-data-to-a-csv-file">CSV Export</a>,
+                        and
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/pivotview/pdf-export">PDF
+                            Export</a>
+                        documentation sections.
                     </p>
                 </div>
             </div>

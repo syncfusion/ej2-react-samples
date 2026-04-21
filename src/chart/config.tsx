@@ -4,7 +4,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the line series.'
     },
     {
-        'path': 'chart/line', 'component': 'Line', 'name': 'Line', 'order': '02', 'category': 'Line Charts',
+        'path': 'chart/line', 'component': 'Line', 'type': 'update', 'name': 'Line', 'order': '02', 'category': 'Line Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the line series.'
     },
     {
@@ -128,6 +128,10 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the bar series.'
     },
     {
+        'path': 'chart/bar-with-gradient', 'component': 'BarWithGradient', 'name': 'Bar with Gradient', 'order': '04', 'category': 'Bar Charts', 'type': 'new',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the bar series with gradient.'
+    },
+    {
         'path': 'chart/rounded-column', 'component': 'RoundedBar', 'name': 'Rounded Bar', 'order': '04', 'category': 'Bar Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the rounded bar series.'
     },
@@ -184,6 +188,10 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the various radius pie chart.'
     },
     {
+        'path': 'chart/donut-with-gradient', 'component': 'DonutWithGradient', 'name': 'Doughnut With Gradient', 'order': '07', 'category': 'Accumulation Charts', 'type': 'new',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the pie chart with gradient.'
+    },
+    {
         'path': 'chart/pyramid', 'component': 'Pyramid', 'name': 'Pyramid', 'order': '07', 'category': 'Accumulation Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the pyramid charts.'
     },
@@ -194,6 +202,10 @@ export const ChartSampleOrder: Object = [
     {
         'path': 'chart/pie-legend', 'component': 'Doughnut', 'name': 'Pie with Legend', 'order': '07','category': 'Accumulation Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the doughnut charts.'
+    },
+    {
+        'path': 'chart/accumulation-legend-template', 'component': 'AccumulationLegendTemplate', 'name': 'Pie with Legend Template', 'order': '07','category': 'Accumulation Charts', 'type': 'new', 
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the legend template in charts.'
     },
     {
         'path': 'chart/semi-pie', 'component': 'SemiPie', 'name': 'Semi Pie','order': '07', 'category': 'Accumulation Charts',
@@ -412,7 +424,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to arrange the labels smartly without overlapping with each other.'
     },
     {
-        'path': 'chart/axis-label-template', 'component': 'AxisLabelTemplate', 'name': 'Axis Label Template', 'order': '14', 'category': 'Chart Axes', 'type': 'new',
+        'path': 'chart/axis-label-template', 'component': 'AxisLabelTemplate', 'name': 'Axis Label Template', 'order': '14', 'category': 'Chart Axes',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the axis label template in charts.'
     },
     {
@@ -458,6 +470,10 @@ export const ChartSampleOrder: Object = [
     {
         'path': 'chart/empty-point', 'component': 'EmptyPoint', 'name': 'Empty Points', 'order': '15', 'category': 'Chart Customization',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the empty points.'
+    },
+    {
+        'path': 'chart/chart-legend-template', 'component': 'ChartLegendTemplate', 'name': 'Legend Template', 'order': '15', 'category': 'Chart Customization', 'type': 'new', 
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the legend template'
     },
     {
         'path': 'chart/no-data-template', 'component': 'NodataTemplate', 'name': 'No Data Template', 'order': '15', 'category': 'Chart Customization',

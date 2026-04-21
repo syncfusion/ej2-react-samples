@@ -11,11 +11,11 @@
     height: 70px !important;
 }  
 
-.fluent2-highcontrast .e-header-cell-label.e-gantt-top-cell-text,
-.fluent-dark .e-header-cell-label.e-gantt-top-cell-text,
-.fluent2-dark .e-header-cell-label.e-gantt-top-cell-text,
-.material3-dark .e-header-cell-label.e-gantt-top-cell-text,
-.highcontrast .e-header-cell-label.e-gantt-top-cell-text {
+#TimelineTemplate .fluent2-highcontrast .e-header-cell-label.e-gantt-top-cell-text,
+#TimelineTemplate .fluent-dark .e-header-cell-label.e-gantt-top-cell-text,
+#TimelineTemplate .fluent2-dark .e-header-cell-label.e-gantt-top-cell-text,
+#TimelineTemplate .material3-dark .e-header-cell-label.e-gantt-top-cell-text,
+#TimelineTemplate .highcontrast .e-header-cell-label.e-gantt-top-cell-text {
     background-color: #000;
 }
 

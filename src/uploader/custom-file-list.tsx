@@ -115,6 +115,9 @@ private onUploadFailed(args: any): void {
     if (args.operation === 'upload') {
         detach(li.querySelector('.progress-bar-container'));
     }
+    if (args.response && args.response.statusText !== '') {
+        args.statusText = args.response.statusText;
+    }
 }
 private removeFiles(args: any): void {
     let status : string = this.filesDetails[this.filesList.indexOf(args.currentTarget.parentElement)].statusCode;
@@ -156,7 +159,7 @@ public render(): JSX.Element {
 							{/* Render Uploader */}
 								<div id='dropArea' className='dropArea' ref={this.dropRef}>
 									<span id='drop' className='file-name-span drop'> Drop files here or <a href="" id='browse'><u>Browse</u></a> </span>
-										<UploaderComponent id='fileUpload' type = 'file' ref = {(scope) => {this.uploadObj = scope}}
+										<UploaderComponent id='UploadFiles' type = 'file' ref = {(scope) => {this.uploadObj = scope}}
 											asyncSettings = {this.asyncSettings}
                                             success={ this.onSuccess.bind(this) }
                                             removing= { this.onRemoveFile.bind(this)}
@@ -183,6 +186,11 @@ public render(): JSX.Element {
 			<div id="description">
 				<p>The Uploader component allows to customize its file list using template property. The template used for each file in file list.</p>
 				<p>For more information, you can refer to the Template section from this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/template/#custom-template">documentation section</a>.</p>
+                <p>In this example, the backend service used in the saveUrl and removeUrl endpoints for saving and removing files is intended for demonstration purposes only. The uploaded files are subjected to thorough validation, including verification of file names and the application of security checks. Therefore, this service is not recommended for production use, and the configuration of a custom backend save and remove service is advised. Additional implementation details can be found in the
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/async#server-side-configuration-for-save-action">saveUrl</a> and
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/async#server-side-configuration-for-remove-action">removeUrl</a>
+            documentation.
+          </p>
 			</div>
 		</div>
     );

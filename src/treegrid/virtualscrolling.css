@@ -1,0 +1,97 @@
+ .rg-badge {
+     padding: 4px 8px;
+     border-radius: 4px;
+     display: inline-block;
+     font-size: 12px;
+     font-weight: 500;
+     width: 100px;
+     line-height: 2;
+ }
+
+ .rg-status-running {
+     background: #66bb6a;
+     color: white;
+ }
+
+ .rg-status-stopped {
+     background: #ef5350;
+     color: white;
+ }
+
+ .rg-status-degraded {
+     background: #ffb74d;
+     color: white;
+ }
+
+ .rg-status-maintenance {
+     background: #0277bd;
+     color: white;
+ }
+
+ .rg-priority-low {
+     background-color: #ccffcc;
+     color: #00cc00;
+ }
+
+ .rg-priority-high {
+
+     background-color: #ffe5cc;
+     color: #cc6600;
+ }
+
+ .rg-priority-critical {
+     background-color: #ffcccc;
+     color: #cc0000;
+ }
+
+ .rg-compliance {
+     width: 100px;
+     height: 12px;
+     background: #f3f4f6;
+     border-radius: 20px;
+     overflow: hidden;
+ }
+
+ .rg-compliance>i {
+     display: block;
+     height: 100%;
+     background: #2563eb;
+     border-radius: 20px;
+ }
+
+ .rg-compliance-wrapper {
+     display: flex;
+     gap: 10px;
+     align-items: center;
+ }
+
+ .rg-compliance-value {
+     color: #1e40af;
+     font-weight: 600;
+ }
+
+ .rg-region {
+     display: flex;
+     gap: 10px;
+     align-items: center;
+ }
+
+ .rg-region-flag {
+     display: inline-flex;
+     width: 20px;
+     height: 14px;
+     border-radius: 2px;
+     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+     background-size: contain;
+     background-repeat: no-repeat;
+     background-position: center;
+     flex-shrink: 0;
+ }
+
+ .tailwind3-dark .rg-compliance-value,
+ .fluent2-dark .rg-compliance-value,
+ .bootstrap5\.3-dark .rg-compliance-value,
+ .material3-dark .rg-compliance-value,
+ .fluent2-highcontrast .rg-compliance-value {
+     color: #fff;
+ }

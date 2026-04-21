@@ -1,8 +1,6 @@
 import * as React from "react";
 import {
     DiagramComponent,
-    Inject,
-    UndoRedo,
     SnapConstraints,
     NodeModel,
     ConnectorModel,
@@ -11,11 +9,6 @@ import {
     PointModel
 } from '@syncfusion/ej2-react-diagrams';
 import { updateSampleSection } from "../common/sample-base";
-
-// Enable Undo and Redo
-DiagramComponent.Inject(UndoRedo);
-
-let diagramInstance: DiagramComponent;
 
 interface LifeCycle {
     title: string;
@@ -145,9 +138,10 @@ function createSpiralDiagram(): { nodes: NodeModel[], connectors: ConnectorModel
 }
 
 function SpiralDiagram() {
+    const diagramRef = React.useRef<DiagramComponent | null>(null);
     const [diagramCreated, setDiagramCreated] = React.useState(false);
     const [showDiagram, setShowDiagram] = React.useState(false);
-    const { nodes, connectors } = createSpiralDiagram();
+    const { nodes, connectors } = React.useMemo(() => createSpiralDiagram(), []);
 
     React.useEffect(() => {
         updateSampleSection();
@@ -208,7 +202,7 @@ function SpiralDiagram() {
             <div className="control-section" style={{ width: '100%' }}>
                 <DiagramComponent
                     id="diagram"
-                    ref={(diagram) => (diagramInstance = diagram)}
+                    ref={diagramRef}
                     width={'100%'}
                     height={'750px'}
                     snapSettings={{ constraints: SnapConstraints.None }}
@@ -216,24 +210,26 @@ function SpiralDiagram() {
                     connectors={connectors}
                     tool={DiagramTools.ZoomPan}
                     created={() => {
-                        setDiagramCreated(true);
-                        diagramInstance.fitToPage();
-                        setTimeout(()=>{
-                            setShowDiagram(true);
-                        }, 10)
+                        const diagram = diagramRef.current;
+                        if (diagram) {
+                            setDiagramCreated(true);
+                            diagram.fitToPage();
+                            setTimeout(() => {
+                                setShowDiagram(true);
+                            }, 10);
+                        }
                     }}
                     load={() => {
                         if (diagramCreated) {
-                            setTimeout(() => diagramInstance.fitToPage(), 10);
+                            setTimeout(() => diagramRef.current.fitToPage(), 10);
                         }
                     }}
                 >
-                    <Inject services={[UndoRedo]} />
                 </DiagramComponent>
             </div>
             <div id="action-description">
                 <p>
-                    This sample visualizes the software development lifecycle using a spiral diagram, implemented with the Syncfusion<sup>®</sup> EJ2 React Diagram component. It represents project stages as nodes arranged in a continuously expanding spiral.
+                    This sample visualizes the software development lifecycle using a spiral diagram, implemented with the Syncfusion<sup>®</sup> EJ2 React Diagram. It represents project stages as nodes arranged in a continuously expanding spiral.
                 </p>
             </div>
             <div id="description">

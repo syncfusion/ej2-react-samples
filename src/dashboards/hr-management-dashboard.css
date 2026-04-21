@@ -1,0 +1,473 @@
+.overall_hr_management {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  height: 100%;
+}
+
+#main-content {
+  flex: 1;
+  min-width: 0;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+#dockToolbar {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 0px !important;
+}
+
+.e-Menu {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.e-btn-icon .e-menu .e-icons {
+  font-size: 16px;
+}
+
+.cs-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.cs-toolbar-right {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Layout shell */
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+  background: #f7f7fb;
+}
+
+/* Top bar for toggle button */
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 48px;
+  padding: 0 12px;
+  border-bottom: 1px solid rgb(245, 246, 248);
+  background: rgb(245, 246, 248);
+}
+
+.topbar-title {
+  font-weight: 600;
+}
+
+/* Sidebar */
+#hr-sidebar {
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 0;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.08);
+}
+
+/* show icon + text normally, but hide text when docked */
+#hr-sidebar .nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#hr-sidebar .nav-item .e-icons {
+  font-size: 16px;
+}
+
+/* Ensure text is visible in expanded state */
+#hr-sidebar .nav-item .nav-text {
+  display: inline;
+  white-space: nowrap;
+}
+
+/* Hide labels only when docked */
+#hr-sidebar.e-close .nav-item .nav-text {
+  display: none !important;
+}
+
+.nav-item {
+  font-size: 15px;
+  padding: 12px 15px;
+  cursor: pointer;
+  user-select: none;
+  border-left: 3px solid transparent;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-item:hover {
+  background: rgba(32, 185, 251, 0.06);
+}
+
+.nav-item.active {
+  background: rgb(150, 218, 247);
+  border-left-color: #6c8cff;
+}
+
+
+/* Vertical divider (scoped to KPI cards and KPI panels only so charts/gauges are unaffected) */
+.with-divider::after {
+  content: '';
+  position: absolute;
+  width: 0.5px;
+  height: 60%;
+  background-color: #000;
+  top: 20%;
+  left: 50%;
+}
+
+
+/* Center the Department MultiSelect inside its card */
+.Department-card,
+.Month-card {
+  display: flex;
+  align-items: center !important;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+/* KPI Net Headcount panel styles (migrated from inline styles) */
+.hr-kpi-netcount__content {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  width: 100%;
+}
+
+.hr-kpi-netcount__title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.hr-kpi-netcount__row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.hr-kpi-netcount__value {
+  margin: 0;
+}
+
+.hr-kpi-netcount__bottom {
+  margin-bottom: 20px;
+}
+
+.hr-kpi-netcount__grid {
+  display: grid;
+  grid-template-columns: 1fr 1px 0.9fr;
+}
+
+.hr-kpi-netcount__left {
+  padding-right: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.hr-kpi-netcount__left-row {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.hr-kpi-netcount__label {
+  font-size: 12px;
+  color: rgb(113, 116, 110);
+  font-weight: 600;
+}
+
+.hr-kpi-netcount__number {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(15, 23, 42);
+}
+
+.hr-kpi-netcount__divider {
+  width: 0.5px;
+  background: rgb(40, 40, 41);
+  height: 100%;
+  align-self: stretch;
+}
+
+.hr-kpi-netcount__right {
+  padding-left: 8px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.hr-kpi-netcount__right-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.hr-kpi-netcount__net {
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.hr-kpi-netcount__badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  display: inline-block;
+  border: 1px solid transparent;
+}
+
+.hr-kpi-netcount__badge.positive {
+  background: rgb(236, 253, 243);
+  color: #16a34a;
+  border-color: rgb(220, 252, 232);
+}
+
+.hr-kpi-netcount__badge.negative {
+  background: rgb(254, 242, 242);
+  color: #dc2626;
+  border-color: rgb(254, 202, 202);
+}
+
+.hr-kpi-netcount__pct {
+  margin-right: 6px;
+}
+
+.hr-kpi-card:not(.with-divider) {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+}
+
+.hr-kpi-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.hr-kpi-card.with-divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  height: 100%;
+
+}
+
+.hr-kpi-card .hr-kpi-label {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+}
+
+.hr-kpi-card .hr-kpi-value {
+  font-size: 25px;
+  /* bigger value */
+  font-weight: 500;
+  line-height: 1.1;
+  color: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hr-kpi-card .hr-kpi-block .hr-kpi-label {
+  margin: 0px 0px 15px 0px;
+}
+
+.fluent-dark .hr-kpi-card.with-divider,
+.fluent2-dark .hr-kpi-card.with-divider,
+.fluent2-highcontrast .hr-kpi-card.with-divider,
+.bootstrap5_3-dark .hr-kpi-card.with-divider,
+.tailwind-dark .hr-kpi-card.with-divider,
+.tailwind3-dark .hr-kpi-card.with-divider,
+.material3-dark .hr-kpi-card.with-divider,
+.bootstrap-dark .hr-kpi-card.with-divider,
+.highcontrast .hr-kpi-card.with-divider {
+  background-color: var(--color-sf-flyout-bg-color);
+}
+
+.fluent-dark .hr-kpi-card:not(.with-divider),
+.fluent2-dark .hr-kpi-card:not(.with-divider),
+.fluent2-highcontrast .hr-kpi-card:not(.with-divider),
+.bootstrap5_3-dark .hr-kpi-card:not(.with-divider),
+.tailwind-dark .hr-kpi-card:not(.with-divider),
+.tailwind3-dark .hr-kpi-card:not(.with-divider),
+.material3-dark .hr-kpi-card:not(.with-divider),
+.bootstrap-dark .hr-kpi-card:not(.with-divider),
+.highcontrast .hr-kpi-card:not(.with-divider) {
+  background-color: var(--color-sf-flyout-bg-color);
+}
+
+.fluent-dark .hr-kpi-value,
+.fluent2-dark .hr-kpi-value,
+.fluent2-highcontrast .hr-kpi-value,
+.bootstrap5_3-dark .hr-kpi-value,
+.tailwind-dark .hr-kpi-value,
+.tailwind3-dark .hr-kpi-value,
+.material3-dark .hr-kpi-value,
+.bootstrap-dark .hr-kpi-value,
+.highcontrast .hr-kpi-value {
+  color: #eeedec;
+}
+
+.fluent-dark .hr-kpi-value1,
+.fluent2-dark .hr-kpi-value1,
+.fluent2-highcontrast .hr-kpi-value1,
+.bootstrap5_3-dark .hr-kpi-value1,
+.tailwind-dark .hr-kpi-value1,
+.tailwind3-dark .hr-kpi-value1,
+.material3-dark .hr-kpi-value1,
+.bootstrap-dark .hr-kpi-value1,
+.highcontrast .hr-kpi-value1 {
+  color: #eeedec;
+}
+
+.fluent-dark .with-divider::after,
+.fluent2-dark .with-divider::after,
+.fluent2-highcontrast .with-divider::after,
+.bootstrap5_3-dark .with-divider::after,
+.tailwind-dark .with-divider::after,
+.tailwind3-dark .with-divider::after,
+.material3-dark .with-divider::after,
+.bootstrap-dark .with-divider::after,
+.highcontrast .with-divider::after {
+  background-color: #bbb7b7;
+}
+
+.fluent-dark .hr-kpi-netcount__divider,
+.fluent2-dark .hr-kpi-netcount__divider,
+.fluent2-highcontrast .hr-kpi-netcount__divider,
+.bootstrap5_3-dark .hr-kpi-netcount__divider,
+.tailwind-dark .hr-kpi-netcount__divider,
+.tailwind3-dark .hr-kpi-netcount__divider,
+.material3-dark .hr-kpi-netcount__divider,
+.bootstrap-dark .hr-kpi-netcount__divider,
+.highcontrast .hr-kpi-netcount__divider {
+  background-color: #eeedec;
+}
+
+#payroll-by-type0_AxisLabel_0,
+#payroll-by-type0_AxisLabel_1,
+#payroll-by-type0_AxisLabel_2,
+#payroll-by-type0_AxisLabel_3,
+#payroll-by-type0_AxisLabel_4 {
+  text-decoration: underline;
+  cursor: pointer;
+  fill: #0d6efd;
+}
+
+#gender-experience-chart0_AxisLabel_4,
+#gender-experience-chart0_AxisLabel_3,
+#gender-experience-chart0_AxisLabel_2,
+#gender-experience-chart0_AxisLabel_1,
+#gender-experience-chart0_AxisLabel_0 {
+  text-decoration: underline;
+  cursor: pointer;
+  fill: #0d6efd;
+}
+
+#designation-dept-overview0_AxisLabel_0,
+#designation-dept-overview0_AxisLabel_1,
+#designation-dept-overview0_AxisLabel_2,
+#designation-dept-overview0_AxisLabel_3,
+#designation-dept-overview0_AxisLabel_4 {
+  text-decoration: underline;
+  cursor: pointer;
+  fill: #0d6efd;
+}
+
+#hiring-funnel0_AxisLabel_0,
+#hiring-funnel0_AxisLabel_1,
+#hiring-funnel0_AxisLabel_2,
+#hiring-funnel0_AxisLabel_3,
+#hiring-funnel0_AxisLabel_4 {
+  text-decoration: underline;
+  cursor: pointer;
+  fill: #0d6efd;
+}
+
+.material3-dark .e-card:hover {
+  background-color: #191c1f;
+}
+
+.fluent-dark .cs-title,
+.fluent2-dark .cs-title,
+.fluent2-highcontrast .cs-title,
+.bootstrap5_3-dark .cs-title,
+.tailwind-dark .cs-title,
+.tailwind3-dark .cs-title,
+.material3-dark .cs-title,
+.bootstrap-dark .cs-title,
+.highcontrast .cs-title,
+.fluent-dark .hr-kpi-label,
+.fluent2-dark .hr-kpi-label,
+.fluent2-highcontrast .hr-kpi-label,
+.bootstrap5_3-dark .hr-kpi-label,
+.tailwind-dark .hr-kpi-label,
+.tailwind3-dark .hr-kpi-label,
+.material3-dark .hr-kpi-label,
+.bootstrap-dark .hr-kpi-label,
+.highcontrast .hr-kpi-label,
+.fluent-dark .hr-kpi-netcount__label,
+.fluent2-dark .hr-kpi-netcount__label,
+.fluent2-highcontrast .hr-kpi-netcount__label,
+.bootstrap5_3-dark .hr-kpi-netcount__label,
+.tailwind-dark .hr-kpi-netcount__label,
+.tailwind3-dark .hr-kpi-netcount__label,
+.material3-dark .hr-kpi-netcount__label,
+.bootstrap-dark .hr-kpi-netcount__label,
+.highcontrast .hr-kpi-netcount__label {
+  color: #ffffff;
+}
+
+.cs-toolbar {
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+.cs-title {
+  color: #000000;
+}
+
+.fluent .e-panel-header,
+.fluent2 .e-panel-header,
+.bootstrap5_3 .e-panel-header,
+.tailwind .e-panel-header,
+.tailwind3 .e-panel-header,
+.material3 .e-panel-header,
+.bootstrap5_3 .e-panel-header {
+  background-color: #f9fafb;
+}
+
+.tailwind3 .overall_hr_management .e-dashboardlayout.e-control .e-panel:active,
+.fluent2 .overall_hr_management .e-dashboardlayout.e-control .e-panel:active,
+.tailwind3 .overall_hr_management .e-dashboardlayout.e-control .e-panel:hover,
+.fluent2 .overall_hr_management .e-dashboardlayout.e-control .e-panel:hover,
+.tailwind3 .overall_hr_management .e-card:active,
+.tailwind3 .overall_hr_management .e-card:hover,
+.fluent2 .overall_hr_management .e-card:active,
+.fluent2 .overall_hr_management .e-card:hover {
+  background: #ffffff !important;
+}

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import './uploader.css';
 import {PropertyPane} from '../common/property-pane';
-import {UploaderComponent, RemovingEventArgs} from '@syncfusion/ej2-react-inputs';
+import {UploaderComponent, RemovingEventArgs, FailureEventArgs} from '@syncfusion/ej2-react-inputs';
 import {CheckBoxComponent, ChangeEventArgs} from '@syncfusion/ej2-react-buttons';
 import { Browser } from '@syncfusion/ej2-base';
 import { useEffect, useRef, useState } from 'react';
@@ -34,6 +34,11 @@ const Default = () => {
         uploadObj.current.element.setAttribute('name', 'UploadFiles');
         uploadObj.current.dataBind();
     }
+    const onFailure = (args: FailureEventArgs): void => {
+      if (args.response && args.response.statusText !== '') {
+          args.statusText = args.response.statusText;
+      }
+    }
 
     const onChange = (args: ChangeEventArgs): void => {
         setIsAutoUpload(args.checked);
@@ -53,7 +58,7 @@ const Default = () => {
             <div className='col-lg-9'>
             <div className='upload_wrapper'>
                 {/* Render Uploader */}
-                <UploaderComponent id='fileUpload' type='file' ref = {uploadObj} asyncSettings = {asyncSettings} removing= {onRemoveFile.bind(this)} autoUpload={isAutoUpload} sequentialUpload={isSequentialUpload}></UploaderComponent>
+                <UploaderComponent id='UploadFiles' type='file' ref = {uploadObj} asyncSettings = {asyncSettings} failure={onFailure.bind(this)} removing= {onRemoveFile.bind(this)} autoUpload={isAutoUpload} sequentialUpload={isSequentialUpload}></UploaderComponent>
             </div>
             </div>
             <div className='property-section col-lg-3' id="uploader">
@@ -79,6 +84,11 @@ const Default = () => {
                 <p>You can manage the files in server after received the uploaded files. When the files are successfully uploaded to server, the remove button will be change to bin button. The uploaded files can be removed by click on the bin button.</p>
                 <p>The progress bar displays for each file upload to denote its upload progress. Once the file upload gets success, the progress bar disappear and corresponding upload status message will be displayed in same place.</p>
                 <p>More information on the Uploader instantiation can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/getting-started/">documentation section</a>.</p>
+                <p>In this example, the backend service used in the saveUrl and removeUrl endpoints for saving and removing files is intended for demonstration purposes only. The uploaded files are subjected to thorough validation, including verification of file names and the application of security checks. Therefore, this service is not recommended for production use, and the configuration of a custom backend save and remove service is advised. Additional implementation details can be found in the
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/async#server-side-configuration-for-save-action">saveUrl</a> and
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/async#server-side-configuration-for-remove-action">removeUrl</a>
+            documentation.
+          </p>
             </div>
         </div>
     );

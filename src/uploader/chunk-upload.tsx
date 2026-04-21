@@ -47,6 +47,11 @@ this.autoUpload = false;
       this.isInteraction = false;
     }
   }
+  private onFailure(args: any): void {
+      if (args.response && args.response.statusText !== '') {
+          args.statusText = args.response.statusText;
+      }
+  }
 // to update flag variable value for automatic pause and resume
   private onResuming(args: any): void {
     if (args.event !== null && !navigator.onLine) {
@@ -81,9 +86,9 @@ public render(): JSX.Element {
          <div className='col-lg-8'>
           <div className='upload_wrapper'>
             {/* Render Uploader */}
-            <UploaderComponent id='chunkUpload' type='file' ref = {(scope) => {this.uploadObj = scope}}
+            <UploaderComponent id='UploadFiles' type='file' ref = {(scope) => {this.uploadObj = scope}}
              asyncSettings = {this.asyncSettings} autoUpload = {this.autoUpload}
-            removing= { this.onRemoveFile.bind(this)} pausing= { this.onPausing.bind(this)} resuming= { this.onResuming.bind(this)} chunkFailure= {this.onBeforeFailure.bind(this)}
+            removing= { this.onRemoveFile.bind(this)} failure={this.onFailure.bind(this)} pausing= { this.onPausing.bind(this)} resuming= { this.onResuming.bind(this)} chunkFailure= {this.onBeforeFailure.bind(this)}
             ></UploaderComponent>
         </div>
         </div>
@@ -128,6 +133,11 @@ public render(): JSX.Element {
             If the application lost its connection (<code>offline</code>), the upload component pauses the process automatically. After the connection is up (<code>online</code>), the upload component will resume its process.
           </p>
           <p>More information on the Uploader instantiation can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/chunk-upload/">documentation section</a>.</p>
+          <p>In this example, the backend service used in the saveUrl and removeUrl endpoints for saving and removing files is intended for demonstration purposes only. The uploaded files are subjected to thorough validation, including verification of file names and the application of security checks. Therefore, this service is not recommended for production use, and the configuration of a custom backend save and remove service is advised. Additional implementation details can be found in the
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/async#server-side-configuration-for-save-action">saveUrl</a> and
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/async#server-side-configuration-for-remove-action">removeUrl</a>
+            documentation.
+          </p>
         </div>
       </div>
     );

@@ -4,6 +4,9 @@
     border: 1px solid #dddddd;
     border-radius: 3px;
 }
+#treeview.e-treeview .e-text-content {
+    -webkit-transform: translateZ(0);
+}
 #treeview.e-treeview .e-list-img {
     width: 25px;
     height: 25px;

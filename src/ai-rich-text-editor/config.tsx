@@ -6,7 +6,6 @@ export const AIRichTextEditorSampleOrder: Object = [
         'description': 'This demo showcases the Rich Text Editor AI feature.', 
         'order': '01',
         'category': 'Rich Text Editor',
-        'type': 'update',
         'sourceFiles': [
             { 'displayName': 'ai-assistant.tsx', 'path': 'src/ai-rich-text-editor/ai-assistant.tsx' }, 
             { 'displayName': 'ai-assistant.jsx', 'path': 'src/ai-rich-text-editor/ai-assistant.jsx' },

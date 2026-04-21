@@ -193,8 +193,8 @@ function FunnelDiagram() {
     // Ref for diagram instance
     const diagramRef = React.useRef<DiagramComponent>(null);
     const [diagramCreated, setCreated] = React.useState(false);
-    const [nodes]= React.useState(getNodes());
-    const [connectors] = React.useState(getConnectors());
+    const nodes = React.useMemo(() => getNodes(), []);
+    const connectors = React.useMemo(() => getConnectors(), []);
 
     React.useEffect(() => {
         updateSampleSection();

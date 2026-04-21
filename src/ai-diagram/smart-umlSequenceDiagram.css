@@ -76,13 +76,13 @@
 }
 
 /* Default style for the send button */
-.send-button {
+#diagram-db-send .send-button {
     cursor: pointer;
     transition: fill 0.2s ease;
 }
 
 /* Hover style for the send button */
-.send-button:hover {
+#diagram-db-send .send-button:hover {
     fill: #0345fc;
     /* Change this to your desired hover color */
 }
@@ -104,4 +104,15 @@
     font-family: Arial, sans-serif;
     font-size: 14px;
     color: #000;
+}
+            
+/* Toolbar Selected State - Start */
+.db-toolbar-container .e-toolbar .e-toolbar-items .e-toolbar-item.tb-item-selected .e-tbar-btn.e-btn,
+.db-toolbar-container .e-toolbar .e-toolbar-items .e-toolbar-item .e-dropdown-btn.tb-item-selected {
+    background: #0078D4;
+}
+
+.db-toolbar-container .e-toolbar .e-toolbar-items .e-toolbar-item.tb-item-selected .e-tbar-btn .e-icons.e-btn-icon,
+.db-toolbar-container .e-toolbar .e-toolbar-items .e-toolbar-item .e-dropdown-btn.tb-item-selected .e-btn-icon {
+    color: #ffffff;
 }

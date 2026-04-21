@@ -181,7 +181,6 @@ let toolbarItems: any = [
     { prefixIcon: 'e-icons e-bold', tooltipText: 'Bold', cssClass: 'tb-item-start', disabled: true, id: 'Bold' },
     { prefixIcon: 'e-icons e-italic', tooltipText: 'Italic', cssClass: 'tb-item-middle', disabled: true, id: 'Italic' },
     { prefixIcon: 'e-icons e-underline', tooltipText: 'Underline', cssClass: 'tb-item-end', disabled: true, id: 'Underline' },
-    { id: 'FontColor', tooltipText: 'Font Color', align: 'Left', disabled: true, template: renderFontColorPicker }
 ];
 
 export class GroupandOrder extends SampleBase<{}, {}> {

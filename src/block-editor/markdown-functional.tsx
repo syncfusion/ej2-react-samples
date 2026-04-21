@@ -19,6 +19,7 @@ import {
 
 import { MarkdownConverter } from '@syncfusion/ej2-markdown-converter';
 import TurndownService from 'turndown';
+import { gfm } from 'turndown-plugin-gfm';
 import './markdownBlocks.css';
 import { updateSampleSection } from '../common/sample-base';
 
@@ -40,7 +41,16 @@ const MarkdownBlocks = () => {
   const [sidebarHeaderText] = useState<string>('Markdown Templates');
   const [breadcrumbItems, setBreadcrumbItems] = useState<any[]>([{ text: 'Team' }]);
 
-  const turndownServiceRef = useRef<any>(new TurndownService());
+  const turndownServiceRef = React.useMemo(() => {
+    const service = new TurndownService({
+      codeBlockStyle: 'fenced',
+      emDelimiter: '_',
+      bulletListMarker: '-',
+      headingStyle: 'atx'
+    });
+    service.use(gfm);
+    return service;
+  }, []);
 
   const customToolbarItems: string[] = [
     'Bold', 'Italic', 'Underline', 'Strikethrough'
@@ -246,7 +256,7 @@ const MarkdownBlocks = () => {
     } catch (e) {
       return;
     }
-    const markdownContent = turndownServiceRef.current.turndown(htmlContent || '');
+    const markdownContent = turndownServiceRef.turndown(htmlContent || '');
     let fileName = 'document.md';
     const lastCrumb = breadcrumbItems?.[breadcrumbItems.length - 1]?.text;
     if (lastCrumb) {
@@ -312,6 +322,11 @@ const MarkdownBlocks = () => {
     setTimeout(() => {
       loadContent('src/block-editor/mdfiles/Team Sessions.md');
       setBreadcrumbItems([{ text: 'Team' }, { text: 'Team Sessions' }]);
+
+      if (closeBtnRef.current?.element && window.innerWidth < 600) {
+        closeBtnRef.current.element.style.left = '18px';
+        closeBtnRef.current.element.classList.add('expand-mode');
+      }
     }, 100);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

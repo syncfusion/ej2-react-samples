@@ -6,14 +6,17 @@ export const AIGridSampleOrder: Object = [
         'description': 'This demo shows the data operations on natural language using AI feature in Data Grid.', 
         'order': '01', 
         'type': 'New', 
-        'category': 'Data Grid',
+        'category': 'Data Grid', 
         'sourceFiles': [
-            { 'displayName': 'grid-assistance.tsx', 'path': 'src/ai-grid/ai-assistive-grid.tsx' }, 
-            { 'displayName': 'grid-assistance.jsx', 'path': 'src/ai-grid/ai-assistive-grid.jsx' },
-            { 'displayName': 'GridAction.tsx', 'path': 'src/ai-grid/GridAction.tsx' },
-            { 'displayName': 'GridAction.jsx', 'path': 'src/ai-grid/GridAction.jsx' },
-            { 'displayName': 'AIModel.tsx', 'path': 'src/ai-grid/AIModel.tsx' },
-            { 'displayName': 'AIModel.jsx', 'path': 'src/ai-grid/AIModel.jsx' }
+            { 'displayName': 'assistive-grid.tsx', 'path': 'src/ai-grid/frontend/ai-assistive-grid.tsx' }, 
+            { 'displayName': 'assistive-grid.jsx', 'path': 'src/ai-grid/frontend/ai-assistive-grid.jsx' },
+            { 'displayName': 'assistive-grid.css', 'path': 'src/ai-grid/frontend/assistive-grid.css' },
+            { 'displayName': 'ai-input.tsx', 'path': 'src/ai-grid/model/ai-input.tsx' },
+            { 'displayName': 'ai-input.jsx', 'path': 'src/ai-grid/model/ai-input.jsx' },
+            { 'displayName': 'Grid Action.tsx', 'path': 'src/ai-grid/model/GridAction.tsx' },
+            { 'displayName': 'Grid Action.jsx', 'path': 'src/ai-grid/model/GridAction.jsx' },
+            { 'displayName': 'ai-schema.ts', 'path': 'src/ai-grid/model/sf-ai-schema.ts' },
+            { 'displayName': 'ai-schema.js', 'path': 'src/ai-grid/model/sf-ai-schema.js' }
         ]
     },
     {

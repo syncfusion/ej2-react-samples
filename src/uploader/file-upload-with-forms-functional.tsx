@@ -6,7 +6,7 @@ import {UploaderComponent} from '@syncfusion/ej2-react-inputs';
 import { FormValidator, FormValidatorModel } from '@syncfusion/ej2-inputs';
 import { DialogComponent } from '@syncfusion/ej2-react-popups';
 import { detach, isNullOrUndefined, createElement, EventHandler, Browser } from '@syncfusion/ej2-base';
-import { FileInfo, SelectedEventArgs } from '@syncfusion/ej2-inputs';
+import { FileInfo, SelectedEventArgs, FailureEventArgs } from '@syncfusion/ej2-inputs';
 import './file-upload-with-forms.css';
 import { useEffect } from 'react';
 
@@ -99,6 +99,11 @@ const Formsupport = () => {
             dialogInstance.show();
         }
     }
+    const onFailure = (args: FailureEventArgs): void => {
+      if (args.response && args.response.statusText !== '') {
+          args.statusText = args.response.statusText;
+      }
+    }
 
     const onFileSelected = (args : SelectedEventArgs): void => {
         inputElement = inputRefElement;
@@ -147,7 +152,7 @@ const Formsupport = () => {
                                 <label className="e-float-text e-label-top">Choose a file</label>
                             </div>
                             <div id="uploadError"></div>
-                            <UploaderComponent id='fileUpload' type = 'file' selected={onFileSelected.bind(this)} autoUpload = {autoUpload} allowedExtensions= {allowedExtensions} multiple = {multiple}></UploaderComponent>
+                            <UploaderComponent id='UploadFiles' type = 'file' failure={onFailure.bind(this)} selected={onFileSelected.bind(this)} autoUpload = {autoUpload} allowedExtensions= {allowedExtensions} multiple = {multiple}></UploaderComponent>
                         </div>
                         <div className="form-group" >
                             <div className="e-float-input">
@@ -170,6 +175,11 @@ const Formsupport = () => {
             <div id="description">
                 <p>The Uploader component works in synchronous mode using HTML form.When the end-user submits the form, the selected files are submitted to server with the <code>name</code> attribute of input element.</p>
                 <p>More information on the form support can be found on this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/form-support/"> documentation section</a>.</p>
+                <p>In this example, the backend service used in the saveUrl and removeUrl endpoints for saving and removing files is intended for demonstration purposes only. The uploaded files are subjected to thorough validation, including verification of file names and the application of security checks. Therefore, this service is not recommended for production use, and the configuration of a custom backend save and remove service is advised. Additional implementation details can be found in the
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/async#server-side-configuration-for-save-action">saveUrl</a> and
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/async#server-side-configuration-for-remove-action">removeUrl</a>
+            documentation.
+          </p>
             </div>
         </div>
     );

@@ -210,6 +210,9 @@ private onUploadFailed(args : any): void {
         EventHandler.remove(li.querySelector('#iconUpload'), 'click', this.uploadFile);
         (li.querySelector('.progressbar') as HTMLElement).style.visibility = 'hidden';
     }
+    if (args.response && args.response.statusText !== '') {
+        args.statusText = args.response.statusText;
+    }
 }
 
 private readURL(li: HTMLElement, args: any): void {
@@ -230,7 +233,7 @@ public render(): JSX.Element {
 					<div className='imagepreview'>
 						<div id='dropArea' ref={this.dropAreaRef} className='dropTarget'>
 							<span id='dropimage' ref={this.dropImageRef} className='file-name-drop'> Drop image (JPG, PNG) files here or <a href="" id='browse'><u>Browse</u></a> </span>
-                            <UploaderComponent id='previewfileupload' type = 'file' ref={upload => this.uploadObj = upload}
+                            <UploaderComponent id='UploadFiles' type = 'file' ref={upload => this.uploadObj = upload}
                                 asyncSettings={this.asyncSettings}
 								success={ this.onUploadSuccess.bind(this) }
 								selected= {this.onSelect.bind(this)}
@@ -260,6 +263,11 @@ public render(): JSX.Element {
 			</div>
 			<div id="description">
 				<p>The Uploader component allows to create preview images after uploaded it. The preview images created by reading the file using success event.  Also, the user can create preview images before uploading to server using select event.</p>
+                <p>In this example, the backend service used in the saveUrl and removeUrl endpoints for saving and removing files is intended for demonstration purposes only. The uploaded files are subjected to thorough validation, including verification of file names and the application of security checks. Therefore, this service is not recommended for production use, and the configuration of a custom backend save and remove service is advised. Additional implementation details can be found in the
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/async#server-side-configuration-for-save-action">saveUrl</a> and
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/async#server-side-configuration-for-remove-action">removeUrl</a>
+            documentation.
+          </p>
 			</div>
       </div>
     );

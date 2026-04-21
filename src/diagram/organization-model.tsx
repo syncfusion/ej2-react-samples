@@ -299,7 +299,7 @@ export class OrganizationModel extends SampleBase<{}, {}> {
                     id="toptobottom"
                     style={{
                       backgroundImage:
-                        "url('src/diagram/Images/common-orientation/toptobottom.png')",
+                        "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/common-orientation/toptobottom.png')",
                       marginRight: "3px"
                     }}
                   />
@@ -308,7 +308,7 @@ export class OrganizationModel extends SampleBase<{}, {}> {
                     id="bottomtotop"
                     style={{
                       backgroundImage:
-                        "url('src/diagram/Images/common-orientation/bottomtotop.png')",
+                        "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/common-orientation/bottomtotop.png')",
                       margin: "0px 3px"
                     }}
                   />
@@ -317,7 +317,7 @@ export class OrganizationModel extends SampleBase<{}, {}> {
                     id="lefttoright"
                     style={{
                       backgroundImage:
-                        "url('src/diagram/Images/common-orientation/lefttoright.png')",
+                        "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/common-orientation/lefttoright.png')",
                       marginRight: "0px 3px"
                     }}
                   />
@@ -328,7 +328,7 @@ export class OrganizationModel extends SampleBase<{}, {}> {
                     id="righttoleft"
                     style={{
                       backgroundImage:
-                        "url('src/diagram/Images/common-orientation/righttoleft.png')",
+                        "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/common-orientation/righttoleft.png')",
                       margin: "0px 3px"
                     }}
                   />
@@ -344,7 +344,7 @@ export class OrganizationModel extends SampleBase<{}, {}> {
                     id="pattern1"
                     style={{
                       backgroundImage:
-                        "url('src/diagram/patternimages/Pattern_1.png')",
+                        "url('https://ej2.syncfusion.com/react/demos/src/diagram/patternimages/Pattern_1.png')",
                       marginRight: "3px"
                     }}
                   />
@@ -353,7 +353,7 @@ export class OrganizationModel extends SampleBase<{}, {}> {
                     id="pattern2"
                     style={{
                       backgroundImage:
-                        "url('src/diagram/patternimages/Pattern_2.png')",
+                        "url('https://ej2.syncfusion.com/react/demos/src/diagram/patternimages/Pattern_2.png')",
                       marginRight: "3px"
                     }}
                   />
@@ -362,7 +362,7 @@ export class OrganizationModel extends SampleBase<{}, {}> {
                     id="pattern5"
                     style={{
                       backgroundImage:
-                        "url('src/diagram/patternimages/Pattern_5.png')",
+                        "url('https://ej2.syncfusion.com/react/demos/src/diagram/patternimages/Pattern_5.png')",
                       margin: "0px 3px"
                     }}
                   />
@@ -373,7 +373,7 @@ export class OrganizationModel extends SampleBase<{}, {}> {
                     id="pattern6"
                     style={{
                       backgroundImage:
-                        "url('src/diagram/patternimages/Pattern_6.png')",
+                        "url('https://ej2.syncfusion.com/react/demos/src/diagram/patternimages/Pattern_6.png')",
                       marginRight: "3px"
                     }}
                   />
@@ -382,7 +382,7 @@ export class OrganizationModel extends SampleBase<{}, {}> {
                     id="pattern7"
                     style={{
                       backgroundImage:
-                        "url('src/diagram/patternimages/Pattern_7.png')",
+                        "url('https://ej2.syncfusion.com/react/demos/src/diagram/patternimages/Pattern_7.png')",
                       marginRight: "3px"
                     }}
                   />
@@ -391,7 +391,7 @@ export class OrganizationModel extends SampleBase<{}, {}> {
                     id="pattern8"
                     style={{
                       backgroundImage:
-                        "url('src/diagram/patternimages/Pattern_8.png')",
+                        "url('https://ej2.syncfusion.com/react/demos/src/diagram/patternimages/Pattern_8.png')",
                       margin: "0px 3px"
                     }}
                   />
@@ -402,7 +402,7 @@ export class OrganizationModel extends SampleBase<{}, {}> {
                     id="pattern9"
                     style={{
                       backgroundImage:
-                        "url('src/diagram/patternimages/Pattern_9.png')",
+                        "url('https://ej2.syncfusion.com/react/demos/src/diagram/patternimages/Pattern_9.png')",
                       margin: "0px 3px"
                     }}
                   />
@@ -466,7 +466,7 @@ export class OrganizationModel extends SampleBase<{}, {}> {
                 />
               </div>
             </div>
-            <div className="row" style={{ paddingTop: '8px' }}>
+            <div className="row" style={{ paddingTop: '8px', display:'none'}}>
               <CheckBoxComponent
                 checked={false}
                 label="Expandable"

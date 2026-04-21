@@ -17,10 +17,6 @@ import {
 } from '@syncfusion/ej2-react-diagrams';
 import { updateSampleSection } from "../common/sample-base";
 
-// Declare a variable to hold the instance of the DiagramComponent.
-let diagramInstance: DiagramComponent;
-let diagramCreated: boolean = false;
-
 // Interface for element data
 interface ChemicalElement  {
     atomicNumber?: number;
@@ -636,12 +632,15 @@ function initPeriodicTable(): { nodes: NodeModel[], connectors: ConnectorModel[]
 
 // PeriodicTable component renders the periodic table using Syncfusion's DiagramComponent.
 function PeriodicTable() {
+    const diagramRef = React.useRef<DiagramComponent>(null);
+    const [diagramCreated, setDiagramCreated] = React.useState(false);
     const [showDiagram, setShowDiagram] = React.useState(false);
+    const periodicTableModel = React.useMemo(() => initPeriodicTable(), []);
+
     React.useEffect(() => {
         updateSampleSection();
-    }, []); // Empty dependency array ensures the effect runs only once after the initial render
+    }, []);
 
-    const periodicTableModel = initPeriodicTable();
 
     // Handle mouse enter event
     const handleMouseEnter = (args: MouseEventArgs) => {
@@ -651,8 +650,8 @@ function PeriodicTable() {
                 // Toggle atomic mass number visibility
                 element.annotations[element.annotations.length - 1].visibility = true;
                 // Scale up the node
-                diagramInstance.scale(element, 1.25, 1.25, { x: 0.5, y: 0.5 });
-                diagramInstance.dataBind();
+                diagramRef.current.scale(element, 1.25, 1.25, { x: 0.5, y: 0.5 });
+                diagramRef.current.dataBind();
             }
         }
     };
@@ -665,8 +664,8 @@ function PeriodicTable() {
                 // Toggle atomic mass number visibility
                 element.annotations[element.annotations.length - 1].visibility = false;
                 // Scale down the node
-                diagramInstance.scale(element, 1 / 1.25, 1 / 1.25, { x: 0.5, y: 0.5 });
-                diagramInstance.dataBind();
+                diagramRef.current.scale(element, 1 / 1.25, 1 / 1.25, { x: 0.5, y: 0.5 });
+                diagramRef.current.dataBind();
             }
         }
     };
@@ -679,7 +678,7 @@ function PeriodicTable() {
                 const label = (selectednode.addInfo as any).label;
                 const cellValue = (selectednode.addInfo as any).cellValue;
                 // Highlight Selected Group/Period Elements
-                diagramInstance.nodes.forEach((node: NodeModel) => {
+                diagramRef.current.nodes.forEach((node: NodeModel) => {
                     const element = node.addInfo as any;
                     if (element?.name) {
                         node.style.opacity =
@@ -689,7 +688,7 @@ function PeriodicTable() {
                     }
                 });
             } else {
-                diagramInstance.nodes.forEach(node => node.style.opacity = 1);
+                diagramRef.current.nodes.forEach(node => node.style.opacity = 1);
             }
         }
     };
@@ -709,7 +708,7 @@ function PeriodicTable() {
                 {/* Initializes and renders diagram control */}
                 <DiagramComponent
                     id="diagram"
-                    ref={(diagram) => (diagramInstance = diagram)}
+                    ref={diagramRef}
                     width={'100%'}
                     height={'700px'}
                     nodes={periodicTableModel.nodes}
@@ -723,10 +722,10 @@ function PeriodicTable() {
                     mouseLeave={handleMouseLeave}
                     selectionChange={handleSelectionChange}
                     created={() => {
-                        if (diagramInstance){
-                            diagramCreated = true;
+                        if (diagramRef.current){
+                            setDiagramCreated(true);
                             // Fit the diagram to the page on creation.
-                            diagramInstance.fitToPage();
+                            diagramRef.current.fitToPage();
                             // show diagram
                              setTimeout(()=>{
                                 setShowDiagram(true);
@@ -734,8 +733,8 @@ function PeriodicTable() {
                         }
                     }}
                     load={()=>{
-                        if (diagramCreated && diagramInstance) {
-                            diagramInstance.fitToPage();
+                        if (diagramCreated && diagramRef.current) {
+                            diagramRef.current.fitToPage();
                         }
                     }}
                 >
@@ -743,7 +742,7 @@ function PeriodicTable() {
             </div>
             <div id="action-description">
                 <p>
-                    This sample demonstrates an interactive Periodic Table of Elements built using the Syncfusion<sup>®</sup> EJ2 React Diagram component, displaying all known elements with categorization by color, detailed hover information, and highlighting by period or group.
+                    This sample demonstrates an interactive Periodic Table of Elements built using the Syncfusion<sup>®</sup> EJ2 React Diagram, displaying all known elements with categorization by color, detailed hover information, and highlighting by period or group.
                 </p>
             </div>
             <div id="description">

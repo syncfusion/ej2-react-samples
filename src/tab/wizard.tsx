@@ -32,7 +32,7 @@ export class Wizard extends SampleBase<{}, {}> {
   public startPoint: DropDownListComponent;
   public today: Date = new Date();
   public selectedTrain: any;
-  public dlgTarget: HTMLElement = document.querySelector('.sb-content-tab.e-tab .e-content.sb-sample-content-area');
+  public dlgTarget: HTMLElement;
   public dateMin: Date = new Date(this.today.getTime());
   public dateMax: Date = new Date(this.today.getTime() + 60 * 24 * 60 * 60 * 1000);
   public fields: Object = { id: "id", text: "text", value: "text" };
@@ -41,6 +41,14 @@ export class Wizard extends SampleBase<{}, {}> {
   public result: Object[] = [];
   public reserved: Object[] = [];
   public amountDetails: any;
+  constructor(props: any) {
+    super(props);
+    this.state = { dialogReady: false };
+  }
+  public componentDidMount(): void {
+    this.dlgTarget = document.getElementById('tab-wizard');
+    this.setState({ dialogReady: true });
+  }
 
   public headerText: any = [
     { "text": "New Booking" },
@@ -416,6 +424,7 @@ export class Wizard extends SampleBase<{}, {}> {
 }
 
   render() {
+    const state = this.state as { dialogReady: boolean };
     return (
       <div>
         <div className="col-lg-12 control-section e-tab-section">
@@ -428,7 +437,9 @@ export class Wizard extends SampleBase<{}, {}> {
                 <TabItemDirective header={this.headerText[3]} content={this.content3.bind(this)} disabled={true}/>
               </TabItemsDirective>
             </TabComponent>
-            <DialogComponent ref={dialog => (this.alertDlg = dialog)} header="Success" width={250} isModal={true} visible={false} showCloseIcon={true} content="Your payment was successfully processed" target={this.dlgTarget} buttons={this.dlgButtons} created={this.dlgCreated.bind(this)}/>
+            { state.dialogReady && (
+              <DialogComponent ref={dialog => (this.alertDlg = dialog)} header="Success" width={250} isModal={true} visible={false} showCloseIcon={true} content="Your payment was successfully processed" target={this.dlgTarget} buttons={this.dlgButtons} created={this.dlgCreated.bind(this)}/>
+            )}
           </div>
         </div>
         <div id="action-description">

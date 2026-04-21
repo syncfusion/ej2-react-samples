@@ -252,7 +252,7 @@ function createPort(id: string, x: number, y: number): PointPortModel {
 }
 
 function VennDiagram() {
-    const { nodes, connectors } = initializeDiagram();
+    const { nodes, connectors } = React.useMemo(() => initializeDiagram(), []);
     const diagramRef = React.useRef<DiagramComponent>(null);
     const [diagramCreated, setCreated] = React.useState(false);
 

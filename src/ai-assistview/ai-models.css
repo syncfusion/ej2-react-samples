@@ -133,12 +133,12 @@
     .e-sidebar-container .e-main-content.e-content-animation {
       margin-left: 0 !important;
     }
-    #close {
+    .ai-models #close {
       display: block;
     }
   }
   @media screen and (min-width: 981px) { 
-    #close {
+    .ai-models #close {
       display: none; 
     }
   }

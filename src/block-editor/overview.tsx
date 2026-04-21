@@ -6,21 +6,25 @@ import { SampleBase } from '../common/sample-base';
 
 export class Overview extends SampleBase<{}, {}> {
   private customToolbarItems: string[] = [
-      'Bold', 'Italic', 'Underline', 'Strikethrough', 'Uppercase', 'Lowercase', 'Subscript', 'Superscript', 'Color', 'Backgroundcolor'
+      'Transform' ,'Bold', 'Italic', 'Underline', 'Strikethrough', 'Uppercase', 'Lowercase', 'Subscript', 'Superscript', 'InlineCode', 'Link', 'Color', 'Backgroundcolor'
     ];
     private inlineToolbar: InlineToolbarSettingsModel = {
       items: this.customToolbarItems,
+    };
+    private imageBlockSettings: any = {
+        saveUrl: 'https://services.syncfusion.com/react/production/api/RichTextEditor/SaveFile',
+        path: 'https://services.syncfusion.com/react/production/RichTextEditor/'
     };
   render() {
     return (
       <div className='control-pane'>
         <div className="control-section overview-blockeditor">
-          <BlockEditorComponent id='block-editor' blocks={data["blockDataOverview"]} users={data["users"]} inlineToolbarSettings={this.inlineToolbar}></BlockEditorComponent>
+          <BlockEditorComponent id='block-editor' blocks={data["blockDataOverview"]} users={data["users"]} inlineToolbarSettings={this.inlineToolbar} imageBlockSettings={this.imageBlockSettings}></BlockEditorComponent>
         </div>
 
         <div id="action-description">
             <p>
-                This sample demonstrates the features of the <code>Block Editor</code> control. 
+                This sample demonstrates the features of the <code>Block Editor</code> component. 
                 It showcases various block types, content formatting options, and interactive editing capabilities.
             </p>
         </div>

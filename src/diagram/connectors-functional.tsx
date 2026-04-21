@@ -527,7 +527,7 @@ function segmentDecoratorSizeChange(args: any) {
               id="straightConnector"
               style={{
                 backgroundImage:
-                  "url('src/diagram/Images/connector/Connectors_1.png')",
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/connector/Connectors_1.png')",
                 marginRight: "3px"
               }}
             />
@@ -536,7 +536,7 @@ function segmentDecoratorSizeChange(args: any) {
               id="orthogonalConnector"
               style={{
                 backgroundImage:
-                  "url('src/diagram/Images/connector/Connectors_2.png')",
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/connector/Connectors_2.png')",
                 margin: "0px 3px"
               }}
             />
@@ -545,7 +545,7 @@ function segmentDecoratorSizeChange(args: any) {
               id="bezierConnector"
               style={{
                 backgroundImage:
-                  "url('src/diagram/Images/connector/Connectors_3.png')",
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/connector/Connectors_3.png')",
                 marginLeft: "3px"
               }}
             />
@@ -556,7 +556,7 @@ function segmentDecoratorSizeChange(args: any) {
               id="straightConnectorWithStroke"
               style={{
                 backgroundImage:
-                  "url('src/diagram/Images/connector/Connectors_4.png')",
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/connector/Connectors_4.png')",
                 marginRight: "3px"
               }}
             />
@@ -565,7 +565,7 @@ function segmentDecoratorSizeChange(args: any) {
               id="orthogonalConnectorWithStroke"
               style={{
                 backgroundImage:
-                  "url('src/diagram/Images/connector/Connectors_5.png')",
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/connector/Connectors_5.png')",
                 margin: "0px 3px"
               }}
             />
@@ -574,7 +574,7 @@ function segmentDecoratorSizeChange(args: any) {
               id="bezierConnectorWithStroke"
               style={{
                 backgroundImage:
-                  "url('src/diagram/Images/connector/Connectors_6.png')",
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/connector/Connectors_6.png')",
                 marginLeft: "3px"
               }}
             />
@@ -585,7 +585,7 @@ function segmentDecoratorSizeChange(args: any) {
               id="straightConnectorWithDasharray"
               style={{
                 backgroundImage:
-                  "url('src/diagram/Images/connector/Connectors_7.png')",
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/connector/Connectors_7.png')",
                 marginRight: "3px"
               }}
             />
@@ -594,7 +594,7 @@ function segmentDecoratorSizeChange(args: any) {
               id="orthogonalConnectorWithDasharray"
               style={{
                 backgroundImage:
-                  "url('src/diagram/Images/connector/Connectors_8.png')",
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/connector/Connectors_8.png')",
                 margin: "0px 3px"
               }}
             />
@@ -603,7 +603,7 @@ function segmentDecoratorSizeChange(args: any) {
               id="bezierConnectorWithDasharray"
               style={{
                 backgroundImage:
-                  "url('src/diagram/Images/connector/Connectors_9.png')",
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/connector/Connectors_9.png')",
                 marginLeft: "3px"
               }}
             />
@@ -614,7 +614,7 @@ function segmentDecoratorSizeChange(args: any) {
               id="cornerRadius"
               style={{
                 backgroundImage:
-                  "url('src/diagram/Images/connector/Connectors_10.png')",
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/connector/Connectors_10.png')",
                 marginRight: "3px"
               }}
             />
@@ -623,7 +623,7 @@ function segmentDecoratorSizeChange(args: any) {
               id="sourceDecorators"
               style={{
                 backgroundImage:
-                  "url('src/diagram/Images/connector/Connectors_11.png')",
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/connector/Connectors_11.png')",
                 margin: "0px 3px"
               }}
             />
@@ -632,7 +632,7 @@ function segmentDecoratorSizeChange(args: any) {
               id="sourceDecoratorWithDasharray"
               style={{
                 backgroundImage:
-                  "url('src/diagram/Images/connector/Connectors_12.png')",
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/connector/Connectors_12.png')",
                 marginLeft: "3px"
               }}
             />

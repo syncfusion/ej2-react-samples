@@ -136,7 +136,7 @@ function SequenceDiagram() {
             </div>
             <div id="action-description">
                 <p>
-                    This sample presents a UML sequence diagram created with the Syncfusion<sup>®</sup> EJ2 Diagram component to visualize interactions in a secure transaction process involving a user, transaction system, and fraud detection system.
+                    This sample presents a UML sequence diagram created with the Syncfusion<sup>®</sup> EJ2 React Diagram to visualize interactions in a secure transaction process involving a user, transaction system, and fraud detection system.
                 </p>
             </div>
             <div id="description">

@@ -196,6 +196,11 @@ function DrawingTools() {
             }
         }
       }
+      if (target && target.id == "freehand") {
+        diagramInstance.snapSettings.constraints = SnapConstraints.ShowLines;
+      } else {
+        diagramInstance.snapSettings.constraints = (SnapConstraints.SnapToObject | SnapConstraints.SnapToLines) | SnapConstraints.ShowLines;
+      }
     };
   }
   function onChange(args: ChangeEventArgs): void {
@@ -304,7 +309,7 @@ function DrawingTools() {
       | ImageModel
       | TextModel
       | ConnectorModel;
-    drawingshape = { type: "Image", source: "./src/diagram/employee.png" };
+    drawingshape = { type: "Image", source: "https://ej2.syncfusion.com/react/demos/src/diagram/employee.png" };
     node = {
       shape: drawingshape
     };
@@ -428,7 +433,7 @@ function DrawingTools() {
               id="shape1"
               style={{
                 backgroundImage:
-                  "url('src/diagram/Images/drawingTool/basicshape/DrawingTool_1.png')",
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/drawingTool/basicshape/DrawingTool_1.png')",
                 marginRight: "3px"
               }}
             />
@@ -438,7 +443,7 @@ function DrawingTools() {
               id="shape2"
               style={{
                 backgroundImage:
-                  "url('src/diagram/Images/drawingTool/basicshape/DrawingTool_2.png')",
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/drawingTool/basicshape/DrawingTool_2.png')",
                 margin: "0px 3px"
               }}
             />
@@ -448,7 +453,7 @@ function DrawingTools() {
               id="shape3"
               style={{
                 backgroundImage:
-                  "url('src/diagram/Images/drawingTool/basicshape/DrawingTool_3.png')"
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/drawingTool/basicshape/DrawingTool_3.png')"
               }}
             />
           </div>
@@ -459,7 +464,7 @@ function DrawingTools() {
               id="shape4"
               style={{
                 backgroundImage:
-                  "url('src/diagram/Images/drawingTool/basicshape/DrawingTool_4.png')",
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/drawingTool/basicshape/DrawingTool_4.png')",
                 marginRight: "3px"
               }}
             />
@@ -469,7 +474,7 @@ function DrawingTools() {
               id="shape5"
               style={{
                 backgroundImage:
-                  "url('src/diagram/Images/drawingTool/basicshape/DrawingTool_5.png')",
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/drawingTool/basicshape/DrawingTool_5.png')",
                 margin: "0px 3px"
               }}
             />
@@ -479,7 +484,7 @@ function DrawingTools() {
               id="path"
               style={{
                 backgroundImage:
-                  "url('src/diagram/Images/drawingTool/DrawingTool_6.png')"
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/drawingTool/DrawingTool_6.png')"
               }}
             />
           </div>
@@ -490,7 +495,7 @@ function DrawingTools() {
               id="image"
               style={{
                 backgroundImage:
-                  "url('src/diagram/Images/drawingTool/DrawingTool_7.png')",
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/drawingTool/DrawingTool_7.png')",
                 marginRight: "3px"
               }}
             />
@@ -500,7 +505,7 @@ function DrawingTools() {
               id="svg"
               style={{
                 backgroundImage:
-                  "url('src/diagram/Images/drawingTool/DrawingTool_8.png')",
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/drawingTool/DrawingTool_8.png')",
                 marginRight: "3px"
               }}
             />
@@ -510,7 +515,7 @@ function DrawingTools() {
               id="text"
               style={{
                 backgroundImage:
-                  "url('src/diagram/Images/drawingTool/DrawingTool_9.png')",
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/drawingTool/DrawingTool_9.png')",
                 marginRight: "3px"
               }}
             />
@@ -524,7 +529,7 @@ function DrawingTools() {
               id="straight"
               style={{
                 backgroundImage:
-                  "url('src/diagram/Images/drawingTool/connector/Connectors_1.png')",
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/drawingTool/connector/Connectors_1.png')",
                 marginRight: "3px"
               }}
             />
@@ -533,7 +538,7 @@ function DrawingTools() {
               id="ortho"
               style={{
                 backgroundImage:
-                  "url('src/diagram/Images/drawingTool/connector/Connectors_2.png')",
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/drawingTool/connector/Connectors_2.png')",
                 margin: "0px 3px"
               }}
             />
@@ -542,7 +547,7 @@ function DrawingTools() {
               id="cubic"
               style={{
                 backgroundImage:
-                  "url('src/diagram/Images/drawingTool/connector/Connectors_3.png')"
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/drawingTool/connector/Connectors_3.png')"
               }}
             />
           </div>
@@ -552,7 +557,7 @@ function DrawingTools() {
                 id="freehand"
                 style={{
                   backgroundImage:
-                    "url('src/diagram/Images/connector/freehand.png')"
+                    "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/connector/freehand.png')"
                 }}
               />
           </div>

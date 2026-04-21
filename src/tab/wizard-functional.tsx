@@ -20,7 +20,7 @@ const Wizard = () => {
     const [error1, setError1] = useState('');
     const [error2, setError2] = useState('');
     const [error3, setError3] = useState('');
-
+    const [dialogReady, setDialogReady] = useState(false);
     let alertDlg = useRef<DialogComponent>(null);
     let tabObj = useRef<TabComponent>(null);
     let ticketDetailGrid = useRef<GridComponent>(null);
@@ -41,9 +41,11 @@ const Wizard = () => {
     let startPoint = useRef<DropDownListComponent>(null);
     let today: Date = new Date();
     let selectedTrain = useRef<any>(null);
-    const dlgTarget: HTMLElement = document.querySelector('.sb-content-tab.e-tab .e-content.sb-sample-content-area');
     const dateMin: Date = new Date(today.getTime());
     const dateMax: Date = new Date(today.getTime() + 60 * 24 * 60 * 60 * 1000);
+    useEffect(() => {
+      setDialogReady(true);
+    }, []);
     const fields: Object = { id: "id", text: "text", value: "text" };
     const autoCompleteFields: Object = { text: 'name', value: 'name' };
     let result: Object[] = [];
@@ -421,7 +423,9 @@ const Wizard = () => {
                             <TabItemDirective header={headerText[3]} content={content3} disabled={true} />
                         </TabItemsDirective>
                     </TabComponent>
-                    <DialogComponent ref={alertDlg} header="Success" width={250} isModal={true} visible={false} showCloseIcon={true} content="Your payment was successfully processed" target={dlgTarget} buttons={dlgButtons} created={dlgCreated} />
+                    { dialogReady && (
+                        <DialogComponent ref={alertDlg} header="Success" width={250} isModal={true} visible={false} showCloseIcon={true} content="Your payment was successfully processed" target="#tab-wizard" buttons={dlgButtons} created={dlgCreated} />
+                    )}
                 </div>
             </div>
             <div id="action-description">

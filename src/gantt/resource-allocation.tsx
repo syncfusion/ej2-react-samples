@@ -180,14 +180,14 @@ public ganttInstance: GanttComponent;
   ];
   public cellEdit (args: any) {
     // Restrict editing based on row data
-    if (args.rowData.TaskID === 1 || args.rowData.TaskID === 5) {
+    if (args.rowData.hasChildRecords) {
       args.cancel = true; // Cancel editing for this specific cell
     }
   };
   public actionBegin (args: any) {
     if (args.requestType === 'beforeOpenEditDialog' || args.requestType === 'beforeOpenAddDialog') {
       // Restrict editing based on row data for dialog
-      if (args.rowData.TaskID === 1 || args.rowData.TaskID === 5) {
+      if (args.rowData.hasChildRecords) {
         args.cancel = true; // Cancel editing for this specific row dialog
       }
       args.Resources.selectionSettings = {};

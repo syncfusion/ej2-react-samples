@@ -102,132 +102,217 @@ function DynamicBinding() {
         shouldAutoConfigRef.current = true;
         pivot.refresh();
     };
-    const applyReportSettings = async (pivot: any, reportSettings: any, isOlapReport: boolean, entireReportSettings: any) => {
-        if (isOlapReport) {
-            setCurrentData([]);
-            (pivot as any).engineModule = null;
-            (pivot as any).olapEngineModule = new OlapEngine();
-            (pivot as any).dataType = 'olap';
-            (pivot as any).loadPersistData(JSON.stringify(entireReportSettings));
-            shouldAutoConfigRef.current = false;
-            pivot.refresh();
-            if ((reportSettings as any).type) { delete (reportSettings as any).type; }
-        } else {
-            cleanOlapForRelational();
-            const maybeDataUrl: string | undefined = (reportSettings as any).dataUrl || (reportSettings as any).url;
-            const maybeCsvUrl: string | undefined = (reportSettings as any).csvUrl;
+     const applyReportSettings = async (
+    pivot,
+    reportSettings,
+    isOlapReport,
+    entireReportSettings
+  ) => {
+    if (isOlapReport) {
+      setCurrentData([]);
+      pivot.engineModule = null;
+      pivot.olapEngineModule = new OlapEngine();
+      pivot.dataType = 'olap';
+      pivot.loadPersistData(JSON.stringify(entireReportSettings));
+      shouldAutoConfigRef.current = false;
+      pivot.refresh();
+      if (reportSettings.type) delete reportSettings.type;
+      return;
+    }
 
-            if (!reportSettings.dataSource || reportSettings.dataSource.length === 0) {
-                try {
-                    if (maybeDataUrl) {
-                        const res = await fetch(maybeDataUrl, { cache: 'no-store' });
-                        if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
-                        const jsonData: any = await res.json();
-                        const arr = Array.isArray(jsonData) ? jsonData : (jsonData?.data ?? jsonData);
-                        if (!Array.isArray(arr) || arr.length === 0 || typeof arr[0] !== 'object') {
-                            throw new Error('Invalid JSON at dataUrl: expected an array of objects (or under "data").');
-                        }
-                        (reportSettings as any).type = 'JSON';
-                        (reportSettings as any).dataSource = arr;
-                        setCurrentData(arr);
-                    } else if (maybeCsvUrl) {
-                        const res = await fetch(maybeCsvUrl, { cache: 'no-store' });
-                        if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
-                        const csvString = await res.text();
-                        const csvArray = parseCSV(csvString);
-                        if (!csvArray.length) throw new Error('CSV at csvUrl appears empty.');
-                        (reportSettings as any).type = 'CSV';
-                        (reportSettings as any).dataSource = csvArray;
-                        setCurrentData(csvArray);
-                    } else {
-                        (reportSettings as any).dataSource = currentData;
-                        (reportSettings as any).type = pivot.dataSourceSettings.type || 'JSON';
-                    }
-                } catch (e) {
-                    (reportSettings as any).dataSource = currentData;
-                    (reportSettings as any).type = pivot.dataSourceSettings.type || 'JSON';
-                }
-            } else {
-                setCurrentData(reportSettings.dataSource);
-                (reportSettings as any).type = (reportSettings as any).type || 'JSON';
+    // ---------- Relational path ----------
+    cleanOlapForRelational();
+
+    const maybeDataUrl = reportSettings.dataUrl || reportSettings.url;
+    const maybeCsvUrl = reportSettings.csvUrl;
+    const isRemoteLoad = !!maybeDataUrl || !!maybeCsvUrl; // 👈 detect remote load
+
+    const ensureReportDataLoaded = async () => {
+      if (
+        !reportSettings.dataSource ||
+        reportSettings.dataSource.length === 0
+      ) {
+        try {
+          if (maybeDataUrl) {
+            const res = await fetch(maybeDataUrl, { cache: 'no-store' });
+            if (!res.ok)
+              throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+            const jsonData = await res.json();
+            const arr = Array.isArray(jsonData)
+              ? jsonData
+              : jsonData?.data ?? jsonData;
+            if (
+              !Array.isArray(arr) ||
+              arr.length === 0 ||
+              typeof arr[0] !== 'object'
+            ) {
+              throw new Error(
+                'Invalid JSON at dataUrl: expected an array of objects (or under "data").'
+              );
             }
-            entireReportSettings.dataSourceSettings.dataSource = dataSource;
-            (pivot as any).loadPersistData(JSON.stringify(entireReportSettings));
-            shouldAutoConfigRef.current = false;
-            pivot.refresh();
+            reportSettings.type = 'JSON';
+            reportSettings.dataSource = arr;
+            setCurrentData(arr);
+          } else if (maybeCsvUrl) {
+            const res = await fetch(maybeCsvUrl, { cache: 'no-store' });
+            if (!res.ok)
+              throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+            const csvString = await res.text();
+            const csvArray = parseCSV(csvString);
+            if (!csvArray.length)
+              throw new Error('CSV at csvUrl appears empty.');
+            reportSettings.type = 'CSV';
+            reportSettings.dataSource = csvArray;
+            setCurrentData(csvArray);
+          } else {
+            // No inline and no URL → fall back to currentData
+            reportSettings.dataSource = currentData;
+            reportSettings.type = pivot.dataSourceSettings.type || 'JSON';
+          }
+        } catch (e) {
+          // Fallback on any error
+          reportSettings.dataSource = currentData;
+          reportSettings.type = pivot.dataSourceSettings.type || 'JSON';
         }
+      } else {
+        setCurrentData(reportSettings.dataSource);
+        reportSettings.type = reportSettings.type || 'JSON';
+      }
     };
-    const handleConnectFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0];
-        if (!file) return;
-        const mode = (e.target.dataset.type || '').toLowerCase();
-        const isCsvMode = mode === 'csv';
-        // Enforce CSV-only when CSV mode is requested, regardless of browser file filter behavior
-        if (isCsvMode && !/\.csv$/i.test(file.name)) {
-            setErrorMessage(`Failed to load file as CSV. Please select a valid CSV file.`);
+
+    await ensureReportDataLoaded();
+
+    // ---------- ONLY inject cached data for local saved reports w/o inline/URL ----------
+    const hasInlineIncoming =
+      Array.isArray(reportSettings.dataSource) &&
+      reportSettings.dataSource.length > 0;
+
+    const hasGlobalData = Array.isArray(dataSource)
+      ? dataSource.length > 0
+      : !!dataSource;
+
+    if (!isRemoteLoad && !hasInlineIncoming && hasGlobalData) {
+      if (reportSettings) {
+        reportSettings.dataSource = dataSource;
+      }
+      if (entireReportSettings?.dataSourceSettings) {
+        entireReportSettings.dataSourceSettings.dataSource = dataSource;
+      }
+    }
+
+    try {
+      if (entireReportSettings?.dataSourceSettings) {
+        pivot.loadPersistData(JSON.stringify(entireReportSettings));
+      } else {
+        // Fallback: only have the settings
+        pivot.dataSourceSettings = reportSettings;
+      }
+    } catch {
+      pivot.dataSourceSettings = reportSettings;
+    }
+
+    shouldAutoConfigRef.current = false;
+    pivot.refresh();
+  };
+  const handleConnectFileChange = (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const mode = (e.target.dataset.type || '').toLowerCase();
+    const isCsvMode = mode === 'csv';
+    // Enforce CSV-only when CSV mode is requested, regardless of browser file filter behavior
+    if (isCsvMode && !/\.csv$/i.test(file.name)) {
+      setErrorMessage(
+        `Failed to load file as CSV. Please select a valid CSV file.`
+      );
+      setIsErrorDialogOpen(true);
+      e.target.value = '';
+      return;
+    }
+    const isCsv = isCsvMode || /\.csv$/i.test(file.name);
+    const reader = new FileReader();
+    reader.onload = async (evt) => {
+      try {
+        if (isCsv) {
+          const csvString = String(evt.target?.result ?? '');
+          const arr = parseCSV(csvString);
+          if (!arr.length || arr.length <= 1) {
+            setErrorMessage('CSV appears empty or has only headers.');
             setIsErrorDialogOpen(true);
-            e.target.value = '';
             return;
+          }
+          const headerLen = arr[0].length;
+          const inconsistent = arr.slice(1).some((r) => r.length !== headerLen);
+          if (inconsistent) {
+            setErrorMessage('Malformed CSV: inconsistent number of columns.');
+            setIsErrorDialogOpen(true);
+            return;
+          }
+          resetPivot();
+          setPivotData('CSV', arr);
+        } else {
+          const raw = String(evt.target?.result ?? '');
+          let parsed;
+          try {
+            parsed = JSON.parse(raw);
+          } catch (parseErr) {
+            setErrorMessage(
+              `Failed to parse file as JSON: ${parseErr.message}. Please select a valid JSON file.`
+            );
+            setIsErrorDialogOpen(true);
+            return;
+          }
+          const unwrappedData =
+            parsed && typeof parsed === 'object' && 'record' in parsed
+              ? parsed.record
+              : parsed;
+          const looksLikeReport =
+            !Array.isArray(unwrappedData) &&
+            (unwrappedData?.dataSourceSettings ||
+              unwrappedData?.rows ||
+              unwrappedData?.columns ||
+              unwrappedData?.values ||
+              unwrappedData?.url ||
+              unwrappedData?.providerType);
+          if (looksLikeReport) {
+            const reportSettings =
+              unwrappedData.dataSourceSettings ?? unwrappedData;
+            const isOlapReport = reportSettings?.providerType === 'SSAS';
+            const pivot = pivotObj.current;
+            if (pivot) resetPivot();
+            if (pivot)
+              await applyReportSettings(
+                pivot,
+                reportSettings,
+                isOlapReport,
+                unwrappedData
+              );
+            return;
+          }
+          const dataArray = Array.isArray(unwrappedData)
+            ? unwrappedData
+            : unwrappedData?.data ?? unwrappedData;
+          if (
+            !Array.isArray(dataArray) ||
+            dataArray.length === 0 ||
+            typeof dataArray[0] !== 'object'
+          ) {
+            setErrorMessage(
+              'Invalid JSON: Provide a saved report or a non-empty array of objects (or under "data").'
+            );
+            setIsErrorDialogOpen(true);
+            return;
+          }
+          resetPivot();
+          setPivotData('JSON', dataArray);
         }
-        const isCsv = isCsvMode || /\.csv$/i.test(file.name);
-        const reader = new FileReader();
-        reader.onload = async (evt: ProgressEvent<FileReader>) => {
-            try {
-                if (isCsv) {
-                    const csvString = String(evt.target?.result ?? '');
-                    const arr = parseCSV(csvString);
-                    if (!arr.length || arr.length <= 1) {
-                        setErrorMessage('CSV appears empty or has only headers.');
-                        setIsErrorDialogOpen(true);
-                        return;
-                    }
-                    const headerLen = arr[0].length;
-                    const inconsistent = arr.slice(1).some(r => r.length !== headerLen);
-                    if (inconsistent) {
-                        setErrorMessage('Malformed CSV: inconsistent number of columns.');
-                        setIsErrorDialogOpen(true);
-                        return;
-                    }
-                    resetPivot();
-                    setPivotData('CSV', arr);
-                } else {
-                    const raw = String(evt.target?.result ?? '');
-                    let parsed: any;
-                    try {
-                        parsed = JSON.parse(raw);
-                    } catch (parseErr: any) {
-                        setErrorMessage(`Failed to parse file as JSON: ${parseErr.message}. Please select a valid JSON file.`);
-                        setIsErrorDialogOpen(true);
-                        return;
-                    }
-                    const unwrappedData = (parsed && typeof parsed === 'object' && 'record' in parsed) ? (parsed as any).record : parsed;
-                    const looksLikeReport = !Array.isArray(unwrappedData)
-                        && (unwrappedData?.dataSourceSettings || unwrappedData?.rows || unwrappedData?.columns || unwrappedData?.values || unwrappedData?.url || unwrappedData?.providerType);
-                    if (looksLikeReport) {
-                        const reportSettings = (unwrappedData as any).dataSourceSettings ?? unwrappedData;
-                        const isOlapReport = (reportSettings as any)?.providerType === 'SSAS';
-                        const pivot = pivotObj.current;
-                        if (pivot) resetPivot();
-                        if (pivot) await applyReportSettings(pivot, reportSettings, isOlapReport, unwrappedData);
-                        return;
-                    }
-                    const dataArray = Array.isArray(unwrappedData) ? unwrappedData : (unwrappedData?.data ?? unwrappedData);
-                    if (!Array.isArray(dataArray) || dataArray.length === 0 || typeof dataArray[0] !== 'object') {
-                        setErrorMessage('Invalid JSON: Provide a saved report or a non-empty array of objects (or under "data").');
-                        setIsErrorDialogOpen(true);
-                        return;
-                    }
-                    resetPivot();
-                    setPivotData('JSON', dataArray);
-                }
-            } catch (err: any) {
-                setErrorMessage(`Failed to load file: ${err.message}`);
-                setIsErrorDialogOpen(true);
-            }
-        };
-        reader.readAsText(file);
-        e.target.value = '';
+      } catch (err) {
+        setErrorMessage(`Failed to load file: ${err.message}`);
+        setIsErrorDialogOpen(true);
+      }
     };
+    reader.readAsText(file);
+    e.target.value = '';
+  };
     function toolbarRender(args: any): void {
         const connectMenu: any = {
             template: '<ul id="connect_menu"></ul>',

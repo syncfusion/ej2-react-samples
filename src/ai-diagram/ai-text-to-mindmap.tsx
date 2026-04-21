@@ -57,7 +57,6 @@ function AiSmartMindMap() {
     let dialog: DialogComponent;
     let textBox: TextBoxComponent;
     let sendButton: ButtonComponent;
-    let menu: MenuComponent;
     useEffect(() => {
         // Add keypress event listener to the document
         document.addEventListener('keypress', function (event) {
@@ -124,12 +123,7 @@ function AiSmartMindMap() {
         reader.onloadend = loadDiagram;
     }
 
-    function onHideNodeClick() {
-        var node1 = document.getElementById('shortcutDiv') as HTMLElement;
-        node1.style.visibility = node1.style.visibility === "hidden" ? node1.style.visibility = "visible" : node1.style.visibility = "hidden";
-        (menu.items[3] as any).items[1].iconCss = node1.style.visibility === "hidden" ? '' : 'sf-icon-check-tick';
-        diagram.dataBind();
-    }
+
     function onTextBoxChange(args: InputEventArgs) {
         if (args.value !== '') {
             sendButton.disabled = false;
@@ -168,7 +162,7 @@ function AiSmartMindMap() {
                         ref={textBoxObj => textBox = textBoxObj as TextBoxComponent}
                         placeholder='Please enter your prompt here...' width={450} input={onTextBoxChange}
                     />
-                    <ButtonComponent id="db-send"
+                    <ButtonComponent id="diagram-db-send"
                         ref={sendButtonObj => sendButton = sendButtonObj as ButtonComponent}
                         onClick={() => {
                             if (textBox.value) {
@@ -187,12 +181,6 @@ function AiSmartMindMap() {
         <>
                 <div className="main">
                     <div className="db-toolbar-editor">
-                        <div id="aiMindMap" className="ai-menu-control">
-                            <MenuComponent id="menu"
-                                ref={menuObj => menu = menuObj as MenuComponent}
-                                items={menuItems} select={menuClick}
-                            ></MenuComponent >
-                        </div>
                         <div className="db-toolbar-container">
                             <ToolbarComponent id="toolbarEditor"
                                 ref={toolbar => toolbarObj = toolbar as ToolbarComponent}
@@ -230,129 +218,7 @@ function AiSmartMindMap() {
                             showFileList={false}
                         />
                     </div>
-                    <div id="shortcutDiv" style={{
-                        width: '400px',
-                        height: '480px',
-                        padding: '10px',
-                        backgroundColor: '#fff7b5',
-                        border: '1px solid #fff7b5',
-                        position: 'absolute',
-                        margin: '27px',
-                        fontSize: '14px',
-                        visibility: 'hidden',
-                        zIndex: 1000
-                    }}>
-                        <div id="closeIconDiv" style={{
-                            float: 'right',
-                            width: '16px',
-                            height: '16px',
-                            border: '1px solid #fff7b5'
-                        }}
-                            onClick={onHideNodeClick}
-                        >
-                            <span className="sf-icon-close" style={{ fontSize: '14px', cursor: 'pointer' }}></span>
-                        </div>
-                        <div><span className="db-html-font-medium">Quick shortcuts</span></div>
-                        <div style={{ paddingTop: '10px' }}>
-                            <ul>
-                                <li>
-                                    <span className="db-html-font-medium">Tab : </span><span className="db-html-font-normal">Add a subtopic to the left</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <ul>
-                                <li>
-                                    <span className="db-html-font-medium">Shift + Tab : </span><span className="db-html-font-normal">Add a subtopic to the right</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <ul>
-                                <li>
-                                    <span className="db-html-font-medium">Enter : </span><span className="db-html-font-normal">Add a new sibling child</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <ul>
-                                <li>
-                                    <span className="db-html-font-medium">Delete / Backspace : </span><span className="db-html-font-normal">Delete a topic</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <ul>
-                                <li>
-                                    <span className="db-html-font-medium">Arrow(Up, Down, Left, Right) : </span><span className="db-html-font-normal">Navigate between topics</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <ul>
-                                <li>
-                                    <span className="db-html-font-medium">F2 : </span><span className="db-html-font-normal">Edit a topic</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <ul>
-                                <li>
-                                    <span className="db-html-font-medium">Esc : </span><span className="db-html-font-normal">End text editing</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <ul>
-                                <li>
-                                    <span className="db-html-font-medium">Ctrl + B : </span><span className="db-html-font-normal">To make text bold</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <ul>
-                                <li>
-                                    <span className="db-html-font-medium">Ctrl + I : </span><span className="db-html-font-normal">To make text Italic </span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <ul>
-                                <li>
-                                    <span className="db-html-font-medium">Ctrl + U : </span><span className="db-html-font-normal">Underline the text</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <ul>
-                                <li>
-                                    <span className="db-html-font-medium">Space : </span><span className="db-html-font-normal">Expand / Collapse the selected node</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <ul>
-                                <li>
-                                    <span className="db-html-font-medium">Ctrl + E :</span><span className="db-html-font-normal">Expand / Collapse the whole diagram</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <ul>
-                                <li>
-                                    <span className="db-html-font-medium">F8 : </span><span className="db-html-font-normal">To Fit the diagram into the viewport</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <ul>
-                                <li>
-                                    <span className="db-html-font-medium">F1 : </span><span className="db-html-font-normal">Show/Hide shortcut Key</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div style={{ marginTop: '5px', marginLeft: '5px', marginRight: '5px', border: '1px solid #b0b0b0' }}>
+                    <div id="diagram-space" style={{ marginTop: '5px', marginLeft: '5px', marginRight: '5px', border: '1px solid #b0b0b0' }}>
                         <DiagramComponent
                             ref={diagramObj => diagram = diagramObj as DiagramComponent}
                             id="diagram"
@@ -363,7 +229,7 @@ function AiSmartMindMap() {
                             onUserHandleMouseDown={onUserHandleMouseDown}
                             tool={DiagramTools.Default}
                             snapSettings={{ horizontalGridlines: gridlines, verticalGridlines: gridlines }}
-                            scrollSettings={{ scrollLimit: 'Infinity' }}
+                            scrollSettings={{ scrollLimit: 'Diagram' }}
                             layout={{
                                 type: 'MindMap',
                                 horizontalSpacing: 80,
@@ -406,7 +272,7 @@ function AiSmartMindMap() {
                         showCloseIcon={true}
                         isModal={true}
                         content={dialogContent}
-                        target={document.getElementById('control-section') as HTMLElement}
+                        target='#diagram-space'
                         width='540px'
                         visible={false}
                         height='310px'

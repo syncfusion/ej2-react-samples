@@ -63,11 +63,14 @@ export async function convertTextToMindMap(inputText: string, diagram: Diagram) 
     try {
         let jsonResponse = await serverAIRequest(options);
          // Remove ```mermaid and ``` if they exist at the start and end of the response
-        jsonResponse = jsonResponse.replace('```mermaid', '').replace('```', '');
-        diagram.loadDiagramFromMermaid(jsonResponse as string);
-        diagram.clearHistory();
-        pushWorkingData(diagram as DiagramComponent);
-        toolbarObj.items[0].disabled = true;
+        if (jsonResponse) {
+            jsonResponse = jsonResponse.replace('```mermaid', '').replace('```', '');
+            diagram.loadDiagramFromMermaid(jsonResponse as string);
+            diagram.clearHistory();
+            pushWorkingData(diagram as DiagramComponent);
+            toolbarObj.items[0].disabled = true;
+            toolbarObj.items[1].disabled = true;
+        }
         hideLoading();
 
     } catch (error) {

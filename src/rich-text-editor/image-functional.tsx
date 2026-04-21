@@ -24,7 +24,7 @@ function ImageSample() {
         { text: 'Blob', value: 'Blob' },
         { text: 'Base64', value: 'Base64' }
     ];
-    const image: (string | IToolbarItems)[] = ['Replace', 'Align', 'Caption', 'Remove', 'InsertLink', 'OpenImageLink', '|',
+    const image: (string | IToolbarItems)[] = ['Replace', 'Align', 'Caption', 'Remove', 'WrapText', 'InsertLink', 'OpenImageLink', '|',
         'EditImageLink', 'RemoveImageLink', 'Display', 'AltText', 'Dimension',
         {
             tooltipText: 'Rotate Left',
@@ -121,6 +121,7 @@ function ImageSample() {
                     <li><code>Alternate text</code> – provide the alternative text for the image if the image is not present in the location.</li>
                     <li><code>Custom Tools</code> - "rotation" related commands are added as custom commands to the image element</li>
                     <li><code>Resize</code> – can resize the image dimension with resize options.</li>
+                    <li><code>WrapText</code> – Controls text flow around an image, with left and right options.</li>
                 </ul>
                 Quick commands are opened as context-menu on clicking the corresponding element.
                 The commands must be passed as string collection to image, text, and link attributes of the quickToolbarSettings property.

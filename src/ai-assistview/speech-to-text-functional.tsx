@@ -2,7 +2,7 @@ import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { SpeechToTextComponent } from '@syncfusion/ej2-react-inputs';
 import * as React from 'react';
 import './speech-to-text.css';
-import { AIAssistViewComponent, PromptRequestEventArgs, PromptToolbarSettingsModel, ToolbarItemClickedEventArgs, ToolbarSettingsModel } from '@syncfusion/ej2-react-interactive-chat';
+import { AIAssistViewComponent, PromptRequestEventArgs, ToolbarItemClickedEventArgs, ToolbarSettingsModel, FooterToolbarSettingsModel, AttachmentSettingsModel, SpeechToTextSettingsModel } from '@syncfusion/ej2-react-interactive-chat';
 import { getAzureOpenAIAssist, AzureOpenAIRequest } from './ai-service';
 import { marked } from 'marked';
 import { updateSampleSection } from '../common/sample-base';
@@ -14,7 +14,6 @@ const SpeechToText = () => {
     }, []);
 
     let aiAssistViewObj =  React.useRef(null);
-    let speechToTextObj = React.useRef(null);
     
     let azureApiKey: string = ''; // Your_Azure_OpenAI_API_Key
     let azureEndpoint: string = ''; // Your_Azure_OpenAI_Endpoint
@@ -27,16 +26,23 @@ const SpeechToText = () => {
         items: [{ iconCss: 'e-icons e-refresh', align: 'Right' }],
         itemClicked: (args) => toolbarItemClicked(args)
     };
+    const footerToolbarSettings: FooterToolbarSettingsModel= {
+        toolbarPosition: 'Bottom',
+        items: [
+            { iconCss: 'e-icons e-assist-send', align: 'Right' },
+            { iconCss: 'e-icons e-assist-attachment-icon', align: 'Left', tooltip: 'Attach File' },
+            { iconCss: 'e-icons e-assist-speech-to-text', align: 'Left'}
+        ]
+    }
 
-    const promptToolbarSettings: PromptToolbarSettingsModel = {    
-        itemClicked: (args) => {
-            if (args.item.iconCss === "e-icons e-assist-edit") {
-                const assistviewFooter = document.querySelector('#assistview-footer') as HTMLElement;
-                assistviewFooter.innerHTML = aiAssistViewObj.current?.prompts[args.dataIndex].prompt;
-                toggleButtons();
-            }
-        }
+    const enableAttachments: boolean = true;
+    const attachmentSettings : AttachmentSettingsModel = {
+        saveUrl: 'https://services.syncfusion.com/react/production/api/FileUploader/Save',
+        removeUrl: 'https://services.syncfusion.com/react/production/api/FileUploader/Remove'
     };
+    const speechToTextSettings: SpeechToTextSettingsModel = {
+        enable: true
+    }
 
     const bannerTemplate = () => {
         return (
@@ -44,18 +50,6 @@ const SpeechToText = () => {
                 <div className="e-icons e-listen-icon"></div>
                 <h3>Speech To Text</h3>
                 <i>Click the below mic-button to convert your voice to text.</i>
-            </div>
-        );
-    };
-
-    const footerTemplate = () => {
-        return (
-            <div className="e-footer-wrapper">
-                <div id="assistview-footer" className="content-editor" contentEditable="true" placeholder="Click to speak or start typing..." onInput={toggleButtons} onKeyDown={handleKeyDown}></div>
-                <div className="option-container">
-                    <SpeechToTextComponent id="speechToText" ref={speechToTextObj} cssClass="e-flat" transcriptChanged={onTranscriptChange} onStop={onListeningStop} created={onCreated} />
-                    <ButtonComponent id="assistview-sendButton" className="e-assist-send e-icons" onClick={sendIconClicked} />
-                </div>
             </div>
         );
     };
@@ -75,7 +69,6 @@ const SpeechToText = () => {
             }
             await new Promise(resolve => setTimeout(resolve, 15)); // Delay for streaming effect
         }
-        toggleButtons();
     };
 
     const onPromptRequest = async (args: PromptRequestEventArgs) => {
@@ -95,7 +88,6 @@ const SpeechToText = () => {
                 '⚠️ Something went wrong while connecting to the OpenAI service. Please check your API key or try again later.'
             );
             stopStreaming = true;
-            toggleButtons();
         }
     };
 
@@ -105,47 +97,8 @@ const SpeechToText = () => {
         }
     };
 
-    const sendIconClicked = () => {
-        const assistviewFooter = document.getElementById('assistview-footer') as HTMLElement;
-        aiAssistViewObj.current?.executePrompt(assistviewFooter.innerText);
-        assistviewFooter.innerText = "";
-    };
-
-    const onTranscriptChange = (args: any) => {
-        const assistviewFooter = document.getElementById('assistview-footer') as HTMLElement;
-        assistviewFooter.innerText = args.transcript;
-    };
-
-    const onListeningStop = () => {
-        toggleButtons();
-    };
-
-    const onCreated = () => {
-        toggleButtons();
-    };
-
-    const toggleButtons = () => {
-        const assistviewFooter = document.querySelector('#assistview-footer') as HTMLElement;
-        const sendButton = document.querySelector('#assistview-sendButton') as HTMLElement;
-        const speechButton = document.querySelector('#speechToText') as HTMLElement;
-        const hasText = assistviewFooter.innerText.trim() !== '';
-        sendButton.classList.toggle('visible', hasText);
-        speechButton.classList.toggle('visible', !hasText);
-        if (!hasText && (assistviewFooter.innerHTML.trim() === '' || assistviewFooter.innerHTML === '<br>')) {
-            assistviewFooter.innerHTML = '';
-        }
-    };
-
-    const handleKeyDown = (event) => {
-        if (event.key === 'Enter' && !event.shiftKey) {
-            sendIconClicked();
-            event.preventDefault();
-        }
-    };
-
     const stopRespondingClick = () => {
         stopStreaming = true;
-        toggleButtons();
     };
 
     return (
@@ -157,9 +110,11 @@ const SpeechToText = () => {
                         ref={aiAssistViewObj}
                         promptRequest={onPromptRequest}
                         bannerTemplate={bannerTemplate}
-                        footerTemplate={footerTemplate}
                         toolbarSettings={toolbarSettings}
-                        promptToolbarSettings={promptToolbarSettings}
+                        footerToolbarSettings={footerToolbarSettings}
+                        attachmentSettings={attachmentSettings}
+                        enableAttachments={enableAttachments}
+                        speechToTextSettings={speechToTextSettings}
                         stopRespondingClick={stopRespondingClick}
                     />
                 </div>
@@ -171,17 +126,20 @@ const SpeechToText = () => {
             </div>
             <div id="description">
                 <p>
-                    In this example, the AI AssistView component is integrated with the <code>SpeechToText</code> component to enable voice-based interaction.
+                    In this example, the AI AssistView component is integrated with the built-in <code>SpeechToText</code> component to enable voice-based interaction.
                 </p>
                 <p>
                     The sample demonstrates the following features:
                 </p>
                 <ul>
                     <li>
-                        The <code>SpeechToText</code> component captures voice input and transcribes it into text, which is then passed to the AI AssistView for generating contextual responses.
+                        The <code>footerToolbarSettings</code> to customize the footer options with speech to text, attachments and a send icon.
                     </li>
                     <li>
-                        The <code>footerTemplate</code> includes a content-editable area and a microphone button for initiating voice input.
+                        The <code>speechToTextSettings</code> adds the speech to text button at the footer to captures voice input and transcribes it into text.
+                    </li>
+                    <li>
+                        The <code>attachmentSettings</code> to allow file uploads for the attached files.
                     </li>
                     <li>
                         The <code>toolbarSettings</code> adds a right-aligned <code>Refresh</code> button to clear previous prompts.

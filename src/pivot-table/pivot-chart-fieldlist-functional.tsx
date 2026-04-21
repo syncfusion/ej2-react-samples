@@ -4,7 +4,7 @@ import { PivotViewComponent, IDataOptions, IDataSet, PivotFieldListComponent, In
 import { updateSampleSection } from '../common/sample-base';
 import * as pivotData from './pivot-data/Pivot_Data.json';
 import { SidebarComponent, ToolbarComponent } from '@syncfusion/ej2-react-navigations';
-import { Browser, setStyleAttribute, enableRipple } from '@syncfusion/ej2-base';
+import { Browser, setStyleAttribute, enableRipple, getInstance, isNullOrUndefined  } from '@syncfusion/ej2-base';
 import { DropDownList } from '@syncfusion/ej2-dropdowns';
 import { ILoadedEventArgs, ChartTheme } from '@syncfusion/ej2-react-charts';
 import { Switch } from '@syncfusion/ej2-buttons';
@@ -98,11 +98,14 @@ let dataSourceSettings: IDataOptions = {
 function PivotChartFieldList () {
     let fieldlistObj: PivotFieldListComponent;
     let pivotObj: PivotViewComponent;
-    let isInitial = false;
     let isChecked = true;
+    let isInitial = false;
+    let isPivotEngineReady = false;
     React.useEffect(() => {
         updateSampleSection();
-        rendereComplete();
+        setTimeout(() => {
+            rendereComplete();
+        });
         setTimeout(() => {
             if (pivotObj) {
                 if (Browser.isDevice) {
@@ -133,11 +136,14 @@ function PivotChartFieldList () {
     ];
 
     function afterPopulate(): void {
-        if (fieldlistObj && pivotObj) {
-            fieldlistObj.updateView(pivotObj);
-        }
+        setTimeout(() => {
+            if (fieldlistObj && pivotObj) {
+                fieldlistObj.updateView(pivotObj);
+            }
+        });
     }
     function afterPivotPopulate(): void {
+        isPivotEngineReady = true;
         if (!Browser.isDevice && fieldlistObj && pivotObj) {
             fieldlistObj.update(pivotObj);
         }
@@ -156,51 +162,59 @@ function PivotChartFieldList () {
         }
     }
     function onPivotDataBound(): void {
-        if (pivotObj && document.getElementById('displayOptionddl') && document.getElementById('displayOptionddl') && document.getElementById('toolbar-switch') && !isInitial) {
+        const ele = document.querySelectorAll('#displayOptionddl, #primaryViewddl, #toolbar-switch');
+        if (ele.length === 3 && pivotObj && !isInitial) {
             isInitial = true;
-            displayOptionDropDown = new DropDownList({
-                floatLabelType: 'Auto',
-                width: 100,
-                value: displayOption,
-                change: (args: any) => {
-                    displayOption = args.value;
-                    if (args.value !== 'Both') {
-                        primaryViewDropDown.readonly = true;
-                        pivotObj.displayOption = { view: args.value as any };
-                    } else if (args.value == 'Both') {
-                        primaryViewDropDown.readonly = false;
-                        pivotObj.displayOption = {
-                            view: args.value,
-                            primary: primaryViewDropDown.value as any,
-                        };
-                    }
-                    pivotObj.refresh();
-                }
-            });
-            displayOptionDropDown.appendTo('#displayOptionddl');
-            primaryViewDropDown = new DropDownList({
-                floatLabelType: 'Auto',
-                width: 100,
-                value: preference,
-                change: (args: any) => {
-                    preference = args.value;
-                    if (pivotObj.displayOption.view == 'Both') {
-                        pivotObj.displayOption = { view: 'Both', primary: args.value as any };
+            if (isNullOrUndefined(getInstance('#displayOptionddl', DropDownList))) {
+                displayOptionDropDown = new DropDownList({
+                    floatLabelType: 'Auto',
+                    width: 100, 
+                    value: displayOption,
+                    change: (args: any) => {
+                        displayOption = args.value;
+                        if (args.value !== 'Both') {
+                            primaryViewDropDown.readonly = true;
+                            pivotObj.displayOption = { view: args.value as any };
+                        }
+                        else if (args.value == 'Both') {
+                            primaryViewDropDown.readonly = false;
+                            pivotObj.displayOption = {
+                                view: args.value,
+                                primary: primaryViewDropDown.value as any,
+                            };
+                        }
                         pivotObj.refresh();
                     }
-                }
-            });
-            primaryViewDropDown.appendTo('#primaryViewddl');
-            let layoutSwitch = new Switch({
-                checked: isChecked,
-                cssClass: 'pivot-toolbar-switch',
-                change: (args: any) => {
-                    isChecked = args.checked;
-                    pivotObj.showToolbar = !pivotObj.showToolbar;
-                    pivotObj.refresh();
-                }
-            });
-            layoutSwitch.appendTo('#toolbar-switch');
+                });
+                displayOptionDropDown.appendTo('#displayOptionddl');
+            }
+            if (isNullOrUndefined(getInstance('#primaryViewddl', DropDownList))) {
+                primaryViewDropDown = new DropDownList({
+                    floatLabelType: 'Auto',
+                    width: 100,
+                    value: preference,
+                    change: (args: any) => {
+                        preference = args.value;
+                        if (pivotObj.displayOption.view == 'Both') {
+                            pivotObj.displayOption = { view: 'Both', primary: args.value };
+                            pivotObj.refresh();
+                        }
+                    }
+                });
+                primaryViewDropDown.appendTo('#primaryViewddl');
+            }
+            if (isNullOrUndefined(getInstance('#toolbar-switch', Switch))) {
+                let layoutSwitch = new Switch({
+                    checked: isChecked,
+                    cssClass: 'pivot-toolbar-switch',
+                    change: (args: any) => {
+                        isChecked = args.checked;
+                        pivotObj.showToolbar = !pivotObj.showToolbar;
+                        pivotObj.refresh();
+                    }
+                });
+                layoutSwitch.appendTo('#toolbar-switch');
+            }
         }
     }
     function onDataBound(): void {
@@ -279,7 +293,7 @@ function PivotChartFieldList () {
                 </div>
                 <div id='pivot_sidebar' className='maincontent' style={{ width: '100%', height: '720px'}}>
                     <div id='pivot_container' style={{ width: '64%'}}>
-                        <PivotViewComponent id='PivotView' ref={d => pivotObj = d} enginePopulated={afterPivotPopulate.bind(this)} actionBegin={actionBegin.bind(this)} dataBound={onPivotDataBound} width={'100%'} height={'350'} gridSettings={{ columnWidth: 140 }}
+                        <PivotViewComponent id='PivotView' ref={d => pivotObj = d} enginePopulated={afterPivotPopulate.bind(this)} actionBegin={actionBegin.bind(this)} dataBound={onPivotDataBound.bind(this)} width={'100%'} height={'350'} gridSettings={{ columnWidth: 140 }}
                         chartSettings={{ title: 'Sales Analysis', chartSeries: { type: 'Column' }, load: chartOnLoad.bind(this) }} displayOption={{ view: 'Both', primary: 'Chart' }} toolbar={toolbarOptions} showToolbar={true}>
                             <Inject services={[PivotChart, Toolbar, FieldList]} />
                         </PivotViewComponent>
@@ -298,7 +312,7 @@ function PivotChartFieldList () {
                         enableGestures={false}
                         change={() => onChange()}
                     >
-                        <PivotFieldListComponent id='PivotFieldList' ref={d => fieldlistObj = d} enginePopulated={afterPopulate.bind(this)} dataSourceSettings={dataSourceSettings} renderMode={"Fixed"} allowCalculatedField={true} enableFieldSearching={true} load={onLoad} dataBound={onDataBound}>
+                        <PivotFieldListComponent id='PivotFieldList' ref={d => fieldlistObj = d} enginePopulated={afterPopulate.bind(this)} dataSourceSettings={dataSourceSettings} renderMode={"Fixed"} allowCalculatedField={true} enableFieldSearching={true} load={onLoad} dataBound={onDataBound.bind(this)}>
                             <Inject services={[CalculatedField]} />
                         </PivotFieldListComponent>
                     </SidebarComponent>

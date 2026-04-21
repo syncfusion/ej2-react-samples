@@ -16,9 +16,14 @@ const DirectoryUpload = () => {
     const [isDirectoryUpload, setIsDirectoryUpload] = useState<boolean>(false);
     let fmObj = useRef<FileManagerComponent>(null);
     let hostUrl: string = "https://ej2-aspcore-service.azurewebsites.net/";   
-    let items: ItemModel[] = [{ text: 'Folder' }, { text: 'Files' }];
+    const items = (): ItemModel[] => {
+        return [
+        { text: fmObj.current?.localeObj.getConstant('Folder') },
+        { text: fmObj.current?.localeObj.getConstant('File') }
+        ];
+    };    
     const onSelect= (args) => {
-        if (args.item.text === "Folder") {
+        if (args.item.text === fmObj.current?.localeObj.getConstant('Folder')) {
             setIsDirectoryUpload(true);
         } else {
             setIsDirectoryUpload(false);
@@ -33,7 +38,7 @@ const DirectoryUpload = () => {
     }
     const uploadTemplate = () => {
         return(
-            <DropDownButtonComponent id="dropButton" cssClass= "e-tbar-btn e-tbtn-txt" onClick={uploadClick} items={items} iconCss='e-icons e-fe-upload' select={onSelect}>
+            <DropDownButtonComponent id="dropButton" cssClass= "e-tbar-btn e-tbtn-txt" onClick={uploadClick} items={items()} iconCss='e-icons e-fe-upload' select={onSelect}>
                 <span className="e-tbar-btn-text">Upload</span>
             </DropDownButtonComponent>
             );

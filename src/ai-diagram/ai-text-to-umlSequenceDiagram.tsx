@@ -16,6 +16,7 @@ import './smart-umlSequenceDiagram.css';
 import { from } from 'form-data';
 import * as React from 'react';
 
+let toolbarObj: ToolbarComponent;
 function AiSmartUmlSequenceDiagram() {
     let diagram: DiagramComponent;
     let dialog: DialogComponent;
@@ -36,6 +37,16 @@ function AiSmartUmlSequenceDiagram() {
         });
     }, []);
 
+    function changeToolbarSelection(tool: string) {
+        let items = toolbarObj.items;
+        for (let i = 0; i < items.length; i++) {
+            if (items[i].tooltipText === tool) {
+                items[i].cssClass = 'tb-item-selected';
+            } else {
+                items[i].cssClass = '';
+            }
+        }
+    }
     function printDiagram() {
         let options: IExportOptions = {};
         options.mode = 'Download';
@@ -51,10 +62,12 @@ function AiSmartUmlSequenceDiagram() {
             case 'Select Tool':
                 diagram.clearSelection();
                 diagram.tool = DiagramTools.Default;
+                changeToolbarSelection('Select Tool');
                 break;
             case 'Pan Tool':
                 diagram.clearSelection();
                 diagram.tool = DiagramTools.ZoomPan;
+                changeToolbarSelection('Pan Tool');
                 break;
             case 'New Diagram':
                 diagram.clear();
@@ -85,8 +98,7 @@ function AiSmartUmlSequenceDiagram() {
                 diagram.zoomTo({ type: 'ZoomOut', zoomFactor: 0.2 });
                 break;
             case 'Zoom to Fit':
-                zoomFactor = 1 / currentZoom - 1;
-                diagram.zoomTo({ zoomFactor });
+                diagram.fitToPage();
                 break;
             case 'Zoom to 50%':
                 zoomFactor = 0.5 / currentZoom - 1;
@@ -188,7 +200,7 @@ function AiSmartUmlSequenceDiagram() {
                         ref={(textboxObj: TextBoxComponent) => textBox = textboxObj as TextBoxComponent}
                         placeholder='Please enter your prompt here...' width={450} input={onTextBoxChange}
                     />
-                    <ButtonComponent id="db-send"
+                    <ButtonComponent id="diagram-db-send"
                         ref={(btn: ButtonComponent) => sendButton = btn as ButtonComponent}
                         onClick={() => {
                             if (textBox.value) {
@@ -223,6 +235,7 @@ function AiSmartUmlSequenceDiagram() {
                     <div className="db-toolbar-editor">
                         <div className="db-toolbar-container">
                             <ToolbarComponent id="toolbarEditor"
+                                ref={toolbarEditor => toolbarObj = toolbarEditor as ToolbarComponent}
                                 clicked={toolbarClick}
                                 width='100%' height={49}
                             >
@@ -287,7 +300,7 @@ function AiSmartUmlSequenceDiagram() {
                         showCloseIcon={true}
                         isModal={true}
                         content={dialogContent}
-                        target={document.getElementById('control-section') as HTMLElement}
+                        target='#uml-aidiagarm'
                         width='540px'
                         visible={false}
                         height='310px'

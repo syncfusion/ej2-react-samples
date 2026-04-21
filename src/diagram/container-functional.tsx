@@ -4,7 +4,7 @@ import {
   DiagramComponent,
   NodeModel,
   ConnectorModel,
-  Diagram,
+  PointPortModel,
   Inject,
   DiagramConstraints,
   UndoRedo,
@@ -18,47 +18,23 @@ import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
 import { NumericTextBoxComponent, ColorPickerComponent, ColorPickerEventArgs } from "@syncfusion/ej2-react-inputs";
 import { updateSampleSection } from "../common/sample-base";
 
-Diagram.Inject(Snapping, UndoRedo, ConnectorBridging);
-
 let diagramInstance: DiagramComponent;
 let toolbarEditor: ToolbarComponent;
-let node: NodeModel;
 let fontFamily: DropDownListComponent;
 let fontSize: NumericTextBoxComponent;
 let fontColor: ColorPickerComponent;
-let bold: ButtonComponent;
-let italic: ButtonComponent;
-let underLine: ButtonComponent;
 let selectedItems: any[];
 
 function createNode(id: string, offsetX: number, offsetY: number, height: number,
   width: number, content: string, marginX: number = 0, marginY: number = 0): NodeModel {
-  var ports = [];
-  if (id == "node5") {
-    ports = [
-      { id: "port1", offset: { x: 0.9, y: 0 } },
-    ];
+  let ports: PointPortModel[] = [];
+  if (id == "node5" || id == "node6") {
+    ports = [{ id: "port1", offset: { x: 0.9, y: 0 } }];
   }
-  if (id == "node6") {
-
-    ports = [
-      { id: "port1", offset: { x: 0.9, y: 0 } },
-    ];
-  }
-  if (id == "node13") {
-
-    ports = [
-      { id: "port2", offset: { x: 1, y: 0.5 } },
-    ];
-  }
-  if (id == "node15") {
-
-    ports = [
-      { id: "port2", offset: { x: 1, y: 0.5 } },
-    ];
+  if (id == "node13" || id == "node15") {
+    ports = [{ id: "port2", offset: { x: 1, y: 0.5 } }];
   }
   if (id == "node3") {
-
     ports = [
       { id: "port3", offset: { x: 0.25, y: 1 } },
       { id: "port4", offset: { x: 0.5, y: 1 } },
@@ -79,60 +55,50 @@ function createNode(id: string, offsetX: number, offsetY: number, height: number
   }
 
   return {
-    id: id,
-    offsetX: offsetX,
-    offsetY: offsetY,
-    margin: { left: marginX || 0, top: marginY || 0 },
-    width: width,
-    height: height,
-    style: { fill: 'white', strokeColor: '#2546BB', strokeWidth: 1 },
-    shape: {
-      type: 'Basic', shape: 'Rectangle',
-      cornerRadius: 4
-    },
-    annotations: [{
-      content: content,
-      style: { color: '#343434' },
-      horizontalAlignment: 'Center',
-    }],
+    id: id, offsetX: offsetX, offsetY: offsetY, margin: { left: marginX || 0, top: marginY || 0 },
+    width: width, height: height, style: { fill: 'white', strokeColor: '#2546BB', strokeWidth: 1 },
+    shape: { type: 'Basic', shape: 'Rectangle', cornerRadius: 4 },
+    annotations: [{ content: content, style: { color: '#343434' }, horizontalAlignment: 'Center' }],
     ports: ports
   };
 }
 
 // Initialize the nodes
-const nodes: NodeModel[] = [
-  createNode("node1", 300, 300, 60, 100, "HTTP Traffic"),
-  createNode("node2", 500, 300, 60, 100, "Ingestion service", 50, 30),
-  createNode("node3", 650, 300, 60, 100, "Workflow service", 200, 30),
-  createNode("node4", 500, 415, 60, 100, "Package service", 50, 150),
-  createNode("node5", 650, 415, 60, 150, "Drone Scheduler service", 175, 150),
-  createNode("node6", 800, 415, 60, 100, "Delivery service", 350, 150),
-  createNode("node7", 580, 130, 60, 90, "Azure Service Bus"),
-  createNode("node8", 815, 130, 60, 100, "Managed Identities"),
-  createNode("node9", 1000, 130, 60, 100, "Azure Key Vault"),
-  createNode("node10", 500, 550, 60, 100, "Azure Cosmos DB for MongoDB API"),
-  createNode("node11", 650, 550, 60, 100, "Azure Cosmos DB"),
-  createNode("node12", 800, 550, 60, 100, "Azure Cache for Redis"),
-  createNode("node13", 1040, 255, 60, 100, "Azure Application Insights"),
-  createNode("node14", 1140, 350, 60, 100, "Azure Monitor"),
-  createNode("node15", 1040, 445, 60, 100, "Azure Log Analytics workspace"),
-  {
-    id: 'container', width: 520, height: 300, offsetX: 660, offsetY: 350,
-    shape: {
-      type: 'Container',
-      header: {
-        annotation: {
-          content: 'Azure Container Apps Environment',
+function createNodes(): NodeModel[] {
+  return [
+    createNode("node1", 300, 300, 60, 100, "HTTP Traffic"),
+    createNode("node2", 500, 300, 60, 100, "Ingestion service", 50, 30),
+    createNode("node3", 650, 300, 60, 100, "Workflow service", 200, 30),
+    createNode("node4", 500, 415, 60, 100, "Package service", 50, 150),
+    createNode("node5", 650, 415, 60, 150, "Drone Scheduler service", 175, 150),
+    createNode("node6", 800, 415, 60, 100, "Delivery service", 350, 150),
+    createNode("node7", 580, 130, 60, 90, "Azure Service Bus"),
+    createNode("node8", 815, 130, 60, 100, "Managed Identities"),
+    createNode("node9", 1000, 130, 60, 100, "Azure Key Vault"),
+    createNode("node10", 500, 550, 60, 100, "Azure Cosmos DB for MongoDB API"),
+    createNode("node11", 650, 550, 60, 100, "Azure Cosmos DB"),
+    createNode("node12", 800, 550, 60, 100, "Azure Cache for Redis"),
+    createNode("node13", 1040, 255, 60, 100, "Azure Application Insights"),
+    createNode("node14", 1140, 350, 60, 100, "Azure Monitor"),
+    createNode("node15", 1040, 445, 60, 100, "Azure Log Analytics workspace"),
+    {
+      id: 'container', width: 520, height: 300, offsetX: 660, offsetY: 350,
+      shape: {
+        type: 'Container',
+        header: {
+          annotation: {
+            content: 'Azure Container Apps Environment',
+            style: { fontSize: 18, bold: true, fill: 'transparent', strokeColor: 'transparent' },
+          },
+          height: 40,
           style: { fontSize: 18, bold: true, fill: 'transparent', strokeColor: 'transparent' },
         },
-        height: 40,
-        style: { fontSize: 18, bold: true, fill: 'transparent', strokeColor: 'transparent' },
+        children: ["node2", "node3", "node4", "node5", "node6"]
       },
-      children: ["node2", "node3", "node4", "node5", "node6"]
+      style: { fill: '#E9EEFF', strokeColor: '#2546BB', strokeWidth: 1 }
     },
-    style: { fill: '#E9EEFF', strokeColor: '#2546BB', strokeWidth: 1 }
-  },
-];
+  ];
+}
 
 // Helper function to create connectors with consistent styling
 function createConnector(id: string, sourceID: string, targetID: string, sourcePortID: string = '',
@@ -156,42 +122,41 @@ function createConnector(id: string, sourceID: string, targetID: string, sourceP
   };
 };
 
-const connectors: ConnectorModel[] = [
-  createConnector("connector1", "node1", "node2"),
-  createConnector("connector2", "node4", "node10"),
-  createConnector("connector3", "node5", "node11"),
-  createConnector("connector4", "node6", "node12"),
-  createConnector("connector5", "node8", "node9"),
-  createConnector("connector6", "container", "node13"),
-  createConnector("connector7", "container", "node15"),
-  createConnector("connector8", "node3", "node4", 'port3'),
-  createConnector("connector9", "node3", "node5", 'port4'),
-  createConnector("connector10", "node3", "node6", 'port5'),
-  createConnector("connector11", "node2", "node7", "", 'port1'),
-  createConnector("connector12", "node7", "node3", 'port2'),
-  createConnector("connector13", "node13", "node14", 'port2'),
-  createConnector("connector14", "node15", "node14", 'port2'),
-  createConnector("connector16", "node8", "node5", 'port3', 'port1', { style: { fill: "#5E5E5E", strokeColor: "#5E5E5E", strokeWidth: 1 } }),
-  createConnector("connector17", "node8", "node6", 'port5', 'port1', { style: { fill: "#5E5E5E", strokeColor: "#5E5E5E", strokeWidth: 1 } })
-];
+function createConnectors(): ConnectorModel[] {
+  return [
+    createConnector("connector1", "node1", "node2"),
+    createConnector("connector2", "node4", "node10"),
+    createConnector("connector3", "node5", "node11"),
+    createConnector("connector4", "node6", "node12"),
+    createConnector("connector5", "node8", "node9"),
+    createConnector("connector6", "container", "node13"),
+    createConnector("connector7", "container", "node15"),
+    createConnector("connector8", "node3", "node4", 'port3'),
+    createConnector("connector9", "node3", "node5", 'port4'),
+    createConnector("connector10", "node3", "node6", 'port5'),
+    createConnector("connector11", "node2", "node7", "", 'port1'),
+    createConnector("connector12", "node7", "node3", 'port2'),
+    createConnector("connector13", "node13", "node14", 'port2'),
+    createConnector("connector14", "node15", "node14", 'port2'),
+    createConnector("connector16", "node8", "node5", 'port3', 'port1', { style: { fill: "#5E5E5E", strokeColor: "#5E5E5E", strokeWidth: 1 } }),
+    createConnector("connector17", "node8", "node6", 'port5', 'port1', { style: { fill: "#5E5E5E", strokeColor: "#5E5E5E", strokeWidth: 1 } })
+  ];
+}
 
-function CommandsSample() {
+function ContainerSample() {
+  const nodes = React.useMemo(() => createNodes(), []);
+  const connectors = React.useMemo(() => createConnectors(), []);
 
   // React useEffect hook to run once on component mount
   React.useEffect(() => {
     updateSampleSection();
     rendereComplete(); // Call rendereComplete function
   }, [])
-  // Function to complete rendering actions
+
   function rendereComplete() {
     // Fit the diagram instance to the page
     diagramInstance.fitToPage();
   }
-
-  // Variables for managing diagram drawing state and font properties.
-  let fontColor: any;
-  let fontFamily: any;
-  let fontSize: any;
 
   //Font dropdown option
   let fontType: { [key: string]: Object }[] = [
@@ -212,7 +177,6 @@ function CommandsSample() {
     { id: 'Bold', tooltipText: 'Bold', prefixIcon: 'e-icons e-bold', disabled: true, cssClass: 'tb-item-start' },
     { id: 'Italic', tooltipText: 'Italic', prefixIcon: 'e-icons e-italic', disabled: true, cssClass: 'tb-item-middle' },
     { id: 'Underline', tooltipText: 'Underline', prefixIcon: 'e-icons e-underline', disabled: true, cssClass: 'tb-item-end' },
-    { id: 'FontColor', tooltipText: 'Font Color', align: 'Left', disabled: true, template: renderFontColorPicker }
   ];
 
   // selection change method to update toolar items
@@ -383,22 +347,22 @@ function CommandsSample() {
         </DiagramComponent>
       </div>
       <div id="action-description">
-          <p>
-              This sample visualizes a structured process flow by grouping related elements using built-in container shapes.
-          </p>
+        <p>
+          This sample visualizes a structured process flow by grouping related elements using built-in container shapes.
+        </p>
       </div>
       <div id="description">
-          <p>
-              This sample demonstrates how a process can be organized using containers that group related elements together.
-              Setting the <code>type</code>  property of a shape to Container enables the grouping behavior. Nodes can be
-              added inside the container using the <code>children</code> property. Additionally, containers can be created
-              interactively by dragging container shapes from the symbol palette into the diagram.
-          </p>
-          <br />
+        <p>
+          This sample demonstrates how a process can be organized using containers that group related elements together.
+          Setting the <code>type</code>  property of a shape to Container enables the grouping behavior. Nodes can be
+          added inside the container using the <code>children</code> property. Additionally, containers can be created
+          interactively by dragging container shapes from the symbol palette into the diagram.
+        </p>
+        <br />
       </div>
     </div>
   );
 
 }
 
-export default CommandsSample;
+export default ContainerSample;

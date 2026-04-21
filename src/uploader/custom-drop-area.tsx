@@ -68,6 +68,9 @@ private onUploadFailed(args: any): void {
     let li: HTMLElement = this.getLiElement(args);
     li.querySelector('.upload-status').innerHTML = args.file.status;
     li.querySelector('.upload-status').classList.add('upload-failed');
+    if (args.response && args.response.statusText !== '') {
+        args.statusText = args.response.statusText;
+    }
 }
 private onUploadInProgress(args: any): void {
     let progressValue : string = Math.round((args.e.loaded / args.e.total) * 100) + '%';
@@ -145,6 +148,11 @@ public render(): JSX.Element {
             More information on the drag-and-drop can be found on this
             <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/file-source/#drag-and-drop"> documentation section</a>.
         </p>
+        <p>In this example, the backend service used in the saveUrl and removeUrl endpoints for saving and removing files is intended for demonstration purposes only. The uploaded files are subjected to thorough validation, including verification of file names and the application of security checks. Therefore, this service is not recommended for production use, and the configuration of a custom backend save and remove service is advised. Additional implementation details can be found in the
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/async#server-side-configuration-for-save-action">saveUrl</a> and
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/async#server-side-configuration-for-remove-action">removeUrl</a>
+            documentation.
+          </p>
     </div>
         </div>);
     }

@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import './uploader.css';
 import {PropertyPane} from '../common/property-pane';
-import {UploaderComponent, RemovingEventArgs} from '@syncfusion/ej2-react-inputs';
+import {UploaderComponent, RemovingEventArgs, FailureEventArgs} from '@syncfusion/ej2-react-inputs';
 import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import { Browser, isNullOrUndefined } from '@syncfusion/ej2-base';
 
@@ -39,6 +39,12 @@ const ChunkUpload = () => {
     }
     const onRemoveFile = (args: RemovingEventArgs): void => {
         args.postRawFile = false;
+    }
+
+    const onFailure = (args: FailureEventArgs): void => {
+      if (args.response && args.response.statusText !== '') {
+          args.statusText = args.response.statusText;
+      }
     }
     // to update flag variable value for automatic pause and resume
     const onPausing = (args: any): void => {
@@ -81,7 +87,7 @@ const ChunkUpload = () => {
           <div className='col-lg-8'>
             <div className='upload_wrapper'>
               {/* Render Uploader */}
-              <UploaderComponent id='chunkUpload' type='file' ref = {uploadObj} asyncSettings = {asyncSettings} autoUpload = {autoUpload} removing= {onRemoveFile.bind(this)} pausing= {onPausing.bind(this)} resuming= {onResuming.bind(this)} chunkFailure= {onBeforeFailure.bind(this)}></UploaderComponent>
+              <UploaderComponent id='UploadFiles' type='file' ref = {uploadObj} asyncSettings = {asyncSettings} autoUpload = {autoUpload} failure={onFailure.bind(this)} removing= {onRemoveFile.bind(this)} pausing= {onPausing.bind(this)} resuming= {onResuming.bind(this)} chunkFailure= {onBeforeFailure.bind(this)}></UploaderComponent>
             </div>
           </div>
           <div className='col-lg-4 property-section' id="chunk-size">
@@ -122,6 +128,11 @@ const ChunkUpload = () => {
             If the application lost its connection (<code>offline</code>), the upload component pauses the process automatically. After the connection is up (<code>online</code>), the upload component will resume its process.
           </p>
           <p>More information on the Uploader instantiation can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/chunk-upload/">documentation section</a>.</p>
+          <p>In this example, the backend service used in the saveUrl and removeUrl endpoints for saving and removing files is intended for demonstration purposes only. The uploaded files are subjected to thorough validation, including verification of file names and the application of security checks. Therefore, this service is not recommended for production use, and the configuration of a custom backend save and remove service is advised. Additional implementation details can be found in the
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/async#server-side-configuration-for-save-action">saveUrl</a> and
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/async#server-side-configuration-for-remove-action">removeUrl</a>
+            documentation.
+          </p>
         </div>
       </div>
     );

@@ -366,7 +366,7 @@ function Serialization() {
                     </div>
                     <UploaderComponent
                         type="file"
-                        id="fileupload"
+                        id= "UploadFiles" name="UploadFiles"
                         asyncSettings={{
                             saveUrl: 'https://services.syncfusion.com/react/production/api/FileUploader/Save',
                             removeUrl: 'https://services.syncfusion.com/react/production/api/FileUploader/Remove'

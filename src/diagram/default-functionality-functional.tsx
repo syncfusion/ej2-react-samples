@@ -433,18 +433,17 @@ function Default() {
         isSelectedItemLocked = false;
       }
     }
-    const itemIds = ['Cut', 'Copy', 'Lock', 'Delete', 'Order', 'Rotate', 'Flip'];
+    const itemIds = ['Cut', 'Copy', 'Delete', 'Order', 'Rotate', 'Flip'];
     itemIds.forEach(itemId => {
       const item = toolbarEditor.items.find(item => item.id === itemId);
       if (item) {
-        if (!isSelectedItemLocked) {
-          item.disabled = false;
-        }
-        else {
-          item.disabled = true;
-        }
+        item.disabled = isSelectedItemLocked ? true : false;
       }
     });
+    const lockItem = toolbarEditor.items.find(item => item.id === 'Lock');
+    if (lockItem) {
+      lockItem.disabled = false;
+    }
   }
   //To disable toolbar items while multiselection.
   function disableMultiselectedItems() {
@@ -717,7 +716,7 @@ function Default() {
         <div style={{ width: "100%" }}>
           <div style={{ display: 'none' }}>
             <UploaderComponent
-              id="fileUpload"
+              id= "UploadFiles" name="UploadFiles"
               type="file"
               showFileList={false}
               asyncSettings={asyncSettings}
@@ -757,7 +756,7 @@ function Default() {
                   cssClass='tb-item-start pan-item'
                   align="Left" id="Pan_tool" />
                 <ItemDirective prefixIcon='e-mouse-pointer e-icons' tooltipText='Select Tool'
-                  cssClass='tb-item-middle tb-item-selected'
+                  cssClass='tb-item-middle'
                   align="Left" id="Select_tool" />
                 <ItemDirective type="Input" tooltipText='Change Connector Type' align="Left" id="Draw_con" template={connector} />
                 <ItemDirective type="Input" tooltipText='Draw Shapes' align="Left" id="Draw_shapes" template={shapes} />

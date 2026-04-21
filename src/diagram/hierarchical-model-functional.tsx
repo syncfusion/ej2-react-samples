@@ -243,7 +243,7 @@ function HierarchicalModel() {
               id="toptobottom"
               style={{
                 backgroundImage:
-                  "url('src/diagram/Images/common-orientation/toptobottom.png')",
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/common-orientation/toptobottom.png')",
                 marginRight: "3px"
               }}
             />
@@ -252,7 +252,7 @@ function HierarchicalModel() {
               id="bottomtotop"
               style={{
                 backgroundImage:
-                  "url('src/diagram/Images/common-orientation/bottomtotop.png')",
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/common-orientation/bottomtotop.png')",
                 marginRight: "3px"
               }}
             />
@@ -261,7 +261,7 @@ function HierarchicalModel() {
               id="lefttoright"
               style={{
                 backgroundImage:
-                  "url('src/diagram/Images/common-orientation/lefttoright.png')",
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/common-orientation/lefttoright.png')",
                 margin: "0px 3px"
               }}
             />
@@ -272,7 +272,7 @@ function HierarchicalModel() {
               id="righttoleft"
               style={{
                 backgroundImage:
-                  "url('src/diagram/Images/common-orientation/righttoleft.png')",
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/common-orientation/righttoleft.png')",
                 margin: "0px 3px"
               }}
             />

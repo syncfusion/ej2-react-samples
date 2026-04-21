@@ -58,9 +58,11 @@ export async function convertTextToFlowchart(inputText: string, diagram: Diagram
     try {
         let jsonResponse = await serverAIRequest(options);
         // Remove ```mermaid and ``` if they exist at the start and end of the response
-        jsonResponse = jsonResponse.replace('```mermaid', '').replace('```', '');
-        diagram.loadDiagramFromMermaid(jsonResponse as string);
-        diagram.dataBind();
+        if (jsonResponse) {
+            jsonResponse = jsonResponse.replace('```mermaid', '').replace('```', '');
+            diagram.loadDiagramFromMermaid(jsonResponse as string);
+            diagram.dataBind();
+        }
         hideLoading();
 
     } catch (error) {

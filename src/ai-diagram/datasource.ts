@@ -77,7 +77,7 @@ export const flowchartData = [
     { id: "C", name: "Already a customer?", shape: "Decision", color: "#2F95D8", parentId: ["B"], arrowType: "single-line-arrow", stroke: "#333", strokeWidth: 1 },
     { id: "D", name: "Create an account", shape: "Rectangle", color: "#70AF16", parentId: ["C"], label: ["No"], arrowType: "single-line-arrow", stroke: "#333", strokeWidth: 1 },
     { id: "E", name: "Enter login information", shape: "Rectangle", color: "#70AF16", parentId: ["C"], label: ["Yes"], arrowType: "single-line-arrow", stroke: "#333", strokeWidth: 1 },
-    { id: "F", name: "Search for the book in the search bar", shape: "Predefined Process", color: "#1759B7", parentId: ["E", "D"], arrowType: "single-line-arrow", label: ["", ""], stroke: "#333", strokeWidth: 1 },
+    { id: "F", name: "Search for the book in the search bar", shape: "Rectangle", color: "#1759B7", parentId: ["E", "D"], arrowType: "single-line-arrow", label: ["", ""], stroke: "#333", strokeWidth: 1 },
     { id: "G", name: "Select the preferred book", shape: "Rectangle", color: "#1759B7", parentId: ["F"], arrowType: "single-line-arrow", stroke: "#333", strokeWidth: 1 },
     { id: "H", name: "Is the book new or used?", shape: "Rectangle", color: "#2F95D8", parentId: ["G"], arrowType: "single-line-arrow", stroke: "#333", strokeWidth: 1 },
     { id: "I", name: "Select the new book", shape: "Rectangle", color: "#70AF16", parentId: ["H"], label: ["Yes"], arrowType: "single-line-arrow", stroke: "#333", strokeWidth: 1 },
@@ -107,20 +107,35 @@ export function toolbarItems() {
     return items;
 }
 // To create flow shape
-function getFlowShape(id: string, shapeType: FlowShapes): NodeModel {
-    let flowshape: NodeModel = { id: id, shape: { type: 'Flow', shape: shapeType } };
-    return flowshape;
+function getFlowShape(id: string, shapeType: FlowShapes, tooltipContent: string): NodeModel {
+  let flowshape: NodeModel = { id: id, shape: { type: 'Flow', shape: shapeType }, tooltip: { content: tooltipContent } };
+  return flowshape;
 }
 //Initializes flow shapes for the symbol palette 
 export const flowShapes: NodeModel[] = [
-    getFlowShape('Terminator', 'Terminator'), getFlowShape('Process', 'Process'), getFlowShape('Decision', 'Decision'),
-    getFlowShape('Document', 'Document'), getFlowShape('PreDefinedProcess', 'PreDefinedProcess'), getFlowShape('PaperTap', 'PaperTap'),
-    getFlowShape('DirectData', 'DirectData'), getFlowShape('SequentialData', 'SequentialData'), getFlowShape('Sort', 'Sort'),
-    getFlowShape('MultiDocument', 'MultiDocument'), getFlowShape('Collate', 'Collate'), getFlowShape('Or', 'Or'), getFlowShape('Extract', 'Extract'),
-    getFlowShape('Merge', 'Merge'), getFlowShape('OffPageReference', 'OffPageReference'), getFlowShape('SequentialAccessStorage', 'SequentialAccessStorage'),
-    getFlowShape('Annotation', 'Annotation'), getFlowShape('Annotation2', 'Annotation2'), getFlowShape('Data', 'Data'),
-    getFlowShape('Card', 'Card'), getFlowShape('Delay', 'Delay'),
+  getFlowShape('Terminator', 'Terminator', 'Terminator'),
+  getFlowShape('Process', 'Process', 'Process'),
+  getFlowShape('Decision', 'Decision', 'Decision'),
+  getFlowShape('Document', 'Document', 'Document'),
+  getFlowShape('PreDefinedProcess', 'PreDefinedProcess', 'Predefined Process'),
+  getFlowShape('PaperTap', 'PaperTap', 'Paper Tap'),
+  getFlowShape('DirectData', 'DirectData', 'Direct Data'),
+  getFlowShape('SequentialData', 'SequentialData', 'Sequential Data'),
+  getFlowShape('Sort', 'Sort', 'Sort'),
+  getFlowShape('MultiDocument', 'MultiDocument', 'Multi Document'),
+  getFlowShape('Collate', 'Collate', 'Collate'),
+  getFlowShape('Or', 'Or', 'Or'),
+  getFlowShape('Extract', 'Extract', 'Extract'),
+  getFlowShape('Merge', 'Merge', 'Merge'),
+  getFlowShape('OffPageReference', 'OffPageReference', 'Off-Page Reference'),
+  getFlowShape('SequentialAccessStorage', 'SequentialAccessStorage', 'Sequential Access Storage'),
+  getFlowShape('Annotation', 'Annotation', 'Annotation'),
+  getFlowShape('Annotation2', 'Annotation2', 'Annotation2'),
+  getFlowShape('Data', 'Data', 'Data'),
+  getFlowShape('Card', 'Card', 'Card'),
+  getFlowShape('Delay', 'Delay', 'Delay'),
 ];
+
 export const exportItems: ItemModel[] = [
     { text: 'JPG' }, { text: 'PNG' }, { text: 'SVG' }
 ];
@@ -133,7 +148,7 @@ export const connectorSymbols: ConnectorModel[] = [
         style: { strokeWidth: 1, strokeColor: '#757575' }
     },
     {
-        id: 'link2', type: 'Orthogonal', sourcePoint: { x: 0, y: 0 }, targetPoint: { x: 60, y: 60 },
+        id: 'Link2', type: 'Orthogonal', sourcePoint: { x: 0, y: 0 }, targetPoint: { x: 60, y: 60 },
         style: { strokeWidth: 2, strokeColor: '#757575' }, targetDecorator: { shape: 'Arrow' }
     },
     {
