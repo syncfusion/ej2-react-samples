@@ -100,6 +100,7 @@ import { BlockEditorSampleOrder } from '../block-editor/config';
 import { InlineAIAssistSampleOrder } from '../inline-ai-assist/config';
 import { SankeyOrder } from '../sankey/config';
 import { DashboardsSampleOrder } from '../dashboards/config';
+import { FormRendererSampleOrder } from '../form-renderer/config';
 
 export let samplesList: any = [
     {
@@ -192,6 +193,9 @@ export let samplesList: any = [
     },
     {
         'name': 'Query Builder', 'category': 'Forms', 'path': 'query-builder', 'samples': QueryBuilderSampleOrder      
+    },
+    {
+        'name': 'Form Renderer', 'category': 'Forms', 'path': 'form-renderer', 'samples': FormRendererSampleOrder, 'type': 'preview'
     },
     {
         'name': 'Rich Text Editor', 'type':'update', 'category': 'File Viewers & Editors', 'order': '04', 'path': 'rich-text-editor', 'samples': RichTextEditorSampleOrder

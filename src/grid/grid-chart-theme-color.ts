@@ -1,5 +1,5 @@
 import { EmitType } from "@syncfusion/ej2-base";
-import { AccumulationTheme, ChartTheme, IAccLoadedEventArgs, IAccPointRenderEventArgs, ILoadedEventArgs, IPointRenderEventArgs } from "@syncfusion/ej2-charts";
+import { AccumulationTheme, ChartTheme, IAccLoadedEventArgs, IAccPointRenderEventArgs, ILoadedEventArgs, IPointRenderEventArgs } from "@syncfusion/ej2/charts";
 
 /**
  * Initialize the Theme colors

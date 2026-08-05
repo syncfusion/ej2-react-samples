@@ -1,0 +1,277 @@
+/* ============================================================================
+   COLUMN TEMPLATES - Product Cell
+   ============================================================================ */
+
+#Detail-Grid .product-cell {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 0;
+  height: 100%;
+  text-align: left;
+}
+
+#Detail-Grid .product-image {
+  width: 52px;
+  height: 52px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid rgba(229, 231, 235, 0.9);
+  background: #f8fafc;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+#Detail-Grid .product-image:hover {
+  transform: scale(1.04);
+}
+
+#Detail-Grid .product-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  text-align: left;
+}
+
+#Detail-Grid .product-name {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#Detail-Grid .product-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  line-height: 1.3;
+}
+
+#Detail-Grid .product-description,
+#Detail-Grid .product-sku {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#Detail-Grid .product-description {
+  font-size: 10px;
+  font-weight: 400;
+  color: #6B7280;
+}
+
+#Detail-Grid .product-sku {
+  font-size: 10px;
+  font-weight: 400;
+  color: #6B7280;
+}
+
+/* ============================================================================
+   SALES CELL
+   ============================================================================ */
+
+#Detail-Grid .sales-cell {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+#Detail-Grid .sales-growth {
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+#Detail-Grid .sales-growth.positive {
+  color: #22c55e;
+}
+
+#Detail-Grid .sales-growth.negative {
+  color: #ef4444;
+}
+
+/* ============================================================================
+   STATUS CELL
+   ============================================================================ */
+
+#Detail-Grid .status-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+#Detail-Grid .status-units,
+#Detail-Grid .reviews-text {
+  padding-top: 6px;
+}
+
+
+#Detail-Grid .status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  border-radius: 4px;
+  border: 1px solid;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 16px 14px;
+  border-radius: 12px;
+  
+}
+
+#Detail-Grid .status-badge-success {
+  background: #F0FDF4;
+  border-color: #BBF7D0;
+  color: #15803D;
+}
+
+#Detail-Grid .status-badge-error {
+  background: #FEF2F2;
+  border-color: #FECACA;
+  color: #DC2626;
+}
+
+/* ============================================================================
+   HEADER TEMPLATE
+   ============================================================================ */
+
+#Detail-Grid .custom-header {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ============================================================================
+   DETAIL TEMPLATE
+   ============================================================================ */
+
+#Detail-Grid .detail-page {
+  padding: 16px;
+}
+
+#Detail-Grid .detail-top {
+  display: grid;
+  gap: 16px;
+  align-items: stretch;
+}
+
+#Detail-Grid .e-detailrow .e-detailcell {
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+#Detail-Grid .product-detail-wrapper {
+  padding: 0;
+}
+
+#Detail-Grid .detail-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  height: 100%;
+}
+
+#Detail-Grid .detail-grid > .e-card {
+  border-radius: 16px;
+  margin: 0;
+  justify-content: normal;
+}
+
+#Detail-Grid .sub-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: inherit;
+}
+#Detail-Grid .e-card-title {
+  
+    font-weight: 600;
+    color: inherit;
+}
+
+#Detail-Grid .e-card-content {
+    color: inherit;
+    padding: 12px;
+}
+
+#Detail-Grid .highlight-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#Detail-Grid .highlight-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  font-size: 14px;
+}
+
+#Detail-Grid .bullet {
+  width: 10px;
+  height: 10px;
+  background: #a78bfa;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px #ede9fe;
+  flex-shrink: 0;
+}
+
+#Detail-Grid .info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+#Detail-Grid .info-row:last-child {
+  border-bottom: none;
+}
+
+#Detail-Grid .info-row .current-price,
+#Detail-Grid .info-row .original-price,
+#Detail-Grid .info-row .discount-price,
+#Detail-Grid .info-row .cost-price,
+#Detail-Grid .info-row .profit-price {
+    flex: 1 1 58%;
+    text-align: right;
+    font-weight: 400;
+    word-break: break-word;
+
+}
+
+#Detail-Grid .current-price {
+  color: #6366f1;
+}
+
+#Detail-Grid .original-price {
+  text-decoration: line-through;
+}
+
+#Detail-Grid .discount-price {
+  color: #ef4444;
+}
+
+#Detail-Grid .profit-price {
+  color: #22c55e;
+}
+
+@media screen and (max-width: 1000px) {
+  #Detail-Grid .detail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+

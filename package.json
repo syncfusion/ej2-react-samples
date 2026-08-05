@@ -1,6 +1,6 @@
 {
   "name": "@syncfusion/ej2-react-samples",
-  "version": "34.1.29",
+  "version": "34.2.2",
   "description": "Examples of React UI Components",
   "author": "Syncfusion Inc.",
   "license": "SEE LICENSE IN license",
@@ -43,6 +43,7 @@
     "@syncfusion/ej2-react-multicolumn-combobox": "*",
     "@syncfusion/ej2-react-interactive-chat": "*",
     "@syncfusion/ej2-react-blockeditor": "*",
+    "@syncfusion/ej2-react-form-renderer": "*",
     "react": "18.3.0",
     "react-dom": "18.3.0",
     "react-router-dom": "6.16.0"
@@ -77,6 +78,8 @@
     "shelljs": "^0.8.5",
     "source-map-loader": "1.0.2",
     "style-loader": "2.0.0",
+    "turndown": "^7.1.1",
+    "turndown-plugin-gfm": "^1.0.2",
     "typescript": "5.2.2",
     "webpack": "^4.41.5",
     "webpack-cli": "^4.1.0",

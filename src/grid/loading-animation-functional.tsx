@@ -69,9 +69,8 @@ function LoadingAnimation() {
                 <p> In this demo, the <code>Shimmer</code> type is initially enabled. If you want to use the default value of the loading indicator, use the dropdown to change it.
                 </p>
                 <p>Looking for the full React Data Grid component overview, features, pricing, and documentation? Visit our
-                    <a target="_blank"
-                        href="https://www.syncfusion.com/react-components/react-data-grid">
-                        React Data Grid component</a> page.</p>
+                        <a target="_blank"
+                            href="https://www.syncfusion.com/react-components/react-data-grid"> React Data Grid component</a> page.</p>
             </div>
         </div>
     )

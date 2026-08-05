@@ -191,6 +191,7 @@ const VirtualScrolling = () => {
                         id="KanbanVirtualScrolling"
                         enableVirtualization={true}
                         keyField="Status"
+                        height="525px"
                         dataSource={generateKanbanDataVirtualScrollData()}
                         enableTooltip={true}
                         cardSettings={{

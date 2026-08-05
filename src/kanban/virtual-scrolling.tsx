@@ -113,7 +113,7 @@ export class VirtualScrolling extends SampleBase<{}, {}> {
             <div className='kanban-control-section'>
                 <div className='col-lg-12 control-section'>
                     <div className='control-wrapper'>
-                        <KanbanComponent id="KanbanVirtualScrolling" enableVirtualization={true} keyField="Status" dataSource={this.generateKanbanDataVirtualScrollData()} enableTooltip={true}
+                        <KanbanComponent id="KanbanVirtualScrolling" enableVirtualization={true} keyField="Status" height="525px" dataSource={this.generateKanbanDataVirtualScrollData()} enableTooltip={true}
                             cardSettings={{ headerField: "Id", selectionType: 'Multiple', template: this.cardTemplate.bind(this) }}
                             dialogSettings={{
                                 fields: [

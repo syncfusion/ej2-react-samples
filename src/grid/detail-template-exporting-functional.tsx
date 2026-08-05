@@ -183,9 +183,8 @@ function DetailTemplateExport() {
                     and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/grid/pdf-export/pdf-export">PDF-export</a> documentation sections.
                 </p>
                 <p>Looking for the full React Data Grid component overview, features, pricing, and documentation? Visit our
-                    <a target="_blank"
-                        href="https://www.syncfusion.com/react-components/react-data-grid">
-                        React Data Grid component</a> page.</p>
+                        <a target="_blank"
+                            href="https://www.syncfusion.com/react-components/react-data-grid"> React Data Grid component</a> page.</p>
             </div>
         </div>
     )
