@@ -99,7 +99,7 @@ export class Tooltip extends SampleBase<{}, {}> {
             The <code>tooltipTemplate</code> option will not work, if <code>enableTooltip</code> is set to false.In mobile devices, tap holding the events will open the tooltip.
           </p>
           <p>
-            Looking for the full React Scheduler component overview, features, pricing, and documentation? Visit our <a target="_blank" href="https://www.syncfusion.com/react-components/react-scheduler">React Scheduler</a> component page.
+            Looking for the full React Scheduler component overview, features, pricing, and documentation? Visit our <a target="_blank" href="https://www.syncfusion.com/scheduler-sdk/react-scheduler">React Scheduler</a> component page.
           </p>
         </div>
       </div>

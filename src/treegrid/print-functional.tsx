@@ -42,7 +42,7 @@ const Print = () => {
             <ColumnDirective
               field="taskName"
               headerText="Task Name"
-              width="180"
+              width="250"
             ></ColumnDirective>
             <ColumnDirective
               field="startDate"

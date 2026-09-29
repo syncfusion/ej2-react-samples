@@ -9,7 +9,6 @@ import './undo-redo.css'
 const GanttUndoRedo = () => {
   useEffect(() => {
     updateSampleSection();
-    initializeToolbar();
   }, [])
   let ganttInstance: GanttComponent;
   const taskFields: TaskFieldsModel = {
@@ -56,10 +55,15 @@ const GanttUndoRedo = () => {
 
   const initializeToolbar = () => {
     const toolbarInstance = document.querySelector('.e-gantt-toolbar');
+    if (!toolbarInstance) {
+      return;
+    }
     const undoBtn: any = toolbarInstance.querySelector('[aria-label="Undo"]');
     const redoBtn: any = toolbarInstance.querySelector('[aria-label="Redo"]');
+    if (!undoBtn || !redoBtn) {
+      return;
+    }
     if (toolbarInstance) {
-
       if (undoBtn) {
         undoBtn.classList.add('e-overlay');
       }
@@ -80,6 +84,9 @@ const GanttUndoRedo = () => {
   };
   const updateBadges = () => {
     const toolbarInstance = document.querySelector('.e-gantt-toolbar');
+    if (!toolbarInstance) {
+      return;
+    }
     const undoBtn: any = toolbarInstance.querySelector('[aria-label="Undo"]');
     const redoBtn: any = toolbarInstance.querySelector('[aria-label="Redo"]');
     const undoCount = ganttInstance.getUndoActions().length;
@@ -177,6 +184,10 @@ const GanttUndoRedo = () => {
     badge.textContent = count.toString();
     badge.style.display = count > 0 ? 'inline-block' : 'none';
   };
+  const onCreated = () => {
+    initializeToolbar();
+  };
+
   const projectStartDate: Date = new Date('06/24/2025');
   const projectEndDate: Date = new Date('08/31/2025');
   return (
@@ -185,7 +196,7 @@ const GanttUndoRedo = () => {
         <GanttComponent id='UndoRedo' treeColumnIndex={1} ref={gantt => ganttInstance = gantt} showColumnMenu={true} allowFiltering={true} allowSorting={true}
           allowResizing={true} dataSource={undoRedoData} highlightWeekends={true} splitterSettings={splitterSettings} toolbarClick={toolbarClick}
           taskFields={taskFields} labelSettings={labelSettings} height='650px' taskbarHeight={25} rowHeight={46} enableUndoRedo={true} enableContextMenu={true}
-          allowReordering={true} editSettings={editSettings} toolbar={toolbar} undoRedoActions={undoRedoActions}
+          allowReordering={true} editSettings={editSettings} created={onCreated} toolbar={toolbar} undoRedoActions={undoRedoActions}
           projectStartDate={projectStartDate} projectEndDate={projectEndDate} actionComplete={updateBadges} resizeStop={updateBadges}>
           <ColumnsDirective>
             <ColumnDirective field='TaskID' headerText='ID' width='100' ></ColumnDirective>
@@ -217,7 +228,9 @@ const GanttUndoRedo = () => {
         Gantt control features are segregated into individual feature-wise modules. To use a UndoRedo, Filter, sorting, columnMenu, contextMenu, Edit, Toolbar, Sorting, Resize, Reorder, Selection and markers features, we need to inject the <code>UndoRedo</code>, <code>Filter</code>, <code>Sort</code>,  <code>ColumnMenu</code>,  <code>ContextMenu</code>, <code>Edit</code>, <code>Toolbar</code>, <code>Resize</code>, <code>Reorder</code>, <code>Selection</code>, and <code>DayMarkers</code> into the <code>Inject Services</code> section.
         </p>
         <br/>
-        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/undo-redo">documentation section</a>.</p>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/undo-redo">undo redo</a> documentation section.</p>
+        <br/>
+        <p>Looking for the full React Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/react-components/react-gantt-chart">React Gantt Chart</a> page.</p>
       </div>
 
     </div>

@@ -99,8 +99,8 @@ function ShowHide() {
 
                 <p>The columns-&gt;visible property specifies the visibility of a column. To hide a column at the initial rendering, set the columns-&gt;visible property to false.</p>
                 <p>Looking for the full React Data Grid component overview, features, pricing, and documentation? Visit our
-                        <a target="_blank"
-                            href="https://www.syncfusion.com/react-components/react-data-grid"> React Data Grid component</a> page.</p>
+                    <a target="_blank"
+                        href="https://www.syncfusion.com/react-components/react-data-grid"> React Data Grid component</a> page.</p>
 
             </div>
         </div>

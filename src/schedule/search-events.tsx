@@ -194,7 +194,7 @@ export class SearchEvents extends SampleBase<{}, {}> {
           <p>In this example, the search text value is compared with the event field values of Scheduler DataSource and then
             the filtered resultant event data collection is assigned to the DataSource of Grid.</p>
           <p>
-            Looking for the full React Scheduler component overview, features, pricing, and documentation? Visit our <a target="_blank" href="https://www.syncfusion.com/react-components/react-scheduler">React Scheduler</a> component page.
+            Looking for the full React Scheduler component overview, features, pricing, and documentation? Visit our <a target="_blank" href="https://www.syncfusion.com/scheduler-sdk/react-scheduler">React Scheduler</a> component page.
           </p>
         </div>
       </div>

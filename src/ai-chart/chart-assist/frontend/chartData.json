@@ -1,0 +1,270 @@
+{
+    "chartSuggestions": [
+        "Visualize monthly sales data for the year 2024",
+        "Show country-wise population growth comparison",
+        "Compare quarterly revenue across business units"
+    ],
+    "chartSystemPrompt": "You are an expert AI Chart Assistant integrated into the Syncfusion React AI AssistView component.\n\nFor chart generation, data-to-chart conversion, and chart modification requests, return exactly one valid JSON object. Do not include markdown fences, comments, explanations, or text outside the JSON object.\n\nReturn this structure:\n{\n  \"blocks\": [\n    {\n      \"blockType\": \"text\",\n      \"content\": \"Concise description of the generated chart or applied modification\"\n    },\n    {\n      \"blockType\": \"tool\",\n      \"toolName\": \"chart-tool\",\n      \"props\": {\n        \"chartType\": \"cartesian | circular\",\n        \"title\": \"Meaningful chart title\",\n        \"showLegend\": true,\n        \"sideBySidePlacement\": false,\n        \"xAxis\": [\n          {\n            \"type\": \"category | numerical | datetime | datetimecategory | logarithmic\",\n            \"title\": \"X-axis title\",\n            \"labelRotation\": 0\n          }\n        ],\n        \"yAxis\": [\n          {\n            \"type\": \"numerical | logarithmic\",\n            \"title\": \"Y-axis title\",\n            \"min\": 0\n          }\n        ],\n        \"series\": [\n          {\n            \"type\": \"line | column | bar | area | spline | pie | doughnut\",\n            \"name\": \"Series name\",\n            \"dataSource\": [\n              {\n                \"xvalue\": \"Category\",\n                \"yvalue\": 100\n              }\n            ],\n            \"tooltip\": true\n          }\n        ]\n      }\n    }\n  ]\n}\n\nRules:\n1. Always return one root JSON object containing exactly one \"blocks\" array.\n2. Return exactly two blocks in this order: one nonempty text block and one chart-tool block.\n3. Use only \"chart-tool\". Do not return another tool name.\n4. Use \"cartesian\" for Line, Column, Bar, Area, and Spline series.\n5. Use \"circular\" only for Pie and Doughnut series.\n6. Use lowercase values for chartType, axis type, and series type.\n7. Cartesian charts must include nonempty xAxis and yAxis arrays.\n8. Circular charts must omit xAxis and yAxis.\n9. Do not mix cartesian and circular series in one chart.\n10. Every series must include a meaningful name and a nonempty dataSource.\n11. Every data point must use only the canonical fields \"xvalue\" and \"yvalue\" for its X and Y values.\n12. Never use \"x\", \"y\", \"xField\", \"yField\", \"xName\", or \"yName\" as data-mapping properties in the response.\n13. Every yvalue must be a finite number.\n14. Use a Category axis for textual categories such as months, quarters, countries, products, and regions.\n15. Use a Numerical axis only when every X value is numeric.\n16. Use a DateTime axis only when every X value is an unambiguous ISO 8601 date string.\n17. Use a DateTimeCategory axis when valid dates must retain their supplied order and category spacing.\n18. Use a Logarithmic axis only for positive numeric values spanning a sufficiently large range.\n19. Infer an appropriate series type: line or spline for trends, column or bar for comparisons, area for magnitude over time, and pie or doughnut for proportions.\n20. When the user provides data, preserve every valid category and value. Never replace supplied data with representative values.\n21. When the user does not provide data, generate realistic representative sample data relevant to the request.\n22. For an initial representative chart, provide 4 to 12 points unless the requested period requires a specific count, such as 12 months or 4 quarters.\n23. For chart modifications, treat the supplied existing chart configuration as the source of truth.\n24. For chart modifications, preserve every property, series, data point, axis, title, feature, and style not explicitly changed.\n25. For chart modifications, return the complete updated chart configuration, not only the changed properties.\n26. Modification responses may contain more than 12 points when existing points are preserved or the user requests additional points.\n27. Default showLegend to true and tooltip to true unless the user requests otherwise.\n28. Generate concise, meaningful chart and axis titles. Do not use \"xvalue\" or \"yvalue\" as visible axis titles.\n29. Do not return empty strings for required text, titles, or series names.\n30. Do not return empty series or dataSource arrays.\n31. Do not include undefined, null numeric values, NaN, Infinity, JavaScript functions, or trailing commas.\n32. The React application generates JSX code locally. Do not return React code, HTML templates, element IDs, code-tool blocks, or change-summary-tool blocks.\n33. If a custom tooltip is requested, return tooltip settings only. The React application will generate the tooltip as an inline JSX element without an external template ID.\n34. Before responding, verify that dataSource uses xvalue and yvalue and that the selected chart family matches every series type.",
+    "chartPromptsData": [
+        {
+            "prompt": "Visualize monthly sales data for the year 2024",
+            "blocks": [
+                {
+                    "blockType": "text",
+                    "content": "Created a line chart showing representative monthly sales for 2024. Sales rise overall, with the highest value in December."
+                },
+                {
+                    "blockType": "tool",
+                    "toolName": "chart-tool",
+                    "props": {
+                        "chartType": "cartesian",
+                        "title": "Monthly Sales - 2024",
+                        "showLegend": true,
+                        "sideBySidePlacement": false,
+                        "xAxis": [
+                            {
+                                "type": "category",
+                                "title": "Month",
+                                "labelRotation": 0
+                            }
+                        ],
+                        "yAxis": [
+                            {
+                                "type": "numerical",
+                                "title": "Revenue (Million USD)",
+                                "min": 0
+                            }
+                        ],
+                        "series": [
+                            {
+                                "type": "line",
+                                "name": "Monthly Sales",
+                                "dataSource": [
+                                    {
+                                        "xvalue": "Jan",
+                                        "yvalue": 2.4
+                                    },
+                                    {
+                                        "xvalue": "Feb",
+                                        "yvalue": 2.1
+                                    },
+                                    {
+                                        "xvalue": "Mar",
+                                        "yvalue": 2.9
+                                    },
+                                    {
+                                        "xvalue": "Apr",
+                                        "yvalue": 3.2
+                                    },
+                                    {
+                                        "xvalue": "May",
+                                        "yvalue": 3.8
+                                    },
+                                    {
+                                        "xvalue": "Jun",
+                                        "yvalue": 4.5
+                                    },
+                                    {
+                                        "xvalue": "Jul",
+                                        "yvalue": 4.2
+                                    },
+                                    {
+                                        "xvalue": "Aug",
+                                        "yvalue": 3.9
+                                    },
+                                    {
+                                        "xvalue": "Sep",
+                                        "yvalue": 4.1
+                                    },
+                                    {
+                                        "xvalue": "Oct",
+                                        "yvalue": 4.8
+                                    },
+                                    {
+                                        "xvalue": "Nov",
+                                        "yvalue": 5.2
+                                    },
+                                    {
+                                        "xvalue": "Dec",
+                                        "yvalue": 6.0
+                                    }
+                                ],
+                                "tooltip": true
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "prompt": "Show country-wise population growth comparison",
+            "blocks": [
+                {
+                    "blockType": "text",
+                    "content": "Created a column chart using representative population-growth values for selected countries. Nigeria has the largest value in this demonstration data."
+                },
+                {
+                    "blockType": "tool",
+                    "toolName": "chart-tool",
+                    "props": {
+                        "chartType": "cartesian",
+                        "title": "Population Growth by Country",
+                        "showLegend": true,
+                        "sideBySidePlacement": true,
+                        "xAxis": [
+                            {
+                                "type": "category",
+                                "title": "Country",
+                                "labelRotation": 0
+                            }
+                        ],
+                        "yAxis": [
+                            {
+                                "type": "numerical",
+                                "title": "Growth (%)",
+                                "min": 0
+                            }
+                        ],
+                        "series": [
+                            {
+                                "type": "column",
+                                "name": "Population Growth",
+                                "dataSource": [
+                                    {
+                                        "xvalue": "India",
+                                        "yvalue": 10.6
+                                    },
+                                    {
+                                        "xvalue": "China",
+                                        "yvalue": 3.4
+                                    },
+                                    {
+                                        "xvalue": "USA",
+                                        "yvalue": 5.9
+                                    },
+                                    {
+                                        "xvalue": "Indonesia",
+                                        "yvalue": 9.1
+                                    },
+                                    {
+                                        "xvalue": "Brazil",
+                                        "yvalue": 7.8
+                                    },
+                                    {
+                                        "xvalue": "Nigeria",
+                                        "yvalue": 21.3
+                                    }
+                                ],
+                                "tooltip": true
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "prompt": "Compare quarterly revenue across business units",
+            "blocks": [
+                {
+                    "blockType": "text",
+                    "content": "Created a grouped column chart comparing representative quarterly revenue across three business units."
+                },
+                {
+                    "blockType": "tool",
+                    "toolName": "chart-tool",
+                    "props": {
+                        "chartType": "cartesian",
+                        "title": "Quarterly Revenue by Business Unit",
+                        "showLegend": true,
+                        "sideBySidePlacement": true,
+                        "xAxis": [
+                            {
+                                "type": "category",
+                                "title": "Quarter",
+                                "labelRotation": 0
+                            }
+                        ],
+                        "yAxis": [
+                            {
+                                "type": "numerical",
+                                "title": "Revenue (Million USD)",
+                                "min": 0
+                            }
+                        ],
+                        "series": [
+                            {
+                                "type": "column",
+                                "name": "Retail",
+                                "dataSource": [
+                                    {
+                                        "xvalue": "Q1",
+                                        "yvalue": 12.4
+                                    },
+                                    {
+                                        "xvalue": "Q2",
+                                        "yvalue": 13.8
+                                    },
+                                    {
+                                        "xvalue": "Q3",
+                                        "yvalue": 14.6
+                                    },
+                                    {
+                                        "xvalue": "Q4",
+                                        "yvalue": 16.1
+                                    }
+                                ],
+                                "tooltip": true
+                            },
+                            {
+                                "type": "column",
+                                "name": "Enterprise",
+                                "dataSource": [
+                                    {
+                                        "xvalue": "Q1",
+                                        "yvalue": 18.2
+                                    },
+                                    {
+                                        "xvalue": "Q2",
+                                        "yvalue": 20.1
+                                    },
+                                    {
+                                        "xvalue": "Q3",
+                                        "yvalue": 21.4
+                                    },
+                                    {
+                                        "xvalue": "Q4",
+                                        "yvalue": 23.0
+                                    }
+                                ],
+                                "tooltip": true
+                            },
+                            {
+                                "type": "column",
+                                "name": "Services",
+                                "dataSource": [
+                                    {
+                                        "xvalue": "Q1",
+                                        "yvalue": 9.8
+                                    },
+                                    {
+                                        "xvalue": "Q2",
+                                        "yvalue": 10.5
+                                    },
+                                    {
+                                        "xvalue": "Q3",
+                                        "yvalue": 11.7
+                                    },
+                                    {
+                                        "xvalue": "Q4",
+                                        "yvalue": 12.9
+                                    }
+                                ],
+                                "tooltip": true
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}

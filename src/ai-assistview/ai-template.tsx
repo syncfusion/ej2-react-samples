@@ -49,6 +49,18 @@ export class Template extends SampleBase<{}, {}> {
     );
   }
 
+  responseAnimationTemplate = () => {
+    return(
+      <div className="assistview-loading-status">
+         <div className="assistview-grid-icon">
+         <span></span><span></span><span></span>
+         <span></span><span></span><span></span>
+         <span></span><span></span><span></span>
+      </div>
+      <span className="assistview-loading-label">Generating</span>
+      </div>
+    );
+  }
   promptItemTemplate = (props: any) => {
     var prompt = props.prompt.replace('<span class="e-icons e-circle-info"></span>', '');
     return (
@@ -125,29 +137,30 @@ export class Template extends SampleBase<{}, {}> {
     var foundPrompt = this.prompts.find((promptObj) => promptObj.prompt === args.prompt);
     let response: string = 'For real-time prompt processing, connect the AI AssistView control to your preferred AI service, such as OpenAI or Azure Cognitive Services. Ensure you obtain the necessary API credentials to authenticate and enable seamless integration.';
 
-    if (foundPrompt) {
-      response = foundPrompt.response as string;
-    } else {
-      try {
-        const aiResponse = await getAIResponse(args as any, this.abortController);
-        if (aiResponse && typeof aiResponse === 'string') {
-          response = aiResponse;
-        }
-      } catch (error) {
-        console.error('Error getting AI response:', error);
+    try {
+      const aiResponse = await getAIResponse(args as any, this.abortController);
+      if (aiResponse && typeof aiResponse === 'string') {
+        response = aiResponse;
       }
+    } catch (error) {
+      console.error('Error getting AI response:', error);
     }
-
     this.templateAiAssistView.addPromptResponse(response);
     this.templateAiAssistView.promptSuggestions = foundPrompt?.suggestions as string[] || this.suggestion;
   };
+
+  stopResponse = () => {
+    if (this.abortController) {
+      this.abortController.abort();
+    }
+  }
 
   render() {
     return (
       <div className='control-pane'>
         <div className="control-section">
           <div className="template-aiassistview">
-            <AIAssistViewComponent id="aiAssistView" bannerTemplate={this.bannerViewTemplate} promptItemTemplate={this.promptItemTemplate} responseItemTemplate={this.responseItemTemplate} promptSuggestionItemTemplate={this.promptSuggestionItemTemplate} promptSuggestions={this.suggestion} enableStreaming={true} promptRequest={this.promptRequest} ref={aiassistView => (this.templateAiAssistView = aiassistView)} created={this.created} promptSuggestionsHeader={this.promptSuggestionsHeader} toolbarSettings={this.toolbarSettings}></AIAssistViewComponent>
+            <AIAssistViewComponent id="aiAssistView" bannerTemplate={this.bannerViewTemplate} promptItemTemplate={this.promptItemTemplate} responseAnimationTemplate={this.responseAnimationTemplate} responseItemTemplate={this.responseItemTemplate} promptSuggestionItemTemplate={this.promptSuggestionItemTemplate} promptSuggestions={this.suggestion} enableStreaming={true} promptRequest={this.promptRequest} stopRespondingClick={this.stopResponse} ref={aiassistView => (this.templateAiAssistView = aiassistView)} created={this.created} promptSuggestionsHeader={this.promptSuggestionsHeader} toolbarSettings={this.toolbarSettings}></AIAssistViewComponent>
           </div>
         </div>
 
@@ -155,7 +168,7 @@ export class Template extends SampleBase<{}, {}> {
           <p>This sample demonstrates the template functionality of the AI AssistView component.</p>
         </div>
         <div id="description">
-          <p>In this example, the AI AssistView component uses customizable templates for the banner, prompts, responses, and suggestions. We have used the  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/ai-assistview#bannertemplate">bannerTemplate</a>,  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/ai-assistview#promptitemtemplate">promptItemTemplate</a>,  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/ai-assistview#responseitemtemplate">responseItemTemplate</a> and  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/ai-assistview#promptsuggestionitemtemplate">promptSuggestionItemTemplate</a> to define the structure and appearance of these elements.
+          <p>In this example, the AI AssistView component uses customizable templates for the banner, prompts, responses, loading indicator and suggestions. We have used the  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/ai-assistview#bannertemplate">bannerTemplate</a>,  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/ai-assistview#promptitemtemplate">promptItemTemplate</a>,  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/ai-assistview#responseitemtemplate">responseItemTemplate</a>,  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/ai-assistview#promptsuggestionitemtemplate">promptSuggestionItemTemplate</a> and responseAnimationTemplate to define the structure and appearance of these elements.
           </p>
           <p>
             By using the  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/ai-assistview#executeprompt">executePrompt</a> method you can trigger the prompt request externally and generate the output based on the  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/ai-assistview#promptrequest">promptRequest</a> data returned. If found, the response will be displayed and suggestions updated.

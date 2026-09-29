@@ -63,22 +63,25 @@ export class SpeechToText extends SampleBase<{}, {}> {
         }
     };
 
-    public toolbarItemClicked = (args: ToolbarItemClickedEventArgs) => {
-        if (args.item.iconCss === 'e-icons e-refresh') {
-            this.aiAssistViewObj.prompts = [];
+    stopResponse = () => {
+        if (this.abortController) {
+            this.abortController.abort();
         }
     }
 
-    public stopRespondingClick = () => {
-        this.abortController?.abort();
-    };
+    public toolbarItemClicked = (args: ToolbarItemClickedEventArgs) => {
+        if (args.item.iconCss === 'e-icons e-refresh') {
+            this.aiAssistViewObj.prompts = [];
+            this.stopResponse();
+        }
+    }
 
     render() {
         return (
             <div className='control-pane'>
                 <div className="control-section">
                     <div className="integration-speech-to-text-assist-section">
-                        <AIAssistViewComponent id="aiAssistView" ref={(assistview) => { this.aiAssistViewObj = assistview }} promptRequest={this.onPromptRequest} bannerTemplate={this.bannerTemplate} enableStreaming={true} toolbarSettings={this.toolbarSettings} stopRespondingClick={this.stopRespondingClick} footerToolbarSettings={this.footerToolbarSettings} enableAttachments={this.enableAttachments} attachmentSettings={this.attachmentSettings} speechToTextSettings={this.speechToTextSettings}></AIAssistViewComponent>
+                        <AIAssistViewComponent id="aiAssistView" ref={(assistview) => { this.aiAssistViewObj = assistview }} promptRequest={this.onPromptRequest} stopRespondingClick={this.stopResponse} bannerTemplate={this.bannerTemplate} enableStreaming={true} toolbarSettings={this.toolbarSettings} footerToolbarSettings={this.footerToolbarSettings} enableAttachments={this.enableAttachments} attachmentSettings={this.attachmentSettings} speechToTextSettings={this.speechToTextSettings}></AIAssistViewComponent>
                     </div>
                 </div>
                 <div id="action-description">

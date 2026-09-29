@@ -53,7 +53,7 @@ export class Holidays extends SampleBase<{}, {}> {
 
         <div id="description">
           <p>
-            In this example,<a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#holidays">holidays</a> are displayed with vertical bar with the desired text using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/holidayModel/#label">label</a> property. You can also mention the continuous holidays by specifying the <code>from</code> and <code>to</code> range. For single holiday, you can define from value alone. Holidays are defined as an array of object collection, so that we can display more than one holiday in the project.
+            In this example, <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#holidays">holidays</a> are displayed with vertical bar with the desired text using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/holidayModel/#label">label</a> property. You can also mention the continuous holidays by specifying the <code>from</code> and <code>to</code> range. For single holiday, you can define from value alone. Holidays are defined as an array of object collection, so that we can display more than one holiday in the project.
           </p>
           <p>
             You can even assign the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/holidayModel/#cssclass">cssClass</a> to each holiday to change the default color of label and background.
@@ -62,7 +62,9 @@ export class Holidays extends SampleBase<{}, {}> {
             Gantt component features are segregated into individual feature-wise modules. To use a selection support and holiday features, we need to inject the <code>Selection</code> and <code>DayMarkers</code> into the <code>Inject Services</code> section.
           </p>
           <br/>
-          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/holidays">documentation section</a>.</p>
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/holidays">holidays</a> documentation section.</p>
+          <br/>
+        <p>Looking for the full React Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/react-components/react-gantt-chart">React Gantt Chart</a> page.</p>
         </div>
       </div>
     )

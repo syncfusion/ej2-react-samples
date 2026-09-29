@@ -34,7 +34,7 @@ const Editing = () => {
     allowEditing: true,
     allowAdding: true,
     allowDeleting: true,
-    mode: "Cell",
+    mode: "Row",
     newRowPosition: "Below",
   };
   const validationRule: Object = { required: true };
@@ -43,34 +43,7 @@ const Editing = () => {
   const editparams2: any = { params: { format: "n" } };
   const editparams3: any = { params: { format: 'M/d/yyyy' } };
   const pageSettings: Object = { pageCount: 5 };
-  const editing: { [key: string]: Object }[] = [
-    { id: "CellEditing", name: "Cell Editing" },
-    { id: "RowEditing", name: "Row Editing" },
-  ];
-  const change = (args: ChangeEventArgs): void => {
-    if (args.value === "CellEditing") {
-      treegridObj.current.editSettings.mode = "Cell";
-      treegridObj.current.toolbar = [
-        "Add",
-        "Delete",
-        "Update",
-        "Cancel",
-        "Indent",
-        "Outdent",
-      ];
-    } else {
-      treegridObj.current.editSettings.mode = "Row";
-      treegridObj.current.toolbar = [
-        "Add",
-        "Edit",
-        "Delete",
-        "Update",
-        "Cancel",
-        "Indent",
-        "Outdent",
-      ];
-    }
-  };
+  
   return (
     <div className="control-pane">
       {/* custom code start */}
@@ -79,7 +52,6 @@ const Editing = () => {
       </style>
       {/* custom code end */}
       <div className="control-section">
-        <div className="col-md-9">
           <TreeGridComponent
             dataSource={sampleData}
             treeColumnIndex={1}
@@ -117,6 +89,16 @@ const Editing = () => {
                 edit={editparams3}
                 validationRules={validationRule1}
               />
+                <ColumnDirective
+                field="endDate"
+                headerText="End Date"
+                width="160"
+                textAlign="Right"
+                editType="datepickeredit"
+                format="yMd"
+                edit={editparams3}
+                validationRules={validationRule1}
+              />
               <ColumnDirective
                 field="duration"
                 headerText="Duration"
@@ -128,38 +110,7 @@ const Editing = () => {
               />
             </ColumnsDirective>
             <Inject services={[Page, Edit, Toolbar, RowDD]} />
-          </TreeGridComponent>
-        </div>
-        <div className="col-md-3 property-section">
-          <PropertyPane title="Properties">
-            <table
-              id="property"
-              title="Properties"
-              className="property-panel-table"
-              style={{ width: "100%" }}
-            >
-              <tbody>
-                <tr style={{ height: "50px" }}>
-                  <td>
-                    <div> Edit Mode </div>
-                  </td>
-                  <td style={{ width: "70%" }}>
-                    <div id="columnddl">
-                      <DropDownListComponent
-                        width="147px"
-                        id="selmode"
-                        change={change.bind(this)}
-                        dataSource={editing}
-                        fields={{ text: "name", value: "id" }}
-                        value="CellEditing"
-                      />
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </PropertyPane>
-        </div>
+          </TreeGridComponent>       
       </div>
       <div id="action-description">
         <p>
@@ -203,20 +154,19 @@ const Editing = () => {
           <li>
             <code>Cell</code>
           </li>
+           <li>
+            <code>Batch</code>
+          </li>
           <li>
             <code>Dialog</code>
           </li>
         </ul>
         <p>
-          In this demo, Row mode is enabled for editing by default. You can
+          In this demo, Row mode is enabled for editing. You can
           start editing any row by double clicking on it or clicking on
           toolbar’s Edit button, then the currently selected row will be changed
           to edited state. You can change the row values and save edited data to
           the datasource.
-        </p>
-        <p>
-          We have also provided an option in property panel to select the edit
-          mode as Cell or Row to change <code>mode</code> of editing.
         </p>
         <p>Injecting Module:</p>
         <p>

@@ -60,28 +60,23 @@ export class DialogEditing extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                        This sample showcases the CRUD (Create, Read, Update, and Delete) operations of the Kanban component. You can add
-                        a new
-                        card using the button from the property panel and read, update, or delete a card by opening the card details in
-                        dialog
-                        by double-clicking it.
-                </p>
+                        This sample demonstrates dialog editing capabilities in the Kanban component, enabling users to efficiently manage cards through a customizable dialog interface and perform common data management operations within the board.
+                    </p>
                 </div>
                 <div id="description">
                     <p>
-                        The sample is designed to showcase the CRUD operations of the Kanban board. The Kanban provides the essential
-                        methods to
-                        handle the CRUD operation from the application-end.
-                </p>
-                    <ol>
-                        <li>updateCard</li>
-                        <li>addCard</li>
-                        <li>deleteCard</li>
-                    </ol>
+                        This sample demonstrates dialog-based CRUD operations in the Kanban component. The board is populated using the <a href="https://ej2.syncfusion.com/react/documentation/kanban/data-binding" target="_blank">kanbanData</a> collection, where tasks are organized into <a href="https://ej2.syncfusion.com/react/documentation/kanban/columns" target="_blank">columns</a> based on their <code>Status</code> field.
+                    </p>
                     <p>
-                        The double click event of the card is used to open the card details in a dialog and read, edit, or delete a
-                        card.
-                </p>
+                        New cards can be created using the <a href="https://ej2.syncfusion.com/react/documentation/api/kanban/index-default#opendialog" target="_blank">openDialog</a> method. Existing cards can be viewed, edited, or deleted through a customized dialog interface. The dialog is rendered using the <a href="https://ej2.syncfusion.com/react/documentation/kanban/dialog#dialog-template" target="_blank">dialogSettings.template</a> property, while the <a href="https://ej2.syncfusion.com/react/documentation/api/kanban/index-default#dialogopen" target="_blank">dialogOpen</a> event is used to initialize and configure the dialog input controls.
+                    </p>
+                    <p>
+                        More information on the Essential<sup>®</sup> JS2 Kanban board can be found in this <a href="https://ej2.syncfusion.com/react/documentation/kanban/dialog" target="_blank">dialog</a> documentation section.
+                    </p>
+                    <p>
+	        	        Looking for the full React Kanban component overview, features, pricing and documentation?
+                        Visit the <a href="https://www.syncfusion.com/gantt-sdk/react-kanban-board" target="_blank">React Kanban</a> page.
+                    </p>
                 </div>
             </div>
         );

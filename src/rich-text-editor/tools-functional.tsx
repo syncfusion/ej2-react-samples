@@ -267,7 +267,7 @@ function Overview() {
                 </ul>
                 <p><b>Injecting Module</b></p>
                 <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, Count, HtmlEditor, QuickToolbar, Table, EmojiPicker, Video, Audio, FormatPainter, PasteCleanup, SlashMenu, ImportExport, CodeBlock</code> modules into the services.</p>
-                <blockquote><p>Looking for the full React Rich Text Editor component overview, features, pricing, and documentation? Visit the <a href="https://www.syncfusion.com/react-components/react-rich-text-editor" target="_blank" rel="noopener">React Rich Text Editor</a> page.</p></blockquote>
+                <blockquote><p>Looking for the full React Rich Text Editor component overview, features, pricing, and documentation? Visit the <a href="https://www.syncfusion.com/rich-text-editor-sdk/react-rich-text-editor" target="_blank" rel="noopener">React Rich Text Editor</a> page.</p></blockquote>
             </div>
         </div>
     );

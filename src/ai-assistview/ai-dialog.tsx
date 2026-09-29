@@ -82,6 +82,7 @@ export class Dialog extends SampleBase<{}, { dialogVisibility: boolean }> {
   toolbarItemClicked = (args) => {
     if (args.item.iconCss === 'e-icons e-close') {
       this.setState({ dialogVisibility: false });
+      this.stopResponse();
     }
     if (args.item.iconCss === 'e-icons e-assist-copy') {
       var targetElem: any = document.querySelector('.right-content .content');
@@ -107,10 +108,16 @@ export class Dialog extends SampleBase<{}, { dialogVisibility: boolean }> {
   promptRequest = async (args: PromptRequestEventArgs) => {
     this.abortController = new AbortController();
     const foundPrompt = this.prompts.find((promptObj) => promptObj.prompt === args.prompt);
-    const response = foundPrompt ? foundPrompt.response : await getAIResponse(args as any, this.abortController);
+    const response = await getAIResponse(args as any, this.abortController);
     this.assistInstance.addPromptResponse(response as string);
     this.assistInstance.promptSuggestions = (foundPrompt?.suggestions as string[]) || this.suggestion;
   };
+
+  stopResponse = () => {
+    if (this.abortController) {
+      this.abortController.abort();
+    }
+  }
 
   fabClicked = () => {
     this.setState({ dialogVisibility: true });
@@ -130,7 +137,7 @@ export class Dialog extends SampleBase<{}, { dialogVisibility: boolean }> {
             </SplitterComponent>
           </div>
           <DialogComponent id="dialogElem" width={'440px'} height={'100%'} visible={this.state.dialogVisibility} target='.dialog-aiassistview' cssClass='custom-dialog'>
-            <AIAssistViewComponent id="aiAssistView" ref={aiassistView => (this.assistInstance = aiassistView)} cssClass='custom-aiassistview' promptSuggestions={this.suggestion} promptRequest={this.promptRequest} bannerTemplate={this.bannerTemplate} enableStreaming={true} toolbarSettings={this.assistViewToolbarSettings} responseToolbarSettings={this.responseToolbarsettings}></AIAssistViewComponent>
+            <AIAssistViewComponent id="aiAssistView" ref={aiassistView => (this.assistInstance = aiassistView)} cssClass='custom-aiassistview' promptSuggestions={this.suggestion} promptRequest={this.promptRequest} stopRespondingClick={this.stopResponse} bannerTemplate={this.bannerTemplate} enableStreaming={true} toolbarSettings={this.assistViewToolbarSettings} responseToolbarSettings={this.responseToolbarsettings}></AIAssistViewComponent>
           </DialogComponent>
           <FabComponent id="fabElem" iconCss='e-icons e-assistview-icon' content='AI Assist' target='.dialog-aiassistview' onClick={this.fabClicked}></FabComponent>
         </div>

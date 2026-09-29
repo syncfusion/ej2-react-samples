@@ -1,7 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { TreeGridComponent, ColumnsDirective, ColumnDirective, Page, Inject, Edit, Toolbar,RowDD } from '@syncfusion/ej2-react-treegrid';
-import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import { sampleData } from './data';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
@@ -20,7 +19,7 @@ export class Editing extends SampleBase<{}, {}> {
   public treegridObj: TreeGridComponent;
 
   public toolbarOptions: any = ['Add', 'Delete', 'Update', 'Cancel','Indent', 'Outdent'];
-  public editSettings: any = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Cell', newRowPosition: 'Below' };
+  public editSettings: any = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Row', newRowPosition: 'Below' };
   public validationRule: Object = { required: true};
   public validationRule1: Object = { date: ['M/d/yyyy', 'Please enter a valid date']};
   public validationRule2: Object = { required: true, number: true};
@@ -28,20 +27,7 @@ export class Editing extends SampleBase<{}, {}> {
   public editparams3: any = { params: { format: 'M/d/yyyy' } };
   public pageSettings: Object = { pageCount: 5};
 
-  private editing: { [key: string]: Object }[] = [
-    { id: 'CellEditing', name: 'Cell Editing' }, {id: 'RowEditing', name: 'Row Editing'}
-  ];
-
-  private change(args: ChangeEventArgs): void {
-    if (args.value === 'CellEditing') {
-      this.treegridObj.editSettings.mode = 'Cell';
-      this.treegridObj.toolbar = ['Add', 'Delete', 'Update', 'Cancel','Indent', 'Outdent'];
-    } else {
-      this.treegridObj.editSettings.mode = 'Row';
-      this.treegridObj.toolbar = ['Add', 'Edit', 'Delete', 'Update', 'Cancel','Indent', 'Outdent'];
-    }
-  }
-
+  
   render() {
     return (
       <div className='control-pane'>
@@ -51,7 +37,6 @@ export class Editing extends SampleBase<{}, {}> {
         </style>
         {/* custom code end */}
         <div className='control-section'>
-         <div className = 'col-md-9'>
             <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' height='350' allowPaging={true} selectedRowIndex={2}
               editSettings={this.editSettings} pageSettings={this.pageSettings} toolbar={this.toolbarOptions}
               ref={treegrid=> this.treegridObj = treegrid}>
@@ -61,31 +46,13 @@ export class Editing extends SampleBase<{}, {}> {
               <ColumnDirective field='taskName' headerText='Task Name' width='220' validationRules={this.validationRule}></ColumnDirective>
               <ColumnDirective field='startDate' headerText='Start Date' width='160' textAlign='Right'
                 editType='datepickeredit' format='yMd' edit={this.editparams3} validationRules={this.validationRule1} />
+              <ColumnDirective field='endDate' headerText='End Date' width='160' textAlign='Right'
+                editType='datepickeredit' format='yMd' edit={this.editparams3} validationRules={this.validationRule1} />
               <ColumnDirective field='duration' headerText='Duration' width='140' editType='numericedit' textAlign='Right'
                 validationRules={this.validationRule2} edit={this.editparams2} />
             </ColumnsDirective>
             <Inject services={[Page, Edit, Toolbar, RowDD]}/>
           </TreeGridComponent>
-        </div>
-        <div className='col-md-3 property-section'>
-          <PropertyPane title='Properties'>
-              <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-                <tbody>
-                  <tr style={{ height: '50px' }}>
-                    <td>
-                      <div> Edit Mode </div>
-                    </td>
-                    <td style={{ width: '70%' }}>
-                      <div id='columnddl'>
-                        <DropDownListComponent width="147px" id="selmode" change={this.change.bind(this)}
-                          dataSource={this.editing} fields={{ text: 'name', value: 'id' }} value="CellEditing" />
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </PropertyPane>
-          </div>
       </div>
         <div id="action-description">
           <p>This sample demonstrates CRUD operations in Tree Grid. You can perform CRUD operations as follows,</p>
@@ -102,17 +69,18 @@ export class Editing extends SampleBase<{}, {}> {
         <div id='description'>
           <p>The Tree Grid supports CRUD operations. This CRUD operations can be configured in Tree Grid using editSettings. Also, it has
             different modes to manipulate the datasource.</p>
-          <ul>
-            <li><code>Row</code></li>
-            <li><code>Cell</code></li>
-            <li><code>Dialog</code></li>
-          </ul>
-          <p>In this demo, Row mode is enabled for editing by default. You can start editing any row by double clicking on it or
+            <p>
+                The available modes are,
+            </p>
+            <ul>
+                <li><code>Row </code></li>
+                <li><code>Cell</code></li>
+                <li><code>Batch</code></li>
+                <li><code>Dialog</code></li>
+            </ul>
+          <p>In this demo, Row mode is enabled for editing. You can start editing any row by double clicking on it or
             clicking on toolbar’s Edit button, then the currently selected row will be changed to edited state. You can change the
             row values and save edited data to the datasource.</p>
-          <p>
-            We have also provided an option in property panel to select the edit mode as Cell or Row to change <code>mode</code> of editing.
-          </p>
           <p>Injecting Module:</p>
           <p>Tree Grid features are segregated into individual feature-wise modules. To use editing feature, we need to inject
              <code>Edit</code> module into the <code>services</code>.</p>

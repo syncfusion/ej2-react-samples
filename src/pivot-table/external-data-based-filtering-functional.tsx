@@ -52,16 +52,16 @@ function ExternalDataBasedFiltering () {
 
     function applyDateFilter(): void {
         if (startDate && endDate) {
-            startDate = new Date(startDate.getFullYear(), startDate.getMonth(), 1);
-            endDate = new Date(endDate.getFullYear(), endDate.getMonth() + 1, 0, 23, 59, 59, 999);
+            const filterStartDate = new Date(startDate.getFullYear(), startDate.getMonth(), 1);
+            const filterEndDate = new Date(endDate.getFullYear(), endDate.getMonth() + 1, 0, 23, 59, 59, 999);
             let pivotData = (Pivot_Data as any).map((item: any) => ({
                 ...item,
                 OrderDate: new Date(item.OrderDate),
             }));
             new DataManager({ json: pivotData, adaptor: new JsonAdaptor() }).executeQuery(
                 new Query()
-                    .where('OrderDate', 'greaterthanorequal', startDate)
-                    .where('OrderDate', 'lessthanorequal', endDate)
+                    .where('OrderDate', 'greaterthanorequal', filterStartDate)
+                    .where('OrderDate', 'lessthanorequal', filterEndDate)
             )
             .then((e: any) => {
                 setDataSourceSettings(prevSettings => ({

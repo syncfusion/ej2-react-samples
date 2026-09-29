@@ -131,13 +131,18 @@ const GeminiClone = () => {
     }
 
     abortControllerRef.current = new AbortController();
-    const foundPrompt = prompts.find((p) => p.prompt === args.prompt);
-    const response = foundPrompt ? foundPrompt.response : await getAIResponse(args as any, abortControllerRef.current);
+    const response = await getAIResponse(args as any, abortControllerRef.current);
     if (assistInstance.current) {
       assistInstance.current.addPromptResponse(response as string);
       toggleButtons();
     }
   };
+
+  const stopResponse = () => {
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
+  }
 
   const promptChanged = (): void => {
     toggleButtons();
@@ -151,6 +156,7 @@ const GeminiClone = () => {
             id="gemini_aiassistview"
             promptRequest={promptRequest}
             promptChanged={promptChanged}
+            stopRespondingClick={stopResponse}
             showHeader={false}
             promptPlaceholder="Ask Gemini"
             enableAttachments={true}

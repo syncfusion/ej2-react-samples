@@ -1,11 +1,11 @@
 /**
- * Rich Text Editor Smart Suggestion sample
+ * Rich Text Editor Slash Commands sample
  */
 import * as React from 'react';
 import { HtmlEditor, Image, Audio, Video, Table, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar, ToolbarSettingsModel, EmojiPicker, PasteCleanup, FormatPainter, SlashMenu, SlashMenuSettingsModel, SlashMenuItemSelectArgs, CodeBlock, ClipBoardCleanup, AutoFormat } from '@syncfusion/ej2-react-richtexteditor';
 import { SampleBase } from '../common/sample-base';
 
-export class SmartSuggestion extends SampleBase<{}, {}> {
+export class SlashCommands extends SampleBase<{}, {}> {
 
   private formatRTE: RichTextEditorComponent;
   private meetingNotes: string = '<p><strong>Meeting Notes</strong></p><table class="e-rte-table" style="width: 100%; min-width: 0px; height: 150px;"> <tbody> <tr style="height: 20%;"> <td style="width: 50%;"><strong>Attendees</strong></td> <td style="width: 50%;" class=""><br></td> </tr> <tr style="height: 20%;"> <td style="width: 50%;"><strong>Date &amp; Time</strong></td> <td style="width: 50%;"><br></td> </tr> <tr style="height: 20%;"> <td style="width: 50%;"><strong>Agenda</strong></td> <td style="width: 50%;"><br></td> </tr> <tr style="height: 20%;"> <td style="width: 50%;"><strong>Discussed Items</strong></td> <td style="width: 50%;"><br></td> </tr> <tr style="height: 20%;"> <td style="width: 50%;"><strong>Action Items</strong></td> <td style="width: 50%;"><br></td> </tr> </tbody> </table>';

@@ -81,10 +81,11 @@ export class InfiniteTimelineScroll extends SampleBase<{}, {}> {
 
           <p>
             More information on the Essential<sup>®</sup> React Gantt Chart can be found in the <a target="_blank"
-              href="https://ej2.syncfusion.com/react/documentation/gantt/timeline/timeline">
+              href="https://ej2.syncfusion.com/react/documentation/gantt/timeline/timeline#infinite-timeline-scrolling">
               timeline
             </a> documentation section.
           </p>
+          <p>Looking for the full React Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/react-components/react-gantt-chart">React Gantt Chart</a> page.</p>
         </div>
 
       </div>

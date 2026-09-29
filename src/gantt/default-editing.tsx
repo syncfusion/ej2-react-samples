@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { GanttComponent, TaskFieldsModel, EditDialogFieldsDirective, DayMarkers, EditDialogFieldDirective, Inject, Edit, Selection, Toolbar, ColumnsDirective, ColumnDirective, EditSettingsModel, LabelSettingsModel, SplitterSettingsModel, TimelineSettingsModel, GridLine, ResourceFieldsModel, ToolbarItem } from '@syncfusion/ej2-react-gantt';
-import { editingData, editingResources } from './data';
+import { defaultEditingData, editingResources } from './data';
 import { SampleBase } from '../common/sample-base';
+import './default-editing.css';
 
 export class Editing extends SampleBase<{}, {}> {
   public startDate: Date;
@@ -11,6 +12,7 @@ export class Editing extends SampleBase<{}, {}> {
     startDate: 'StartDate',
     endDate: 'EndDate',
     duration: 'Duration',
+    durationUnit: 'DurationUnit',
     progress: 'Progress',
     dependency: 'Predecessor',
     parentID: 'ParentId',
@@ -81,7 +83,7 @@ export class Editing extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <GanttComponent id='Editing' ref={gantt => this.ganttInstance = gantt} dataSource={editingData} dateFormat={'MMM dd, y'}
+          <GanttComponent id='Editing' ref={gantt => this.ganttInstance = gantt} dataSource={defaultEditingData} dateFormat={'MMM dd, y'}
             treeColumnIndex={1} allowSelection={true} showColumnMenu={false} highlightWeekends={true} created={this.onCreated}
             allowUnscheduledTasks={true} projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate} enableHover={true}
             taskFields={this.taskFields} timelineSettings={this.timelineSettings} labelSettings={this.labelSettings} splitterSettings={this.splitterSettings}
@@ -89,9 +91,9 @@ export class Editing extends SampleBase<{}, {}> {
             <ColumnsDirective>
               <ColumnDirective field='TaskID' width='80' ></ColumnDirective>
               <ColumnDirective field='TaskName' headerText='Job Name' width='250' clipMode='EllipsisWithTooltip' validationRules={{ required: true, minLength: [5, 'Task name should have a minimum length of 5 characters'], }}></ColumnDirective>
+              <ColumnDirective field='Duration' validationRules={{ required: true }}></ColumnDirective>
               <ColumnDirective field='StartDate'></ColumnDirective>
               <ColumnDirective field='EndDate' validationRules={{ required: [this.customFn, 'Please enter a value greater than the start date.'] }}></ColumnDirective>
-              <ColumnDirective field='Duration' validationRules={{ required: true }}></ColumnDirective>
               <ColumnDirective field='Progress' validationRules={{ required: true, min: 0, max: 100 }}></ColumnDirective>
               <ColumnDirective field='Predecessor'></ColumnDirective>
             </ColumnsDirective>
@@ -108,31 +110,25 @@ export class Editing extends SampleBase<{}, {}> {
           </div>
         </div>
         <div id="action-description">
-          <p>This sample demonstrates the various phases involved in constructing a residential house, from testing the soil to handing over the fully constructed property to the owner. This also demonstrates CRUD operations in a Gantt Chart. You can perform CRUD operations as follows:</p>
-          <ul>
-            <li><code>Add</code> - To add a new task, click the Add toolbar button</li>
-            <li><code>Edit </code> - To edit a task, double-click a row or double click a taskbar, or click the toolbar Edit button after selecting a row</li>
-            <li><code>Indent</code> - To indent a task, click the toolbar Indent button after selecting a row</li>
-            <li><code>Outdent</code> - To outdent a task, click the toolbar Outdent button after selecting a row</li>
-            <li><code>Delete</code> - To delete a task, click the toolbar Delete button after selecting a row</li>
-            <li><code>Update,Cancel</code> - You can save or discard changes by clicking the toolbar Update and Cancel buttons respectively</li>
-          </ul>
+          <p>This sample demonstrates task editing and CRUD operations in the Gantt Chart using a residential construction project workflow. You can add, edit, delete, indent, outdent, and update tasks using the toolbar or direct user interactions.</p>
         </div>
 
         <div id="description">
-          <p>
-            CRUD operations can be configured in Gantt Chart using  <a target="_blank" rel="noopener noreferrer" href="https://ej2.syncfusion.com/react/documentation/api/gantt/editsettings#allowtaskbarediting">allowTaskbarEditing</a> in <a target="_blank" rel="noopener noreferrer" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#editsettings">editSettings</a>. Gantt Chart has two modes to manipulate the datasource:</p>
-              <li><code>Auto</code></li>
-              <li><code>Dialog</code></li>
-          <br />
-          <p>In this demo, <code>Auto</code> mode is enabled for editing. On the TreeGrid side, you can start editing any row by double clicking on it or clicking on toolbar’s Edit button, then the currently selected row will be changed to edited state.
-            On the chart side, you can edit the tasks using edit dialog by double clicking on the taskbars and you can edit the dependency connector lines using drag and drop action with connector line points available on the either side of taskbar.
-            <br />
-            In this sample <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/columnModel/#validationrules">column.validation</a> has been enabled for the columns.It uses the Form Validator control and the column validation property to define validation rules, displaying error messages for invalid fields.
-          </p>
+          <p>The Gantt Chart supports built-in CRUD operations through the <code><a target="_blank" rel="noopener noreferrer" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#editsettings">editSettings</a></code> property. In this example, adding, editing, deleting, and taskbar editing are enabled, allowing tasks to be modified directly from both the TreeGrid and chart areas.</p>
+          <ul>
+            <li><code>Add</code> - Creates a new task</li>
+            <li><code>Edit </code> - Modifies the selected task.</li>
+            <li><code>Indent</code> - Makes the selected task a child task.</li>
+            <li><code>Outdent</code> - Promotes the selected task to a higher level.</li>
+            <li><code>Delete</code> - Removes the selected task.</li>
+            <li><code>Update</code> / <code>Cancel</code> - Saves or discards the current changes.</li>
+          </ul>
+          <p>Tasks can be edited by double-clicking a row, using the toolbar commands, or opening the edit dialog. Taskbars can also be modified through drag-and-drop interactions, including updating task dates, durations, progress, and dependency relationships. This sample demonstrates resource assignment, dependency editing, notes editing, and support for custom duration units through the <code>taskFields.durationUnit</code> mapping such as <code>week</code>, <code>month</code>, <code>days</code>, <code>hours</code> and <code>minutes</code>.</p>
           <p>Gantt component features are segregated into individual feature-wise modules. To use edit, toolbar, markers and selection features, we need to inject <code>Edit</code>, <code>Toolbar</code>, <code>DayMarkers</code> and <code>Selection</code> into the <code>Inject Services</code> section.</p>
           <br/>
-          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/managing-tasks/editing-tasks">documentation section</a>.</p>
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/managing-tasks/editing-tasks">editing tasks</a>  documentation section.</p>
+          <br/>
+          <p>Looking for the full React Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/react-components/react-gantt-chart">React Gantt Chart</a> page.</p>
         </div>
       </div>
     )

@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { BlockEditorComponent, InlineToolbarSettingsModel } from '@syncfusion/ej2-react-blockeditor';
 import './overview.css';
-import * as data from './blockData.json';
+import * as data from './data/overview.json';
 
 const Overview = () => {
 

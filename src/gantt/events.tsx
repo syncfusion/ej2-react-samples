@@ -229,7 +229,9 @@ export class Events extends SampleBase<{}, {}> {
           <code>Selection</code>, <code>DayMarkers</code>, <code>ContextMenu</code>, <code>Reorder</code>, <code>Resize</code>, <code>ColumnMenu</code>, <code>Toolbar</code>, <code>Edit</code>, <code>Filter</code>, and <code>Sort</code> into the <code>Inject Services</code> section.
           </p>
           <br/>
-          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/events">documentation section</a>.</p>
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/events">events</a> documentation section.</p>
+          <br/>
+          <p>Looking for the full React Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/react-components/react-gantt-chart">React Gantt Chart</a> page.</p>
         </div>
       </div>
     )

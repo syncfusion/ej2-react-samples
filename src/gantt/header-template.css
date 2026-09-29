@@ -1,3 +1,53 @@
+.ganttresource {
+    background-image: url("src/gantt/images/Resources.png");
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    content: unset;
+}
+
+.gantttaskName {
+    background-image: url("src/gantt/images/Task name.png");
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    content: unset;
+}
+
+.ganttstartDate {
+    background-image: url("src/gantt/images/Start date.png");
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    content: unset;
+}
+
+.ganttduration {
+    background-image: url("src/gantt/images/Duration.png");
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    content: unset;
+}
+
+.ganttprogressTemplate {
+    background-image: url("src/gantt/images/Progress.png");
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    content: unset;
+}
+
 .material .ganttresource, .fabric .ganttresource, .bootstrap .ganttresource,
 .tailwind .ganttresource,.tailwind3 .ganttresource, .bootstrap5 .ganttresource, .bootstrap4 .ganttresource,
 .fluent .ganttresource,.fluent2 .ganttresource,.material3 .ganttresource,

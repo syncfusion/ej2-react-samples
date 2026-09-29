@@ -4,7 +4,7 @@ import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { TextBoxComponent } from '@syncfusion/ej2-react-inputs';
 import { SampleBase } from '../common/sample-base';
 import './pasteSettings.css';
-import * as data from './blockData.json';
+import * as data from './data/paste-settings.json';
 
 export class PasteSettings extends SampleBase<{}, {}> {
     private blockEditorRef = React.createRef<BlockEditorComponent>();

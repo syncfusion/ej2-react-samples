@@ -141,6 +141,7 @@ export class Overview extends SampleBase<{}, {}> {
   toolbarItemClicked = (args: ToolbarItemClickedEventArgs) => {
     if (args.item.iconCss === 'e-icons e-refresh') {
       this.assistInstance.prompts = [];
+      this.stopResponse();
     }
   };
 
@@ -192,14 +193,16 @@ export class Overview extends SampleBase<{}, {}> {
   promptRequest = async (args: PromptRequestEventArgs) => {
     this.abortController = new AbortController();
     const foundPrompt = (this.overviewPromptResponseData || []).find((p: any) => p.prompt === args.prompt);
-    const responseHtml = foundPrompt
-      ? (foundPrompt.regeneratedResponses
-        ? this.getRandomResponse(foundPrompt.regeneratedResponses)
-        : foundPrompt.response)
-      : await getAIResponse(args as any, this.abortController);
+    const responseHtml = await getAIResponse(args as any, this.abortController);
     this.assistInstance.addPromptResponse(responseHtml);
     this.assistInstance.promptSuggestions = foundPrompt?.suggestions as string[] || this.overviewSuggestions || [];
   };
+
+  stopResponse = () => {
+      if (this.abortController) {
+      this.abortController.abort();
+      }
+  }
 
   render() {
     return (
@@ -218,6 +221,7 @@ export class Overview extends SampleBase<{}, {}> {
               speechToTextSettings={this.speechToTextSettings}
               bannerTemplate={this.bannerTemplate}
               promptRequest={this.promptRequest}
+              stopRespondingClick={this.stopResponse}
               created={this.onCreated}
               ref={aiassistView => (this.assistInstance = aiassistView)}
             />

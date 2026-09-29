@@ -42,37 +42,26 @@ export class Zooming extends SampleBase<{}, {}> {
           </GanttComponent>
         </div>
         <div id="action-description">
-          <p>This sample visualizes the various phases involved in the manufacturing process of a product,
-            which transforms from a conceptual model to a sellable product.</p>
+          <p>This sample demonstrates the timeline zooming feature in the Gantt Chart. Use the toolbar options to zoom in, zoom out, or adjust the timeline to fit all tasks within the available chart width.</p>
         </div>
 
         <div id="description">
           <p>
-            The sample demonstrates the zooming support in Gantt Chart.
-            You can zoom in or zoom out the project timeline dynamically with following toolbar buttons.
-
-            <li><code>ZoomIn</code> - To perform zoom in action on Gantt timeline.</li>
-            <li><code>ZoomOut </code> - To perform zoom out action on Gantt timeline.</li>
-            <li><code>ZoomToFit </code> - To show all tasks with timeline fit into available chart width.</li>
-
-            The zooming feature enables you to view the tasks in the project clearly from minute to year timespan. You need to include
-            <code>ZoomIn</code>, <code>ZoomOut </code> and <code>ZoomToFit </code> buttons in the toolbar for performing zooming actions in Gantt Chart.
-            <li><code>ZoomIn</code> - If the user clicks on the <code>ZoomIn</code> icon we have increased the timeline cell width,
-              when the cell size exceeds the specified range then we have changed the timeline view mode.</li>
-            <li><code>ZoomOut </code> - If the user clicks on the <code>ZoomOut</code> icon we have decrease the timeline cell width, when the cell size falls
-              behind the specified range then we have changed the timeline view mode based on the zooming levels.</li>
-            <li><code>ZoomToFit </code> - In project, if the tasks are rendered in different time ranges, when the user clicks on the  <code>ZoomToFit</code> icon,
-              then all the tasks are rendered within the current viewable chart container width.</li>
-          </p>
-          <p>
-            To use a zoom support related icons, inject the <code>Toolbar</code> module into the <code>services</code>.
-          </p>
+            This sample demonstrates the timeline zooming functionality in the Gantt Chart. The toolbar provides built-in options to adjust the timeline scale and navigate project schedules at different levels of detail.</p>
+            <ul>
+              <li><code>ZoomIn</code> - Increases the timeline scale to display task details more closely.</li>
+              <li><code>ZoomOut </code> - Decreases the timeline scale to provide a broader view of the project schedule.</li>
+              <li><code>ZoomToFit </code> - Automatically adjusts the timeline so that all tasks are visible within the current chart area.</li>
+          </ul>
+          <p>Zooming dynamically updates the timeline view mode and cell width, allowing project schedules to be viewed across different time spans, ranging from detailed task-level views to high-level project overviews.</p>
           <br />
           <p>
 		      Gantt component features are segregated into individual feature-wise modules. To use a zooming feature, we need to inject the <code>Toolbar</code> into the <code>Inject Services</code> section.
 	        </p>
           <br/>
-          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/time-line/zooming">documentation section</a>.</p>
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/time-line/zooming">zooming</a> documentation section.</p>
+          <br/>
+          <p>Looking for the full React Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/react-components/react-gantt-chart">React Gantt Chart</a> page.</p>
         </div>
       </div>
     )

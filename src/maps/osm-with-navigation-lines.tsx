@@ -93,7 +93,7 @@ export class OSMNavigation extends SampleBase<{}, {}> {
                                         template='<div><div style="text-align: right; font-weight:500; font-size: 13px; color: #000;">Los Angeles</br>International Airport</div></div>'
                                         dataSource={[{                                            
                                             name: 'Los Angeles City',
-                                            latitude: 34.7000,
+                                            latitude: 33.8000,
                                             longitude: -121.5000
                                         }]}>
                                     </MarkerDirective>

@@ -352,7 +352,7 @@ function GettingStartedNodes() {
               id="preview1"
               style={{
                 backgroundImage: "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/node/Nodes_2.png')",
-                marginRight: "0px 3px"
+                margin: "0px 3px"
               }}
             />
             <div
@@ -360,7 +360,7 @@ function GettingStartedNodes() {
               id="preview2"
               style={{
                 backgroundImage: "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/node/Nodes_3.png')",
-                margin: "0px 3px"
+                marginLeft: "3px"
               }}
             />
           </div>
@@ -378,7 +378,7 @@ function GettingStartedNodes() {
               id="preview4"
               style={{
                 backgroundImage: "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/node/Nodes_5.png')",
-                margin: "3px"
+                margin: "0px 3px"
               }}
             />
           </div>

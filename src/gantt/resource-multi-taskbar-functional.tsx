@@ -121,7 +121,9 @@ const ResourceMultiTaskbar = () => {
                     The Gantt control features are segregated into individual feature-wise modules. To use a selection, row drag and drop, toolbar, edit, markers, and resize features, we need to inject the <code>Selection</code>, <code>RowDD</code>, <code>Toolbar</code>, <code>Edit</code>, <code>DayMarkers</code>, and <code>Resize</code> into the <code>Inject services</code> section.
                 </p>
                 <br/>
-                <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/multi-taskbar">documentation section</a>.</p>
+                <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/multi-taskbar">resource multi taskbar</a> documentation section.</p>
+                <br/>
+                <p>Looking for the full React Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/react-components/react-gantt-chart">React Gantt Chart</a> page.</p>
             </div>
         </div>
     )

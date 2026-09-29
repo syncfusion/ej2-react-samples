@@ -59,7 +59,7 @@ const GroupByDate = () => {
           will be displayed the provided dates alone when <code>hideNonWorkingDays</code> property set as <code>true</code>.
         </p>
         <p>
-          Looking for the full React Scheduler component overview, features, pricing, and documentation? Visit our <a target="_blank" href="https://www.syncfusion.com/react-components/react-scheduler">React Scheduler</a> component page.
+          Looking for the full React Scheduler component overview, features, pricing, and documentation? Visit our <a target="_blank" href="https://www.syncfusion.com/scheduler-sdk/react-scheduler">React Scheduler</a> component page.
         </p>
       </div>
     </div>

@@ -5,16 +5,23 @@ import { SampleBase } from '../common/sample-base';
 import './preset-style.css';
 
 export class Presets extends SampleBase<{}, {}> {
-    public today: Date = new Date(new Date().toDateString());
-    public weekStart: Date = new Date(new Date(new Date().setDate(new Date().getDate() - (new Date().getDay() + 7) % 7)).toDateString());
-    public weekEnd: Date = new Date(new Date(new Date().setDate(new Date(new Date().setDate((new Date().getDate()
-        - (new Date().getDay() + 7) % 7))).getDate() + 6)).toDateString());
-    public monthStart: Date = new Date(new Date(new Date().setDate(1)).toDateString());
-    public monthEnd: Date = new Date(new Date(new Date(new Date().setMonth(new Date().getMonth() + 1)).setDate(0)).toDateString());
-    public lastStart: Date = new Date(new Date(new Date(new Date().setMonth(new Date().getMonth() - 1)).setDate(1)).toDateString());
-    public lastEnd: Date = new Date(new Date(new Date().setDate(0)).toDateString());
-    public yearStart: Date = new Date(new Date(new Date().getFullYear() - 1, 0, 1).toDateString());
-    public yearEnd: Date = new Date(new Date(new Date().getFullYear() - 1, 11, 31).toDateString());
+    public today: Date = new Date();
+    public weekStart: Date = new Date(this.today);
+    public weekEnd: Date = new Date(this.today);
+    public monthStart: Date = new Date(this.today.getFullYear(), this.today.getMonth(), 1);
+    public monthEnd: Date = new Date(this.today.getFullYear(), this.today.getMonth() + 1, 0);
+    public lastStart: Date = new Date(this.today.getFullYear(), this.today.getMonth() - 1, 1);
+    public lastEnd: Date = new Date(this.today.getFullYear(), this.today.getMonth(), 0);
+    public yearStart: Date = new Date(this.today.getFullYear() - 1, 0, 1);
+    public yearEnd: Date = new Date(this.today.getFullYear() - 1, 11, 31);
+
+    constructor(props: {}) {
+        super(props);
+        this.weekStart.setDate(this.today.getDate() - ((this.today.getDay() + 7) % 7));
+        this.weekEnd = new Date(this.weekStart);
+        this.weekEnd.setDate(this.weekStart.getDate() + 6);
+    }
+
     render() {
         return (
             <div className='control-pane'>

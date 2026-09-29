@@ -2,7 +2,6 @@ export const AIAssistViewSampleOrder: Object = [
   { 'path': 'ai-assistview/ai-overview',
     'component': 'Overview',
     'name': 'Overview',
-    'type': 'new',
     'description':'Demonstrates streaming responses, file attachments, speech-to-text input, text-to-speech output, and regenerate controls integrated in a unified interface.',
     'order': '01',
     'category': 'AI AssistView',
@@ -68,7 +67,6 @@ export const AIAssistViewSampleOrder: Object = [
   { 'path': 'ai-assistview/ai-generative-ui',
     'component': 'GenerativeUI',
     'name': 'Generative UI Responses',
-    'type': 'new',
     'description':'Renders interactive UI tools like weather cards, charts, and data grids within AI responses for enhanced data visualization and interactivity.',
     'order': '01',
     'category': 'AI AssistView',
@@ -82,7 +80,6 @@ export const AIAssistViewSampleOrder: Object = [
   { 'path': 'ai-assistview/ai-thinking',
     'component': 'Thinking',
     'name': 'Chain of Thoughts',
-    'type': 'new',
     'description': 'Demonstrates the AI thinking workflow in AIAssistView, visualizing stages like searching, processing, analyzing, and summarizing in real time.',
     'order': '01',
     'category': 'AI AssistView',
@@ -93,12 +90,59 @@ export const AIAssistViewSampleOrder: Object = [
       { 'displayName': 'promptResponseData.json', 'path': 'src/ai-assistview/promptResponseData.json' }
     ]
   },
+  {
+      'path': 'ai-assistview/ai-loading-indicator',
+      'component': 'LoadingIndicator',
+      'name': 'Loading Indicator',
+      'description': 'Demonstrates the AIAssistView component with customizable loading indicator templates, including dot, spinner, text, and text-with-indicator animations displayed while AI-generated responses are being processed.',
+      'order': '01',
+      'category': 'AI AssistView',
+      'type': 'new',
+      'api':'{"AIAssistViewComponent":["promptRequest", "responseAnimationTemplate", "enableStreaming", "toolbarSettings"] }',
+      'sourceFiles': [
+          { 'displayName': 'ai-loading-indicator.tsx', 'path': 'src/ai-assistview/ai-loading-indicator.tsx' },
+          { 'displayName': 'ai-loading-indicator.jsx', 'path': 'src/ai-assistview/ai-loading-indicator.jsx' },
+          { 'displayName': 'ai-loading-indicator.css', 'path': 'src/ai-assistview/ai-loading-indicator.css' }
+      ]
+  },
+  {
+      'path': 'ai-assistview/ai-mention',
+      'component': 'Mentions',
+      'name': 'Mentions',
+      'description': 'Demonstrates the AIAssistView component with mention functionality, allowing users to trigger suggestion lists and enhance interactions with relevant references.',
+      'order': '01',
+      'category': 'AI AssistView',
+      'type': 'new',
+      'api':'{"AIAssistViewComponent":["mentions", "promptRequest", "enableStreaming", "toolbarSettings", "bannerTemplate", "promptSuggestions"] }',
+      'sourceFiles': [
+          { 'displayName': 'ai-mention.tsx', 'path': 'src/ai-assistview/ai-mention.tsx' },
+          { 'displayName': 'ai-mention.jsx', 'path': 'src/ai-assistview/ai-mention.jsx' },
+          { 'displayName': 'ai-mention.css', 'path': 'src/ai-assistview/ai-mention.css' },
+          { 'displayName': 'mentionData.json', 'path': 'src/ai-assistview/mentionData.json' }
+      ]
+  },
+  {
+      'path': 'ai-assistview/ai-telemetry',
+      'component': 'Telemetry',
+      'name': 'Telemetry',
+      'description': 'Showcases the telemetry feature of the AiAssistView control.',
+      'order': '01',
+      'category': 'AI AssistView',
+      'type': 'new',
+      'api':'{"AIAssistViewComponent":["promptRequest", "promptSuggestions", "bannerTemplate", "telemetrySettings"] }',
+      'sourceFiles': [
+          { 'displayName': 'ai-telemetry.tsx', 'path': 'src/ai-assistview/ai-telemetry.tsx' },
+          { 'displayName': 'ai-telemetry.jsx', 'path': 'src/ai-assistview/ai-telemetry.jsx' },
+          { 'displayName': 'promptResponseData.json', 'path': 'src/ai-assistview/promptResponseData.json' }
+      ]
+  },
   { 'path': 'ai-assistview/ai-template',
     'component': 'Template',
     'name': 'Template',
     'description':'Displays the template properties of the AiAssistView component, highlighting its key features and configuration options for customization.',
     'order': '01',
     'category': 'AI AssistView',
+    'type': 'update',
     'api':'{"AIAssistViewComponent":["bannerTemplate", "promptItemTemplate", "responseItemTemplate", "promptSuggestionItemTemplate", "promptSuggestions", "promptSuggestionsHeader", "promptRequest"] }',
     'sourceFiles': [
       { 'displayName': 'ai-template.tsx', 'path': 'src/ai-assistview/ai-template.tsx' },
@@ -122,7 +166,6 @@ export const AIAssistViewSampleOrder: Object = [
   { 'path': 'ai-assistview/ai-text-to-speech',
     'component': 'TextToSpeech',
     'name': 'Text to Speech',
-    'type': 'update',
     'description':'Demonstrates the AiAssistView component integrated with Text-to-Speech functionality, allowing AI-generated responses to be vocalized for voice-based interaction.',
     'order': '02',
     'category': 'Speech',
@@ -136,7 +179,6 @@ export const AIAssistViewSampleOrder: Object = [
   { 'path': 'ai-assistview/ai-notion-ai-clone',
     'component': 'NotionAIClone',
     'name': 'Notion AI-like',
-    'type': 'new',
     'description':'Demonstrates a Notion-inspired AI AssistView with sidebar navigation, multi-model selection, and session management for advanced chat workflows.',
     'order': '03',
     'category': 'UI Customization',
@@ -150,7 +192,6 @@ export const AIAssistViewSampleOrder: Object = [
   { 'path': 'ai-assistview/ai-claude-clone',
     'component': 'ClaudeClone',
     'name': 'Claude AI-like',
-    'type': 'new',
     'description':'Demonstrates a Claude-inspired AI AssistView with file attachments and model selector for seamless branded conversational experiences.',
     'order': '03',
     'category': 'UI Customization',
@@ -165,7 +206,6 @@ export const AIAssistViewSampleOrder: Object = [
   { 'path': 'ai-assistview/ai-gemini-clone',
     'component': 'GeminiClone',
     'name': 'Gemini AI-like',
-    'type': 'new',
     'description':'Demonstrates a Gemini-inspired AI AssistView with voice input, file attachments, and model selector for interactive assistant experiences.',
     'order': '03',
     'category': 'UI Customization',
@@ -174,6 +214,22 @@ export const AIAssistViewSampleOrder: Object = [
       { 'displayName': 'ai-gemini-clone.tsx', 'path': 'src/ai-assistview/ai-gemini-clone.tsx' },
       { 'displayName': 'ai-gemini-clone.jsx', 'path': 'src/ai-assistview/ai-gemini-clone.jsx' },
       { 'displayName': 'ai-gemini-clone.css', 'path': 'src/ai-assistview/ai-gemini-clone.css' },
+      { 'displayName': 'promptResponseData.json', 'path': 'src/ai-assistview/promptResponseData.json' }
+    ]
+  },
+  {
+    'path': 'ai-assistview/ai-chatgpt-clone',
+    'component': 'ChatGPTClone',
+    'name': 'ChatGPT AI-like',
+    'type': 'new',
+    'description': 'Demonstrates a ChatGPT-inspired AI AssistView with speech input, file attachments, and an inline footer toolbar for interactive assistant experiences.',
+    'order': '03',
+    'category': 'UI Customization',
+    'api': '{"AIAssistViewComponent":["promptRequest", "showHeader", "promptPlaceholder", "enableAttachments", "speechToTextSettings", "bannerTemplate", "footerToolbarSettings", "attachmentSettings"]}',
+    'sourceFiles': [
+      { 'displayName': 'ai-chatgpt-clone.tsx', 'path': 'src/ai-assistview/ai-chatgpt-clone.tsx' },
+      { 'displayName': 'ai-chatgpt-clone.jsx', 'path': 'src/ai-assistview/ai-chatgpt-clone.jsx' },
+      { 'displayName': 'ai-chatgpt-clone.css', 'path': 'src/ai-assistview/ai-chatgpt-clone.css' },
       { 'displayName': 'promptResponseData.json', 'path': 'src/ai-assistview/promptResponseData.json' }
     ]
   },

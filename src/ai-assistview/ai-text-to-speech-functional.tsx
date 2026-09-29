@@ -51,15 +51,18 @@ const TextToSpeech = () => {
         }
     };
 
+    const stopResponse = () => {
+        if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+        }
+    }
+
     const toolbarItemClicked = (args: ToolbarItemClickedEventArgs) => {
         if (args.item.iconCss === 'e-icons e-refresh') {
             aiAssistViewObj.current!.prompts = [];
             abortControllerRef.current?.abort();
+            stopResponse();
         }
-    };
-
-    const stopRespondingClick = () => {
-        abortControllerRef.current?.abort();
     };
 
     return (
@@ -74,7 +77,7 @@ const TextToSpeech = () => {
                         promptRequest={onPromptRequest}
                         toolbarSettings={toolbarSettings}
                         responseToolbarSettings={responseToolbarSettings}
-                        stopRespondingClick={stopRespondingClick}
+                        stopRespondingClick={stopResponse}
                     />
                 </div>
             </div>

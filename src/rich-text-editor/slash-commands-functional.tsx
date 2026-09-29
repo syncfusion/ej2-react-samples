@@ -1,11 +1,11 @@
 /**
- * Rich Text Editor Smart Suggestion sample
+ * Rich Text Editor Slash Commands sample
  */
 import * as React from 'react';
 import { HtmlEditor, Image, Audio, Video, Table, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar, ToolbarSettingsModel, EmojiPicker, PasteCleanup, FormatPainter, SlashMenu, SlashMenuSettingsModel, SlashMenuItemSelectArgs, CodeBlock, ClipBoardCleanup, AutoFormat } from '@syncfusion/ej2-react-richtexteditor';
 import { updateSampleSection } from '../common/sample-base';
 
-function SmartSuggestion() {
+function SlashCommands() {
   React.useEffect(() => {
     updateSampleSection();
   }, [])
@@ -102,4 +102,4 @@ function SmartSuggestion() {
     </div>
   );
 }
-export default SmartSuggestion;
+export default SlashCommands;

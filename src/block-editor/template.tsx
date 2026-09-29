@@ -2,7 +2,7 @@ import * as React from 'react';
 import { BlockEditorComponent } from '@syncfusion/ej2-react-blockeditor';
 import './template.css';
 import { SampleBase } from '../common/sample-base';
-import * as data from './blockData.json';
+import * as data from './data/template-gallery.json';
 
 export class TemplateGallery extends SampleBase<{}, {}> {
   state = {

@@ -30,7 +30,6 @@ export default class AIAssistModels extends SampleBase<{}, {}> {
   private showBackdrop = false;
   private closeOnDocumentClick = false;
 
-  private stopStreaming = false;
   private showHeader = false;
   private suggestions: string[] = [
     'What are the best tools for organizing tasks?',
@@ -257,26 +256,6 @@ export default class AIAssistModels extends SampleBase<{}, {}> {
     });
   };
 
-  // Sets the stop flag when the user requests to halt streaming.
-  private stopRespondingClick = (): void => {
-    this.stopStreaming = true;
-  };
-
-  // Streams AI responses incrementally to simulate live typing.
-  private async streamAIResponse(fullResponse: string): Promise<string> {
-    let streamed = '';
-    if (fullResponse && this.aiAssist) {
-      let i = 0;
-      while (i < fullResponse.length && !this.stopStreaming) {
-        streamed += fullResponse[i++];
-        this.aiAssist.addPromptResponse(marked.parse(streamed), false);
-        this.aiAssist.scrollToBottom();
-        await new Promise((res) => setTimeout(res, 10));
-      }
-    }
-    return streamed;
-  }
-
   private promptRequest = async (args: PromptRequestEventArgs) => {
     if (!args.prompt || !args.prompt.trim()) return;
 
@@ -294,6 +273,12 @@ export default class AIAssistModels extends SampleBase<{}, {}> {
     this.aiAssist?.addPromptResponse(response as string);
     this.checkAndUpdateLocalStorage();
   };
+
+  private stopResponse = () => {
+      if (this.abortController) {
+      this.abortController.abort();
+      }
+  }
 
   // Renders the banner content displayed at the top of the Assist View.
   private bannerTemplate = (): React.ReactNode => (
@@ -339,7 +324,7 @@ export default class AIAssistModels extends SampleBase<{}, {}> {
               promptRequest={this.promptRequest}
               showHeader={this.showHeader}
               enableStreaming={true}
-              stopRespondingClick={this.stopRespondingClick}
+              stopRespondingClick={this.stopResponse}
               width="auto" enableAttachments={true}  attachmentSettings={this.attachmentSettings} footerToolbarSettings={this.footerToolbarSettings}
             >
               <div className="ai-assist-header">

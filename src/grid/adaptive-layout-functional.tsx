@@ -219,7 +219,7 @@ function Adaptive() {
             <li><code>Horizontal</code> - Renders the grid row elements in the horizontal direction.</li>
             <li><code>Vertical</code> - Renders the grid row elements in the vertical direction.</li>
           </ul>
-          <p> In this sample, you can change the row direction by using the properties panel checkbox
+          <p>In this sample, you can change the row direction by using the properties panel checkbox
           </p>
           <p> In this demo, the column menu feature is only supported for the Grid <code>rowRenderingMode</code> mode as <code>Vertical</code>.
               This feature includes grouping, sorting, autofit, filter, and column chooser feature.

@@ -45,18 +45,18 @@ export class Sorting extends SampleBase<{}, {}> {
           </GanttComponent>
         </div>
         <div id="action-description">
-          <p>This sample demonstrates the Gantt multi-sorting feature. To sort two or more columns, hold the CTRL key, and click the column header.</p>
+          <p>This sample demonstrates the sorting feature in the Gantt Chart. To sort multiple columns, hold the CTRL key and click the desired column headers.</p>
         </div>
 
         <div id="description">
-          <p>The sorting feature enables you to order data in a particular direction. It can be enabled by setting <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#allowsorting">allowSorting</a> to true.</p>
-          <p>To sort a Gantt column, click the column header. The icons (ascending) and (descending) specify the sort direction of a column.</p>
-
-          <p>By default, the multi-sorting feature is enabled in Gantt. To sort multiple columns, hold the <strong>CTRL</strong> key, and then click the column header. To clear sort for a column, hold the <strong>SHIFT</strong> key, and then click the column header.</p>
-          <p>In this demo, multiple sorting enabled on load time by assigning multiple columns into <code>sortSettings</code> property.</p>
+          <p>The Gantt Chart supports both single-column and multi-column sorting, allowing task data to be arranged in ascending or descending order. Sorting can be enabled by setting the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#allowsorting">allowSorting</a> to <code>true</code>.</p>
+          <p>To sort a column, click its header. Repeated clicks toggle the sort direction between ascending and descending order. Sort indicators in the column header visually represent the current sort direction.</p>
+          <p>Multi-sorting is enabled by default. To sort by multiple columns, hold the <strong>CTRL</strong> key and click additional column headers. To remove sorting from a column, hold the <strong>SHIFT</strong> key and click its header. In this example, initial multi-column sorting is applied using the <code>sortSettings</code> property to sort tasks by <strong>Task Name</strong> and <strong>Task ID</strong> in ascending order.</p>
           <p>Gantt component features are segregated into individual feature-wise modules. To use a selection, markers and sorting features, we need to inject the <code>Selection</code>, <code>DayMarkers</code> and <code>Sort</code> into the <code>Inject Services</code> section.</p>
           <br />
-          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/sorting">documentation section</a>.</p>
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/sorting">sorting</a> documentation section.</p>
+          <br/>
+          <p>Looking for the full React Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/react-components/react-gantt-chart">React Gantt Chart</a> page.</p>
         </div>
       </div>
     )

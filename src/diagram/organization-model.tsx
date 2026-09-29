@@ -318,7 +318,7 @@ export class OrganizationModel extends SampleBase<{}, {}> {
                     style={{
                       backgroundImage:
                         "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/common-orientation/lefttoright.png')",
-                      marginRight: "0px 3px"
+                      marginLeft: "3px"
                     }}
                   />
                 </div>
@@ -328,8 +328,7 @@ export class OrganizationModel extends SampleBase<{}, {}> {
                     id="righttoleft"
                     style={{
                       backgroundImage:
-                        "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/common-orientation/righttoleft.png')",
-                      margin: "0px 3px"
+                        "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/common-orientation/righttoleft.png')"
                     }}
                   />
                 </div>
@@ -354,7 +353,7 @@ export class OrganizationModel extends SampleBase<{}, {}> {
                     style={{
                       backgroundImage:
                         "url('https://ej2.syncfusion.com/react/demos/src/diagram/patternimages/Pattern_2.png')",
-                      marginRight: "3px"
+                      margin: "0px 3px"
                     }}
                   />
                   <div
@@ -383,7 +382,7 @@ export class OrganizationModel extends SampleBase<{}, {}> {
                     style={{
                       backgroundImage:
                         "url('https://ej2.syncfusion.com/react/demos/src/diagram/patternimages/Pattern_7.png')",
-                      marginRight: "3px"
+                      margin: "0px 3px"
                     }}
                   />
                   <div
@@ -392,7 +391,7 @@ export class OrganizationModel extends SampleBase<{}, {}> {
                     style={{
                       backgroundImage:
                         "url('https://ej2.syncfusion.com/react/demos/src/diagram/patternimages/Pattern_8.png')",
-                      margin: "0px 3px"
+                      marginLeft: "3px"
                     }}
                   />
                 </div>
@@ -402,8 +401,7 @@ export class OrganizationModel extends SampleBase<{}, {}> {
                     id="pattern9"
                     style={{
                       backgroundImage:
-                        "url('https://ej2.syncfusion.com/react/demos/src/diagram/patternimages/Pattern_9.png')",
-                      margin: "0px 3px"
+                        "url('https://ej2.syncfusion.com/react/demos/src/diagram/patternimages/Pattern_9.png')"
                     }}
                   />
                 </div>

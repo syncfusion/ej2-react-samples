@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BlockEditorComponent, InlineToolbarSettingsModel } from '@syncfusion/ej2-react-blockeditor';
 import './overview.css';
-import * as data from './blockData.json';
+import * as data from './data/overview.json';
 import { SampleBase } from '../common/sample-base';
 
 export class Overview extends SampleBase<{}, {}> {

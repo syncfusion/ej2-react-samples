@@ -982,7 +982,7 @@ const TableReservation = () => {
           <li>Checks for table category compatibility, seating capacity, meal period alignment, and time slot availability while creating reservations for waiting customers.</li>
         </ul>
         <p>
-          Looking for the full React Scheduler component overview, features, pricing, and documentation? Visit our <a target="_blank" href="https://www.syncfusion.com/react-components/react-scheduler">React Scheduler</a> component page.
+          Looking for the full React Scheduler component overview, features, pricing, and documentation? Visit our <a target="_blank" href="https://www.syncfusion.com/scheduler-sdk/react-scheduler">React Scheduler</a> component page.
         </p>
       </div>
     </div>

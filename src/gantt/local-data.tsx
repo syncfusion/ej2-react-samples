@@ -43,15 +43,18 @@ export class LocalData extends SampleBase<{}, {}> {
           </GanttComponent>
         </div>
         <div id="action-description">
-          <p>This demo shows the way of binding an array of JavaScript objects (local JSON datasource) to Gantt.</p>
+          <p>This sample demonstrates how to bind local hierarchical data to the Gantt Chart and visualize project tasks with their scheduling, progress, and dependency information.</p>
         </div>
 
         <div id="description">
-          <p>Gantt can be bound either to local or remote data services. The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#datasource">dataSource</a> property can be assigned either with the array of JavaScript objects or an instance of <code>DataManager</code>.</p>
-          <p>In this demo, an array of JavaScript objects is assigned as data source to the Gantt.</p>
-          <p>Gantt component features are segregated into individual feature-wise modules. To use a selection and marker features, we need to inject the <code>Selection</code> and <code>DayMarkers</code> into the <code>Inject Services</code> section.</p>
+          <p>The Gantt Chart supports binding data from local collections as well as remote data services. The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#datasource">dataSource</a> property can be assigned either an array of JavaScript objects or a <code>DataManager</code> instance.</p>
+          <p>In this sample, a local JSON data source with a hierarchical task structure is used to populate the Gantt Chart.</p>
+          <p>Gantt component features are segregated into individual feature-wise modules. To use a selection and marker features, we need to inject the <code>Selection</code> and <code>DayMarkers</code> into the <code>Inject Services</code> section.
+          </p>
           <br/>
-          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/data-binding#local-data">documentation section</a>.</p>
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/data-binding#local-data">data binding</a> documentation section.</p>
+          <br/>
+          <p>Looking for the full React Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/react-components/react-gantt-chart">React Gantt Chart</a> page.</p>
         </div>
       </div>
     )

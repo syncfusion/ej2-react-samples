@@ -297,7 +297,9 @@ const AdvancedExporting = () => {
         </ul>
         <p>Gantt component features are segregated into individual feature-wise modules. To use PDF export, selection, markers, toolbar and critical path features, we need to inject <code>PdfExport</code>, <code>Selection</code>, <code>DayMarkers</code>, <code>Toolbar</code> and <code>CriticalPath</code> into the <code>Inject Services</code> section.</p>
         <br/>
-        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/pdf-export/pdf-export">documentation section</a>.</p>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/pdf-export/pdf-export">PDF export</a> documentation section.</p>
+        <br/>
+        <p>Looking for the full React Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/react-components/react-gantt-chart">React Gantt Chart</a> page.</p>
       </div>
     </div>
   )

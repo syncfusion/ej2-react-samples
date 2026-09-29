@@ -141,7 +141,7 @@ export class FrozenColumns extends SampleBase<{}, {}> {
         </div>
         <div id="action-description">
           <p>
-            This sample demonstrates the column freezing feature in the Gantt Chart. Frozen columns remain fixed while other columns scroll horizontally, improving readability.
+            This sample demonstrates column freezing in the Gantt Chart. Use the drop down options to freeze columns on the left, right, or as fixed columns, keeping important information visible during horizontal scrolling.
           </p>
         </div>
         <div id="description">
@@ -154,7 +154,9 @@ export class FrozenColumns extends SampleBase<{}, {}> {
             className="code">Freeze</code>, <code>Selection</code> and <code>Toolbar</code> into the <code>Inject Services</code> section.
           </p>
           <br/>
-          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/columns/frozen-column">documentation section</a>.</p>
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/columns/frozen-column">frozen column</a> documentation section.</p>
+          <br/>
+          <p>Looking for the full React Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/react-components/react-gantt-chart">React Gantt Chart</a> page.</p>
         </div>
       </div>
     )

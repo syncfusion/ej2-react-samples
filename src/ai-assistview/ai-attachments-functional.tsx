@@ -26,6 +26,7 @@ const Attachments = () => {
         if (args.item.iconCss === 'e-icons e-refresh') {
             assistInstance.current.prompts = [];
             assistInstance.current.promptSuggestions = suggestion;
+            stopResponse();
         }
     };
 
@@ -52,17 +53,20 @@ const Attachments = () => {
     const promptRequest = async (args: PromptRequestEventArgs) => {
         abortControllerRef.current = new AbortController();
         const foundPrompt = prompts.find((promptObj) => promptObj.prompt === args.prompt);
-        const response = foundPrompt
-            ? foundPrompt.response
-            : await getAIResponse(args as any, abortControllerRef.current);
+        const response = await getAIResponse(args as any, abortControllerRef.current);
         assistInstance.current.addPromptResponse(response as string);
         assistInstance.current.promptSuggestions = (foundPrompt?.suggestions as string[]) || suggestion;
     };
+    const stopResponse = () => {
+        if (abortControllerRef.current) {
+            abortControllerRef.current.abort();
+        }
+    }
     return(
         <div className='control-pane'>
             <div className="control-section">
                 <div className="attachment-aiassistview">
-                    <AIAssistViewComponent id="aiAssistView" promptSuggestions={suggestion} toolbarSettings={assistViewToolbarSettings} enableStreaming={true} promptRequest={promptRequest} ref={assistInstance}  enableAttachments={true}  attachmentSettings= {attachmentSettings} bannerTemplate={bannerTemplate}></AIAssistViewComponent>
+                    <AIAssistViewComponent id="aiAssistView" promptSuggestions={suggestion} toolbarSettings={assistViewToolbarSettings} enableStreaming={true} promptRequest={promptRequest} stopRespondingClick={stopResponse} ref={assistInstance}  enableAttachments={true}  attachmentSettings= {attachmentSettings} bannerTemplate={bannerTemplate}></AIAssistViewComponent>
                 </div>
             </div>
 

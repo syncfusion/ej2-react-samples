@@ -69,12 +69,13 @@ function OnlineHtmlEditor() {
             mirrorView.style.display = 'block';
         }
         let srcViewEle: HTMLElement = document.querySelector('#src-view');
-        let codemirrorEle: HTMLElement = document.querySelector('.CodeMirror-wrap');
-        if (codemirrorEle) {
-            codemirrorEle.remove();
-        }
-        if (rteObj.value) {
+        if (!myCodeMirror) {
             renderCodeMirror(srcViewEle, rteObj.value);
+        }
+        else if (!myCodeMirror.hasFocus() && myCodeMirror.getValue() !== rteObj.value) {
+            const cursor = myCodeMirror.getCursor();
+            myCodeMirror.setValue(rteObj.value);
+            myCodeMirror.setCursor(cursor);
         }
     }
     function renderCodeMirror(mirrorView: HTMLElement, content: string): void {

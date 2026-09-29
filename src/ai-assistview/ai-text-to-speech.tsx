@@ -53,23 +53,26 @@ export class TextToSpeech extends SampleBase<{}, {}> {
         }
     };
 
+    stopResponse = () => {
+        if (this.abortController) {
+            this.abortController.abort();
+        }
+    }
+
     public toolbarItemClicked = (args: ToolbarItemClickedEventArgs) => {
         if (args.item.iconCss === 'e-icons e-refresh') {
             this.aiAssistViewObj.prompts = [];
             this.abortController?.abort();
+            this.stopResponse();
         }
     }
-
-    public stopRespondingClick = () => {
-        this.abortController?.abort();
-    };
 
     render() {
         return (
             <div className='control-pane'>
                 <div className="control-section">
                     <div className="integration-texttospeech-section">
-                        <AIAssistViewComponent id="aiAssistView" ref={(assistview) => { this.aiAssistViewObj = assistview }} prompts={this.prompts} promptRequest={this.onPromptRequest} enableStreaming={true} toolbarSettings={this.toolbarSettings} responseToolbarSettings={this.responseToolbarSettings} stopRespondingClick={this.stopRespondingClick}></AIAssistViewComponent>
+                        <AIAssistViewComponent id="aiAssistView" ref={(assistview) => { this.aiAssistViewObj = assistview }} prompts={this.prompts} promptRequest={this.onPromptRequest} enableStreaming={true} toolbarSettings={this.toolbarSettings} responseToolbarSettings={this.responseToolbarSettings} stopRespondingClick={this.stopResponse}></AIAssistViewComponent>
                     </div>
                 </div>
                 <div id="action-description">

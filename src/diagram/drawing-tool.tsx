@@ -312,7 +312,7 @@ export class DrawingTools extends SampleBase<{}, {}> {
                 style={{
                   backgroundImage:
                     "url('src/diagram/Images/drawingTool/DrawingTool_7.png')",
-                  marginRight: "3px"
+                  margin: "0px 3px"
                 }}
               />
               <div
@@ -331,8 +331,7 @@ export class DrawingTools extends SampleBase<{}, {}> {
                 id="text"
                 style={{
                   backgroundImage:
-                    "url('src/diagram/Images/drawingTool/DrawingTool_9.png')",
-                  marginRight: "3px"
+                    "url('src/diagram/Images/drawingTool/DrawingTool_9.png')"
                 }}
               />
             </div>

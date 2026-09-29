@@ -47,14 +47,19 @@ const ColumnRearrange = () => {
             </div>
             <div id="action-description">
                 <p>
-     This example demonstrates the column rearrangement of the Kanban control. You can drag and drop the columns to rearrange them across multiple stages of the Kanban board.
-
+                    This sample demonstrates column reordering through drag-and-drop interactions in the Kanban component.
                 </p>
             </div>
             <div id="description">
                 <p>
-                    The Kanban provides an option to enable column drag-and-drop functionality using the allowColumnDragAndDrop property.  
-        allowColumnDragAndDrop: If you set this property to true, the columns can be dragged and dropped to rearrange their order.  
+                    This sample demonstrates how to reorder columns in the Kanban component using the <a href="https://ej2.syncfusion.com/react/documentation/api/kanban/index-default#allowcolumndraganddrop" target="_blank">allowColumnDragAndDrop</a> property. When enabled, columns can be dragged and dropped to different positions within the board, allowing the workflow layout to be customized while preserving the cards within each column.
+                </p>
+                <p>
+                    More information on the Essential<sup>®</sup> JS2 Kanban board can be found in this <a href="https://ej2.syncfusion.com/react/documentation/kanban/columns#drag-and-drop" target="_blank">column reordering</a> documentation section.
+                </p>
+                <p>
+	                Looking for the full React Kanban component overview, features, pricing and documentation?
+                    Visit the <a href="https://www.syncfusion.com/gantt-sdk/react-kanban-board" target="_blank">React Kanban</a> page.
                 </p>
             </div>
         </div>

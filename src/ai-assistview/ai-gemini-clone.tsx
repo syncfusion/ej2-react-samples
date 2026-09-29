@@ -67,11 +67,16 @@ export class GeminiClone extends SampleBase<{}, {}> {
     }
 
     this.abortController = new AbortController();
-    const foundPrompt = this.prompts.find((p) => p.prompt === args.prompt);
-    const response = foundPrompt ? foundPrompt.response : await getAIResponse(args as any, this.abortController);
+    const response = await getAIResponse(args as any, this.abortController);
     this.assistInstance.addPromptResponse(response as string);
     this.toggleButtons();
   };
+
+  stopResponse = () => {
+    if (this.abortController) {
+      this.abortController.abort();
+    }
+  }
 
   promptChanged = (): void => {
     this.toggleButtons();
@@ -155,6 +160,7 @@ export class GeminiClone extends SampleBase<{}, {}> {
               id="gemini_aiassistview"
               promptRequest={this.promptRequest}
               promptChanged={this.promptChanged}
+              stopRespondingClick={this.stopResponse}
               showHeader={false}
               promptPlaceholder="Ask Gemini"
               enableAttachments={true}

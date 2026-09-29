@@ -1,0 +1,8 @@
+.toolbar-sample .editor-toolbar-properties div {
+    padding-left: 0px;
+}
+
+.toolbar-sample #toolbarType,
+.toolbar-sample #toolbarPosition {
+    width: 100%;
+}

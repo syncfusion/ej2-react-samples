@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { BlockEditorComponent } from '@syncfusion/ej2-react-blockeditor';
 import './template.css';
-import * as data from './blockData.json';
+import * as data from './data/template-gallery.json';
 import { updateSampleSection } from '../common/sample-base';
 
 const TemplateGallery = () => {

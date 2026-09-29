@@ -249,7 +249,7 @@ export class GanttDialogEditing extends SampleBase<{}, {}> {
           </GanttComponent>
         </div>
         <div id="action-description">
-          <p>This sample illustrates the phases of a software development project, with tasks like analysis, design, development, testing, and documentation. This also demonstrates CRUD operations in a Gantt Chart.
+          <p>This sample demonstrates dialog editing in the Gantt Chart using a software development project workflow. The add and edit dialogs are customized with dedicated tabs for task details, dependencies, resources, segments, and advanced scheduling options.
           </p>
         </div>
 
@@ -262,9 +262,10 @@ export class GanttDialogEditing extends SampleBase<{}, {}> {
             <li><b>Segments Tab</b> - Enhanced with extra toolbar options for efficient segment editing and control.</li>
             <li><b>Advanced Tab</b> - Organizes Work and Task Mode input fields for quick access and improved clarity.</li>
           </ul>
-          <p>Gantt component features are segregated into individual feature-wise modules. To use edit, columnMenu, filter, reorder, sort, resize, toolbar, markers and selection features, we need to inject <code>Edit</code>, <code>ColumnMenu</code>, <code>Filter</code>, <code>Reorder</code>, <code>Sort</code>, <code>Resize</code>, <code>Toolbar</code>, <code>DayMarkers</code> and <code>Selection</code> into the <code>Inject Services</code> section.</p>
           <br/>
-          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/managing-tasks/editing-tasks#edit-tasks-via-dialog">documentation section</a>.</p>
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/managing-tasks/editing-tasks#edit-tasks-via-dialog">editing tasks</a> documentation section.</p>
+          <br/>
+          <p>Looking for the full React Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/react-components/react-gantt-chart">React Gantt Chart</a> page.</p>
         </div>
       </div>
     );

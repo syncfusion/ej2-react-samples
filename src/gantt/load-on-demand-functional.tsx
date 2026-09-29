@@ -62,7 +62,9 @@ const LoadOnDemand = () => {
         </p>
         <p>Gantt component features are segregated into individual feature-wise modules. To use virtual scroll and selection features, we need to inject <code>VirtualScroll</code> and <code>Selection</code> into the <code>Inject Services</code> section.</p>
         <br/>
-        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/data-binding#load-child-on-demand">documentation section</a>.</p>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/data-binding#load-child-on-demand">data binding</a> documentation section.</p>
+        <br/>
+        <p>Looking for the full React Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/react-components/react-gantt-chart">React Gantt Chart</a> page.</p>
       </div>
     </div>
   )

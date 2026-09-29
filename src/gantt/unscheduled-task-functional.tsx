@@ -74,7 +74,9 @@ const UnscheduledTask = () => {
         Gantt component features are segregated into individual feature-wise modules. To use a toolbar, selection and add features, we need to inject the <code>Toolbar</code>, <code>Selection</code> and <code>Edit</code> into the <code>Inject Services</code> section.
         </p>
         <br />
-        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/scheduling-tasks#enable-unscheduled-tasks">documentation section</a>.</p>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/scheduling-tasks#enable-unscheduled-tasks">scheduling tasks</a> documentation section.</p>
+        <br/>
+        <p>Looking for the full React Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/react-components/react-gantt-chart">React Gantt Chart</a> page.</p>
       </div>
     </div>
   )

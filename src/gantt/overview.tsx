@@ -345,7 +345,9 @@ export class Overview extends SampleBase<{}, {}> {
         }
     }
     public closeSidebar() {
-        this.sidebarobj.hide();
+        if (this.sidebarobj) {
+            this.sidebarobj.hide();
+        }
     }
 
     // slide bar
@@ -500,7 +502,7 @@ export class Overview extends SampleBase<{}, {}> {
                         >
                             <div className="gantt-title-header">
                                 <div className="gantt-title">Project Settings</div>
-                                <span className="e-closed" onClick={this.closeSidebar} style={{ cursor: 'pointer' }}></span>
+                                <span className="e-closed" onClick={this.closeSidebar.bind(this)} style={{ cursor: 'pointer' }}></span>
                             </div>
 
                             <ul className="settings-list" style={{ margin: '15px 15px', paddingLeft: '5px' }}>
@@ -633,7 +635,7 @@ export class Overview extends SampleBase<{}, {}> {
                         <div style={{ padding: '16px' }}>
                             <ButtonComponent
                                 id='settings-btn'
-                                onClick={this.triggerSidebar}
+                                onClick={this.triggerSidebar.bind(this)}
                                 className='settings-btn'
                                 style={{ position: 'absolute', top: '10px', right: '10px', zIndex: 10 }}>
                                 <span className='e-settings-icon' style={{ padding: '3px' }}></span>

@@ -1,0 +1,88 @@
+.chat-ui-sample .chat-section {
+    height: 600px;
+}
+
+.chat-ui-sample #chatContainer {
+    width: 100%;
+    height: 100%;
+}
+
+/* Let the custom footer fill the entire chat footer slot. */
+.chat-ui-sample #chatContainer .e-footer {
+    padding: 0;
+}
+
+.chat-ui-sample .custom-footer {
+    width: 100%;
+}
+
+.chat-ui-sample #editor {
+    width: 100%;
+}
+
+/* Reply preview wrapper rendered by Chat UI when a message is being replied to. */
+.chat-ui-sample .e-footer .e-reply-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 8px 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    background: rgba(0, 0, 0, 0.02);
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.chat-ui-sample .e-footer .e-reply-wrapper .e-reply-meta {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+    overflow: hidden;
+    flex: 1;
+    min-width: 0;
+}
+
+.chat-ui-sample .e-footer .e-reply-wrapper .e-reply-meta strong {
+    font-weight: 600;
+}
+
+.chat-ui-sample .e-footer .e-reply-wrapper .e-reply-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+    flex: 1;
+    min-width: 0;
+}
+
+.chat-ui-sample .e-footer .e-reply-wrapper .e-reply-close,
+.chat-ui-sample .e-footer .e-reply-wrapper button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.55);
+    padding: 4px 8px;
+    border-radius: 3px;
+}
+
+.chat-ui-sample .e-footer .e-reply-wrapper .e-reply-close:hover,
+.chat-ui-sample .e-footer .e-reply-wrapper button:hover {
+    background: rgba(0, 0, 0, 0.06);
+    color: rgba(0, 0, 0, 0.87);
+}
+
+/* Header avatar for the chat counterpart. */
+.chat-ui-sample .chat_user2_avatar {
+    background-image: url('./src/rich-text-editor-ui/images/2.png');
+    background-color: transparent;
+}
+
+/* Send toolbar item styling. */
+.chat-ui-sample #send_tbar {
+    min-width: 36px;
+    height: 32px;
+}
+
+.chat-ui-sample #send_tbar .e-icons {
+    font-size: 14px;
+}

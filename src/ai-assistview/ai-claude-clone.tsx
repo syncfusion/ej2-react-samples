@@ -68,12 +68,15 @@ export class ClaudeClone extends SampleBase<{}, {}> {
     }
 
     this.abortController = new AbortController();
-    const foundPrompt = this.prompts.find((p) => p.prompt === args.prompt);
-    const response = foundPrompt
-      ? foundPrompt.response
-      : await getAIResponse(args as any, this.abortController);
+    const response = await getAIResponse(args as any, this.abortController);
     this.assistInstance.addPromptResponse(response as string);
   };
+
+  stopResponse = () => {
+    if (this.abortController) {
+      this.abortController.abort();
+    }
+  }
 
   private initializeModelDropdown = (): void => {
     const items: ModelItem[] = [
@@ -154,6 +157,7 @@ export class ClaudeClone extends SampleBase<{}, {}> {
             <AIAssistViewComponent
               id="claude_aiassistview"
               promptRequest={this.promptRequest}
+              stopRespondingClick={this.stopResponse}
               showHeader={false}
               promptPlaceholder="How can i help you today?"
               enableAttachments={true}

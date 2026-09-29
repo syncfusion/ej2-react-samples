@@ -234,23 +234,29 @@ const API = () => {
             </div>
             <div id="action-description">
                 <p>
-                    This sample demonstrates the important APIs required to manipulate the
-                    Kanban component. Provides necessary details in the property panel to
-                    add and remove the columns dynamically.
+	                This sample demonstrates dynamic column management in the Kanban component.
+                    Users can add new columns or remove existing ones at runtime through the provided property panel, allowing the board structure to be customized without reloading the page.
                 </p>
             </div>
             <div id="description">
-                <p>The demo explains how to add or remove columns programmatically.</p>
+                <p>
+                    This sample demonstrates how to dynamically add and remove columns in the Kanban component using the available public methods.
+                </p>
                 <ul>
                     <li>
-                        <code>addColumn:</code> The public method used to add a column to
-                        the Kanban board dynamically.
+                        <a href="https://ej2.syncfusion.com/react/documentation/api/kanban/index-default#addcolumn" target="_blank">addColumn</a>: Adds a new column to the Kanban board at the specified position. In this sample, the column is configured using <code>keyField</code>, <code>headerText</code>, and <code>showItemCount</code> properties.
                     </li>
                     <li>
-                        <code>deleteColumn:</code> The public method used to remove the
-                        existing column from the Kanban board based on an index.
+                    <a href="https://ej2.syncfusion.com/react/documentation/api/kanban/index-default#deletecolumn" target="_blank">deleteColumn</a>: Removes an existing column from the Kanban board based on the specified column index. 
                     </li>
                 </ul>
+                <p>
+                    More information on the Essential<sup>®</sup> JS2 Kanban board can be found in this <a href="https://ej2.syncfusion.com/react/documentation/api/kanban/index-default#addcolumn" target="_blank">add column</a> documentation section.
+                </p>
+                <p>
+	                Looking for the full React Kanban component overview, features, pricing and documentation?
+                    Visit the <a href="https://www.syncfusion.com/gantt-sdk/react-kanban-board" target="_blank">React Kanban</a> page.
+                </p>
             </div>
         </div>
     );

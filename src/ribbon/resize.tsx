@@ -315,7 +315,7 @@ export class Resize extends SampleBase<{}, {}> {
                                                     </RibbonCollectionDirective>
                                                 </RibbonCollectionsDirective>
                                             </RibbonGroupDirective>
-                                            <RibbonGroupDirective header="Show" isCollapsible={true}>
+                                            <RibbonGroupDirective header="Show" isCollapsible={false}>
                                                 <RibbonCollectionsDirective>
                                                     <RibbonCollectionDirective>
                                                         <RibbonItemsDirective>

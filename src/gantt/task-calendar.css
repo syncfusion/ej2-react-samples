@@ -1,0 +1,14 @@
+.hours-input-row {
+  display: flex;
+  align-items: center;
+  padding-bottom: 8px;
+  gap: 8px;
+  flex-wrap: wrap;
+  max-width: 760px
+}
+
+.hours-warning {
+  color: #b71c1c;
+  font-size: 13px;
+  margin-left: 4px
+}

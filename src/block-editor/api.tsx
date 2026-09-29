@@ -3,7 +3,7 @@ import { BlockEditorComponent, FocusEventArgs } from '@syncfusion/ej2-react-bloc
 import { CheckBoxComponent, ChangeEventArgs } from '@syncfusion/ej2-react-buttons';
 import {DialogUtility} from '@syncfusion/ej2-react-popups';
 import './api.css';
-import * as data from './blockData.json';
+import * as data from './data/api.json';
 import { SampleBase } from '../common/sample-base';
 
 export class API extends SampleBase<{}, {}> {

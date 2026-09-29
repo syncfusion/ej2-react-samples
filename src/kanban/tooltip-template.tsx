@@ -91,23 +91,28 @@ export class TooltipTemplate extends SampleBase<{}, {}> {
 
                 <div id="action-description">
                     <p>
-                        This sample demonstrates how to customize the tooltip messages in Kanban cards. You can enable or disable the
-                        tooltip
-                        and its template.
+                        This sample demonstrates tooltip customization in the Kanban component, enabling additional card information to be presented through rich and interactive tooltip content.
                     </p>
                 </div>
                 <div id="description">
                     <p>
-                        The Kanban provides an option to show default tooltip and templated tooltip using the <code>enableTooltip</code>
-                        and <code>tooltipTemplate</code> properties.
+                        This sample demonstrates the tooltip functionality of the Kanban component using the <a href="https://ej2.syncfusion.com/react/documentation/api/kanban/index-default#enabletooltip" target="_blank">enableTooltip</a> and <a href="https://ej2.syncfusion.com/react/documentation/kanban/tooltip#tooltip-template" target="_blank">tooltipTemplate</a> properties. Tooltips provide additional contextual information about cards when users hover over them.
                     </p>
                     <ul>
-                        <li><code>enableTooltip:</code> If you set this property to true, the cards show a tooltip with default format.
-                        </li>
-                        <li><code>tooltipTemplate:</code> If you set <code>enableTooltip</code> property to true and configured the
-                            tooltipTemplate, the cards show a
-                        tooltip with templated content.</li>
+                        <li><code>enableTooltip</code>: If you set this property to <code>true</code>, the cards show a
+                            tooltip with the default format.</li>
+                        <li><code>tooltipTemplate</code>: If you set <code>enableTooltip</code> to <code>true</code> and
+                            configure the <code>tooltipTemplate</code>, the cards show a tooltip with templated content
+                            (the <code>Assignee</code>, <code>Type</code>, <code>Estimate</code> and <code>Summary</code>
+                            fields in this demo).</li>
                     </ul>
+                    <p>
+                        More information on the Essential<sup>®</sup> JS2 Kanban board can be found in this <a href="https://ej2.syncfusion.com/react/documentation/kanban/tooltip" target="_blank">tooltip</a> documentation section.
+                    </p>
+                    <p>
+	                    Looking for the full React Kanban component overview, features, pricing and documentation?
+                        Visit the <a href="https://www.syncfusion.com/gantt-sdk/react-kanban-board" target="_blank">React Kanban</a> page.
+                    </p>
                 </div>
             </div>
         );

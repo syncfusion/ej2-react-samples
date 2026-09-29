@@ -506,7 +506,7 @@ function DrawingTools() {
               style={{
                 backgroundImage:
                   "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/drawingTool/DrawingTool_8.png')",
-                marginRight: "3px"
+                margin: "0px 3px"
               }}
             />
             <div
@@ -516,7 +516,6 @@ function DrawingTools() {
               style={{
                 backgroundImage:
                   "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/drawingTool/DrawingTool_9.png')",
-                marginRight: "3px"
               }}
             />
           </div>

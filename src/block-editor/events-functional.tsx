@@ -4,7 +4,7 @@ import { updateSampleSection } from '../common/sample-base';
 import { BlockEditorComponent, BlockAction, BlockChange, BlockChangedEventArgs, ToolbarItemClickEventArgs } from '@syncfusion/ej2-react-blockeditor';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import './events.css';
-import * as data from './blockData.json';
+import * as data from './data/events.json';
 
 const API = () => {
     useEffect(() => {

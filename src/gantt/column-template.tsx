@@ -71,16 +71,17 @@ export class ColumnTemplate extends SampleBase<{}, {}> {
           </GanttComponent>
         </div>
         <div id="action-description">
-          <p>This sample demonstrates the usage of template columns in Gantt.
-            In this sample, we have shown custom images in the Resources column.</p>
+          <p>This sample demonstrates column template customization in the Gantt Chart. The Resources column is rendered using a custom template that displays resource images along with their names.</p>
         </div>
 
         <div id="description">
-          <p>The Gantt provides a way to use a custom layout for each cell using the column template feature. The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/columnModel/#template">columns -&gt; template</a> property accepts the template for the cell.</p>
-          <p>In this demo, using column template, the resource column is presented with employee photos. The <a target="_blank" href="https://ej2.syncfusion.com/angular/documentation/api/gantt/columnModel/#template">columns -&gt; template</a> property is used to customize the column display.</p>
+          <p>The Gantt Chart supports custom column templates through the <code><a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/columnModel/#template">template</a></code> property of a column. Templates enable rich cell rendering with custom HTML content, images, icons, and formatted data. 
+            In this example, the Resources column is customized to display resource images together with resource names, providing a more visually informative presentation of assigned resources. Column templates can be used to tailor the appearance of individual cells and create customized layouts based on application requirements.</p>
           <p>Gantt component features are segregated into individual feature-wise modules. To use selection, we need to inject the <code>Selection</code> into the <code>Inject Services</code> section.</p>
           <br/>
-          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/columns/column-template">documentation section</a>.</p>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/columns/column-template">column template</a> documentation section.</p>
+        <br/>
+        <p>Looking for the full React Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/react-components/react-gantt-chart">React Gantt Chart</a> page.</p>
         </div>
       </div>
     )

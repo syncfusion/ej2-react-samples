@@ -20,6 +20,7 @@ export class Attachments extends SampleBase<{}, {}> {
     if (args.item.iconCss === 'e-icons e-refresh') {
         this.assistInstance.prompts = [];
         this.assistInstance.promptSuggestions = this.suggestion;
+        this.stopResponse();
     }
   }
 
@@ -47,19 +48,22 @@ export class Attachments extends SampleBase<{}, {}> {
   promptRequest = async (args: PromptRequestEventArgs) => {
     this.abortController = new AbortController();
     const foundPrompt = this.prompts.find((promptObj) => promptObj.prompt === args.prompt);
-    const response = foundPrompt
-      ? foundPrompt.response
-      : await getAIResponse(args as any, this.abortController);
+    const response = await getAIResponse(args as any, this.abortController);
     this.assistInstance.addPromptResponse(response as string);
     this.assistInstance.promptSuggestions = (foundPrompt?.suggestions as string[]) || this.suggestion;
   };
+  stopResponse = () => {
+    if (this.abortController) {
+      this.abortController.abort();
+    }
+  }
   render() {
 
     return (
       <div className='control-pane'>
         <div className="control-section">
             <div className="attachment-aiassistview"> 
-                <AIAssistViewComponent id="aiAssistView"  toolbarSettings={this.assistViewToolbarSettings} bannerTemplate={this.bannerTemplate} promptSuggestions={this.suggestion} enableStreaming={true}  enableAttachments={true}  attachmentSettings={this.attachmentSettings} promptRequest={this.promptRequest} ref={aiassistView => (this.assistInstance = aiassistView)}></AIAssistViewComponent>
+                <AIAssistViewComponent id="aiAssistView"  toolbarSettings={this.assistViewToolbarSettings} bannerTemplate={this.bannerTemplate} promptSuggestions={this.suggestion} enableStreaming={true}  enableAttachments={true}  attachmentSettings={this.attachmentSettings} promptRequest={this.promptRequest} stopRespondingClick={this.stopResponse} ref={aiassistView => (this.assistInstance = aiassistView)}></AIAssistViewComponent>
             </div>
         </div>
 

@@ -252,6 +252,7 @@ function onPortShapeChange(args: ChangeEventArgs): void {
                 break;
             case "Custom":
                 port[j].shape = "Custom";
+                port[j].pathData = "";
                 port[j].pathData = "M6.805,0L13.61,10.703L0,10.703z";
                 break;
         }

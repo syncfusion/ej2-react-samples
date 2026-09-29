@@ -71,7 +71,7 @@ const RealTimeBinding = () => {
                     event to update the scheduler data source after performing the CRUD operations. The SignalR will bind the data in order to corresponding event call.
                 </p>
                 <p>
-                    Looking for the full React Scheduler component overview, features, pricing, and documentation? Visit our <a target="_blank" href="https://www.syncfusion.com/react-components/react-scheduler">React Scheduler</a> component page.
+                    Looking for the full React Scheduler component overview, features, pricing, and documentation? Visit our <a target="_blank" href="https://www.syncfusion.com/scheduler-sdk/react-scheduler">React Scheduler</a> component page.
                 </p>
             </div>
         </div>

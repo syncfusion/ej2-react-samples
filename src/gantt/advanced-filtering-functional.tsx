@@ -73,7 +73,7 @@ const AdvancedFiltering = () => {
     } else if (predicateValue === null && args.Type === "DeleteRule") {
       setSearchQuery(new Query().select(['TaskID', 'TaskName', 'StartDate', 'Duration', 'EndDate', 'Progress', 'Predecessor']));
     }
-  }, []);
+  },[]);
 
   const handleClose = () => {
     setSidebarToggle(false);
@@ -169,13 +169,15 @@ const AdvancedFiltering = () => {
       </div>
       <div id="description">
         <p>
-          In this example, the process involves retrieving the complex query from the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/query-builder/getting-started">QueryBuilder</a>
+          In this example, the process involves retrieving the complex query from the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/query-builder/getting-started">QueryBuilder</a> 
           component and subsequently integrating it into the Gantt Chart by updating its <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#query">Query</a> Property.
           The QueryBuilder component tool is located in a <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/sidebar/getting-started">SideBar</a> component that appears when you click on the toolbar.
         </p>
         <p>Gantt component features are segregated into individual feature-wise modules. To use filtering and selection features, we need to inject <code>Filter</code> and <code>Selection</code> into the <code>Inject Services</code> section.</p>
         <br/>
-        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/filtering/filtering">documentation section</a>.</p>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/filtering/filtering">filtering</a> documentation section.</p>
+        <br/>
+        <p>Looking for the full React Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/react-components/react-gantt-chart">React Gantt Chart</a> page.</p>
       </div>
     </div>
   );

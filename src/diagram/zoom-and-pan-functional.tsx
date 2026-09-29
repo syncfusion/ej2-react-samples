@@ -166,8 +166,7 @@ function ZoomAndPan() {
                                 {/* Pan Tool icon */}
                                 <ItemDirective id='PanTool' prefixIcon="e-icons e-pan" tooltipText="Pan Tool" />
                                 <ItemDirective id='Separator2' type="Separator" />
-                                {!isMobileView && <ItemDirective id='FitToPage' prefixIcon="e-icons e-zoom-to-fit" tooltipText="Fit To Page" />}
-                                {!isMobileView && <ItemDirective id='Separator3' type="Separator" />}
+                                
                                 {/* reset icon */}
                                 <ItemDirective id='Reset' prefixIcon="e-icons e-reset" tooltipText="Reset" />
                                 {!isMobileView && <ItemDirective id='FitToPage' prefixIcon="e-icons e-zoom-to-fit" tooltipText="Fit To Page" />}

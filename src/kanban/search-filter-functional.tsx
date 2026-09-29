@@ -176,25 +176,32 @@ const SearchFilter = () => {
             </div>
             <div id="action-description">
                 <p>
-                    This sample demonstrates the filtering and searching actions of
-                    Kanban. In this sample, select the key value from drop down list to
-                    display the filtered data in Kanban board. Type in search box to be
-                    searched in header/content and display the search result in a board.
+                    This sample demonstrates the filtering and searching capabilities of the Kanban component, enabling users to quickly locate and organize cards based on specific criteria.
                 </p>
             </div>
             <div id="description">
                 <p>
-                    The Kanban provides an option to filter or search the cards and
-                    displayed on Kanban board using <code>query</code> property.
+                    This sample demonstrates how to filter and search cards in the Kanban component using the <a href="https://ej2.syncfusion.com/react/documentation/api/kanban/index-default#query" target="_blank">query</a> property. The query API can be used to display specific cards based on custom filtering and search criteria.
                 </p>
                 <ul>
                     <li>
-                        In query, <code>where</code> used for filtering the Kanban cards.
+                        The <code>where</code> method is used to filter cards based on field values such as <strong>Priority</strong> and <strong>Status</strong>.
                     </li>
                     <li>
-                        In query, <code>search</code> is used for searching the cards.
+                        The <code>search</code> method is used to locate cards by matching text across the <code>Id</code> and <code>Summary</code> fields.
                     </li>
                 </ul>
+                <p>
+                    The reset option clears the applied filters and search criteria by restoring the Kanban
+                    <code>query</code> to a new <code>Query</code> instance, displaying all cards on the board.
+                </p>
+                    <p>
+                    More information on the Essential<sup>®</sup> JS2 Kanban board can be found in this <a href="https://ej2.syncfusion.com/react/documentation/api/kanban/index-default#query" target="_blank">query</a> documentation section.
+                </p>
+                <p>
+	                Looking for the full React Kanban component overview, features, pricing and documentation?
+                    Visit the <a href="https://www.syncfusion.com/gantt-sdk/react-kanban-board" target="_blank">React Kanban</a> page.
+                </p>
             </div>
         </div>
     );

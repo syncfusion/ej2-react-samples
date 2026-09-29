@@ -2,7 +2,7 @@ import * as React from 'react';
 import { BlockEditorComponent, BlockAction, BlockChange, BlockChangedEventArgs, ToolbarItemClickEventArgs } from '@syncfusion/ej2-react-blockeditor';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import './events.css';
-import * as data from './blockData.json';
+import * as data from './data/events.json';
 import { SampleBase } from '../common/sample-base';
 
 export class API extends SampleBase<{}, {}> {

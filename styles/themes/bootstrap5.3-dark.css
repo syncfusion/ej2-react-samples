@@ -81,6 +81,11 @@ body.bootstrap5_3-dark,
     color: #0d6efd !important;
 }
 
+.bootstrap5_3-dark .sb-sdk-popup li.active .sb-sdk-select,
+.bootstrap5_3-dark .sb-sdk-popup li:hover.active .sb-sdk-select {
+    color: #0d6efd !important;
+}
+
 .bootstrap5_3-dark .sb-bread-crumb,
 .bootstrap5_3-dark .sb-bread-crumb .sb-bread-crumb-text>div,
 .bootstrap5_3-dark .sb-left-pane .e-listview .e-list-item.e-level-1, 
@@ -155,10 +160,10 @@ body.bootstrap5_3-dark,
 .bootstrap5_3-dark .sb-switch-popup li:hover,
 .bootstrap5_3-dark .theme-wrapper:hover,
 .bootstrap5_3-dark .theme-wrapper.active,
-.bootstrap5_3-dark .products-wrapper:hover,
-.bootstrap5_3-dark .products-wrapper.active,
+.bootstrap5_3-dark .sdk-wrapper:hover,
+.bootstrap5_3-dark .sdk-wrapper.active,
 .bootstrap5_3-dark .sb-theme-popup li:hover,
-.bootstrap5_3-dark .sb-products-popup li:hover,
+.bootstrap5_3-dark .sb-sdk-popup li:hover,
 .bootstrap5_3-dark .sb-search-result .e-list-item:hover,
 .bootstrap5_3-dark .sb-left-pane .e-listview .e-list-item:hover,
 .bootstrap5_3-dark .sb-themeswitch-btn:hover,
@@ -167,19 +172,24 @@ body.bootstrap5_3-dark,
 
 }
 
-.bootstrap5_3-dark .sb-products-popup {
+
+.bootstrap5_3-dark .sb-sdk-popup {
   background-color: #343a40;
   border: 1px solid #495057;
   color: #ffffff;
 }
 
 /* List items */
-.bootstrap5_3-dark .sb-products-popup li {
+
+
+.bootstrap5_3-dark .sb-sdk-popup li {
   color: #ffffff;
 }
 
 /* Hover state */
-.bootstrap5_3-dark .sb-products-popup li:hover {
+
+
+.bootstrap5_3-dark .sb-sdk-popup li:hover {
   background-color: #363636;
 }
 
@@ -247,6 +257,7 @@ body.bootstrap5_3-dark,
 }
 
 .bootstrap5_3-dark .sb-header-text-left,
+.bootstrap5_3-dark #sb-sdk-switcher,
 .bootstrap5_3-dark .sb-header-text-right {
     color: #ffffff
 }
@@ -297,6 +308,10 @@ body.bootstrap5_3-dark,
     color: transparent !important;
 }
 
+.bootstrap5_3-dark .sb-sdk-popup li:hover .sb-sdk-select {
+    color: transparent !important;
+}
+
 .bootstrap5_3-dark .sb-left-pane .e-treeview .e-list-item.e-active>.e-text-content .e-list-text {
     color: white !important;
 }
@@ -325,4 +340,13 @@ body.bootstrap5_3-dark,
     .bootstrap5_3-dark .sb-content-toolbar {
         top: 0px;
     }
+}
+
+.bootstrap5_3-dark .sf-axe-msg.e-message {
+    background-color: #212529;
+    border: 2px solid #495057;
+}
+
+.bootstrap5_3-dark .sdk-wrapper {
+    background:none;
 }

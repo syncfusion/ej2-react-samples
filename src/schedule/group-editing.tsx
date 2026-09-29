@@ -91,7 +91,7 @@ export class GroupEditing extends SampleBase<{}, {}> {
             to select multiple resources from the resource field of editor window, while trying to create appointments.
           </p>
           <p>
-            Looking for the full React Scheduler component overview, features, pricing, and documentation? Visit our <a target="_blank" href="https://www.syncfusion.com/react-components/react-scheduler">React Scheduler</a> component page.
+            Looking for the full React Scheduler component overview, features, pricing, and documentation? Visit our <a target="_blank" href="https://www.syncfusion.com/scheduler-sdk/react-scheduler">React Scheduler</a> component page.
           </p>
         </div>
       </div>

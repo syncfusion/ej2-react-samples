@@ -505,12 +505,6 @@ div#sample-header {
     display: none;
 }
 
-.products-wrapper>div {
-    float: left;
-    padding-left: 3px;
-    line-height: 32px;
-    letter-spacing: .5px;
-}
 
 /*sb-header-popup*/
 
@@ -605,68 +599,6 @@ div#sample-header {
     color: rgb(255, 109, 63);
 }
 
-.sb-products-popup {
-    background: #FFFFFF;
-    border: 1px solid #CCCCCC;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.36);
-    border-radius: 4px;
-    width: 175px;
-    z-index: 1001;
-}
-
-.sb-products-popup li {
-    line-height: 30px;
-    cursor: default;
-    padding-top: 4px;
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-.sb-products-popup li:hover {
-    background: rgb(238, 238, 238);
-}
-
-.sb-products-popup li.active {
-    background: rgb(238, 238, 238);
-}
-.sb-products-text {
-  font-size: 13px;
-  font-family: "Roboto", "Segoe UI", "GeezaPro", "DejaVu Serif", "sans-serif";
-  opacity: 54;
-}
-
-.sb-products-switcher,
-.sb-products-switcher-wrapper {
-  display: inline-block;
-}
-
-.sb-products-switcher {
-  font-size: 20px;
-}
-
-.products-wrapper:hover,
-.products-wrapper.active {
-  background-color: rgb(216, 216, 216);
-}
-#sb-products-switcher {
-  z-index: 1003 !important;
-}
-
-.products-wrapper {
-  height: 32px;
-  margin-top: 5px;
-  margin-left: 8px;
-  cursor: default;
-  padding: 0px 10px;
-  border-radius: 2px;
-}
-
-.products-wrapper>div {
-  float: left;
-  padding-left: 3px;
-  line-height: 32px;
-  letter-spacing: .5px;
-}
 
 .e-search-overlay {
     z-index: 10000022;
@@ -1090,6 +1022,15 @@ div#sample-header {
     cursor: pointer;
 }
 
+.sb-left-pane .e-treeview .e-list-text > div {
+    display: flex;
+    gap: 8px;
+}
+
+.sb-left-pane .e-treeview .tree-text {
+    flex: 1;
+}
+
 .sb-adjust-juggle {
     top: 50px;
 }
@@ -1286,7 +1227,8 @@ div#sample-header {
     display: none;
 }
 
-.sb-plnkr-text {
+.sb-plnkr-text,
+.sb-axe-text {
     font-size: 15px;
 }
 
@@ -1299,6 +1241,18 @@ div#sample-header {
 .sb-plnr-section:hover {
     color: #1783ff;
     cursor: pointer;
+}
+
+#open-axe-report.sb-hide,
+#axe-toolbar-splitter.sb-hide {
+    display: none;
+}
+
+.sb-axe-tooltip .e-tip-content {
+    white-space: normal;
+    line-height: 1.45;
+    text-align: left;
+    font-size: 13px;
 }
 
 .sb-toolbar-splitter {
@@ -1429,7 +1383,7 @@ propertye pane
 .sb-property-border {
     position: absolute;
     height: 100%;
-    border: 0px solid #D7D7D7;
+    border: 1px solid #D7D7D7;
     top: 0px;
 }
 
@@ -1553,9 +1507,6 @@ propertye pane
 
 @media (max-width: 764px) {
     .theme-wrapper {
-        display: none;
-    }
-    .products-wrapper {
         display: none;
     }
 
@@ -1875,6 +1826,9 @@ propertye pane
     .sb-mobilefooter>.e-btn.e-flat:hover {
         color: #1783ff;
     }
+    .sb-navigation-prev.e-disabled,.sb-navigation-next.e-disabled {
+    color: #a8a4a4 !important;
+    }
 
     .sb-mobilefooter>.e-btn.e-disabled:hover {
         color: #5a5a5a;
@@ -2112,10 +2066,6 @@ propertye pane
 
 .e-bigger .sb-left-pane .e-treeview .e-list-text {
     width: 95%;
-}
-
-.sb-left-pane .e-treeview .e-text-content {
-    padding-right: 16px;
 }
 
 .tree-text {
@@ -2929,9 +2879,136 @@ margin-top: 2px;
 padding: 4px 8px
 }
 
-/* Hide Other Products section in desktop mode */
-@media (min-width: 851px) {
-    .sb-setting-products-section {
+
+
+/* Hide SDK settings section by default (desktop/tablet) */
+.sb-setting-sdk-section {
+    display: none;
+}
+
+/* Show only on mobile */
+@media (max-width: 550px) {
+    .sb-setting-sdk-section {
+        display: block;
+    }
+}
+
+/* ===== SDK Samples Dropdown ===== */
+.sb-sdk-popup {
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.36);
+    border-radius: 4px;
+    width: 200px;
+    z-index: 10012;
+}
+
+.sb-sdk-popup li {
+    line-height: 30px;
+    cursor: default;
+    padding-top: 4px;
+}
+
+.sb-sdk-popup li:hover {
+    background: rgb(238, 238, 238);
+}
+
+.sb-sdk-popup li.active .sb-sdk-select {
+    color: rgb(255, 109, 63);
+}
+
+.sb-sdk-popup li:hover .sb-sdk-select {
+    color: rgb(238, 238, 238);
+}
+
+.sb-sdk-popup li:hover.active .sb-sdk-select {
+    color: rgb(255, 109, 63);
+}
+
+.sb-sdk-select {
+    padding-left: 3px;
+    vertical-align: middle;
+    color: transparent;
+}
+
+.sb-sdk-text {
+    font-size: 13px;
+    font-family: "Roboto", "Segoe UI", "GeezaPro", "DejaVu Serif", "sans-serif";
+    white-space: nowrap;
+}
+
+.sb-sdk-switch,
+.sb-sdk-switcher-wrapper {
+    display: inline-block;
+}
+
+.sdk-wrapper:hover,
+.sdk-wrapper.active {
+    background-color: rgb(216, 216, 216);
+}
+
+#sb-sdk-switcher {
+    z-index: 1003 !important;
+    font-size: 20px;
+}
+
+.sb-sdk-switcher-wrapper{
+    padding-top:3px;
+}
+
+.sdk-wrapper {
+    width: 200px;
+    height: 32px;
+    margin-top: 5px;
+    margin-left: 8px;
+    cursor: default;
+    padding: 0px 10px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #d9d9d9;
+    position: relative;
+    border-radius: 4px;
+    background: #fff;
+    color: #1f2937;
+    font-size: 14px;
+    cursor: pointer;
+    gap: 12px;
+}
+
+.sdk-wrapper > div {
+    padding-left: 3px;
+    line-height: 32px;
+    letter-spacing: .5px;
+}
+
+/* Hide SDK button on mobile */
+@media (max-width: 550px) {
+    .sb-sdk-wrapper {
         display: none !important;
     }
 }
+
+/* Left pane SDK filter: hide non-matching tree nodes and list items */
+.sdk-filter-active [control-name].sdk-hidden {
+    display: none !important;
+}
+
+/* Hide tree parent category nodes when all children are hidden */
+.sdk-filter-active .e-list-item.sdk-parent-hidden {
+    display: none !important;
+}
+
+.sdk-filter-active .e-list-item.sdk-sample-hidden {
+    display: none !important;
+}
+
+/* Hide group headers that have no visible items */
+.sdk-filter-active .e-list-group-item.sdk-group-hidden {
+    display: none !important;
+}
+
+/* ===== End SDK Samples Dropdown ===== */
+
+

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect } from 'react';
-import { GanttComponent, TaskFieldsModel, Inject, Selection, ColumnsDirective, ColumnDirective, ResourceFieldsModel, LabelSettingsModel, SplitterSettingsModel } from '@syncfusion/ej2-react-gantt';
+import { GanttComponent, TaskFieldsModel, Inject, Selection, DayMarkers, ColumnsDirective, ColumnDirective, ResourceFieldsModel, LabelSettingsModel, SplitterSettingsModel } from '@syncfusion/ej2-react-gantt';
 import { templateData, editingResources } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import './header-template.css'
@@ -32,6 +32,51 @@ const HeaderTemplate = () => {
   };
   const projectStartDate: Date = new Date('03/24/2025');
   const projectEndDate: Date = new Date('07/06/2025');
+
+  const taskNameHeaderTemplate = () => {
+    return(
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        <div className="gantttaskName"></div>
+        <b className='e-header'>Task Name</b>
+      </div>
+    )
+  }
+
+  const startDateHeaderTemplate = () => {
+    return(
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        <div className="ganttstartDate"></div>
+        <b className='e-header'>Start Date</b>
+      </div>
+    )
+  }
+
+  const resourceHeaderTemplate = () => {
+    return(
+      <div style={{ display: 'inline-flex', alignItems: 'center' }}>
+        <div className="ganttresource"></div>
+        <b className='e-header'>Resources</b>
+      </div>
+    )
+  }
+
+  const durationHeaderTemplate = () => {
+    return(
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        <div className="ganttduration"></div>
+        <b className='e-header'>Duration</b>
+      </div>
+    )
+  }
+
+  const progressHeaderTemplate = () => {
+    return (
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        <div className="ganttprogressTemplate"></div>
+        <b className='e-header'>Progress</b>
+      </div>
+    )
+  }
   return (
     <div className='control-pane'>
       <div className='control-section'>
@@ -40,33 +85,24 @@ const HeaderTemplate = () => {
           taskFields={taskFields} labelSettings={labelSettings} height='650px' taskbarHeight={25} rowHeight={46}
           projectStartDate={projectStartDate} projectEndDate={projectEndDate}>
           <ColumnsDirective>
-            <ColumnDirective field='TaskName' headerText='Job Name' headerTemplate={() => {
-              return (<div style={{ display: 'flex', alignItems: 'center' }}>
-                <div className="gantttaskName" ></div>
-                <b className='e-header'>Task Name</b></div>);
-            }} width='250'></ColumnDirective>
-            <ColumnDirective field='StartDate' headerTemplate={() => {
-              return (<div style={{ display: 'flex', alignItems: 'center' }}>
-                <div className="ganttstartDate" ></div>
-                <b className='e-header'>Start Date</b></div>);
-            }}></ColumnDirective>
-            <ColumnDirective field='resources' headerTemplate={() => {
-              return (<div style={{ display: 'inline-flex', alignItems: 'center' }}>
-                <div className="ganttresource"></div>
-                <b className='e-header'>Resources</b></div>);
-            }}></ColumnDirective>
-            <ColumnDirective field='Duration' headerTemplate={() => {
-              return (<div style={{ display: 'flex', alignItems: 'center' }}>
-                <div className="ganttduration" ></div>
-                <b className='e-header'>Duration</b></div>);
-            }}></ColumnDirective>
-            <ColumnDirective field='Progress' headerTemplate={() => {
-              return (<div style={{ display: 'flex', alignItems: 'center' }}>
-                <div className="ganttprogressTemplate" ></div>
-                <b className='e-header'>Progress</b></div>);
-            }}></ColumnDirective>
+            <ColumnDirective field='TaskName' headerText='Job Name'
+              headerTemplate={taskNameHeaderTemplate}
+              width='250'
+            ></ColumnDirective>
+            <ColumnDirective field='StartDate'
+              headerTemplate={startDateHeaderTemplate}
+            ></ColumnDirective>
+            <ColumnDirective field='resources'
+              headerTemplate={resourceHeaderTemplate}
+            ></ColumnDirective>
+            <ColumnDirective field='Duration'
+              headerTemplate={durationHeaderTemplate}
+            ></ColumnDirective>
+            <ColumnDirective field='Progress'
+              headerTemplate={progressHeaderTemplate}
+            ></ColumnDirective>
           </ColumnsDirective>
-          <Inject services={[Selection]} />
+          <Inject services={[Selection, DayMarkers]} />
         </GanttComponent>
       </div>
       <div id="action-description">
@@ -80,7 +116,9 @@ const HeaderTemplate = () => {
         Gantt component features are segregated into individual feature-wise modules. To use selection feature, we need to inject the <code>Selection</code> into the <code>Inject Services</code> section.
         </p>
         <br/>
-        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/columns/column-headers#customize-header-using-template">documentation section</a>.</p>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/columns/column-headers#customize-header-using-template">columns</a> documentation section.</p>
+        <br/>
+        <p>Looking for the full React Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/react-components/react-gantt-chart">React Gantt Chart</a> page.</p>
       </div>
     </div>
   )

@@ -43,7 +43,7 @@ export class GanttColumnMenu extends SampleBase<{}, {}> {
           </GanttComponent>
         </div>
         <div id="action-description">
-          <p>This sample demonstrates the default functionalities of the column menu. Click on the menu icon of each column to open the column menu.</p>
+          <p>This sample demonstrates the column menu feature in the Gantt Chart. Click the menu icon in a column header to access options such as sorting, filtering, auto-fit, and column visibility.</p>
         </div>
         <div id="description">
           <p>
@@ -63,7 +63,9 @@ export class GanttColumnMenu extends SampleBase<{}, {}> {
             In this demo, the column menu feature is enabled by setting <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#showcolumnmenu">showColumnMenu</a> to true with sorting, filtering, column chooser, and autoFit options.</p>
           <p>Gantt component features are segregated into individual feature-wise modules. To use Column Menu, selection, filter, resize and sort features, we need to inject the <code>ColumnMenu</code>, <code>Selection</code>, <code>Resize</code>, <code>Filter</code>, and <code>Sort</code> into the <code>Inject Services</code> section.</p> 
           <br/>
-          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/columns/column-menu">documentation section</a>.</p>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/columns/column-menu">column menu</a> documentation section.</p>
+        <br/>
+        <p>Looking for the full React Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/react-components/react-gantt-chart">React Gantt Chart</a> page.</p>
         </div>
       </div>
     )

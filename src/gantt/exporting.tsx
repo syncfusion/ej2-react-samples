@@ -102,7 +102,9 @@ export class Exporting extends SampleBase<{}, {}> {
             <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/index-default#csvexport"> csvExport</a> methods.</p>
           <p>Gantt component features are segregated into individual feature-wise modules. To use PDF export, excel export, toolbar, markers and selection features, we need to inject the <code>PdfExport</code>, <code>ExcelExport</code>, <code>Toolbar</code>, <code>DayMarkers</code> and <code>Selection</code> into the <code>Inject Services</code>section.</p>
           <br/>
-          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/pdf-export/pdf-export">documentation section</a>.</p>
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/pdf-export/pdf-export">PDF export</a> documentation section.</p>
+          <br/>
+          <p>Looking for the full React Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/react-components/react-gantt-chart">React Gantt Chart</a> page.</p>
         </div>
       </div>
     )

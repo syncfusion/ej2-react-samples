@@ -1,0 +1,19 @@
+.tab-sample .tab-control-section {
+    padding: 0;
+}
+
+.tab-sample .tab-content-pane {
+    display: flex;
+    flex-direction: column;
+}
+
+.tab-sample .tab-content-pane .e-rte-wrapper,
+.tab-sample .tab-content-pane .e-rte-container,
+.tab-sample .tab-content-pane .e-rte-content {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.tab-sample #tab-default {
+    width: 100%;
+}

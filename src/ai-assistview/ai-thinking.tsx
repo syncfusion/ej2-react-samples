@@ -9,6 +9,7 @@ AIAssistView.Inject(AssistThinking);
 
 export class Thinking extends SampleBase<{}, {}> {
     assistInstance: AIAssistViewComponent;
+    abortController: AbortController | undefined;
 
     bannerTemplate: string = `<div class="banner-content">
         <div class="e-icons e-brain"></div>
@@ -63,7 +64,7 @@ export class Thinking extends SampleBase<{}, {}> {
                 return;
             }
 
-            const abortController = new AbortController();
+            this.abortController = new AbortController();
 
             const requestBody = {
                 visitorId: userID,
@@ -91,7 +92,7 @@ export class Thinking extends SampleBase<{}, {}> {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(requestBody),
-                signal: abortController.signal
+                signal: this.abortController.signal
             });
 
             if (!response.ok) {
@@ -130,6 +131,12 @@ export class Thinking extends SampleBase<{}, {}> {
         }
     };
 
+    stopResponse = () => {
+        if (this.abortController) {
+            this.abortController.abort();
+        }
+    }
+
     render() {
         return (
             <div className='control-pane'>
@@ -140,6 +147,7 @@ export class Thinking extends SampleBase<{}, {}> {
                             bannerTemplate={this.bannerTemplate}
                             promptSuggestions={this.promptSuggestions}
                             promptRequest={this.promptRequest}
+                            stopRespondingClick={this.stopResponse}
                             enableStreaming={true}
                             ref={aiassistView => (this.assistInstance = aiassistView)}>
                         </AIAssistViewComponent>

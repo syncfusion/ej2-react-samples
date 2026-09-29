@@ -31,7 +31,7 @@ export class Default extends SampleBase<{}, {}> {
             edit content, and return valid HTML markup. The editor provides a standard toolbar to format content using its commands.
             The toolbar contains commands to align the text,
               insert link, insert image, insert list, undo/redo the operation, HTML view, and more.</p>
-          <blockquote><p>Looking for the full React Rich Text Editor component overview, features, pricing, and documentation? Visit the <a href="https://www.syncfusion.com/react-components/react-rich-text-editor" target="_blank" rel="noopener">React Rich Text Editor</a> page.</p></blockquote>
+          <blockquote><p>Looking for the full React Rich Text Editor component overview, features, pricing, and documentation? Visit the <a href="https://www.syncfusion.com/rich-text-editor-sdk/react-rich-text-editor" target="_blank" rel="noopener">React Rich Text Editor</a> page.</p></blockquote>
         </div>
       </div>
     );

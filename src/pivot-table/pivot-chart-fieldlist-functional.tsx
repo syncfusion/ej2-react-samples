@@ -287,7 +287,7 @@ function PivotChartFieldList () {
                         beforeCreate={() => beforeCreate()}
                     ></ToolbarComponent>
                 </div>
-                <div id='pivot_sidebar' className='maincontent' style={{ width: '100%', height: '720px'}}>
+                <div id='pivot_sidebar' className='pivot-maincontent' style={{ width: '100%', height: '720px'}}>
                     <div id='pivot_container' style={{ width: '64%'}}>
                         <PivotViewComponent id='PivotView' ref={d => pivotObj = d} enginePopulated={afterPivotPopulate.bind(this)} actionBegin={actionBegin.bind(this)} dataBound={onPivotDataBound.bind(this)} width={'100%'} height={'350'} gridSettings={{ columnWidth: 140 }}
                         chartSettings={{ title: 'Sales Analysis', chartSeries: { type: 'Column' }, load: chartOnLoad.bind(this) }} displayOption={{ view: 'Both', primary: 'Chart' }} toolbar={toolbarOptions} showToolbar={true}>
@@ -301,7 +301,7 @@ function PivotChartFieldList () {
                         height={'100%'}
                         id='defaultSidebar'
                         className='default-sidebar'
-                        target=".maincontent"
+                        target=".pivot-maincontent"
                         type="Auto"
                         isOpen={true}
                         position="Right"

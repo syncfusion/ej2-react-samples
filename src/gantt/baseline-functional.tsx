@@ -230,7 +230,9 @@ const Baseline = () => {
         <p>To enable baselines in the React Gantt Chart, set the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#renderbaseline">renderBaseline</a> property to <code>true</code> and define the planned schedule using the <code>baselineStartDate</code> field. You can either specify the <code>baselineEndDate</code> directly or use the <code>baselineDuration</code> property to calculate it automatically. Setting <code>baselineDuration</code> to zero is particularly useful for milestones, as it clearly marks a planned point in time. The appearance of baselines can be customized using the <code><a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#baselinecolor">baselineColor</a></code> property to visually distinguish planned timelines from actual task progress.</p>
         <p>Gantt component features are segregated into individual feature-wise modules. To use Selection feature, we need to inject the <code>Selection</code> into the <code>Inject Services</code> section.</p>
         <br/>
-        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/baseline">documentation section</a>.</p>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/baseline">baseline</a> documentation section.</p>
+        <br/>
+        <p>Looking for the full React Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/react-components/react-gantt-chart">React Gantt Chart</a> page.</p>
       </div>
     </div>
   )

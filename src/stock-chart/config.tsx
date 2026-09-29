@@ -28,5 +28,7 @@ export const StockChartSampleOrder: Object = [
     { 'path': 'stock-chart/datetime-category', 'component': 'DatetimeCategoryAxis', 'name': 'DateTime Category Axis', 'order': '01', 'category': 'Stock Chart',
     'description': 'This demo for Essential JS2 Stock Chart control shows the default rendering of Stock with DateTime Category Axis.' },
     { 'path': 'stock-chart/stock-events', 'component': 'StockEvents', 'name': 'Stock Events', 'order': '01', 'category': 'Stock Chart',
-    'description': 'This demo for Essential JS2 Stock Chart control shows the default rendering of Stock with stock events.' }
+    'description': 'This demo for Essential JS2 Stock Chart control shows the default rendering of Stock with stock events.' },
+    { 'path': 'stock-chart/live-candlestick-chart', 'component': 'LiveCandlestickChart', 'name': 'Live Candlestick Chart', 'order': '01', 'category': 'Stock Chart', 'type': 'new',
+    'description': 'This demo for Essential JS2 Stock Chart control shows a real-time candlestick chart driven by continuously updated local data using series.setData() and series.addPoint().' }
 ]

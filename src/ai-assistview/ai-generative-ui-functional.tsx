@@ -21,11 +21,13 @@ const GenerativeUI = () => {
   const currentGridConfig = useRef<any>({});
 
   const assistInstance = useRef<AIAssistViewComponent>(null);
+  const abortControllerRef = useRef<AbortController | undefined>();
 
   const toolbarItemClicked = (args: ToolbarItemClickedEventArgs) => {
     if (args.item.iconCss === 'e-icons e-refresh') {
       assistInstance.current.prompts = [];
       assistInstance.current.promptSuggestions = generativeSuggestions;
+      stopResponse();
     }
   };
 
@@ -196,13 +198,14 @@ const GenerativeUI = () => {
   };
 
   const promptRequest = async (args: PromptRequestEventArgs): Promise<void> => {
+    abortControllerRef.current = new AbortController();
     try {
       const aiArgs = {
         prompt: args.prompt,
         systemPrompt: toolSystemPrompt
       };
     
-      const reply = await getAIResponse(aiArgs);
+      const reply = await getAIResponse(aiArgs, abortControllerRef.current);
     
       const jsonText =
         reply.response ||
@@ -223,6 +226,12 @@ const GenerativeUI = () => {
     }
   };
 
+  const stopResponse = () => {
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
+  }
+
   return (
     <div className='control-pane'>
       <div className="control-section">
@@ -236,6 +245,7 @@ const GenerativeUI = () => {
             showClearButton={true}
             toolbarSettings={assistViewToolbarSettings}
             promptRequest={promptRequest}
+            stopRespondingClick={stopResponse}
             created={onCreated}
             ref={assistInstance}
           />

@@ -38,6 +38,10 @@ export const TreeViewSampleOrder:Object = [
             { 'displayName': 'template.css', 'path': 'src/treeview/template.css' },
             { 'displayName': 'template-data.json', 'path': 'src/treeview/dataSource/template-data.json' }
         ]},
+    { 'path': 'treeview/virtualization', 'component':'Virtualization', 'name': 'Virtualization', 'type': 'new', 'order': '01', 'category': 'TreeView', 'description': 'This demo demonstrates the virtualization support in the TreeView component, enabling efficient rendering and smooth scrolling for large hierarchical data sets.', 'api':'{"TreeViewComponent":["fields","enableVirtualization","height"] }' ,'sourceFiles': [
+            { 'displayName': 'virtualization.tsx', 'path': 'src/treeview/virtualization.tsx' },
+            { 'displayName': 'virtualization.jsx', 'path': 'src/treeview/virtualization.jsx' }
+        ]},
     { 'path': 'treeview/local-data', 'component':'LocalData', 'name': 'Local Data', 'order': '02', 'category': 'Data Binding', 'description': 'This demo demonstrates the binding of local data to the tree view. The local data structure can be hierarchical data or list data.', 'api':'{"TreeViewComponent":["fields"] }','sourceFiles': [
             { 'displayName': 'local-data.tsx', 'path': 'src/treeview/local-data.tsx' },
             { 'displayName': 'local-data.jsx', 'path': 'src/treeview/local-data.jsx' },

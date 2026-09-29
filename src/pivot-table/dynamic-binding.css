@@ -77,14 +77,6 @@
 }
 
 
-/* e-icons Font Definition (replace [FULL_BASE64_HERE] with Syncfusion's complete base64) */
-@font-face {
-  font-family: 'e-icons';
-  src: url(data:application/x-font-ttf;charset=UTF-8;base64,[FULL_BASE64_HERE]);
-  font-weight: normal;
-  font-style: normal;
-}
-
 /* OLAP Dialog Specific */
 .olap-row {
   display: grid;

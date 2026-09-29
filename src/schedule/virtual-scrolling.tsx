@@ -67,8 +67,8 @@ export class VirtualScrolling extends SampleBase<{}, {}> {
                                 </ResourceDirective>
                             </ResourcesDirective>
                             < ViewsDirective >
-                                <ViewDirective option='TimelineMonth' isSelected={true} eventTemplate={this.timelineEventTemplate.bind(this)} allowVirtualScrolling={true} />
-                                <ViewDirective option='Month' eventTemplate={this.timelineEventTemplate.bind(this)} allowVirtualScrolling={true} />
+                                <ViewDirective option='TimelineMonth' isSelected={true} overscanCount={20} eventTemplate={this.timelineEventTemplate.bind(this)} allowVirtualScrolling={true} />
+                                <ViewDirective option='Month' overscanCount={20} eventTemplate={this.timelineEventTemplate.bind(this)} allowVirtualScrolling={true} />
                             </ViewsDirective>
                             < Inject services={[TimelineMonth, Month, Resize, DragAndDrop]} />
                         </ScheduleComponent>
@@ -86,7 +86,7 @@ export class VirtualScrolling extends SampleBase<{}, {}> {
                         Scheduler, set the <code>allowVirtualScrolling</code> property to <code>true</code> within the
                         view-specific settings.</p>
                     <p>
-                        Looking for the full React Scheduler component overview, features, pricing, and documentation? Visit our <a target="_blank" href="https://www.syncfusion.com/react-components/react-scheduler">React Scheduler</a> component page.
+                        Looking for the full React Scheduler component overview, features, pricing, and documentation? Visit our <a target="_blank" href="https://www.syncfusion.com/scheduler-sdk/react-scheduler">React Scheduler</a> component page.
                     </p>
                 </div>
             </div>

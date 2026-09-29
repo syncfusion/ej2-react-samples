@@ -70,29 +70,26 @@ export class ResourceView extends SampleBase<{}, {}> {
           </GanttComponent>
         </div>
         <div id="action-description">
-          <p>This sample explains the Resource break down view in the Gantt Chart that is
-            how to visualize the list of tasks assigned to each resource in hierarchy manner and switch the resources as per users need by task
-            editing mode.If the no resources are mapped in a task, then it will come under “unassigned Tasks” category.
-            This feature can be enabled by setting the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#viewtype">viewType</a> property to “ResourceView”.</p>
-          <p>When a resource is assigned with two or more tasks which are scheduled on the same date, it is termed as over allocation for a resource.
-            The number of over allocation dates ranges are highlighted as with square bracket. The following sample demonstrates the over allocation for a resource.
-            In this sample, over allocation can be hidden by using the CSS ‘visibility’ property on custom toolbar item action.
-          </p>
+          <p>This sample demonstrates the Resource View in the Gantt Chart, where tasks are organized under their assigned resources. Tasks without resource assignments are displayed under the <code>Unassigned Tasks</code> category. The sample also highlights overallocation ranges and provides an option to show or hide overallocation indicators.</p>
         </div>
         <div id="description">
-          <p>
-            In this example, you can see the resource break down from a bulk of tasks done by mapping the predefined resource ID-s to each task and resource information can be shown by using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#labelsettings">labelSetting</a> property.
-            Using the toolbar action, you can perform CRUD operation for resource allocation based on their availability and task complexity.</p>
-          <p>The resources and tasks assigned to those resources can be grouped into categories. Resources can be mapped using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#resourcefields">resourceFields:</a>.</p>
-          <p><code>ID</code>: To map resource ID.</p>
-          <p><code>Name</code>: To map resource name.</p>
-          <p><code>Unit</code>: To map resource unit.</p>
-          <p><code>Group</code>: To map resource group.</p>
+          <p>The Resource View displays tasks grouped by their assigned resources, providing a resource-centric perspective of the project schedule. This view can be enabled by setting the <code>viewType</code> property to <code>ResourceView</code></p>
+          <p>In this example, resources are mapped to tasks using the <code><a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#resourcefields">resourceFields</a></code> and <code>taskFields.resourceInfo</code> properties. Tasks without resource assignments are automatically grouped under the <strong>Unassigned Tasks</strong> category.
+            Resource overallocation occurs when a resource is scheduled to work on multiple tasks during overlapping time periods. Overallocation ranges are highlighted in the timeline to help identify resource conflicts. The custom toolbar button can be used to show or hide overallocation indicators.</p>
+          <p>Resources can be grouped using the following resource field mappings:</p>
+          <ul>
+            <li><code>ID</code>: To map resource ID.</li>
+            <li><code>Name</code>: To map resource name.</li>
+            <li><code>Unit</code>: To map resource unit.</li>
+            <li><code>Group</code>: To map resource group.</li>
+          </ul>
           <p>
             The Gantt control features are segregated into individual feature-wise modules. To use a selection, markers, toolbar, edit, and resize features, we need to inject the <code>Selection</code>, <code>DayMarkers</code>, <code>Toolbar</code>, <code>Edit</code> and <code>Resize</code> into the <code>Inject Services</code> section.
           </p>
           <br/>
-          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/resource-view">documentation section</a>.</p>
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/resource-view">resource view</a> documentation section.</p>
+          <br/>
+          <p>Looking for the full React Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/react-components/react-gantt-chart">React Gantt Chart</a> page.</p>
         </div>
       </div>
     )

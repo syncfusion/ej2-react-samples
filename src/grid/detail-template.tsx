@@ -12,6 +12,7 @@ import {
 import {KanbanComponent, ColumnsDirective as KanbanColumns, ColumnDirective as KanbanColumn} from '@syncfusion/ej2-react-kanban';
 
 export class DetailTemplate extends SampleBase<{}, {}> {
+    public grid: GridComponent;
     public taskData:any;
     public salesData:any;
     public emailTemplate = (props:any) => {
@@ -80,7 +81,7 @@ export class DetailTemplate extends SampleBase<{}, {}> {
   public taskTemplate =()=> {
     return (
       <div style={{ paddingTop: '20px', paddingBottom: '20px' }}>
-        <KanbanComponent id="kanban" cssClass="kanban-swimlane-template" keyField="Status" dataSource={this.taskData} cardSettings={{ template: this.cardTemplate.bind(this), headerField: 'Id' }}>
+        <KanbanComponent id="kanban" cssClass="kanban-swimlane-template" keyField="Status" dataSource={this.taskData} enableRtl={this.grid.enableRtl} cardSettings={{ template: this.cardTemplate.bind(this), headerField: 'Id' }}>
           <KanbanColumns>
             <KanbanColumn headerText="Open" keyField="Open" />
             <KanbanColumn headerText="In Progress" keyField="InProgress" />
@@ -95,7 +96,7 @@ export class DetailTemplate extends SampleBase<{}, {}> {
     public chartTemplate = () => {
       return (
         <div style={{ paddingTop: "20px", paddingBottom: "20px" }}>
-          <ChartComponent height='302px' tooltip={{ enable: true }} primaryXAxis={{ valueType: 'Category', title: 'Status' }} title="Burndown Chart">
+          <ChartComponent height='302px' enableRtl={this.grid.enableRtl} tooltip={{ enable: true }} primaryXAxis={{ valueType: 'Category', title: 'Status' }} title="Burndown Chart">
             <Inject services={[Tooltip, LineSeries, Category, Legend]} />
             <SeriesCollectionDirective>
               <SeriesDirective dataSource={this.salesData} xName="taskid" yName="estimatedHours" name="Estimated Hours"marker={{ visible: true, width: 10, height: 10 }}/>
@@ -109,7 +110,7 @@ export class DetailTemplate extends SampleBase<{}, {}> {
         const headertext = [{ text: "Taskboard" }, { text: "Burndown Chart" }];
         return (<div>
         <p style={{ textAlign: "center", paddingTop: "3px", fontSize: "18px" }}><b>Sprint</b></p>
-          <TabComponent animation={{
+          <TabComponent enableRtl={this.grid.enableRtl} animation={{
             previous: { effect: 'None', duration: 0, easing: '' },
             next: { effect: 'None', duration: 0, easing: '' }
           }}>
@@ -130,7 +131,7 @@ export class DetailTemplate extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <GridComponent dataSource={employeeDetail} height='600' detailDataBound={this.detailDataBound.bind(this)} detailTemplate={this.detailTemplate.bind(this)} width='auto' allowSorting={true} allowFiltering={true} filterSettings={{type: 'CheckBox'}}>
+                    <GridComponent dataSource={employeeDetail} ref={grid => this.grid = grid} height='600' detailDataBound={this.detailDataBound.bind(this)} detailTemplate={this.detailTemplate.bind(this)} width='auto' allowSorting={true} allowFiltering={true} filterSettings={{type: 'CheckBox'}}>
                         <ColumnsDirective>
                         <ColumnDirective headerText='Image' width='180' template={this.employeeTemplate} textAlign='Center' />
                         <ColumnDirective field="EmployeeID" headerText='ID' isPrimaryKey={true} width={70}/>

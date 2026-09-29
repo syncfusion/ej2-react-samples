@@ -133,7 +133,7 @@ const SAMPLE_CSS = `#diagramEventsControlSection .sb-mobile-palette {
   }
 
  #diagramEventsPropertySection .heading {
-    color: #807f7f;
+    font-weight: bold;
     font-size: 15px;
     height: 50px;
     width: 100%;

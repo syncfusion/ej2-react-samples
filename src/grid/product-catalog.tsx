@@ -198,7 +198,7 @@ public headerTemplate = (props) => {
         <div className="control-section">
           <GridComponent
             dataSource={productDetail}
-            height="400px"
+            height="520px"
             allowSorting={true}
             allowFiltering={true}
             filterSettings={this.filterSettings}

@@ -131,12 +131,15 @@ const ClaudeClone = () => {
     }
 
     abortControllerRef.current = new AbortController();
-    const foundPrompt = prompts.find((p) => p.prompt === args.prompt);
-    const response = foundPrompt
-      ? foundPrompt.response
-      : await getAIResponse(args as any, abortControllerRef.current);
+    const response = await getAIResponse(args as any, abortControllerRef.current);
     if (assistInstance.current) assistInstance.current.addPromptResponse(response as string);
   };
+
+  const stopResponse = () => {
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
+  }
 
   return (
     <div className='control-pane'>
@@ -145,6 +148,7 @@ const ClaudeClone = () => {
           <AIAssistViewComponent
             id="claude_aiassistview"
             promptRequest={promptRequest}
+            stopRespondingClick={stopResponse}
             showHeader={false}
             promptPlaceholder="How can i help you today?"
             enableAttachments={true}

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { GanttComponent, EditDialogFieldsDirective, DayMarkers, EditDialogFieldDirective, Inject, Edit, Selection, Toolbar, ContextMenuClickEventArgs, IGanttData, ContextMenuOpenEventArgs, Resize, Sort, ContextMenu, ColumnsDirective, ColumnDirective, TaskFieldsModel, ResourceFieldsModel, EditSettingsModel, SplitterSettingsModel, GridLine, ToolbarItem, TimelineSettingsModel, LabelSettingsModel } from '@syncfusion/ej2-react-gantt';
-import { editingData, editingResources } from './data';
+import { contextMenuData, editingResources } from './data';
 import { ContextMenuItemModel } from '@syncfusion/ej2-react-grids';
 import { SampleBase } from '../common/sample-base';
 
@@ -26,10 +26,11 @@ export class ContextMenuItem extends SampleBase<{}, {}> {
     allowEditing: true,
     allowDeleting: true,
     allowTaskbarEditing: true,
-    showDeleteConfirmDialog: true
+    showDeleteConfirmDialog: true,
+    allowTaskbarDraw: true
   };
   public splitterSettings: SplitterSettingsModel = {
-    position: "35%"
+    columnIndex: 3
   };
   private ganttInstance: GanttComponent;
   public projectStartDate: Date = new Date('03/25/2025');
@@ -82,16 +83,17 @@ export class ContextMenuItem extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <GanttComponent id='ContextMenu' ref={gantt => this.ganttInstance = gantt} dataSource={editingData} dateFormat={'MMM dd, y'} enableContextMenu={true}
+          <GanttComponent id='ContextMenu' ref={gantt => this.ganttInstance = gantt} dataSource={contextMenuData} dateFormat={'MMM dd, y'} enableContextMenu={true}
             treeColumnIndex={1} allowSelection={true} showColumnMenu={false} highlightWeekends={true} allowSorting={true} allowResizing={true}
             contextMenuItems={this.contextMenuItems} contextMenuOpen={this.contextMenuOpen.bind(this)} contextMenuClick={this.contextMenuClick.bind(this)}
             allowUnscheduledTasks={true} projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}
             taskFields={this.taskFields} timelineSettings={this.timelineSettings} labelSettings={this.labelSettings} splitterSettings={this.splitterSettings}
             height='650px' taskbarHeight={25} rowHeight={46} editSettings={this.editSettings} gridLines={this.gridLines} toolbar={this.toolbar} resourceFields={this.resourceFields} resources={editingResources}>
             <ColumnsDirective>
-              <ColumnDirective field='TaskID' width='80' ></ColumnDirective>
+              <ColumnDirective field='TaskID' width='80' visible={false} ></ColumnDirective>
               <ColumnDirective field='TaskName' headerText='Job Name' width='250' clipMode='EllipsisWithTooltip'></ColumnDirective>
               <ColumnDirective field='StartDate'></ColumnDirective>
+              <ColumnDirective field='EndDate'></ColumnDirective>
               <ColumnDirective field='Duration'></ColumnDirective>
               <ColumnDirective field='Progress'></ColumnDirective>
               <ColumnDirective field='Predecessor'></ColumnDirective>
@@ -115,9 +117,10 @@ export class ContextMenuItem extends SampleBase<{}, {}> {
         </div>
         <div id="description">
           <p>
-            Gantt has an option to show the context menu while performing right click on it. You can configure the default and custom menu items in the context menu using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/index-default#contextmenuitems">contextMenuItems</a> property.
-            Each menu item will be displayed contextually based on its target. In this demo we have rendered following default and custom menu items
+            The Gantt Chart provides a context menu that offers quick access to commonly used operations. Context menu support can be enabled by setting the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/index-default#contextmenuitems">contextMenuItems</a> property to <code>true</code>.
           </p>
+          <p>Built-in context menu items are available for operations such as task editing, row addition and deletion, sorting, indentation, dependency management, and column auto-fitting. The displayed menu items are automatically adjusted based on the selected target element.</p>
+          <p>When <code>allowUnscheduledTasks</code> is enabled, tasks without StartDate, EndDate, or Duration are rendered without a taskbar. Enabling the <code>allowTaskbarDraw</code> property allows these tasks to be scheduled by drawing a taskbar directly in the chart area, which automatically updates the task's scheduling values</p>
           <p>Default items:</p>
           <ul>
             <li><code>AutoFitAll</code> - Auto fit all columns.</li>
@@ -141,15 +144,16 @@ export class ContextMenuItem extends SampleBase<{}, {}> {
               </ul>
             </li>
           </ul>
-          <p>Custom items:</p>
-          <p>In this demo, custom menu items have been enabled in the context menu to expand and collapse parent rows:</p>
+          <p>This sample also demonstrates how to add custom context menu items using the <code>contextMenuItems</code> property.</p>
           <ul>
             <li><code>Expand the Row</code> - Used to expand the parent row when it is in a collapsed state.</li>
             <li><code>Collapse the Row</code> - Used to collapse the parent row when it is in an expanded state.</li>
           </ul>
           <p>Gantt component features are segregated into individual feature-wise modules. To use context menu, edit, toolbar, markers, sort, resize, and selection  features, we need to inject <code>ContextMenu</code>, <code>Edit</code>, <code>Toolbar</code>, <code>DayMarkers</code>, <code>Sort</code>, <code>Resize</code>, and <code>Selection</code>  into the <code>Inject Services</code> section.</p>
           <br/>
-          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/context-menu">documentation section</a>.</p>
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/context-menu">context menu</a>  documentation section.</p>
+          <br/>
+          <p>Looking for the full React Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/react-components/react-gantt-chart">React Gantt Chart</a> page.</p>
         </div>
       </div>
     )

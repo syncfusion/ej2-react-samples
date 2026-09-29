@@ -320,7 +320,7 @@ const Resize = () => {
                                                 </RibbonCollectionDirective>
                                             </RibbonCollectionsDirective>
                                         </RibbonGroupDirective>
-                                        <RibbonGroupDirective header="Show" isCollapsible={true}>
+                                        <RibbonGroupDirective header="Show" isCollapsible={false}>
                                             <RibbonCollectionsDirective>
                                                 <RibbonCollectionDirective>
                                                     <RibbonItemsDirective>

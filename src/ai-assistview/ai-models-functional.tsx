@@ -36,7 +36,6 @@ const AIAssistModels = () => {
   const [showBackdrop, setShowBackdrop] = useState(false);
   const [closeOnDocumentClick, setCloseOnDocumentClick] = useState(false);
 
-  const [stopStreaming, setStopStreaming] = useState(false);
   const [showHeader] = useState(false);
   const [suggestions] = useState<string[]>([
     'What are the best tools for organizing tasks?',
@@ -267,26 +266,6 @@ const AIAssistModels = () => {
     });
   };
 
-  // Flags streaming to stop when the user clicks the stop button.
-  const stopRespondingClick = () => {
-    setStopStreaming(true);
-  };
-
-  // Streams AI response text character-by-character to emulate live typing.
-  const streamAIResponse = async (fullResponse: string) => {
-    let streamed = '';
-    if (fullResponse && aiAssistRef.current) {
-      let i = 0;
-      while (i < fullResponse.length && !stopStreaming) {
-        streamed += fullResponse[i++];
-        aiAssistRef.current.addPromptResponse(marked.parse(streamed), false);
-        aiAssistRef.current.scrollToBottom();
-        await new Promise((res) => setTimeout(res, 10));
-      }
-    }
-    return streamed;
-  };
-
   // Routes prompt handling to the appropriate model service while managing state.
   const promptRequest = async (args: { prompt: string }) => {
     if (!args.prompt || !args.prompt.trim()) return;
@@ -305,6 +284,12 @@ const AIAssistModels = () => {
     aiAssistRef.current?.addPromptResponse(response as string);
     checkAndUpdateLocalStorage();
   };
+
+  const stopResponse = () => {
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
+  }
 
   // Renders the Assist View banner that greets the user.
   const bannerTemplate = () => (
@@ -346,9 +331,9 @@ const AIAssistModels = () => {
             bannerTemplate={bannerTemplate} enableAttachments={true}  attachmentSettings= {attachmentSettings}
             promptSuggestions={suggestions}
             promptRequest={promptRequest}
+            stopRespondingClick={stopResponse}
             showHeader={showHeader}
             enableStreaming={true}
-            stopRespondingClick={stopRespondingClick}
             width="auto"
             footerToolbarSettings={footerToolbarSettings}
           >

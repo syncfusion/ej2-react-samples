@@ -253,7 +253,7 @@ function HierarchicalModel() {
               style={{
                 backgroundImage:
                   "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/common-orientation/bottomtotop.png')",
-                marginRight: "3px"
+                margin: "0px 3px"
               }}
             />
             <div
@@ -262,7 +262,7 @@ function HierarchicalModel() {
               style={{
                 backgroundImage:
                   "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/common-orientation/lefttoright.png')",
-                margin: "0px 3px"
+                marginLeft: "3px"
               }}
             />
           </div>
@@ -272,8 +272,7 @@ function HierarchicalModel() {
               id="righttoleft"
               style={{
                 backgroundImage:
-                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/common-orientation/righttoleft.png')",
-                margin: "0px 3px"
+                  "url('https://ej2.syncfusion.com/react/demos/src/diagram/Images/common-orientation/righttoleft.png')"
               }}
             />
           </div>

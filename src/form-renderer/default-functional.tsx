@@ -100,6 +100,10 @@ const Default = () => {
                     Each form can be filled out interactively and submitted for data collection, demonstrating how the component
                     streamlines form creation, customization, and data capture in real-world scenarios.
                 </p>
+                <p>
+                    Design custom forms visually and export their schema in seconds with our interactive <a href="https://ej2.syncfusion.com/react/demos/#/tailwind3/form-builder/default">Form Builder</a> — a 
+                    powerful no-code tool for building responsive forms through an intuitive drag-and-drop interface.
+                </p>
             </div>
         </main ></>
     )

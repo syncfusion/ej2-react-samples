@@ -26,7 +26,7 @@
     <meta charset="UTF-8" />
     <meta name="description" content="Explore and learn Syncfusion React UI components library using large collection of feature-wise examples for each components.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="referrer" content="never"/>
+    <meta name="referrer" content="strict-origin-when-cross-origin"/>
     <title>Demos, Examples of Syncfusion React UI Components</title>
     <script src="https://cdn.syncfusion.com/scripts/common/pagevisit/subdomain-pagevisit.min.js" type ="text/javascript"></script>
     <link href="src/common/lib/content/roboto.css" rel="stylesheet">
@@ -95,7 +95,7 @@
         font-size: 12px;
         line-height: 16px;
         display: inline;">
-        20+ Modern Pure React UI components for 2X faster development
+        35+ Modern Pure React UI components for 2X faster development
         <a
         href="https://react.syncfusion.com/react-ui/overview/introduction"
         class="promo-link"
@@ -171,6 +171,16 @@
                 <div class='sb-header-item sb-table-cell sb-lang-toggler-wrapper'>
                     <span id='sb-switcher' class='sb-lang-toggler sb-icons sb-icon-Dropdown' role="presentation"></span>
                 </div>
+                <div class='sb-header-item sb-table-cell sb-sdk-wrapper'>
+                    <div id="header-sdk-switcher" role="button" tabindex="0" class="sdk-wrapper" title="SDK Samples selection">
+                        <div id="sb-sdk-text" class="sb-sdk-text">
+                            <span class="sb-header-text-left">CHOOSE SDK</span>
+                        </div>
+                        <div class="sb-sdk-switcher-wrapper">
+                            <span id="sb-sdk-switcher" class="sb-sdk-switch sb-icons sb-icon-Dropdown"></span>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class='sb-header-right sb-right sb-table'>
                 <div class='sb-header-item sb-table-cell sb-nextjs-wrapper sb-hide'>
@@ -209,16 +219,6 @@
                             </defs>
                         </svg>
                     </a>
-                </div>
-                <div class="sb-header-item sb-table-cell sb-products-wrapper">
-                    <div id="header-products-switcher" role="button" tabindex="0" class="products-wrapper" title="Other Products selection">
-                        <div id="sb-products-text" class="sb-products-text">
-                            <span class="sb-header-text-left">OTHER PRODUCTS</span>
-                        </div>
-                        <div class="sb-products-switcher-wrapper">
-                            <span id="sb-products-switcher" class="sb-products-switch sb-icons sb-icon-Dropdown"></span>
-                        </div>
-                    </div>
                 </div>
                 <div class="sb-header-item sb-table-cell">
                     <div id="header-theme-switcher" role="button" tabindex="0" class="theme-wrapper" title="Theme selection" class="theme-wrapper">
@@ -326,16 +326,51 @@
                 </ul>
                 <div class="sb-theme-studio"><a target="_blank" href="https://ej2.syncfusion.com/themestudio/?theme=fluent2" aria-label="Go to Theme Studio">Go to Theme Studio</a></div>
             </div>
-            <div id='products-popup' class='sb-products-popup'>
-                <ul id="productslist" class="options">
-                    <li class="e-list">
-                        <span class="switch-text">PDF Viewer</span>
+            <div id='sdk-popup' class='sb-sdk-popup'>
+                <ul id="sdklist" class="options">
+                    <li class="e-list sdk-all active" data-sdk="all">
+                        <span class='sb-icons sb-sdk-select sb-icon-icon-selection'></span>
+                        <span class="switch-text">All Samples</span>
                     </li>
-                    <li class="e-list">
-                        <span class="switch-text">Spreadsheet Editor</span>
+                    <li class="e-list" data-sdk="grid">
+                        <span class='sb-icons sb-sdk-select sb-icon-icon-selection'></span>
+                        <span class="switch-text">Grid SDK</span>
                     </li>
-                    <li class="e-list">
-                        <span class="switch-text">Docx Editor</span>
+                    <li class="e-list" data-sdk="rich-text-editor">
+                        <span class='sb-icons sb-sdk-select sb-icon-icon-selection'></span>
+                        <span class="switch-text">Rich Text Editor SDK</span>
+                    </li>
+                    <li class="e-list" data-sdk="schedule">
+                        <span class='sb-icons sb-sdk-select sb-icon-icon-selection'></span>
+                        <span class="switch-text">Scheduler SDK</span>
+                    </li>
+                    <li class="e-list" data-sdk="chart">
+                        <span class='sb-icons sb-sdk-select sb-icon-icon-selection'></span>
+                        <span class="switch-text">Chart SDK</span>
+                    </li>
+                    <li class="e-list" data-sdk="gantt">
+                        <span class='sb-icons sb-sdk-select sb-icon-icon-selection'></span>
+                        <span class="switch-text">Gantt SDK</span>
+                    </li>
+                    <li class="e-list" data-sdk="file-manager">
+                        <span class='sb-icons sb-sdk-select sb-icon-icon-selection'></span>
+                        <span class="switch-text">File Manager SDK</span>
+                    </li>
+                    <li class="e-list" data-sdk="diagram">
+                        <span class='sb-icons sb-sdk-select sb-icon-icon-selection'></span>
+                        <span class="switch-text">Diagram SDK</span>
+                    </li>
+                    <li class="e-list" data-sdk="pdf">
+                        <span class="sb-icons sb-sdk-select sb-icon-icon-selection"></span>
+                        <span class="switch-text">PDF Viewer SDK</span>
+                    </li>
+                    <li class="e-list" data-sdk="spreadsheet">
+                        <span class="sb-icons sb-sdk-select sb-icon-icon-selection"></span>
+                        <span class="switch-text">Spreadsheet Editor SDK</span>
+                    </li>
+                    <li class="e-list" data-sdk="docx">
+                        <span class="sb-icons sb-sdk-select sb-icon-icon-selection"></span>
+                        <span class="switch-text">Docx Editor SDK</span>
                     </li>
                 </ul>
             </div>
@@ -345,16 +380,24 @@
                     </span>
                 </div>
                 <div class='sb-setting-content'>
-                    <div class='sb-setting-item sb-setting-products-section'>
+                    <div class='sb-setting-item sb-setting-sdk-section'>
                         <div class='setting-label'>
                             <div class='sb-icons sb-setting-icons sb-icon-products'></div>
-                            <div class='sb-setting-text'>Other Products</div>
+                            <div class='sb-setting-text'>SDK Samples</div>
                         </div>
                         <div class='setting-content'>
-                            <select id='sb-setting-products' class='sb-setting-products-select'>
-                                <option value="pdf">PDF Viewer</option>
-                                <option value="spreadsheet">Spreadsheet Editor</option>
-                                <option value="docx">Docx Editor</option>
+                            <select id='sb-setting-sdk'>
+                                <option value="all">All Samples</option>
+                                <option value="grid">Grid SDK</option>
+                                <option value="rich-text-editor">Rich Text Editor SDK</option>
+                                <option value="schedule">Scheduler SDK</option>
+                                <option value="chart">Chart SDK</option>
+                                <option value="gantt">Gantt SDK</option>
+                                <option value="file-manager">File Manager SDK</option>
+                                <option value="diagram">Diagram SDK</option>
+                                <option value="pdf">PDF Viewer SDK</option>
+                                <option value="spreadsheet">Spreadsheet Editor SDK</option>
+                                <option value="docx">Docx Editor SDK</option>
                             </select>
                         </div>
                     </div>

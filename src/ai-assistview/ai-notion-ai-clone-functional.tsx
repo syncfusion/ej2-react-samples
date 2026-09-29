@@ -148,6 +148,12 @@ const NotionAIClone = () => {
     }
   }, [createNewSession]);
 
+  const stopResponse = () => {
+    if (abortController.current) {
+      abortController.current.abort();
+    }
+  }
+
   const moveAssistview = useCallback((mode: string): void => {
     if (!mode || currentMode.current === mode) return;
     lastActiveMode.current = mode;
@@ -481,6 +487,7 @@ const NotionAIClone = () => {
               promptSuggestions={notionSuggestions}
               promptSuggestionItemTemplate={suggestionItemContent}
               promptRequest={onPromptRequest}
+              stopRespondingClick={stopResponse}
               bannerTemplate={bannerTemplate}
               toolbarSettings={assistViewToolbarSettings}
               footerToolbarSettings={footerToolbarSettings}

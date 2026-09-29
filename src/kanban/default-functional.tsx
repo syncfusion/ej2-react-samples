@@ -46,17 +46,40 @@ const Default = () => {
             </div>
             <div id="action-description">
                 <p>
-                    This example demonstrates the default functionalities of the Kanban
-                    component. You can drag and drop the cards across multiple states of
-                    the Kanban board by default.
+                    This sample demonstrates the basic Kanban board functionality, including data binding, column mapping, card rendering, and drag-and-drop interactions.
+                    Cards are organized into workflow stages and can be moved across columns to reflect status changes.
                 </p>
             </div>
             <div id="description">
                 <p>
-                    The sample is configured with a minimal setting that is mandatory to
-                    render Kanban layout and cards. The dataSource, columns, and
-                    cardSettings are essential fields to render the Kanban component. By
-                    default, you can drag and drop the cards across all stages of Kanban.
+                    The Kanban board is populated using a predefined data source and displays tasks across multiple workflow stages. Tasks are grouped into columns based on the field configured through the keyField property.
+                </p>
+                <p>
+                    In this example, the board is configured using the following core Kanban properties:
+                </p>
+                <ul>
+                    <li>
+                        <a href="https://ej2.syncfusion.com/react/documentation/kanban/data-binding" target="_blank">dataSource</a> - Binds the task collection to the Kanban board.
+                    </li>
+                    <li>
+                        <a href="https://ej2.syncfusion.com/react/documentation/kanban/columns" target="_blank">columns</a> - Defines the workflow stages displayed on the board.
+                    </li>
+                    <li>
+                        <a href="https://ej2.syncfusion.com/react/documentation/api/kanban/index-default#keyfield" target="_blank">keyField</a> - Maps task status values to their corresponding columns.
+                    </li>
+                    <li>
+                        <a href="https://ej2.syncfusion.com/react/documentation/api/kanban/index-default#cardsettings" target="_blank">cardSettings</a> - Configures the information displayed within each card.
+                    </li>  
+                </ul>
+                <p>
+                    Cards can be dragged and dropped between columns to update workflow status. The board also supports visual customization through card templates, tags, priorities, and resource indicators.
+                </p>
+                <p>
+                    More information on the Essential<sup>®</sup> JS2 Kanban board can be found in this <a href="https://ej2.syncfusion.com/react/documentation/kanban/getting-started/" target="_blank">documentation section</a>.
+                </p>
+                <p>
+	        	    Looking for the full React Kanban component overview, features, pricing and documentation?
+                    Visit the <a href="https://www.syncfusion.com/gantt-sdk/react-kanban-board" target="_blank">React Kanban</a> page.
                 </p>
             </div>
         </div>

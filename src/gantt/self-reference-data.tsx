@@ -43,23 +43,24 @@ export class SelfReferenceData extends SampleBase<{}, {}> {
           </GanttComponent>
         </div>
         <div id="action-description">
-          <p>This sample demonstrates the way of binding self-referential flat data to the Gantt component.</p>
+          <p>This sample demonstrates binding self-referential data to the Gantt Chart using the <code>parentID</code> field to define parent-child task relationships.</p>
         </div>
 
         <div id="description">
-          <p>
+        <p>
         This sample demonstrates how to bind self-referential flat data to the Gantt component. 
-        Self-referential data uses a <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/taskFieldsModel/#parentid">parentID</a> 
-         field to establish hierarchical relationships between tasks, allowing flat data structures to be displayed as hierarchical task trees.
+        Self-referential data uses a <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/taskFieldsModel/#parentid">parentID</a> field to establish hierarchical relationships between tasks, allowing flat data structures to be displayed as hierarchical task trees.
         </p>
         <p>
-        In this example, an array of JavaScript objects with <code>ParentID</code> relationships is assigned as the data source to the Gantt. 
-        The <code>dataSource</code> property accepts array of objects or a <code>DataManager</code> instance for both local and remote data scenarios.
+        In this example, a flat collection of task records is converted into a hierarchical structure by mapping the <code>ParentID</code> field. This enables the Gantt Chart to display parent and child tasks without requiring a nested data source. 
+        The Gantt Chart supports binding data from local collections or remote services through the <code>DataManager</code> property. Here, a local array of JavaScript objects is used as the data source.
         </p>
         <p>Gantt component features are segregated into individual feature-wise modules. To use a selection and marker features, we need to inject the <code>Selection</code> and <code>DayMarkers</code> into the <code>Inject Services</code> section.</p>
         <br />
-        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/data-binding#self-referential-data-binding-flat-data">documentation section</a>.</p>
-        </div>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/data-binding#self-referential-data-binding-flat-data">data binding</a> documentation section.</p>
+        <br/>
+        <p>Looking for the full React Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/react-components/react-gantt-chart">React Gantt Chart</a> page.</p>
+      </div>
       </div>
     )
   }

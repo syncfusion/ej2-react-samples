@@ -81,6 +81,7 @@ const Dialog = () => {
     const toolbarItemClicked = (args) => {
         if (args.item.iconCss === 'e-icons e-close') {
             dialogInstance.current.hide();
+            stopResponse();
         }
         if (args.item.iconCss === 'e-icons e-assist-copy') {
             var targetElem: any = document.querySelector('.right-content .content');
@@ -108,10 +109,15 @@ const Dialog = () => {
     const promptRequest = async (args: PromptRequestEventArgs) => {
         abortControllerRef.current = new AbortController();
         const foundPrompt = prompts.find((promptObj) => promptObj.prompt === args.prompt);
-        const response = foundPrompt ? foundPrompt.response : await getAIResponse(args as any, abortControllerRef.current);
+        const response = await getAIResponse(args as any, abortControllerRef.current);
         assistInstance.current.addPromptResponse(response as string);
         assistInstance.current.promptSuggestions = (foundPrompt?.suggestions as string[]) || suggestion;
     };
+    const stopResponse = () => {
+        if (abortControllerRef.current) {
+            abortControllerRef.current.abort();
+        }
+    }
     return (
         <div className='control-pane'>
             <div className="control-section">
@@ -124,7 +130,7 @@ const Dialog = () => {
                     </SplitterComponent>
                 </div>
                 <DialogComponent id="dialogElem" width={'440px'} height={'100%'} ref={dialogInstance} visible={false} target='.dialog-aiassistview' cssClass='custom-dialog'>
-                    <AIAssistViewComponent id="aiAssistView" ref={assistInstance} cssClass='custom-aiassistview' promptSuggestions={suggestion} enableStreaming={true} promptRequest={promptRequest} bannerTemplate={bannerTemplate} toolbarSettings={assistViewToolbarSettings} responseToolbarSettings={responseToolbarsettings}></AIAssistViewComponent>
+                    <AIAssistViewComponent id="aiAssistView" ref={assistInstance} cssClass='custom-aiassistview' promptSuggestions={suggestion} enableStreaming={true} promptRequest={promptRequest} stopRespondingClick={stopResponse} bannerTemplate={bannerTemplate} toolbarSettings={assistViewToolbarSettings} responseToolbarSettings={responseToolbarsettings}></AIAssistViewComponent>
                 </DialogComponent>
                 <FabComponent id="fabElem" iconCss='e-icons e-assistview-icon' content='AI Assist' target='.dialog-aiassistview' onClick={fabClicked}></FabComponent>
             </div>

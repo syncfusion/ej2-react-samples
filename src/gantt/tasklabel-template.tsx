@@ -76,11 +76,12 @@ export class TasklabelTemplate extends SampleBase<{}, {}> {
         </div>
 
         <div id="description">
-          <p>In this demo, the label template is rendered using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/labelSettingsModel/#leftlabel">leftLabel</a>, <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/labelSettingsModel/#rightlabel">rightLabel</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/labelSettingsModel/#tasklabel">taskLabel</a> properties in <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#labelsettings">labelSettings</a>.</p>
-
+          <p>The Gantt Chart supports custom label templates through the <code>labelSettings</code> property. Labels can be displayed on the left side, right side, and inside taskbars to provide additional task information. In this example, the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/labelSettingsModel/#leftlabel">leftLabel</a> displays the task name and progress, the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/labelSettingsModel/#tasklabel">taskLabel</a> displays the current progress percentage, and the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/labelSettingsModel/#rightlabel">rightLabel</a> displays assigned resource information with custom images and names.</p>
           <p>Gantt component features are segregated into individual feature-wise modules.To use a selection and marker features, we need to inject the <code>Selection</code> and <code>DayMarkers</code> into the <code>Inject Services</code> section.</p>
           <br />
-          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/labels">documentation section</a>.</p>
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/labels#customize-labels-with-templates">label template</a> documentation section.</p>
+          <br/>
+          <p>Looking for the full React Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/react-components/react-gantt-chart">React Gantt Chart</a> page.</p>
         </div>
       </div>
     )

@@ -50,6 +50,7 @@ import { TreemapOrder } from '../treemap/config';
 import { ColorPickerSampleOrder } from '../color-picker/config';
 import { HeatmapSampleOrder } from '../heatmap-chart/config';
 import { RichTextEditorSampleOrder } from '../rich-text-editor/config';
+import { RichTextEditorUISampleOrder } from '../rich-text-editor-ui/config';
 import { MarkdownEditorSampleOrder } from '../markdown-editor/config';
 import { InPlaceEditorSampleOrder } from '../inplace-editor/config';
 import { PivotViewSampleOrder } from '../pivot-table/config';
@@ -95,12 +96,14 @@ import { AISchedulerSampleOrder } from '../ai-schedule/config';
 import { AIMapsSampleOrder } from '../ai-maps/config';
 import { AIDiagramSampleOrder } from '../ai-diagram/config';
 import { AIGanttSampleOrder } from '../ai-gantt/config';
+import { AIChartSampleOrder } from '../ai-chart/config';
 import {SpeechToTextSampleOrder } from '../speech-to-text/config';
 import { BlockEditorSampleOrder } from '../block-editor/config';
 import { InlineAIAssistSampleOrder } from '../inline-ai-assist/config';
 import { SankeyOrder } from '../sankey/config';
 import { DashboardsSampleOrder } from '../dashboards/config';
 import { FormRendererSampleOrder } from '../form-renderer/config';
+import { FormBuilderSampleOrder } from '../form-builder/config';
 
 export let samplesList: any = [
     {
@@ -111,34 +114,34 @@ export let samplesList: any = [
     },
     {
         'name': 'AI-Powered Samples', 'category': 'Smart AI Solutions', 'order': '02', 'path': 'ai-grid', 
-        'samples': (AIGridSampleOrder as any).concat(AIDiagramSampleOrder, ComboBoxAISampleOrder, AITreeGridSampleOrder, AIQuerybuilderSampleOrder, AIImageEditorSampleOrder, AIPivotTableSampleOrder, AIKanbanSampleOrder, AISchedulerSampleOrder, AIMapsSampleOrder, AIGanttSampleOrder)
+        'samples': (AIGridSampleOrder as any).concat(AIDiagramSampleOrder, ComboBoxAISampleOrder, AITreeGridSampleOrder, AIQuerybuilderSampleOrder, AIImageEditorSampleOrder, AIPivotTableSampleOrder, AIKanbanSampleOrder, AISchedulerSampleOrder, AIMapsSampleOrder, AIGanttSampleOrder, AIChartSampleOrder)
     },
     {
         'name': 'Data Grid', 'type':'update', 'category': 'Grids', 'order': '03', 'path': 'grid', 'samples': GridSampleOrder
     },
     {
-        'name': 'Pivot Table', 'category': 'Grids', 'type': 'update', 'order': '03', 'path': 'pivot-table', 'samples': PivotViewSampleOrder
+        'name': 'Pivot Table', 'category': 'Grids', 'order': '03', 'path': 'pivot-table', 'samples': PivotViewSampleOrder
     },
     {
-        'name': 'Tree Grid', 'category': 'Grids', 'order': '03', 'path': 'treegrid', 'samples': TreeGridSampleOrder, 'ftName' :'treegrid'
+        'name': 'Tree Grid', 'type':'update', 'category': 'Grids', 'order': '03', 'path': 'treegrid', 'samples': TreeGridSampleOrder, 'ftName' :'treegrid'
     },
     {
         'name': 'AI AssistView', 'category': 'Interactive Chat', 'order': '06', 'path': 'ai-assistview', 'samples': AIAssistViewSampleOrder, 'ftName': 'ai-assistview', 'type':'update'
     },
     {
-        'name': 'Block Editor', 'category': 'File Viewers & Editors', 'order': '01', 'path': 'block-editor', 'samples': BlockEditorSampleOrder, 'ftName' :'block-editor', 'type':'update'
+        'name': 'Block Editor', 'category': 'File Viewers & Editors', 'order': '01', 'path': 'block-editor', 'samples': BlockEditorSampleOrder, 'ftName' :'block-editor'
     },
     {
         'name': 'Chat UI', 'category': 'Interactive Chat', 'order': '06', 'path': 'chat-ui', 'samples': ChatUISampleOrder, 'ftName': 'chat-ui'
     },
     {
-        'name': 'Inline AI Assist', 'category': 'Interactive Chat', 'order': '06', 'path': 'inline-ai-assist', 'samples': InlineAIAssistSampleOrder, 'ftName': 'inline-ai-assist', 'type':'preview'
+        'name': 'Inline AI Assist', 'category': 'Interactive Chat', 'order': '06', 'path': 'inline-ai-assist', 'samples': InlineAIAssistSampleOrder, 'ftName': 'inline-ai-assist', 'type':'update'
     },
     {
         'name': 'Charts', 'category': 'Data Visualization', 'order': '01', 'path': 'chart', 'samples': ChartSampleOrder, 'ftName': 'chart', 'type':'update'
     },
     {
-        'name': 'Dashboards', 'category': 'Data Visualization', 'order': '01', 'path': 'dashboards', 'samples': DashboardsSampleOrder, 'ftName': 'dashboards', 'type':'new'
+        'name': 'Dashboards', 'category': 'Data Visualization', 'order': '01', 'path': 'dashboards', 'samples': DashboardsSampleOrder, 'ftName': 'dashboards'
     },
     {
          'name': '3D Chart', 'category': 'Data Visualization', 'order': '03', 'path': 'three-dimension-chart', 'samples': ThreeDimensionChartList,
@@ -147,7 +150,7 @@ export let samplesList: any = [
         'name': '3D Circular Chart', 'category': 'Data Visualization', 'order': '03', 'path': 'three-dimension-circular-chart', 'samples': Circular3DOrderList,
     },
     {
-        'name': 'Stock Chart', 'category': 'Data Visualization', 'order': '02', 'path': 'stock-chart', 'samples': StockChartSampleOrder
+        'name': 'Stock Chart', 'category': 'Data Visualization', 'order': '02', 'path': 'stock-chart', 'samples': StockChartSampleOrder, 'type': 'update'
     },
     {
         'name': 'Arc Gauge', 'category': 'Data Visualization', 'order': '04', 'path': 'arc-gauge', 'samples': ArcGaugeSampleOrder, 
@@ -198,7 +201,13 @@ export let samplesList: any = [
         'name': 'Form Renderer', 'category': 'Forms', 'path': 'form-renderer', 'samples': FormRendererSampleOrder, 'type': 'preview'
     },
     {
-        'name': 'Rich Text Editor', 'type':'update', 'category': 'File Viewers & Editors', 'order': '04', 'path': 'rich-text-editor', 'samples': RichTextEditorSampleOrder
+        'name': 'Form Builder', 'category': 'Forms', 'path': 'form-builder', 'samples': FormBuilderSampleOrder, 'type': 'preview'
+    },
+    {
+        'name': 'Rich Text Editor', 'category': 'File Viewers & Editors', 'order': '04', 'path': 'rich-text-editor', 'samples': RichTextEditorSampleOrder
+    },
+    {
+        'name': 'Modern Rich Text Editor', 'type':'preview', 'category': 'File Viewers & Editors', 'order': '04', 'path': 'rich-text-editor-ui', 'samples': RichTextEditorUISampleOrder
     },
     {
         'name': 'Markdown Editor', 'category': 'File Viewers & Editors', 'order': '04', 'path': 'markdown-editor', 'samples': MarkdownEditorSampleOrder
@@ -291,7 +300,7 @@ export let samplesList: any = [
         'name': 'Toolbar', 'category': 'Navigation', 'path': 'toolbar', 'samples': ToolbarSampleOrder
     },
     {
-        'name': 'TreeView', 'category': 'Navigation', 'path': 'treeview', 'samples': TreeViewSampleOrder
+        'name': 'TreeView', 'type':'update', 'category': 'Navigation', 'path': 'treeview', 'samples': TreeViewSampleOrder
     },
     {
         'name': 'File Manager', 'category': 'Navigation', 'path':'file-manager', 'samples': FileManagerSampleOrder, 'ftName': 'file-manager'

@@ -66,7 +66,7 @@ export class EventTemplate extends SampleBase<{}, {}> {
             Here, the HTML template design is compiled and then the resultant output will be displayed directly on the events.
           </p>
           <p>
-            Looking for the full React Scheduler component overview, features, pricing, and documentation? Visit our <a target="_blank" href="https://www.syncfusion.com/react-components/react-scheduler">React Scheduler</a> component page.
+            Looking for the full React Scheduler component overview, features, pricing, and documentation? Visit our <a target="_blank" href="https://www.syncfusion.com/scheduler-sdk/react-scheduler">React Scheduler</a> component page.
           </p>
         </div>
         {/* custom code end*/}

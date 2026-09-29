@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { GanttComponent, TaskFieldsModel, ColumnsDirective, ColumnDirective, Selection, Inject, TimelineSettingsModel, TooltipSettingsModel } from '@syncfusion/ej2-react-gantt';
+import { GanttComponent, TaskFieldsModel, ColumnsDirective, ColumnDirective, Selection, Inject, DayMarkers, TimelineSettingsModel, TooltipSettingsModel } from '@syncfusion/ej2-react-gantt';
 import { baselineTemplateData } from './data';
 import { SampleBase } from '../common/sample-base';
 import './baseline.css'
@@ -44,12 +44,16 @@ export class BaselineTemplate extends SampleBase<{}, {}> {
     rightLabel: 'TaskName'
   };
 
-  private baselineTemplate = (props: any): string => {
+  private baselineTemplate(props: any) {
     if (props.hasChildRecords || (props.data && props.data.hasChildRecords)) {
       return '';
     }
 
-    const g = props;
+    if (!this.ganttInstance) {
+      return '';
+    }
+
+    const g = props.taskData;
     const gp = g.ganttProperties;
     const chart = this.ganttInstance.chartRowsModule;
 
@@ -82,7 +86,7 @@ export class BaselineTemplate extends SampleBase<{}, {}> {
       return leftEnd - leftStart;
     };
 
-    const render = (start: any, duration: any, index: number): string => {
+    const renderBaseline1 = (start: any, duration: any, index: number) => {
       if (!start) return '';
 
       const left = getLeft(start);
@@ -99,31 +103,49 @@ export class BaselineTemplate extends SampleBase<{}, {}> {
 
         const marginTop = (-Math.floor(rowHeight - milestoneMarginTop) + baselineMilestoneHeight) + 2 + (index * baselineGap);
 
-        return '<div class="e-baseline-gantt-milestone-container" style="position:absolute;' +
-          'width:' + size + 'px;' +
-          'height:' + size + 'px;' +
-          'transform:rotate(45deg);' +
-          (enableRtl ? 'right:' : 'left:') + leftPos + 'px;' +
-          'margin-top:' + marginTop + 'px;">' +
-          '</div>';
+        return (
+          <div
+            key={`milestone-${index}`}
+            className="e-baseline-gantt-milestone-container"
+            style={{
+              position: 'absolute',
+              width: `${size}px`,
+              height: `${size}px`,
+              transform: 'rotate(45deg)',
+              [enableRtl ? 'right' : 'left']: `${leftPos}px`,
+              marginTop: `${marginTop}px`
+            }}
+          >
+          </div>
+        );
       }
 
       // Normal baseline bar
-      return '<div class="e-baseline-bar" role="term" style="position:absolute;' +
-        (enableRtl ? 'right:' : 'left:') + left + 'px;' +
-        'margin-top:' + (baselineTop + (index * gap)) + 'px;' +
-        'width:' + width + 'px;' +
-        'height:' + baselineHeight + 'px;"></div>';
+      return (
+        <div
+          key={`baseline-${index}`}
+          className="e-baseline-bar"
+          role="term"
+          style={{
+            position: 'absolute',
+            [enableRtl ? 'right' : 'left']: `${left}px`,
+            marginTop: `${baselineTop + (index * gap)}px`,
+            width: `${width}px`,
+            height: `${baselineHeight}px`
+          }}
+        >
+        </div>
+      );
     };
 
     return (
-      '<div class="custom-multi-baseline">' +
-      render(g.BaselineStartDate, g.BaselineDuration, 0) +
-      render(g.BaselineStartDate1, g.BaselineDuration1, 1) +
-      render(g.BaselineStartDate2, g.BaselineDuration2, 2) +
-      '</div>'
+      <div className="custom-multi-baseline">
+        {renderBaseline1(g.BaselineStartDate, g.BaselineDuration, 0)}
+        {renderBaseline1(g.BaselineStartDate1, g.BaselineDuration1, 1)}
+        {renderBaseline1(g.BaselineStartDate2, g.BaselineDuration2, 2)}
+      </div>
     );
-  };
+  }
 
   render() {
     return (
@@ -134,7 +156,7 @@ export class BaselineTemplate extends SampleBase<{}, {}> {
             ref={gantt => this.ganttInstance = gantt}
             dataSource={baselineTemplateData}
             taskFields={this.taskFields}
-            baselineTemplate={this.baselineTemplate}
+            baselineTemplate={this.baselineTemplate.bind(this)}
             renderBaseline={true}
             labelSettings={this.labelSettings}
             splitterSettings={this.splitterSettings}
@@ -159,7 +181,7 @@ export class BaselineTemplate extends SampleBase<{}, {}> {
               <ColumnDirective field='BaselineStartDate2' format={{ skeleton: 'yMd', type: 'date' }} headerText='Baseline2 Start Date' width={180} />
               <ColumnDirective field='BaselineDuration2' headerText='Baseline2 Duration' width={180} />
             </ColumnsDirective>
-            <Inject services={[Selection]} />
+            <Inject services={[Selection, DayMarkers]} />
           </GanttComponent>
         </div>
         <div id="action-description">
@@ -186,6 +208,8 @@ export class BaselineTemplate extends SampleBase<{}, {}> {
               baseline
             </a> documentation section.
           </p>
+          <br/>
+          <p>Looking for the full React Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/react-components/react-gantt-chart">React Gantt Chart</a> page.</p>
         </div>
       </div>
     )

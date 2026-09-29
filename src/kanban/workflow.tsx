@@ -47,18 +47,29 @@ export class Workflow extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>This example demonstrates the workflow functionalities that defines the flow of transition between the columns.
-                        You can drag and drop the cards between Kanban columns to see the workflow restriction.</p>
+                    <p>
+                        This sample demonstrates workflow customization in the Kanban component, enabling controlled card transitions between workflow stages based on predefined business rules.
+                    </p>
                 </div>
                 <div id="description">
-                    <p>In this sample, you can drag the cards from the `Order` column and drop them into `Ready to Serve` and `Home Delivery` columns.
-                        Also, you couldn’t drag the cards from the `Delivered` column and drop the cards in the `Order` column.
-                        The action is controlled using the below properties.</p>
+                    <p>
+                        In this sample, you can drag a card from the <strong>Order</strong> column and drop it into the
+                        <strong>Ready to Serve</strong> or <strong>Home Delivery</strong> columns. You cannot, however,
+                        drag a card from the <strong>Delivered</strong> column, and you cannot drop a card into the
+                        <strong>Order</strong> column. These restrictions are controlled using the following properties:
+                    </p>
                     <ul>
-                        <li>The <code>transitionColumns</code> property is used to allow the card transition to specified columns.</li>
-                        <li>The <code>allowDrag</code> property is used to enable/disable the drag action of columns.</li>
-                        <li>The <code>allowDrop</code> property is used to enable/disable the drop action of columns.</li>
+                        <li>The <a href="https://ej2.syncfusion.com/react/documentation/api/kanban/columnsmodel#transitioncolumns" target="_blank">transitionColumns</a> property is used to allow card transitions only to the specified columns.</li>
+                        <li>The <a href="https://ej2.syncfusion.com/react/documentation/api/kanban/columnsmodel#allowdrag" target="_blank">allowDrag</a> property is used to enable or disable the drag action of a column.</li>
+                        <li>The <a href="https://ej2.syncfusion.com/react/documentation/api/kanban/columnsmodel#allowdrop" target="_blank">allowDrop</a> property is used to enable or disable the drop action of a column.</li>
                     </ul>
+                        <p>
+                        More information on the Essential<sup>®</sup> JS2 Kanban board can be found in this <a href="https://ej2.syncfusion.com/react/documentation/api/kanban/columnsmodel#transitioncolumns" target="_blank">transition columns</a> documentation section.
+                    </p>
+                    <p>
+	                    Looking for the full React Kanban component overview, features, pricing and documentation?
+                        Visit the <a href="https://www.syncfusion.com/gantt-sdk/react-kanban-board" target="_blank">React Kanban</a> page.
+                    </p>
                 </div>
             </div>
         );

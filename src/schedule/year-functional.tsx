@@ -146,7 +146,7 @@ const Year = () => {
                 </p>
                 <p>To work with Year view on Scheduler – it is necessary to inject the Year and TimelineYear module like using <code>services</code> property under <code>Inject</code> tag.</p>
                 <p>
-                    Looking for the full React Scheduler component overview, features, pricing, and documentation? Visit our <a target="_blank" href="https://www.syncfusion.com/react-components/react-scheduler">React Scheduler</a> component page.
+                    Looking for the full React Scheduler component overview, features, pricing, and documentation? Visit our <a target="_blank" href="https://www.syncfusion.com/scheduler-sdk/react-scheduler">React Scheduler</a> component page.
                 </p>
             </div>
         </div>

@@ -381,6 +381,7 @@ function ConstraintsSample() {
     if (args.checked) {
       diagramInstance.contextMenuSettings.show = true;
       diagramInstance.refresh();
+      diagramInstance.fitToPage({ mode: 'Width' });
     } else {
       diagramInstance.contextMenuSettings.show = false;
     }

@@ -117,9 +117,6 @@ const Constraints = () => {
             </ColumnsDirective>
             <Inject services={[Edit, Selection, Toolbar, DayMarkers]} />
             </GanttComponent>
-        <div style={{ float: 'right', margin: '10px' }}>Source:
-          <a href="https://en.wikipedia.org/wiki/Construction" target="_blank" rel="noopener noreferrer">https://en.wikipedia.org/wiki/Construction</a>
-        </div>
       </div>
 
       <div id="action-description">
@@ -162,7 +159,9 @@ const Constraints = () => {
         </p>
         <p>Gantt component features are segregated into individual feature-wise modules. To use editing, toolbar, day markers and selection features, we need to inject <code>Edit</code>, <code>Toolbar</code>, <code>DayMarkers</code> and <code>SelectionService</code> into the <code>Inject Services</code> section.</p>
         <br/>
-        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" rel="noopener noreferrer" href="https://ej2.syncfusion.com/react/documentation/gantt/task-constraints">documentation section</a>.</p>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" rel="noopener noreferrer" href="https://ej2.syncfusion.com/react/documentation/gantt/task-constraints">task constraints</a> documentation section.</p>
+        <br/>
+        <p>Looking for the full React Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/react-components/react-gantt-chart">React Gantt Chart</a> page.</p>
       </div>
     </div>
   );

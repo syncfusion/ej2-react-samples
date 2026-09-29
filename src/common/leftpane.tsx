@@ -5,7 +5,7 @@ import { ListViewComponent, ListView, SelectEventArgs } from '@syncfusion/ej2-re
 import { TreeView, TreeViewComponent } from '@syncfusion/ej2-react-navigations';
 import { DataManager, Query, DataUtil } from '@syncfusion/ej2-data';
 import { samplesList } from './sample-list';
-import { toggleLeftPane, isLeftPaneOpen, sampleOverlay } from './index';
+import { toggleLeftPane, isLeftPaneOpen, sampleOverlay, applySdkFilter } from './index';
 import { selectDefaultTab, initialize, isFinalize } from './component-content';
 
 let isMobile: boolean;
@@ -41,7 +41,7 @@ function viewSwitch(from: HTMLElement, to: HTMLElement, reverse?: boolean): void
     anim.animate(to, { name: reverse ? 'SlideLeftIn' : 'SlideRightIn' });
 }
 
-function showHideControlTree(): void {
+export function showHideControlTree(): void {
     if (!isFinalize) return; 
     let controlTree: HTMLElement = select('#controlTree') as HTMLElement;
     let controlList: HTMLElement = select('#controlSamples') as HTMLElement;
@@ -100,6 +100,21 @@ export function setSelectList(): void {
             showHideControlTree();            
         }
         list.selectItem(select('[data-path="/grid/overview"]'));
+    }
+    // Re-apply any active SDK filter after list updates
+    reapplyActiveSdkFilter();
+}
+
+/**
+ * Re-applies the currently active SDK filter (if any) to the freshly rendered list/tree.
+ */
+function reapplyActiveSdkFilter(): void {
+    const activeItem: Element | null = document.querySelector('#sdklist li.active');
+    if (activeItem) {
+        const sdkKey: string = activeItem.getAttribute('data-sdk') || 'all';
+        if (sdkKey !== 'all') {
+            applySdkFilter(sdkKey);
+        }
     }
 }
 
@@ -226,6 +241,8 @@ export class LeftPane extends React.Component<{}, {}> {
             let listView: any = (select('#controlList') as any).ej2_instances[0];
             listView.dataSource = samples;
             showHideControlTree();
+            // Re-apply SDK filter on the newly loaded sample list
+            setTimeout(() => reapplyActiveSdkFilter(), 50);
         }
     }
 
@@ -233,6 +250,35 @@ export class LeftPane extends React.Component<{}, {}> {
         selectDefaultTab();
         let path: string = (arg.node || arg.item).getAttribute('data-path');
         let curHashCollection: string = '/' + location.hash.split('/').slice(2).join('/');
+
+        // When the 'AI-Powered Samples' (ai-grid) TREE NODE is clicked while an SDK filter
+        // is active, redirect to the first sample of the SDK's ai- control instead of
+        // the default ai-grid/assistive-grid path.
+        // arg.node is set only for TreeView clicks; arg.item is set for ListView clicks.
+        // We must NOT redirect on list item selections (e.g. triggered by next/prev navigation).
+        if (arg.node && path && path.startsWith('/ai-grid/')) {
+            const activeItem: Element | null = document.querySelector('#sdklist li.active');
+            if (activeItem) {
+                const sdkKey: string = activeItem.getAttribute('data-sdk') || 'all';
+                // Map SDK keys to the first sample path of their ai- control.
+                // All these AI samples live inside the shared 'ai-grid' tree node.
+                // The concat order in sample-list is:
+                //   ai-grid → ai-diagram → ai-combo-box → ai-tree-grid → ai-querybuilder
+                //   → ai-image-editor → ai-pivot-table → ai-kanban → ai-schedule → ai-maps → ai-gantt
+                const aiSdkFirstSample: { [key: string]: string } = {
+                    grid:     '/ai-grid/assistive-grid',
+                    chart:    '/ai-maps/weather-prediction',
+                    schedule: '/ai-schedule/smart-event-window',
+                    gantt:    '/ai-gantt/task-prioritize',
+                    diagram:  '/ai-diagram/text-to-flowchart',
+                    ui:       '/ai-combo-box/semantic-searching',
+                };
+                if (aiSdkFirstSample[sdkKey]) {
+                    path = aiSdkFirstSample[sdkKey];
+                }
+            }
+        }
+
         if (path) {
             this.controlListRefresh(arg.node || arg.item);
             if (path !== curHashCollection) {

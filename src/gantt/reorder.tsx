@@ -123,20 +123,19 @@ export class ReorderColumn extends SampleBase<{}, {}> {
           </div>
         </div>
         <div id="action-description">
-          <p>This sample demonstrates the reordering feature of the Gantt columns. Select column name and index from properties panel to reorder the columns.
-            You can also reorder columns by simply dragging and dropping them to the desired position.
+          <p>This sample demonstrates column reordering in the Gantt Chart. Reorder columns either by dragging column headers to a new position or by selecting a column and target index from the property panel.
           </p>
         </div>
 
         <div id="description">
-          <p>Reordering can be enabled by setting the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#allowreordering">allowReordering</a> property to true.
-            Reordering can be done by dragging and dropping the column header from one index to another index within the TreeGrid part.</p>
-          <p>The location in which the column to be placed will be indicated by two arrows symbols.</p>
-          <p>In this demo, you can either reorder columns by dragging and dropping or by selecting column name and column index from dropdown to reorder the columns.
-          </p>
+          <p>This example demonstrates the column reordering feature in the Gantt Chart. Column reordering can be enabled by setting the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#allowreordering">allowReordering</a> property to <code>true</code>.
+            Columns can be reordered by dragging a column header and dropping it at the desired position within the TreeGrid area. Visual indicators are displayed to show the target drop location during the reordering operation.</p>
+          <p>In this sample, columns can also be reordered programmatically using the property panel by selecting a column and its destination index.</p>
           <p>Gantt component features are segregated into individual feature-wise modules. To use reordering and selection features, we need to inject <code>Reorder</code> and <code>Selection</code> into the <code>Inject Services</code> section.</p>
           <br />
-          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/columns/column-reordering">documentation section</a>.</p>
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/columns/column-reordering">column reordering</a> documentation section.</p>
+          <br/>
+          <p>Looking for the full React Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/react-components/react-gantt-chart">React Gantt Chart</a> page.</p>
         </div>
       </div>
     )

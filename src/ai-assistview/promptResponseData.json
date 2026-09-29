@@ -41,6 +41,11 @@
         "What are the main features of the AI AssistView component?",
         "What is Markdown and how is it used?"
     ],
+    "telemetrySuggestions": [
+        "Suggest a 3-day itinerary for Paris",
+        "Find the best budget hotels in Barcelona",
+        "What are the top travel destinations in autumn?"
+    ],
     "streamingPromptResponseData": [
         {
             "prompt": "What are the main features of the AI AssistView component?",

@@ -11,6 +11,7 @@ import {
     FlowchartLayout,
     DataBinding,
     DiagramTools,
+    BranchDirection
 } from '@syncfusion/ej2-react-diagrams';
 import { SampleBase, updateSampleSection } from '../common/sample-base';
 import { ChangeEventArgs, DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
@@ -20,6 +21,8 @@ Diagram.Inject(ConnectorEditing);
 
 
 let diagramInstance: DiagramComponent;
+let yesBranchDirection: DropDownListComponent;
+let noBranchDirection: DropDownListComponent;
 const SAMPLE_CSS = `
   /* Container for diagram and property panel */
     .diagram-flowchartLayout .property-panel-header {
@@ -145,6 +148,7 @@ function FlowchartLayoutDiagram() {
                         <div className="input-element">
                             <DropDownListComponent
                                 id="yesBranchDirection"
+                                ref={(dropdown) => (yesBranchDirection = dropdown)}
                                 index={0}
                                 change={yesBranchDirectionChange}
                                 dataSource={[{ text: 'Left in flow', value: 'LeftInFlow' }, { text: 'Right in flow', value: 'RightInFlow' }, { text: 'Same as flow', value: 'SameAsFlow' }]}
@@ -157,6 +161,7 @@ function FlowchartLayoutDiagram() {
                             <DropDownListComponent
                                 id="noBranchDirection"
                                 index={1}
+                                ref={(dropdown) => (noBranchDirection = dropdown)}
                                 change={noBranchDirectionChange}
                                 dataSource={[{ text: 'Left in flow', value: 'LeftInFlow' }, { text: 'Right in flow', value: 'RightInFlow' }, { text: 'Same as flow', value: 'SameAsFlow' }]}
                             />
@@ -260,13 +265,29 @@ function orientationChange(args: ChangeEventArgs) {
 
 function yesBranchDirectionChange(args: ChangeEventArgs) {
     let value: string = args.value as string;
-    diagramInstance.layout.flowchartLayoutSettings.yesBranchDirection = value === 'Same as flow' ? 'SameAsFlow' : value === 'Right in flow' ? 'RightInFlow' : 'LeftInFlow';
+    let yesValue: BranchDirection = value === 'Same as flow' ? 'SameAsFlow' : value === 'Right in flow' ? 'RightInFlow' : 'LeftInFlow';
+    diagramInstance.layout.flowchartLayoutSettings.yesBranchDirection = yesValue;
+    if (yesValue !== 'SameAsFlow' && diagramInstance.layout.flowchartLayoutSettings.noBranchDirection === yesValue) {
+        let flippedValue: BranchDirection = yesValue === 'LeftInFlow' ? 'RightInFlow' : 'LeftInFlow';
+        diagramInstance.layout.flowchartLayoutSettings.noBranchDirection = flippedValue;
+        noBranchDirection.index = flippedValue === 'LeftInFlow' ? 0 : 1;
+    }
     diagramInstance.doLayout();
 }
 
 function noBranchDirectionChange(args: ChangeEventArgs) {
     let value: string = args.value as string;
-    diagramInstance.layout.flowchartLayoutSettings.noBranchDirection = value === 'Same as flow' ? 'SameAsFlow' : value === 'Right in flow' ? 'RightInFlow' : 'LeftInFlow';
+    let noValue: BranchDirection = value === 'Same as flow' ? 'SameAsFlow' : value === 'Right in flow' ? 'RightInFlow' : 'LeftInFlow';
+    let flowchartLayoutSettings = diagramInstance.layout.flowchartLayoutSettings;
+    if (!flowchartLayoutSettings) {
+        return;
+    }
+    flowchartLayoutSettings.noBranchDirection = noValue;
+    if (noValue !== 'SameAsFlow' && flowchartLayoutSettings.yesBranchDirection === noValue) {
+        let flippedValue: BranchDirection = noValue === 'LeftInFlow' ? 'RightInFlow' : 'LeftInFlow';
+        flowchartLayoutSettings.yesBranchDirection = flippedValue;
+        yesBranchDirection.index = flippedValue === 'LeftInFlow' ? 0 : 1;
+    }
     diagramInstance.doLayout();
 
 }

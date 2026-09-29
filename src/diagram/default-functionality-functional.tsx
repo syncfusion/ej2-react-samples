@@ -1068,7 +1068,9 @@ function Default() {
               }}
               textEdit={(args: any): void => {
                 var obj: any = args.element;
-                obj.annotations[0].style = { color: 'white', fill: 'transparent' }
+                if (obj && obj instanceof Node) {
+                  obj.annotations[0].style = { color: 'white', fill: 'transparent' }
+                }
               }}
               created={(): void => {
                 diagramInstance.fitToPage();
@@ -1084,12 +1086,15 @@ function Default() {
       </div>
       <div id="action-description">
         <p>
-          This sample demonstrates a credit card order-processing workflow created using built-in flow shapes in the <a href="https://www.syncfusion.com/react-components/react-diagram" target="_blank">React Diagram</a>.
+          This sample demonstrates a credit card order-processing workflow created using built-in flow shapes in the
+          <a href="https://www.syncfusion.com/react-components/react-diagram" target="_blank">React Diagram</a>.
         </p>
       </div>
       <div id="description">
         <p>
-          This sample demonstrates how to create, edit, and manage a credit card order-processing workflow using the <a href="https://www.syncfusion.com/react-components/react-diagram" target="_blank">React Diagram</a>. The workflow is designed with nodes and connectors, where each node represents a specific stage in the order process and each connector defines the flow between stages.
+          This sample demonstrates how to create, edit, and manage a credit card order-processing workflow using the
+          <a href="https://www.syncfusion.com/react-components/react-diagram" target="_blank">React Diagram</a>. The workflow is designed with nodes and connectors, where
+          each node represents a specific stage in the order process and each connector defines the flow between stages.
         </p>
         <p>
           The <code>nodes</code> property is used to define the workflow stages, and the <code>connectors</code> property

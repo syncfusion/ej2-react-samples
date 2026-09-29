@@ -68,7 +68,7 @@ export class InlineEditing extends SampleBase<{}, {}> {
                         <li>For editing an appointment, the appointment will be saved based on the modified subject.</li>
                     </ul>
                     <p>
-                        Looking for the full React Scheduler component overview, features, pricing, and documentation? Visit our <a target="_blank" href="https://www.syncfusion.com/react-components/react-scheduler">React Scheduler</a> component page.
+                        Looking for the full React Scheduler component overview, features, pricing, and documentation? Visit our <a target="_blank" href="https://www.syncfusion.com/scheduler-sdk/react-scheduler">React Scheduler</a> component page.
                     </p>
                 </div>
             </div>

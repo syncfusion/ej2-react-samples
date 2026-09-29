@@ -114,7 +114,7 @@
   .fluent2-dark .e-grid .e-rowcell.e-delivered,
   .fluent2-highcontrast .e-grid .e-rowcell.e-delivered,
   .bootstrap5-dark .e-grid .e-rowcell.e-delivered,
-  .bootstrap5\.3-dark .e-grid .e-rowcell.e-delivered,
+  .bootstrap5_3-dark .e-grid .e-rowcell.e-delivered,
   .highcontrast .e-grid .e-rowcell.e-delivered,
   .tailwind3-dark .e-grid .e-rowcell.e-delivered,
   .tailwind-dark .e-grid .e-rowcell.e-delivered,
@@ -133,7 +133,7 @@
   .bootstrap5-dark
       .e-grid
       .e-rowcell.e-delivered:not(.e-editedbatchcell):not(.e-updatedtd),
-  .bootstrap5\.3-dark
+  .bootstrap5_3-dark
       .e-grid
       .e-rowcell.e-delivered:not(.e-editedbatchcell):not(.e-updatedtd),
   .highcontrast
@@ -221,7 +221,7 @@
   .fluent2-dark .e-grid .e-rowcell.e-inprogress,
   .fluent2-highcontrast .e-grid .e-rowcell.e-inprogress,
   .bootstrap5-dark .e-grid .e-rowcell.e-inprogress,
-  .bootstrap5\.3-dark .e-grid .e-rowcell.e-inprogress,
+  .bootstrap5_3-dark .e-grid .e-rowcell.e-inprogress,
   .highcontrast .e-grid .e-rowcell.e-inprogress,
   .tailwind3-dark .e-grid .e-rowcell.e-inprogress,
   .tailwind-dark .e-grid .e-rowcell.e-inprogress,
@@ -240,7 +240,7 @@
   .bootstrap5-dark
       .e-grid
       .e-rowcell.e-inprogress:not(.e-editedbatchcell):not(.e-updatedtd),
-  .bootstrap5\.3-dark
+  .bootstrap5_3-dark
       .e-grid
       .e-rowcell.e-inprogress:not(.e-editedbatchcell):not(.e-updatedtd),
   .highcontrast

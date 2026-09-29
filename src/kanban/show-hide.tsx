@@ -99,19 +99,31 @@ export class ShowHideColumns extends SampleBase<{}, {}> {
 
                 <div id="action-description">
                     <p>
-                        This sample demonstrates how to control the visibility of Kanban columns dynamically. Check or uncheck the
-                        checkboxes
-                        from the property panel to show or hide the corresponding column.
-          </p>
+                        This sample demonstrates dynamic column visibility management in the Kanban component, allowing users to customize the board layout by showing or hiding columns as needed.
+                    </p>
                 </div>
                 <div id="description">
                     <p>
-                        The Kanban provides an option to show or hide its columns dynamically using the following public methods.
-          </p>
+                        This sample demonstrates how to dynamically manage column visibility in the Kanban component using the available public methods.
+                    </p>
                     <ul>
-                        <li><code>showColumn:</code> Makes the corresponding column visible based on the specified ID.</li>
-                        <li><code>hideColumn:</code> Hides the corresponding column based on the specified column ID.</li>
+                        <li>
+                            <a href="https://ej2.syncfusion.com/react/documentation/api/kanban/index-default#showcolumn" target="_blank">showColumn</a>: Displays a hidden column based on the specified <code>keyField</code> value.
+                        </li>
+                        <li>
+                            <a href="https://ej2.syncfusion.com/react/documentation/api/kanban/index-default#hidecolumn" target="_blank">hideColumn</a>: Hides a visible column based on the specified <code>keyField</code> value.
+                        </li>
                     </ul>
+                    <p>
+                        These methods enable users to customize the board layout by controlling the visibility of workflow stages at runtime.
+                    </p>
+                    <p>
+                        More information on the Essential<sup>®</sup> JS2 Kanban board can be found in this <a href="https://ej2.syncfusion.com/react/documentation/api/kanban/index-default#showcolumn" target="_blank">show column</a> documentation section.
+                    </p>
+                    <p>
+	                    Looking for the full React Kanban component overview, features, pricing and documentation?
+                        Visit the <a href="https://www.syncfusion.com/gantt-sdk/react-kanban-board" target="_blank">React Kanban</a> page.
+                    </p>
                 </div>
             </div>
         );

@@ -3,7 +3,6 @@ export const BlockEditorSampleOrder: Object = [
       'path': 'block-editor/overview',
       'component': 'Overview',
       'name': 'Overview',
-      'type': 'update',
       'description':'This demo describes basic and advanced features of the Block Editor component with all its tools and functionalities.',
       'order': '01',
       'category': 'Block Editor',
@@ -11,7 +10,7 @@ export const BlockEditorSampleOrder: Object = [
       'sourceFiles': [
         { 'displayName': 'overview.tsx', 'path': 'src/block-editor/overview.tsx' },
         { 'displayName': 'overview.jsx', 'path': 'src/block-editor/overview.jsx' },
-        { 'displayName': 'blockData.json', 'path': 'src/block-editor/blockData.json' }
+        { 'displayName': 'overview.json', 'path': 'src/block-editor/data/overview.json' }
       ]
     },
         {
@@ -21,11 +20,11 @@ export const BlockEditorSampleOrder: Object = [
       'description':'This demo covers important API pasteSettings of the JS Block Editor includes deniedTags, allowedStyles, keepFormat and plainText .',
       'order': '01',
       'category': 'Block Editor',
-      'api':'{ "BlockEditorComponent": [ "blocks", "pasteSettings" ] }',
+      'api': '{ "BlockEditorComponent": [ "blocks", "pasteSettings" ] }',
       'sourceFiles': [
-        { 'displayName': 'pasteSettings.tsx', 'path':'src/block-editor/pasteSettings.tsx' },
-        { 'displayName': 'pasteSettings.jsx', 'path':'src/block-editor/pasteSettings.jsx' },
-        { 'displayName': 'blockData.json', 'path':'src/block-editor/blockData.json' }
+        { 'displayName': 'paste-settings.tsx', 'path':'src/block-editor/pasteSettings.tsx' },
+        { 'displayName': 'paste-settings.jsx', 'path':'src/block-editor/pasteSettings.jsx' },
+        { 'displayName': 'paste-settings.json', 'path':'src/block-editor/data/paste-settings.json' }
       ]
     },
     {
@@ -39,7 +38,7 @@ export const BlockEditorSampleOrder: Object = [
       'sourceFiles': [
         { 'displayName': 'api.tsx', 'path':'src/block-editor/api.tsx' },
         { 'displayName': 'api.jsx', 'path':'src/block-editor/api.jsx' },
-        { 'displayName': 'blockData.json', 'path':'src/block-editor/blockData.json' }
+        { 'displayName': 'api.json', 'path':'src/block-editor/data/api.json' }
       ]
     },
     {
@@ -53,7 +52,7 @@ export const BlockEditorSampleOrder: Object = [
       'sourceFiles': [
         { 'displayName': 'events.tsx', 'path':'src/block-editor/events.tsx' },
         { 'displayName': 'events.jsx', 'path':'src/block-editor/events.jsx' },
-        { 'displayName': 'blockData.json', 'path':'src/block-editor/blockData.json' }
+        { 'displayName': 'events.json', 'path':'src/block-editor/data/events.json' }
       ]
     },
     {
@@ -65,9 +64,9 @@ export const BlockEditorSampleOrder: Object = [
       'category': 'Use Cases',
       'api':'{ "BlockEditorComponent": [ "blocks" ] }',
       'sourceFiles': [
-        { 'displayName': 'template.tsx', 'path':'src/block-editor/template.tsx' },
-        { 'displayName': 'template.jsx', 'path':'src/block-editor/template.jsx' },
-        { 'displayName': 'blockData.json', 'path':'src/block-editor/blockData.json' }
+        { 'displayName': 'template-gallery.tsx', 'path':'src/block-editor/template.tsx' },
+        { 'displayName': 'template-gallery.jsx', 'path':'src/block-editor/template.jsx' },
+        { 'displayName': 'template-gallery.json', 'path':'src/block-editor/data/template-gallery.json' }
       ]
     },
     {
@@ -80,15 +79,13 @@ export const BlockEditorSampleOrder: Object = [
       'api':'{ "BlockEditorComponent": [ "blocks" ] }',
       'sourceFiles': [
         { 'displayName': 'markdown.tsx', 'path':'src/block-editor/markdown.tsx' },
-        { 'displayName': 'markdown.jsx', 'path':'src/block-editor/markdown.jsx' },
-        { 'displayName': 'blockData.json', 'path':'src/block-editor/blockData.json' }
+        { 'displayName': 'markdown.jsx', 'path':'src/block-editor/markdown.jsx' }
       ]
     },
     {
       'path': 'block-editor/ai-ask-assistant',
       'component': 'AskAIAssistant',
       'name': 'Ask AI Assistant',
-      'type': 'new',
       'description':'Demonstrates an AI AssistView integrated with Block Editor with sidebar navigation and session management for advanced blockeditor workflows.',
       'order': '03',
       'category': 'Smart AI Solutions',
@@ -96,7 +93,7 @@ export const BlockEditorSampleOrder: Object = [
       'sourceFiles': [
         { 'displayName': 'ai-ask-assistant.tsx', 'path':'src/block-editor/ai-ask-assistant.tsx' },
         { 'displayName': 'ai-ask-assistant.jsx', 'path':'src/block-editor/ai-ask-assistant.jsx' },
-        { 'displayName': 'blockData.json', 'path':'src/block-editor/blockData.json' }
+        { 'displayName': 'ai-ask-assistant.json', 'path':'src/block-editor/data/ai-ask-assistant.json' }
       ]
     }
   ]

@@ -844,10 +844,6 @@
     }
 }
 
-.table-reservation-dragging .e-content-wrap {
-    overflow: hidden !important;
-}
-
 @media (max-width: 550px) {
     .table-reservation-wrapper {
         display: block;

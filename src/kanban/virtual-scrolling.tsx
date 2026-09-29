@@ -134,22 +134,23 @@ export class VirtualScrolling extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                        This sample demonstrates the Kanban board with the virtual scrolling feature. It configures a large
-                        dataset as the data source, allowing smooth navigation and rendering of a significant amount of data
-                        while scrolling through Kanban columns.
+                        This sample demonstrates the virtualization capabilities of the Kanban component, enabling efficient rendering and smooth interaction when working with large volumes of workflow data.
                     </p>
                 </div>
-                <div id="description">
+               <div id="description">
                     <p>
-                        The Kanban board UI virtualization feature allows for rendering the column cards that are visible within
-                        the viewport, without buffering the entire data source. To enable virtualization, you can set
-                        the <code>enableVirtualization</code> property to true.
+                        This sample demonstrates the virtualization feature of the Kanban component using the <a href="https://ej2.syncfusion.com/react/documentation/kanban/virtual-scrolling" target="_blank">enableVirtualization</a> 
+                        property. Virtualization improves rendering performance by displaying only the cards that are visible within the viewport, making it efficient to work with large volumes of data.
                     </p>
                     <p>
-                        In this demo, a dataset of 100K items has been configured for the <a href="https://ej2.syncfusion.com/react/documentation/api/kanban/#datasource"><code>dataSource</code></a>
- property. Despite the large
-                        dataset, the Kanban board efficiently handles the rendering and interaction, ensuring a smooth user
-                        experience. Users can seamlessly navigate and interact with the Kanban board, even with such a significant amount of data.
+                        The sample also enables tooltips through the <a href="https://ej2.syncfusion.com/react/documentation/kanban/tooltip" target="_blank">enableTooltip</a> property, allowing users to view additional card information while hovering over workflow items.
+                    </p>
+                    <p>
+                        More information on the Essential<sup>®</sup> JS2 Kanban board can be found in this <a href="https://ej2.syncfusion.com/react/documentation/kanban/virtual-scrolling" target="_blank">virtualization</a> documentation section.
+                    </p>
+                    <p>
+	        	        Looking for the full React Kanban component overview, features, pricing and documentation?
+                        Visit the <a href="https://www.syncfusion.com/gantt-sdk/react-kanban-board" target="_blank">React Kanban</a> page.
                     </p>
                 </div>
             </div>

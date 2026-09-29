@@ -49,16 +49,23 @@ const Presets = () => {
         const [labels] = useState(() => getInitialLabels(currentCulture));
 
         const dates = useMemo(() => {
-            const weekStart: Date = new Date(new Date(new Date().setDate(new Date().getDate() - (new Date().getDay() + 7) % 7)).toDateString());
-            const weekEnd: Date = new Date(new Date(new Date().setDate(new Date(new Date().setDate((new Date().getDate()
-            - (new Date().getDay() + 7) % 7))).getDate() + 6)).toDateString());
-            const monthStart: Date = new Date(new Date(new Date().setDate(1)).toDateString());
-            const monthEnd: Date = new Date(new Date(new Date(new Date().setMonth(new Date().getMonth() + 1)).setDate(0)).toDateString());
-            const lastStart: Date = new Date(new Date(new Date(new Date().setMonth(new Date().getMonth() - 1)).setDate(1)).toDateString());
-            const lastEnd: Date = new Date(new Date(new Date().setDate(0)).toDateString());
-            const yearStart: Date = new Date(new Date(new Date().getFullYear() - 1, 0, 1).toDateString());
-            const yearEnd: Date = new Date(new Date(new Date().getFullYear() - 1, 11, 31).toDateString());
-        
+            const today = new Date();
+
+            const weekStart = new Date(today);
+            weekStart.setDate(today.getDate() - ((today.getDay() + 7) % 7));
+
+            const weekEnd = new Date(weekStart);
+            weekEnd.setDate(weekStart.getDate() + 6);
+
+            const monthStart = new Date(today.getFullYear(), today.getMonth(), 1);
+            const monthEnd = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+
+            const lastStart = new Date(today.getFullYear(), today.getMonth() - 1, 1);
+            const lastEnd = new Date(today.getFullYear(), today.getMonth(), 0);
+
+            const yearStart = new Date(today.getFullYear() - 1, 0, 1);
+            const yearEnd = new Date(today.getFullYear() - 1, 11, 31);
+
             return { weekStart, weekEnd, monthStart, monthEnd, lastStart, lastEnd, yearStart, yearEnd };
           }, [labels]);
 

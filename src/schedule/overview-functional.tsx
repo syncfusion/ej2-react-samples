@@ -725,7 +725,7 @@ const Overview = () => {
       </div >
       <div id="action-description">
         <p>
-          This <a aria-label="React scheduler example" href="https://www.syncfusion.com/react-components/react-scheduler" target="_blank">React Scheduler</a> example demonstrates the overview of React Scheduler with its overall features. Use the toolbar buttons
+          This <a aria-label="React scheduler example" href="https://www.syncfusion.com/scheduler-sdk/react-scheduler" target="_blank">React Scheduler</a> example demonstrates the overview of React Scheduler with its overall features. Use the toolbar buttons
           to play with Scheduler functionalities.
         </p>
       </div>
@@ -737,7 +737,7 @@ const Overview = () => {
         </p>
         <p>In this demo, React Scheduler features such as Multiple views, Templates (Date Header, Quick Info), Resources, Grouping, Timezone, Timescale, etc... are used along with multiple resources.</p>
         <p>
-          Looking for the full React Scheduler component overview, features, pricing, and documentation? Visit our <a target="_blank" href="https://www.syncfusion.com/react-components/react-scheduler">React Scheduler</a> component page.
+          Looking for the full React Scheduler component overview, features, pricing, and documentation? Visit our <a target="_blank" href="https://www.syncfusion.com/scheduler-sdk/react-scheduler">React Scheduler</a> component page.
         </p>
       </div>
     </div>

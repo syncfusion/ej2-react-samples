@@ -1,0 +1,125 @@
+/* Container */
+.inline-speech-to-text.meeting-container {
+  max-width: 820px;
+  margin: 0 auto;
+}
+/* Header */
+.inline-speech-to-text .meeting-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.inline-speech-to-text .meeting-header h2 {
+  margin: 0;
+  font-size: 22px;
+}
+/* Card Layout */
+.inline-speech-to-text .meeting-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.inline-speech-to-text .meeting-card .row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+/* Attendee Badge */
+.inline-speech-to-text .attendee {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #444;
+  background: #f5f5f5;
+  padding: 4px 8px;
+  border-radius: 12px;
+}
+/* Avatar */
+.inline-speech-to-text .avatar {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #6a1b9a;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Text Area */
+.inline-speech-to-text .demo-text-area {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+  min-height: 220px;
+  color: #222;
+}
+.inline-speech-to-text .demo-text-area p {
+  margin: 0 0 16px 0;
+  font-size: 14px;
+  line-height: 1.65;
+}
+/* Hint Text */
+.inline-speech-to-text .hint {
+  font-size: 12px;
+  margin-top: 12px;
+  font-style: italic;
+}
+
+.inline-speech-to-text .hint mark {
+  background-color: #fcf8e3;
+}
+/* Highlight Card */
+.inline-speech-to-text .meeting-highlight {
+  background: #f8f4ff;
+  border-left: 4px solid #6a1b9a;
+}
+/* Selection Wrapper */
+.inline-speech-to-text .e-inlineaiassist-selected-text {
+  display: inline-block;
+}
+/* Section Heading + Meta Grid */
+.inline-speech-to-text .section-heading {
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+.inline-speech-to-text .meeting-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+.inline-speech-to-text .meta-label {
+  font-size: 12px;
+  color: #666;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.inline-speech-to-text .meta-value {
+  font-size: 14px;
+}
+.inline-speech-to-text .meta-bold {
+  font-weight: 600;
+}
+/* Dark Mode & High Contrast */
+body[class*="dark"] .inline-speech-to-text .meeting-card,
+body[class*="dark"] .inline-speech-to-text .meeting-highlight,
+body[class*="fluent2-highcontrast"] .inline-speech-to-text .meeting-card,
+body[class*="fluent2-highcontrast"] .inline-speech-to-text .meeting-highlight {
+  background: none;
+}
+body[class*="dark"] .inline-speech-to-text .hint,
+body[class*="fluent2-highcontrast"] .inline-speech-to-text .hint {
+  color: #ffffff;
+}
+body[class*="dark"] .inline-speech-to-text .demo-text-area,
+body[class*="fluent2-highcontrast"] .inline-speech-to-text .demo-text-area {
+  background: none;
+  color: unset;
+}

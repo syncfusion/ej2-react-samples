@@ -1,0 +1,40 @@
+#rteFormValidation .rte-control-section {
+    margin: 0 auto;
+    max-width: 750px;
+    padding: 25px;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+#rteFormValidation .e-richtexteditor .e-rte-content .e-content {
+    float: left;
+    width: 100%;
+}
+
+#rteFormValidation .content-wrapper {
+    width: auto;
+    margin: 0 auto;
+    max-width: 750px;
+}
+
+#rteFormValidation .validation-message {
+    color: #d32f2f;
+    font-size: 12px;
+    margin-top: 8px;
+    margin-left: 0;
+    min-height: 16px;
+}
+
+#rteFormValidation .button-container {
+    text-align: center;
+    margin-top: 16px;
+    padding: 0 0 20px 0;
+}
+
+#rteFormValidation .button-container .e-btn {
+    margin: 0 8px;
+}
+
+#rteFormValidation .e-richtexteditor {
+    margin: 20px 0;
+}

@@ -194,7 +194,7 @@ const headerIcons = {
         <GridComponent
           dataSource={productDetail}
           id="Detail-Grid"
-          height="400px"
+          height="520px"
           allowSorting={true}
           allowFiltering={true}
           filterSettings={filterSettings}

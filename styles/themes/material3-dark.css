@@ -83,6 +83,7 @@
 
 body.material3-dark,
 .material3-dark #sb-header-text,
+.material3-dark #sb-sdk-switcher,
 .material3-dark .control-name,
 .material3-dark .sample-navigation,
 .material3-dark .sb-icon-Popout,
@@ -195,7 +196,7 @@ body.material3-dark,
 .material3-dark .sb-search-result,
 .material3-dark .sb-src-code,
 .material3-dark .sb-api-section,
-.material3-dark .sb-theme-popup, .material3-dark .sb-products-popup, .material3-dark  .copy-tooltip,
+.material3-dark .sb-theme-popup, .material3-dark .sb-sdk-popup, .material3-dark  .copy-tooltip,
 .material3-dark .e-icons.copycode,
 .material3-dark #search-input-wrapper input,
 .material3-dark #search-input-wrapper input::placeholder {
@@ -203,7 +204,8 @@ body.material3-dark,
     background: #2B2831;
 }
 
-	.material3-dark .sb-products-popup {
+
+.material3-dark .sb-sdk-popup {
     color: #ffffff;
     background: #2B2831;
     border: unset;
@@ -240,10 +242,10 @@ body.material3-dark,
 .material3-dark .sb-switch-popup li:hover,
 .material3-dark .theme-wrapper:hover,
 .material3-dark .theme-wrapper.active,
-.material3-dark .products-wrapper:hover,
-.material3-dark .products-wrapper.active,
+.material3-dark .sdk-wrapper:hover,
+.material3-dark .sdk-wrapper.active,
 .material3-dark .sb-theme-popup li:hover,
-.material3-dark .sb-products-popup li:hover,
+.material3-dark .sb-sdk-popup li:hover,
 .material3-dark .sb-search-result .e-list-item:hover,
 .material3-dark .sb-left-pane .e-listview .e-list-item:hover,
 .material3-dark .sb-control-navigation .e-treeview .e-list-item.e-active>.e-fullrow,
@@ -279,6 +281,10 @@ body.material3-dark,
 .material3-dark .sb-theme-popup li.active .sb-theme-select {
     color: rgb(208, 188, 255);
     ;
+}
+
+.material3-dark .sb-sdk-popup li.active .sb-sdk-select {
+    color: rgb(208, 188, 255);
 }
 
 .material3-dark .setting-responsive .sb-responsive-items {
@@ -353,6 +359,14 @@ body.material3-dark,
 
 .material3-dark .sb-theme-popup li:hover .sb-theme-select {
     color: transparent !important;
+}
+
+.material3-dark .sb-sdk-popup li:hover .sb-sdk-select {
+    color: transparent !important;
+}
+
+.material3-dark .sb-sdk-popup li:hover.active .sb-sdk-select {
+    color: rgb(208, 188, 255) !important;
 }
 
 .material3-dark .sb-theme-popup li:hover.active .sb-theme-select,
@@ -434,4 +448,13 @@ body.material3-dark,
     .material3-dark .sb-mobile-setting {
         padding-top: 2px;
     }
+}
+
+.material3-dark .sf-axe-msg.e-message {
+    background-color: #1C1B1F;
+    border: 2px solid #36343B;
+}
+
+.sdk-wrapper {
+    background:none;
 }

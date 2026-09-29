@@ -1,0 +1,53 @@
+.method-property-content .method-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 0;
+    gap: 8px;
+}
+
+.method-property-content .method-name {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.method-property-content .method-btn {
+    flex: 0 0 auto;
+    padding: 5px 14px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+#methods-output-panel {
+    margin-top: 16px;
+}
+
+#methods-output-panel h4 {
+    margin: 0 0 8px 0;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+#methods-output {
+    margin: 0;
+    padding: 12px;
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 1.5;
+    min-height: 200px;
+    overflow: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+    box-sizing: border-box;
+    background: transparent;
+}
+
+#methods-output:empty::before {
+    content: "Method result will appear here.";
+    font-style: italic;
+    opacity: 0.6;
+}

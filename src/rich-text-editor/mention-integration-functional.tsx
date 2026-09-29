@@ -32,18 +32,20 @@ function MentionIntegration() {
     function itemTemplate(data: any): JSX.Element {
         return (
             <table>
-                <tr>
-                    <td>
-                        <div id="mention-TemplateList">
-                            <img className="mentionEmpImage" src={"src/rich-text-editor/images/" + data.Eimg + ".png"} />
-                            <span className={"e-badge e-badge-success e-badge-overlap e-badge-dot e-badge-bottom" + data.Status}></span>
-                        </div>
-                    </td>
-                    <td className="mentionNameList">
-                        <span className="person">{data.Name}</span>
-                        <span className="email">{data.EmailId}</span>
-                    </td>
-                </tr>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div id="mention-TemplateList">
+                                <img className="mentionEmpImage" src={"src/rich-text-editor/images/" + data.Eimg + ".png"} />
+                                <span className={"e-badge e-badge-success e-badge-overlap e-badge-dot e-badge-bottom" + data.Status}></span>
+                            </div>
+                        </td>
+                        <td className="mentionNameList">
+                            <span className="person">{data.Name}</span>
+                            <span className="email">{data.EmailId}</span>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
         );
     }

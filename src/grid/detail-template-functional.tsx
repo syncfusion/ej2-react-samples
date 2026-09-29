@@ -15,6 +15,7 @@ function DetailTemplate() {
     React.useEffect(() => {
         updateSampleSection();
     }, [])
+    let grid: GridComponent;
     let taskData:any;
     let salesData:any;
     const emailTemplate = (props: any) => {
@@ -85,7 +86,7 @@ function DetailTemplate() {
     const taskTemplate = () => {
       return (
         <div style={{ paddingTop: '20px', paddingBottom: '20px' }}>
-            <KanbanComponent id="kanban" cssClass="kanban-swimlane-template" keyField="Status" dataSource={taskData} cardSettings={{ template: cardTemplate.bind(this), headerField: 'Id' }}>
+            <KanbanComponent id="kanban" cssClass="kanban-swimlane-template" keyField="Status" dataSource={taskData} enableRtl={grid.enableRtl} cardSettings={{ template: cardTemplate.bind(this), headerField: 'Id' }}>
                 <KanbanColumns>
                     <KanbanColumn headerText="Open" keyField="Open" />
                     <KanbanColumn headerText="In Progress" keyField="InProgress" />
@@ -100,7 +101,7 @@ function DetailTemplate() {
     const chartTemplate = () => {
         return (
         <div style={{ paddingTop: '20px', paddingBottom: '20px' }}>
-            <ChartComponent height="302px" tooltip={{ enable: true }} primaryXAxis={{ valueType: 'Category', title: 'Status' }} title="Burndown Chart">
+            <ChartComponent height="302px" enableRtl={grid.enableRtl} tooltip={{ enable: true }} primaryXAxis={{ valueType: 'Category', title: 'Status' }} title="Burndown Chart">
                 <Inject services={[Tooltip, LineSeries, Category, Legend]} />
                 <SeriesCollectionDirective>
                     <SeriesDirective dataSource={salesData} xName="taskid" yName="estimatedHours" name="Estimated Hours"marker={{ visible: true, width: 10, height: 10 }}/>
@@ -114,7 +115,7 @@ function DetailTemplate() {
         const headertext = [{ text: "Taskboard" }, { text: "Burndown Chart" }];
         return (<div>
             <p style={{ textAlign: "center", paddingTop: "3px", fontSize: "17px" }}><b>Sprint</b></p>
-            <TabComponent animation={{
+            <TabComponent enableRtl={grid.enableRtl} animation={{
             previous: { effect: 'None', duration: 0, easing: '' },
             next: { effect: 'None', duration: 0, easing: '' }
             }}>
@@ -134,7 +135,7 @@ function DetailTemplate() {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <GridComponent dataSource={employeeDetail} height='600' detailDataBound={detailDataBound} detailTemplate={detailTemplate} width='auto' allowSorting={true} allowFiltering={true} filterSettings={{type: 'CheckBox'}}>
+                    <GridComponent dataSource={employeeDetail} ref={(g) => { grid = g }} height='600' detailDataBound={detailDataBound} detailTemplate={detailTemplate} width='auto' allowSorting={true} allowFiltering={true} filterSettings={{type: 'CheckBox'}}>
                       <ColumnsDirective>
                           <ColumnDirective headerText='Image' width='180' template={employeeTemplate} textAlign='Center' />
                           <ColumnDirective field="EmployeeID" headerText='ID' isPrimaryKey={true} width={70}/>

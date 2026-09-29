@@ -7,7 +7,7 @@ import { Tooltip } from '@syncfusion/ej2-react-popups'
 import { ListView } from '@syncfusion/ej2-react-lists';
 import { TabComponent } from '@syncfusion/ej2-react-navigations';
 import { ToastComponent } from '@syncfusion/ej2-react-notifications';
-import { viewMobilePropPane, selectedTheme, sampleOverlay, removeOverlay, processDeviceDependables } from './index';
+import { viewMobilePropPane, selectedTheme, sampleOverlay, removeOverlay, processDeviceDependables, getActiveSdkSampleOrder } from './index';
 import * as samplesJSON from './all-routes';
 import { MyWindow } from './leftpane';
 import { setSelectList } from './leftpane';
@@ -18,12 +18,13 @@ import 'codemirror/mode/xml/xml.js';
 import 'codemirror/mode/css/css.js';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/mbo.css';
+import { runAxeReport } from './accessibility/axe-integration';
 
 declare let window: MyWindow;
 let samLength: number;
 // Regex for hidden code removal
 let reg: RegExp = /.*custom code start([\S\s]*?)custom code end.*/g;
-let aiControlRegex: RegExp = /^(?:block-editor\/ai-[a-z-]+|rich-text-editor\/ai-[a-z-]+|ai-(?!assistview\b)[a-z-]+(?:\/[A-Za-z0-9-]+)?|ai-assistview\/ai-[a-z-]+|inline-ai-assist\/ai-[a-z-]+|dashboards(?:\/[A-Za-z0-9-]+)?)$/;
+let aiControlRegex: RegExp = /^(?:[A-Za-z0-9-]+\/ai-[a-z-]+|ai-(?!assistview\b)[a-z-]+(?:\/[A-Za-z0-9-]+)?|dashboards(?:\/[A-Za-z0-9-]+)?)$/;
 let hash: string[];
 let catRegex: RegExp = /(-| )/g;
 let propRegex: RegExp = /-3/;
@@ -77,18 +78,39 @@ export function selectDefaultTab(): void {
 }
 window.apiList = (samplesJSON as any).apiList
 /**
+ * Returns `control/sample` from the current hash WITHOUT the theme segment,
+ * so the value stays identical across light/dark theme switches.
+ */
+function getSamplePath(): string {
+    return location.hash.split('/').slice(2).join('/');
+}
+/**
  * Description Rendering
  */
 function renderDescription(): void {
     let header: HTMLElement;
     let description: HTMLElement = select('#description', select('#control-content')) as HTMLElement;
     let descElement: HTMLElement = select('.description-section') as HTMLElement;
-    let iDescription: Element = select('#description', descElement);
-    if (iDescription) {
-        detach(iDescription);
+    if (!descElement) {
+        return;
     }
+    let samplePath: string = getSamplePath();
+    let existingDescriptions: NodeListOf<Element> = descElement.querySelectorAll('#description');
     if (description) {
+        // Fresh (re)mounted description - evict every previously relocated
+        description.setAttribute('data-sample', samplePath);
+        for (let i: number = 0; i < existingDescriptions.length; i++) {
+            detach(existingDescriptions[i]);
+        }
         descElement.appendChild(description);
+    } else {
+        // No fresh description inside `#control-content`. This happens when Content` re-renders WITHOUT
+        // ` remounting the routed sample (theme switch triggers `mountSamples` -> `componentDidUpdate`).
+        for (let i: number = 0; i < existingDescriptions.length; i++) {
+            if (existingDescriptions[i].getAttribute('data-sample') !== samplePath) {
+                detach(existingDescriptions[i]);
+            }
+        }
     }
 }
 
@@ -140,6 +162,22 @@ function renderHooks(selector: string, insert?: boolean): void {
         }
     }
 }
+
+function toggleAxeButtonVisibility(): void {
+    const axeAiControlRegex: RegExp = /ai-(?!assistview\b)[a-z-]+/;
+    const axeButton: HTMLElement = document.querySelector('#open-axe-report') as HTMLElement;
+    const axeSplitter: HTMLElement = document.querySelector('#axe-toolbar-splitter') as HTMLElement;
+    if (!axeButton) { return; }
+    const mobileNow: boolean = window.matchMedia('(max-width:550px)').matches;
+    const hashStr: string = (location.hash || '').replace(/^#\//, '');
+    const hashControl: string = hashStr.split('/')[1] || '';
+    const isAi: boolean = axeAiControlRegex.test(hashControl);
+    const shouldHide: boolean = mobileNow || isAi;
+    axeButton.classList.toggle('sb-hide', shouldHide);
+    if (axeSplitter) {
+        axeSplitter.classList.toggle('sb-hide', shouldHide);
+    }
+};
 
 function onHooksChange(): void {
     let val: string = (document.querySelector('input[name="hooks"]:checked') as HTMLInputElement).value;
@@ -209,12 +247,26 @@ function highlightCode(codeEle: Element, fileType: string): void {
 function renderActionDescription(): void {
     let aDescription: HTMLElement = select('#action-description', select('#control-content')) as HTMLElement;
     let aDescElem: HTMLElement = select('.sb-action-description') as HTMLElement;
+    if (!aDescElem) {
+        return;
+    }
+    let samplePath: string = getSamplePath();
     if (aDescription) {
+        // Fresh (re)mounted action description - evict every previously
+        aDescription.setAttribute('data-sample', samplePath);
         aDescElem.innerHTML = '';
         aDescElem.appendChild(aDescription);
         aDescElem.style.display = '';
-    } else if (aDescElem) {
-        aDescElem.style.display = 'none';
+    } else {
+        // No fresh action description inside `#control-content`.
+        let existingADescriptions: NodeListOf<Element> = aDescElem.querySelectorAll('#action-description');
+        for (let i: number = 0; i < existingADescriptions.length; i++) {
+            if (existingADescriptions[i].getAttribute('data-sample') !== samplePath) {
+                detach(existingADescriptions[i]);
+            }
+        }
+        // Show the container only when the current sample actually owns one.
+        aDescElem.style.display = aDescElem.querySelector('#action-description') ? '' : 'none';
     }
 }
 
@@ -490,9 +542,10 @@ function createStackInput(name: string, value: string, form: HTMLFormElement): v
 function onNextButtonClick(): void {
     selectDefaultTab();
     hash = location.hash.split('/');
-    let currentIndex: number = window.sampleOrder.indexOf(hash.slice(2).join('/'));
-    let nextList: string = window.sampleOrder[currentIndex + 1];
-    if (currentIndex !== -1) {
+    const filteredOrder: string[] = getActiveSdkSampleOrder(window.sampleOrder);
+    let currentIndex: number = filteredOrder.indexOf(hash.slice(2).join('/'));
+    let nextList: string = filteredOrder[currentIndex + 1];
+    if (currentIndex !== -1 && nextList) {
         sampleOverlay();
         location.hash = '#/' + hash[1] + '/' + nextList;
         isRendered = false;
@@ -502,9 +555,10 @@ function onNextButtonClick(): void {
 function onPrevButtonClick(): void {
     selectDefaultTab();
     hash = location.hash.split('/');
-    let currentIndex: number = window.sampleOrder.indexOf(hash.slice(2).join('/'));
-    let prevList: string = window.sampleOrder[currentIndex - 1];
-    if (currentIndex !== -1) {
+    const filteredOrder: string[] = getActiveSdkSampleOrder(window.sampleOrder);
+    let currentIndex: number = filteredOrder.indexOf(hash.slice(2).join('/'));
+    let prevList: string = filteredOrder[currentIndex - 1];
+    if (currentIndex !== -1 && prevList) {
         sampleOverlay();
         location.hash = '#/' + hash[1] + '/' + prevList;
         isRendered = false;
@@ -531,8 +585,9 @@ function toggleButtonState(id: string, state: boolean): void {
 }
 
 export function setNavButtonState(): void {
-    let curIndex: number = window.sampleOrder.indexOf(location.hash.split('/').slice(2).join('/'));
-    samLength = window.sampleOrder.length - 1;
+    const filteredOrder: string[] = getActiveSdkSampleOrder(window.sampleOrder);
+    let curIndex: number = filteredOrder.indexOf(location.hash.split('/').slice(2).join('/'));
+    samLength = filteredOrder.length - 1;
     if (curIndex === samLength) {
         toggleButtonState('next-sample', true);
     } else {
@@ -643,10 +698,18 @@ export class Content extends React.Component<{}, {}>{
          * Property Panel Border
          */
         select('.sb-sample-content-area').firstChild.appendChild(propBorder);
+        
+        toggleAxeButtonVisibility();
+        window.addEventListener('hashchange', toggleAxeButtonVisibility);
+        window.addEventListener('resize', toggleAxeButtonVisibility);
 
         /**
          * Navigation Button Click events
          */
+    }
+    public componentWillUnmount(): void {
+        window.removeEventListener('hashchange', toggleAxeButtonVisibility);
+        window.removeEventListener('resize', toggleAxeButtonVisibility);
     }
     public tabRendered(): void {
         let hsplitter: string = '<div class="sb-toolbar-splitter sb-custom-item"></div>';
@@ -655,8 +718,10 @@ export class Content extends React.Component<{}, {}>{
         let sampleNavigation: string = '<div class="sb-custom-item sample-navigation"><button id="prev-sample" role="tab" aria-label="Navigate to previous sample" class="sb-navigation-prev">' +
             '<span class="sb-icons sb-icon-Previous"></span></button><button  id="next-sample" role="tab" aria-label="Navigate to next sample" class="sb-navigation-next">' +
             '<span class="sb-icons sb-icon-Next"></span></button></div>';
+        let axeTemplate: string = '<span class="sb-axe-text">WCAG 2.2</span>';
         let plnrTemplate: string = '<span class="sb-icons sb-icons-plnkr"></span><span class="sb-plnkr-text">Edit in StackBlitz</span>';
-        let contentToolbarTemplate: string = '<div class="sb-desktop-setting"><button id="open-plnkr" role="tab" aria-label="Open Edit in StackBlitz" tabindex="0" class="sb-custom-item sb-plnr-section">' +
+        let contentToolbarTemplate: string = '<div class="sb-desktop-setting"><button id="open-axe-report" role="tab" aria-label="View accessibility compliance report" tabindex="0" class="sb-custom-item sb-plnr-section sb-axe-section">' +
+            axeTemplate + '</button><div id="axe-toolbar-splitter" class="sb-toolbar-splitter sb-custom-item"></div><button id="open-plnkr" role="tab" aria-label="Open Edit in StackBlitz" tabindex="0" class="sb-custom-item sb-plnr-section">' +
             plnrTemplate + '</button>' + hsplitter + openNewTemplate + hsplitter + '</div>' + sampleNavigation +
             '<div class="sb-icons sb-mobile-setting sb-hide"></div>';
 
@@ -682,12 +747,20 @@ export class Content extends React.Component<{}, {}>{
         let next: Tooltip = new Tooltip({
             content: 'Next Sample'
         });
+        let axeTooltip: Tooltip = new Tooltip({
+            content: 'Supports WCAG and Section 508 standards. View the accessibility report for this demo\'s compliance details.',
+            position: 'BottomCenter',
+            width: 280,
+            cssClass: 'sb-axe-tooltip'
+        });
         select('#right-pane').addEventListener('scroll', function (event) {
             next.close();
             openNew.close();
             previous.close();
+            axeTooltip.close();
         });
         next.appendTo('#next-sample');
+        axeTooltip.appendTo('#open-axe-report');
         /**
       * plnkr trigger
       */
@@ -697,6 +770,9 @@ export class Content extends React.Component<{}, {}>{
                 plnkrForm.submit();
             }
         });
+
+        select('#open-axe-report').addEventListener('click', runAxeReport);
+        toggleAxeButtonVisibility();
 
         select('#next-sample').addEventListener('click', onNextButtonClick);
         select('#prev-sample').addEventListener('click', onPrevButtonClick);
@@ -712,7 +788,12 @@ export class Content extends React.Component<{}, {}>{
         /**
          * Sample Control Name change
          */
-        sampleNameElement.innerHTML = select('[control-name="' + location.hash.split('/')[2].toLowerCase() + '"]').getAttribute('name');
+        let currentControl: string = location.hash.split('/')[2].toLowerCase();
+        let controlElem: Element = select('[control-name="' + currentControl + '"]');
+        if (currentControl.startsWith('ai-') && ['ai-assistview', 'ai-smart-paste', 'ai-smart-textarea'].indexOf(currentControl) === -1) {
+            controlElem = select('[control-name="ai-grid"]');
+        }
+        sampleNameElement.innerHTML = controlElem.getAttribute('name')!;
         renderDescription();
         renderActionDescription();
     }
@@ -729,6 +810,7 @@ export class Content extends React.Component<{}, {}>{
                         <div>
                             <span className="sb-icons sb-icon-API"></span><span className="sb-tab-title"> API </span></div>
                     </div>
+                    <div id="sb-content-after-action" />
                     <div className="e-content sb-sample-content-area">
                         <div>
                             <div className='sb-demo-section'>
@@ -761,9 +843,9 @@ export class Content extends React.Component<{}, {}>{
                         <div>
                             <GridComponent id='api-grid' dataSource={[]} ref={l => apiGrid = l}>
                                 <ColumnsDirective>
-                                    <ColumnDirective field='name' headerText='name'  template='#template' width='180' textAlign='Center'></ColumnDirective>
+                                    <ColumnDirective field='name' headerText='name' template='#template' width='180' textAlign='Center'></ColumnDirective>
                                     <ColumnDirective field='type' headerText='Type' width='180' ></ColumnDirective>
-                                    <ColumnDirective field='description' headerText='Description' template='#template-description'  width='200'/>
+                                    <ColumnDirective field='description' headerText='Description' template='#template-description' width='200' />
                                 </ColumnsDirective>
                             </GridComponent>
                         </div>

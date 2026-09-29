@@ -120,11 +120,7 @@ export class Filtering extends SampleBase<{}, {}> {
           </PropertyPane>
         </div>
         <div id="action-description">
-          <p>This sample visualizes the manned lunar mission, which landed the first human on the Moon using the Apollo 11
-            spacecraft in the year 1969.
-            This sample demonstrates the Filtering feature available in Gantt Chart. You can
-            filter a particular column using filter menu available in the columns. This sample is also enabled with toolbar
-            searching option, using which you can filter the Gantt content across all the columns.</p>
+          <p>This sample demonstrates the filtering feature in the Gantt Chart. Use the filter options available in the column headers to filter task records, and use the property panel to switch between filter types and hierarchy modes.</p>
         </div>
 
         <div id="description">
@@ -153,7 +149,9 @@ export class Filtering extends SampleBase<{}, {}> {
             Gantt component features are segregated into individual feature-wise modules. To use the filtering feature, inject the <code>Filter</code> module. To enable toolbar support, inject the <code>Toolbar</code> module. To enable selection, inject the <code>Selection</code> module.
           </p>
           <br />
-          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/filtering/filtering">documentation section</a>.</p>
+          <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/filtering/filtering">filtering</a> documentation section.</p>
+          <br/>
+          <p>Looking for the full React Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/react-components/react-gantt-chart">React Gantt Chart</a> page.</p>
         </div>
       </div>
     )

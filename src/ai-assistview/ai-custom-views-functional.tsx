@@ -79,9 +79,8 @@ const CustomViews = () => {
         responseView.innerHTML = responseItemElem + responseView.innerHTML;
         setTimeout(async () => {
             abortControllerRef.current = new AbortController();
-            var foundPrompt = prompts.find((promptObj) => promptObj.prompt === prompt);
             var args = { prompt };
-            var response = foundPrompt ? foundPrompt.response : await getAIResponse(args as any, abortControllerRef.current);
+            var response = await getAIResponse(args as any, abortControllerRef.current);
             responseView.children[0].querySelector('.assist-loading-content').innerHTML = response as string;
             var copyBtn = responseView.children[0].querySelector('#copyBtn');
             copyBtn.classList.remove('e-skeleton', 'e-shimmer-wave');

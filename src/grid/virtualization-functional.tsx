@@ -253,9 +253,9 @@ function Virtualization() {
                 <p>Features of the Grid component are organized into individual, feature-specific modules. To use the virtual scrolling functionality, inject the <code>VirtualScroll</code> module into the <code>services</code>.</p>
                 <p>For more detailed information about virtual scrolling, refer to this <a aria-label="API link for documentation" target="_blank"
                     href="https://ej2.syncfusion.com/react/documentation/grid/scrolling/virtual-scrolling">documentation.</a></p>
-                <p>Looking for the full React Data Grid component overview, features, pricing, and documentation? Visit our
-                        <a target="_blank"
-                            href="https://www.syncfusion.com/react-components/react-data-grid"> React Data Grid component</a> page.</p>
+                <p>Looking for the full React Data Grid component overview, features, pricing, and documentation? Visit our 
+            <a target="_blank"
+              href="https://www.syncfusion.com/react-components/react-data-grid"> React Data Grid component</a> page.</p>
             </div>
         </div>
     )

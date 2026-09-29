@@ -6,7 +6,7 @@ import { DropDownButton, MenuEventArgs } from '@syncfusion/ej2-splitbuttons';
 import { SidebarComponent } from '@syncfusion/ej2-react-navigations';
 import { BlockEditorComponent, BlockModel } from '@syncfusion/ej2-react-blockeditor';
 import { SampleBase } from '../common/sample-base';
-import * as data from './blockData.json';
+import * as data from './data/ai-ask-assistant.json';
 import './ai-ask-assistant.css';
 import { getUserID, AI_SERVICE_URL } from '../common/ai-service'
 import { MarkdownConverter } from '@syncfusion/ej2-markdown-converter';

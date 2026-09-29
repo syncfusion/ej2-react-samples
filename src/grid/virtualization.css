@@ -56,7 +56,7 @@ td.e-rowcell .virtual-statustxt.e-criticalcolor {
 }
 
 .material3-dark td.e-rowcell .virtual-statustxt.e-highcolor,
-.bootstrap5\.3-dark td.e-rowcell .virtual-statustxt.e-highcolor,
+.bootstrap5_3-dark td.e-rowcell .virtual-statustxt.e-highcolor,
 .fluent2-dark td.e-rowcell .virtual-statustxt.e-highcolor,
 .tailwind3-dark td.e-rowcell .virtual-statustxt.e-highcolor,
 .fluent2-highcontrast td.e-rowcell .virtual-statustxt.e-highcolor,
@@ -66,7 +66,7 @@ td.e-rowcell .virtual-statustxt.e-criticalcolor {
 }
 
 .material3-dark .virtual-statustemp.e-highcolor,
-.bootstrap5\.3-dark .virtual-statustemp.e-highcolor,
+.bootstrap5_3-dark .virtual-statustemp.e-highcolor,
 .fluent2-dark .virtual-statustemp.e-highcolor,
 .tailwind3-dark .virtual-statustemp.e-highcolor,
 .fluent2-highcontrast .virtual-statustemp.e-highcolor,
@@ -76,7 +76,7 @@ td.e-rowcell .virtual-statustxt.e-criticalcolor {
 }
 
 .material3-dark td.e-rowcell .virtual-statustxt.e-lowcolor,
-.bootstrap5\.3-dark td.e-rowcell .virtual-statustxt.e-lowcolor,
+.bootstrap5_3-dark td.e-rowcell .virtual-statustxt.e-lowcolor,
 .fluent2-dark td.e-rowcell .virtual-statustxt.e-lowcolor,
 .tailwind3-dark td.e-rowcell .virtual-statustxt.e-lowcolor,
 .fluent2-highcontrast td.e-rowcell .virtual-statustxt.e-lowcolor,
@@ -86,7 +86,7 @@ td.e-rowcell .virtual-statustxt.e-criticalcolor {
 }
 
 .material3-dark .virtual-statustemp.e-lowcolor,
-.bootstrap5\.3-dark .virtual-statustemp.e-lowcolor,
+.bootstrap5_3-dark .virtual-statustemp.e-lowcolor,
 .fluent2-dark .virtual-statustemp.e-lowcolor,
 .tailwind3-dark .virtual-statustemp.e-lowcolor,
 .fluent2-highcontrast .virtual-statustemp.e-lowcolor,
@@ -96,7 +96,7 @@ td.e-rowcell .virtual-statustxt.e-criticalcolor {
 }
 
 .material3-dark td.e-rowcell .virtual-statustxt.e-mediumcolor,
-.bootstrap5\.3-dark td.e-rowcell .virtual-statustxt.e-mediumcolor,
+.bootstrap5_3-dark td.e-rowcell .virtual-statustxt.e-mediumcolor,
 .fluent2-dark td.e-rowcell .virtual-statustxt.e-mediumcolor,
 .tailwind3-dark td.e-rowcell .virtual-statustxt.e-mediumcolor,
 .fluent2-highcontrast td.e-rowcell .virtual-statustxt.e-mediumcolor,
@@ -106,7 +106,7 @@ td.e-rowcell .virtual-statustxt.e-criticalcolor {
 }
 
 .material3-dark .virtual-statustemp.e-mediumcolor,
-.bootstrap5\.3-dark .virtual-statustemp.e-mediumcolor,
+.bootstrap5_3-dark .virtual-statustemp.e-mediumcolor,
 .fluent2-dark .virtual-statustemp.e-mediumcolor,
 .tailwind3-dark .virtual-statustemp.e-mediumcolor,
 .fluent2-highcontrast .virtual-statustemp.e-mediumcolor,
@@ -116,7 +116,7 @@ td.e-rowcell .virtual-statustxt.e-criticalcolor {
 }
 
 .material3-dark td.e-rowcell .virtual-statustxt.e-criticalcolor,
-.bootstrap5\.3-dark td.e-rowcell .virtual-statustxt.e-criticalcolor,
+.bootstrap5_3-dark td.e-rowcell .virtual-statustxt.e-criticalcolor,
 .fluent2-dark td.e-rowcell .virtual-statustxt.e-criticalcolor,
 .tailwind3-dark td.e-rowcell .virtual-statustxt.e-criticalcolor,
 .fluent2-highcontrast td.e-rowcell .virtual-statustxt.e-criticalcolor,
@@ -126,7 +126,7 @@ td.e-rowcell .virtual-statustxt.e-criticalcolor {
 }
 
 .material3-dark .virtual-statustemp.e-criticalcolor,
-.bootstrap5\.3-dark .virtual-statustemp.e-criticalcolor,
+.bootstrap5_3-dark .virtual-statustemp.e-criticalcolor,
 .fluent2-dark .virtual-statustemp.e-criticalcolor,
 .tailwind3-dark .virtual-statustemp.e-criticalcolor,
 .fluent2-highcontrast .virtual-statustemp.e-criticalcolor,
@@ -257,7 +257,7 @@ td.e-rowcell .virtual-statustxt.e-criticalcolor {
 }
 
 .material3-dark .virtual-statustemp.e-paidcolor,
-.bootstrap5\.3-dark .virtual-statustemp.e-paidcolor,
+.bootstrap5_3-dark .virtual-statustemp.e-paidcolor,
 .fluent2-dark .virtual-statustemp.e-paidcolor,
 .tailwind3-dark .virtual-statustemp.e-paidcolor,
 .fluent2-highcontrast .virtual-statustemp.e-paidcolor,
@@ -267,7 +267,7 @@ td.e-rowcell .virtual-statustxt.e-criticalcolor {
 }
 
 .material3-dark td.e-rowcell .virtual-statustxt.e-paidcolor,
-.bootstrap5\.3-dark td.e-rowcell .virtual-statustxt.e-paidcolor,
+.bootstrap5_3-dark td.e-rowcell .virtual-statustxt.e-paidcolor,
 .fluent2-dark td.e-rowcell .virtual-statustxt.e-paidcolor,
 .tailwind3-dark td.e-rowcell .virtual-statustxt.e-paidcolor,
 .fluent2-highcontrast td.e-rowcell .virtual-statustxt.e-paidcolor,
@@ -277,7 +277,7 @@ td.e-rowcell .virtual-statustxt.e-criticalcolor {
 }
 
 .material3-dark .virtual-statustemp.e-pendingcolor,
-.bootstrap5\.3-dark .virtual-statustemp.e-pendingcolor,
+.bootstrap5_3-dark .virtual-statustemp.e-pendingcolor,
 .fluent2-dark .virtual-statustemp.e-pendingcolor,
 .tailwind3-dark .virtual-statustemp.e-pendingcolor,
 .fluent2-highcontrast .virtual-statustemp.e-pendingcolor,
@@ -287,7 +287,7 @@ td.e-rowcell .virtual-statustxt.e-criticalcolor {
 }
 
 .material3-dark td.e-rowcell .virtual-statustxt.e-pendingcolor,
-.bootstrap5\.3-dark td.e-rowcell .virtual-statustxt.e-pendingcolor,
+.bootstrap5_3-dark td.e-rowcell .virtual-statustxt.e-pendingcolor,
 .fluent2-dark td.e-rowcell .virtual-statustxt.e-pendingcolor,
 .tailwind3-dark td.e-rowcell .virtual-statustxt.e-pendingcolor,
 .fluent2-highcontrast td.e-rowcell .virtual-statustxt.e-pendingcolor,
@@ -297,7 +297,7 @@ td.e-rowcell .virtual-statustxt.e-criticalcolor {
 }
 
 .material3-dark .virtual-statustemp.e-refundcolor,
-.bootstrap5\.3-dark .virtual-statustemp.e-refundcolor,
+.bootstrap5_3-dark .virtual-statustemp.e-refundcolor,
 .fluent2-dark .virtual-statustemp.e-refundcolor,
 .tailwind3-dark .virtual-statustemp.e-refundcolor,
 .fluent2-highcontrast .virtual-statustemp.e-refundcolor,
@@ -307,7 +307,7 @@ td.e-rowcell .virtual-statustxt.e-criticalcolor {
 }
 
 .material3-dark td.e-rowcell .virtual-statustxt.e-refundcolor,
-.bootstrap5\.3-dark td.e-rowcell .virtual-statustxt.e-refundcolor,
+.bootstrap5_3-dark td.e-rowcell .virtual-statustxt.e-refundcolor,
 .fluent2-dark td.e-rowcell .virtual-statustxt.e-refundcolor,
 .tailwind3-dark td.e-rowcell .virtual-statustxt.e-refundcolor,
 .fluent2-highcontrast td.e-rowcell .virtual-statustxt.e-refundcolor,
@@ -317,7 +317,7 @@ td.e-rowcell .virtual-statustxt.e-criticalcolor {
 }
 
 .material3-dark .virtual-statustemp.e-deliveredcolor,
-.bootstrap5\.3-dark .virtual-statustemp.e-deliveredcolor,
+.bootstrap5_3-dark .virtual-statustemp.e-deliveredcolor,
 .fluent2-dark .virtual-statustemp.e-deliveredcolor,
 .tailwind3-dark .virtual-statustemp.e-deliveredcolor,
 .fluent2-highcontrast .virtual-statustemp.e-deliveredcolor,
@@ -327,7 +327,7 @@ td.e-rowcell .virtual-statustxt.e-criticalcolor {
 }
 
 .material3-dark td.e-rowcell .virtual-statustxt.e-deliveredcolor,
-.bootstrap5\.3-dark td.e-rowcell .virtual-statustxt.e-deliveredcolor,
+.bootstrap5_3-dark td.e-rowcell .virtual-statustxt.e-deliveredcolor,
 .fluent2-dark td.e-rowcell .virtual-statustxt.e-deliveredcolor,
 .tailwind3-dark td.e-rowcell .virtual-statustxt.e-deliveredcolor,
 .fluent2-highcontrast td.e-rowcell .virtual-statustxt.e-deliveredcolor,
@@ -337,7 +337,7 @@ td.e-rowcell .virtual-statustxt.e-criticalcolor {
 }
 
 .material3-dark .virtual-statustemp.e-shippedcolor,
-.bootstrap5\.3-dark .virtual-statustemp.e-shippedcolor,
+.bootstrap5_3-dark .virtual-statustemp.e-shippedcolor,
 .fluent2-dark .virtual-statustemp.e-shippedcolor,
 .tailwind3-dark .virtual-statustemp.e-shippedcolor,
 .fluent2-highcontrast .virtual-statustemp.e-shippedcolor,
@@ -347,7 +347,7 @@ td.e-rowcell .virtual-statustxt.e-criticalcolor {
 }
 
 .material3-dark td.e-rowcell .virtual-statustxt.e-shippedcolor,
-.bootstrap5\.3-dark td.e-rowcell .virtual-statustxt.e-shippedcolor,
+.bootstrap5_3-dark td.e-rowcell .virtual-statustxt.e-shippedcolor,
 .fluent2-dark td.e-rowcell .virtual-statustxt.e-shippedcolor,
 .tailwind3-dark td.e-rowcell .virtual-statustxt.e-shippedcolor,
 .fluent2-highcontrast td.e-rowcell .virtual-statustxt.e-shippedcolor,
@@ -357,7 +357,7 @@ td.e-rowcell .virtual-statustxt.e-criticalcolor {
 }
 
 .material3-dark .virtual-statustemp.e-processingcolor,
-.bootstrap5\.3-dark .virtual-statustemp.e-processingcolor,
+.bootstrap5_3-dark .virtual-statustemp.e-processingcolor,
 .fluent2-dark .virtual-statustemp.e-processingcolor,
 .tailwind3-dark .virtual-statustemp.e-processingcolor,
 .fluent2-highcontrast .virtual-statustemp.e-processingcolor,
@@ -367,7 +367,7 @@ td.e-rowcell .virtual-statustxt.e-criticalcolor {
 }
 
 .material3-dark td.e-rowcell .virtual-statustxt.e-processingcolor,
-.bootstrap5\.3-dark td.e-rowcell .virtual-statustxt.e-processingcolor,
+.bootstrap5_3-dark td.e-rowcell .virtual-statustxt.e-processingcolor,
 .fluent2-dark td.e-rowcell .virtual-statustxt.e-processingcolor,
 .tailwind3-dark td.e-rowcell .virtual-statustxt.e-processingcolor,
 .fluent2-highcontrast td.e-rowcell .virtual-statustxt.e-processingcolor,
@@ -377,7 +377,7 @@ td.e-rowcell .virtual-statustxt.e-criticalcolor {
 }
 
 .material3-dark .virtual-statustemp.e-cancelcolor,
-.bootstrap5\.3-dark .virtual-statustemp.e-cancelcolor,
+.bootstrap5_3-dark .virtual-statustemp.e-cancelcolor,
 .fluent2-dark .virtual-statustemp.e-cancelcolor,
 .tailwind3-dark .virtual-statustemp.e-cancelcolor,
 .fluent2-highcontrast .virtual-statustemp.e-cancelcolor,
@@ -387,7 +387,7 @@ td.e-rowcell .virtual-statustxt.e-criticalcolor {
 }
 
 .material3-dark td.e-rowcell .virtual-statustxt.e-cancelcolor,
-.bootstrap5\.3-dark td.e-rowcell .virtual-statustxt.e-cancelcolor,
+.bootstrap5_3-dark td.e-rowcell .virtual-statustxt.e-cancelcolor,
 .fluent2-dark td.e-rowcell .virtual-statustxt.e-cancelcolor,
 .tailwind3-dark td.e-rowcell .virtual-statustxt.e-cancelcolor,
 .fluent2-highcontrast td.e-rowcell .virtual-statustxt.e-cancelcolor,
@@ -398,7 +398,7 @@ td.e-rowcell .virtual-statustxt.e-criticalcolor {
 
 /* additional dark-theme overrides for new badge classes */
 .material3-dark .virtual-statustemp.e-packedcolor,
-.bootstrap5\.3-dark .virtual-statustemp.e-packedcolor,
+.bootstrap5_3-dark .virtual-statustemp.e-packedcolor,
 .fluent2-dark .virtual-statustemp.e-packedcolor,
 .tailwind3-dark .virtual-statustemp.e-packedcolor,
 .fluent2-highcontrast .virtual-statustemp.e-packedcolor,
@@ -408,7 +408,7 @@ td.e-rowcell .virtual-statustxt.e-criticalcolor {
 }
 
 .material3-dark td.e-rowcell .virtual-statustxt.e-packedcolor,
-.bootstrap5\.3-dark td.e-rowcell .virtual-statustxt.e-packedcolor,
+.bootstrap5_3-dark td.e-rowcell .virtual-statustxt.e-packedcolor,
 .fluent2-dark td.e-rowcell .virtual-statustxt.e-packedcolor,
 .tailwind3-dark td.e-rowcell .virtual-statustxt.e-packedcolor,
 .fluent2-highcontrast td.e-rowcell .virtual-statustxt.e-packedcolor,
@@ -418,7 +418,7 @@ td.e-rowcell .virtual-statustxt.e-criticalcolor {
 }
 
 .material3-dark .virtual-statustemp.e-processingcolor,
-.bootstrap5\.3-dark .virtual-statustemp.e-processingcolor,
+.bootstrap5_3-dark .virtual-statustemp.e-processingcolor,
 .fluent2-dark .virtual-statustemp.e-processingcolor,
 .tailwind3-dark .virtual-statustemp.e-processingcolor,
 .fluent2-highcontrast .virtual-statustemp.e-processingcolor,
@@ -428,7 +428,7 @@ td.e-rowcell .virtual-statustxt.e-criticalcolor {
 }
 
 .material3-dark td.e-rowcell .virtual-statustxt.e-processingcolor,
-.bootstrap5\.3-dark td.e-rowcell .virtual-statustxt.e-processingcolor,
+.bootstrap5_3-dark td.e-rowcell .virtual-statustxt.e-processingcolor,
 .fluent2-dark td.e-rowcell .virtual-statustxt.e-processingcolor,
 .tailwind3-dark td.e-rowcell .virtual-statustxt.e-processingcolor,
 .fluent2-highcontrast td.e-rowcell .virtual-statustxt.e-processingcolor,
@@ -438,7 +438,7 @@ td.e-rowcell .virtual-statustxt.e-criticalcolor {
 }
 
 .material3-dark .virtual-statustemp.e-returnedcolor,
-.bootstrap5\.3-dark .virtual-statustemp.e-returnedcolor,
+.bootstrap5_3-dark .virtual-statustemp.e-returnedcolor,
 .fluent2-dark .virtual-statustemp.e-returnedcolor,
 .tailwind3-dark .virtual-statustemp.e-returnedcolor,
 .fluent2-highcontrast .virtual-statustemp.e-returnedcolor,
@@ -448,7 +448,7 @@ td.e-rowcell .virtual-statustxt.e-criticalcolor {
 }
 
 .material3-dark td.e-rowcell .virtual-statustxt.e-returnedcolor,
-.bootstrap5\.3-dark td.e-rowcell .virtual-statustxt.e-returnedcolor,
+.bootstrap5_3-dark td.e-rowcell .virtual-statustxt.e-returnedcolor,
 .fluent2-dark td.e-rowcell .virtual-statustxt.e-returnedcolor,
 .tailwind3-dark td.e-rowcell .virtual-statustxt.e-returnedcolor,
 .fluent2-highcontrast td.e-rowcell .virtual-statustxt.e-returnedcolor,
@@ -458,7 +458,7 @@ td.e-rowcell .virtual-statustxt.e-criticalcolor {
 }
 
 .material3-dark .virtual-statustemp.e-orderedcolor,
-.bootstrap5\.3-dark .virtual-statustemp.e-orderedcolor,
+.bootstrap5_3-dark .virtual-statustemp.e-orderedcolor,
 .fluent2-dark .virtual-statustemp.e-orderedcolor,
 .tailwind3-dark .virtual-statustemp.e-orderedcolor,
 .fluent2-highcontrast .virtual-statustemp.e-orderedcolor,
@@ -469,7 +469,7 @@ td.e-rowcell .virtual-statustxt.e-criticalcolor {
 }
 
 .material3-dark td.e-rowcell .virtual-statustxt.e-orderedcolor,
-.bootstrap5\.3-dark td.e-rowcell .virtual-statustxt.e-orderedcolor,
+.bootstrap5_3-dark td.e-rowcell .virtual-statustxt.e-orderedcolor,
 .fluent2-dark td.e-rowcell .virtual-statustxt.e-orderedcolor,
 .tailwind3-dark td.e-rowcell .virtual-statustxt.e-orderedcolor,
 .fluent2-highcontrast td.e-rowcell .virtual-statustxt.e-orderedcolor,
@@ -479,7 +479,7 @@ td.e-rowcell .virtual-statustxt.e-criticalcolor {
 }
 
 .material3-dark .virtual-statustemp.e-failedcolor,
-.bootstrap5\.3-dark .virtual-statustemp.e-failedcolor,
+.bootstrap5_3-dark .virtual-statustemp.e-failedcolor,
 .fluent2-dark .virtual-statustemp.e-failedcolor,
 .tailwind3-dark .virtual-statustemp.e-failedcolor,
 .fluent2-highcontrast .virtual-statustemp.e-failedcolor,
@@ -489,7 +489,7 @@ td.e-rowcell .virtual-statustxt.e-criticalcolor {
 }
 
 .material3-dark td.e-rowcell .virtual-statustxt.e-failedcolor,
-.bootstrap5\.3-dark td.e-rowcell .virtual-statustxt.e-failedcolor,
+.bootstrap5_3-dark td.e-rowcell .virtual-statustxt.e-failedcolor,
 .fluent2-dark td.e-rowcell .virtual-statustxt.e-failedcolor,
 .tailwind3-dark td.e-rowcell .virtual-statustxt.e-failedcolor,
 .fluent2-highcontrast td.e-rowcell .virtual-statustxt.e-failedcolor,
@@ -508,7 +508,7 @@ td.e-rowcell .e-payment-info img {
 }
 
 .material3-dark td.e-rowcell .e-payment-info img,
-.bootstrap5\.3-dark td.e-rowcell .e-payment-info img,
+.bootstrap5_3-dark td.e-rowcell .e-payment-info img,
 .fluent2-dark td.e-rowcell .e-payment-info img,
 .tailwind3-dark td.e-rowcell .e-payment-info img,
 .fluent2-highcontrast td.e-rowcell .e-payment-info img,

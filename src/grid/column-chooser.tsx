@@ -81,8 +81,7 @@ export class ColChooser extends SampleBase<{}, {}> {
                     <p>More information on column chooser configuration can be found in the <a aria-label="API link for documentation" target="_blank"
                         href="https://ej2.syncfusion.com/react/documentation/grid/columns/column-chooser"> documentation.</a></p>  
                     <p>Looking for the full React Data Grid component overview, features, pricing, and documentation? Visit our
-                        <a target="_blank"
-                            href="https://www.syncfusion.com/react-components/react-data-grid"> React Data Grid component</a> page.</p>
+                        <a target="_blank" href="https://www.syncfusion.com/react-components/react-data-grid"> React Data Grid component</a> page.</p>
                 </div>
             </div >
         )

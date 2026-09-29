@@ -75,9 +75,8 @@ export class CustomViews extends SampleBase<{}, {}> {
     responseView.innerHTML = responseItemElem + responseView.innerHTML;
     setTimeout(async () => {
       this.abortController = new AbortController();
-      var foundPrompt = this.prompts.find((promptObj) => promptObj.prompt === prompt);
       var args = { prompt };
-      var response = foundPrompt ? foundPrompt.response : await getAIResponse(args as any, this.abortController);
+      var response = await getAIResponse(args as any, this.abortController);
       responseView.children[0].querySelector('.assist-loading-content').innerHTML = response as string;
       var copyBtn = responseView.children[0].querySelector('#copyBtn');
       copyBtn.classList.remove('e-skeleton', 'e-shimmer-wave');

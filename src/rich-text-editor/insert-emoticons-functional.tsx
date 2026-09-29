@@ -32,7 +32,7 @@ function InsertEmoticons() {
                 <div className='rte-control-section' ref={rteSectionRef} id='rteSection'>
                     <RichTextEditorComponent id="EmotionIconstRTE" ref={(scope) => { rteObj = scope }}
                         toolbarSettings={toolbarSettings}>
-                            <div style={{display: 'block;' }}><p style={{ marginRight: '10px' }}>An emoji picker in a Rich Text Editor is a tool that allows users to easily add emojis or emoticons to their text. Typically, it is a small window or panel that displays a variety of emojis, arranged in different categories, such as smileys, animals, food, and so on. Users can select the desired emoji by clicking on it or by typing its name in a search bar. </p></div>  
+                            <div style={{display: 'block' }}><p style={{ marginRight: '10px' }}>An emoji picker in a Rich Text Editor is a tool that allows users to easily add emojis or emoticons to their text. Typically, it is a small window or panel that displays a variety of emojis, arranged in different categories, such as smileys, animals, food, and so on. Users can select the desired emoji by clicking on it or by typing its name in a search bar. </p></div>  
                         <Inject services={[HtmlEditor, Toolbar, Link, Image, QuickToolbar, EmojiPicker, PasteCleanup, Table, Video, Audio, ClipBoardCleanup, AutoFormat]} />
                     </RichTextEditorComponent>
                 </div>

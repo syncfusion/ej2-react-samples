@@ -29,7 +29,7 @@ export class Print extends SampleBase<{}, {}> {
             toolbar={this.toolbarOptions} load={this.load} height='410'>
             <ColumnsDirective>
               <ColumnDirective field='taskID' headerText='Task ID' width='70' textAlign='Right'></ColumnDirective>
-              <ColumnDirective field='taskName' headerText='Task Name' width='180'></ColumnDirective>
+              <ColumnDirective field='taskName' headerText='Task Name' width='250'></ColumnDirective>
               <ColumnDirective field='startDate' headerText='Start Date' width='90' format='yMd' textAlign='Right' />
               <ColumnDirective field='endDate' headerText='End Date' width='90' format='yMd' textAlign='Right' />
               <ColumnDirective field='duration' headerText='Duration' width='90' textAlign='Right' />

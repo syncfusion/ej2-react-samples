@@ -37,13 +37,15 @@ export class EmptyRecordTemplate extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                <GridComponent dataSource={this.data} emptyRecordTemplate={this.template.bind(this)} toolbar={this.toolbarOptions} allowPaging={true} editSettings={this.editSettings}  pageSettings={this.pageSettings}>
+                <GridComponent dataSource={this.data} emptyRecordTemplate={this.template.bind(this)} toolbar={this.toolbarOptions} allowPaging={true} emptyRecordMode='Sticky' height='300' editSettings={this.editSettings}  pageSettings={this.pageSettings}>
                 <ColumnsDirective>
                     <ColumnDirective field='OrderID' headerText='Order ID' width='140' textAlign='Right' validationRules={this.orderidRules} isPrimaryKey={true}></ColumnDirective>
                     <ColumnDirective field='CustomerName' headerText='Customer Name' width='150' validationRules={this.validationRule}></ColumnDirective>
                     <ColumnDirective field='Freight' headerText='Freight' width='140' format='C2' textAlign='Right' editType='numericedit' ></ColumnDirective>
                     <ColumnDirective field='OrderDate' headerText='Order Date' editType='datetimepickeredit' format= {this.format} width='160' ></ColumnDirective>
                     <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150' editType='dropdownedit' edit={this.editparams} ></ColumnDirective>
+                    <ColumnDirective field='ShipCity' headerText='Ship City' width='150' ></ColumnDirective>
+                    <ColumnDirective field='ShipAddress' headerText='Ship Address' width='200' ></ColumnDirective>
                 </ColumnsDirective>
                         <Inject services={[Page, Edit, Toolbar]} />
                     </GridComponent>

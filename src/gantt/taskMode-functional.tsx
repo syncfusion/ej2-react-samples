@@ -53,21 +53,22 @@ const TaskMode = () => {
         </GanttComponent>
       </div>
       <div id="action-description">
-        <p>The Gantt provides support for automatic and manual task scheduling modes. Scheduling mode of a task is used to indicate whether the start and end dates of a task will be automatically validated or not. Using the property <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#taskmode">taskMode</a> we can able to change the scheduling mode of a task. The following are the enumeration values that can be set to the property <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#taskmode">taskMode</a>.</p>
-        <ul>
-          <li>Auto</li>
-          <li>Manual</li>
-          <li>Custom</li>
-        </ul>
+        <p>The Gantt provides support for automatic and manual task scheduling modes. Scheduling mode of a task is used to indicate whether the start and end dates of a task will be automatically validated or not. Using the property <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#taskmode">taskMode</a> property controls whether tasks are scheduled automatically, manually, or through a custom mode that maps the scheduling behavior from the data source.</p>
       </div>
 
       <div id="description">
-        <p>When the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#taskmode">taskMode</a> property is set as <code>Auto</code> scheduling mode, all the tasks in the project will be rendered as automatically scheduled tasks. Thus the start and end dates of the tasks in the project will be automatically validated.</p>
-        <p>When the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#taskmode">taskMode</a> property is set as <code>Manual</code> scheduling mode, all the tasks in the project will be rendered as manually scheduled tasks. Thus the dates of the tasks will not get validated automatically by the system.</p>
-        <p>When the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#taskmode">taskMode</a> property is set as <code>Custom</code>, the scheduling mode for each tasks will be mapped form the data source field. The property <code>manual</code> is used to map the scheduling mode field from the data source.</p>
+        <p>The Gantt Chart supports three scheduling modes through the <code>taskMode</code> property: <code>Auto</code>, <code>Manual</code> and <code>Custom</code></p>
+        <ul>
+          <li><code>Auto</code> - All tasks are automatically scheduled, and task dates are validated based on scheduling rules and dependencies.</li>
+          <li><code>Manual</code> - All tasks are manually scheduled, and task dates are maintained without automatic validation.</li>
+          <li><code>Custom</code> - The scheduling mode is determined for each task individually using a mapped data source field.</li>
+        </ul>
+        <p>In this sample, <code><a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt#taskmode">taskMode</a></code> property is set <code>Custom</code>, and the scheduling behavior of each task is mapped using the <code>Manual</code> task field. This allows both automatically scheduled and manually scheduled tasks to coexist within the same project.</p>
         <p>Gantt component features are segregated into individual feature-wise modules. To use editing, selection, markers and toolbar features, we need to inject the <code>Edit</code>, <code>Selection</code>, <code>DayMarkers</code> and <code>Toolbar</code> into the <code>Inject Services</code> section.</p>
         <br />
-        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/scheduling-tasks">documentation section</a>.</p>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/scheduling-tasks">scheduling tasks</a> documentation section.</p>
+        <br/>
+        <p>Looking for the full React Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/react-components/react-gantt-chart">React Gantt Chart</a> page.</p>
       </div>
     </div>
   )

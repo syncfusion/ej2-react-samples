@@ -144,6 +144,10 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the 100 percent stacking column series.'
     },
     {
+        'path': 'chart/stacked-smart-labels', 'component': 'StackedSmartLabels', 'name': 'Stacked Smart Labels', 'order': '04', 'category': 'Bar Charts', 'type': 'new',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure smart labels in the stacked column series.'
+    },
+    {
         'path': 'chart/stacked-bar', 'component': 'StackedBar', 'name': 'Stacked Bar', 'order': '04', 'category': 'Bar Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the stacking bar series.'
     },
@@ -192,7 +196,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the pie chart with gradient.'
     },
     {
-        'path': 'chart/nested-donut', 'component': 'NestedDoughnut', 'name': 'Nested Doughnut', 'order': '07', 'category': 'Accumulation Charts', 'type': 'new', 
+        'path': 'chart/nested-donut', 'component': 'NestedDoughnut', 'name': 'Nested Doughnut', 'order': '07', 'category': 'Accumulation Charts', 
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the nested donut charts with multiple series.'
     },
     {
@@ -438,6 +442,10 @@ export const ChartSampleOrder: Object = [
     {
         'path': 'chart/axis-crossing', 'component': 'AxisCrossing', 'name': 'Axes Crossing', 'order': '14', 'category': 'Chart Axes',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates the behaviour of the axis crossing in chart.'
+    },
+    {
+        'path': 'chart/multi-axis-combination', 'component': 'MultiAxisCombination', 'name': 'Multi Axis Combination', 'order': '14', 'category': 'Chart Axes', 'type': 'new',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render multiple axes in chart.'
     },
     {
         'path': 'chart/sorting', 'component': 'Sorting', 'name': 'Sorting', 'order': '15', 'category': 'Chart Customization',

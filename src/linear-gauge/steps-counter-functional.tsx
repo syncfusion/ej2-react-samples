@@ -6,6 +6,12 @@ import { updateSampleSection } from '../common/sample-base';
 const SAMPLE_CSS = `
     .control-fluid {
         padding: 0px !important;
+    }
+
+    @media only screen and (max-width: 767px) {
+        #steps-counter-annotation {
+            margin-left: -32px;
+        }
     }`;
 
 const StepsCounter = () => {
@@ -38,7 +44,7 @@ const StepsCounter = () => {
                         </AxisDirective>
                     </AxesDirective>
                     <AnnotationsDirective>
-                        <AnnotationDirective content='<div style="width: 70px;"> <p align="center" style="font-size:10px;margin-left:60px;margin-top:10px;font-weight: 400;">STEPS</p> <p align="center" style="font-size: 23px;margin-top:-15px;margin-left:50px;color: #0DC9AB;font-weight: 600;">8456</p> </div>' axisIndex={0} axisValue={12000} x={10} zIndex='1' y={5} />
+                        <AnnotationDirective content='<div id="steps-counter-annotation" style="width: 70px;"> <p align="center" style="font-size:10px;margin-left:60px;margin-top:10px;font-weight: 400;">STEPS</p> <p align="center" style="font-size: 23px;margin-top:-15px;margin-left:50px;color: #0DC9AB;font-weight: 600;">8456</p> </div>' axisIndex={0} axisValue={12000} x={10} zIndex='1' y={5} />
                         <AnnotationDirective content='<div style="width: 145px;font-size: 19px;margin-left:135px"> Sun, 7 February </div>' axisIndex={0} axisValue={0} x={0} zIndex='1' y={-100} />
                     </AnnotationsDirective>
                 </LinearGaugeComponent>

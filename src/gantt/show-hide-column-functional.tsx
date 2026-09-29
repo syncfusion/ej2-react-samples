@@ -154,17 +154,14 @@ const ShowHideColumn = () => {
       </div>
 
       <div id="description">
-        <p>The Gantt column can be shown or hidden dynamically using the <code>showColumn</code> and <code>hideColumn</code> methods of the Gantt.</p>
-        <p>In this demo, the columns can be shown and hidden by selecting the column name in dropdown. Click the Show or Hide button to toggle the visibility.
-          The visibility of column is toggled based on the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/columnModel/#headertext">columns -&gt; headerText</a> value.
-        </p>
-
-        <p>The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/columnModel/#visible">columns -&gt; visible</a> property specifies the visibility of a column.
-          To hide a column at the initial rendering, set the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/columnModel/#visible">columns -&gt; visible</a> property to false.
+        <p>The Gantt Chart provides built-in methods to dynamically control column visibility using the <code>showColumn</code> and <code>hideColumn</code> methods.</p>
+        <p>In this example, select a column from the dropdown list and click the corresponding show or hide button to toggle its visibility. The list of currently hidden columns is displayed in the property panel. Column visibility can also be configured during initial rendering by setting the column's <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/columnModel/#visible">visible</a> property to <code>false</code>.
         </p>
         <p>Gantt component features are segregated into individual feature-wise modules. To use selection feature, we need to inject <code>Selection</code> into the <code>Inject Services</code> section.</p>
         <br/>
-        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/columns/columns#show-or-hide-columns">documentation section</a>.</p>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/columns/columns#show-or-hide-columns">columns</a> documentation section.</p>
+        <br/>
+        <p>Looking for the full React Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/react-components/react-gantt-chart">React Gantt Chart</a> page.</p>
       </div>
     </div>
   )

@@ -17,11 +17,13 @@ export class GenerativeUI extends SampleBase<{}, {}> {
   currentGridConfig: any = {};
 
   assistInstance: AIAssistViewComponent;
+  abortController: AbortController | undefined;
 
   toolbarItemClicked = (args: ToolbarItemClickedEventArgs) => {
     if (args.item.iconCss === 'e-icons e-refresh') {
       this.assistInstance.prompts = [];
       this.assistInstance.promptSuggestions = this.generativeSuggestions;
+      this.stopResponse();
     }
   };
 
@@ -211,13 +213,14 @@ export class GenerativeUI extends SampleBase<{}, {}> {
   }
 
   promptRequest = async (args: PromptRequestEventArgs): Promise<void> => {
+      this.abortController = new AbortController();
       try {
         const aiArgs = {
           prompt: args.prompt,
           systemPrompt: this.toolSystemPrompt
         };
       
-        const reply = await getAIResponse(aiArgs);
+        const reply = await getAIResponse(aiArgs, this.abortController);
       
         const jsonText = reply.response || '{}';
       
@@ -243,6 +246,12 @@ export class GenerativeUI extends SampleBase<{}, {}> {
       }
     };
 
+  stopResponse = () => {
+    if (this.abortController) {
+      this.abortController.abort();
+    }
+  }
+
   render() {
     return (
       <div className='control-pane'>
@@ -257,6 +266,7 @@ export class GenerativeUI extends SampleBase<{}, {}> {
               showClearButton={true}
               toolbarSettings={this.assistViewToolbarSettings}
               promptRequest={this.promptRequest}
+              stopRespondingClick={this.stopResponse}
               created={this.onCreated}
               ref={(aiassistView) => (this.assistInstance = aiassistView)}
             />

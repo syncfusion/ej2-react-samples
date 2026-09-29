@@ -1,0 +1,650 @@
+/* =========================================================
+   AI Chart Assist layout
+   All custom classes use the chartgenerator- prefix.
+   ========================================================= */
+
+.chartgenerator-aiassistview-wrapper,
+.chartgenerator-aiassistview-wrapper * {
+    box-sizing: border-box;
+}
+
+.chartgenerator-aiassistview-wrapper {
+    --chartgenerator-bg-primary: #ffffff;
+    --chartgenerator-bg-secondary: #f5f6f8;
+    --chartgenerator-text-primary: #242424;
+    --chartgenerator-text-secondary: #616161;
+    --chartgenerator-border: #dfe3e8;
+    --chartgenerator-hover: #eef4ff;
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    height: 680px;
+    gap: 16px;
+    padding: 0;
+    margin: 0;
+}
+
+.chartgenerator-aiassistview-pane {
+    display: flex;
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 100%;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--chartgenerator-bg-primary);
+    border: 1px solid var(--chartgenerator-border);
+    border-radius: 12px;
+    box-shadow: 0 8px 28px #00000014;
+}
+
+.chartgenerator-aiassistview {
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.chartgenerator-aiassistview .e-aiassistview {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+
+.chartgenerator-aiassistview .e-aiassistview .e-view-container,
+.chartgenerator-aiassistview .e-aiassistview .e-content-container,
+.chartgenerator-aiassistview .e-aiassistview .e-content-body,
+.chartgenerator-aiassistview .e-aiassistview .e-response,
+.chartgenerator-aiassistview .e-aiassistview .e-assist-tool {
+    min-width: 0;
+    max-width: 100%;
+}
+
+.chartgenerator-aiassistview .e-aiassistview .e-response-panel {
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+.chartgenerator-aiassistview .e-aiassistview .e-prompt-panel {
+    flex: 0 0 auto;
+}
+
+/* Banner */
+.chartgenerator-aiassistview .chartgenerator-banner-content {
+    display: flex;
+    width: 100%;
+    min-height: 330px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    text-align: center;
+}
+
+.chartgenerator-aiassistview .chartgenerator-banner-content .e-assistview-icon {
+    margin-bottom: 8px;
+    color: var(--color-sf-primary, #0f6cbd);
+    font-size: 36px;
+}
+
+.chartgenerator-aiassistview .chartgenerator-banner-content .e-assistview-icon::before {
+    font-size: 36px;
+}
+
+.chartgenerator-aiassistview .chartgenerator-banner-content h2 {
+    margin: 4px 0;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.chartgenerator-aiassistview .chartgenerator-banner-content p {
+    margin: 4px 0;
+    color: var(--chartgenerator-text-secondary);
+}
+
+/* Suggested prompts */
+.chartgenerator-aiassistview .e-aiassistview .e-suggestions ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.chartgenerator-aiassistview .e-aiassistview .e-suggestions ul li {
+    flex: 1 1 200px;
+    max-width: 300px;
+    white-space: normal;
+    text-align: center;
+}
+
+.chartgenerator-aiassistview .e-aiassistview textarea {
+    min-height: 36px !important;
+    max-height: 100px !important;
+    padding: 6px 32px 6px 8px;
+    overflow: auto !important;
+    box-sizing: border-box;
+    line-height: 20px;
+    resize: vertical;
+}
+
+.chartgenerator-aiassistview .e-aiassistview .e-prompt,
+.chartgenerator-aiassistview .e-aiassistview .e-prompt-container {
+    padding: 4px 8px !important;
+}
+
+.chartgenerator-aiassistview .e-aiassist-view-toolbar-item.custom-btn:nth-of-type(3) {
+    padding-right: 4px !important;
+}
+
+.chartgenerator-aiassistview .e-aiassist-view-toolbar-item.custom-btn:nth-of-type(4) {
+    padding-left: 4px !important;
+}
+
+/* Response-specific chart preview */
+.chartgenerator-generated-chart-container {
+    width: 100%;
+    min-width: 0;
+    margin: 12px 0;
+    overflow: hidden;
+    background: var(--chartgenerator-bg-primary);
+    border: 1px solid var(--chartgenerator-border);
+    border-radius: 10px;
+}
+
+.chartgenerator-generated-chart-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 46px;
+    padding: 10px 14px;
+    color: var(--chartgenerator-text-primary);
+    background: var(--chartgenerator-bg-secondary);
+    border-bottom: 1px solid var(--chartgenerator-border);
+}
+
+.chartgenerator-generated-chart-header > strong {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 600;
+}
+
+.chartgenerator-chart-preview-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.chartgenerator-chart-export-select,
+.chartgenerator-chart-print-button {
+    height: 36px;
+    color: var(--chartgenerator-text-primary);
+    background: var(--chartgenerator-bg-primary);
+    border: 1px solid var(--color-sf-border-light, #d1d5db);
+    border-radius: 6px;
+    font: inherit;
+    cursor: pointer;
+}
+
+.chartgenerator-chart-export-select {
+    min-width: 120px;
+    padding: 0 30px 0 10px;
+}
+
+.chartgenerator-chart-print-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 14px;
+}
+
+.chartgenerator-chart-export-select:hover,
+.chartgenerator-chart-print-button:hover {
+    background: var(--color-sf-content-bg-color, #f5f5f5);
+    border-color: var(--color-sf-border, #a3a3a3);
+}
+
+.chartgenerator-chart-export-select:focus-visible,
+.chartgenerator-chart-print-button:focus-visible,
+.chartgenerator-icon-btn:focus-visible,
+.chartgenerator-history-item:focus-visible {
+    outline: 2px solid var(--color-sf-primary, #0f6cbd);
+    outline-offset: 2px;
+}
+
+.chartgenerator-chart-preview-status {
+    min-height: 20px;
+    padding: 4px 16px 0;
+    color: var(--chartgenerator-text-secondary);
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.chartgenerator-chart-tool-container {
+    width: 100%;
+    min-width: 0;
+    height: 420px;
+    min-height: 420px;
+    padding: 12px;
+    overflow: hidden;
+}
+
+.chartgenerator-chart-tool-container .e-chart,
+.chartgenerator-chart-tool-container .e-accumulationchart {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.chartgenerator-tool-error {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    color: var(--color-sf-danger, #c62828);
+    background: var(--chartgenerator-bg-primary);
+    border: 1px solid currentColor;
+    border-radius: 8px;
+}
+
+/* Inline React annotation content */
+.chartgenerator-chart-annotation {
+    padding: 4px 8px;
+    color: var(--chartgenerator-text-primary);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    white-space: nowrap;
+    background: var(--chartgenerator-bg-primary);
+    border: 1px solid #6063ff;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px #00000026;
+}
+
+/* History sidebar */
+.chartgenerator-sidebar {
+    position: relative;
+    display: flex;
+    flex: 0 0 290px;
+    width: 290px;
+    max-width: 320px;
+    height: 100%;
+    flex-direction: column;
+    overflow: hidden;
+    color: var(--chartgenerator-text-primary);
+    background: var(--chartgenerator-bg-primary);
+    border: 1px solid var(--chartgenerator-border);
+    border-radius: 12px;
+    box-shadow: 0 8px 28px #00000014;
+}
+
+.chartgenerator-sidebar-content {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+
+.chartgenerator-history-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 50px;
+    padding: 0 14px;
+    background: var(--chartgenerator-bg-secondary);
+    border-bottom: 1px solid var(--chartgenerator-border);
+}
+
+.chartgenerator-history-header h3 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.chartgenerator-icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 32px;
+    height: 32px;
+    padding: 6px;
+    color: inherit;
+    background: transparent;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.chartgenerator-icon-btn:hover {
+    color: var(--color-sf-primary, #0f6cbd);
+    background: #0000000d;
+}
+
+.chartgenerator-history-scroll {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px;
+    overflow-y: auto;
+}
+
+.chartgenerator-history-item {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 10px 12px;
+    background: var(--chartgenerator-bg-primary);
+    border: 1px solid var(--chartgenerator-border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.chartgenerator-history-item:hover {
+    background: var(--color-sf-content-bg-color-alt2, #eef4ff);
+}
+
+.chartgenerator-history-item.chartgenerator-active {
+    background: var(--color-sf-content-bg-color-alt2, #eef4ff);
+    border-color: var(--color-sf-primary, #1089e9);
+    box-shadow: inset 3px 0 0 var(--color-sf-primary, #1089e9);
+}
+
+.chartgenerator-history-text {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.chartgenerator-history-title {
+    display: -webkit-box;
+    padding-right: 30px;
+    overflow: hidden;
+    color: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 18px;
+    overflow-wrap: anywhere;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.chartgenerator-history-date {
+    margin-top: 4px;
+    color: var(--color-sf-secondary-text, #6b6b6b);
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.chartgenerator-icon-btn.chartgenerator-danger {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    color: var(--color-sf-danger, #c62828);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+
+.chartgenerator-history-item:hover .chartgenerator-danger,
+.chartgenerator-history-item:focus-within .chartgenerator-danger {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.chartgenerator-icon-btn.chartgenerator-danger:hover {
+    color: #c62828 !important;
+    background: #ffebee !important;
+}
+
+.chartgenerator-empty {
+    padding: 16px;
+    color: var(--color-sf-secondary-text, #888888);
+    font-size: 12px;
+    font-style: italic;
+    text-align: center;
+}
+
+/* Dark and high-contrast surfaces */
+body[class*="dark"] .chartgenerator-aiassistview-pane,
+body[class*="dark"] .chartgenerator-generated-chart-container,
+body[class*="dark"] .chartgenerator-sidebar,
+body[class*="dark"] .chartgenerator-history-item,
+body[class*="dark"] .chartgenerator-chart-annotation,
+html[class*="dark"] .chartgenerator-aiassistview-pane,
+html[class*="dark"] .chartgenerator-generated-chart-container,
+html[class*="dark"] .chartgenerator-sidebar,
+html[class*="dark"] .chartgenerator-history-item,
+html[class*="dark"] .chartgenerator-chart-annotation {
+    color: var(--color-sf-primary-text, #f3f2f1);
+    background: var(--color-sf-content-bg-color-alt1, #1f1f1f);
+    border-color: var(--color-sf-border-light, #4a4a4a);
+}
+
+body[class*="dark"] .chartgenerator-generated-chart-header,
+body[class*="dark"] .chartgenerator-history-header,
+html[class*="dark"] .chartgenerator-generated-chart-header,
+html[class*="dark"] .chartgenerator-history-header {
+    color: var(--color-sf-primary-text, #f3f2f1);
+    background: var(--color-sf-content-bg-color, #292929);
+    border-color: var(--color-sf-border-light, #4a4a4a);
+}
+
+body[class*="dark"] .chartgenerator-chart-export-select,
+body[class*="dark"] .chartgenerator-chart-print-button,
+html[class*="dark"] .chartgenerator-chart-export-select,
+html[class*="dark"] .chartgenerator-chart-print-button {
+    color: inherit;
+    background: var(--color-sf-content-bg-color-alt1, #1f1f1f);
+    border-color: var(--color-sf-border-light, #5a5a5a);
+}
+
+body[class*="highcontrast"] .chartgenerator-aiassistview-pane,
+body[class*="highcontrast"] .chartgenerator-generated-chart-container,
+body[class*="highcontrast"] .chartgenerator-sidebar,
+body[class*="highcontrast"] .chartgenerator-history-item,
+body[class*="highcontrast"] .chartgenerator-chart-annotation,
+html[class*="highcontrast"] .chartgenerator-aiassistview-pane,
+html[class*="highcontrast"] .chartgenerator-generated-chart-container,
+html[class*="highcontrast"] .chartgenerator-sidebar,
+html[class*="highcontrast"] .chartgenerator-history-item,
+html[class*="highcontrast"] .chartgenerator-chart-annotation {
+    color: #ffffff;
+    background: #000000;
+    border-color: #969696;
+}
+
+body[class*="highcontrast"] .chartgenerator-generated-chart-header,
+body[class*="highcontrast"] .chartgenerator-history-header,
+html[class*="highcontrast"] .chartgenerator-generated-chart-header,
+html[class*="highcontrast"] .chartgenerator-history-header {
+    color: #ffffff;
+    background: #000000;
+    border-color: #969696;
+}
+
+body[class*="highcontrast"] .chartgenerator-chart-export-select,
+body[class*="highcontrast"] .chartgenerator-chart-print-button,
+html[class*="highcontrast"] .chartgenerator-chart-export-select,
+html[class*="highcontrast"] .chartgenerator-chart-print-button {
+    color: #ffffff;
+    background: #000000;
+    border-color: #ffffff;
+}
+
+/* Theme-specific sizing */
+.material3 .chartgenerator-history-header,
+.material3-dark .chartgenerator-history-header {
+    min-height: 58px;
+}
+
+.tailwind3 .chartgenerator-history-header,
+.tailwind3-dark .chartgenerator-history-header,
+.highcontrast .chartgenerator-history-header {
+    min-height: 57px;
+}
+
+.fluent .chartgenerator-icon-btn .e-icons.e-close::before,
+.fluent-dark .chartgenerator-icon-btn .e-icons.e-close::before,
+.bootstrap5\.3 .chartgenerator-icon-btn .e-icons.e-close::before,
+.bootstrap5\.3-dark .chartgenerator-icon-btn .e-icons.e-close::before {
+    font-size: 18px !important;
+}
+
+@media only screen and (max-width: 750px) {
+    .chartgenerator-aiassistview-wrapper {
+        height: 680px;
+        gap: 0;
+    }
+
+    .chartgenerator-aiassistview .e-aiassistview .e-suggestions ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .chartgenerator-aiassistview .e-aiassistview .e-suggestions ul li {
+        flex: 0 0 auto !important;
+        max-width: none;
+    }
+
+    .chartgenerator-sidebar {
+        position: fixed;
+        z-index: 20;
+        inset: 8px auto 8px 8px;
+        width: min(290px, calc(100vw - 16px));
+        max-width: calc(100vw - 16px);
+        height: auto;
+        max-height: calc(100vh - 16px);
+    }
+
+    .chartgenerator-generated-chart-header {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .chartgenerator-chart-preview-actions {
+        flex-wrap: wrap;
+    }
+
+    .chartgenerator-chart-tool-container {
+        height: 360px;
+        min-height: 360px;
+        padding: 6px;
+    }
+
+    .chartgenerator-icon-btn.chartgenerator-danger {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .chartgenerator-history-item,
+    .chartgenerator-icon-btn.chartgenerator-danger {
+        transition: none;
+    }
+}
+
+
+/* React code output and final responsive corrections */
+.chartgenerator-aiassistview .chartgenerator-banner-content { min-height: clamp(150px, 24vh, 240px); max-height: 240px; }
+.chartgenerator-aiassistview .e-aiassistview .e-response-panel { overflow: auto; }
+.chartgenerator-aiassistview .e-aiassistview .e-suggestions ul { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; padding: 8px 16px 16px; overflow: visible; }
+.chartgenerator-aiassistview .e-aiassistview .e-suggestions ul li { display: flex; align-items: center; justify-content: center; width: 100%; min-width: 0; max-width: none; min-height: 48px; height: auto !important; padding: 10px 14px; overflow: visible !important; white-space: normal !important; line-height: 20px; overflow-wrap: anywhere; }
+.chartgenerator-chart-tool-container .e-chart, .chartgenerator-chart-tool-container .e-accumulationchart { height: 396px !important; }
+.chartgenerator-generated-code-container, .chartgenerator-change-summary { width: 100%; margin: 12px 0; border: 1px solid var(--chartgenerator-border); border-radius: 10px; overflow: hidden; }
+.chartgenerator-generated-code-header { padding: 10px 14px; background: var(--chartgenerator-bg-secondary); border-bottom: 1px solid var(--chartgenerator-border); }
+.chartgenerator-generated-code-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; padding: 12px; }
+.chartgenerator-generated-code-grid.single { grid-template-columns: minmax(0, 1fr); }
+.chartgenerator-generated-code-panel { min-width: 0; overflow: hidden; border: 1px solid var(--chartgenerator-border); border-radius: 8px; }
+.chartgenerator-generated-code-panel-header { display: flex; justify-content: space-between; gap: 12px; padding: 10px 12px; background: var(--chartgenerator-bg-secondary); }
+.chartgenerator-generated-code-description { color: var(--chartgenerator-text-secondary); font-size: 12px; }
+.chartgenerator-copy-code-button { flex: 0 0 auto; padding: 6px 12px; color: #fff; background: var(--color-sf-primary, #0f6cbd); border: 0; border-radius: 6px; }
+.chartgenerator-generated-code-wrapper { min-height: 320px; max-height: 480px; padding: 16px; margin: 0; overflow: auto; color: #d4d4d4; background: #1e1e1e; font: 13px/1.6 Consolas, Monaco, "Courier New", monospace; white-space: pre; }
+.chartgenerator-change-summary { padding: 12px 14px; }
+[class*="-dark"] .chartgenerator-sidebar, [class*="-dark"] .chartgenerator-history-header, [class*="-dark"] .chartgenerator-history-item { color: #f3f4f6; background: #111827; border-color: #475569; }
+[class*="-dark"] .chartgenerator-banner-content h2, [class*="-dark"] .chartgenerator-banner-content p, [class*="-dark"] .chartgenerator-history-header h3, [class*="-dark"] .chartgenerator-history-title, [class*="-dark"] .chartgenerator-history-date { color: #f3f4f6; }
+@media (max-width: 1050px) { .chartgenerator-aiassistview .e-aiassistview .e-suggestions ul { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 980px) { .chartgenerator-generated-code-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 750px), (max-height: 700px) { .chartgenerator-aiassistview .chartgenerator-banner-content { min-height: 130px; max-height: 180px; } .chartgenerator-aiassistview .e-aiassistview .e-suggestions ul { grid-template-columns: 1fr; } }
+
+
+/* Explicit sample-local color modes. These rules intentionally override global theme variables. */
+.chartgenerator-aiassistview-wrapper.chartgenerator-light-mode {
+    --chartgenerator-bg-primary: #ffffff;
+    --chartgenerator-bg-secondary: #f5f6f8;
+    --chartgenerator-text-primary: #242424;
+    --chartgenerator-text-secondary: #616161;
+    --chartgenerator-border: #dfe3e8;
+    --chartgenerator-hover: #eef4ff;
+}
+.chartgenerator-aiassistview-wrapper.chartgenerator-dark-mode {
+    --chartgenerator-bg-primary: #111827;
+    --chartgenerator-bg-secondary: #1f2937;
+    --chartgenerator-text-primary: #f3f4f6;
+    --chartgenerator-text-secondary: #cbd5e1;
+    --chartgenerator-border: #475569;
+    --chartgenerator-hover: #334155;
+}
+.chartgenerator-light-mode .chartgenerator-aiassistview-pane,
+.chartgenerator-light-mode .chartgenerator-generated-chart-container,
+.chartgenerator-light-mode .chartgenerator-generated-code-container,
+.chartgenerator-light-mode .chartgenerator-generated-code-panel,
+.chartgenerator-light-mode .chartgenerator-change-summary,
+.chartgenerator-light-mode .chartgenerator-sidebar,
+.chartgenerator-light-mode .chartgenerator-history-item,
+.chartgenerator-light-mode .chartgenerator-chart-tool-container,
+.chartgenerator-light-mode .chartgenerator-chart-preview-status {
+    color: #242424 !important;
+    background: #ffffff !important;
+    border-color: #dfe3e8 !important;
+}
+.chartgenerator-light-mode .chartgenerator-generated-chart-header,
+.chartgenerator-light-mode .chartgenerator-generated-code-header,
+.chartgenerator-light-mode .chartgenerator-generated-code-panel-header,
+.chartgenerator-light-mode .chartgenerator-history-header {
+    color: #242424 !important;
+    background: #f5f6f8 !important;
+    border-color: #dfe3e8 !important;
+}
+.chartgenerator-light-mode .chartgenerator-history-title {
+    color: #242424 !important;
+}
+.chartgenerator-light-mode .chartgenerator-history-date,
+.chartgenerator-light-mode .chartgenerator-generated-code-description,
+.chartgenerator-light-mode .chartgenerator-chart-preview-status {
+    color: #616161 !important;
+}
+.chartgenerator-light-mode .chartgenerator-chart-export-select,
+.chartgenerator-light-mode .chartgenerator-chart-print-button {
+    color: #242424 !important;
+    background: #ffffff !important;
+    border-color: #d1d5db !important;
+    color-scheme: light;
+}
+.chartgenerator-dark-mode .chartgenerator-aiassistview-pane,
+.chartgenerator-dark-mode .chartgenerator-generated-chart-container,
+.chartgenerator-dark-mode .chartgenerator-generated-code-container,
+.chartgenerator-dark-mode .chartgenerator-generated-code-panel,
+.chartgenerator-dark-mode .chartgenerator-change-summary,
+.chartgenerator-dark-mode .chartgenerator-sidebar,
+.chartgenerator-dark-mode .chartgenerator-history-item,
+.chartgenerator-dark-mode .chartgenerator-chart-tool-container {
+    color: #f3f4f6;
+    background: #111827;
+    border-color: #475569;
+}
+.chartgenerator-dark-mode .chartgenerator-generated-chart-header,
+.chartgenerator-dark-mode .chartgenerator-generated-code-header,
+.chartgenerator-dark-mode .chartgenerator-generated-code-panel-header,
+.chartgenerator-dark-mode .chartgenerator-history-header {
+    color: #f3f4f6;
+    background: #1f2937;
+    border-color: #475569;
+}

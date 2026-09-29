@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useEffect } from 'react';
-import { GanttComponent, TaskFieldsModel, ColumnsDirective, ColumnDirective, Selection, Inject, TimelineSettingsModel, TooltipSettingsModel } from '@syncfusion/ej2-react-gantt';
+import { useEffect, useRef } from 'react';
+import { GanttComponent, TaskFieldsModel, ColumnsDirective, ColumnDirective, Selection, Inject, DayMarkers, TimelineSettingsModel, TooltipSettingsModel } from '@syncfusion/ej2-react-gantt';
 import { baselineTemplateData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import './baseline.css'
@@ -10,7 +10,7 @@ const BaselineTemplate = () => {
     updateSampleSection();
   }, [])
 
-  let ganttInstance: GanttComponent;
+  const ganttInstanceRef = useRef<GanttComponent>(null);
 
   const taskFields: TaskFieldsModel = {
     id: 'TaskID',
@@ -45,9 +45,12 @@ const BaselineTemplate = () => {
     if (props.hasChildRecords || (props.data && props.data.hasChildRecords)) {
       return '';
     }
+    if (!ganttInstanceRef.current) {
+      return '';
+    }
     const g = props.taskData;
     const gp = g.ganttProperties;
-    const chart = ganttInstance.chartRowsModule;
+    const chart = ganttInstanceRef.current.chartRowsModule;
 
     const baselineTop = chart.baselineTop;
     const baselineHeight = chart.baselineHeight;
@@ -55,15 +58,15 @@ const BaselineTemplate = () => {
     const milestoneHeight = chart.milestoneHeight;
     const milestoneMarginTop = chart.milestoneMarginTop;
 
-    const rowHeight = ganttInstance.rowHeight;
-    const renderBaseline = ganttInstance.renderBaseline;
-    const enableRtl = ganttInstance.enableRtl;
+    const rowHeight = ganttInstanceRef.current.rowHeight;
+    const renderBaseline = ganttInstanceRef.current.renderBaseline;
+    const enableRtl = ganttInstanceRef.current.enableRtl;
 
     const gap = 9;
     const baselineGap = 4;
 
     const getLeft = (date: any): number => {
-      return ganttInstance.dataOperation.getTaskLeft(new Date(date), false, gp.calendarContext);
+      return ganttInstanceRef.current.dataOperation.getTaskLeft(new Date(date), false, gp.calendarContext);
     };
 
     const getWidth = (start: any, duration: any): number => {
@@ -72,8 +75,8 @@ const BaselineTemplate = () => {
       const end = new Date(start);
       end.setDate(end.getDate() + duration);
 
-      const leftStart = ganttInstance.dataOperation.getTaskLeft(new Date(start), false, gp.calendarContext);
-      const leftEnd = ganttInstance.dataOperation.getTaskLeft(end, false, gp.calendarContext);
+      const leftStart = ganttInstanceRef.current.dataOperation.getTaskLeft(new Date(start), false, gp.calendarContext);
+      const leftEnd = ganttInstanceRef.current.dataOperation.getTaskLeft(end, false, gp.calendarContext);
 
       return leftEnd - leftStart;
     };
@@ -112,6 +115,8 @@ const BaselineTemplate = () => {
     );
   };
 
+  const template: any = baselineTemplate;
+
   const splitterSettings = {
     columnIndex: 3,
   };
@@ -125,10 +130,10 @@ const BaselineTemplate = () => {
       <div className='control-section'>
         <GanttComponent
           id='BaselineTemplate'
-          ref={gantt => ganttInstance = gantt}
+          ref={ganttInstanceRef}
           dataSource={baselineTemplateData}
           taskFields={taskFields}
-          baselineTemplate={baselineTemplate}
+          baselineTemplate={template}
           renderBaseline={true}
           labelSettings={labelSettings}
           splitterSettings={splitterSettings}
@@ -153,7 +158,7 @@ const BaselineTemplate = () => {
             <ColumnDirective field='BaselineStartDate2' format={{ skeleton: 'yMd', type: 'date' }} headerText='Baseline2 Start Date' width={180} />
             <ColumnDirective field='BaselineDuration2' headerText='Baseline2 Duration' width={180} />
           </ColumnsDirective>
-          <Inject services={[Selection]} />
+          <Inject services={[Selection, DayMarkers]} />
         </GanttComponent>
       </div>
       <div id="action-description">
@@ -180,6 +185,8 @@ const BaselineTemplate = () => {
             baseline
           </a> documentation section.
         </p>
+        <br/>
+        <p>Looking for the full React Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/react-components/react-gantt-chart">React Gantt Chart</a> page.</p>
       </div>
     </div>
   )

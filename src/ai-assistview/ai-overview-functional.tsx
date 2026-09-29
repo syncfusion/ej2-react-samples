@@ -144,6 +144,7 @@ const Overview = () => {
   const toolbarItemClicked = (args: ToolbarItemClickedEventArgs) => {
     if (args.item.iconCss === 'e-icons e-refresh') {
       assistInstance.current.prompts = [];
+      stopResponse();
     }
   };
 
@@ -195,14 +196,16 @@ const Overview = () => {
   const promptRequest = async (args: PromptRequestEventArgs) => {
     abortControllerRef.current = new AbortController();
     const foundPrompt = (overviewPromptResponseData || []).find((p: any) => p.prompt === args.prompt);
-    const responseHtml = foundPrompt
-      ? (foundPrompt.regeneratedResponses
-        ? getRandomResponse(foundPrompt.regeneratedResponses)
-        : foundPrompt.response)
-      : await getAIResponse(args as any, abortControllerRef.current);
+    const responseHtml = await getAIResponse(args as any, abortControllerRef.current);
     assistInstance.current.addPromptResponse(responseHtml);
     assistInstance.current.promptSuggestions = foundPrompt?.suggestions as string[] || overviewSuggestions || [];
   };
+
+  const stopResponse = () => {
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
+  }
 
   return (
     <div className='control-pane'>
@@ -220,6 +223,7 @@ const Overview = () => {
             speechToTextSettings={speechToTextSettings}
             bannerTemplate={bannerTemplate}
             promptRequest={promptRequest}
+            stopRespondingClick={stopResponse}
             created={onCreated}
             ref={assistInstance}
           />

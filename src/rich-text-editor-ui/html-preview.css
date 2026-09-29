@@ -1,0 +1,177 @@
+.html-preview-sample-view {
+    width: 100%;
+    height: 100%;
+}
+
+.html-preview-editor-pane {
+    width: 100%;
+    height: 100%;
+}
+.html-preview-source-pane .CodeMirror {
+    height: 405px;
+}
+
+.html-preview-header {
+    float: left;
+    width: 50%;
+    position: relative;
+    box-sizing: border-box;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.html-preview-header-title {
+    padding: 0.5rem 1rem;
+}
+
+.html-preview-header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.html-preview-title {
+    color: #333333;
+    letter-spacing: 1px;
+    text-align: center;
+    margin: 0.75rem 0;
+    font-size: 0.75rem;
+    font-weight: 600;
+    flex: 1;
+}
+
+.html-preview-source-pane {
+    flex: 1;
+    overflow: auto;
+    border-top: 1px solid #e8e8e8;
+}
+
+.html-preview-splitter.e-split-bar.e-split-bar-horizontal.e-last-bar {
+    margin: 0;
+}
+
+.html-preview-splitter.e-splitter-horizontal,
+.html-preview-splitter.e-splitter-vertical {
+    border-left: none;
+}
+
+.html-preview-sample.control-section.html-preview-control-section,
+.control-section .html-preview-splitter,
+.control-section .html-preview-sample-view {
+    height: 450px;
+}
+
+.html-preview-splitter .CodeMirror {
+    height: 100%;
+}
+
+.html-preview-source-pane .CodeMirror-scroll {
+    border-top: 1px solid #e8e8e8;
+}
+
+h6.html-preview-title {
+    font-size: 14px;
+}
+
+/* Dark theme support. */
+.html-preview-sample.fabric-dark .html-preview-title {
+    color: #fff;
+}
+
+.html-preview-sample.fabric-dark .html-preview-source-pane .CodeMirror-gutters,
+.html-preview-sample.fabric-dark .html-preview-source-pane .CodeMirror {
+    background-color: #201F1F;
+    color: #fff;
+}
+
+.html-preview-sample.fluent-dark .html-preview-title {
+    color: #fff;
+}
+
+.html-preview-sample.fluent-dark .html-preview-source-pane .CodeMirror-gutters,
+.html-preview-sample.fluent-dark .html-preview-source-pane .CodeMirror {
+    background-color: #1B1A19;
+    color: #fff;
+}
+
+.html-preview-sample.fluent2-dark .html-preview-title {
+    color: #fff;
+}
+
+.html-preview-sample.fluent2-dark .html-preview-source-pane .CodeMirror-gutters,
+.html-preview-sample.fluent2-dark .html-preview-source-pane .CodeMirror {
+    background-color: #1B1A19;
+    color: #fff;
+}
+
+.html-preview-sample.material3-dark .html-preview-title {
+    color: #fff;
+}
+
+.html-preview-sample.material3-dark .html-preview-source-pane .CodeMirror-gutters,
+.html-preview-sample.material3-dark .html-preview-source-pane .CodeMirror {
+    background-color: #1C1B1F;
+    color: #fff;
+}
+
+.html-preview-sample.bootstrap-dark .html-preview-title {
+    color: #fff;
+}
+
+.html-preview-sample.bootstrap-dark .html-preview-source-pane .CodeMirror-gutters,
+.html-preview-sample.bootstrap-dark .html-preview-source-pane .CodeMirror {
+    background-color: #1A1A1A;
+    color: #fff;
+}
+
+.html-preview-sample.bootstrap5-dark .html-preview-title,
+.html-preview-sample.bootstrap5\.3-dark .html-preview-title {
+    color: #fff;
+}
+
+.html-preview-sample.bootstrap5-dark .html-preview-source-pane .CodeMirror-gutters,
+.html-preview-sample.bootstrap5-dark .html-preview-source-pane .CodeMirror,
+.html-preview-sample.bootstrap5\.3-dark .html-preview-source-pane .CodeMirror-gutters,
+.html-preview-sample.bootstrap5\.3-dark .html-preview-source-pane .CodeMirror {
+    background-color: #212529;
+    color: #fff;
+}
+
+.html-preview-sample.material-dark .html-preview-title {
+    color: #fff;
+}
+
+.html-preview-sample.material-dark .html-preview-source-pane .CodeMirror-gutters,
+.html-preview-sample.material-dark .html-preview-source-pane .CodeMirror {
+    background-color: #303030;
+    color: #fff;
+}
+
+.html-preview-sample.tailwind-dark .html-preview-title,
+.html-preview-sample.tailwind3-dark .html-preview-title {
+    color: #fff;
+}
+
+.html-preview-sample.tailwind-dark .html-preview-source-pane .CodeMirror-gutters,
+.html-preview-sample.tailwind-dark .html-preview-source-pane .CodeMirror,
+.html-preview-sample.tailwind3-dark .html-preview-source-pane .CodeMirror-gutters,
+.html-preview-sample.tailwind3-dark .html-preview-source-pane .CodeMirror {
+    background-color: #1F2937;
+    color: #fff;
+}
+
+.html-preview-sample.highcontrast .html-preview-title,
+.html-preview-sample.fluent2-highcontrast .html-preview-title {
+    color: #fff;
+}
+
+.html-preview-sample.highcontrast .html-preview-source-pane .CodeMirror-gutters,
+.html-preview-sample.highcontrast .html-preview-source-pane .CodeMirror,
+.html-preview-sample.fluent2-highcontrast .html-preview-source-pane .CodeMirror-gutters,
+.html-preview-sample.fluent2-highcontrast .html-preview-source-pane .CodeMirror {
+    background-color: #000000;
+    color: #fff;
+}

@@ -138,7 +138,7 @@ const TimelineResource = () => {
                     <b>Note:</b> The dates which lies beyond the current date set to scheduler through <code>selectedDate</code> property is considered as the past dates here in this sample.
                 </p>
                 <p>
-                    Looking for the full React Scheduler component overview, features, pricing, and documentation? Visit our <a target="_blank" href="https://www.syncfusion.com/react-components/react-scheduler">React Scheduler</a> component page.
+                    Looking for the full React Scheduler component overview, features, pricing, and documentation? Visit our <a target="_blank" href="https://www.syncfusion.com/scheduler-sdk/react-scheduler">React Scheduler</a> component page.
                 </p>
             </div>
         </div>

@@ -26,6 +26,7 @@ const Thinking = () => {
     ];
 
     const assistInstance = useRef<AIAssistViewComponent>(null);
+    const abortController = useRef<AbortController | undefined>();
 
     const promptRequest = async (args: PromptRequestEventArgs) => {
         const assistView = assistInstance.current;
@@ -68,7 +69,7 @@ const Thinking = () => {
 
             if (!userID) return;
 
-            const abortController = new AbortController();
+            abortController.current = new AbortController();
 
             const requestBody = {
                 visitorId: userID,
@@ -88,7 +89,7 @@ const Thinking = () => {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(requestBody),
-                signal: abortController.signal
+                signal: abortController.current.signal
             });
 
             if (!response.ok) {
@@ -124,6 +125,12 @@ const Thinking = () => {
         }
     };
 
+    const stopResponse = () => {
+        if (abortController.current) {
+        abortController.current.abort();
+        }
+    }
+
     return (
         <div className='control-pane'>
             <div className="control-section">
@@ -133,6 +140,7 @@ const Thinking = () => {
                         bannerTemplate={bannerTemplate}
                         promptSuggestions={promptSuggestions}
                         promptRequest={promptRequest}
+                        stopRespondingClick={stopResponse}
                         enableStreaming={true}
                         ref={assistInstance}>
                     </AIAssistViewComponent>

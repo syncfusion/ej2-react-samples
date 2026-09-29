@@ -49,7 +49,7 @@ const MultiDrag = () => {
                 </p>
                 <p>Here, we can also drag the multiple events from one resource to another resource. In this case, if all the selected events are in the different resources, then all the events should be moved to the single resource which is related to the target event.</p>
                 <p>
-                    Looking for the full React Scheduler component overview, features, pricing, and documentation? Visit our <a target="_blank" href="https://www.syncfusion.com/react-components/react-scheduler">React Scheduler</a> component page.
+                    Looking for the full React Scheduler component overview, features, pricing, and documentation? Visit our <a target="_blank" href="https://www.syncfusion.com/scheduler-sdk/react-scheduler">React Scheduler</a> component page.
                 </p>
             </div>
         </div>

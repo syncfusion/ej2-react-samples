@@ -110,9 +110,7 @@ const RemoteData = () => {
         </div>
       </div>
       <div id="action-description">
-        <p>This sample demonstrates the way of binding data to Gantt Chart with remote service. The Gantt Chart data source
-          is bound to remote data using DataManager. This sample data helps to visualize the various phases of Barley
-          harvesting.</p>
+        <p>This sample demonstrates binding remote data to the Gantt Chart using <code>DataManager</code>. The data visualizes the various stages of the product growth cycle and supports efficient navigation of large datasets through row and timeline virtualization.</p>
       </div>
 
       <div id="description">
@@ -143,7 +141,9 @@ const RemoteData = () => {
           the <code>VirtualScroll</code> and <code>Selection</code> into the <code>Inject Services</code> section.
         </p>
         <br />
-        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/data-binding#remote-data">documentation section</a>.</p>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/data-binding#remote-data">data binding</a> documentation section.</p>
+        <br/>
+        <p>Looking for the full React Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/react-components/react-gantt-chart">React Gantt Chart</a> page.</p>
       </div>
     </div>
   )

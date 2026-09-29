@@ -209,6 +209,12 @@ export class NotionAIClone extends SampleBase<{}, {}> {
     }
   };
 
+  private stopResponse = () => {
+      if (this.abortController) {
+      this.abortController.abort();
+      }
+  }
+
   private toolbarItemClicked = (args: ToolbarItemClickedEventArgs): void => {
     if (args.item.iconCss === 'e-icons e-edit-notes') {
       this.createNewSession();
@@ -500,6 +506,7 @@ export class NotionAIClone extends SampleBase<{}, {}> {
                 promptSuggestions={this.notionSuggestions}
                 promptSuggestionItemTemplate={this.suggestionItemContent}
                 promptRequest={this.onPromptRequest}
+                stopRespondingClick={this.stopResponse}
                 bannerTemplate={this.bannerTemplate}
                 toolbarSettings={this.assistViewToolbarSettings}
                 footerToolbarSettings={this.footerToolbarSettings}

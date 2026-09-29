@@ -31,7 +31,7 @@ const SAMPLE_CSS = `
     background-color: white;
     background-size: contain;
     background-repeat: no-repeat;
-    height: 50px;
+    height: 75px;
     width: calc((100% - 18px) / 3);
     cursor: pointer;
     border: 1px solid #D5D5D5;

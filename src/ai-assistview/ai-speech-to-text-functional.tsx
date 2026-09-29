@@ -63,14 +63,17 @@ const SpeechToText = () => {
         }
     };
 
+    const stopResponse = () => {
+        if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+        }
+    }
+
     const toolbarItemClicked = (args: ToolbarItemClickedEventArgs) => {
         if (args.item.iconCss === 'e-icons e-refresh') {
             aiAssistViewObj.current!.prompts = [];
+            stopResponse();
         }
-    };
-
-    const stopRespondingClick = () => {
-        abortControllerRef.current?.abort();
     };
 
     return (
@@ -81,6 +84,7 @@ const SpeechToText = () => {
                         id="aiAssistView"
                         ref={aiAssistViewObj}
                         promptRequest={onPromptRequest}
+                        stopRespondingClick={stopResponse}
                         bannerTemplate={bannerTemplate}
                         toolbarSettings={toolbarSettings}
                         footerToolbarSettings={footerToolbarSettings}
@@ -88,7 +92,6 @@ const SpeechToText = () => {
                         enableAttachments={enableAttachments}
                         enableStreaming={true}
                         speechToTextSettings={speechToTextSettings}
-                        stopRespondingClick={stopRespondingClick}
                     />
                 </div>
             </div>

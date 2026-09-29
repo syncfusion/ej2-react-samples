@@ -58,9 +58,9 @@ export class RowHeight extends SampleBase<{}, {}> {
                         The Grid has support to provide <code><a target='_blank' className='code'
                             href='https://ej2.syncfusion.com/react/documentation/api/grid/#rowheight'>
                             rowHeight</a></code> property.</p>
-                    <p>Looking for the full React Data Grid component overview, features, pricing, and documentation? Visit our
-                        <a target="_blank"
-                            href="https://www.syncfusion.com/react-components/react-data-grid"> React Data Grid component</a> page.</p>
+                    <p>Looking for the full React Data Grid component overview, features, pricing, and documentation? Visit our 
+            <a target="_blank"
+              href="https://www.syncfusion.com/react-components/react-data-grid"> React Data Grid component</a> page.</p>
                 </div>
             </div>
         )

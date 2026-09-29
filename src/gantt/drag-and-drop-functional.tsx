@@ -56,7 +56,7 @@ const DragAndDrop = () => {
         </GanttComponent>
       </div>
       <div id="action-description">
-        <p>This sample demonstrates the Gantt component with the row drag and drop feature. You can rearrange the gantt rows by using drag icon in left side of gantt column. Here you can perform drag and drop the gantt rows in to required position.</p>
+        <p>This sample demonstrates the row drag-and-drop feature in the Gantt Chart. Tasks can be reordered by dragging the drag handle displayed in the left side of the Gantt row. Rows can be dropped at the required position to reorganize the task hierarchy and sequence.</p>
       </div>
       <div id="description">
         <p>Row drag and drop feature can be enabled by setting <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#allowrowdraganddrop">allowRowDragAndDrop</a> property as true. In this demo, taskbar drag and drop between rows can be enabled by setting <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#allowtaskbardraganddrop">allowTaskbarDragAndDrop</a> as true.</p>
@@ -64,7 +64,9 @@ const DragAndDrop = () => {
           Gantt component features are segregated into individual feature-wise modules. To use row drag and drop, edit, and selection features, we need to inject <code>RowDD</code>, <code>Selection</code> and <code>Edit</code> into <code>Inject Services</code> modules.
         </p>
         <br/>
-        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/rows/drag-and-drop">documentation section</a>.</p>
+        <p>More information on the Essential<sup>®</sup> React Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/rows/drag-and-drop">drag and drop</a> documentation section.</p>
+        <br/>
+        <p>Looking for the full React Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/react-components/react-gantt-chart">React Gantt Chart</a> page.</p>
       </div>
     </div>
   )

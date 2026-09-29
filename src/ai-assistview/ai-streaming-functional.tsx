@@ -27,6 +27,7 @@ const Streaming = () => {
         if (args.item.iconCss === 'e-icons e-refresh') {
             streamingAIAssistView.current.prompts = [];
             streamingAIAssistView.current.promptSuggestions = suggestion;
+            stopResponse();
         }
     };
 
@@ -40,28 +41,30 @@ const Streaming = () => {
         let streamingResponse: any = prompts.find((data: any) => data.prompt === args.prompt);
         let response: string = "For real-time prompt processing, connect the AI AssistView control to your preferred AI service, such as OpenAI or Azure Cognitive Services. Ensure you obtain the necessary API credentials to authenticate and enable seamless integration.";
         
-        if (streamingResponse) {
-            response = streamingResponse.response;
-        } else {
-            try {
-                const aiResponse = await getAIResponse(args as any, abortControllerRef.current);
-                if (aiResponse && typeof aiResponse === 'string') {
-                    response = aiResponse;
-                }
-            } catch (error) {
-                console.error('Error getting AI response:', error);
+        try {
+            const aiResponse = await getAIResponse(args as any, abortControllerRef.current);
+            if (aiResponse && typeof aiResponse === 'string') {
+                response = aiResponse;
             }
+        } catch (error) {
+            console.error('Error getting AI response:', error);
         }
         
         streamingAIAssistView.current.addPromptResponse(response, true);
         streamingAIAssistView.current.promptSuggestions = streamingResponse?.suggestions || suggestion;
     }
 
+    const stopResponse = () => {
+        if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+        }
+    }
+
     return (
         <div className='control-pane'>
             <div className="control-section">
                 <div className="stream-aiassistview">
-                    <AIAssistViewComponent id="streamAssistView" ref={streamingAIAssistView} enableStreaming={true} promptSuggestions={suggestion} toolbarSettings={assistViewToolbarSettings} promptRequest={onPromptRequest} bannerTemplate={bannerTemplate}></AIAssistViewComponent>
+                    <AIAssistViewComponent id="streamAssistView" ref={streamingAIAssistView} enableStreaming={true} promptSuggestions={suggestion} toolbarSettings={assistViewToolbarSettings} promptRequest={onPromptRequest} stopRespondingClick={stopResponse} bannerTemplate={bannerTemplate}></AIAssistViewComponent>
                 </div>
             </div>
 

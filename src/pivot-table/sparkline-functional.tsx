@@ -76,6 +76,12 @@ function SparkLine () {
             args.node.style.textAlign = 'right';
             args.node.querySelector('.e-pivotcell-container').appendChild(input);
             args.node.querySelector('.e-headertext').style.alignSelf = 'unset';
+            if (pivotObj && pivotObj.enableRtl) {
+                const headerText: HTMLElement = args.node.querySelector('.e-headertext') as HTMLElement;
+                if (headerText) {
+                    headerText.style.textAlign = 'left';
+                }
+            }
             args.node.querySelector('.e-headertext').innerText = 'Total Sales Comparison';
             isDropDownExist = true;
         }
@@ -114,6 +120,7 @@ function SparkLine () {
                 dataSource: obj[keys[i]],
                 xName: 'xval',
                 yName: 'yval',
+                enableRtl: pivotObj ? pivotObj.enableRtl : false,
                 markerSettings: {
                     visible: ['High', 'Low'],
                     size: 3,
