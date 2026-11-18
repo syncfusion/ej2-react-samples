@@ -74,7 +74,7 @@ export class Default extends SampleBase<{}, {}> {
               </div>
             </div>
             <div className='allowedText'>
-              <span style={{ fontWeight: 600 }}> Allowed Input characters :</span> support 16 letters: 0-9, -, $, :, /, ., + and start/stop characters A-D'
+              <span style={{ fontWeight: 600 }}> Allowed Input characters :</span> supports 16 letters: 0-9, -, $, :, /, ., + and start/stop characters A-D'.
         </div>
           </div>
         </div>
@@ -345,7 +345,7 @@ export class Default extends SampleBase<{}, {}> {
         </div>
         <div id="description">
           <p>
-          This sample shows a codabar with a character set of 16 letters with four start and stop characters. The `type` property can be used to set the barcode type as `Codabar`.
+          This sample shows a codabar with a character set of 16 letters with four start and stop characters. The <code>type</code> property can be used to set the barcode type as <code>Codabar</code>.
           </p>
 
           <br />

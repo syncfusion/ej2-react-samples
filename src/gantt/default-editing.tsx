@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { GanttComponent, TaskFieldsModel, EditDialogFieldsDirective, DayMarkers, EditDialogFieldDirective, Inject, Edit, Selection, Toolbar, ColumnsDirective, ColumnDirective, EditSettingsModel, LabelSettingsModel, SplitterSettingsModel, TimelineSettingsModel, GridLine, ResourceFieldsModel, ToolbarItem } from '@syncfusion/ej2-react-gantt';
+import { GanttComponent, TaskFieldsModel, EditDialogFieldsDirective, DayMarkers, EditDialogFieldDirective, Inject, Edit, Selection, Toolbar, ColumnsDirective, ColumnDirective, EditSettingsModel, LabelSettingsModel, SplitterSettingsModel, TimelineSettingsModel, GridLine, ResourceFieldsModel, ToolbarItem, NotesEditor } from '@syncfusion/ej2-react-gantt';
 import { defaultEditingData, editingResources } from './data';
 import { SampleBase } from '../common/sample-base';
 import './default-editing.css';
@@ -96,6 +96,7 @@ export class Editing extends SampleBase<{}, {}> {
               <ColumnDirective field='EndDate' validationRules={{ required: [this.customFn, 'Please enter a value greater than the start date.'] }}></ColumnDirective>
               <ColumnDirective field='Progress' validationRules={{ required: true, min: 0, max: 100 }}></ColumnDirective>
               <ColumnDirective field='Predecessor'></ColumnDirective>
+              <ColumnDirective field='info' headerText='Notes' disableHtmlEncode={true}></ColumnDirective>
             </ColumnsDirective>
             <EditDialogFieldsDirective>
               <EditDialogFieldDirective type='General' headerText='General'></EditDialogFieldDirective>
@@ -103,7 +104,7 @@ export class Editing extends SampleBase<{}, {}> {
               <EditDialogFieldDirective type='Resources'></EditDialogFieldDirective>
               <EditDialogFieldDirective type='Notes'></EditDialogFieldDirective>
             </EditDialogFieldsDirective>
-            <Inject services={[Edit, Selection, Toolbar, DayMarkers]} />
+            <Inject services={[Edit, Selection, Toolbar, DayMarkers, NotesEditor]} />
           </GanttComponent>
           <div style={{ float: 'right', margin: '10px' }}>Source:
             <a href="https://en.wikipedia.org/wiki/Construction" target='_blank'>https://en.wikipedia.org/</a>

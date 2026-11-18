@@ -163,7 +163,6 @@ function PivotChartFieldList () {
             isInitial = true;
             if (isNullOrUndefined(getInstance('#displayOptionddl', DropDownList))) {
                 displayOptionDropDown = new DropDownList({
-                    floatLabelType: 'Auto',
                     width: 100, 
                     value: displayOption,
                     change: (args: any) => {
@@ -186,7 +185,6 @@ function PivotChartFieldList () {
             }
             if (isNullOrUndefined(getInstance('#primaryViewddl', DropDownList))) {
                 primaryViewDropDown = new DropDownList({
-                    floatLabelType: 'Auto',
                     width: 100,
                     value: preference,
                     change: (args: any) => {

@@ -11,7 +11,7 @@ import {
     SymbolPaletteComponent,
     Connector,
     IDragEnterEventArgs,
-    ConnectorModel,
+    ConnectorModel
   } from '@syncfusion/ej2-react-diagrams';
 import { updateSampleSection } from "../common/sample-base";
 import "./font-icons.css";

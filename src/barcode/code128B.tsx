@@ -71,7 +71,7 @@ export class Code128B extends SampleBase<{}, {}> {
               </div>
             </div>
             <div className='allowedText'>
-              <span style={{ fontWeight: 600 }}> Allowed Input characters :</span>  support 0-9 A-Z a-z and special character
+              <span style={{ fontWeight: 600 }}> Allowed Input characters :</span>  supports 0-9 A-Z a-z and special characters.
             </div>
           </div>
         </div>
@@ -340,7 +340,7 @@ export class Code128B extends SampleBase<{}, {}> {
         </div>
         <div id="description">
           <p>
-            This sample shows how to create the Code 128B barcode type with alphanumeric characters. The `type` property can be used to set the barcode type as `Code128B`.
+            This sample shows how to create the Code 128B barcode type with alphanumeric characters. The <code>type</code> property can be used to set the barcode type as <code>Code128B</code>.
           </p>
           <br />
 

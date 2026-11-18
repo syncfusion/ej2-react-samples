@@ -340,7 +340,7 @@ export class Code39Extd extends SampleBase<{}, {}> {
         </div>
         <div id="description">
           <p>
-          This sample shows how to create the extended Code 39 barcode with an added checksum. The `type` property can be used to set the barcode type as `Code39Extension`. By default, `enableCheckSum` is set as true, but the checksum can be disabled by assigning false to it.
+          This sample shows how to create the extended Code 39 barcode with an added checksum. The <code>type</code> property can be used to set the barcode type as <code>Code39Extension</code>. By default, <code>enableCheckSum</code> is set as <strong>true</strong>, but the checksum can be disabled by assigning <strong>false</strong> to it.
           </p>
 
           

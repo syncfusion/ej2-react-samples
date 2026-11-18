@@ -68,7 +68,7 @@ export class DataMatrix extends SampleBase<{}, {}> {
                   height={"150px"}
                   mode='SVG'
                   type='DataMatrix'
-                  value='WWW.Syncfusion.com'
+                  value='Syncfusion'
                 ></DataMatrixGeneratorComponent>
               </div>
             </div>
@@ -87,7 +87,7 @@ export class DataMatrix extends SampleBase<{}, {}> {
                   <div id='barcodevaluediv'>
                     <TextBoxComponent
                       ref={value => (barcodeValueInstance = value)}
-                      value='WWW.Syncfusion.com'
+                      value='Syncfusion'
                       id='textbox_0'
                       change={valueOnChange}
                     />
@@ -138,7 +138,7 @@ export class DataMatrix extends SampleBase<{}, {}> {
                 <div className="col-xs-12 left">
                   <CheckBoxComponent
                     id="textVisibility"
-                    checked={true}
+                    checked={false}
                     change={textVisibility}
                   />
                   <div style={{display:"inline-block", verticalAlign:"middle", paddingLeft:"4px"}}>Text Visibility</div>
@@ -291,7 +291,7 @@ export class DataMatrix extends SampleBase<{}, {}> {
         </div>
         <div id="description">
           <p>
-          This example shows how to display encoded text or numerical values as the label using the Barcode component. The `type` property can be used to set the barcode type as data matrix. The data matrix encoding type can be set using the `encoding` property of the Barcode component and the data matrix size can be defined using the `size` property of the component. 
+          This example shows how to display encoded text or numerical values as the label using the Barcode component. The <code>type</code> property can be used to set the barcode type as <code>DataMatrix</code>. The data matrix encoding type can be set using the <strong>encoding</strong> property of the Barcode component and the data matrix size can be defined using the <strong>size</strong> property of the component. 
           </p>
 
           

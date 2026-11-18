@@ -313,7 +313,7 @@ export class QrCode extends SampleBase<{}, {}> {
         </div>
         <div id="description">
           <p>
-          This example shows how to display a URL as the optical label using the Barcode component. The `type` property
+          This example shows how to display a URL as the optical label using the Barcode component. The <code>type</code> property
         can be used to set the barcode type as one-dimensional or two-dimensional.
         The `version` property is used to set the version of the QR barcode. Also, the Barcode component provides
         support to set the error correction level on a QR-type barcode by using the `errorCorrectionLevel` property.

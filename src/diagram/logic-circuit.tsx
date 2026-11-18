@@ -343,7 +343,7 @@ export class LogicCircuit extends SampleBase<{}, {}> {
         <div id="description">
           <p>
             This example shows how to create Boolean algebraic laws and theorems using diagram `path` shapes.
-             The `type` property of the `shape` can be used to create `path` nodes.
+             The <code>type</code> property of the `shape` can be used to create `path` nodes.
              The` data` property of the shape allows you to define path data of the path shape.
           </p>
           <br />

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { GanttComponent, Inject, ColumnsDirective, ColumnDirective, Selection, Toolbar, DayMarkers, Edit, TaskFieldsModel, EditSettingsModel, LabelSettingsModel, SplitterSettingsModel, EventMarkerModel, ToolbarItem } from '@syncfusion/ej2-react-gantt';
+import { GanttComponent, Inject, ColumnsDirective, ColumnDirective, Selection, Toolbar, DayMarkers, Edit, TaskFieldsModel, EditSettingsModel, LabelSettingsModel, SplitterSettingsModel, EventMarkerModel, ToolbarItem, NotesEditor } from '@syncfusion/ej2-react-gantt';
 import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 
@@ -114,8 +114,9 @@ const Constraints = () => {
             <ColumnDirective field="EndDate" />
             <ColumnDirective field="Predecessor" />
             <ColumnDirective field="Progress" />
+            <ColumnDirective field="info" disableHtmlEncode={true} />
             </ColumnsDirective>
-            <Inject services={[Edit, Selection, Toolbar, DayMarkers]} />
+            <Inject services={[Edit, Selection, Toolbar, DayMarkers, NotesEditor]} />
             </GanttComponent>
       </div>
 

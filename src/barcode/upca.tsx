@@ -71,7 +71,7 @@ export class UpcA extends SampleBase<{}, {}> {
               </div>
             </div>
             <div className='allowedText'>
-              <span style={{ fontWeight: 600 }}> Allowed Input characters :</span> This barocode supports 11 numbers as input.
+              <span style={{ fontWeight: 600 }}> Allowed Input characters :</span> This barcode supports 11 numbers as input.
         </div>
           </div>
         </div>
@@ -341,7 +341,7 @@ export class UpcA extends SampleBase<{}, {}> {
         </div>
         <div id="description">
           <p>
-          This sample shows how to create the UPC-A barcode. The `type` property can be used to set the barcode type as `UpcA`. By default, `enableCheckSum` is set as true, but the checksum can be disabled by assigning false to it.
+          This sample shows how to create the UPC-A barcode. The <code>type</code> property can be used to set the barcode type as <code>UpcA</code>. By default, <code>enableCheckSum</code> is set as <strong>true</strong>, but the checksum can be disabled by assigning <strong>false</strong> to it.
           </p>
 
          

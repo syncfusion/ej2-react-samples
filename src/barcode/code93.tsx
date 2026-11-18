@@ -71,7 +71,7 @@ export class Code93 extends SampleBase<{}, {}> {
               </div>
             </div>
             <div className='allowedText'>
-              <span style={{ fontWeight: 600 }}> Allowed Input characters :</span>  This bar code support 0-9 , -'
+              <span style={{ fontWeight: 600 }}> Allowed Input characters :</span>  This barcode supports 0-9 , -'.
             </div>
           </div>
         </div>
@@ -340,7 +340,7 @@ export class Code93 extends SampleBase<{}, {}> {
         </div>
         <div id="description">
           <p>
-          This sample shows how to create the Code 93 barcode with two check characters. The `type` property can be used to set the barcode type as `Code93`. By default, `enableCheckSum` is set as true, but the checksum can be disabled by assigning false to it.
+          This sample shows how to create the Code 93 barcode with two check characters. The <code>type</code> property can be used to set the barcode type as <code>Code93</code>. By default, <code>enableCheckSum</code> is set as <strong>true</strong>, but the checksum can be disabled by assigning <strong>false</strong> to it.
           </p>
 
           <br />

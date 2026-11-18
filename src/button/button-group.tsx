@@ -44,7 +44,7 @@ export class ButtonGroup extends SampleBase<{}, {}> {
             <div className="row">
                 <p className="h5">Multiple selection</p>
                 <div id="iconandtext" className="e-btn-group">
-                    <input type="checkbox" id="bold" name="fontstyle" value="bold" checked />
+                    <input type="checkbox" id="bold" name="fontstyle" value="bold" defaultChecked />
                     <label className="e-btn" htmlFor="bold">
                         <span className="e-btn-icon bg-icons e-btngrp-bold e-icon-left"></span>Bold
                     </label>

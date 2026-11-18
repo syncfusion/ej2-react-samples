@@ -33,12 +33,12 @@ const roomData: RoomData[] = [
 ];
 
 const subjects: Record<string, string[]> = {
-    Cardiology: ['Cardiac Checkup', 'Heart Valve Assessment', 'Stress Test', 'ECG Review'],
-    Orthopedics: ['Knee Replacement', 'Bone Fracture Review', 'Spine Consultation'],
-    Neurology: ['Neurology Evaluation', 'Brain MRI Review'],
-    Pediatrics: ['Child Wellness Exam', 'Vaccination Follow-up'],
-    Emergency: ['Trauma Assessment', 'Emergency Consultation'],
-    Radiology: ['MRI Scan Review', 'CT Scan Analysis']
+    Cardiology: ['Cardiac Workup', 'Heart Valve Assessment', 'Stress Test', 'ECG Review',],
+    Orthopedics: ['Knee Replacement', 'Bone Fracture Assessment', 'Spinal Workup',],
+    Neurology: ['Neurology Workup', 'Brain MRI Review'],
+    Pediatrics: ['Child Wellness Review', 'Immunization Follow-up'],
+    Emergency: ['Emergency Care', 'Acute Care', 'Trauma Care', 'Critical Care'],
+    Radiology: ['CT Scan Analysis', 'MRI Scan Review'],
 };
 
 const generateEvents = (date: Date): Record<string, any>[] => {

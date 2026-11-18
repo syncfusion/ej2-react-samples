@@ -214,7 +214,10 @@ const SAMPLE_CSS = `
 @media (max-width:850px) { .approval-sample .approval-layout { grid-template-columns:1fr; grid-template-rows:420px auto; } .approval-sample { height:auto; } .approval-sample .properties { border-top:1px solid #e2e8f0; border-left:0; } }
 `;
 
-export class PurchaseApprovalWorkflow extends SampleBase<{}, {}> {
+type WorkflowState = { workflowSubmitted: boolean };
+
+export class PurchaseApprovalWorkflow extends SampleBase<{}, WorkflowState> {
+    state: WorkflowState = { workflowSubmitted: false };
     private diagramInstance!: DiagramComponent;
     private stage: Stage = 'draft';
     private rejectionReason: 'budget' | 'manager' | undefined;
@@ -323,23 +326,15 @@ export class PurchaseApprovalWorkflow extends SampleBase<{}, {}> {
         this.diagramInstance.dataBind();
     };
 
-    private setInputsDisabled(disabled: boolean): void {
-        ['propertyItem', 'propertyRequester', 'propertyReason', 'propertyQuantity', 'propertyUnitPrice'].forEach((id) => {
-            this.byId<HTMLInputElement | HTMLTextAreaElement>(id).disabled = disabled;
-        });
-    }
-
     private submitRequest = async (): Promise<void> => {
         const errors = this.validateRequest();
         this.showValidation(errors);
         if (errors.length) return;
         this.clearPendingWork();
-        this.setInputsDisabled(true);
+        this.setState({ workflowSubmitted: true });
         this.setStatus('request', 'approved', 'Submitted');
         this.setConnector('request-budget', 'active');
         this.setStatus('budget', 'active', 'Checking budget');
-        this.byId<HTMLButtonElement>('submitRequest').disabled = true;
-        this.byId<HTMLButtonElement>('resetWorkflow').disabled = false;
         this.byId<HTMLElement>('workflowMessage').textContent = 'Checking the available budget before requesting manager approval…';
         const token = ++this.runToken;
         if (!(await this.delay(700, token))) return;
@@ -407,14 +402,12 @@ export class PurchaseApprovalWorkflow extends SampleBase<{}, {}> {
     private resetWorkflow = (): void => {
         this.clearPendingWork();
         this.stage = 'draft'; this.rejectionReason = undefined;
-        this.setInputsDisabled(false); this.showValidation([]);
+        this.setState({ workflowSubmitted: false }); this.showValidation([]);
         ['request', 'manager', 'budget', 'purchase', 'result'].forEach((id) => this.setStatus(id, id === 'request' ? 'draft' : 'waiting'));
         connectorIds.forEach((id) => this.setConnector(id, 'default'));
         this.refreshAllContent();
         this.diagramInstance.select([this.getNode('request')]);
         this.updateManagerHandles();
-        this.byId<HTMLButtonElement>('submitRequest').disabled = false;
-        this.byId<HTMLButtonElement>('resetWorkflow').disabled = true;
         this.byId<HTMLElement>('workflowMessage').textContent = 'Enter the request details, then submit it for manager approval.';
     };
 
@@ -490,17 +483,17 @@ export class PurchaseApprovalWorkflow extends SampleBase<{}, {}> {
                             <aside className="properties" aria-label="Purchase request details">
                                 <h3>Purchase request</h3>
                                 <p className="intro">Submit a valid equipment request. The budget is checked first, then the workflow pauses at Manager Review for approval.</p>
-                                <label className="field"><span>Equipment</span><input id="propertyItem" defaultValue="Ergonomic monitors" onInput={this.readForm} /></label>
-                                <label className="field"><span>Requester</span><input id="propertyRequester" defaultValue="Maya Chen" onInput={this.readForm} /></label>
-                                <label className="field"><span>Business reason</span><textarea id="propertyReason" defaultValue="Replace outdated design-team displays" onInput={this.readForm} /></label>
+                                <label className="field"><span>Equipment</span><input id="propertyItem" defaultValue="Ergonomic monitors" disabled={this.state.workflowSubmitted} onInput={this.readForm} /></label>
+                                <label className="field"><span>Requester</span><input id="propertyRequester" defaultValue="Maya Chen" disabled={this.state.workflowSubmitted} onInput={this.readForm} /></label>
+                                <label className="field"><span>Business reason</span><textarea id="propertyReason" defaultValue="Replace outdated design-team displays" disabled={this.state.workflowSubmitted} onInput={this.readForm} /></label>
                                 <div className="field-row">
-                                    <label className="field"><span>Quantity</span><input id="propertyQuantity" type="number" min="1" defaultValue="6" onInput={this.readForm} /></label>
-                                    <label className="field"><span>Unit price</span><input id="propertyUnitPrice" type="number" min="1" defaultValue="420" onInput={this.readForm} /></label>
+                                    <label className="field"><span>Quantity</span><input id="propertyQuantity" type="number" min="1" defaultValue="6" disabled={this.state.workflowSubmitted} onInput={this.readForm} /></label>
+                                    <label className="field"><span>Unit price</span><input id="propertyUnitPrice" type="number" min="1" defaultValue="420" disabled={this.state.workflowSubmitted} onInput={this.readForm} /></label>
                                 </div>
                                 <div id="validationMessage" className="validation" hidden></div>
                                 <div className="actions">
-                                    <button id="submitRequest" className="primary" onClick={this.submitRequest}>Submit request</button>
-                                    <button id="resetWorkflow" className="secondary" onClick={this.resetWorkflow} disabled>Reset</button>
+                                    <button id="submitRequest" className="primary" onClick={this.submitRequest} disabled={this.state.workflowSubmitted}>Submit request</button>
+                                    <button id="resetWorkflow" className="secondary" onClick={this.resetWorkflow} disabled={!this.state.workflowSubmitted}>Reset</button>
                                 </div>
                                 <div id="workflowMessage" className="workflow-message">Enter the request details, then submit it for manager approval.</div>
                             </aside>

@@ -176,63 +176,6 @@ export const AIAssistViewSampleOrder: Object = [
       { 'displayName': 'ai-service.ts', 'path': 'src/ai-assistview/ai-service.ts' }
     ]
   },
-  { 'path': 'ai-assistview/ai-notion-ai-clone',
-    'component': 'NotionAIClone',
-    'name': 'Notion AI-like',
-    'description':'Demonstrates a Notion-inspired AI AssistView with sidebar navigation, multi-model selection, and session management for advanced chat workflows.',
-    'order': '03',
-    'category': 'UI Customization',
-    'api':'{"AIAssistViewComponent":["prompts", "promptRequest", "toolbarSettings", "footerToolbarSettings", "responseToolbarSettings", "bannerTemplate", "attachmentSettings", "speechToTextSettings"] }',
-    'sourceFiles': [
-      { 'displayName': 'ai-notion-ai-clone.tsx', 'path': 'src/ai-assistview/ai-notion-ai-clone.tsx' },
-      { 'displayName': 'ai-notion-ai-clone.jsx', 'path': 'src/ai-assistview/ai-notion-ai-clone.jsx' },
-      { 'displayName': 'promptResponseData.json', 'path': 'src/ai-assistview/promptResponseData.json' }
-    ]
-  },
-  { 'path': 'ai-assistview/ai-claude-clone',
-    'component': 'ClaudeClone',
-    'name': 'Claude AI-like',
-    'description':'Demonstrates a Claude-inspired AI AssistView with file attachments and model selector for seamless branded conversational experiences.',
-    'order': '03',
-    'category': 'UI Customization',
-    'api':'{"AIAssistViewComponent":["promptRequest", "showHeader", "promptPlaceholder", "enableAttachments", "bannerTemplate", "footerToolbarSettings", "attachmentSettings"] }',
-    'sourceFiles': [
-      { 'displayName': 'ai-claude-clone.tsx', 'path': 'src/ai-assistview/ai-claude-clone.tsx' },
-      { 'displayName': 'ai-claude-clone.jsx', 'path': 'src/ai-assistview/ai-claude-clone.jsx' },
-      { 'displayName': 'ai-claude-clone.css', 'path': 'src/ai-assistview/ai-claude-clone.css' },
-      { 'displayName': 'promptResponseData.json', 'path': 'src/ai-assistview/promptResponseData.json' }
-    ]
-  },
-  { 'path': 'ai-assistview/ai-gemini-clone',
-    'component': 'GeminiClone',
-    'name': 'Gemini AI-like',
-    'description':'Demonstrates a Gemini-inspired AI AssistView with voice input, file attachments, and model selector for interactive assistant experiences.',
-    'order': '03',
-    'category': 'UI Customization',
-    'api':'{"AIAssistViewComponent":["promptRequest", "promptChanged", "showHeader", "promptPlaceholder", "enableAttachments", "speechToTextSettings", "bannerTemplate", "footerToolbarSettings", "attachmentSettings"] }',
-    'sourceFiles': [
-      { 'displayName': 'ai-gemini-clone.tsx', 'path': 'src/ai-assistview/ai-gemini-clone.tsx' },
-      { 'displayName': 'ai-gemini-clone.jsx', 'path': 'src/ai-assistview/ai-gemini-clone.jsx' },
-      { 'displayName': 'ai-gemini-clone.css', 'path': 'src/ai-assistview/ai-gemini-clone.css' },
-      { 'displayName': 'promptResponseData.json', 'path': 'src/ai-assistview/promptResponseData.json' }
-    ]
-  },
-  {
-    'path': 'ai-assistview/ai-chatgpt-clone',
-    'component': 'ChatGPTClone',
-    'name': 'ChatGPT AI-like',
-    'type': 'new',
-    'description': 'Demonstrates a ChatGPT-inspired AI AssistView with speech input, file attachments, and an inline footer toolbar for interactive assistant experiences.',
-    'order': '03',
-    'category': 'UI Customization',
-    'api': '{"AIAssistViewComponent":["promptRequest", "showHeader", "promptPlaceholder", "enableAttachments", "speechToTextSettings", "bannerTemplate", "footerToolbarSettings", "attachmentSettings"]}',
-    'sourceFiles': [
-      { 'displayName': 'ai-chatgpt-clone.tsx', 'path': 'src/ai-assistview/ai-chatgpt-clone.tsx' },
-      { 'displayName': 'ai-chatgpt-clone.jsx', 'path': 'src/ai-assistview/ai-chatgpt-clone.jsx' },
-      { 'displayName': 'ai-chatgpt-clone.css', 'path': 'src/ai-assistview/ai-chatgpt-clone.css' },
-      { 'displayName': 'promptResponseData.json', 'path': 'src/ai-assistview/promptResponseData.json' }
-    ]
-  },
   { 'path': 'ai-assistview/ai-dialog',
     'component': 'Dialog',
     'name': 'Notes Assistant',

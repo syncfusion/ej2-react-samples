@@ -177,7 +177,7 @@ export let samplesList: any = [
         'name': 'Smith Chart', 'category': 'Data Visualization', 'order': '09', 'path': 'smith-chart', 'samples': SmithChartOrder, 'ftName' :'smithchart'
     },
     {
-        'name': 'Barcode', 'category': 'Data Visualization', 'order': '02', 'path': 'barcode', 'samples': BarcodeSampleOrder
+        'name': 'Barcode', 'category': 'Data Visualization', 'order': '01', 'path': 'barcode', 'samples': BarcodeSampleOrder
     },
     {
         'name': 'Sparkline Charts', 'category': 'Data Visualization', 'order': '10', 'path': 'sparkline', 'samples': SparklineOrder, 'ftName' :'sparkline'

@@ -341,7 +341,7 @@ export class UpcE extends SampleBase<{}, {}> {
         </div>
         <div id="description">
           <p>
-          This sample shows how to create the UPC-E barcode. The `type` property can be used to set the barcode type as `UpcE`. By default, `enableCheckSum` is set as true, but the checksum can be disabled by assigning false to it.
+          This sample shows how to create the UPC-E barcode. The <code>type</code> property can be used to set the barcode type as <code>UpcE</code>. By default, <code>enableCheckSum</code> is set as <strong>true</strong>, but the checksum can be disabled by assigning <strong>false</strong> to it.
           </p>
 
           <br />

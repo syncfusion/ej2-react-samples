@@ -95,7 +95,7 @@ function Selection () {
                                 </td>
                                 <td>
                                     <div>
-                                        <DropDownListComponent floatLabelType={'Auto'} fields={fields} change={modeOnChange.bind(this)} id="mode" index={0} enabled={true} dataSource={modes} />
+                                        <DropDownListComponent fields={fields} change={modeOnChange.bind(this)} id="mode" index={0} enabled={true} dataSource={modes} />
                                     </div>
                                 </td>
                             </tr>
@@ -106,7 +106,7 @@ function Selection () {
                                 </td>
                                 <td>
                                     <div>
-                                        <DropDownListComponent floatLabelType={'Auto'} fields={fields} change={typeOnChange.bind(this)} id="type" index={0} enabled={true} dataSource={types} />
+                                        <DropDownListComponent fields={fields} change={typeOnChange.bind(this)} id="type" index={0} enabled={true} dataSource={types} />
                                     </div>
                                 </td>
                             </tr>

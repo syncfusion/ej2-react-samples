@@ -70,7 +70,7 @@ export class Ean8 extends SampleBase<{}, {}> {
               </div>
             </div>
             <div className='allowedText'>
-              <span style={{ fontWeight: 600 }}> Allowed Input characters :</span> This barocode supports 8 numbers as
+              <span style={{ fontWeight: 600 }}> Allowed Input characters :</span> This barcode supports 8 numbers as input.
         </div>
           </div>
         </div>
@@ -340,8 +340,8 @@ export class Ean8 extends SampleBase<{}, {}> {
         </div>
         <div id="description">
           <p>
-          This sample shows how to create the EAN-8 barcode. The `type` property can be used to set the barcode type as
-        `Ean8`
+          This sample shows how to create the EAN-8 barcode. The <code>type</code> property can be used to set the barcode type as
+        <code>Ean8</code>
           </p>
 
           

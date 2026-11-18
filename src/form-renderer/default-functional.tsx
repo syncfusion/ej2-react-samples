@@ -40,7 +40,7 @@ const Default = () => {
     return (
         <><main>
             <style>{SAMPLE_CSS}</style>
-            <div id="form-renderer-container" className="col-lg-9 control-section sb-property-border">
+            <div id="form-renderer-container" className="col-lg-9 control-section">
                 <div id="form-control control-wrapper">
                     <FormRendererComponent key={activeSchema} schema={formSchema}></FormRendererComponent>
                 </div>

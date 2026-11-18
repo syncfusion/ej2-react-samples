@@ -70,7 +70,7 @@ export class Ean13 extends SampleBase<{}, {}> {
               </div>
             </div>
             <div className='allowedText'>
-              <span style={{ fontWeight: 600 }}> Allowed Input characters :</span> This barocode supports 13 numbers as input.
+              <span style={{ fontWeight: 600 }}> Allowed Input characters :</span> This barcode supports 13 numbers as input.
         </div>
           </div>
         </div>
@@ -339,7 +339,7 @@ export class Ean13 extends SampleBase<{}, {}> {
         </div>
         <div id="description">
           <p>
-          This sample shows how to create the EAN-13 barcode. The `type` property can be used to set the barcode type as `Ean13`. 
+          This sample shows how to create the EAN-13 barcode. The <code>type</code> property can be used to set the barcode type as <code>Ean13</code>. 
           </p>
 
           <br />

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect } from 'react';
-import { GanttComponent, TaskFieldsModel, EditDialogFieldsDirective, DayMarkers, EditDialogFieldDirective, Inject, Edit, Selection, Toolbar, ColumnsDirective, ColumnDirective, GridLine, ResourceFieldsModel, EditSettingsModel, SplitterSettingsModel, TimelineSettingsModel, LabelSettingsModel, ToolbarItem } from '@syncfusion/ej2-react-gantt';
+import { GanttComponent, TaskFieldsModel, EditDialogFieldsDirective, DayMarkers, EditDialogFieldDirective, Inject, Edit, Selection, Toolbar, ColumnsDirective, ColumnDirective, GridLine, ResourceFieldsModel, EditSettingsModel, SplitterSettingsModel, TimelineSettingsModel, LabelSettingsModel, ToolbarItem, NotesEditor } from '@syncfusion/ej2-react-gantt';
 import { defaultEditingData, editingResources } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import './default-editing.css';
@@ -100,6 +100,7 @@ const Editing = () => {
             <ColumnDirective field='EndDate' validationRules={{ required: [customFn, 'Please enter a value greater than the start date.'] }}></ColumnDirective>
             <ColumnDirective field='Progress' validationRules={{ required: true, min: 0, max: 100 }}></ColumnDirective>
             <ColumnDirective field='Predecessor'></ColumnDirective>
+            <ColumnDirective field='info' headerText='Notes' disableHtmlEncode={true}></ColumnDirective>
           </ColumnsDirective>
           <EditDialogFieldsDirective>
             <EditDialogFieldDirective type='General' headerText='General'></EditDialogFieldDirective>
@@ -107,7 +108,7 @@ const Editing = () => {
             <EditDialogFieldDirective type='Resources'></EditDialogFieldDirective>
             <EditDialogFieldDirective type='Notes'></EditDialogFieldDirective>
           </EditDialogFieldsDirective>
-          <Inject services={[Edit, Selection, Toolbar, DayMarkers]} />
+          <Inject services={[Edit, Selection, Toolbar, DayMarkers, NotesEditor]} />
         </GanttComponent>
         <div style={{ float: 'right', margin: '10px' }}>Source:
           <a href="https://en.wikipedia.org/wiki/Construction" target="_blank" rel="noopener noreferrer">https://en.wikipedia.org/wiki/Construction</a>

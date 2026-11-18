@@ -296,6 +296,7 @@ const SAMPLE_CSS = `
 
 function PurchaseApprovalWorkflow(): JSX.Element {
     const diagramRef = React.useRef<DiagramComponent | null>(null);
+    const [workflowSubmitted, setWorkflowSubmitted] = React.useState(false);
     const stageRef = React.useRef<Stage>('draft');
     const rejectionReasonRef = React.useRef<'budget' | 'manager' | undefined>(undefined);
     const runTokenRef = React.useRef(0);
@@ -453,23 +454,15 @@ function PurchaseApprovalWorkflow(): JSX.Element {
         diagram().dataBind();
     }
 
-    function setInputsDisabled(disabled: boolean): void {
-        ['propertyItem', 'propertyRequester', 'propertyReason', 'propertyQuantity', 'propertyUnitPrice'].forEach((id) => {
-            byId<HTMLInputElement | HTMLTextAreaElement>(id).disabled = disabled;
-        });
-    }
-
     async function submitRequest(): Promise<void> {
         const errors = validateRequest();
         showValidation(errors);
         if (errors.length) return;
         clearPendingWork();
-        setInputsDisabled(true);
+        setWorkflowSubmitted(true);
         setStatus('request', 'approved', 'Submitted');
         setConnector('request-budget', 'active');
         setStatus('budget', 'active', 'Checking budget');
-        byId<HTMLButtonElement>('submitRequest').disabled = true;
-        byId<HTMLButtonElement>('resetWorkflow').disabled = false;
         byId<HTMLElement>('workflowMessage').textContent = 'Checking the available budget before requesting manager approval…';
         const token = ++runTokenRef.current;
         if (!(await delay(700, token))) return;
@@ -540,7 +533,7 @@ function PurchaseApprovalWorkflow(): JSX.Element {
         clearPendingWork();
         stageRef.current = 'draft';
         rejectionReasonRef.current = undefined;
-        setInputsDisabled(false);
+        setWorkflowSubmitted(false);
         showValidation([]);
         ['request', 'manager', 'budget', 'purchase', 'result'].forEach((id) =>
             setStatus(id, id === 'request' ? 'draft' : 'waiting')
@@ -549,8 +542,6 @@ function PurchaseApprovalWorkflow(): JSX.Element {
         refreshAllContent();
         diagram().select([getNode('request')]);
         updateManagerHandles();
-        byId<HTMLButtonElement>('submitRequest').disabled = false;
-        byId<HTMLButtonElement>('resetWorkflow').disabled = true;
         byId<HTMLElement>('workflowMessage').textContent = 'Enter the request details, then submit it for manager approval.';
     }
 
@@ -626,17 +617,17 @@ function PurchaseApprovalWorkflow(): JSX.Element {
                         <aside className="properties" aria-label="Purchase request details">
                             <h3>Purchase request</h3>
                             <p className="intro">Submit a valid equipment request. The budget is checked first, then the workflow pauses at Manager Review for approval.</p>
-                            <label className="field"><span>Equipment</span><input id="propertyItem" defaultValue="Ergonomic monitors" onInput={readForm} /></label>
-                            <label className="field"><span>Requester</span><input id="propertyRequester" defaultValue="Maya Chen" onInput={readForm} /></label>
-                            <label className="field"><span>Business reason</span><textarea id="propertyReason" defaultValue="Replace outdated design-team displays" onInput={readForm} /></label>
+                            <label className="field"><span>Equipment</span><input id="propertyItem" defaultValue="Ergonomic monitors" disabled={workflowSubmitted} onInput={readForm} /></label>
+                            <label className="field"><span>Requester</span><input id="propertyRequester" defaultValue="Maya Chen" disabled={workflowSubmitted} onInput={readForm} /></label>
+                            <label className="field"><span>Business reason</span><textarea id="propertyReason" defaultValue="Replace outdated design-team displays" disabled={workflowSubmitted} onInput={readForm} /></label>
                             <div className="field-row">
-                                <label className="field"><span>Quantity</span><input id="propertyQuantity" type="number" min="1" defaultValue="6" onInput={readForm} /></label>
-                                <label className="field"><span>Unit price</span><input id="propertyUnitPrice" type="number" min="1" defaultValue="420" onInput={readForm} /></label>
+                                <label className="field"><span>Quantity</span><input id="propertyQuantity" type="number" min="1" defaultValue="6" disabled={workflowSubmitted} onInput={readForm} /></label>
+                                <label className="field"><span>Unit price</span><input id="propertyUnitPrice" type="number" min="1" defaultValue="420" disabled={workflowSubmitted} onInput={readForm} /></label>
                             </div>
                             <div id="validationMessage" className="validation" hidden></div>
                             <div className="actions">
-                                <button id="submitRequest" className="primary" onClick={() => void submitRequest()}>Submit request</button>
-                                <button id="resetWorkflow" className="secondary" onClick={resetWorkflow} disabled>Reset</button>
+                                <button id="submitRequest" className="primary" onClick={() => void submitRequest()} disabled={workflowSubmitted}>Submit request</button>
+                                <button id="resetWorkflow" className="secondary" onClick={resetWorkflow} disabled={!workflowSubmitted}>Reset</button>
                             </div>
                             <div id="workflowMessage" className="workflow-message">Enter the request details, then submit it for manager approval.</div>
                         </aside>

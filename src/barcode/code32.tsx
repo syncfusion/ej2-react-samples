@@ -341,7 +341,7 @@ export class Code32 extends SampleBase<{}, {}> {
         </div>
         <div id="description">
           <p>
-            This sample shows how to create the Code 32 barcode with five bars and four spaces for encoding each character. The `type` property can be used to set the barcode type as `Code32`.
+            This sample shows how to create the Code 32 barcode with five bars and four spaces for encoding each character. The <code>type</code> property can be used to set the barcode type as <code>Code32</code>.
           </p>
 
 

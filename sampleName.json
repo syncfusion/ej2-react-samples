@@ -415,6 +415,12 @@
             "fishbone-diagram": "Fishbone Diagram"
         }
     },
+    "Workflow Designer": {
+        "ControlName": "Workflow Designer",
+        "Samples": {
+            "default": "Default Functionalities"
+        }
+    },
     "dialog": {
         "ControlName": "Dialog",
         "Samples": {

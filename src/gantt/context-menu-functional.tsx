@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect, useRef } from 'react';
-import { GanttComponent, EditDialogFieldsDirective, DayMarkers, EditDialogFieldDirective, Inject, Edit, Selection, Toolbar, ContextMenuClickEventArgs, IGanttData, ContextMenuOpenEventArgs, Resize, Sort, ContextMenu, ColumnsDirective, ColumnDirective, TaskFieldsModel, ResourceFieldsModel, EditSettingsModel, SplitterSettingsModel, GridLine, ToolbarItem, TimelineSettingsModel, LabelSettingsModel } from '@syncfusion/ej2-react-gantt';
+import { GanttComponent, EditDialogFieldsDirective, DayMarkers, EditDialogFieldDirective, Inject, Edit, Selection, Toolbar, ContextMenuClickEventArgs, IGanttData, ContextMenuOpenEventArgs, Resize, Sort, ContextMenu, ColumnsDirective, ColumnDirective, TaskFieldsModel, ResourceFieldsModel, EditSettingsModel, SplitterSettingsModel, GridLine, ToolbarItem, TimelineSettingsModel, LabelSettingsModel, NotesEditor } from '@syncfusion/ej2-react-gantt';
 import { contextMenuData, editingResources } from './data';
 import { ContextMenuItemModel } from '@syncfusion/ej2-react-grids';
 import { updateSampleSection } from '../common/sample-base';
@@ -99,6 +99,7 @@ const ContextMenuItem = () => {
             <ColumnDirective field='Duration'></ColumnDirective>
             <ColumnDirective field='Progress'></ColumnDirective>
             <ColumnDirective field='Predecessor'></ColumnDirective>
+            <ColumnDirective field='info' headerText='Notes' disableHtmlEncode={true}></ColumnDirective>
           </ColumnsDirective>
           <EditDialogFieldsDirective>
             <EditDialogFieldDirective type='General' headerText='General'></EditDialogFieldDirective>
@@ -106,7 +107,7 @@ const ContextMenuItem = () => {
             <EditDialogFieldDirective type='Resources'></EditDialogFieldDirective>
             <EditDialogFieldDirective type='Notes'></EditDialogFieldDirective>
           </EditDialogFieldsDirective>
-          <Inject services={[Edit, Selection, Toolbar, DayMarkers, ContextMenu, Resize, Sort]} />
+          <Inject services={[Edit, Selection, Toolbar, DayMarkers, ContextMenu, Resize, Sort, NotesEditor]} />
         </GanttComponent>
         <div style={{ float: 'right', margin: '10px' }}>Source:
           <a href="https://en.wikipedia.org/wiki/Construction" target="_blank" rel="noopener noreferrer">https://en.wikipedia.org/wiki/Construction</a>

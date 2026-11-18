@@ -34,6 +34,16 @@
     overflow: hidden;
 }
 
+.e-day-wrapper .buffer-minimal {
+  width: 100%;
+  height: fit-content;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  overflow: hidden;
+}
+
 .buffer-svg-icon {
     width: 18px;
     height: 18px;

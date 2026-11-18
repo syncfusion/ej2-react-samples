@@ -71,7 +71,7 @@ export class Code39 extends SampleBase<{}, {}> {
               </div>
             </div>
             <div className='allowedText'>
-              <span style={{ fontWeight: 600 }}> Allowed Input characters :</span> A-Z, 0-9
+              <span style={{ fontWeight: 600 }}> Allowed Input characters :</span> A-Z, 0-9.
             </div>
           </div>  
         </div>
@@ -339,7 +339,7 @@ export class Code39 extends SampleBase<{}, {}> {
         </div>
         <div id="description">
           <p>
-          This sample shows how to create the Code 39 self-checking symbology type barcode image. The `type` property can be used to set the barcode type as `Code39`.
+          This sample shows how to create the Code 39 self-checking symbology type barcode image. The <code>type</code> property can be used to set the barcode type as <code>Code32</code>.
           </p>
 
           <br />

@@ -92,7 +92,7 @@ export class Selection extends SampleBase<{}, {}> {
                                     </td>
                                     <td>
                                         <div>
-                                            <DropDownListComponent floatLabelType={'Auto'} fields={this.fields} change={this.modeOnChange.bind(this)} id="mode" index={0} enabled={true} dataSource={this.modes} />
+                                            <DropDownListComponent fields={this.fields} change={this.modeOnChange.bind(this)} id="mode" index={0} enabled={true} dataSource={this.modes} />
                                         </div>
                                     </td>
                                 </tr>
@@ -103,7 +103,7 @@ export class Selection extends SampleBase<{}, {}> {
                                     </td>
                                     <td>
                                         <div>
-                                            <DropDownListComponent floatLabelType={'Auto'} fields={this.fields} change={this.typeOnChange.bind(this)} id="type" index={0} enabled={true} dataSource={this.types} />
+                                            <DropDownListComponent fields={this.fields} change={this.typeOnChange.bind(this)} id="type" index={0} enabled={true} dataSource={this.types} />
                                         </div>
                                     </td>
                                 </tr>

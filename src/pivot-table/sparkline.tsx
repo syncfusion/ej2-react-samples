@@ -95,7 +95,6 @@ export class SparkLine extends SampleBase<{}, {}> {
         if (isDropDownExist) {
             isDropDownExist = false;
             let chartTypeDropDown: DropDownList = new DropDownList({
-                floatLabelType: 'Auto',
                 dataSource: chartData,
                 value: chartType,
                 width: 200,
